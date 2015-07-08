@@ -21,6 +21,8 @@ val_label(v, 2) <- "maybe"
 var_label(v) <- "do you agree?"
 
 ## Specifying missing values
+## Note: it would also have been possible to define directly the missing values with labelled
+## v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9), c(F, F, T))
 missing_val(v) <- c(9)
 v
 
