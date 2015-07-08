@@ -29,7 +29,7 @@ as_factor.default <- function(x, ...) {
 #' @param quiet Hide messages?
 #' @details The order of the returned factor levels will be the order of value labels, except if some values doesn't have
 #'   a label and \code{nolabel_to_na} is \code{FALSE}. In such case, automatic labels will be created and levels will be
-#'   ordered according to values. To order labels before calling \code{as_factor}, see \code{\link{sort_labels}}.
+#'   ordered according to values. To order labels before calling \code{as_factor}, see \code{\link{sort_val_labels}}.
 #' @examples
 #' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9), c(F, F, T))
 #' as_factor(v)

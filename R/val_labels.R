@@ -109,3 +109,35 @@ val_label <- function(x, v, prefixed = FALSE) {
   val_labels(x, quiet = quiet) <- labels
   x
 }
+
+
+#' Sort value labels
+#'
+#' Sort value labels according to values or to labels
+#'
+#' @param x A labelled vector.
+#' @param according_to According to values or to labels?
+#' @param decreasing In decreasing order?
+#' @examples
+#' v <- labelled(c(1, 2, 3), c(maybe = 2, yes = 1, no = 3))
+#' v
+#' sort_val_labels(v)
+#' sort_val_labels(v, decreasing = T)
+#' sort_val_labels(v, "l")
+#' sort_val_labels(v, "l", T)
+#' @export
+sort_val_labels <- function(x, according_to = c("values", "labels"), decreasing = FALSE) {
+  if (!is.labelled(x))
+    stop("`x` should be labelled", call. = FALSE, domain = "R-labelled")
+  according_to <- match.arg(according_to)
+  labels <- val_labels(x)
+  if (!is.null(labels)) {
+    if (according_to == "values")
+      labels <- sort(labels, decreasing = decreasing)
+    else if (according_to == "labels")
+      labels <- labels[order(names(labels), decreasing = decreasing)]
+    val_labels(x) <- labels
+  }
+  x
+}
+
