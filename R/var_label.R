@@ -2,6 +2,7 @@
 #'
 #' @param x A vector.
 #' @param value A character string or \code{NULL} to remove the label.
+#' @return \code{var_label} will return a character string.
 #' @examples
 #' var_label(iris$Sepal.Length)
 #' var_label(iris$Sepal.Length) <- "Length of the sepal"
