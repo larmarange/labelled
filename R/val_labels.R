@@ -1,6 +1,7 @@
 #' Get / Set value labels
 #'
 #' @param x A vector.
+#' @param prefixed Should labels be prefixed with values?
 #' @param v A single value.
 #' @param value A named vector for \code{val_labels} (see \code{\link{labelled}}) or a character string
 #'   for \code{\link{val_labels}}. \code{NULL} to remove the labels.
@@ -11,13 +12,17 @@
 #' @examples
 #' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
 #' val_labels(v)
+#' val_labels(v, prefixed = TRUE)
 #' val_label(v, 2)
 #' val_label(v, 2) <- "maybe"
 #' val_label(v, 9) <- NULL
 #' val_labels(v) <- NULL
 #' @export
-val_labels <- function(x) {
-  attr(x, "labels", exact = TRUE)
+val_labels <- function(x, prefixed = FALSE) {
+  labels <- attr(x, "labels", exact = TRUE)
+  if (prefixed)
+    names(labels) <- paste0("[", labels, "] ", names(labels))
+  labels
 }
 
 #' @rdname val_labels
@@ -63,12 +68,15 @@ val_labels <- function(x) {
 
 #' @rdname val_labels
 #' @export
-val_label <- function(x, v) {
+val_label <- function(x, v, prefixed = FALSE) {
   if (length(v)!=1)
     stop("`v` should be a single value", call. = FALSE, domain = "R-labelled")
   labels <- val_labels(x)
   if (v %in% labels)
-    names(labels)[labels == v]
+    if (prefixed)
+      paste0("[", v, "] ", names(labels)[labels == v])
+    else
+      names(labels)[labels == v]
   else
     NULL
 }
