@@ -51,6 +51,7 @@ v
 ## Note 2: labels not provided will be removed 
 ## Note 3: missing values are preserved (as long than there is still a label)
 val_labels(v) <- c(yes = 1, maybe = 2, nnno = 3, "don't know" = 9)
+v
 
 ## Modifying an existing value label
 val_label(v, 3) <- "no"
