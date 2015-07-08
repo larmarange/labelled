@@ -1,0 +1,111 @@
+#' Recode defined missing values to NA
+#'
+#' For labelled variables, defined missing values will be recoded to \code{NA}.
+#'
+#' @param x Object to recode.
+#' @param ... Other arguments passed down to method.
+#' @examples
+#' v <- labelled(c(1, 2, 9, 1, 9), c(yes = 1, no = 2, dk = 3), c(F, F, T))
+#' missing_to_na(v)
+#' @export
+missing_to_na <- function(x, ...) {
+  UseMethod("missing_to_na")
+}
+
+#' @export
+missing_to_na.default <- function(x, ...) {
+  x
+}
+
+#' @export
+missing_to_na.labelled <- function(x, ...) {
+  miss_val <- missing_val(x)
+  if (length(miss_val) > 0) {
+    x[x %in% miss_val] <- NA
+    for (mv in miss_val)
+      val_label(x, mv, quiet = TRUE) <- NULL
+  }
+  x
+}
+
+#' @export
+missing_to_na.data.frame <- function(x, ...) {
+  oc <- class(x)
+  lapply(x, missing_to_na)
+  class(x) <- oc
+  x
+}
+
+#' Recode values with no label to NA
+#'
+#' For labelled variables, values with no label will be recoded to \code{NA}.
+#'
+#' @param x Object to recode.
+#' @param ... Other arguments passed down to method.
+#' @examples
+#' v <- labelled(c(1, 2, 9, 1, 9), c(yes = 1, no = 2))
+#' nolabel_to_na(v)
+#' @export
+nolabel_to_na <- function(x, ...) {
+  UseMethod("nolabel_to_na")
+}
+
+#' @export
+nolabel_to_na.default <- function(x, ...) {
+  x
+}
+
+#' @export
+nolabel_to_na.labelled <- function(x, ...) {
+  allval <- unique(x)
+  allval <- allval[!is.na(allval)]
+  nolabel <- allval[!allval %in% val_labels(x)]
+  if (length(nolabel) > 0)
+    x[x %in% nolabel] <- NA
+  x
+}
+
+#' @export
+nolabel_to_na.data.frame <- function(x, ...) {
+  oc <- class(x)
+  lapply(x, nolabel_to_na)
+  class(x) <- oc
+  x
+}
+
+#' Recode value labels  to NA
+#'
+#' For labelled variables, values with a label will be recoded to \code{NA}.
+#'
+#' @param x Object to recode.
+#' @param ... Other arguments passed down to method.
+#' @seealso \code{\link[haven]{zap_labels}}
+#' @examples
+#' v <- labelled(c(1, 2, 9, 1, 9), c(dk = 9))
+#' val_labels_to_na(v)
+#' @export
+val_labels_to_na <- function(x, ...) {
+  UseMethod("val_labels_to_na")
+}
+
+#' @export
+val_labels_to_na.default <- function(x, ...) {
+  x
+}
+
+#' @export
+val_labels_to_na.labelled <- function(x, ...) {
+  val <- val_labels(x)
+  if (length(val) > 0)
+    x[x %in% val] <- NA
+  val_labels(x, quiet = TRUE) <- NULL
+  x
+}
+
+#' @export
+val_labels_to_na.data.frame <- function(x, ...) {
+  oc <- class(x)
+  lapply(x, val_labels_to_na)
+  class(x) <- oc
+  x
+}
