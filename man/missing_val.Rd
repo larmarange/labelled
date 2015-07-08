@@ -7,14 +7,37 @@
 \usage{
 missing_val(x)
 
-missing_val(x, force = NULL) <- value
+missing_val(x, force = NULL, quiet = TRUE) <- value
 }
 \arguments{
 \item{x}{A vector.}
 
 \item{value}{A vector indicating which values should be considered as missing.}
+
+\item{force}{If required, create missing value labels? (see details)}
+
+\item{quiet}{Hide messages?}
+}
+\value{
+\code{missing_val} will return a named list of values.
 }
 \description{
 Get / Set a self-defined missing value
+}
+\details{
+If \code{value} contains some values for whose no value label has been defined,
+  you will get an error, except if you specify \code{TRUE} or \code{FALSE} to \code{force}.
+  If \code{TRUE}, the missing value labels will be created. If \code{FALSE}, no missing value
+  will be defined for these values.
+}
+\examples{
+v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
+missing_val(v)
+missing_val(v) <- 9
+missing_val(v)
+missing_val(v, FALSE) <- c(8, 9)
+missing_val(v)
+missing_val(v, TRUE) <- c(8, 9)
+missing_val(v)
 }
 

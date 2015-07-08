@@ -14,6 +14,9 @@ var_label(x) <- value
 
 \item{value}{A character string or \code{NULL} to remove the label.}
 }
+\value{
+\code{var_label} will return a character string.
+}
 \description{
 Get / Set a variable label
 }

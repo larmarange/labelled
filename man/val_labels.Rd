@@ -7,32 +7,40 @@
 \alias{val_labels<-}
 \title{Get / Set value labels}
 \usage{
-val_labels(x)
+val_labels(x, prefixed = FALSE)
 
-val_labels(x) <- value
+val_labels(x, quiet = FALSE) <- value
 
-val_label(x, v)
+val_label(x, v, prefixed = FALSE)
 
-val_label(x, v) <- value
+val_label(x, v, quiet = FALSE) <- value
 }
 \arguments{
 \item{x}{A vector.}
 
+\item{prefixed}{Should labels be prefixed with values?}
+
 \item{value}{A named vector for \code{val_labels} (see \code{\link{labelled}}) or a character string
 for \code{\link{val_labels}}. \code{NULL} to remove the labels.}
+
+\item{quiet}{Hide messages?}
 
 \item{v}{A single value.}
 }
 \value{
 \code{val_labels} will return a named vector.
-
-\code{val_label} will return a single character string.
+  \code{val_label} will return a single character string.
 }
 \description{
 Get / Set value labels
 }
 \examples{
-s <- labelled(c(1, 1, 2), c(Male = 1, Female = 2))
-val_labels(s)
+v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
+val_labels(v)
+val_labels(v, prefixed = TRUE)
+val_label(v, 2)
+val_label(v, 2) <- "maybe"
+val_label(v, 9) <- NULL
+val_labels(v) <- NULL
 }
 
