@@ -48,7 +48,8 @@ val_labels <- function(x) {
         if (!quiet)
           message(
             gettextf(
-              "some missing values (%s) have been removed", paste(rm_missing_val, sep = ", "),
+              "some missing values (%s) have been removed",
+              paste(rm_missing_val, collapse = ", "),
               domain = "R-labelled"
             )
           )

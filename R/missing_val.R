@@ -58,7 +58,8 @@ missing_val <- function(x) {
           if (!quiet)
             message(
               gettextf(
-                "some value label (%s) have been created", paste(nolabel, sep = ", "),
+                "no label found for some values (%s), automatic labels created",
+                paste(nolabel, collapse = ", "),
                 domain = "R-labelled"
               )
             )
@@ -67,7 +68,8 @@ missing_val <- function(x) {
           if (!quiet)
             message(
               gettextf(
-                "no value label found for %s, no missing value defined", paste(nolabel, sep = ", "),
+                "no label found for some values (%s), no missing defined for these values",
+                paste(nolabel, collapse = ", "),
                 domain = "R-labelled"
               )
             )
