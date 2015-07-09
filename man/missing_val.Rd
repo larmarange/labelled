@@ -2,12 +2,30 @@
 % Please edit documentation in R/missing_val.R
 \name{missing_val}
 \alias{missing_val}
+\alias{missing_val.default}
+\alias{missing_val.labelled}
 \alias{missing_val<-}
+\alias{missing_val<-.character}
+\alias{missing_val<-.data.frame}
+\alias{missing_val<-.labelled}
+\alias{missing_val<-.numeric}
 \title{Get / Set a self-defined missing value}
 \usage{
 missing_val(x)
 
-missing_val(x, force = NULL, quiet = TRUE) <- value
+\method{missing_val}{default}(x)
+
+\method{missing_val}{labelled}(x)
+
+missing_val(x, force = NULL) <- value
+
+\method{missing_val}{labelled}(x, force = NULL) <- value
+
+\method{missing_val}{numeric}(x, force = NULL) <- value
+
+\method{missing_val}{character}(x, force = NULL) <- value
+
+\method{missing_val}{data.frame}(x, force) <- value
 }
 \arguments{
 \item{x}{A vector.}
@@ -15,8 +33,6 @@ missing_val(x, force = NULL, quiet = TRUE) <- value
 \item{value}{A vector indicating which values should be considered as missing.}
 
 \item{force}{If required, create missing value labels? (see details)}
-
-\item{quiet}{Hide messages?}
 }
 \value{
 \code{missing_val} will return a named list of values.

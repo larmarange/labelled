@@ -5,6 +5,13 @@ and propose additional functions to manipulate labelled data.
 
 Please note that this package is still under active development.
 
+## Some general principles
+
+1. Functions are intented to support `labelled` metadata structures only.
+   However, `foreign_to_labelled` allows to convert metadata from `foreign` package to `labelled`.
+2. Functions should, by default, modify metadata only (i.e. classes and attributes), except if
+   explicitly expressed by the user.
+
 ## Basic manipulation
 
 ```{r}

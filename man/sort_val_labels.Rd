@@ -2,9 +2,17 @@
 % Please edit documentation in R/val_labels.R
 \name{sort_val_labels}
 \alias{sort_val_labels}
+\alias{sort_val_labels.data.frame}
+\alias{sort_val_labels.labelled}
 \title{Sort value labels}
 \usage{
 sort_val_labels(x, according_to = c("values", "labels"), decreasing = FALSE)
+
+\method{sort_val_labels}{labelled}(x, according_to = c("values", "labels"),
+  decreasing = FALSE)
+
+\method{sort_val_labels}{data.frame}(x, according_to = c("values", "labels"),
+  decreasing = FALSE)
 }
 \arguments{
 \item{x}{A labelled vector.}

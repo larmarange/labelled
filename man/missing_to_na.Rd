@@ -4,12 +4,10 @@
 \alias{missing_to_na}
 \title{Recode defined missing values to NA}
 \usage{
-missing_to_na(x, ...)
+missing_to_na(x)
 }
 \arguments{
 \item{x}{Object to recode.}
-
-\item{...}{Other arguments passed down to method.}
 }
 \description{
 For labelled variables, defined missing values will be recoded to \code{NA}.

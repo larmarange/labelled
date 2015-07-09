@@ -4,7 +4,7 @@
 \alias{val_labels_to_na}
 \title{Recode value labels  to NA}
 \usage{
-val_labels_to_na(x, ...)
+val_labels_to_na(x)
 }
 \arguments{
 \item{x}{Object to recode.}

@@ -4,7 +4,7 @@
 \alias{nolabel_to_na}
 \title{Recode values with no label to NA}
 \usage{
-nolabel_to_na(x, ...)
+nolabel_to_na(x)
 }
 \arguments{
 \item{x}{Object to recode.}

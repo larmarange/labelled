@@ -2,18 +2,54 @@
 % Please edit documentation in R/val_labels.R
 \name{val_labels}
 \alias{val_label}
+\alias{val_label.labelled}
 \alias{val_label<-}
+\alias{val_label<-.character}
+\alias{val_label<-.data.frame}
+\alias{val_label<-.labelled}
+\alias{val_label<-.numeric}
 \alias{val_labels}
+\alias{val_labels.data.frame}
+\alias{val_labels.default}
+\alias{val_labels.labelled}
 \alias{val_labels<-}
+\alias{val_labels<-.character}
+\alias{val_labels<-.data.frame}
+\alias{val_labels<-.labelled}
+\alias{val_labels<-.numeric}
 \title{Get / Set value labels}
 \usage{
 val_labels(x, prefixed = FALSE)
 
-val_labels(x, quiet = FALSE) <- value
+\method{val_labels}{default}(x, prefixed = FALSE)
+
+\method{val_labels}{labelled}(x, prefixed = FALSE)
+
+\method{val_labels}{data.frame}(x, prefixed = FALSE)
+
+val_labels(x) <- value
+
+\method{val_labels}{numeric}(x) <- value
+
+\method{val_labels}{character}(x) <- value
+
+\method{val_labels}{labelled}(x) <- value
+
+\method{val_labels}{data.frame}(x) <- value
 
 val_label(x, v, prefixed = FALSE)
 
-val_label(x, v, quiet = FALSE) <- value
+\method{val_label}{labelled}(x, v, prefixed = FALSE)
+
+val_label(x, v) <- value
+
+\method{val_label}{labelled}(x, v) <- value
+
+\method{val_label}{numeric}(x, v) <- value
+
+\method{val_label}{character}(x, v) <- value
+
+\method{val_label}{data.frame}(x, v) <- value
 }
 \arguments{
 \item{x}{A vector.}
@@ -21,9 +57,8 @@ val_label(x, v, quiet = FALSE) <- value
 \item{prefixed}{Should labels be prefixed with values?}
 
 \item{value}{A named vector for \code{val_labels} (see \code{\link{labelled}}) or a character string
-for \code{\link{val_labels}}. \code{NULL} to remove the labels.}
-
-\item{quiet}{Hide messages?}
+for \code{\link{val_labels}}. \code{NULL} to remove the labels.
+For data frames, it could also be a named list.}
 
 \item{v}{A single value.}
 }

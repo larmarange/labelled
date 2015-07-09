@@ -11,8 +11,9 @@ as_factor(x, ...)
 \method{as_factor}{default}(x, ...)
 
 \method{as_factor}{labelled}(x, levels = c("labels", "values", "prefixed"),
-  ordered = FALSE, missing_to_na = TRUE, nolabel_to_na = FALSE,
-  quiet = FALSE, ...)
+  ordered = FALSE, missing_to_na = FALSE, nolabel_to_na = FALSE,
+  sort_levels = c("auto", "none", "labels", "values"), decreasing = FALSE,
+  ...)
 }
 \arguments{
 \item{x}{Object to coerce to a factor.}
@@ -27,22 +28,34 @@ as_factor(x, ...)
 
 \item{nolabel_to_na}{Should values with no label be converted to `NA`?}
 
-\item{quiet}{Hide messages?}
+\item{sort_levels}{How the factor levels should be sorted? (see Details)}
+
+\item{decreasing}{Sould levels be sorted in decreasing order?}
 }
 \description{
 The base function \code{\link[base]{as.factor}} is not a generic, but this variant
 is. By default, \code{as_factor} is a wrapper for \code{\link[base]{factor}}.
 }
 \details{
-The order of the returned factor levels will be the order of value labels, except if some values doesn't have
-  a label and \code{nolabel_to_na} is \code{FALSE}. In such case, automatic labels will be created and levels will be
-  ordered according to values. To order labels before calling \code{as_factor}, see \code{\link{sort_val_labels}}.
+If some values doesn't have a label, automatic labels will be created, except if
+  \code{nolabel_to_na} is \code{TRUE}.
+
+  If \code{sort_levels == "values"}, the levels will be sorted according to the values of \code{x}.
+  If \code{sort_levels == "labels"}, the levels will be sorted according to labels' names.
+  If \code{sort_levels == "none"}, the levels will be in the order the value labels are defined
+  in \code{x}. If some labels are automatically created, they will be added at the end.
+  If \code{sort_levels == "auto"}, \code{sort_levels == "none"} will be used, except if some
+  values doesn't have a defined label. In such case,  \code{sort_levels == "values"} will
+  be applied.
 }
 \examples{
 v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9), c(F, F, T))
 as_factor(v)
 as_factor(v, missing_to_na = FALSE, nolabel_to_na = TRUE)
 as_factor(v, "p")
+as_factor(v, sort_levels = "v")
+as_factor(v, sort_levels = "n")
+as_factor(v, sort_levels = "l")
 
 x <- labelled(c("H", "M", "H", "L"), c(low = "L", medium = "M", high = "H"))
 as_factor(x, ordered = TRUE)

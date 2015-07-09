@@ -2,23 +2,37 @@
 % Please edit documentation in R/var_label.R
 \name{var_label}
 \alias{var_label}
+\alias{var_label.data.frame}
+\alias{var_label.default}
 \alias{var_label<-}
+\alias{var_label<-.data.frame}
+\alias{var_label<-.default}
 \title{Get / Set a variable label}
 \usage{
 var_label(x)
 
-var_label(x) <- value
+\method{var_label}{default}(x)
+
+\method{var_label}{data.frame}(x)
+
+var_label(x, ...) <- value
+
+\method{var_label}{default}(x) <- value
+
+\method{var_label}{data.frame}(x) <- value
 }
 \arguments{
 \item{x}{A vector.}
 
-\item{value}{A character string or \code{NULL} to remove the label.}
-}
-\value{
-\code{var_label} will return a character string.
+\item{value}{A character string or \code{NULL} to remove the label. For data frames,
+it could also be a named list.}
 }
 \description{
 Get / Set a variable label
+}
+\details{
+For data frames, if \code{value} is a named list, only elements whose name will
+  match a column of the data frame will be taken into account.
 }
 \examples{
 var_label(iris$Sepal.Length)
