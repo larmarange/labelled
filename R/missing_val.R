@@ -92,13 +92,13 @@ missing_val.labelled <- function(x) {
 #' @rdname missing_val
 #' @export
 `missing_val<-.numeric` <- function(x, value, force = NULL) {
-  `missing_val<-.labelled<-`(x = x, value = value, force = force)
+  `missing_val<-.labelled`(x = x, value = value, force = force)
 }
 
 #' @rdname missing_val
 #' @export
 `missing_val<-.character` <- function(x, value, force = NULL) {
-  `missing_val<-.labelled<-`(x = x, value = value, force = force)
+  `missing_val<-.labelled`(x = x, value = value, force = force)
 }
 
 
