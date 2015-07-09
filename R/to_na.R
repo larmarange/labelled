@@ -29,7 +29,8 @@ missing_to_na.labelled <- function(x) {
 
 #' @export
 missing_to_na.data.frame <- function(x) {
-  .lapply_to_df(lapply(x, missing_to_na), x)
+  x[] <- lapply(x, missing_to_na)
+  x
 }
 
 #' Recode values with no label to NA
@@ -63,7 +64,8 @@ nolabel_to_na.labelled <- function(x) {
 
 #' @export
 nolabel_to_na.data.frame <- function(x) {
-  .lapply_to_df(lapply(x, nolabel_to_na), x)
+  x[] <- lapply(x, nolabel_to_na)
+  x
 }
 
 #' Recode value labels  to NA
@@ -97,13 +99,7 @@ val_labels_to_na.labelled <- function(x) {
 
 #' @export
 val_labels_to_na.data.frame <- function(x) {
-  .lapply_to_df(lapply(x, val_labels_to_na), x)
+  x[] <- lapply(x, val_labels_to_na)
+  x
 }
 
-# note: as.data.frame(lapply(...)) doesn't work properly with labelled vectors
-# .lapply_to_df also preserves class of df
-.lapply_to_df <- function(la, df) {
-  for (var in names(df)[names(df) %in% names(la)])
-    df[[var]] <- la[[var]]
-  df
-}

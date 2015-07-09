@@ -277,8 +277,6 @@ sort_val_labels.labelled <-
 #' @export
 sort_val_labels.data.frame <-
   function(x, according_to = c("values", "labels"), decreasing = FALSE) {
-    .lapply_to_df(lapply(
-      x, sort_val_labels, according_to = according_to, decreasing = decreasing
-    ),
-    x)
+    x[] <- lapply(x, sort_val_labels, according_to = according_to, decreasing = decreasing)
+    x
   }
