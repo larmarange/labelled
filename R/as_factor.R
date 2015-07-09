@@ -28,7 +28,6 @@ as_factor.default <- function(x, ...) {
 #' @param nolabel_to_na Should values with no label be converted to `NA`?
 #' @param sort_levels How the factor levels should be sorted? (see Details)
 #' @param decreasing Sould levels be sorted in decreasing order?
-#' @param quiet Hide messages?
 #' @details
 #'   If some values doesn't have a label, automatic labels will be created, except if
 #'   \code{nolabel_to_na} is \code{TRUE}.
@@ -55,8 +54,7 @@ as_factor.default <- function(x, ...) {
 as_factor.labelled <-
   function(x, levels = c("labels", "values", "prefixed"),
            ordered = FALSE, missing_to_na = FALSE, nolabel_to_na = FALSE,
-           sort_levels = c("auto", "none", "labels", "values"), decreasing = FALSE,
-           quiet = FALSE, ...) {
+           sort_levels = c("auto", "none", "labels", "values"), decreasing = FALSE, ...) {
     levels <- match.arg(levels)
     sort_levels <- match.arg(sort_levels)
     if (missing_to_na)
@@ -71,14 +69,6 @@ as_factor.labelled <-
     if (length(nolabel) > 0) {
       names(nolabel) <- nolabel
       levs <- c(labels, nolabel)
-      if (!quiet & levels != "values")
-        message(
-          gettextf(
-            "no label found for some values (%s), automatic labels created",
-            paste(nolabel, collapse = ", "),
-            domain = "R-labelled"
-          )
-        )
     } else {
       levs <- labels
     }
