@@ -83,8 +83,10 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
     attr(x, "is_na") <- NULL
 
   } else {
-    if (typeof(value) != typeof(x))
+    if (mode(value) != mode(x))
       stop("`x` and `value` must be same type", call. = FALSE, domain = "R-labelled")
+    if (typeof(value) != typeof(x))
+      mode(value) <- typeof(x)
     if (is.null(names(value)))
       stop("`value` must be a named vector", call. = FALSE, domain = "R-labelled")
     if (length(value) != length(unique(value)))

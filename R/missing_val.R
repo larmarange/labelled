@@ -61,8 +61,10 @@ missing_val.labelled <- function(x) {
     else
       attr(x, "is_na") <- NULL
   } else {
-    if (typeof(value) != typeof(x))
+    if (mode(value) != mode(x))
       stop("`x` and `value` must be same type", call. = FALSE, domain = "R-labelled")
+    if (typeof(value) != typeof(x))
+      mode(value) <- typeof(x)
     nolabel <- value[!value %in% labels]
     if (length(nolabel) > 0) {
       if (is.null(force)) {

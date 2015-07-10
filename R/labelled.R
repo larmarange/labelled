@@ -21,8 +21,11 @@ labelled <- function(x, labels, is_na = NULL) {
   if (!is.numeric(x) && !is.character(x)) {
     stop("`x` must be either numeric or a character vector", call. = FALSE, domain = "R-labelled")
   }
-  if (typeof(x) != typeof(labels)) {
+  if (mode(x) != mode(labels)) {
     stop("`x` and `labels` must be same type", call. = FALSE, domain = "R-labelled")
+  }
+  if (typeof(x) != typeof(labels)) {
+    mode(labels) <- typeof(x)
   }
   if (is.null(names(labels))) {
     stop("`labels` must be a named vector", call. = FALSE, domain = "R-labelled")
