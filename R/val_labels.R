@@ -50,6 +50,11 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
   UseMethod("val_labels<-")
 }
 
+#' @export
+`val_labels<-.default` <- function(x, value) {
+  # do nothing
+  x
+}
 
 #' @rdname val_labels
 #' @export
