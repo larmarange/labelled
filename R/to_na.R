@@ -4,7 +4,7 @@
 #'
 #' @param x Object to recode.
 #' @examples
-#' v <- labelled(c(1, 2, 9, 1, 9), c(yes = 1, no = 2, dk = 3), c(F, F, T))
+#' v <- labelled(c(1, 2, 9, 1, 9), c(yes = 1, no = 2, dk = 3), c(FALSE, FALSE, TRUE))
 #' missing_to_na(v)
 #' @export
 missing_to_na <- function(x) {

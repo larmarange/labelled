@@ -41,19 +41,19 @@ missing_val.labelled <- function(x) {
 
 #' @rdname missing_val
 #' @export
-`missing_val<-` <- function(x, value, force = NULL) {
+`missing_val<-` <- function(x, force = NULL, value) {
   UseMethod("missing_val<-")
 }
 
 #' @export
-`missing_val<-.default` <- function(x, value, force = NULL) {
+`missing_val<-.default` <- function(x, force = NULL, value) {
   # do nothing
   x
 }
 
 #' @rdname missing_val
 #' @export
-`missing_val<-.labelled` <- function(x, value, force = NULL) {
+`missing_val<-.labelled` <- function(x, force = NULL, value) {
   labels <- val_labels(x)
   if (is.null(value)) {
     if (length(labels) > 0)
@@ -93,20 +93,20 @@ missing_val.labelled <- function(x) {
 
 #' @rdname missing_val
 #' @export
-`missing_val<-.numeric` <- function(x, value, force = NULL) {
+`missing_val<-.numeric` <- function(x, force = NULL, value) {
   `missing_val<-.labelled`(x = x, value = value, force = force)
 }
 
 #' @rdname missing_val
 #' @export
-`missing_val<-.character` <- function(x, value, force = NULL) {
+`missing_val<-.character` <- function(x, force = NULL, value) {
   `missing_val<-.labelled`(x = x, value = value, force = force)
 }
 
 
 #' @rdname missing_val
 #' @export
-`missing_val<-.data.frame` <- function(x, value, force) {
+`missing_val<-.data.frame` <- function(x, force, value) {
   if (!is.list(value)) {
     temp <- as.list(rep(1, ncol(x)))
     names(temp) <- names(x)

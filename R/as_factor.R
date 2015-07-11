@@ -40,7 +40,7 @@ as_factor.default <- function(x, ...) {
 #'   values doesn't have a defined label. In such case,  \code{sort_levels == "values"} will
 #'   be applied.
 #' @examples
-#' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9), c(F, F, T))
+#' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9), c(FALSE, FALSE, TRUE))
 #' as_factor(v)
 #' as_factor(v, missing_to_na = FALSE, nolabel_to_na = TRUE)
 #' as_factor(v, "p")

@@ -1,4 +1,3 @@
-if (packageVersion("testthat") >= "0.7.1.99") {
-  library(testthat)
-  test_check("labelled")
-}
+library(testthat)
+library(labelled)
+test_check("labelled")

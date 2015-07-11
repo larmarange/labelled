@@ -9,8 +9,6 @@
 #' @param labels A named vector. The vector should be the same type as
 #'   x. Unlike factors, labels don't need to be exhaustive: only a fraction
 #'   of the values might be labelled.
-#' @param levels When coercing a labelled character vector to a factor, you
-#'   can choose whether to use the labels or the values as the factor levels.
 #' @param is_na Optionally, a logical vector describing which levels should
 #'   be translated to missing values.
 #' @export

@@ -35,7 +35,7 @@ var_label.data.frame <- function(x) {
 
 #' @rdname var_label
 #' @export
-`var_label<-` <- function(x, ...) {
+`var_label<-` <- function(x, value) {
   UseMethod("var_label<-")
 }
 
