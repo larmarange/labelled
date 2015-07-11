@@ -1,11 +1,19 @@
-#' Convert variable / value attributes to labelled data
+#' Convert to labelled data
 #'
-#' Convert data imported with \code{\link[foreign]{read.spss}} or \code{\link[foreign]{read.dta}}
-#' from \pkg{foreign} package to labelled data, i.e. using \code{\link{labelled}} class.
+#' Convert data imported with \pkg{foreign} or \pkg{memisc} to labelled data.
 #'
-#' @param x A data set to convert to labelled data frame
+#' @param x Data to convert to labelled data frame
 #' @details
-#' #' Factors will not be converted. Therefore, you should use \code{use.value.labels = FALSE}
+#' \code{to_labelled} calls both \code{foreign_to_labelled} and \code{memisc_to_labelled}.
+#'
+#' \code{memisc_to_labelled} converts a \code{\link[memisc]{data.set}} object created with
+#' \pkg{memisc} package to a labelled data frame.
+#'
+#' \code{foreign_to_labelled} converts data imported with \code{\link[foreign]{read.spss}}
+#' or \code{\link[foreign]{read.dta}} from \pkg{foreign} package to a labelled data frame,
+#' i.e. using \code{\link{labelled}} class.
+#'
+#' Factors will not be converted. Therefore, you should use \code{use.value.labels = FALSE}
 #' when importing with \code{\link[foreign]{read.spss}} or \code{convert.factors = FALSE} when
 #' importing with \code{\link[foreign]{read.dta}}.
 #'
@@ -17,10 +25,12 @@
 #' So far, missing values defined in Stata are always imported as \code{NA} by
 #' \code{\link[foreign]{read.dta}} and could not be retrieved by \code{foreign_to_labelled}.
 #'
+#' @return a tbl data frame.
+#'
 #' @seealso \code{\link{labelled}}, \code{\link[foreign]{read.spss}}, \code{\link[foreign]{read.dta}}
 #' @export
 to_labelled <- function(x) {
-  foreign_to_labelled(x)
+  foreign_to_labelled(memisc_to_labelled(x))
 }
 
 #' @rdname to_labelled
@@ -95,4 +105,30 @@ foreign_to_labelled <- function (x) {
     class(x) <- c("tbl_df", "tbl", "data.frame")
 
   x
+}
+
+#' @rdname to_labelled
+#' @export
+memisc_to_labelled <- function(x) {
+  if (!inherits(x, "data.set"))
+    return(x)
+  if (!requireNamespace("memisc"))
+    stop("memisc package is required to convert a data.set", call. = FALSE, domain = "R-labelled")
+
+  df <- as.data.frame(x)
+  for (var in names(x)) {
+    df[[var]] <- x[[var]]@.Data
+    var_label(df[[var]]) <- as.character(memisc::annotation(x[[var]]))
+  if (!is.null(memisc::labels(x[[var]]))) {
+      labs <- memisc::labels(x[[var]])@values
+      names(labs) <- memisc::labels(x[[var]])@.Data
+      val_labels(df[[var]]) <- labs
+    }
+    missing_val(df[[var]]) <- unique(df[memisc::is.missing(x[[var]]), var])
+  }
+
+  unloadNamespace("memisc")
+
+  class(df) <- c("tbl_df", "tbl", "data.frame")
+  df
 }
