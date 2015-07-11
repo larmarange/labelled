@@ -2,22 +2,36 @@
 % Please edit documentation in R/to_labelled.r
 \name{to_labelled}
 \alias{foreign_to_labelled}
+\alias{memisc_to_labelled}
 \alias{to_labelled}
-\title{Convert variable / value attributes to labelled data}
+\title{Convert to labelled data}
 \usage{
 to_labelled(x)
 
 foreign_to_labelled(x)
+
+memisc_to_labelled(x)
 }
 \arguments{
-\item{x}{A data set to convert to labelled data frame}
+\item{x}{Data to convert to labelled data frame}
+}
+\value{
+a tbl data frame.
 }
 \description{
-Convert data imported with \code{\link[foreign]{read.spss}} or \code{\link[foreign]{read.dta}}
-from \pkg{foreign} package to labelled data, i.e. using \code{\link{labelled}} class.
+Convert data imported with \pkg{foreign} or \pkg{memisc} to labelled data.
 }
 \details{
-#' Factors will not be converted. Therefore, you should use \code{use.value.labels = FALSE}
+\code{to_labelled} calls both \code{foreign_to_labelled} and \code{memisc_to_labelled}.
+
+\code{memisc_to_labelled} converts a \code{\link[memisc]{data.set}} object created with
+\pkg{memisc} package to a labelled data frame.
+
+\code{foreign_to_labelled} converts data imported with \code{\link[foreign]{read.spss}}
+or \code{\link[foreign]{read.dta}} from \pkg{foreign} package to a labelled data frame,
+i.e. using \code{\link{labelled}} class.
+
+Factors will not be converted. Therefore, you should use \code{use.value.labels = FALSE}
 when importing with \code{\link[foreign]{read.spss}} or \code{convert.factors = FALSE} when
 importing with \code{\link[foreign]{read.dta}}.
 
