@@ -15,7 +15,7 @@ var_label(x)
 
 \method{var_label}{data.frame}(x)
 
-var_label(x, ...) <- value
+var_label(x) <- value
 
 \method{var_label}{default}(x) <- value
 

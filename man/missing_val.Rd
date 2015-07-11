@@ -30,9 +30,9 @@ missing_val(x, force = NULL) <- value
 \arguments{
 \item{x}{A vector.}
 
-\item{value}{A vector indicating which values should be considered as missing.}
-
 \item{force}{If required, create missing value labels? (see details)}
+
+\item{value}{A vector indicating which values should be considered as missing.}
 }
 \value{
 \code{missing_val} will return a named list of values.

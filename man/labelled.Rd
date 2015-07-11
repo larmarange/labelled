@@ -19,9 +19,6 @@ of the values might be labelled.}
 
 \item{is_na}{Optionally, a logical vector describing which levels should
 be translated to missing values.}
-
-\item{levels}{When coercing a labelled character vector to a factor, you
-can choose whether to use the labels or the values as the factor levels.}
 }
 \description{
 A labelled vector is a common data structure in other statistical
