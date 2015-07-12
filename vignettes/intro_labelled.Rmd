@@ -1,8 +1,9 @@
----
-title: "Introduction to labelled"
-author: "Joseph Larmarange"
-output: html_document
----
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{labelled}
+-->
+
+# Introduction to labelled
 
 The purpose of the **labelled** package is to provide functions to manipulate
 metadata as variable labels, value labels and defined missing values
