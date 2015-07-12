@@ -2,7 +2,7 @@ Package: labelled
 Type: Package
 Title: Manipulating labelled data
 Version: 0.0.1
-Date: 2015-07-08
+Date: 2015-07-12
 Maintainer: Joseph Larmarange <joseph@larmarange.net>
 Authors@R: c(
   person("Joseph", "Larmarange", email = "joseph@larmarange.net", role = c("aut", "cre")),
@@ -11,6 +11,7 @@ Authors@R: c(
   )
 Description: Labelled makes it easier to work with labelled data imported from SPSS or Stata with haven or foreign.
 License: GPL-3
+Encoding: UTF-8
 Suggests:
     haven,
     dplyr,
