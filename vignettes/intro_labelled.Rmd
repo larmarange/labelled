@@ -7,7 +7,7 @@
 
 The purpose of the **labelled** package is to provide functions to manipulate
 metadata as variable labels, value labels and defined missing values
-using the `labelled` class introduced in `haven` package.
+using the `labelled` class and the `label` attribute introduced in `haven` package.
 
 ## Variable labels
 
@@ -19,13 +19,13 @@ library(labelled)
 var_label(iris$Sepal.Length) <- "Length of sepal"
 ```
 
-It's possible to add a variable label to several columns of a data frame using a named list
+It's possible to add a variable label to several columns of a data frame using a named list.
 
 ```{r}
 var_label(iris) <- list(Petal.Length = "Length of petal", Petal.Width = "Width of Petal")
 ```
 
-To get the variable length, simply call `var_label`.
+To get the variable label, simply call `var_label`.
 
 ```{r}
 var_label(iris$Petal.Width)
@@ -46,7 +46,7 @@ View(iris)
 
 ## Value labels
 
-The first way to create a labelled vector is to use the `labelled`.
+The first way to create a labelled vector is to use the `labelled` function.
 It's not mandatory to provide a label for each value observed in your vector.
 You can also provide a label for values not observed.
 
@@ -55,16 +55,16 @@ v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 8, refu
 v
 ```
 
-Use `val_labels` to get all value labels and `val_label` to get the label associated 
-with a specfic value.
+Use `val_labels` to get all value labels and `val_label` to get the value label associated 
+with a specific value.
 
 ```{r}
 val_labels(v)
 val_label(v, 8)
 ```
 
-`val_labels` could also be used to modify all the value labels attached to a vector, while
-`val_label` will update only one specific value label.
+`val_labels` could also be used to modify all the value labels attached to a vector, 
+while `val_label` will update only one specific value label.
 
 ```{r}
 val_labels(v) <- c(yes = 1, nno = 3, bug = 5)
@@ -81,7 +81,7 @@ val_label(v, 5) <- NULL
 v
 ```
 
-To remove all value labels, use `val_labels`. The `labelled` class will also be removed.
+To remove all value labels, use `val_labels` and `NULL`. The `labelled` class will also be removed.
 
 ```{r}
 val_labels(v) <- NULL
@@ -125,12 +125,12 @@ val_labels(df)
 ## Missing values
 
 It is possible to define some values that should be considered as missing 
-(and would probably be later converted into `NA`) in your analysis.
+(and would probably be later converted into `NA`).
 
-The way missing values are store by the `labelled` class requires that
+The way missing values are stored by the `labelled` class requires that
 each missing value needs to have an associated value label.
 
-With `labelled` function, you can specify which value labels should be consider
+With `labelled` function, you can specify which value labels should be considered
 as missing values.
 
 ```{r}
@@ -150,7 +150,7 @@ missing_val(v) <- c(8, 9)
 v
 ```
 
-If you try to set a missing value to value who don't have an attached value label,
+If you try to set a missing value to a value who don't have an attached value label,
 you'll get an error.
 
 ```{r, eval=FALSE}
@@ -161,8 +161,8 @@ Error: no value label found for 7, please specify `force`
 ```
 
 With the `force` argument, you can specify what should be done. If `force = FALSE`, only
-values having already a value label will be considered as missing. If `force = TRUE`, an
-automatic value label will be created in such cases.
+values having already a value label will be considered as missing. If `force = TRUE`, 
+an automatic value label will be created.
 
 ```{r}
 missing_val(v, force = FALSE) <- c(7, 8, 9)
@@ -171,8 +171,8 @@ missing_val(v, force = TRUE) <- c(7, 8, 9)
 v
 ```
 
-You also need to be aware that if you remove a value label considered as missing, the attached
-value will not be considered as missing anymore.
+You need to be aware that if you remove a value label considered as missing, 
+the attached value will not be considered as missing anymore.
 
 ```{r}
 missing_val(v)
@@ -182,7 +182,7 @@ missing_val(v)
 
 ## Sorting value labels
 
-Value labels are stored in the order they have been created.
+Value labels are sorted by default in the order they have been created.
 
 ```{r}
 v <- c(1,2,2,2,3,9,1,3,2,NA)
@@ -225,8 +225,8 @@ In some cases, values who don't have an attached value label could also be consi
 nolabel_to_na(v)
 ```
 
-Finally, in some cases, a value label is attached only to specfic values that corresponds to missing.
-For example:
+Finally, in some cases, a value label is attached only to specific values that corresponds to 
+a missing value. For example:
 
 ```{r}
 size <- labelled(c(1.88, 1.62, 1.78, 99, 1.91), c("not measured" = 99))
@@ -239,8 +239,8 @@ In such cases, `val_labels_to_na` could be appropriate.
 val_labels_to_na(size)
 ```
 
-These 3 functions could also be applied to an overall data frame. Only labelled vectors will
-be impacted.
+These 3 functions could also be applied to an overall data frame. 
+Only labelled vectors will be impacted.
 
 ## Converting to factor
 
@@ -252,8 +252,8 @@ v
 as_factor(v)
 ```
 
-The `levels` argument allows to specified what should be used as the factor levels, i.e. the labels
-(default), the values or labels prefixed with values.
+The `levels` argument allows to specify what should be used as the factor levels, 
+i.e. the labels (default), the values or the labels prefixed with values.
 
 ```{r}
 as_factor(v, levels = "v")
@@ -274,10 +274,10 @@ as_factor(v, missing_to_na = TRUE)
 as_factor(missing_to_na(v))
 ```
 
-`sort_levels` specfies how the levels should be sorted: `"none"` to keep the order value labels are
-defined, `"values"` to order the levels according to the values and `"labels"` according to the labels.
-`"auto"` (default) will be equivalent to `"none"` except if some values with no attached labels are found
-and are not dropped. In that case, `"values"` will be used.
+`sort_levels` specifies how the levels should be sorted: `"none"` to keep the order in which value labels 
+have been defined, `"values"` to order the levels according to the values and `"labels"` according 
+to the labels. `"auto"` (default) will be equivalent to `"none"` except if some values with no 
+attached labels are found and are not dropped. In that case, `"values"` will be used.
 
 ```{r}
 as_factor(v, sort_levels = "n")
@@ -293,7 +293,7 @@ as_labelled(f)
 ```
 
 Note that `as_labelled(as_factor(v))` will not be equal to `v` due to the way factors are
-strored internaly by **R**.
+stored internally by **R**.
 
 ```{r}
 v
@@ -302,7 +302,7 @@ as_labelled(as_factor(v))
 
 ## Importing labelled data
 
-In **haven** package, `read_spss`, `read_stata` and `read_sas` are nativaly importing data
+In **haven** package, `read_spss`, `read_stata` and `read_sas` are natively importing data
 using the `labelled` class and the `label` attribute for variable labels.
 
 Functions form **foreign** package could also import some metadata from **SPSS** and **Stata**
