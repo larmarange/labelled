@@ -250,9 +250,9 @@ val_label.labelled <- function(x, v, prefixed = FALSE) {
 #' v <- labelled(c(1, 2, 3), c(maybe = 2, yes = 1, no = 3))
 #' v
 #' sort_val_labels(v)
-#' sort_val_labels(v, decreasing = T)
+#' sort_val_labels(v, decreasing = TRUE)
 #' sort_val_labels(v, "l")
-#' sort_val_labels(v, "l", T)
+#' sort_val_labels(v, "l", TRUE)
 #' @export
 sort_val_labels <-
   function(x, according_to = c("values", "labels"), decreasing = FALSE) {
