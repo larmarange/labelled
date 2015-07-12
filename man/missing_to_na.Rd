@@ -13,7 +13,7 @@ missing_to_na(x)
 For labelled variables, defined missing values will be recoded to \code{NA}.
 }
 \examples{
-v <- labelled(c(1, 2, 9, 1, 9), c(yes = 1, no = 2, dk = 3), c(F, F, T))
+v <- labelled(c(1, 2, 9, 1, 9), c(yes = 1, no = 2, dk = 3), c(FALSE, FALSE, TRUE))
 missing_to_na(v)
 }
 
