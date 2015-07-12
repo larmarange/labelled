@@ -74,7 +74,7 @@ as_factor.labelled <-
     }
 
     if (sort_levels == "auto" & length(nolabel) > 0)
-      sort_levels == "values"
+      sort_levels <- "values"
     if (sort_levels == "labels")
       levs <- levs[order(names(levs), decreasing = decreasing)]
     else if (sort_levels == "values")
