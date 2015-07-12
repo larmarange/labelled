@@ -305,7 +305,7 @@ as_labelled(as_factor(v))
 In **haven** package, `read_spss`, `read_stata` and `read_sas` are natively importing data
 using the `labelled` class and the `label` attribute for variable labels.
 
-Functions form **foreign** package could also import some metadata from **SPSS** and **Stata**
+Functions from **foreign** package could also import some metadata from **SPSS** and **Stata**
 files. `foreign_to_labelled` can convert data imported with **foreign** into a labelled data frame.
 However, there are some limitations compared to using **haven**:
 
