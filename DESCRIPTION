@@ -14,9 +14,11 @@ License: GPL-3
 Suggests:
     haven,
     dplyr,
-    testthat
+    testthat,
+    knitr
 Enhances:
     memisc
 LazyData: true
 URL: https://github.com/larmarange/labelled
 BugReports: https://github.com/larmarange/labelled/issues
+VignetteBuilder: knitr
