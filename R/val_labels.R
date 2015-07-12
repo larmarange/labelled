@@ -116,9 +116,12 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
   value <- value[names(value) %in% names(x)]
 
   for (var in names(value))
-    if (!is.null(value[[var]]))
-      if (typeof(x[[var]]) != typeof(value[[var]]))
+    if (!is.null(value[[var]])) {
+      if (mode(x[[var]]) != mode(value[[var]]))
         stop("`x` and `value` must be same type", call. = FALSE, domain = "R-labelled")
+      if (typeof(x[[var]]) != typeof(value[[var]]))
+        mode(value[[var]]) <- typeof(x[[var]])
+    }
 
   for (var in names(value))
     val_labels(x[[var]]) <- value[[var]]
