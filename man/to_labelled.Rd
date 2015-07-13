@@ -4,9 +4,21 @@
 \alias{foreign_to_labelled}
 \alias{memisc_to_labelled}
 \alias{to_labelled}
+\alias{to_labelled.data.frame}
+\alias{to_labelled.data.set}
+\alias{to_labelled.importer}
+\alias{to_labelled.list}
 \title{Convert to labelled data}
 \usage{
 to_labelled(x)
+
+\method{to_labelled}{data.frame}(x)
+
+\method{to_labelled}{list}(x)
+
+\method{to_labelled}{data.set}(x)
+
+\method{to_labelled}{importer}(x)
 
 foreign_to_labelled(x)
 
@@ -22,7 +34,7 @@ a tbl data frame.
 Convert data imported with \pkg{foreign} or \pkg{memisc} to labelled data.
 }
 \details{
-\code{to_labelled} calls both \code{foreign_to_labelled} and \code{memisc_to_labelled}.
+\code{to_labelled} is a general wrapper calling the appropriate sub-functions.
 
 \code{memisc_to_labelled} converts a \code{\link[memisc]{data.set}} object created with
 \pkg{memisc} package to a labelled data frame.
@@ -43,7 +55,33 @@ If you used \code{use.missings = TRUE}, missing values would have been converted
 So far, missing values defined in Stata are always imported as \code{NA} by
 \code{\link[foreign]{read.dta}} and could not be retrieved by \code{foreign_to_labelled}.
 }
+\examples{
+\dontrun{
+  # from foreign
+  library(foreign)
+  df <- to_labelled(read.spss(
+    "file.sav",
+    to.data.frame = FALSE,
+    use.value.labels = FALSE,
+    use.missings = FALSE
+ ))
+ df <- to_labelled(read.dta(
+   "file.dta",
+   convert.factors = FALSE
+ ))
+
+ # from memisc
+ library(memisc)
+ nes1948.por <- UnZip("anes/NES1948.ZIP", "NES1948.POR", package="memisc")
+ nes1948 <- spss.portable.file(nes1948.por)
+ df <- to_labelled(nes1948)
+ ds <- as.data.set(nes19480)
+ df <- to_labelled(ds)
+}
+}
 \seealso{
-\code{\link{labelled}}, \code{\link[foreign]{read.spss}}, \code{\link[foreign]{read.dta}}
+\code{\link{labelled}} (\pkg{foreign}), \code{\link[foreign]{read.spss}} (\pkg{foreign}),
+  \code{\link[foreign]{read.dta}} (\pkg{foreign}), \code{\link[memisc]{data.set}} (\pkg{memisc}),
+  \code{\link[memisc]{importer}} (\pkg{memisc}).
 }
 
