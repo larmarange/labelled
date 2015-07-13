@@ -2,6 +2,7 @@
 % Please edit documentation in R/val_labels.R
 \name{val_labels}
 \alias{val_label}
+\alias{val_label.data.frame}
 \alias{val_label.labelled}
 \alias{val_label<-}
 \alias{val_label<-.character}
@@ -40,6 +41,8 @@ val_labels(x) <- value
 val_label(x, v, prefixed = FALSE)
 
 \method{val_label}{labelled}(x, v, prefixed = FALSE)
+
+\method{val_label}{data.frame}(x, v, prefixed = FALSE)
 
 val_label(x, v) <- value
 
