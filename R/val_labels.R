@@ -138,6 +138,8 @@ val_label <- function(x, v, prefixed = FALSE) {
 
 #' @export
 val_label.default <- function(x, v, prefixed = FALSE) {
+  if (length(v) != 1)
+    stop("`v` should be a single value", call. = FALSE, domain = "R-labelled")
   # return nothing
   NULL
 }
@@ -155,6 +157,12 @@ val_label.labelled <- function(x, v, prefixed = FALSE) {
     names(labels)[labels == v]
   else
     NULL
+}
+
+#' @rdname val_labels
+#' @export
+val_label.data.frame <- function(x, v, prefixed = FALSE) {
+  lapply(x, val_label, v = v, prefixed = prefixed)
 }
 
 #' @rdname val_labels
