@@ -319,4 +319,4 @@ However, there are some limitations compared to using **haven**:
   imported as `NA` by `read.dta` and could not be retrieved by `foreign_to_labelled`.
   
 The **memisc** package provide functions to import variable metadata and store them in specific
-object of class `data.set`. The `memisc_to_labelled` can concert a data.set into a labelled data frame.
+object of class `data.set`. The `memisc_to_labelled` can convert a data.set into a labelled data frame.
