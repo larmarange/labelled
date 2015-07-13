@@ -4,7 +4,7 @@
 #'
 #' @param x Data to convert to labelled data frame
 #' @details
-#' \code{to_labelled} calls both \code{foreign_to_labelled} and \code{memisc_to_labelled}.
+#' \code{to_labelled} is a general wrapper calling the appropriate sub-functions.
 #'
 #' \code{memisc_to_labelled} converts a \code{\link[memisc]{data.set}} object created with
 #' \pkg{memisc} package to a labelled data frame.
@@ -26,12 +26,63 @@
 #' \code{\link[foreign]{read.dta}} and could not be retrieved by \code{foreign_to_labelled}.
 #'
 #' @return a tbl data frame.
+#' @seealso \code{\link{labelled}} (\pkg{foreign}), \code{\link[foreign]{read.spss}} (\pkg{foreign}),
+#'   \code{\link[foreign]{read.dta}} (\pkg{foreign}), \code{\link[memisc]{data.set}} (\pkg{memisc}),
+#'   \code{\link[memisc]{importer}} (\pkg{memisc}).
 #'
-#' @seealso \code{\link{labelled}}, \code{\link[foreign]{read.spss}}, \code{\link[foreign]{read.dta}}
+#' @examples
+#' \dontrun{
+#'   # from foreign
+#'   library(foreign)
+#'   df <- to_labelled(read.spss(
+#'     "file.sav",
+#'     to.data.frame = FALSE,
+#'     use.value.labels = FALSE,
+#'     use.missings = FALSE
+#'  ))
+#'  df <- to_labelled(read.dta(
+#'    "file.dta",
+#'    convert.factors = FALSE
+#'  ))
+#'
+#'  # from memisc
+#'  library(memisc)
+#'  nes1948.por <- UnZip("anes/NES1948.ZIP", "NES1948.POR", package="memisc")
+#'  nes1948 <- spss.portable.file(nes1948.por)
+#'  df <- to_labelled(nes1948)
+#'  ds <- as.data.set(nes19480)
+#'  df <- to_labelled(ds)
+#' }
+#'
 #' @export
 to_labelled <- function(x) {
-  foreign_to_labelled(memisc_to_labelled(x))
+  UseMethod("to_labelled")
 }
+
+#' @rdname to_labelled
+#' @export
+to_labelled.data.frame <- function(x) {
+  foreign_to_labelled(x)
+}
+
+#' @rdname to_labelled
+#' @export
+to_labelled.list <- function(x) {
+  foreign_to_labelled(x)
+}
+
+#' @rdname to_labelled
+#' @export
+to_labelled.data.set <- function(x) {
+  memisc_to_labelled(x)
+}
+
+#' @rdname to_labelled
+#' @export
+to_labelled.importer <- function(x) {
+  memisc_to_labelled(as.data.set(x))
+}
+
 
 #' @rdname to_labelled
 #' @export

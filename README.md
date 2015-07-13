@@ -12,7 +12,7 @@ Read https://github.com/larmarange/labelled/blob/master/vignettes/intro_labelled
 ## Some general principles
 
 1. Functions are intented to support `labelled` metadata structures only.
-   However, `foreign_to_labelled` and `memisc_to_labelles` allows to convert metadata 
+   However, `to_labelled` method allows to convert metadata 
    from **foreign** and **memisc** packages.
 2. Functions should, by default, modify metadata only (i.e. classes and attributes), except if
    explicitly expressed by the user.

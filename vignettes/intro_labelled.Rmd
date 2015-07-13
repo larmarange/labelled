@@ -306,7 +306,7 @@ In **haven** package, `read_spss`, `read_stata` and `read_sas` are natively impo
 using the `labelled` class and the `label` attribute for variable labels.
 
 Functions from **foreign** package could also import some metadata from **SPSS** and **Stata**
-files. `foreign_to_labelled` can convert data imported with **foreign** into a labelled data frame.
+files. `to_labelled` can convert data imported with **foreign** into a labelled data frame.
 However, there are some limitations compared to using **haven**:
 
 - For **SPSS** files, it will be better to set `use.value.labels = FALSE`, `to.data.frame = FALSE` and
@@ -319,4 +319,28 @@ However, there are some limitations compared to using **haven**:
   imported as `NA` by `read.dta` and could not be retrieved by `foreign_to_labelled`.
   
 The **memisc** package provide functions to import variable metadata and store them in specific
-object of class `data.set`. The `memisc_to_labelled` can convert a data.set into a labelled data frame.
+object of class `data.set`. The `to_labelled` method can convert a data.set into a labelled data frame.
+
+```{r, eval=FALSE}
+  # from foreign
+  library(foreign)
+  df <- to_labelled(read.spss(
+    "file.sav",
+    to.data.frame = FALSE,
+    use.value.labels = FALSE,
+    use.missings = FALSE
+ ))
+ df <- to_labelled(read.dta(
+   "file.dta",
+   convert.factors = FALSE
+ ))
+
+ # from memisc
+ library(memisc)
+ nes1948.por <- UnZip("anes/NES1948.ZIP", "NES1948.POR", package="memisc")
+ nes1948 <- spss.portable.file(nes1948.por)
+ df <- to_labelled(nes1948)
+ ds <- as.data.set(nes19480)
+ df <- to_labelled(ds)
+```
+
