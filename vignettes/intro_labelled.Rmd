@@ -76,7 +76,7 @@ v
 With `val_label`, you can also add or remove specific value labels.
 
 ```{r}
-val_label(v, 3) <- "maybe"
+val_label(v, 2) <- "maybe"
 val_label(v, 5) <- NULL
 v
 ```
