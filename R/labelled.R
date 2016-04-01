@@ -63,6 +63,8 @@ is.labelled <- function(x) inherits(x, "labelled")
 print.labelled <- function(x, ...) {
   cat("<Labelled ", typeof(x), "> ", var_label(x), "\n", sep = "")
 
+  if(is.null(attr(x, "is_na"))) missing_val(x) <- NULL
+
   xx <- unclass(x)
   attr(xx, "label") <- NULL
   attr(xx, "labels") <- NULL
