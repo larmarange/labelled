@@ -56,14 +56,14 @@ is.labelled <- function(x) inherits(x, "labelled")
 
 #' @export
 `[.labelled` <- function(x, ...) {
-  labelled(NextMethod(), attr(x, "labels"), attr(x, "is_na"))
+  labelled(NextMethod(), attr(x, "labels"), attr(x, "is_na", exact = TRUE))
 }
 
 #' @export
 print.labelled <- function(x, ...) {
   cat("<Labelled ", typeof(x), "> ", var_label(x), "\n", sep = "")
 
-  if(is.null(attr(x, "is_na"))) missing_val(x) <- NULL
+  if(is.null(attr(x, "is_na", exact = TRUE))) missing_val(x) <- NULL
 
   xx <- unclass(x)
   attr(xx, "label") <- NULL
@@ -72,8 +72,8 @@ print.labelled <- function(x, ...) {
   print(xx)
 
   cat("\nLabels:\n")
-  labels <- attr(x, "labels")
-  lab_df <- data.frame(value = unname(labels), label = names(labels), is_na = attr(x, "is_na"))
+  labels <- attr(x, "labels", exact = TRUE)
+  lab_df <- data.frame(value = unname(labels), label = names(labels), is_na = attr(x, "is_na", exact = TRUE))
   print(lab_df, row.names = FALSE)
 
   invisible()
