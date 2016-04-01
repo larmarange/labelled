@@ -90,10 +90,10 @@ to_labelled.importer <- function(x) {
 foreign_to_labelled <- function (x) {
   # note: attr(* , "missings") and attr(*, "variable.labels")
   # are lost when applying as.data.frame (if read.spss(to.data.frame = F))
-  variable.labels <- attr(x, "variable.labels") # read.spss
-  var.labels <- attr(x, "var.labels") # read.dta
-  label.table <- attr(x, "label.table") # read.dta
-  missings <- attr(x, "missings") # read.spss
+  variable.labels <- attr(x, "variable.labels", exact = TRUE) # read.spss
+  var.labels <- attr(x, "var.labels", exact = TRUE) # read.dta
+  label.table <- attr(x, "label.table", exact = TRUE) # read.dta
+  missings <- attr(x, "missings", exact = TRUE) # read.spss
 
   # if imported with read.spss(to.data.frame=FALSE) it's a list, not a df
   if (!is.data.frame(x)) {
@@ -115,8 +115,8 @@ foreign_to_labelled <- function (x) {
 
   # value labels (read.spss)
   for (var in names(x)) {
-    if (!is.null(attr(x[[var]], "value.labels")))
-      val_labels(x[[var]]) <- attr(x[[var]], "value.labels")
+    if (!is.null(attr(x[[var]], "value.labels", exact = TRUE)))
+      val_labels(x[[var]]) <- attr(x[[var]], "value.labels", exact = TRUE)
     attr(x[[var]], "value.labels") <- NULL
   }
 
