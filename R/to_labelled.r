@@ -1,6 +1,7 @@
 #' Convert to labelled data
 #'
 #' Convert data imported with \pkg{foreign} or \pkg{memisc} to labelled data.
+#' \code{to_labelled} could also be used to convert a factor to a labelled vector.
 #'
 #' @param x Data to convert to labelled data frame
 #' @details
@@ -25,7 +26,7 @@
 #' So far, missing values defined in Stata are always imported as \code{NA} by
 #' \code{\link[foreign]{read.dta}} and could not be retrieved by \code{foreign_to_labelled}.
 #'
-#' @return a tbl data frame.
+#' @return a tbl data frame or a labelled vector.
 #' @seealso \code{\link{labelled}} (\pkg{foreign}), \code{\link[foreign]{read.spss}} (\pkg{foreign}),
 #'   \code{\link[foreign]{read.dta}} (\pkg{foreign}), \code{\link[memisc]{data.set}} (\pkg{memisc}),
 #'   \code{\link[memisc]{importer}} (\pkg{memisc}).
@@ -182,4 +183,13 @@ memisc_to_labelled <- function(x) {
 
   class(df) <- c("tbl_df", "tbl", "data.frame")
   df
+}
+
+#' @rdname to_labelled
+#' @export
+to_labelled.factor <- function(x) {
+  labs <- 1:length(levels(x))
+  names(labs) <- levels(x)
+  x <- labelled(as.numeric(x), labs)
+  x
 }

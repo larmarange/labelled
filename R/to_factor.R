@@ -1,27 +1,29 @@
 #' Convert input to a factor.
 #'
 #' The base function \code{\link[base]{as.factor}} is not a generic, but this variant
-#' is. By default, \code{as_factor} is a wrapper for \code{\link[base]{factor}}.
+#' is. By default, \code{to_factor} is a wrapper for \code{\link[base]{as.factor}}.
+#' Please note that \code{to_factor} differs slightly from \code{\link[haven]{as_factor}}
+#' method provided by \code{haven} package.
 #'
 #' @param x Object to coerce to a factor.
 #' @param ... Other arguments passed down to method.
 #' @export
-as_factor <- function(x, ...) {
-  UseMethod("as_factor")
+to_factor <- function(x, ...) {
+  UseMethod("to_factor")
 }
 
 #' @export
-as_factor.factor <- function(x, ...) {
+to_factor.factor <- function(x, ...) {
   x
 }
 
-#' @rdname as_factor
+#' @rdname to_factor
 #' @export
-as_factor.default <- function(x, ...) {
-  factor(x, ...)
+to_factor.default <- function(x, ...) {
+  as.factor(x)
 }
 
-#' @rdname as_factor
+#' @rdname to_factor
 #' @param levels What should be used for the factor levels: the labels, the values or labels prefixed with values?
 #' @param ordered \code{TRUE} for ordinal factors, \code{FALSE} (default) for nominal factors.
 #' @param missing_to_na Should defined missing values be converted to `NA`?
@@ -41,17 +43,17 @@ as_factor.default <- function(x, ...) {
 #'   be applied.
 #' @examples
 #' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9), c(FALSE, FALSE, TRUE))
-#' as_factor(v)
-#' as_factor(v, missing_to_na = FALSE, nolabel_to_na = TRUE)
-#' as_factor(v, "p")
-#' as_factor(v, sort_levels = "v")
-#' as_factor(v, sort_levels = "n")
-#' as_factor(v, sort_levels = "l")
+#' to_factor(v)
+#' to_factor(v, missing_to_na = FALSE, nolabel_to_na = TRUE)
+#' to_factor(v, "p")
+#' to_factor(v, sort_levels = "v")
+#' to_factor(v, sort_levels = "n")
+#' to_factor(v, sort_levels = "l")
 #'
 #' x <- labelled(c("H", "M", "H", "L"), c(low = "L", medium = "M", high = "H"))
-#' as_factor(x, ordered = TRUE)
+#' to_factor(x, ordered = TRUE)
 #' @export
-as_factor.labelled <-
+to_factor.labelled <-
   function(x, levels = c("labels", "values", "prefixed"),
            ordered = FALSE, missing_to_na = FALSE, nolabel_to_na = FALSE,
            sort_levels = c("auto", "none", "labels", "values"), decreasing = FALSE, ...) {
