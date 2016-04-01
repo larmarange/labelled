@@ -81,7 +81,7 @@ to_labelled.data.set <- function(x) {
 #' @rdname to_labelled
 #' @export
 to_labelled.importer <- function(x) {
-  memisc_to_labelled(as.data.set(x))
+  memisc_to_labelled(memisc::as.data.set(x))
 }
 
 

@@ -4,7 +4,8 @@
 \alias{mean.labelled}
 \title{Arithmetic mean for numeric labelled vectors}
 \usage{
-\method{mean}{labelled}(x, trim = 0, na.rm = FALSE, missing_to_na = NULL)
+\method{mean}{labelled}(x, trim = 0, na.rm = FALSE, missing_to_na = NULL,
+  ...)
 }
 \arguments{
 \item{x}{a numeric labelled vector.}
@@ -12,11 +13,13 @@
 \item{trim}{the fraction (0 to 0.5) of observations to be trimmed from each end of x .
 before the mean is computed. Values of trim outside that range are taken as the nearest endpoint.}
 
-\item{na.rm}{a logical value indicating whether \NA values should be stripped before the computation
+\item{na.rm}{a logical value indicating whether \code{NA} values should be stripped before the computation
 proceeds.}
 
 \item{missing_to_na}{a logical value indicating whether self-defined missing values should be
-recoded to \NA before the computation proceeds.}
+recoded to \code{NA} before the computation proceeds.}
+
+\item{...}{additional arguments to be passed to or from methods.}
 }
 \description{
 Arithmetic mean for numeric labelled vectors

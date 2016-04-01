@@ -8,6 +8,8 @@
 }
 \arguments{
 \item{x}{a labelled vector}
+
+\item{...}{additional arguments to be passed to or from methods.}
 }
 \description{
 as.data.frame method for labelled vectors
