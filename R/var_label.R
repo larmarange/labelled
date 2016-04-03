@@ -8,7 +8,7 @@
 #'   match a column of the data frame will be taken into account.
 #' @examples
 #' var_label(iris$Sepal.Length)
-#' var_label(iris$Sepal.Length) <- "Length of the sepal"
+#' var_label(iris$Sepal.Length) <- 'Length of the sepal'
 #' \dontrun{
 #'  View(iris)
 #' }
@@ -44,10 +44,10 @@ var_label.data.frame <- function(x) {
 `var_label<-.default` <- function(x, value) {
   if (!is.atomic(x))
     stop("`x` should be atomic", call. = FALSE, domain = "R-labelled")
-  if ((!is.character(value) & !is.null(value)) | length(value) > 1)
-    stop(
-      "`value` should be a single character string or NULL", call. = FALSE, domain = "R-labelled"
-    )
+  if ((!is.character(value) & !is.null(value)) | length(value) >
+    1)
+    stop("`value` should be a single character string or NULL",
+      call. = FALSE, domain = "R-labelled")
   attr(x, "label") <- value
   x
 }
@@ -55,12 +55,10 @@ var_label.data.frame <- function(x) {
 #' @rdname var_label
 #' @export
 `var_label<-.data.frame` <- function(x, value) {
-  if ((!is.character(value) & !is.null(value)) & !is.list(value)
-      | (is.character(value) & length(value) > 1))
-    stop(
-      "`value` should be a single character string, NULL or a named list",
-      call. = FALSE, domain = "R-labelled"
-    )
+  if ((!is.character(value) & !is.null(value)) & !is.list(value) |
+    (is.character(value) & length(value) > 1))
+    stop("`value` should be a single character string, NULL or a named list",
+      call. = FALSE, domain = "R-labelled")
   if (is.character(value)) {
     value <- as.list(rep(value, ncol(x)))
     names(value) <- names(x)
@@ -68,10 +66,11 @@ var_label.data.frame <- function(x) {
   if (is.null(value)) {
     value <- as.list(rep(1, ncol(x)))
     names(value) <- names(x)
-    value <- lapply(value, function(x) {x <- NULL})
+    value <- lapply(value, function(x) {
+      x <- NULL
+    })
   }
   value <- value[names(value) %in% names(x)]
-  for (var in names(value))
-    var_label(x[[var]]) <- value[[var]]
+  for (var in names(value)) var_label(x[[var]]) <- value[[var]]
   x
 }

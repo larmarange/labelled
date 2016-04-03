@@ -13,23 +13,27 @@
 #'   be translated to missing values.
 #' @export
 #' @examples
-#' s1 <- labelled(c("M", "M", "F"), c(Male = "M", Female = "F"))
+#' s1 <- labelled(c('M', 'M', 'F'), c(Male = 'M', Female = 'F'))
 #' s2 <- labelled(c(1, 1, 2), c(Male = 1, Female = 2))
 labelled <- function(x, labels, is_na = NULL) {
   if (!is.numeric(x) && !is.character(x)) {
-    stop("`x` must be either numeric or a character vector", call. = FALSE, domain = "R-labelled")
+    stop("`x` must be either numeric or a character vector",
+      call. = FALSE, domain = "R-labelled")
   }
   if (mode(x) != mode(labels)) {
-    stop("`x` and `labels` must be same type", call. = FALSE, domain = "R-labelled")
+    stop("`x` and `labels` must be same type", call. = FALSE,
+      domain = "R-labelled")
   }
   if (typeof(x) != typeof(labels)) {
     mode(labels) <- typeof(x)
   }
   if (is.null(names(labels))) {
-    stop("`labels` must be a named vector", call. = FALSE, domain = "R-labelled")
+    stop("`labels` must be a named vector", call. = FALSE,
+      domain = "R-labelled")
   }
   if (length(labels) != length(unique(labels))) {
-    stop("`each value in `labels` should be unique", call. = FALSE, domain = "R-labelled")
+    stop("`each value in `labels` should be unique", call. = FALSE,
+      domain = "R-labelled")
   }
   if (is.null(is_na)) {
     is_na <- rep(FALSE, length(labels))
@@ -40,30 +44,28 @@ labelled <- function(x, labels, is_na = NULL) {
     }
   }
 
-  structure(x,
-    labels = labels,
-    is_na = is_na,
-    class = c("labelled")
-  )
+  structure(x, labels = labels, is_na = is_na, class = c("labelled"))
 }
 
 #' @rdname labelled
 #' @examples
 #' is.labelled(s1)
-#' is.labelled(c("M", "M", "F"))
+#' is.labelled(c('M', 'M', 'F'))
 #' @export
 is.labelled <- function(x) inherits(x, "labelled")
 
 #' @export
 `[.labelled` <- function(x, ...) {
-  labelled(NextMethod(), attr(x, "labels"), attr(x, "is_na", exact = TRUE))
+  labelled(NextMethod(), attr(x, "labels"), attr(x, "is_na",
+    exact = TRUE))
 }
 
 #' @export
 print.labelled <- function(x, ...) {
   cat("<Labelled ", typeof(x), "> ", var_label(x), "\n", sep = "")
 
-  if(is.null(attr(x, "is_na", exact = TRUE))) missing_val(x) <- NULL
+  if (is.null(attr(x, "is_na", exact = TRUE)))
+    missing_val(x) <- NULL
 
   xx <- unclass(x)
   attr(xx, "label") <- NULL
@@ -73,7 +75,8 @@ print.labelled <- function(x, ...) {
 
   cat("\nLabels:\n")
   labels <- attr(x, "labels", exact = TRUE)
-  lab_df <- data.frame(value = unname(labels), label = names(labels), is_na = attr(x, "is_na", exact = TRUE))
+  lab_df <- data.frame(value = unname(labels), label = names(labels),
+    is_na = attr(x, "is_na", exact = TRUE))
   print(lab_df, row.names = FALSE)
 
   invisible()

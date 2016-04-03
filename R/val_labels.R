@@ -10,11 +10,11 @@
 #'   \code{val_labels} will return a named vector.
 #'   \code{val_label} will return a single character string.
 #' @examples
-#' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
+#' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, 'don't know' = 9))
 #' val_labels(v)
 #' val_labels(v, prefixed = TRUE)
 #' val_label(v, 2)
-#' val_label(v, 2) <- "maybe"
+#' val_label(v, 2) <- 'maybe'
 #' val_label(v, 9) <- NULL
 #' val_labels(v) <- NULL
 #' @export
@@ -84,18 +84,21 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
 
   } else {
     if (mode(value) != mode(x))
-      stop("`x` and `value` must be same type", call. = FALSE, domain = "R-labelled")
+      stop("`x` and `value` must be same type", call. = FALSE,
+        domain = "R-labelled")
     if (typeof(value) != typeof(x))
       mode(value) <- typeof(x)
     if (is.null(names(value)))
-      stop("`value` must be a named vector", call. = FALSE, domain = "R-labelled")
+      stop("`value` must be a named vector", call. = FALSE,
+        domain = "R-labelled")
     if (length(value) != length(unique(value)))
-      stop("each value should be unique", call. = FALSE, domain = "R-labelled")
+      stop("each value should be unique", call. = FALSE,
+        domain = "R-labelled")
     if (any(!missing_val(x) %in% value)) {
-      rm_missing_val <- missing_val(x)[!missing_val(x) %in% value]
+      rm_missing_val <- missing_val(x)[!missing_val(x) %in%
+        value]
     }
-    attr(x, "is_na") <-
-      value %in% missing_val(x) # changing is_na before labels
+    attr(x, "is_na") <- value %in% missing_val(x)  # changing is_na before labels
     attr(x, "labels") <- value
   }
 
@@ -115,16 +118,15 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
 
   value <- value[names(value) %in% names(x)]
 
-  for (var in names(value))
-    if (!is.null(value[[var]])) {
-      if (mode(x[[var]]) != mode(value[[var]]))
-        stop("`x` and `value` must be same type", call. = FALSE, domain = "R-labelled")
-      if (typeof(x[[var]]) != typeof(value[[var]]))
-        mode(value[[var]]) <- typeof(x[[var]])
-    }
+  for (var in names(value)) if (!is.null(value[[var]])) {
+    if (mode(x[[var]]) != mode(value[[var]]))
+      stop("`x` and `value` must be same type", call. = FALSE,
+        domain = "R-labelled")
+    if (typeof(x[[var]]) != typeof(value[[var]]))
+      mode(value[[var]]) <- typeof(x[[var]])
+  }
 
-  for (var in names(value))
-    val_labels(x[[var]]) <- value[[var]]
+  for (var in names(value)) val_labels(x[[var]]) <- value[[var]]
 
   x
 }
@@ -152,11 +154,7 @@ val_label.labelled <- function(x, v, prefixed = FALSE) {
   labels <- val_labels(x)
   if (v %in% labels)
     if (prefixed)
-      paste0("[", v, "] ", names(labels)[labels == v])
-  else
-    names(labels)[labels == v]
-  else
-    NULL
+      paste0("[", v, "] ", names(labels)[labels == v]) else names(labels)[labels == v] else NULL
 }
 
 #' @rdname val_labels
@@ -177,9 +175,8 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
   if (length(v) != 1)
     stop("`v` should be a single value", call. = FALSE, domain = "R-labelled")
   if (length(value) > 1)
-    stop(
-      "`value` should be a single character string or NULL", call. = FALSE, domain = "R-labelled"
-    )
+    stop("`value` should be a single character string or NULL",
+      call. = FALSE, domain = "R-labelled")
 
   labels <- val_labels(x)
 
@@ -229,19 +226,14 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
 
   for (var in names(value)[]) {
     if (!is.character(value[[var]]) & !is.null(value[[var]]))
-      stop(
-        "`value` should contain only characters or NULL",
-        call. = FALSE, domain = "R-labelled"
-      )
+      stop("`value` should contain only characters or NULL",
+        call. = FALSE, domain = "R-labelled")
     if (length(value[[var]]) > 1)
-      stop(
-        "`value` should contain only one string (or NULL) per variable",
-        call. = FALSE, domain = "R-labelled"
-      )
+      stop("`value` should contain only one string (or NULL) per variable",
+        call. = FALSE, domain = "R-labelled")
   }
 
-  for (var in names(value))
-    val_label(x[[var]], v) <- value[[var]]
+  for (var in names(value)) val_label(x[[var]], v) <- value[[var]]
 
   x
 }
@@ -259,42 +251,41 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
 #' v
 #' sort_val_labels(v)
 #' sort_val_labels(v, decreasing = TRUE)
-#' sort_val_labels(v, "l")
-#' sort_val_labels(v, "l", TRUE)
+#' sort_val_labels(v, 'l')
+#' sort_val_labels(v, 'l', TRUE)
 #' @export
-sort_val_labels <-
-  function(x, according_to = c("values", "labels"), decreasing = FALSE) {
-    UseMethod("sort_val_labels")
-  }
+sort_val_labels <- function(x, according_to = c("values", "labels"),
+  decreasing = FALSE) {
+  UseMethod("sort_val_labels")
+}
 
 #' @export
-sort_val_labels.default <-
-  function(x, according_to = c("values", "labels"), decreasing = FALSE) {
-    # do nothing
-    x
-  }
-
-#' @rdname sort_val_labels
-#' @export
-sort_val_labels.labelled <-
-  function(x, according_to = c("values", "labels"), decreasing = FALSE) {
-    according_to <- match.arg(according_to)
-    labels <- val_labels(x)
-    if (!is.null(labels)) {
-      if (according_to == "values")
-        labels <- sort(labels, decreasing = decreasing)
-      else if (according_to == "labels")
-        labels <-
-          labels[order(names(labels), decreasing = decreasing)]
-      val_labels(x) <- labels
-    }
-    x
-  }
+sort_val_labels.default <- function(x, according_to = c("values",
+  "labels"), decreasing = FALSE) {
+  # do nothing
+  x
+}
 
 #' @rdname sort_val_labels
 #' @export
-sort_val_labels.data.frame <-
-  function(x, according_to = c("values", "labels"), decreasing = FALSE) {
-    x[] <- lapply(x, sort_val_labels, according_to = according_to, decreasing = decreasing)
-    x
+sort_val_labels.labelled <- function(x, according_to = c("values",
+  "labels"), decreasing = FALSE) {
+  according_to <- match.arg(according_to)
+  labels <- val_labels(x)
+  if (!is.null(labels)) {
+    if (according_to == "values")
+      labels <- sort(labels, decreasing = decreasing) else if (according_to == "labels")
+      labels <- labels[order(names(labels), decreasing = decreasing)]
+    val_labels(x) <- labels
   }
+  x
+}
+
+#' @rdname sort_val_labels
+#' @export
+sort_val_labels.data.frame <- function(x, according_to = c("values",
+  "labels"), decreasing = FALSE) {
+  x[] <- lapply(x, sort_val_labels, according_to = according_to,
+    decreasing = decreasing)
+  x
+}

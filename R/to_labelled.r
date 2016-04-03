@@ -36,19 +36,19 @@
 #'   # from foreign
 #'   library(foreign)
 #'   df <- to_labelled(read.spss(
-#'     "file.sav",
+#'     'file.sav',
 #'     to.data.frame = FALSE,
 #'     use.value.labels = FALSE,
 #'     use.missings = FALSE
 #'  ))
 #'  df <- to_labelled(read.dta(
-#'    "file.dta",
+#'    'file.dta',
 #'    convert.factors = FALSE
 #'  ))
 #'
 #'  # from memisc
 #'  library(memisc)
-#'  nes1948.por <- UnZip("anes/NES1948.ZIP", "NES1948.POR", package="memisc")
+#'  nes1948.por <- UnZip('anes/NES1948.ZIP', 'NES1948.POR', package='memisc')
 #'  nes1948 <- spss.portable.file(nes1948.por)
 #'  df <- to_labelled(nes1948)
 #'  ds <- as.data.set(nes19480)
@@ -87,20 +87,20 @@ to_labelled.importer <- function(x) {
 
 #' @rdname to_labelled
 #' @export
-foreign_to_labelled <- function (x) {
-  # note: attr(* , "missings") and attr(*, "variable.labels")
-  # are lost when applying as.data.frame (if read.spss(to.data.frame = F))
-  variable.labels <- attr(x, "variable.labels", exact = TRUE) # read.spss
-  var.labels <- attr(x, "var.labels", exact = TRUE) # read.dta
-  label.table <- attr(x, "label.table", exact = TRUE) # read.dta
-  missings <- attr(x, "missings", exact = TRUE) # read.spss
+foreign_to_labelled <- function(x) {
+  # note: attr(* , 'missings') and attr(*, 'variable.labels')
+  # are lost when applying as.data.frame (if
+  # read.spss(to.data.frame = F))
+  variable.labels <- attr(x, "variable.labels", exact = TRUE)  # read.spss
+  var.labels <- attr(x, "var.labels", exact = TRUE)  # read.dta
+  label.table <- attr(x, "label.table", exact = TRUE)  # read.dta
+  missings <- attr(x, "missings", exact = TRUE)  # read.spss
 
-  # if imported with read.spss(to.data.frame=FALSE) it's a list, not a df
+  # if imported with read.spss(to.data.frame=FALSE) it's a
+  # list, not a df
   if (!is.data.frame(x)) {
     if (requireNamespace("dplyr"))
-      x <- dplyr::as_data_frame(x)
-    else
-      x <- as.data.frame(x, stringsAsFactors = FALSE)
+      x <- dplyr::as_data_frame(x) else x <- as.data.frame(x, stringsAsFactors = FALSE)
   }
 
   # variable labels (read.spss)
@@ -116,7 +116,8 @@ foreign_to_labelled <- function (x) {
   # value labels (read.spss)
   for (var in names(x)) {
     if (!is.null(attr(x[[var]], "value.labels", exact = TRUE)))
-      val_labels(x[[var]]) <- attr(x[[var]], "value.labels", exact = TRUE)
+      val_labels(x[[var]]) <- attr(x[[var]], "value.labels",
+        exact = TRUE)
     attr(x[[var]], "value.labels") <- NULL
   }
 
@@ -165,18 +166,20 @@ memisc_to_labelled <- function(x) {
   if (!inherits(x, "data.set"))
     return(x)
   if (!requireNamespace("memisc"))
-    stop("memisc package is required to convert a data.set", call. = FALSE, domain = "R-labelled")
+    stop("memisc package is required to convert a data.set",
+      call. = FALSE, domain = "R-labelled")
 
   df <- as.data.frame(x)
   for (var in names(x)) {
     df[[var]] <- x[[var]]@.Data
     var_label(df[[var]]) <- as.character(memisc::annotation(x[[var]]))
-  if (!is.null(memisc::labels(x[[var]]))) {
+    if (!is.null(memisc::labels(x[[var]]))) {
       labs <- memisc::labels(x[[var]])@values
       names(labs) <- memisc::labels(x[[var]])@.Data
       val_labels(df[[var]]) <- labs
     }
-    missing_val(df[[var]]) <- unique(df[memisc::is.missing(x[[var]]), var])
+    missing_val(df[[var]]) <- unique(df[memisc::is.missing(x[[var]]),
+      var])
   }
 
   unloadNamespace("memisc")

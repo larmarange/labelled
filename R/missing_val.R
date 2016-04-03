@@ -9,7 +9,7 @@
 #'   will be defined for these values.
 #' @return \code{missing_val} will return a named list of values.
 #' @examples
-#' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
+#' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, 'don't know' = 9))
 #' missing_val(v)
 #' missing_val(v) <- 9
 #' missing_val(v)
@@ -18,25 +18,23 @@
 #' missing_val(v, TRUE) <- c(8, 9)
 #' missing_val(v)
 #' @export
-missing_val <- function (x) {
+missing_val <- function(x) {
   UseMethod("missing_val")
 }
 
 #' @rdname missing_val
 #' @export
-missing_val.default <- function (x) {
+missing_val.default <- function(x) {
   NULL
 }
 
 #' @rdname missing_val
 #' @export
 missing_val.labelled <- function(x) {
-  miss <-
-    attr(x, "labels", exact = TRUE)[attr(x, "is_na", exact = TRUE)]
+  miss <- attr(x, "labels", exact = TRUE)[attr(x, "is_na",
+    exact = TRUE)]
   if (length(miss) > 0)
-    miss
-  else
-    NULL
+    miss else NULL
 }
 
 #' @rdname missing_val
@@ -57,28 +55,23 @@ missing_val.labelled <- function(x) {
   labels <- val_labels(x)
   if (is.null(value)) {
     if (length(labels) > 0)
-      attr(x, "is_na") <- rep(FALSE, length(labels))
-    else
-      attr(x, "is_na") <- NULL
+      attr(x, "is_na") <- rep(FALSE, length(labels)) else attr(x, "is_na") <- NULL
   } else {
     if (mode(value) != mode(x))
-      stop("`x` and `value` must be same type", call. = FALSE, domain = "R-labelled")
+      stop("`x` and `value` must be same type", call. = FALSE,
+        domain = "R-labelled")
     if (typeof(value) != typeof(x))
       mode(value) <- typeof(x)
     nolabel <- value[!value %in% labels]
     if (length(nolabel) > 0) {
       if (is.null(force)) {
-        stop(
-          gettextf(
-            "no value label found for %s, please specify `force`", paste(nolabel, sep = ", "),
-            domain = "R-labelled"
-          ), call. = FALSE
-        )
-      }
-      else {
+        stop(gettextf("no value label found for %s, please specify `force`",
+          paste(nolabel, sep = ", "), domain = "R-labelled"),
+          call. = FALSE)
+      } else {
         if (force) {
           for (nl in nolabel) {
-            val_label(x, nl) <- nl
+          val_label(x, nl) <- nl
           }
         } else {
           value <- value[value %in% labels]
@@ -117,13 +110,12 @@ missing_val.labelled <- function(x) {
 
   value <- value[names(value) %in% names(x)]
 
-  for (var in names(value))
-    if (!is.null(value[[var]]))
-      if (typeof(x[[var]]) != typeof(value[[var]]))
-        stop("`x` and `value` must be same type", call. = FALSE, domain = "R-labelled")
+  for (var in names(value)) if (!is.null(value[[var]]))
+    if (typeof(x[[var]]) != typeof(value[[var]]))
+      stop("`x` and `value` must be same type", call. = FALSE,
+        domain = "R-labelled")
 
-  for (var in names(value))
-    missing_val(x[[var]], force = force) <- value[[var]]
+  for (var in names(value)) missing_val(x[[var]], force = force) <- value[[var]]
 
   x
 }

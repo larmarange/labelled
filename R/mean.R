@@ -12,8 +12,10 @@
 #' @seealso \code{\link[base]{mean}}
 #'
 #' @export
-mean.labelled <- function(x, trim = 0, na.rm = FALSE, missing_to_na = NULL, ...) {
-  if (typeof(x) == "character") stop("mean could be used only with numeric labelled vectors.")
+mean.labelled <- function(x, trim = 0, na.rm = FALSE, missing_to_na = NULL,
+  ...) {
+  if (typeof(x) == "character")
+    stop("mean could be used only with numeric labelled vectors.")
   if (is.null(missing_to_na)) {
     missing_to_na <- FALSE
     if (!is.null(missing_val(x)))

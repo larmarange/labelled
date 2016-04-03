@@ -21,8 +21,7 @@ missing_to_na.labelled <- function(x) {
   miss_val <- missing_val(x)
   if (length(miss_val) > 0) {
     x[x %in% miss_val] <- NA
-    for (mv in miss_val)
-      val_label(x, mv) <- NULL
+    for (mv in miss_val) val_label(x, mv) <- NULL
   }
   x
 }
