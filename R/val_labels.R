@@ -10,7 +10,7 @@
 #'   \code{val_labels} will return a named vector.
 #'   \code{val_label} will return a single character string.
 #' @examples
-#' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
+#' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, 'don't know' = 9))
 #' val_labels(v)
 #' val_labels(v, prefixed = TRUE)
 #' val_label(v, 2)
@@ -152,9 +152,15 @@ val_label.labelled <- function(x, v, prefixed = FALSE) {
   if (length(v) != 1)
     stop("`v` should be a single value", call. = FALSE, domain = "R-labelled")
   labels <- val_labels(x)
-  if (v %in% labels)
-    if (prefixed)
-      paste0("[", v, "] ", names(labels)[labels == v]) else names(labels)[labels == v] else NULL
+  if (v %in% labels) {
+    if (prefixed) {
+      paste0("[", v, "] ", names(labels)[labels == v])
+    } else {
+      names(labels)[labels == v]
+    }
+  } else {
+    NULL
+  }
 }
 
 #' @rdname val_labels
@@ -274,7 +280,8 @@ sort_val_labels.labelled <- function(x, according_to = c("values",
   labels <- val_labels(x)
   if (!is.null(labels)) {
     if (according_to == "values")
-      labels <- sort(labels, decreasing = decreasing) else if (according_to == "labels")
+      labels <- sort(labels, decreasing = decreasing)
+    if (according_to == "labels")
       labels <- labels[order(names(labels), decreasing = decreasing)]
     val_labels(x) <- labels
   }

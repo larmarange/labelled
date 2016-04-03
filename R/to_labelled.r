@@ -99,8 +99,11 @@ foreign_to_labelled <- function(x) {
   # if imported with read.spss(to.data.frame=FALSE) it's a
   # list, not a df
   if (!is.data.frame(x)) {
-    if (requireNamespace("dplyr"))
-      x <- dplyr::as_data_frame(x) else x <- as.data.frame(x, stringsAsFactors = FALSE)
+    if (requireNamespace("dplyr")) {
+      x <- dplyr::as_data_frame(x)
+    } else {
+      x <- as.data.frame(x, stringsAsFactors = FALSE)
+    }
   }
 
   # variable labels (read.spss)

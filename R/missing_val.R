@@ -9,7 +9,7 @@
 #'   will be defined for these values.
 #' @return \code{missing_val} will return a named list of values.
 #' @examples
-#' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
+#' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, 'don't know' = 9))
 #' missing_val(v)
 #' missing_val(v) <- 9
 #' missing_val(v)
@@ -33,8 +33,11 @@ missing_val.default <- function(x) {
 missing_val.labelled <- function(x) {
   miss <- attr(x, "labels", exact = TRUE)[attr(x, "is_na",
     exact = TRUE)]
-  if (length(miss) > 0)
-    miss else NULL
+  if (length(miss) > 0) {
+    miss
+  } else {
+    NULL
+  }
 }
 
 #' @rdname missing_val
@@ -54,8 +57,11 @@ missing_val.labelled <- function(x) {
 `missing_val<-.labelled` <- function(x, force = NULL, value) {
   labels <- val_labels(x)
   if (is.null(value)) {
-    if (length(labels) > 0)
-      attr(x, "is_na") <- rep(FALSE, length(labels)) else attr(x, "is_na") <- NULL
+    if (length(labels) > 0) {
+      attr(x, "is_na") <- rep(FALSE, length(labels))
+    } else {
+      attr(x, "is_na") <- NULL
+    }
   } else {
     if (mode(value) != mode(x))
       stop("`x` and `value` must be same type", call. = FALSE,
