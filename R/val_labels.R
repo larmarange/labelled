@@ -10,7 +10,7 @@
 #'   \code{val_labels} will return a named vector.
 #'   \code{val_label} will return a single character string.
 #' @examples
-#' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, 'don't know' = 9))
+#' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
 #' val_labels(v)
 #' val_labels(v, prefixed = TRUE)
 #' val_label(v, 2)
