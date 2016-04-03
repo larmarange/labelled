@@ -26,9 +26,9 @@ environments. This class makes it possible to import such labelled vectors
 in to without loss of fidelity.
 }
 \examples{
-s1 <- labelled(c("M", "M", "F"), c(Male = "M", Female = "F"))
+s1 <- labelled(c('M', 'M', 'F'), c(Male = 'M', Female = 'F'))
 s2 <- labelled(c(1, 1, 2), c(Male = 1, Female = 2))
 is.labelled(s1)
-is.labelled(c("M", "M", "F"))
+is.labelled(c('M', 'M', 'F'))
 }
 

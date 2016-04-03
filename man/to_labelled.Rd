@@ -64,19 +64,19 @@ So far, missing values defined in Stata are always imported as \code{NA} by
   # from foreign
   library(foreign)
   df <- to_labelled(read.spss(
-    "file.sav",
+    'file.sav',
     to.data.frame = FALSE,
     use.value.labels = FALSE,
     use.missings = FALSE
  ))
  df <- to_labelled(read.dta(
-   "file.dta",
+   'file.dta',
    convert.factors = FALSE
  ))
 
  # from memisc
  library(memisc)
- nes1948.por <- UnZip("anes/NES1948.ZIP", "NES1948.POR", package="memisc")
+ nes1948.por <- UnZip('anes/NES1948.ZIP', 'NES1948.POR', package='memisc')
  nes1948 <- spss.portable.file(nes1948.por)
  df <- to_labelled(nes1948)
  ds <- as.data.set(nes19480)

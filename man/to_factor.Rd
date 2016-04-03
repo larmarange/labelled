@@ -42,24 +42,24 @@ method provided by \code{haven} package.
 If some values doesn't have a label, automatic labels will be created, except if
   \code{nolabel_to_na} is \code{TRUE}.
 
-  If \code{sort_levels == "values"}, the levels will be sorted according to the values of \code{x}.
-  If \code{sort_levels == "labels"}, the levels will be sorted according to labels' names.
-  If \code{sort_levels == "none"}, the levels will be in the order the value labels are defined
+  If \code{sort_levels == 'values'}, the levels will be sorted according to the values of \code{x}.
+  If \code{sort_levels == 'labels'}, the levels will be sorted according to labels' names.
+  If \code{sort_levels == 'none'}, the levels will be in the order the value labels are defined
   in \code{x}. If some labels are automatically created, they will be added at the end.
-  If \code{sort_levels == "auto"}, \code{sort_levels == "none"} will be used, except if some
-  values doesn't have a defined label. In such case,  \code{sort_levels == "values"} will
+  If \code{sort_levels == 'auto'}, \code{sort_levels == 'none'} will be used, except if some
+  values doesn't have a defined label. In such case,  \code{sort_levels == 'values'} will
   be applied.
 }
 \examples{
 v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9), c(FALSE, FALSE, TRUE))
 to_factor(v)
 to_factor(v, missing_to_na = FALSE, nolabel_to_na = TRUE)
-to_factor(v, "p")
-to_factor(v, sort_levels = "v")
-to_factor(v, sort_levels = "n")
-to_factor(v, sort_levels = "l")
+to_factor(v, 'p')
+to_factor(v, sort_levels = 'v')
+to_factor(v, sort_levels = 'n')
+to_factor(v, sort_levels = 'l')
 
-x <- labelled(c("H", "M", "H", "L"), c(low = "L", medium = "M", high = "H"))
+x <- labelled(c('H', 'M', 'H', 'L'), c(low = 'L', medium = 'M', high = 'H'))
 to_factor(x, ordered = TRUE)
 }
 

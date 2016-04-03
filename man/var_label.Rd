@@ -36,7 +36,7 @@ For data frames, if \code{value} is a named list, only elements whose name will
 }
 \examples{
 var_label(iris$Sepal.Length)
-var_label(iris$Sepal.Length) <- "Length of the sepal"
+var_label(iris$Sepal.Length) <- 'Length of the sepal'
 \dontrun{
  View(iris)
 }
