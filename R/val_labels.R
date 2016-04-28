@@ -79,8 +79,8 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
 `val_labels<-.labelled` <- function(x, value) {
   if (is.null(value)) {
     x <- unclass(x)
-    attr(x, "labels") <- NULL
-    attr(x, "is_na") <- NULL
+    .setattr(x, "labels", NULL)
+    .setattr(x, "is_na", NULL)
 
   } else {
     if (mode(value) != mode(x))
@@ -98,8 +98,8 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
       rm_missing_val <- missing_val(x)[!missing_val(x) %in%
         value]
     }
-    attr(x, "is_na") <- value %in% missing_val(x)  # changing is_na before labels
-    attr(x, "labels") <- value
+    .setattr(x, "is_na", value %in% missing_val(x))  # changing is_na before labels
+    .setattr(x, "labels", value)
   }
 
   x

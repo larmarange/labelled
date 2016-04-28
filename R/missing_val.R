@@ -58,9 +58,9 @@ missing_val.labelled <- function(x) {
   labels <- val_labels(x)
   if (is.null(value)) {
     if (length(labels) > 0) {
-      attr(x, "is_na") <- rep(FALSE, length(labels))
+      .setattr(x, "is_na", rep(FALSE, length(labels)))
     } else {
-      attr(x, "is_na") <- NULL
+      .setattr(x, "is_na", NULL)
     }
   } else {
     if (mode(value) != mode(x))
@@ -85,7 +85,7 @@ missing_val.labelled <- function(x) {
       }
     }
     # using val_labels() as labels could be out of date
-    attr(x, "is_na") <- val_labels(x) %in% value
+    .setattr(x, "is_na", val_labels(x) %in% value)
   }
   x
 }

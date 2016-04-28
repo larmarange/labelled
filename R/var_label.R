@@ -48,7 +48,7 @@ var_label.data.frame <- function(x) {
     1)
     stop("`value` should be a single character string or NULL",
       call. = FALSE, domain = "R-labelled")
-  attr(x, "label") <- value
+  .setattr(x, "label", value)
   x
 }
 

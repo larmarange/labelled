@@ -17,7 +17,8 @@ Suggests:
     haven,
     dplyr,
     testthat,
-    knitr
+    knitr,
+    data.table
 Enhances: memisc
 LazyData: true
 URL: https://github.com/larmarange/labelled

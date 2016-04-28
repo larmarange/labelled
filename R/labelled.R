@@ -68,9 +68,9 @@ print.labelled <- function(x, ...) {
     missing_val(x) <- NULL
 
   xx <- unclass(x)
-  attr(xx, "label") <- NULL
-  attr(xx, "labels") <- NULL
-  attr(xx, "is_na") <- NULL
+  .setattr(xx, "label", NULL)
+  .setattr(xx, "labels", NULL)
+  .setattr(xx, "is_na", NULL)
   print(xx)
 
   cat("\nLabels:\n")
@@ -87,7 +87,7 @@ as.data.frame.labelled <- function(x, ...) {
   df <- list(x)
   names(df) <- deparse(substitute(x))
   class(df) <- "data.frame"
-  attr(df, "row.names") <- .set_row_names(length(x))
+  .setattr(df, "row.names", .set_row_names(length(x)))
 
   df
 }
