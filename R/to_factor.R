@@ -92,3 +92,35 @@ to_factor.labelled <- function(x, levels = c("labels", "values",
   factor(x, levels = levs, labels = labs, ordered = ordered,
     ...)
 }
+
+#' @rdname to_factor
+#' @details
+#'   When applied to a data.frame, only labelled vectors are converted by default to a
+#'   factor. Use \code{labelled_only = FALSE} to convert all variables to factors.
+#' @export
+to_factor.data.frame <- function(x, levels = c("labels", "values", "prefixed"),
+                                 ordered = FALSE, missing_to_na = FALSE, nolabel_to_na = FALSE,
+                                 sort_levels = c("auto", "none", "labels", "values"), decreasing = FALSE,
+                                 labelled_only = TRUE,
+                                 ...) {
+  cl <- class(x)
+  x <- lapply(x, .to_factor_col_data_frame, levels = levels, ordered = ordered, missing_to_na = missing_to_na,
+         nolabel_to_na = nolabel_to_na, sort_levels = sort_levels, decreasing = decreasing,
+         labelled_only = labelled_only)
+  class(x) <- cl
+  x
+}
+
+.to_factor_col_data_frame <- function(x, levels = c("labels", "values", "prefixed"),
+                                      ordered = FALSE, missing_to_na = FALSE, nolabel_to_na = FALSE,
+                                      sort_levels = c("auto", "none", "labels", "values"), decreasing = FALSE,
+                                      labelled_only = TRUE,
+                                      ...) {
+  if (inherits(x, "labelled"))
+    x <- to_factor(x, levels = levels, ordered = ordered, missing_to_na = missing_to_na,
+                   nolabel_to_na = nolabel_to_na, sort_levels = sort_levels, decreasing = decreasing)
+  else if (!labelled_only)
+    x <- to_factor(x)
+  x
+}
+
