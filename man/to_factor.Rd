@@ -2,6 +2,7 @@
 % Please edit documentation in R/to_factor.R
 \name{to_factor}
 \alias{to_factor}
+\alias{to_factor.data.frame}
 \alias{to_factor.default}
 \alias{to_factor.labelled}
 \title{Convert input to a factor.}
@@ -14,6 +15,11 @@ to_factor(x, ...)
   ordered = FALSE, missing_to_na = FALSE, nolabel_to_na = FALSE,
   sort_levels = c("auto", "none", "labels", "values"), decreasing = FALSE,
   ...)
+
+\method{to_factor}{data.frame}(x, levels = c("labels", "values", "prefixed"),
+  ordered = FALSE, missing_to_na = FALSE, nolabel_to_na = FALSE,
+  sort_levels = c("auto", "none", "labels", "values"), decreasing = FALSE,
+  labelled_only = TRUE, ...)
 }
 \arguments{
 \item{x}{Object to coerce to a factor.}
@@ -49,6 +55,9 @@ If some values doesn't have a label, automatic labels will be created, except if
   If \code{sort_levels == 'auto'}, \code{sort_levels == 'none'} will be used, except if some
   values doesn't have a defined label. In such case,  \code{sort_levels == 'values'} will
   be applied.
+
+When applied to a data.frame, only labelled vectors are converted by default to a
+  factor. Use \code{labelled_only = FALSE} to convert all variables to factors.
 }
 \examples{
 v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9), c(FALSE, FALSE, TRUE))
