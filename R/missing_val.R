@@ -9,7 +9,7 @@
 #'   will be defined for these values.
 #' @return \code{missing_val} will return a named list of values.
 #' @examples
-#' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, 'don't know' = 9))
+#' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
 #' missing_val(v)
 #' missing_val(v) <- 9
 #' missing_val(v)
