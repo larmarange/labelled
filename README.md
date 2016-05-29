@@ -5,6 +5,8 @@ and propose additional functions to manipulate labelled data.
 
 Please note that this package is still under active development.
 
+[![Travis-CI Build Status](https://travis-ci.org/larmarange/labelled.svg?branch=master)](https://travis-ci.org/larmarange/labelled)
+
 ## Introduction to labelled
 
 Read https://github.com/larmarange/labelled/blob/master/vignettes/intro_labelled.Rmd
