@@ -10,6 +10,20 @@ and propose additional functions to manipulate labelled data.
 
 Please note that this package is still under active development.
 
+## Installation
+
+From CRAN:
+
+```r
+install.packages("labelled")
+```
+
+Latest version from GitHub:
+
+```r
+devtools::install_github("larmarange/labelled")
+```
+
 ## Introduction to labelled
 
 Read https://github.com/larmarange/labelled/blob/master/vignettes/intro_labelled.Rmd
