@@ -37,6 +37,8 @@ to_factor(x, ...)
 \item{sort_levels}{How the factor levels should be sorted? (see Details)}
 
 \item{decreasing}{Sould levels be sorted in decreasing order?}
+
+\item{labelled_only}{for a data.frame, convert only labelled variables to factors?}
 }
 \description{
 The base function \code{\link[base]{as.factor}} is not a generic, but this variant
