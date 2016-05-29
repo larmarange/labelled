@@ -94,6 +94,7 @@ to_factor.labelled <- function(x, levels = c("labels", "values",
 }
 
 #' @rdname to_factor
+#' @param labelled_only for a data.frame, convert only labelled variables to factors?
 #' @details
 #'   When applied to a data.frame, only labelled vectors are converted by default to a
 #'   factor. Use \code{labelled_only = FALSE} to convert all variables to factors.
