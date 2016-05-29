@@ -1,11 +1,14 @@
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/0.1.0/active.svg)](http://www.repostatus.org/#active) 
+[![Travis-CI Build Status](https://travis-ci.org/larmarange/labelled.svg?branch=master)](https://travis-ci.org/larmarange/labelled)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/labelled)](http://cran.r-project.org/web/packages/labelled) 
+![downloads](http://cranlogs.r-pkg.org/badges/grand-total/labelled)
+
 # Labelled package for R
 
 This package is built on the new class `labelled` introduced by **haven** package
 and propose additional functions to manipulate labelled data.
 
 Please note that this package is still under active development.
-
-[![Travis-CI Build Status](https://travis-ci.org/larmarange/labelled.svg?branch=master)](https://travis-ci.org/larmarange/labelled)
 
 ## Introduction to labelled
 
