@@ -24,5 +24,10 @@ remove_labels.data.frame <- function(x) {
   x
 }
 
-
-
+#' @rdname remove_labels
+#' @details
+#' \code{zap_labels} is equivalent to \code{remove_labels}.
+#' @export
+zap_labels <- function(x) {
+  UseMethod("remove_labels")
+}
