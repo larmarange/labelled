@@ -29,7 +29,6 @@ copy_labels.default <- function(from, to) {
   var_label(to) <- var_label(from)
   if (!is.factor(to)) {
     val_labels(to) <- val_labels(from)
-    missing_val(to) <- missing_val(from)
   }
   to
 }

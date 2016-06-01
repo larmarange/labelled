@@ -11,7 +11,7 @@ to_character(x, ...)
 \method{to_character}{default}(x, ...)
 
 \method{to_character}{labelled}(x, levels = c("labels", "values", "prefixed"),
-  missing_to_na = FALSE, nolabel_to_na = FALSE, ...)
+  nolabel_to_na = FALSE, ...)
 }
 \arguments{
 \item{x}{Object to coerce to a character vector.}
@@ -19,8 +19,6 @@ to_character(x, ...)
 \item{...}{Other arguments passed down to method.}
 
 \item{levels}{What should be used for the factor levels: the labels, the values or labels prefixed with values?}
-
-\item{missing_to_na}{Should defined missing values be converted to `NA`?}
 
 \item{nolabel_to_na}{Should values with no label be converted to `NA`?}
 }
@@ -34,7 +32,7 @@ If some values doesn't have a label, automatic labels will be created, except if
   \code{nolabel_to_na} is \code{TRUE}.
 }
 \examples{
-v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9), c(FALSE, FALSE, TRUE))
+v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
 to_character(v)
 to_character(v, missing_to_na = FALSE, nolabel_to_na = TRUE)
 to_character(v, "v")

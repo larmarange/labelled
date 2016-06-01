@@ -80,28 +80,9 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
   if (is.null(value)) {
     x <- unclass(x)
     .setattr(x, "labels", NULL)
-    .setattr(x, "is_na", NULL)
-
   } else {
-    if (mode(value) != mode(x))
-      stop("`x` and `value` must be same type", call. = FALSE,
-        domain = "R-labelled")
-    if (typeof(value) != typeof(x))
-      mode(value) <- typeof(x)
-    if (is.null(names(value)))
-      stop("`value` must be a named vector", call. = FALSE,
-        domain = "R-labelled")
-    if (length(value) != length(unique(value)))
-      stop("each value should be unique", call. = FALSE,
-        domain = "R-labelled")
-    if (any(!missing_val(x) %in% value)) {
-      rm_missing_val <- missing_val(x)[!missing_val(x) %in%
-        value]
-    }
-    .setattr(x, "is_na", value %in% missing_val(x))  # changing is_na before labels
-    .setattr(x, "labels", value)
+    x <- labelled(x, value)
   }
-
   x
 }
 

@@ -9,13 +9,11 @@
 #' @param labels A named vector. The vector should be the same type as
 #'   x. Unlike factors, labels don't need to be exhaustive: only a fraction
 #'   of the values might be labelled.
-#' @param is_na Optionally, a logical vector describing which levels should
-#'   be translated to missing values.
 #' @export
 #' @examples
 #' s1 <- labelled(c('M', 'M', 'F'), c(Male = 'M', Female = 'F'))
 #' s2 <- labelled(c(1, 1, 2), c(Male = 1, Female = 2))
-labelled <- function(x, labels, is_na = NULL) {
+labelled <- function(x, labels) {
   if (!is.numeric(x) && !is.character(x)) {
     stop("`x` must be either numeric or a character vector",
       call. = FALSE, domain = "R-labelled")
@@ -35,16 +33,8 @@ labelled <- function(x, labels, is_na = NULL) {
     stop("`each value in `labels` should be unique", call. = FALSE,
       domain = "R-labelled")
   }
-  if (is.null(is_na)) {
-    is_na <- rep(FALSE, length(labels))
-  } else {
-    if (!is.logical(is_na) || length(is_na) != length(labels)) {
-      stop("`is_na` must be a logical vector of the same length as `labels`",
-        call. = FALSE, domain = "R-labelled")
-    }
-  }
 
-  structure(x, labels = labels, is_na = is_na, class = c("labelled"))
+  structure(x, labels = labels, class = c("labelled"))
 }
 
 #' @rdname labelled
@@ -56,27 +46,22 @@ is.labelled <- function(x) inherits(x, "labelled")
 
 #' @export
 `[.labelled` <- function(x, ...) {
-  labelled(NextMethod(), attr(x, "labels"), attr(x, "is_na",
-    exact = TRUE))
+  labelled(NextMethod(), attr(x, "labels"))
 }
 
 #' @export
 print.labelled <- function(x, ...) {
   cat("<Labelled ", typeof(x), "> ", var_label(x), "\n", sep = "")
 
-  if (is.null(attr(x, "is_na", exact = TRUE)))
-    missing_val(x) <- NULL
 
   xx <- unclass(x)
   .setattr(xx, "label", NULL)
   .setattr(xx, "labels", NULL)
-  .setattr(xx, "is_na", NULL)
   print(xx)
 
   cat("\nLabels:\n")
   labels <- attr(x, "labels", exact = TRUE)
-  lab_df <- data.frame(value = unname(labels), label = names(labels),
-    is_na = attr(x, "is_na", exact = TRUE))
+  lab_df <- data.frame(value = unname(labels), label = names(labels))
   print(lab_df, row.names = FALSE)
 
   invisible()

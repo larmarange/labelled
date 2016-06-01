@@ -122,64 +122,6 @@ val_labels(df) <- list(v1 = c(yes = 1, no = 3), v2 = c(a = 1, b = 2, c = 3))
 val_labels(df)
 ```
 
-## Missing values
-
-It is possible to define some values that should be considered as missing 
-(and would probably be later converted into `NA`).
-
-The way missing values are stored by the `labelled` class requires that
-each missing value needs to have an associated value label.
-
-With `labelled` function, you can specify which value labels should be considered
-as missing values.
-
-```{r}
-v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 8, refused = 9), c(FALSE, FALSE, TRUE, TRUE))
-v
-```
-
-You can get and modify the list of missing values with `missing_val`.
-
-```{r}
-missing_val(v)
-missing_val(v) <- 9
-v
-missing_val(v) <- NULL
-v
-missing_val(v) <- c(8, 9)
-v
-```
-
-If you try to set a missing value to a value who don't have an attached value label,
-you'll get an error.
-
-```{r, eval=FALSE}
-missing_val(v) <- c(7, 8, 9)
-```
-```
-Error: no value label found for 7, please specify `force`
-```
-
-With the `force` argument, you can specify what should be done. If `force = FALSE`, only
-values having already a value label will be considered as missing. If `force = TRUE`, 
-an automatic value label will be created.
-
-```{r}
-missing_val(v, force = FALSE) <- c(7, 8, 9)
-v
-missing_val(v, force = TRUE) <- c(7, 8, 9)
-v
-```
-
-You need to be aware that if you remove a value label considered as missing, 
-the attached value will not be considered as missing anymore.
-
-```{r}
-missing_val(v)
-val_label(v, 7) <- NULL
-missing_val(v)
-```
-
 ## Sorting value labels
 
 Value labels are sorted by default in the order they have been created.
@@ -209,23 +151,16 @@ sort_val_labels(v, according_to = "l")
 
 ## Converting to NA
 
-The internal way to deal with missing values in **R** is to set them equal to `NA`. 
-`missing_to_na` will convert all values defined as missing into `NA`.
-
-```{r}
-v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 8, refused = 9), c(FALSE, FALSE, TRUE, TRUE))
-v
-missing_to_na(v)
-```
-
-In some cases, values who don't have an attached value label could also be considered as missing.
+In some cases, values who don't have an attached value label could be considered as missing.
 `nolabel_to_na` will convert them to `NA`.
 
 ```{r}
+v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, maybe = 2, no = 3))
+v
 nolabel_to_na(v)
 ```
 
-Finally, in some cases, a value label is attached only to specific values that corresponds to 
+In other cases, a value label is attached only to specific values that corresponds to 
 a missing value. For example:
 
 ```{r}
@@ -239,7 +174,7 @@ In such cases, `val_labels_to_na` could be appropriate.
 val_labels_to_na(size)
 ```
 
-These 3 functions could also be applied to an overall data frame. 
+These two functions could also be applied to an overall data frame. 
 Only labelled vectors will be impacted.
 
 ## Converting to factor
@@ -247,7 +182,7 @@ Only labelled vectors will be impacted.
 A labelled vector could easily be converted to a factor with `to_factor`.
 
 ```{r}
-v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 8, refused = 9), c(FALSE, FALSE, TRUE, TRUE))
+v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 8, refused = 9))
 v
 to_factor(v)
 ```
@@ -266,12 +201,12 @@ The `ordered` argument will create an ordinal factor.
 to_factor(v, ordered = TRUE)
 ```
 
-The arguments `missing_to_na` and `nolabel_to_na` specify if the corresponding functions should be 
+The argument `nolabel_to_na` specify if the corresponding function should be 
 applied before converting to a factor. Therefore, the two following commands are equivalent.
 
 ```{r}
-to_factor(v, missing_to_na = TRUE)
-to_factor(missing_to_na(v))
+to_factor(v, nolabel_to_na = TRUE)
+to_factor(nolabel_to_na(v))
 ```
 
 `sort_levels` specifies how the levels should be sorted: `"none"` to keep the order in which value labels 

@@ -94,7 +94,7 @@ foreign_to_labelled <- function(x) {
   variable.labels <- attr(x, "variable.labels", exact = TRUE)  # read.spss
   var.labels <- attr(x, "var.labels", exact = TRUE)  # read.dta
   label.table <- attr(x, "label.table", exact = TRUE)  # read.dta
-  missings <- attr(x, "missings", exact = TRUE)  # read.spss
+  #missings <- attr(x, "missings", exact = TRUE)  # read.spss
 
   # if imported with read.spss(to.data.frame=FALSE) it's a
   # list, not a df
@@ -129,19 +129,19 @@ foreign_to_labelled <- function(x) {
     val_labels(x) <- label.table
 
   # missing values (read.spss)
-  for (var in names(missings)) {
-    if (missings[[var]]$type %in% c("one", "two", "three")) {
-      missing_val(x[[var]], force = TRUE) <- missings[[var]]$value
-    }
-    if (missings[[var]]$type %in% c("range", "range+1")) {
-      m <- unique(x[[var]])
-      m <- m[m >= missings[[var]]$value[1] & m <= missings[[var]]$value[2]]
-      missing_val(x[[var]], force = TRUE) <- m
-    }
-    if (missings[[var]]$type == "range+1") {
-      missing_val(x[[var]], force = TRUE) <- missings[[var]]$value[3]
-    }
-  }
+  # for (var in names(missings)) {
+  #   if (missings[[var]]$type %in% c("one", "two", "three")) {
+  #     missing_val(x[[var]], force = TRUE) <- missings[[var]]$value
+  #   }
+  #   if (missings[[var]]$type %in% c("range", "range+1")) {
+  #     m <- unique(x[[var]])
+  #     m <- m[m >= missings[[var]]$value[1] & m <= missings[[var]]$value[2]]
+  #     missing_val(x[[var]], force = TRUE) <- m
+  #   }
+  #   if (missings[[var]]$type == "range+1") {
+  #     missing_val(x[[var]], force = TRUE) <- missings[[var]]$value[3]
+  #   }
+  # }
 
   # cleaning read.spss
   .setattr(x, "variable.labels", NULL)
@@ -181,8 +181,7 @@ memisc_to_labelled <- function(x) {
       names(labs) <- memisc::labels(x[[var]])@.Data
       val_labels(df[[var]]) <- labs
     }
-    missing_val(df[[var]]) <- unique(df[memisc::is.missing(x[[var]]),
-      var])
+    #missing_val(df[[var]]) <- unique(df[memisc::is.missing(x[[var]]), var])
   }
 
   unloadNamespace("memisc")

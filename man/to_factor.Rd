@@ -12,14 +12,12 @@ to_factor(x, ...)
 \method{to_factor}{default}(x, ...)
 
 \method{to_factor}{labelled}(x, levels = c("labels", "values", "prefixed"),
-  ordered = FALSE, missing_to_na = FALSE, nolabel_to_na = FALSE,
-  sort_levels = c("auto", "none", "labels", "values"), decreasing = FALSE,
-  ...)
+  ordered = FALSE, nolabel_to_na = FALSE, sort_levels = c("auto", "none",
+  "labels", "values"), decreasing = FALSE, ...)
 
 \method{to_factor}{data.frame}(x, levels = c("labels", "values", "prefixed"),
-  ordered = FALSE, missing_to_na = FALSE, nolabel_to_na = FALSE,
-  sort_levels = c("auto", "none", "labels", "values"), decreasing = FALSE,
-  labelled_only = TRUE, ...)
+  ordered = FALSE, nolabel_to_na = FALSE, sort_levels = c("auto", "none",
+  "labels", "values"), decreasing = FALSE, labelled_only = TRUE, ...)
 }
 \arguments{
 \item{x}{Object to coerce to a factor.}
@@ -29,8 +27,6 @@ to_factor(x, ...)
 \item{levels}{What should be used for the factor levels: the labels, the values or labels prefixed with values?}
 
 \item{ordered}{\code{TRUE} for ordinal factors, \code{FALSE} (default) for nominal factors.}
-
-\item{missing_to_na}{Should defined missing values be converted to `NA`?}
 
 \item{nolabel_to_na}{Should values with no label be converted to `NA`?}
 
@@ -62,9 +58,9 @@ When applied to a data.frame, only labelled vectors are converted by default to 
   factor. Use \code{labelled_only = FALSE} to convert all variables to factors.
 }
 \examples{
-v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9), c(FALSE, FALSE, TRUE))
+v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
 to_factor(v)
-to_factor(v, missing_to_na = FALSE, nolabel_to_na = TRUE)
+to_factor(v, nolabel_to_na = TRUE)
 to_factor(v, 'p')
 to_factor(v, sort_levels = 'v')
 to_factor(v, sort_levels = 'n')
