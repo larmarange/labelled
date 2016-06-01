@@ -4,6 +4,7 @@
 \alias{remove_labels}
 \alias{remove_labels.data.frame}
 \alias{remove_labels.default}
+\alias{zap_labels}
 \title{Remove variable and value labels}
 \usage{
 remove_labels(x)
@@ -11,11 +12,16 @@ remove_labels(x)
 \method{remove_labels}{default}(x)
 
 \method{remove_labels}{data.frame}(x)
+
+zap_labels(x)
 }
 \arguments{
 \item{x}{A vector or a data frame.}
 }
 \description{
 This function removes all variable and values labels.
+}
+\details{
+\code{zap_labels} is equivalent to \code{remove_labels}.
 }
 
