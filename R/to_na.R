@@ -1,37 +1,3 @@
-#' Recode defined missing values to NA
-#'
-#' For labelled variables, defined missing values will be recoded to \code{NA}.
-#'
-#' @param x Object to recode.
-#' @examples
-#' v <- labelled(c(1, 2, 9, 1, 9), c(yes = 1, no = 2, dk = 3), c(FALSE, FALSE, TRUE))
-#' missing_to_na(v)
-#' @export
-missing_to_na <- function(x) {
-  UseMethod("missing_to_na")
-}
-
-#' @export
-missing_to_na.default <- function(x) {
-  x
-}
-
-#' @export
-missing_to_na.labelled <- function(x) {
-  miss_val <- missing_val(x)
-  if (length(miss_val) > 0) {
-    x[x %in% miss_val] <- NA
-    for (mv in miss_val) val_label(x, mv) <- NULL
-  }
-  x
-}
-
-#' @export
-missing_to_na.data.frame <- function(x) {
-  x[] <- lapply(x, missing_to_na)
-  x
-}
-
 #' Recode values with no label to NA
 #'
 #' For labelled variables, values with no label will be recoded to \code{NA}.

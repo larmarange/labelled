@@ -26,7 +26,6 @@ to_factor.default <- function(x, ...) {
 #' @rdname to_factor
 #' @param levels What should be used for the factor levels: the labels, the values or labels prefixed with values?
 #' @param ordered \code{TRUE} for ordinal factors, \code{FALSE} (default) for nominal factors.
-#' @param missing_to_na Should defined missing values be converted to `NA`?
 #' @param nolabel_to_na Should values with no label be converted to `NA`?
 #' @param sort_levels How the factor levels should be sorted? (see Details)
 #' @param decreasing Sould levels be sorted in decreasing order?
@@ -42,9 +41,9 @@ to_factor.default <- function(x, ...) {
 #'   values doesn't have a defined label. In such case,  \code{sort_levels == 'values'} will
 #'   be applied.
 #' @examples
-#' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9), c(FALSE, FALSE, TRUE))
+#' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
 #' to_factor(v)
-#' to_factor(v, missing_to_na = FALSE, nolabel_to_na = TRUE)
+#' to_factor(v, nolabel_to_na = TRUE)
 #' to_factor(v, 'p')
 #' to_factor(v, sort_levels = 'v')
 #' to_factor(v, sort_levels = 'n')
@@ -54,13 +53,11 @@ to_factor.default <- function(x, ...) {
 #' to_factor(x, ordered = TRUE)
 #' @export
 to_factor.labelled <- function(x, levels = c("labels", "values",
-  "prefixed"), ordered = FALSE, missing_to_na = FALSE, nolabel_to_na = FALSE,
+  "prefixed"), ordered = FALSE, nolabel_to_na = FALSE,
   sort_levels = c("auto", "none", "labels", "values"), decreasing = FALSE,
   ...) {
   levels <- match.arg(levels)
   sort_levels <- match.arg(sort_levels)
-  if (missing_to_na)
-    x <- missing_to_na(x)
   if (nolabel_to_na)
     x <- nolabel_to_na(x)
   labels <- val_labels(x)
@@ -100,12 +97,12 @@ to_factor.labelled <- function(x, levels = c("labels", "values",
 #'   factor. Use \code{labelled_only = FALSE} to convert all variables to factors.
 #' @export
 to_factor.data.frame <- function(x, levels = c("labels", "values", "prefixed"),
-                                 ordered = FALSE, missing_to_na = FALSE, nolabel_to_na = FALSE,
+                                 ordered = FALSE, nolabel_to_na = FALSE,
                                  sort_levels = c("auto", "none", "labels", "values"), decreasing = FALSE,
                                  labelled_only = TRUE,
                                  ...) {
   cl <- class(x)
-  x <- lapply(x, .to_factor_col_data_frame, levels = levels, ordered = ordered, missing_to_na = missing_to_na,
+  x <- lapply(x, .to_factor_col_data_frame, levels = levels, ordered = ordered,
          nolabel_to_na = nolabel_to_na, sort_levels = sort_levels, decreasing = decreasing,
          labelled_only = labelled_only)
   class(x) <- cl
@@ -113,12 +110,12 @@ to_factor.data.frame <- function(x, levels = c("labels", "values", "prefixed"),
 }
 
 .to_factor_col_data_frame <- function(x, levels = c("labels", "values", "prefixed"),
-                                      ordered = FALSE, missing_to_na = FALSE, nolabel_to_na = FALSE,
+                                      ordered = FALSE, nolabel_to_na = FALSE,
                                       sort_levels = c("auto", "none", "labels", "values"), decreasing = FALSE,
                                       labelled_only = TRUE,
                                       ...) {
   if (inherits(x, "labelled"))
-    x <- to_factor(x, levels = levels, ordered = ordered, missing_to_na = missing_to_na,
+    x <- to_factor(x, levels = levels, ordered = ordered,
                    nolabel_to_na = nolabel_to_na, sort_levels = sort_levels, decreasing = decreasing)
   else if (!labelled_only)
     x <- to_factor(x)
