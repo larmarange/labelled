@@ -5,7 +5,7 @@
 \alias{labelled}
 \title{Create a labelled vector.}
 \usage{
-labelled(x, labels, is_na = NULL)
+labelled(x, labels)
 
 is.labelled(x)
 }
@@ -16,9 +16,6 @@ character.}
 \item{labels}{A named vector. The vector should be the same type as
 x. Unlike factors, labels don't need to be exhaustive: only a fraction
 of the values might be labelled.}
-
-\item{is_na}{Optionally, a logical vector describing which levels should
-be translated to missing values.}
 }
 \description{
 A labelled vector is a common data structure in other statistical
