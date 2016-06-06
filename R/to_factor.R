@@ -28,7 +28,8 @@ to_factor.default <- function(x, ...) {
 #' @param ordered \code{TRUE} for ordinal factors, \code{FALSE} (default) for nominal factors.
 #' @param nolabel_to_na Should values with no label be converted to `NA`?
 #' @param sort_levels How the factor levels should be sorted? (see Details)
-#' @param decreasing Sould levels be sorted in decreasing order?
+#' @param decreasing Should levels be sorted in decreasing order?
+#' @param drop_unused_labels Should unused value labels be dropped?
 #' @details
 #'   If some values doesn't have a label, automatic labels will be created, except if
 #'   \code{nolabel_to_na} is \code{TRUE}.
@@ -55,6 +56,7 @@ to_factor.default <- function(x, ...) {
 to_factor.labelled <- function(x, levels = c("labels", "values",
   "prefixed"), ordered = FALSE, nolabel_to_na = FALSE,
   sort_levels = c("auto", "none", "labels", "values"), decreasing = FALSE,
+  drop_unused_labels = FALSE,
   ...) {
   levels <- match.arg(levels)
   sort_levels <- match.arg(sort_levels)
@@ -86,8 +88,11 @@ to_factor.labelled <- function(x, levels = c("labels", "values",
   if (levels == "prefixed")
     labs <- paste0("[", levs, "] ", names(levs))
   levs <- unname(levs)
-  factor(x, levels = levs, labels = labs, ordered = ordered,
+  x <- factor(x, levels = levs, labels = labs, ordered = ordered,
     ...)
+  if (drop_unused_labels)
+    x <- droplevels(x)
+  x
 }
 
 #' @rdname to_factor
