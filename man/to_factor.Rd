@@ -13,7 +13,7 @@ to_factor(x, ...)
 
 \method{to_factor}{labelled}(x, levels = c("labels", "values", "prefixed"),
   ordered = FALSE, nolabel_to_na = FALSE, sort_levels = c("auto", "none",
-  "labels", "values"), decreasing = FALSE, ...)
+  "labels", "values"), decreasing = FALSE, drop_unused_labels = FALSE, ...)
 
 \method{to_factor}{data.frame}(x, levels = c("labels", "values", "prefixed"),
   ordered = FALSE, nolabel_to_na = FALSE, sort_levels = c("auto", "none",
@@ -32,7 +32,9 @@ to_factor(x, ...)
 
 \item{sort_levels}{How the factor levels should be sorted? (see Details)}
 
-\item{decreasing}{Sould levels be sorted in decreasing order?}
+\item{decreasing}{Should levels be sorted in decreasing order?}
+
+\item{drop_unused_labels}{Should unused value labels be dropped?}
 
 \item{labelled_only}{for a data.frame, convert only labelled variables to factors?}
 }
