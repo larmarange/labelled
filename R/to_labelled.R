@@ -193,8 +193,10 @@ memisc_to_labelled <- function(x) {
 #' @rdname to_labelled
 #' @export
 to_labelled.factor <- function(x) {
+  vl <- var_label(x)
   labs <- 1:length(levels(x))
   names(labs) <- levels(x)
   x <- labelled(as.numeric(x), labs)
+  var_label(x) <- vl
   x
 }

@@ -14,7 +14,10 @@ to_character <- function(x, ...) {
 #' @rdname to_character
 #' @export
 to_character.default <- function(x, ...) {
-  as.character(x)
+  vl <- var_label(x)
+  x <- as.character(x)
+  var_label(x) <- vl
+  x
 }
 
 #' @rdname to_character
@@ -32,6 +35,8 @@ to_character.default <- function(x, ...) {
 #' @export
 to_character.labelled <- function(x, levels = c("labels", "values",
   "prefixed"), nolabel_to_na = FALSE, ...) {
+  vl <- var_label(x)
   levels <- match.arg(levels)
-  as.character(to_factor(x, levels = levels, nolabel_to_na = nolabel_to_na))
+  x <- as.character(to_factor(x, levels = levels, nolabel_to_na = nolabel_to_na))
+  var_label(x) <- vl
 }
