@@ -1,4 +1,4 @@
-# labelled dev
+# labelled 0.2.1.99
 
 * `to_factor()`, `to_character()` and `to_labelled.factor()` now preserves variable label.
 
