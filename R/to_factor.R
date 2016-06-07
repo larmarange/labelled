@@ -20,7 +20,10 @@ to_factor.factor <- function(x, ...) {
 #' @rdname to_factor
 #' @export
 to_factor.default <- function(x, ...) {
-  as.factor(x)
+  vl <- var_label(x)
+  x <- as.factor(x)
+  var_label(x) <- vl
+  x
 }
 
 #' @rdname to_factor
@@ -58,6 +61,7 @@ to_factor.labelled <- function(x, levels = c("labels", "values",
   sort_levels = c("auto", "none", "labels", "values"), decreasing = FALSE,
   drop_unused_labels = FALSE,
   ...) {
+  vl <- var_label(x)
   levels <- match.arg(levels)
   sort_levels <- match.arg(sort_levels)
   if (nolabel_to_na)
@@ -92,6 +96,7 @@ to_factor.labelled <- function(x, levels = c("labels", "values",
     ...)
   if (drop_unused_labels)
     x <- droplevels(x)
+  var_label(x) <- vl
   x
 }
 
