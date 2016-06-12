@@ -10,6 +10,8 @@ and propose additional functions to manipulate labelled data.
 
 Please note that this package is still under active development.
 
+Missing values are currently not supported anymore by `labelled` package.
+
 ## Installation
 
 From CRAN:
