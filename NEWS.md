@@ -1,6 +1,8 @@
-# labelled 0.2.1.99
+# labelled 0.2.2
 
 * `to_factor()`, `to_character()` and `to_labelled.factor()` now preserves variable label.
+
+* bug fix in `to_factor()` when applied to data frames.
 
 # labelled 0.2.0
 
