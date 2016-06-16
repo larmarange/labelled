@@ -235,8 +235,8 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
 #'  \code{add_val_labels} will return a named vector.
 #' @examples
 #' if (require(dplyr)) {
-#'   df <- data_frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2))
-#'   df <- df %>% add_val_labels(s1 = c(Male = "M", Female = "F"), s2 = c(Yes = 1, No = 2))
+#'   df <- data_frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2)) %>%
+#'     add_val_labels(s1 = c(Male = "M", Female = "F"), s2 = c(Yes = 1, No = 2))
 #'   val_labels(df)
 #' }
 #' @export
