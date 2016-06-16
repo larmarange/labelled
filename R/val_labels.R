@@ -226,6 +226,31 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
 }
 
 
+#' @rdname val_labels
+#' @param .data a data frame
+#' @param ... name-value pairs of value labels (see examples)
+#' @note
+#'   \code{add_val_labels} could be used with \code{dplyr} (see examples).
+#' @return
+#'  \code{add_val_labels} will return a named vector.
+#' @examples
+#' if (require(dplyr)) {
+#'   df <- data_frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2))
+#'   df <- df %>% add_val_labels(s1 = c(Male = "M", Female = "F"), s2 = c(Yes = 1, No = 2))
+#'   val_labels(df)
+#' }
+#' @export
+add_val_labels <- function(.data, ...) {
+  values <- list(...)
+  if (!all(names(values) %in% names(.data)))
+    stop("some variables not found in .data")
+
+  for (v in names(values))
+    val_labels(.data[[v]]) <- values[[v]]
+
+  .data
+}
+
 #' Sort value labels
 #'
 #' Sort value labels according to values or to labels
