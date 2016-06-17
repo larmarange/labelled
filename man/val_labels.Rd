@@ -109,11 +109,15 @@ if (require(dplyr)) {
 
   # updating value labels
   df <- df \%>\% add_value_labels(s2 = c(Unknown = 9))
-  val_labels(df)
+  df$s2
 
   # removing a value labels
   df <- df \%>\% remove_value_labels(s2 = 9)
-  val_labels(df)
+  df$s2
+
+  # removing all value labels
+  df <- df \%>\% set_value_labels(s2 = NULL)
+  df$s2
 }
 }
 
