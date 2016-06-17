@@ -2,6 +2,7 @@
 % Please edit documentation in R/val_labels.R
 \name{val_labels}
 \alias{add_value_labels}
+\alias{remove_value_labels}
 \alias{set_value_labels}
 \alias{val_label}
 \alias{val_label.data.frame}
@@ -59,6 +60,8 @@ val_label(x, v) <- value
 set_value_labels(.data, ...)
 
 add_value_labels(.data, ...)
+
+remove_value_labels(.data, ...)
 }
 \arguments{
 \item{x}{A vector.}
@@ -79,15 +82,16 @@ For data frames, it could also be a named list.}
 \code{val_labels} will return a named vector.
   \code{val_label} will return a single character string.
 
-\code{set_value_labels} and \code{add_value_labels} will return an updated copy of \code{.data}.
+\code{set_value_labels}, \code{add_value_labels} and \code{remove_value_labels} will return an updated
+ copy of \code{.data}.
 }
 \description{
 Get / Set value labels
 }
 \note{
-\code{set_value_labels} and \code{add_value_labels} could be used with \code{dplyr}.
-  While \code{set_value_labels} will replace the list of value labels, \code{add_value_labels}
-  will update that list (see examples).
+\code{set_value_labels}, \code{add_value_labels} and \code{remove_value_labels} could be used with \code{dplyr}.
+  While \code{set_value_labels} will replace the list of value labels, \code{add_value_labels} and
+  \code{remove_value_labels} will update that list (see examples).
 }
 \examples{
 v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
@@ -108,7 +112,7 @@ if (require(dplyr)) {
   val_labels(df)
 
   # removing a value labels
-  df <- df \%>\% add_value_labels(s2 = c(NULL = 9))
+  df <- df \%>\% remove_value_labels(s2 = 9)
   val_labels(df)
 }
 }

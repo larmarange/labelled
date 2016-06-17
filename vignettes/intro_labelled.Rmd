@@ -279,3 +279,36 @@ object of class `data.set`. The `to_labelled` method can convert a data.set into
  df <- to_labelled(ds)
 ```
 
+## Using labelled with dplyr/magrittr
+
+If you are using the `%>%` operator, you can use the functions `set_variable_labels`, `set_value_labels` and `add_value_labels`.
+
+```{r}
+library(dplyr)
+
+df <- data_frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2)) %>% 
+  set_variable_labels(s1 = "Sex", s2 = "Question") %>%
+  set_value_labels(s1 = c(Male = "M", Female = "F"), s2 = c(Yes = 1, No = 2))
+```
+
+`set_value_labels` will replace the list of value labels while `add_value_labels` will update it.
+
+```{r}
+df <- df %>%
+  set_value_labels(s2 = c(Yes = 1, Unknown = 9))
+val_labels(df$s2)
+
+df <- df %>%
+  add_value_labels(s2 = c(No = 2))
+val_labels(df$s2)
+```
+
+You can also remove some variable and/or value labels.
+
+```{r}
+df <- df %>%
+  set_variable_labels(s1 = NULL) %>%
+  remove_value_labels(s2 = 9)
+val_labels(df$s2)
+```
+

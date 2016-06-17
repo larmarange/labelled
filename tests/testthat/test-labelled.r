@@ -77,12 +77,12 @@ test_that("set_value_labels replaces all value labels", {
   expect_equal(val_labels(df$s2), c(Yes = 1, Unknown = 9))
 })
 
-test_that("add_value_labels updates the list of value labels", {
+test_that("add_value_labels and remove_value_labels updates the list of value labels", {
   df <- data.frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2), stringsAsFactors = FALSE)
   df <- set_value_labels(df, s1 = c(Male = "M", Female = "F"), s2 = c(Yesss = 1, No = 2))
   df <- add_value_labels(df, s2 = c(Yes = 1, Unknown = 9))
   expect_equal(val_labels(df$s2), c(Yes = 1, No = 2, Unknown = 9))
-  df <- add_value_labels(df, s2 = c(NULL = 9))
+  df <- remove_value_labels(df, s2 = 9)
   expect_equal(val_labels(df$s2), c(Yes = 1, No = 2))
 })
 

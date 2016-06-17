@@ -230,11 +230,12 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
 #' @param .data a data frame
 #' @param ... name-value pairs of value labels (see examples)
 #' @note
-#'   \code{set_value_labels} and \code{add_value_labels} could be used with \code{dplyr}.
-#'   While \code{set_value_labels} will replace the list of value labels, \code{add_value_labels}
-#'   will update that list (see examples).
+#'   \code{set_value_labels}, \code{add_value_labels} and \code{remove_value_labels} could be used with \code{dplyr}.
+#'   While \code{set_value_labels} will replace the list of value labels, \code{add_value_labels} and
+#'   \code{remove_value_labels} will update that list (see examples).
 #' @return
-#'  \code{set_value_labels} and \code{add_value_labels} will return an updated copy of \code{.data}.
+#'  \code{set_value_labels}, \code{add_value_labels} and \code{remove_value_labels} will return an updated
+#'  copy of \code{.data}.
 #' @examples
 #' if (require(dplyr)) {
 #'   # setting value labels
@@ -247,7 +248,7 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
 #'   val_labels(df)
 #'
 #'   # removing a value labels
-#'   df <- df %>% add_value_labels(s2 = c(NULL = 9))
+#'   df <- df %>% remove_value_labels(s2 = 9)
 #'   val_labels(df)
 #' }
 #' @export
@@ -274,14 +275,24 @@ add_value_labels <- function(.data, ...) {
       stop("all arguments should be named vectors")
 
   for (v in names(values))
-    for (l in names(values[[v]])) {
-      if (l == "NULL")
-        val_label(.data[[v]], values[[v]][[l]]) <- NULL
-      else
-        val_label(.data[[v]], values[[v]][[l]]) <- l
-    }
+    for (l in names(values[[v]]))
+      val_label(.data[[v]], values[[v]][[l]]) <- l
 
   .data
+}
+
+#' @rdname val_labels
+#' @export
+remove_value_labels <- function(.data, ...) {
+  values <- list(...)
+  if (!all(names(values) %in% names(.data)))
+    stop("some variables not found in .data")
+
+  for (v in names(values))
+    for (l in values[[v]])
+      val_label(.data[[v]], l) <- NULL
+
+    .data
 }
 
 #' Sort value labels
