@@ -66,7 +66,32 @@ test_that("to_character preserves variable label", {
 })
 
 
+# set_value_labels and add_value_labels ----------------------------------------------
 
+test_that("set_value_labels replaces all value labels", {
+  df <- data.frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2), stringsAsFactors = FALSE)
+  df <- set_value_labels(df, s1 = c(Male = "M", Female = "F"), s2 = c(Yes = 1, No = 2))
+  expect_equal(val_labels(df$s1), c(Male = "M", Female = "F"))
+  expect_equal(val_labels(df$s2), c(Yes = 1, No = 2))
+  df <- set_value_labels(df, s2 = c(Yes = 1, Unknown = 9))
+  expect_equal(val_labels(df$s2), c(Yes = 1, Unknown = 9))
+})
 
+test_that("add_value_labels updates the list of value labels", {
+  df <- data.frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2), stringsAsFactors = FALSE)
+  df <- set_value_labels(df, s1 = c(Male = "M", Female = "F"), s2 = c(Yesss = 1, No = 2))
+  df <- add_value_labels(df, s2 = c(Yes = 1, Unknown = 9))
+  expect_equal(val_labels(df$s2), c(Yes = 1, No = 2, Unknown = 9))
+  df <- add_value_labels(df, s2 = c(NULL = 9))
+  expect_equal(val_labels(df$s2), c(Yes = 1, No = 2))
+})
 
+# set_variable_labels  --------------------------------------------------------------
 
+test_that("set_variable_labels updates variable labels", {
+  df <- data.frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2), stringsAsFactors = FALSE)
+  df <- set_variable_labels(df, s1 = "Sex", s2 = "Question")
+  expect_equal(var_label(df$s1), "Sex")
+  df <- set_variable_labels(df, s2 = NULL)
+  expect_null(var_label(df$s2))
+})
