@@ -39,4 +39,5 @@ to_character.labelled <- function(x, levels = c("labels", "values",
   levels <- match.arg(levels)
   x <- as.character(to_factor(x, levels = levels, nolabel_to_na = nolabel_to_na))
   var_label(x) <- vl
+  x
 }

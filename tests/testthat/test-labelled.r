@@ -50,6 +50,22 @@ test_that("to_factor preserves variable label", {
 })
 
 
+# to_character --------------------------------------------------------------------
+
+test_that("to_character produce an appropriate character vector", {
+  x <- labelled(c(1, 1, 2), c(yes = 1, no = 2))
+  expect_equal(class(to_character(x)), "character")
+  expect_equal(to_character(x), c("yes", "yes", "no"))
+})
+
+
+test_that("to_character preserves variable label", {
+  x <- labelled(c(1, 1, 2), c(yes = 1, no = 2))
+  var_label(x) <- "yes/no"
+  expect_equal(var_label(to_character(x)), var_label(x))
+})
+
+
 
 
 
