@@ -20,6 +20,35 @@ test_that("labels must have names", {
   expect_error(labelled(1, 1), "must be a named vector")
 })
 
+test_that("labelled preserves variable label", {
+  x <- 1:3
+  var_label(x) <- "test"
+  x <- labelled(x, c(yes = 1))
+  expect_equal(attr(x, "label", exact = TRUE), "test")
+})
+
+# var_labels and var_label ------------------------------------------------
+
+test_that("var_labels preserved variable label", {
+  x <- 1:3
+  var_label(x) <- "test"
+  val_labels(x) <- c(yes = 1, no = 2)
+  expect_equal(attr(x, "label", exact = TRUE), "test")
+
+  val_labels(x) <- NULL
+  expect_equal(attr(x, "label", exact = TRUE), "test")
+})
+
+test_that("var_label preserved variable label", {
+  x <- 1:3
+  var_label(x) <- "test"
+  val_label(x, 1) <- "yes"
+  expect_equal(attr(x, "label", exact = TRUE), "test")
+
+  val_label(x, 1) <- NULL
+  expect_equal(attr(x, "label", exact = TRUE), "test")
+})
+
 # methods -----------------------------------------------------------------
 
 test_that("printed output is stable", {
