@@ -121,7 +121,7 @@ foreign_to_labelled <- function(x) {
     if (!is.null(attr(x[[var]], "value.labels", exact = TRUE)))
       val_labels(x[[var]]) <- attr(x[[var]], "value.labels",
         exact = TRUE)
-    .setattr(x[[var]], "value.labels", NULL)
+    attr(x[[var]], "value.labels") <-  NULL
   }
 
   # value labels (read.dta)
@@ -144,18 +144,18 @@ foreign_to_labelled <- function(x) {
   # }
 
   # cleaning read.spss
-  .setattr(x, "variable.labels", NULL)
-  .setattr(x, "missings", NULL)
+  attr(x, "variable.labels") <- NULL
+  attr(x, "missings") <-  NULL
   # cleaning read.dta
-  .setattr(x, "datalabel", NULL)
-  .setattr(x, "time.stamp", NULL)
-  .setattr(x, "formats", NULL)
-  .setattr(x, "types", NULL)
-  .setattr(x, "val.labels", NULL)
-  .setattr(x, "var.labels", NULL)
-  .setattr(x, "version", NULL)
-  .setattr(x, "label.table", NULL)
-  .setattr(x, "missing", NULL)
+  attr(x, "datalabel") <- NULL
+  attr(x, "time.stamp") <- NULL
+  attr(x, "formats") <- NULL
+  attr(x, "types") <- NULL
+  attr(x, "val.labels") <- NULL
+  attr(x, "var.labels") <- NULL
+  attr(x, "version") <- NULL
+  attr(x, "label.table") <- NULL
+  attr(x, "missing") <- NULL
   # to tbl_df (if no other class already specified)
   if (length(class(x)) == 1)
     class(x) <- c("tbl_df", "tbl", "data.frame")

@@ -7,17 +7,17 @@ test_that("labelled return an object of class labelled",{
 })
 
 test_that("x must be numeric or character", {
-  expect_error(labelled(TRUE), "must be either numeric or a character vector")
+  expect_error(labelled(TRUE))
 })
 
 test_that("x and labels must be compatible", {
-  expect_error(labelled(1, "a"), "must be same type")
+  expect_error(labelled(1, "a"))
   expect_error(labelled(1, c(female = 2L, male = 1L)), NA)
   expect_error(labelled(1L, c(female = 2, male = 1)), NA)
 })
 
 test_that("labels must have names", {
-  expect_error(labelled(1, 1), "must be a named vector")
+  expect_error(labelled(1, 1))
 })
 
 test_that("labelled preserves variable label", {
@@ -47,14 +47,6 @@ test_that("var_label preserved variable label", {
 
   val_label(x, 1) <- NULL
   expect_equal(attr(x, "label", exact = TRUE), "test")
-})
-
-# methods -----------------------------------------------------------------
-
-test_that("printed output is stable", {
-  x <- labelled(1:5, c("Good" = 1, "Bad" = 5))
-  var_label(x) <- "Variable label"
-  expect_output_file(print(x), "labelled-output.txt")
 })
 
 # remove_labels --------------------------------------------------------------

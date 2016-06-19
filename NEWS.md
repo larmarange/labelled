@@ -1,7 +1,9 @@
-# labelled 0.2.2.0099
+# labelled 0.2.3
 
 * new functions `set_variable_labels()`, `set_value_labels()`, `add_value_labels()` 
   and `remove_value_labels()` compatible with `%>%`.
+  
+* new functions `remove_val_labels` and `remove_var_label()`.
 
 * bug fix in `to_character.labelled()` when applied to data frames.
 

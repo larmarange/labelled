@@ -79,7 +79,7 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
 `val_labels<-.labelled` <- function(x, value) {
   if (is.null(value)) {
     x <- unclass(x)
-    .setattr(x, "labels", NULL)
+    attr(x, "labels") <- NULL
   } else {
     x <- labelled(x, value)
   }

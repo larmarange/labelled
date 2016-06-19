@@ -1,8 +1,8 @@
 Package: labelled
 Type: Package
 Title: Manipulating Labelled Data
-Version: 0.2.2.0099
-Date: 2016-06-17
+Version: 0.2.3
+Date: 2016-06-21
 Maintainer: Joseph Larmarange <joseph@larmarange.net>
 Authors@R: c(
   person("Joseph", "Larmarange", email = "joseph@larmarange.net", role = c("aut", "cre")),
@@ -17,8 +17,7 @@ Suggests:
     haven,
     dplyr,
     testthat,
-    knitr,
-    data.table
+    knitr
 Enhances: memisc
 LazyData: true
 URL: https://github.com/larmarange/labelled

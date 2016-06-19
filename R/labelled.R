@@ -16,22 +16,22 @@
 labelled <- function(x, labels) {
   if (!is.numeric(x) && !is.character(x)) {
     stop("`x` must be either numeric or a character vector",
-      call. = FALSE, domain = "R-labelled")
+         call. = FALSE, domain = "R-labelled")
   }
   if (mode(x) != mode(labels)) {
     stop("`x` and `labels` must be same type", call. = FALSE,
-      domain = "R-labelled")
+         domain = "R-labelled")
   }
   if (typeof(x) != typeof(labels)) {
     mode(labels) <- typeof(x)
   }
   if (is.null(names(labels))) {
     stop("`labels` must be a named vector", call. = FALSE,
-      domain = "R-labelled")
+         domain = "R-labelled")
   }
   if (length(labels) != length(unique(labels))) {
     stop("`each value in `labels` should be unique", call. = FALSE,
-      domain = "R-labelled")
+         domain = "R-labelled")
   }
 
   structure(x, labels = labels, class = c("labelled"))
@@ -55,8 +55,8 @@ print.labelled <- function(x, ...) {
 
 
   xx <- unclass(x)
-  .setattr(xx, "label", NULL)
-  .setattr(xx, "labels", NULL)
+  attr(xx, "label") <- NULL
+  attr(xx, "labels") <- NULL
   print(xx)
 
   cat("\nLabels:\n")
@@ -72,9 +72,8 @@ as.data.frame.labelled <- function(x, ...) {
   df <- list(x)
   names(df) <- deparse(substitute(x))
   class(df) <- "data.frame"
-  .setattr(df, "row.names", .set_row_names(length(x)))
+  attr(df, "row.names") <- .set_row_names(length(x))
 
   df
 }
-
 
