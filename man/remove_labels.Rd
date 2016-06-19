@@ -4,7 +4,12 @@
 \alias{remove_labels}
 \alias{remove_labels.data.frame}
 \alias{remove_labels.default}
-\alias{zap_labels}
+\alias{remove_val_labels}
+\alias{remove_val_labels.data.frame}
+\alias{remove_val_labels.default}
+\alias{remove_var_label}
+\alias{remove_var_label.data.frame}
+\alias{remove_var_label.default}
 \title{Remove variable and value labels}
 \usage{
 remove_labels(x)
@@ -13,15 +18,24 @@ remove_labels(x)
 
 \method{remove_labels}{data.frame}(x)
 
-zap_labels(x)
+remove_var_label(x)
+
+\method{remove_var_label}{default}(x)
+
+\method{remove_var_label}{data.frame}(x)
+
+remove_val_labels(x)
+
+\method{remove_val_labels}{default}(x)
+
+\method{remove_val_labels}{data.frame}(x)
 }
 \arguments{
 \item{x}{A vector or a data frame.}
 }
 \description{
-This function removes all variable and values labels.
-}
-\details{
-\code{zap_labels} is equivalent to \code{remove_labels}.
+Use \code{remove_var_label} to remove variable label, \code{remove_val_labels}
+to remove value labels and \code{remove_labels} to remove both variable and
+value labels.
 }
 
