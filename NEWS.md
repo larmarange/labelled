@@ -1,3 +1,7 @@
+# labelled 0.2.3.9000
+
+* now imports `haven`
+
 # labelled 0.2.3
 
 * new functions `set_variable_labels()`, `set_value_labels()`, `add_value_labels()` 

@@ -14,18 +14,23 @@ is.labelled(x)
 character.}
 
 \item{labels}{A named vector. The vector should be the same type as
-x. Unlike factors, labels don't need to be exhaustive: only a fraction
+\code{x}. Unlike factors, labels don't need to be exhaustive: only a fraction
 of the values might be labelled.}
 }
 \description{
-A labelled vector is a common data structure in other statistical
-environments. This class makes it possible to import such labelled vectors
-in to without loss of fidelity.
+A labelled vector is a common data structure in other statistical environments,
+allowing you to assign text labels to specific values.
 }
 \examples{
 s1 <- labelled(c('M', 'M', 'F'), c(Male = 'M', Female = 'F'))
+s1
 s2 <- labelled(c(1, 1, 2), c(Male = 1, Female = 2))
+s2
 is.labelled(s1)
-is.labelled(c('M', 'M', 'F'))
+}
+\seealso{
+\code{\link[haven]{labelled}} (\pkg{haven})
+
+\code{\link[haven]{is.labelled}} (\pkg{haven})
 }
 

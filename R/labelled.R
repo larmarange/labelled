@@ -1,79 +1,43 @@
 #' Create a labelled vector.
 #'
-#' A labelled vector is a common data structure in other statistical
-#' environments. This class makes it possible to import such labelled vectors
-#' in to without loss of fidelity.
+#' A labelled vector is a common data structure in other statistical environments,
+#' allowing you to assign text labels to specific values.
 #'
-#' @param x A vector to label. Must be either numeric (integer or double) or
-#'   character.
-#' @param labels A named vector. The vector should be the same type as
-#'   x. Unlike factors, labels don't need to be exhaustive: only a fraction
-#'   of the values might be labelled.
+#' @inheritParams haven::labelled
+#' @importFrom haven labelled
+#' @seealso \code{\link[haven]{labelled}} (\pkg{haven})
 #' @export
 #' @examples
 #' s1 <- labelled(c('M', 'M', 'F'), c(Male = 'M', Female = 'F'))
+#' s1
 #' s2 <- labelled(c(1, 1, 2), c(Male = 1, Female = 2))
-labelled <- function(x, labels) {
-  if (!is.numeric(x) && !is.character(x)) {
-    stop("`x` must be either numeric or a character vector",
-         call. = FALSE, domain = "R-labelled")
-  }
-  if (mode(x) != mode(labels)) {
-    stop("`x` and `labels` must be same type", call. = FALSE,
-         domain = "R-labelled")
-  }
-  if (typeof(x) != typeof(labels)) {
-    mode(labels) <- typeof(x)
-  }
-  if (is.null(names(labels))) {
-    stop("`labels` must be a named vector", call. = FALSE,
-         domain = "R-labelled")
-  }
-  if (length(labels) != length(unique(labels))) {
-    stop("`each value in `labels` should be unique", call. = FALSE,
-         domain = "R-labelled")
-  }
-
-  structure(x, labels = labels, class = c("labelled"))
-}
+#' s2
+labelled <- haven::labelled
 
 #' @rdname labelled
+#' @inheritParams haven::is.labelled
+#' @importFrom haven is.labelled
+#' @seealso \code{\link[haven]{is.labelled}} (\pkg{haven})
+#' @export
 #' @examples
 #' is.labelled(s1)
-#' is.labelled(c('M', 'M', 'F'))
+is.labelled <- haven::is.labelled
+
+#' Create a labelled vector with SPSS style of missing values.
+#'
+#'  It is similar to the \code{\link{labelled}} class but it also models SPSS's
+#'  user-defined missings, which can be up to three distinct values,
+#'  or for numeric vectors a range.
+#'
+#' @inheritParams haven::labelled_spss
+#' @importFrom haven labelled_spss
+#' @seealso \code{\link[haven]{labelled_spss}} (\pkg{haven})
 #' @export
-is.labelled <- function(x) inherits(x, "labelled")
-
-#' @export
-`[.labelled` <- function(x, ...) {
-  labelled(NextMethod(), attr(x, "labels"))
-}
-
-#' @export
-print.labelled <- function(x, ...) {
-  cat("<Labelled ", typeof(x), "> ", var_label(x), "\n", sep = "")
-
-
-  xx <- unclass(x)
-  attr(xx, "label") <- NULL
-  attr(xx, "labels") <- NULL
-  print(xx)
-
-  cat("\nLabels:\n")
-  labels <- attr(x, "labels", exact = TRUE)
-  lab_df <- data.frame(value = unname(labels), label = names(labels))
-  print(lab_df, row.names = FALSE)
-
-  invisible()
-}
-
-#' @export
-as.data.frame.labelled <- function(x, ...) {
-  df <- list(x)
-  names(df) <- deparse(substitute(x))
-  class(df) <- "data.frame"
-  attr(df, "row.names") <- .set_row_names(length(x))
-
-  df
-}
-
+#' @examples
+#' x1 <- labelled_spss(1:10, c(Good = 1, Bad = 8), na_values = c(9, 10))
+#' x1
+#' is.na(x1)
+#' x2 <- labelled_spss(1:10, c(Good = 1, Bad = 8), na_range = c(9, Inf))
+#' x2
+#' is.na(x2)
+labelled_spss <- haven::labelled_spss

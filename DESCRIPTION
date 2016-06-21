@@ -1,7 +1,7 @@
 Package: labelled
 Type: Package
 Title: Manipulating Labelled Data
-Version: 0.2.3
+Version: 0.2.3.9000
 Date: 2016-06-21
 Maintainer: Joseph Larmarange <joseph@larmarange.net>
 Authors@R: c(
@@ -13,8 +13,9 @@ Description: Work with labelled data imported from
     'SPSS' or 'Stata' with 'haven' or 'foreign'.
 License: GPL-3
 Encoding: UTF-8
+Imports:
+    haven (>= 1.0.0)
 Suggests:
-    haven,
     dplyr,
     testthat,
     knitr
