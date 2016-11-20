@@ -1,8 +1,8 @@
 Package: labelled
 Type: Package
 Title: Manipulating Labelled Data
-Version: 0.2.3.9000
-Date: 2016-06-21
+Version: 0.2.4
+Date: 2016-11-20
 Maintainer: Joseph Larmarange <joseph@larmarange.net>
 Authors@R: c(
   person("Joseph", "Larmarange", email = "joseph@larmarange.net", role = c("aut", "cre")),
