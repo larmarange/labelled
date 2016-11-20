@@ -29,7 +29,7 @@ test_that("labelled preserves variable label", {
 
 # var_labels and var_label ------------------------------------------------
 
-test_that("var_labels preserved variable label", {
+test_that("val_labels preserves variable label", {
   x <- 1:3
   var_label(x) <- "test"
   val_labels(x) <- c(yes = 1, no = 2)
@@ -39,7 +39,7 @@ test_that("var_labels preserved variable label", {
   expect_equal(attr(x, "label", exact = TRUE), "test")
 })
 
-test_that("var_label preserved variable label", {
+test_that("val_label preserves variable label", {
   x <- 1:3
   var_label(x) <- "test"
   val_label(x, 1) <- "yes"
@@ -47,6 +47,32 @@ test_that("var_label preserved variable label", {
 
   val_label(x, 1) <- NULL
   expect_equal(attr(x, "label", exact = TRUE), "test")
+})
+
+test_that("val_labels and val_label preserves spss missing values", {
+  x <- labelled_spss(1:10, c(Good = 1, Bad = 8), na_values = c(9, 10), na_range = c(11, Inf))
+  val_labels(x) <- c(yes = 1, no = 3)
+  val_label(x, 2) <- "maybe"
+  expect_true(inherits(x, "labelled"))
+  expect_true(inherits(x, "labelled_spss"))
+  expect_equal(attr(x, "na_values"), c(9, 10))
+  expect_equal(attr(x, "na_range"), c(11, Inf))
+
+  val_label(x, 2) <- "maybe"
+  expect_true(inherits(x, "labelled"))
+  expect_true(inherits(x, "labelled_spss"))
+  expect_equal(attr(x, "na_values"), c(9, 10))
+  expect_equal(attr(x, "na_range"), c(11, Inf))
+
+  expect_equal(attr(x, "labels", exact = TRUE), c(yes = 1, no = 3, maybe = 2))
+})
+
+test_that("value labels can't be removed if missing values are defined", {
+  x <- labelled_spss(1:10, c(Good = 1, Bad = 8), na_values = c(9, 10))
+  expect_error(`val_labels<-`(x, NULL))
+
+  x <- labelled_spss(1:10, c(Good = 1), na_range = c(9, 20))
+  expect_error(`val_label<-`(x, 1, NULL))
 })
 
 # remove_labels --------------------------------------------------------------
@@ -115,4 +141,11 @@ test_that("set_variable_labels updates variable labels", {
   expect_equal(var_label(df$s1), "Sex")
   df <- set_variable_labels(df, s2 = NULL)
   expect_null(var_label(df$s2))
+})
+
+# missing values -------------------------------------------------------------------
+
+test_that("it is not possible to define missing values if no value labels were defined", {
+  expect_error(`na_values<-`(1:3, 9))
+  expect_error(`na_range<-`(1:3, c(9, Inf)))
 })

@@ -149,7 +149,71 @@ If you prefer, you can also sort them according to the labels.
 sort_val_labels(v, according_to = "l")
 ```
 
-## Converting to NA
+## User defined missing values (SPSS's style)
+
+`haven` (>= 1.0.0) introduced an additional `labelled_spss` class to deal with user defined missing values. In such case, additional atributes will be used to indicate with values should be considered as missing, but such values will not be stored as internal `NA` values. You should note that most R function will not take this information into account. Therefore, you will have to convert missing values into `NA` if required before analysis. These defined missing values could co-exist with internal `NA` values.
+
+It is possible to manipulate this missing values with `na_values()` and `na_range()`. 
+
+```{r}
+v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
+v
+na_values(v) <- 9
+na_values(v)
+v
+na_values(v) <- NULL
+v
+na_range(v) <- c(5, Inf)
+na_range(v)
+v
+```
+
+It is **mandatory** to defined at least one value label before defining missing values. Therefore, the following example will fail.
+
+```{r, eval=FALSE}
+x <- c(1, 2, 2, 9)
+na_values(x) <- 9
+```
+
+You shoudl try:
+
+```{r}
+x <- c(1, 2, 2, 9)
+val_labels(x) <- c(yes = 1, no = 2)
+na_values(x) <- 9
+x
+```
+
+
+To convert user defined missing values into `NA`, simply use `user_na_to_na()`.
+
+```{r}
+v <- labelled_spss(1:10, c(Good = 1, Bad = 8), na_values = c(9, 10))
+v
+v2 <- user_na_to_na(v)
+v2
+```
+
+You can also remove user missing values definition without converting these values to `NA`.
+
+```{r}
+v <- labelled_spss(1:10, c(Good = 1, Bad = 8), na_values = c(9, 10))
+v
+v2 <- remove_user_na(v)
+v2
+```
+
+or
+
+```{r}
+v <- labelled_spss(1:10, c(Good = 1, Bad = 8), na_values = c(9, 10))
+v
+na_values(v) <- NULL
+v
+```
+
+
+## Other conversion to NA
 
 In some cases, values who don't have an attached value label could be considered as missing.
 `nolabel_to_na` will convert them to `NA`.
