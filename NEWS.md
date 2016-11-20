@@ -1,4 +1,4 @@
-# labelled 0.2.4
+# labelled 1.0.0
 
 * now imports `haven`
 * new function to deal with user defined missing values (SPSS style): 

@@ -1,7 +1,7 @@
 Package: labelled
 Type: Package
 Title: Manipulating Labelled Data
-Version: 0.2.4
+Version: 1.0.0
 Date: 2016-11-20
 Maintainer: Joseph Larmarange <joseph@larmarange.net>
 Authors@R: c(
