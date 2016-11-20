@@ -11,7 +11,6 @@ to_character <- function(x, ...) {
   UseMethod("to_character")
 }
 
-#' @rdname to_character
 #' @export
 to_character.default <- function(x, ...) {
   vl <- var_label(x)

@@ -19,7 +19,6 @@ var_label <- function(x) {
   UseMethod("var_label")
 }
 
-#' @rdname var_label
 #' @export
 var_label.default <- function(x) {
   if (!is.atomic(x))
@@ -27,7 +26,6 @@ var_label.default <- function(x) {
   attr(x, "label", exact = TRUE)
 }
 
-#' @rdname var_label
 #' @export
 var_label.data.frame <- function(x) {
   lapply(x, var_label)
@@ -39,7 +37,6 @@ var_label.data.frame <- function(x) {
   UseMethod("var_label<-")
 }
 
-#' @rdname var_label
 #' @export
 `var_label<-.default` <- function(x, value) {
   if (!is.atomic(x))
@@ -52,7 +49,6 @@ var_label.data.frame <- function(x) {
   x
 }
 
-#' @rdname var_label
 #' @export
 `var_label<-.data.frame` <- function(x, value) {
   if ((!is.character(value) & !is.null(value)) & !is.list(value) |

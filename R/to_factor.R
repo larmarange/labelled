@@ -17,7 +17,6 @@ to_factor.factor <- function(x, ...) {
   x
 }
 
-#' @rdname to_factor
 #' @export
 to_factor.default <- function(x, ...) {
   vl <- var_label(x)

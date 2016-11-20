@@ -17,7 +17,6 @@ copy_labels <- function(from, to) {
 }
 
 
-#' @rdname copy_labels
 #' @export
 copy_labels.default <- function(from, to) {
   if (!is.atomic(from) | !is.atomic(to))
@@ -33,7 +32,6 @@ copy_labels.default <- function(from, to) {
   to
 }
 
-#' @rdname copy_labels
 #' @export
 copy_labels.data.frame <- function(from, to) {
   if (!is.data.frame(to))
