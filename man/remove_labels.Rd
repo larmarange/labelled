@@ -2,40 +2,48 @@
 % Please edit documentation in R/remove_labels.R
 \name{remove_labels}
 \alias{remove_labels}
-\alias{remove_labels.data.frame}
-\alias{remove_labels.default}
+\alias{remove_user_na}
 \alias{remove_val_labels}
-\alias{remove_val_labels.data.frame}
-\alias{remove_val_labels.default}
 \alias{remove_var_label}
-\alias{remove_var_label.data.frame}
-\alias{remove_var_label.default}
-\title{Remove variable and value labels}
+\alias{user_na_to_na}
+\title{Remove variable label, value labels and user defined missing values}
 \usage{
-remove_labels(x)
-
-\method{remove_labels}{default}(x)
-
-\method{remove_labels}{data.frame}(x)
+remove_labels(x, user_na_to_na = FALSE)
 
 remove_var_label(x)
 
-\method{remove_var_label}{default}(x)
-
-\method{remove_var_label}{data.frame}(x)
-
 remove_val_labels(x)
 
-\method{remove_val_labels}{default}(x)
+remove_user_na(x, user_na_to_na = FALSE)
 
-\method{remove_val_labels}{data.frame}(x)
+user_na_to_na(x)
 }
 \arguments{
 \item{x}{A vector or a data frame.}
+
+\item{user_na_to_na}{Convert user defined missing values into \code{NA}?}
 }
 \description{
 Use \code{remove_var_label} to remove variable label, \code{remove_val_labels}
-to remove value labels and \code{remove_labels} to remove both variable and
-value labels.
+to remove value labels, \code{remove_user_na} to remove user defined missing values (na_values and na_range)
+and \code{remove_labels} to remove all.
+}
+\details{
+Be careful with \code{remove_user_na} and \code{remove_labels}, user defined missing values
+will not be automatically converted to \code{NA}, except if you specify
+\code{user_na_to_na = TRUE}.
+\code{user_na_to_na(x)} is an equivalent of \code{remove_user_na(x, user_na_to_na = TRUE)}.
+}
+\examples{
+x1 <- labelled_spss(1:10, c(Good = 1, Bad = 8), na_values = c(9, 10))
+var_label(x1) <- "A variable"
+x1
+
+x2 <- remove_labels(x1)
+x2
+x3 <- remove_labels(x1, user_na_to_na = TRUE)
+x3
+x4 <- remove_user_na(x1, user_na_to_na = TRUE)
+x4
 }
 

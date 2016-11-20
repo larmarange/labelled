@@ -2,13 +2,10 @@
 % Please edit documentation in R/to_character.R
 \name{to_character}
 \alias{to_character}
-\alias{to_character.default}
 \alias{to_character.labelled}
 \title{Convert input to a character vector}
 \usage{
 to_character(x, ...)
-
-\method{to_character}{default}(x, ...)
 
 \method{to_character}{labelled}(x, levels = c("labels", "values", "prefixed"),
   nolabel_to_na = FALSE, ...)

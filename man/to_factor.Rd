@@ -3,13 +3,10 @@
 \name{to_factor}
 \alias{to_factor}
 \alias{to_factor.data.frame}
-\alias{to_factor.default}
 \alias{to_factor.labelled}
 \title{Convert input to a factor.}
 \usage{
 to_factor(x, ...)
-
-\method{to_factor}{default}(x, ...)
 
 \method{to_factor}{labelled}(x, levels = c("labels", "values", "prefixed"),
   ordered = FALSE, nolabel_to_na = FALSE, sort_levels = c("auto", "none",

@@ -3,24 +3,12 @@
 \name{var_label}
 \alias{set_variable_labels}
 \alias{var_label}
-\alias{var_label.data.frame}
-\alias{var_label.default}
 \alias{var_label<-}
-\alias{var_label<-.data.frame}
-\alias{var_label<-.default}
 \title{Get / Set a variable label}
 \usage{
 var_label(x)
 
-\method{var_label}{default}(x)
-
-\method{var_label}{data.frame}(x)
-
 var_label(x) <- value
-
-\method{var_label}{default}(x) <- value
-
-\method{var_label}{data.frame}(x) <- value
 
 set_variable_labels(.data, ...)
 }

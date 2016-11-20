@@ -20,6 +20,7 @@
 \alias{val_labels<-.character}
 \alias{val_labels<-.data.frame}
 \alias{val_labels<-.labelled}
+\alias{val_labels<-.labelled_spss}
 \alias{val_labels<-.numeric}
 \title{Get / Set value labels}
 \usage{
@@ -38,6 +39,8 @@ val_labels(x) <- value
 \method{val_labels}{character}(x) <- value
 
 \method{val_labels}{labelled}(x) <- value
+
+\method{val_labels}{labelled_spss}(x) <- value
 
 \method{val_labels}{data.frame}(x) <- value
 

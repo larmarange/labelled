@@ -2,15 +2,9 @@
 % Please edit documentation in R/copy_labels.R
 \name{copy_labels}
 \alias{copy_labels}
-\alias{copy_labels.data.frame}
-\alias{copy_labels.default}
 \title{Copy variable and value labels}
 \usage{
 copy_labels(from, to)
-
-\method{copy_labels}{default}(from, to)
-
-\method{copy_labels}{data.frame}(from, to)
 }
 \arguments{
 \item{from}{Object to copy labels from.}
