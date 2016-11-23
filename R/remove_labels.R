@@ -32,6 +32,7 @@ remove_labels <- function(x, user_na_to_na = FALSE) {
 remove_labels.default <- function(x, user_na_to_na = FALSE) {
   var_label(x) <- NULL
   val_labels(x) <- NULL
+  attr(x,"format.spss") <- NULL
   x
 }
 
@@ -40,6 +41,7 @@ remove_labels.labelled_spss <- function(x, user_na_to_na = FALSE) {
   x <- remove_user_na(x, user_na_to_na = user_na_to_na)
   var_label(x) <- NULL
   val_labels(x) <- NULL
+  attr(x,"format.spss") <- NULL
   x
 }
 
