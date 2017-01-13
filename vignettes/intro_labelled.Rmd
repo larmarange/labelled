@@ -175,7 +175,7 @@ x <- c(1, 2, 2, 9)
 na_values(x) <- 9
 ```
 
-You shoudl try:
+You should try:
 
 ```{r}
 x <- c(1, 2, 2, 9)
