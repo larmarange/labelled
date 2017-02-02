@@ -22,4 +22,3 @@ Some base \R functions like \code{\link[base]{subset}} drop variable and
 value labels attached to a variable. \code{copy_labels} coud be used
 to restore these attributes.
 }
-

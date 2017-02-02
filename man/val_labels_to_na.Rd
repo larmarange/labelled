@@ -21,4 +21,3 @@ val_labels_to_na(v)
 \seealso{
 \code{\link[haven]{zap_labels}}
 }
-

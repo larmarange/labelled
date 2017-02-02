@@ -14,4 +14,3 @@
 \description{
 as.data.frame method for labelled vectors
 }
-

@@ -2,8 +2,8 @@
 % Please edit documentation in R/to_factor.R
 \name{to_factor}
 \alias{to_factor}
-\alias{to_factor.data.frame}
 \alias{to_factor.labelled}
+\alias{to_factor.data.frame}
 \title{Convert input to a factor.}
 \usage{
 to_factor(x, ...)
@@ -14,7 +14,8 @@ to_factor(x, ...)
 
 \method{to_factor}{data.frame}(x, levels = c("labels", "values", "prefixed"),
   ordered = FALSE, nolabel_to_na = FALSE, sort_levels = c("auto", "none",
-  "labels", "values"), decreasing = FALSE, labelled_only = TRUE, ...)
+  "labels", "values"), decreasing = FALSE, labelled_only = TRUE,
+  drop_unused_labels = FALSE, ...)
 }
 \arguments{
 \item{x}{Object to coerce to a factor.}
@@ -68,4 +69,3 @@ to_factor(v, sort_levels = 'l')
 x <- labelled(c('H', 'M', 'H', 'L'), c(low = 'L', medium = 'M', high = 'H'))
 to_factor(x, ordered = TRUE)
 }
-

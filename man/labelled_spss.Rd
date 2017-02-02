@@ -36,4 +36,3 @@ is.na(x2)
 \seealso{
 \code{\link[haven]{labelled_spss}} (\pkg{haven})
 }
-

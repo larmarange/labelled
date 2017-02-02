@@ -2,8 +2,8 @@
 % Please edit documentation in R/val_labels.R
 \name{sort_val_labels}
 \alias{sort_val_labels}
-\alias{sort_val_labels.data.frame}
 \alias{sort_val_labels.labelled}
+\alias{sort_val_labels.data.frame}
 \title{Sort value labels}
 \usage{
 sort_val_labels(x, according_to = c("values", "labels"), decreasing = FALSE)
@@ -32,4 +32,3 @@ sort_val_labels(v, decreasing = TRUE)
 sort_val_labels(v, 'l')
 sort_val_labels(v, 'l', TRUE)
 }
-

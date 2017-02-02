@@ -18,4 +18,3 @@ For labelled variables, values with no label will be recoded to \code{NA}.
 v <- labelled(c(1, 2, 9, 1, 9), c(yes = 1, no = 2))
 nolabel_to_na(v)
 }
-

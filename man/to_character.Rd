@@ -35,4 +35,3 @@ to_character(v, missing_to_na = FALSE, nolabel_to_na = TRUE)
 to_character(v, "v")
 to_character(v, "p")
 }
-

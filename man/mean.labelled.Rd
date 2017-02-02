@@ -23,4 +23,3 @@ Arithmetic mean for numeric labelled vectors
 \seealso{
 \code{\link[base]{mean}}
 }
-

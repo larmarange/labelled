@@ -2,9 +2,9 @@
 % Please edit documentation in R/remove_labels.R
 \name{remove_labels}
 \alias{remove_labels}
-\alias{remove_user_na}
-\alias{remove_val_labels}
 \alias{remove_var_label}
+\alias{remove_val_labels}
+\alias{remove_user_na}
 \alias{user_na_to_na}
 \title{Remove variable label, value labels and user defined missing values}
 \usage{
@@ -46,4 +46,3 @@ x3
 x4 <- remove_user_na(x1, user_na_to_na = TRUE)
 x4
 }
-
