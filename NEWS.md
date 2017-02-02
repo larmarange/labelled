@@ -1,3 +1,7 @@
+# labelled 1.0.0-dev
+
+* bug fix: argument drop_unused_labels could now be used with `to_factor.data.frame()`
+
 # labelled 1.0.0
 
 * now imports `haven`
