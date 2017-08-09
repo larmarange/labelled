@@ -1,9 +1,9 @@
 #' Convert to labelled data
 #'
-#' Convert data imported with \pkg{foreign} or \pkg{memisc} to labelled data.
-#' \code{to_labelled} could also be used to convert a factor to a labelled vector.
+#' Convert a factor or data imported with \pkg{foreign} or \pkg{memisc} to labelled data.
 #'
-#' @param x Data to convert to labelled data frame
+#' @param x Factor or dataset to convert to labelled data frame
+#' @param ... Not used
 #' @details
 #' \code{to_labelled} is a general wrapper calling the appropriate sub-functions.
 #'
@@ -13,7 +13,6 @@
 #' \code{foreign_to_labelled} converts data imported with \code{\link[foreign]{read.spss}}
 #' or \code{\link[foreign]{read.dta}} from \pkg{foreign} package to a labelled data frame,
 #' i.e. using \code{\link{labelled}} class.
-#'
 #' Factors will not be converted. Therefore, you should use \code{use.value.labels = FALSE}
 #' when importing with \code{\link[foreign]{read.spss}} or \code{convert.factors = FALSE} when
 #' importing with \code{\link[foreign]{read.dta}}.
@@ -26,10 +25,10 @@
 #' So far, missing values defined in Stata are always imported as \code{NA} by
 #' \code{\link[foreign]{read.dta}} and could not be retrieved by \code{foreign_to_labelled}.
 #'
-#' @return a tbl data frame or a labelled vector.
+#' @return A tbl data frame or a labelled vector.
 #' @seealso \code{\link{labelled}} (\pkg{foreign}), \code{\link[foreign]{read.spss}} (\pkg{foreign}),
 #'   \code{\link[foreign]{read.dta}} (\pkg{foreign}), \code{\link[memisc]{data.set}} (\pkg{memisc}),
-#'   \code{\link[memisc]{importer}} (\pkg{memisc}).
+#'   \code{\link[memisc]{importer}} (\pkg{memisc}), \code{\link{to_factor}}.
 #'
 #' @examples
 #' \dontrun{
@@ -56,31 +55,31 @@
 #' }
 #'
 #' @export
-to_labelled <- function(x) {
+to_labelled <- function(x, ...) {
   UseMethod("to_labelled")
 }
 
 #' @rdname to_labelled
 #' @export
-to_labelled.data.frame <- function(x) {
+to_labelled.data.frame <- function(x, ...) {
   foreign_to_labelled(x)
 }
 
 #' @rdname to_labelled
 #' @export
-to_labelled.list <- function(x) {
+to_labelled.list <- function(x, ...) {
   foreign_to_labelled(x)
 }
 
 #' @rdname to_labelled
 #' @export
-to_labelled.data.set <- function(x) {
+to_labelled.data.set <- function(x, ...) {
   memisc_to_labelled(x)
 }
 
 #' @rdname to_labelled
 #' @export
-to_labelled.importer <- function(x) {
+to_labelled.importer <- function(x, ...) {
   memisc_to_labelled(memisc::as.data.set(x))
 }
 
@@ -191,12 +190,42 @@ memisc_to_labelled <- function(x) {
 }
 
 #' @rdname to_labelled
+#' @param labels When converting a factor only:
+#'   an optional named vector indicating how factor levels should be coded.
+#'   If a factor level is not found in \code{labels}, it will be converted to \code{NA}.
 #' @export
-to_labelled.factor <- function(x) {
-  vl <- var_label(x)
-  labs <- 1:length(levels(x))
-  names(labs) <- levels(x)
-  x <- labelled(as.numeric(x), labs)
-  var_label(x) <- vl
+#' @examples
+#' # Converting factors to labelled vectors
+#' f <- factor(c("yes", "yes", "no", "no", "don't know", "no", "yes", "don't know"))
+#' to_labelled(f)
+#' to_labelled(f, c("yes" = 1, "no" = 2, "don't know" = 9))
+#' to_labelled(f, c("yes" = 1, "no" = 2))
+#' to_labelled(f, c("yes" = "Y", "no" = "N", "don't know" = "DK"))
+#'
+#' s1 <- labelled(c('M', 'M', 'F'), c(Male = 'M', Female = 'F'))
+#' labels <- val_labels(s1)
+#' f1 <- to_factor(s1)
+#' f1
+#'
+#' to_labelled(f1)
+#' identical(s1, to_labelled(f1))
+#' to_labelled(f1, labels)
+#' identical(s1, to_labelled(f1, labels))
+to_labelled.factor <- function(x, labels = NULL, ...) {
+  if (is.null(labels)) {
+    vl <- var_label(x)
+    labs <- 1:length(levels(x))
+    names(labs) <- levels(x)
+    x <- labelled(as.numeric(x), labs)
+    var_label(x) <- vl
+  } else {
+    vl <- var_label(x)
+    r <- rep_len(NA, length(x))
+    mode(r) <- mode(labels)
+    for (i in 1:length(labels))
+      r[x == names(labels)[i]] <- labels[i]
+    x <- labelled(r, labels)
+    var_label(x) <- vl
+  }
   x
 }
