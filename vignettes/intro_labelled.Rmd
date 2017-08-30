@@ -1,9 +1,12 @@
-<!--
-%\VignetteEngine{knitr::knitr}
-%\VignetteIndexEntry{labelled}
--->
-
-# Introduction to labelled
+---
+author: "Joseph Larmarange"
+title: "Introduction to labelled"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{lebelled}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
 
 The purpose of the **labelled** package is to provide functions to manipulate
 metadata as variable labels, value labels and defined missing values
