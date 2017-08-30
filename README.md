@@ -28,7 +28,7 @@ devtools::install_github("larmarange/labelled")
 
 ## Introduction to labelled
 
-Read https://cran.r-project.org/web/packages/labelled/vignettes/intro_labelled.html
+Read http://larmarange.github.io/labelled/articles/intro_labelled.html
 
 ## Some general principles
 
