@@ -3,6 +3,8 @@
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/labelled)](https://cran.r-project.org/package=labelled) 
 ![downloads](http://cranlogs.r-pkg.org/badges/grand-total/labelled)
 
+**Online documentation:** http://larmarange.github.io/labelled/
+
 # Labelled package for R
 
 This package is built on the new class `labelled` introduced by **haven** package
