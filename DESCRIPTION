@@ -18,7 +18,8 @@ Imports:
 Suggests:
     dplyr,
     testthat,
-    knitr
+    knitr,
+    questionr
 Enhances: memisc
 LazyData: true
 URL: https://github.com/larmarange/labelled

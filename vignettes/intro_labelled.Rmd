@@ -394,3 +394,15 @@ df <- df %>%
 df$s2
 ```
 
+To convert variables, you can use functions as `mutate_if` or `mutate_at`. See the example below.
+
+```{r}
+library(questionr)
+data(fertility)
+glimpse(women)
+glimpse(to_factor(women))
+glimpse(women %>% mutate_if(is.labelled, to_factor))
+glimpse(women %>% mutate_at(vars(employed:tv), to_factor))
+```
+
+
