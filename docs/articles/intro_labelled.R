@@ -219,3 +219,11 @@ df <- df %>%
   set_value_labels(s2 = NULL)
 df$s2
 
+## ------------------------------------------------------------------------
+library(questionr)
+data(fertility)
+glimpse(women)
+glimpse(to_factor(women))
+glimpse(women %>% mutate_if(is.labelled, to_factor))
+glimpse(women %>% mutate_at(vars(employed:tv), to_factor))
+

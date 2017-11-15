@@ -13,7 +13,7 @@ var_label(x) <- value
 set_variable_labels(.data, ...)
 }
 \arguments{
-\item{x}{A vector.}
+\item{x}{An object.}
 
 \item{value}{A character string or \code{NULL} to remove the label. For data frames,
 it could also be a named list.}
