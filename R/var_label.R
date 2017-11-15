@@ -1,6 +1,6 @@
 #' Get / Set a variable label
 #'
-#' @param x A vector.
+#' @param x An object.
 #' @param value A character string or \code{NULL} to remove the label. For data frames,
 #'   it could also be a named list.
 #' @details
@@ -21,8 +21,6 @@ var_label <- function(x) {
 
 #' @export
 var_label.default <- function(x) {
-  if (!is.atomic(x))
-    stop("`x` should be atomic", call. = FALSE, domain = "R-labelled")
   attr(x, "label", exact = TRUE)
 }
 
@@ -39,8 +37,6 @@ var_label.data.frame <- function(x) {
 
 #' @export
 `var_label<-.default` <- function(x, value) {
-  if (!is.atomic(x))
-    stop("`x` should be atomic", call. = FALSE, domain = "R-labelled")
   if ((!is.character(value) & !is.null(value)) | length(value) >
     1)
     stop("`value` should be a single character string or NULL",
