@@ -5,8 +5,8 @@
 #' @export
 as.data.frame.labelled <- function(x, ...) {
   if (typeof(x) == "character") {
-    as.data.frame.character(x, stringsAsFactors = FALSE)
+    as.data.frame.character(x, stringsAsFactors = FALSE, ...)
   } else {
-    as.data.frame.numeric(x)
+    as.data.frame.numeric(x, ...)
   }
 }
