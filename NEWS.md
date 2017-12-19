@@ -1,7 +1,8 @@
-# labelled 1.0.0-dev
+# labelled 1.0.1
 
 * bug fix: argument drop_unused_labels could now be used with `to_factor.data.frame()`
 * new labels argument for `to_labelled` method when applied to a factor
+* bug fix: appropriate column names with `data.frame` (cf. https://github.com/larmarange/labelled/issues/20)
 
 # labelled 1.0.0
 

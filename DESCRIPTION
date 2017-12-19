@@ -1,13 +1,14 @@
 Package: labelled
 Type: Package
 Title: Manipulating Labelled Data
-Version: 1.0.0.000001
-Date: 2017-08-09
+Version: 1.0.1
+Date: 2017-12-19
 Maintainer: Joseph Larmarange <joseph@larmarange.net>
 Authors@R: c(
   person("Joseph", "Larmarange", email = "joseph@larmarange.net", role = c("aut", "cre")),
   person("Daniel", "Ludecke", role = "ctb"),
-  person("Hadley", "Wickham", role = "ctb")
+  person("Hadley", "Wickham", role = "ctb"),
+  person("Bojanowski", "Michał", role = "ctb")
   )
 Description: Work with labelled data imported from
     'SPSS' or 'Stata' with 'haven' or 'foreign'.
