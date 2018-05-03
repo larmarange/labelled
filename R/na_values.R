@@ -11,7 +11,7 @@
 #' You can use \code{\link{user_na_to_na}} to convert user defined missing values to \code{NA}.
 #' @return
 #'   \code{na_values} will return a vector of values that should also be considered as missing.
-#'   \code{na_label} will return a numeric vector of length two giving the (inclusive)
+#'   \code{na_range} will return a numeric vector of length two giving the (inclusive)
 #'     extents of the range.
 #' @seealso \code{\link{labelled_spss}}, \code{\link{user_na_to_na}}
 #' @examples
