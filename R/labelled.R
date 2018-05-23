@@ -5,6 +5,7 @@
 #'
 #' @inheritParams haven::labelled
 #' @importFrom haven labelled
+#' @importFrom stats na.omit
 #' @seealso \code{\link[haven]{labelled}} (\pkg{haven})
 #' @export
 #' @examples

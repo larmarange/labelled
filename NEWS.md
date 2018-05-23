@@ -1,3 +1,8 @@
+# labelled 1.1.0
+
+* extend `dplyr::recode` method to be compatible with labelled vectors
+* copy_labels now copy also na_range and na_values attributes
+
 # labelled 1.0.1
 
 * bug fix: argument drop_unused_labels could now be used with `to_factor.data.frame()`
