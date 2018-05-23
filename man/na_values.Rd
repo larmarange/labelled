@@ -35,7 +35,7 @@ want the range to be open ended).}
 }
 \value{
 \code{na_values} will return a vector of values that should also be considered as missing.
-  \code{na_label} will return a numeric vector of length two giving the (inclusive)
+  \code{na_range} will return a numeric vector of length two giving the (inclusive)
     extents of the range.
 
 \code{set_na_values} and \code{set_na_range} will return an updated
