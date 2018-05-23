@@ -182,3 +182,14 @@ test_that("it is not possible to define missing values if no value labels were d
   expect_error(`na_values<-`(1:3, 9))
   expect_error(`na_range<-`(1:3, c(9, Inf)))
 })
+
+# recode (dplyr) -------------------------------------------------------------------
+test_that("dplyr::recode could be applied to numeric labelled vector", {
+  x <- dplyr::recode(labelled(1:3, c(yes = 1, no = 2)), `3` = 2L)
+  expect_equal(x, labelled(c(1L, 2L, 2L), c(yes = 1, no = 2)))
+})
+
+test_that("dplyr::recode could be applied to character labelled vector", {
+  x <- dplyr::recode(labelled(c("a", "b", "c"), c(yes = "a", no = "b")), c = "b")
+  expect_equal(x, labelled(c("a", "b", "b"), c(yes = "a", no = "b")))
+})

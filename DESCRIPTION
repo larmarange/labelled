@@ -15,9 +15,10 @@ Description: Work with labelled data imported from
 License: GPL-3
 Encoding: UTF-8
 Imports:
-    haven (>= 1.0.0)
-Suggests:
+    haven (>= 1.0.0),
     dplyr,
+    stats
+Suggests:
     testthat,
     knitr,
     questionr
