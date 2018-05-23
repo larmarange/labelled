@@ -28,6 +28,8 @@ copy_labels.default <- function(from, to) {
   var_label(to) <- var_label(from)
   if (!is.factor(to)) {
     val_labels(to) <- val_labels(from)
+    na_range(to) <- na_range(from)
+    na_values(to) <- na_values(from)
   }
   to
 }
