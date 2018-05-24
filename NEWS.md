@@ -2,6 +2,7 @@
 
 * extend `dplyr::recode` method to be compatible with labelled vectors
 * copy_labels now copy also na_range and na_values attributes
+* new method `remove_attributes`
 
 # labelled 1.0.1
 
