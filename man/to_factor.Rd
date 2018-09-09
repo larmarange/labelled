@@ -77,5 +77,5 @@ to_factor(x, ordered = TRUE)
 # Strict conversion
 v <- labelled(c(1, 1, 2, 3), labels = c(No = 1, Yes = 2))
 to_factor(v)
-to_factor(v, strict = TRUE) # No converted because 3 does not have a label
+to_factor(v, strict = TRUE) # Not converted because 3 does not have a label
 }

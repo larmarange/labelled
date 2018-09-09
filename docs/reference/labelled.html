@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a labelled vector. � labelled • labelled</title>
+<title>Create a labelled vector. — labelled • labelled</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,26 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Create a labelled vector. — labelled" />
+
+<meta property="og:description" content="A labelled vector is a common data structure in other statistical environments,
+allowing you to assign text labels to specific values." />
+<meta name="twitter:card" content="summary" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,12 +60,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">labelled</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">labelled</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.1.0.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -73,7 +90,7 @@
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -85,6 +102,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -92,22 +110,26 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Create a labelled vector.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/larmarange/labelled/blob/master/R/labelled.R'><code>R/labelled.R</code></a></small>
+    <div class="hidden name"><code>labelled.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>A labelled vector is a common data structure in other statistical environments,
 allowing you to assign text labels to specific values.</p>
     
+    </div>
 
-    <pre class="usage"><span class='fu'>labelled</span>(<span class='no'>x</span>, <span class='no'>labels</span>)
+    <pre class="usage"><span class='fu'>labelled</span>(<span class='no'>x</span>, <span class='no'>labels</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='fu'>is.labelled</span>(<span class='no'>x</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -121,36 +143,82 @@ character.</p></td>
 <code>x</code>. Unlike factors, labels don't need to be exhaustive: only a fraction
 of the values might be labelled.</p></td>
     </tr>
+    <tr>
+      <th>label</th>
+      <td><p>A short, human-readable description of the vector.</p></td>
+    </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>An object of class "haven_labelled" or "haven_labelled_spss".</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='http://www.rdocumentation.org/packages/haven/topics/labelled'>labelled</a></code> (<span class="pkg">haven</span>)
-    <code><a href='http://www.rdocumentation.org/packages/haven/topics/labelled'>is.labelled</a></code> (<span class="pkg">haven</span>)</p>
+    <div class='dont-index'><p><code><a href='http://www.rdocumentation.org/packages/haven/topics/labelled'>labelled</a></code> (<span class="pkg">haven</span>)</p>
+<p><code><a href='http://www.rdocumentation.org/packages/haven/topics/labelled'>is.labelled</a></code> (<span class="pkg">haven</span>)</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>s1</span> <span class='kw'>&lt;-</span> <span class='fu'>labelled</span>(<span class='fu'>c</span>(<span class='st'>'M'</span>, <span class='st'>'M'</span>, <span class='st'>'F'</span>), <span class='fu'>c</span>(<span class='kw'>Male</span> <span class='kw'>=</span> <span class='st'>'M'</span>, <span class='kw'>Female</span> <span class='kw'>=</span> <span class='st'>'F'</span>))
+    <pre class="examples"><div class='input'><span class='no'>s1</span> <span class='kw'>&lt;-</span> <span class='fu'>labelled</span>(<span class='fu'>c</span>(<span class='st'>"M"</span>, <span class='st'>"M"</span>, <span class='st'>"F"</span>), <span class='fu'>c</span>(<span class='kw'>Male</span> <span class='kw'>=</span> <span class='st'>"M"</span>, <span class='kw'>Female</span> <span class='kw'>=</span> <span class='st'>"F"</span>))
 <span class='no'>s1</span></div><div class='output co'>#&gt; &lt;Labelled character&gt;
 #&gt; [1] M M F
 #&gt; 
 #&gt; Labels:
 #&gt;  value  label
 #&gt;      M   Male
-#&gt;      F Female</div><div class='input'><span class='no'>s2</span> <span class='kw'>&lt;-</span> <span class='fu'>labelled</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>), <span class='fu'>c</span>(<span class='kw'>Male</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>Female</span> <span class='kw'>=</span> <span class='fl'>2</span>))
-<span class='no'>s2</span></div><div class='output co'>#&gt; &lt;Labelled double&gt;
+#&gt;      F Female</div><div class='input'><span class='fu'>str</span>(<span class='no'>s1</span>)</div><div class='output co'>#&gt;  'haven_labelled' chr [1:3] "M" "M" "F"
+#&gt;  - attr(*, "labels")= Named chr [1:2] "M" "F"
+#&gt;   ..- attr(*, "names")= chr [1:2] "Male" "Female"</div><div class='input'><span class='no'>s2</span> <span class='kw'>&lt;-</span> <span class='fu'>labelled</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>), <span class='fu'>c</span>(<span class='kw'>Male</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>Female</span> <span class='kw'>=</span> <span class='fl'>2</span>),
+               <span class='kw'>label</span><span class='kw'>=</span><span class='st'>"Assigned sex at birth"</span>)
+<span class='no'>s2</span></div><div class='output co'>#&gt; &lt;Labelled double&gt;: Assigned sex at birth
 #&gt; [1] 1 1 2
 #&gt; 
 #&gt; Labels:
 #&gt;  value  label
 #&gt;      1   Male
-#&gt;      2 Female</div><div class='input'><span class='fu'>is.labelled</span>(<span class='no'>s1</span>)</div><div class='output co'>#&gt; [1] TRUE</div></pre>
+#&gt;      2 Female</div><div class='input'><span class='fu'>str</span>(<span class='no'>s2</span>)</div><div class='output co'>#&gt;  'haven_labelled' num [1:3] 1 1 2
+#&gt;  - attr(*, "label")= chr "Assigned sex at birth"
+#&gt;  - attr(*, "labels")= Named num [1:2] 1 2
+#&gt;   ..- attr(*, "names")= chr [1:2] "Male" "Female"</div><div class='input'>
+<span class='co'># Unfortunately it's not possible to make as.factor() work for labelled objects</span>
+<span class='co'># so instead use to_factor(). This works for all types of labelled vectors.</span>
+<span class='fu'><a href='to_factor.html'>to_factor</a></span>(<span class='no'>s1</span>)</div><div class='output co'>#&gt; [1] Male   Male   Female
+#&gt; Levels: Male Female</div><div class='input'><span class='fu'><a href='to_factor.html'>to_factor</a></span>(<span class='no'>s1</span>, <span class='kw'>levels</span> <span class='kw'>=</span> <span class='st'>"prefixed"</span>)</div><div class='output co'>#&gt; [1] [M] Male   [M] Male   [F] Female
+#&gt; Levels: [M] Male [F] Female</div><div class='input'><span class='fu'><a href='to_factor.html'>to_factor</a></span>(<span class='no'>s2</span>)</div><div class='output co'>#&gt; [1] Male   Male   Female
+#&gt; attr(,"label")
+#&gt; [1] Assigned sex at birth
+#&gt; Levels: Male Female</div><div class='input'>
+<span class='co'># Other statistical software supports multiple types of missing values</span>
+<span class='no'>s3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='labelled_spss.html'>labelled_spss</a></span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>8</span>, <span class='fl'>9</span>),
+               <span class='fu'>c</span>(<span class='kw'>Male</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>Female</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>Refused</span> <span class='kw'>=</span> <span class='fl'>8</span>, <span class='st'>"Not applicable"</span> <span class='kw'>=</span> <span class='fl'>9</span>),
+               <span class='kw'>na_values</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>8</span>, <span class='fl'>9</span>)
+
+)
+<span class='no'>s3</span></div><div class='output co'>#&gt; &lt;Labelled SPSS double&gt;
+#&gt; [1] 1 1 2 2 8 9
+#&gt; Missing values: 8, 9
+#&gt; 
+#&gt; Labels:
+#&gt;  value          label
+#&gt;      1           Male
+#&gt;      2         Female
+#&gt;      8        Refused
+#&gt;      9 Not applicable</div><div class='input'><span class='fu'>str</span>(<span class='no'>s3</span>)</div><div class='output co'>#&gt;  'haven_labelled_spss' num [1:6] 1 1 2 2 8 9
+#&gt;  - attr(*, "labels")= Named num [1:4] 1 2 8 9
+#&gt;   ..- attr(*, "names")= chr [1:4] "Male" "Female" "Refused" "Not applicable"
+#&gt;  - attr(*, "na_values")= num [1:2] 8 9</div><div class='input'><span class='fu'><a href='to_factor.html'>to_factor</a></span>(<span class='no'>s3</span>)</div><div class='output co'>#&gt; [1] Male           Male           Female         Female         Refused       
+#&gt; [6] Not applicable
+#&gt; Levels: Male Female Refused Not applicable</div><div class='input'><span class='fu'><a href='to_factor.html'>to_factor</a></span>(<span class='no'>s3</span>, <span class='kw'>user_na_to_na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] Male   Male   Female Female &lt;NA&gt;   &lt;NA&gt;  
+#&gt; Levels: Male Female Refused Not applicable</div><div class='input'><span class='fu'>is.labelled</span>(<span class='no'>s1</span>)</div><div class='output co'>#&gt; [1] TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
@@ -165,11 +233,14 @@ of the values might be labelled.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

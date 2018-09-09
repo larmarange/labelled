@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Articles • labelled</title>
+<title>Arithmetic mean for numeric labelled vectors — mean.haven_labelled • labelled</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,7 +30,10 @@
 
 
 
-<meta property="og:title" content="Articles" />
+<meta property="og:title" content="Arithmetic mean for numeric labelled vectors — mean.haven_labelled" />
+
+<meta property="og:description" content="Arithmetic mean for numeric labelled vectors" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -46,7 +49,7 @@
   </head>
 
   <body>
-    <div class="container template-article-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -109,17 +112,57 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Articles</h1>
+    <h1>Arithmetic mean for numeric labelled vectors</h1>
+    <small class="dont-index">Source: <a href='https://github.com/larmarange/labelled/blob/master/R/mean.R'><code>R/mean.R</code></a></small>
+    <div class="hidden name"><code>mean.haven_labelled.Rd</code></div>
     </div>
 
-    <div class="section ">
-      <h3>All vignettes</h3>
-      <p class="section-desc"></p>
-
-      <ul>
-        <li><a href="intro_labelled.html">Introduction to labelled</a></li>
-      </ul>
+    <div class="ref-description">
+    
+    <p>Arithmetic mean for numeric labelled vectors</p>
+    
     </div>
+
+    <pre class="usage"><span class='co'># S3 method for haven_labelled</span>
+<span class='fu'>mean</span>(<span class='no'>x</span>, <span class='kw'>trim</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>a numeric labelled vector.</p></td>
+    </tr>
+    <tr>
+      <th>trim</th>
+      <td><p>the fraction (0 to 0.5) of observations to be trimmed from each end of x .
+before the mean is computed. Values of trim outside that range are taken as the nearest endpoint.</p></td>
+    </tr>
+    <tr>
+      <th>na.rm</th>
+      <td><p>a logical value indicating whether <code>NA</code> values should be stripped before the computation
+proceeds.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>additional arguments to be passed to or from methods.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='http://www.rdocumentation.org/packages/base/topics/mean'>mean</a></code></p></div>
+    
+
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#see-also">See also</a></li>
+          </ul>
+
   </div>
 </div>
 

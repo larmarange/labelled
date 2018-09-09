@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get / Set a variable label — var_label • labelled</title>
+<title>Recode values — recode.haven_labelled • labelled</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,10 @@
 
 
 
-<meta property="og:title" content="Get / Set a variable label — var_label" />
+<meta property="og:title" content="Recode values — recode.haven_labelled" />
 
-<meta property="og:description" content="Get / Set a variable label" />
+<meta property="og:description" content="Extend recode method from haven to
+works with labelled vectors." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,85 +113,83 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get / Set a variable label</h1>
-    <small class="dont-index">Source: <a href='https://github.com/larmarange/labelled/blob/master/R/var_label.R'><code>R/var_label.R</code></a></small>
-    <div class="hidden name"><code>var_label.Rd</code></div>
+    <h1>Recode values</h1>
+    <small class="dont-index">Source: <a href='https://github.com/larmarange/labelled/blob/master/R/recode.R'><code>R/recode.R</code></a></small>
+    <div class="hidden name"><code>recode.haven_labelled.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Get / Set a variable label</p>
+    <p>Extend <code><a href='http://dplyr.tidyverse.org/reference/recode.html'>recode</a></code> method from <span class="pkg">haven</span> to
+works with labelled vectors.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>var_label</span>(<span class='no'>x</span>)
-
-<span class='fu'>var_label</span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
-
-<span class='fu'>set_variable_labels</span>(<span class='no'>.data</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='co'># S3 method for haven_labelled</span>
+<span class='fu'>recode</span>(<span class='no'>.x</span>, <span class='no'>...</span>, <span class='kw'>.default</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>.missing</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>An object.</p></td>
-    </tr>
-    <tr>
-      <th>value</th>
-      <td><p>A character string or <code>NULL</code> to remove the label. For data frames,
-it could also be a named list.</p></td>
-    </tr>
-    <tr>
-      <th>.data</th>
-      <td><p>a data frame</p></td>
+      <th>.x</th>
+      <td><p>A vector to modify</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>name-value pairs of variable labels (see examples)</p></td>
+      <td><p>Replacements. These should be named for character and factor
+<code>.x</code>, and can be named for numeric <code>.x</code>. The argument names should be the
+current values to be replaced, and the argument values should be the new
+(replacement) values.</p>
+<p>All replacements must be the same type, and must have either
+length one or the same length as x.</p>
+<p>These dots support <a href='http://www.rdocumentation.org/packages/rlang/topics/tidy-dots'>tidy dots</a> features.</p></td>
+    </tr>
+    <tr>
+      <th>.default</th>
+      <td><p>If supplied, all values not otherwise matched will
+be given this value. If not supplied and if the replacements are
+the same type as the original values in <code>.x</code>, unmatched
+values are not changed. If not supplied and if the replacements
+are not compatible, unmatched values are replaced with <code>NA</code>.</p>
+<p><code>.default</code> must be either length 1 or the same length as
+<code>.x</code>.</p></td>
+    </tr>
+    <tr>
+      <th>.missing</th>
+      <td><p>If supplied, any missing values in <code>.x</code> will be
+replaced by this value. Must be either length 1 or the same length as
+<code>.x</code>.</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code>set_variable_labels</code> will return an updated copy of <code>.data</code>.</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>For data frames, if <code>value</code> is a named list, only elements whose name will
-  match a column of the data frame will be taken into account.</p>
-    
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
-
-    <p><code>set_variable_labels</code> could be used with <code>dplyr</code>.</p>
+    <div class='dont-index'><p><code><a href='http://dplyr.tidyverse.org/reference/recode.html'>recode</a></code> (<span class="pkg">dplyr</span>)</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>var_label</span>(<span class='no'>iris</span>$<span class='no'>Sepal.Length</span>)</div><div class='output co'>#&gt; NULL</div><div class='input'><span class='fu'>var_label</span>(<span class='no'>iris</span>$<span class='no'>Sepal.Length</span>) <span class='kw'>&lt;-</span> <span class='st'>'Length of the sepal'</span></div><span class='co'># NOT RUN {</span>
- <span class='fu'>View</span>(<span class='no'>iris</span>)
-<span class='co'># }</span><div class='input'><span class='co'># To remove a variable label</span>
-<span class='fu'>var_label</span>(<span class='no'>iris</span>$<span class='no'>Sepal.Length</span>) <span class='kw'>&lt;-</span> <span class='kw'>NULL</span>
-<span class='kw'>if</span> (<span class='fu'>require</span>(<span class='no'>dplyr</span>)) {
-  <span class='co'># adding some variable labels</span>
-  <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/reexports.html'>data_frame</a></span>(<span class='kw'>s1</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"M"</span>, <span class='st'>"M"</span>, <span class='st'>"F"</span>), <span class='kw'>s2</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>)) <span class='kw'>%&gt;%</span>
-    <span class='fu'>set_variable_labels</span>(<span class='kw'>s1</span> <span class='kw'>=</span> <span class='st'>"Sex"</span>, <span class='kw'>s2</span> <span class='kw'>=</span> <span class='st'>"Yes or No?"</span>)
-  <span class='fu'>var_label</span>(<span class='no'>df</span>)
-
-  <span class='co'># removing a variable label</span>
-  <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='no'>df</span> <span class='kw'>%&gt;%</span> <span class='fu'>set_variable_labels</span>(<span class='kw'>s2</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
-  <span class='fu'>var_label</span>(<span class='no'>df</span>$<span class='no'>s2</span>)
-}</div><div class='output co'>#&gt; NULL</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='labelled.html'>labelled</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fu'>c</span>(<span class='kw'>yes</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>no</span> <span class='kw'>=</span> <span class='fl'>2</span>))
+<span class='no'>x</span></div><div class='output co'>#&gt; &lt;Labelled integer&gt;
+#&gt; [1] 1 2 3
+#&gt; 
+#&gt; Labels:
+#&gt;  value label
+#&gt;      1   yes
+#&gt;      2    no</div><div class='input'><span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='no'>x</span>, <span class='kw'>`3`</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</div><div class='output co'>#&gt; &lt;Labelled integer&gt;
+#&gt; [1] 1 2 2
+#&gt; 
+#&gt; Labels:
+#&gt;  value label
+#&gt;      1   yes
+#&gt;      2    no</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#note">Note</a></li>
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
