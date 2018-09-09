@@ -67,15 +67,12 @@ So far, missing values defined in Stata are always imported as \code{NA} by
 \dontrun{
   # from foreign
   library(foreign)
+  sav <- system.file("files", "electric.sav", package = "foreign")
   df <- to_labelled(read.spss(
-    'file.sav',
+    sav,
     to.data.frame = FALSE,
     use.value.labels = FALSE,
     use.missings = FALSE
- ))
- df <- to_labelled(read.dta(
-   'file.dta',
-   convert.factors = FALSE
  ))
 
  # from memisc

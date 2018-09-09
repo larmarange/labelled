@@ -12,6 +12,7 @@
 ## Other changes
 
 * `user_na_to_na` option added to `to_factor()`
+* `foreign_to_labelled()` now import SPSS missing values
 
 # labelled 1.1.0
 

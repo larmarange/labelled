@@ -10,10 +10,6 @@
 This package is built on the new class `labelled` introduced by **haven** package
 and propose additional functions to manipulate labelled data.
 
-Please note that this package is still under active development.
-
-Missing values are currently not supported anymore by `labelled` package.
-
 ## BREAKING CHANGES
 
 Following version 2.0.0 of `haven`, `labelled()` and `labelled_spss()` now

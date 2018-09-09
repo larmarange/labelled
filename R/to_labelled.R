@@ -34,15 +34,12 @@
 #' \dontrun{
 #'   # from foreign
 #'   library(foreign)
+#'   sav <- system.file("files", "electric.sav", package = "foreign")
 #'   df <- to_labelled(read.spss(
-#'     'file.sav',
+#'     sav,
 #'     to.data.frame = FALSE,
 #'     use.value.labels = FALSE,
 #'     use.missings = FALSE
-#'  ))
-#'  df <- to_labelled(read.dta(
-#'    'file.dta',
-#'    convert.factors = FALSE
 #'  ))
 #'
 #'  # from memisc
@@ -93,7 +90,7 @@ foreign_to_labelled <- function(x) {
   variable.labels <- attr(x, "variable.labels", exact = TRUE)  # read.spss
   var.labels <- attr(x, "var.labels", exact = TRUE)  # read.dta
   label.table <- attr(x, "label.table", exact = TRUE)  # read.dta
-  #missings <- attr(x, "missings", exact = TRUE)  # read.spss
+  missings <- attr(x, "missings", exact = TRUE)  # read.spss
 
   # if imported with read.spss(to.data.frame=FALSE) it's a
   # list, not a df
@@ -128,19 +125,17 @@ foreign_to_labelled <- function(x) {
     val_labels(x) <- label.table
 
   # missing values (read.spss)
-  # for (var in names(missings)) {
-  #   if (missings[[var]]$type %in% c("one", "two", "three")) {
-  #     missing_val(x[[var]], force = TRUE) <- missings[[var]]$value
-  #   }
-  #   if (missings[[var]]$type %in% c("range", "range+1")) {
-  #     m <- unique(x[[var]])
-  #     m <- m[m >= missings[[var]]$value[1] & m <= missings[[var]]$value[2]]
-  #     missing_val(x[[var]], force = TRUE) <- m
-  #   }
-  #   if (missings[[var]]$type == "range+1") {
-  #     missing_val(x[[var]], force = TRUE) <- missings[[var]]$value[3]
-  #   }
-  # }
+  for (var in names(missings)) {
+    if (missings[[var]]$type %in% c("one", "two", "three")) {
+      na_values(x[[var]]) <- missings[[var]]$value
+    }
+    if (missings[[var]]$type %in% c("range", "range+1")) {
+      na_range(x[[var]]) <- missings[[var]]$value[1:2]
+    }
+    if (missings[[var]]$type == "range+1") {
+      na_values(x[[var]]) <- missings[[var]]$value[3]
+    }
+  }
 
   # cleaning read.spss
   attr(x, "variable.labels") <- NULL
