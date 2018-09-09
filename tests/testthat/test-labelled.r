@@ -90,6 +90,11 @@ test_that("to_factor preserves variable label", {
   expect_equal(var_label(to_factor(x)), var_label(x))
 })
 
+test_that("strict option of to_factor works correctly", {
+  v <- labelled(c(1, 1, 2, 3), labels = c(No = 1, Yes = 2))
+  expect_s3_class(to_factor(v, strict = FALSE), "factor")
+  expect_s3_class(to_factor(v, strict = TRUE), "haven_labelled")
+})
 
 # to_character --------------------------------------------------------------------
 

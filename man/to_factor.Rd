@@ -11,12 +11,12 @@ to_factor(x, ...)
 \method{to_factor}{haven_labelled}(x, levels = c("labels", "values",
   "prefixed"), ordered = FALSE, nolabel_to_na = FALSE,
   sort_levels = c("auto", "none", "labels", "values"), decreasing = FALSE,
-  drop_unused_labels = FALSE, user_na_to_na = FALSE, ...)
+  drop_unused_labels = FALSE, user_na_to_na = FALSE, strict = FALSE, ...)
 
 \method{to_factor}{data.frame}(x, levels = c("labels", "values", "prefixed"),
   ordered = FALSE, nolabel_to_na = FALSE, sort_levels = c("auto", "none",
   "labels", "values"), decreasing = FALSE, labelled_only = TRUE,
-  drop_unused_labels = FALSE, ...)
+  drop_unused_labels = FALSE, strict = FALSE, ...)
 }
 \arguments{
 \item{x}{Object to coerce to a factor.}
@@ -36,6 +36,8 @@ to_factor(x, ...)
 \item{drop_unused_labels}{Should unused value labels be dropped?}
 
 \item{user_na_to_na}{Convert user defined missing values into \code{NA}?}
+
+\item{strict}{Convert to factor only if all values have a defined label?}
 
 \item{labelled_only}{for a data.frame, convert only labelled variables to factors?}
 }
@@ -71,4 +73,9 @@ to_factor(v, sort_levels = 'l')
 
 x <- labelled(c('H', 'M', 'H', 'L'), c(low = 'L', medium = 'M', high = 'H'))
 to_factor(x, ordered = TRUE)
+
+# Strict conversion
+v <- labelled(c(1, 1, 2, 3), labels = c(No = 1, Yes = 2))
+to_factor(v)
+to_factor(v, strict = TRUE) # No converted because 3 does not have a label
 }
