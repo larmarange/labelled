@@ -228,7 +228,7 @@ method provided by <code>haven</code> package.</p>
 <span class='co'># Strict conversion</span>
 <span class='no'>v</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='labelled.html'>labelled</a></span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='kw'>No</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>Yes</span> <span class='kw'>=</span> <span class='fl'>2</span>))
 <span class='fu'>to_factor</span>(<span class='no'>v</span>)</div><div class='output co'>#&gt; [1] No  No  Yes 3  
-#&gt; Levels: No Yes 3</div><div class='input'><span class='fu'>to_factor</span>(<span class='no'>v</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='co'># No converted because 3 does not have a label</span></div><div class='output co'>#&gt; &lt;Labelled double&gt;
+#&gt; Levels: No Yes 3</div><div class='input'><span class='fu'>to_factor</span>(<span class='no'>v</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='co'># Not converted because 3 does not have a label</span></div><div class='output co'>#&gt; &lt;Labelled double&gt;
 #&gt; [1] 1 1 2 3
 #&gt; 
 #&gt; Labels:
