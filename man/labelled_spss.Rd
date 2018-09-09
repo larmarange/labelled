@@ -4,7 +4,7 @@
 \alias{labelled_spss}
 \title{Create a labelled vector with SPSS style of missing values.}
 \usage{
-labelled_spss(x, labels, na_values = NULL, na_range = NULL)
+labelled_spss(x, labels, na_values = NULL, na_range = NULL, label = NULL)
 }
 \arguments{
 \item{x}{A vector to label. Must be either numeric (integer or double) or
@@ -19,6 +19,8 @@ of the values might be labelled.}
 \item{na_range}{A numeric vector of length two giving the (inclusive) extents
 of the range. Use \code{-Inf} and \code{Inf} if you want the range to be
 open ended.}
+
+\item{label}{A short, human-readable description of the vector.}
 }
 \description{
 It is similar to the \code{\link{labelled}} class but it also models SPSS's

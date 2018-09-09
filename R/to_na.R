@@ -3,7 +3,6 @@
 #' For labelled variables, values with no label will be recoded to \code{NA}.
 #'
 #' @param x Object to recode.
-#' @param ... Other arguments passed down to method.
 #' @examples
 #' v <- labelled(c(1, 2, 9, 1, 9), c(yes = 1, no = 2))
 #' nolabel_to_na(v)
@@ -18,7 +17,7 @@ nolabel_to_na.default <- function(x) {
 }
 
 #' @export
-nolabel_to_na.labelled <- function(x) {
+nolabel_to_na.haven_labelled <- function(x) {
   allval <- unique(x)
   allval <- allval[!is.na(allval)]
   nolabel <- allval[!allval %in% val_labels(x)]
@@ -54,7 +53,7 @@ val_labels_to_na.default <- function(x) {
 }
 
 #' @export
-val_labels_to_na.labelled <- function(x) {
+val_labels_to_na.haven_labelled <- function(x) {
   val <- val_labels(x)
   if (length(val) > 0)
     x[x %in% val] <- NA
@@ -67,4 +66,5 @@ val_labels_to_na.data.frame <- function(x) {
   x[] <- lapply(x, val_labels_to_na)
   x
 }
+
 

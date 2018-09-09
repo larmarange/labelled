@@ -11,7 +11,7 @@
 #' x
 #' dplyr::recode(x, `3` = 2L)
 #' @export
-recode.labelled <- function(.x, ..., .default = NULL, .missing = NULL) {
+recode.haven_labelled <- function(.x, ..., .default = NULL, .missing = NULL) {
   ret <- dplyr::recode(.x = unclass(.x), ..., .default = .default, .missing = .missing)
   if (mode(.x) == mode(ret)) {
     ret <- copy_labels(.x, ret)

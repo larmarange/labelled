@@ -32,6 +32,7 @@ to_factor.default <- function(x, ...) {
 #' @param sort_levels How the factor levels should be sorted? (see Details)
 #' @param decreasing Should levels be sorted in decreasing order?
 #' @param drop_unused_labels Should unused value labels be dropped?
+#' @param user_na_to_na Convert user defined missing values into \code{NA}?
 #' @details
 #'   If some values doesn't have a label, automatic labels will be created, except if
 #'   \code{nolabel_to_na} is \code{TRUE}.
@@ -55,16 +56,18 @@ to_factor.default <- function(x, ...) {
 #' x <- labelled(c('H', 'M', 'H', 'L'), c(low = 'L', medium = 'M', high = 'H'))
 #' to_factor(x, ordered = TRUE)
 #' @export
-to_factor.labelled <- function(x, levels = c("labels", "values",
+to_factor.haven_labelled <- function(x, levels = c("labels", "values",
   "prefixed"), ordered = FALSE, nolabel_to_na = FALSE,
   sort_levels = c("auto", "none", "labels", "values"), decreasing = FALSE,
-  drop_unused_labels = FALSE,
+  drop_unused_labels = FALSE, user_na_to_na = FALSE,
   ...) {
   vl <- var_label(x)
   levels <- match.arg(levels)
   sort_levels <- match.arg(sort_levels)
   if (nolabel_to_na)
     x <- nolabel_to_na(x)
+  if (user_na_to_na)
+    x <- user_na_to_na(x)
   labels <- val_labels(x)
   allval <- unique(x)
   allval <- allval[!is.na(allval)]

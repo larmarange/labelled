@@ -32,7 +32,7 @@ to_character.default <- function(x, ...) {
 #' to_character(v, "v")
 #' to_character(v, "p")
 #' @export
-to_character.labelled <- function(x, levels = c("labels", "values",
+to_character.haven_labelled <- function(x, levels = c("labels", "values",
   "prefixed"), nolabel_to_na = FALSE, ...) {
   vl <- var_label(x)
   levels <- match.arg(levels)

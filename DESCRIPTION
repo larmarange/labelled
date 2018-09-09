@@ -1,8 +1,8 @@
 Package: labelled
 Type: Package
 Title: Manipulating Labelled Data
-Version: 1.1.0
-Date: 2018-05-24
+Version: 1.1.0.9000
+Date: 2018-09-07
 Maintainer: Joseph Larmarange <joseph@larmarange.net>
 Authors@R: c(
   person("Joseph", "Larmarange", email = "joseph@larmarange.net", role = c("aut", "cre")),
@@ -11,11 +11,13 @@ Authors@R: c(
   person("Bojanowski", "Michał", role = "ctb")
   )
 Description: Work with labelled data imported from
-    'SPSS' or 'Stata' with 'haven' or 'foreign'.
+    'SPSS' or 'Stata' with 'haven' or 'foreign'. This package
+    provides useful functions to deal with "haven_labelled" and
+    "haven_labelled_spss" classes introduced by 'haven' package.
 License: GPL-3
 Encoding: UTF-8
 Imports:
-    haven (>= 1.0.0),
+    haven (>= 1.1.2.9000),
     dplyr,
     stats
 Suggests:

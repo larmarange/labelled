@@ -1,9 +1,9 @@
 context("Labelled")
 
-test_that("labelled return an object of class labelled",{
+test_that("labelled return an object of class haven_labelled",{
   x <- labelled(c(1,2,3), c(yes = 1, maybe = 2, no = 3))
   expect_that(is.labelled(x), is_true())
-  expect_equal(class(x), "labelled")
+  expect_equal(class(x), "haven_labelled")
 })
 
 test_that("x must be numeric or character", {
@@ -20,12 +20,6 @@ test_that("labels must have names", {
   expect_error(labelled(1, 1))
 })
 
-test_that("labelled preserves variable label", {
-  x <- 1:3
-  var_label(x) <- "test"
-  x <- labelled(x, c(yes = 1))
-  expect_equal(attr(x, "label", exact = TRUE), "test")
-})
 
 # var_labels and var_label ------------------------------------------------
 
@@ -53,14 +47,14 @@ test_that("val_labels and val_label preserves spss missing values", {
   x <- labelled_spss(1:10, c(Good = 1, Bad = 8), na_values = c(9, 10), na_range = c(11, Inf))
   val_labels(x) <- c(yes = 1, no = 3)
   val_label(x, 2) <- "maybe"
-  expect_true(inherits(x, "labelled"))
-  expect_true(inherits(x, "labelled_spss"))
+  expect_true(inherits(x, "haven_labelled"))
+  expect_true(inherits(x, "haven_labelled_spss"))
   expect_equal(attr(x, "na_values"), c(9, 10))
   expect_equal(attr(x, "na_range"), c(11, Inf))
 
   val_label(x, 2) <- "maybe"
-  expect_true(inherits(x, "labelled"))
-  expect_true(inherits(x, "labelled_spss"))
+  expect_true(inherits(x, "haven_labelled"))
+  expect_true(inherits(x, "haven_labelled_spss"))
   expect_equal(attr(x, "na_values"), c(9, 10))
   expect_equal(attr(x, "na_range"), c(11, Inf))
 
@@ -193,3 +187,36 @@ test_that("dplyr::recode could be applied to character labelled vector", {
   x <- dplyr::recode(labelled(c("a", "b", "c"), c(yes = "a", no = "b")), c = "b")
   expect_equal(x, labelled(c("a", "b", "b"), c(yes = "a", no = "b")))
 })
+
+# update_labelled ----------------------------------------
+
+test_that("update_labelled update previous haven's labelled objects but not Hmisc's labelled objects", {
+  vhaven <- structure(1:4, label = "label", labels = c(No = 1, Yes = 2), class = "labelled")
+  vHmisc <- structure(1:4, label = "label", class = "labelled")
+
+  expect_equal(class(update_labelled(vhaven)), "haven_labelled")
+  expect_equal(class(update_labelled(vHmisc)), "labelled")
+
+  df <- dplyr::data_frame(vhaven, vHmisc)
+  expect_equal(class(update_labelled(df)$vhaven), "haven_labelled")
+  expect_equal(class(update_labelled(df)$vHmisc), "labelled")
+})
+
+test_that("update_labelled update to haven_labelled_spss if there are na values", {
+  v1 <- structure(1:4, label = "label", labels = c(No = 1, Yes = 2),
+                  na_values = c(8, 9), class = c("labelled_spss", "labelled"))
+  v2 <- structure(1:4, label = "label", labels = c(No = 1, Yes = 2),
+                  na_range = c(8, 9), class = c("labelled_spss", "labelled"))
+
+  expect_equal(class(update_labelled(v1)), c("haven_labelled_spss", "haven_labelled"))
+  expect_equal(class(update_labelled(v1)), c("haven_labelled_spss", "haven_labelled"))
+})
+
+test_that("update_labelled preserve variable and value labels", {
+  v <- structure(1:4, label = "variable label", labels = c(No = 1, Yes = 2), class = "labelled")
+
+  expect_equal(var_label(update_labelled(v)), "variable label")
+  expect_equal(val_labels(update_labelled(v)), c(No = 1, Yes = 2))
+})
+
+

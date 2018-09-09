@@ -7,6 +7,7 @@
 \alias{na_range<-}
 \alias{set_na_values}
 \alias{set_na_range}
+\alias{user_na_to_na}
 \title{Get / Set SPSS missing values}
 \usage{
 na_values(x)
@@ -20,6 +21,8 @@ na_range(x) <- value
 set_na_values(.data, ...)
 
 set_na_range(.data, ...)
+
+user_na_to_na(x)
 }
 \arguments{
 \item{x}{A vector.}
@@ -58,11 +61,13 @@ v
 na_values(v) <- 9
 na_values(v)
 v
+user_na_to_na(v)
 na_values(v) <- NULL
 v
 na_range(v) <- c(5, Inf)
 na_range(v)
 v
+user_na_to_na(v)
 if (require(dplyr)) {
   # setting value labels
   df <- data_frame(s1 = c("M", "M", "F", "F"), s2 = c(1, 1, 2, 9)) \%>\%

@@ -1,14 +1,29 @@
+# labelled 1.1.9000 (to become version 2.0.0)
+
+## BREAKING CHANGE
+
+* Following version 2.0.0 of `haven`, `labelled()` and `labelled_spss()` now
+  produce objects with class "haven_labelled" and "haven_labelled_spss", due
+  to conflict between the previous "labelled" class and the "labelled" class
+  used by `Hmisc`.
+* A new function `update_labelled()` could be used to convert data imported
+  with an older version of `haven` to the new classes.
+
+## Other changes
+
+* `user_na_to_na` option added to `to_factor()`
+
 # labelled 1.1.0
 
-* extend `dplyr::recode` method to be compatible with labelled vectors
-* copy_labels now copy also na_range and na_values attributes
-* new method `remove_attributes`
+* extend `dplyr::recode()` method to be compatible with labelled vectors.
+* `copy_labels()` now copy also `na_range` and `na_values` attributes.
+* new method `remove_attributes()`
 
 # labelled 1.0.1
 
-* bug fix: argument drop_unused_labels could now be used with `to_factor.data.frame()`
-* new labels argument for `to_labelled` method when applied to a factor
-* bug fix: appropriate column names with `data.frame` (cf. https://github.com/larmarange/labelled/issues/20)
+* bug fix: argument `drop_unused_labels` could now be used with `to_factor.data.frame()`
+* new labels argument for `to_labelled()` method when applied to a factor
+* bug fix: appropriate column names with `data.frame` (#20)
 
 # labelled 1.0.0
 

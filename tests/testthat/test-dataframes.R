@@ -9,7 +9,7 @@ test_that("data.frame variables are named correctly", {
 })
 
 test_that("tibble variables are named correctly", {
-    d <- dplyr::data_frame(
+    d <- dplyr::tibble(
     lab = labelled(1:5, c(a=1, b=2)),
     nolab = 1:5
   )

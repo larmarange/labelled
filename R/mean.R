@@ -10,7 +10,7 @@
 #' @seealso \code{\link[base]{mean}}
 #'
 #' @export
-mean.labelled <- function(x, trim = 0, na.rm = FALSE,
+mean.haven_labelled <- function(x, trim = 0, na.rm = FALSE,
   ...) {
   if (typeof(x) == "character")
     stop("mean could be used only with numeric labelled vectors.")

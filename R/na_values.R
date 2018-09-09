@@ -20,11 +20,13 @@
 #' na_values(v) <- 9
 #' na_values(v)
 #' v
+#' user_na_to_na(v)
 #' na_values(v) <- NULL
 #' v
 #' na_range(v) <- c(5, Inf)
 #' na_range(v)
 #' v
+#' user_na_to_na(v)
 #' @export
 na_values <- function(x) {
   UseMethod("na_values")
@@ -37,7 +39,7 @@ na_values.default <- function(x) {
 }
 
 #' @export
-na_values.labelled_spss <- function(x) {
+na_values.haven_labelled_spss <- function(x) {
   attr(x, "na_values", exact = TRUE)
 }
 
@@ -61,11 +63,11 @@ na_values.data.frame <- function(x) {
 }
 
 #' @export
-`na_values<-.labelled` <- function(x, value) {
+`na_values<-.haven_labelled` <- function(x, value) {
   if (is.null(value)) {
     attr(x, "na_values") <- NULL
     if (is.null(attr(x, "na_range")))
-      class(x) <- "labelled"
+      class(x) <- "haven_labelled"
   } else {
     if (is.null(val_labels(x)))
       stop("Value labels need to be defined first. Please use val_labels().")
@@ -87,7 +89,7 @@ na_range.default <- function(x) {
 }
 
 #' @export
-na_range.labelled_spss <- function(x) {
+na_range.haven_labelled_spss <- function(x) {
   attr(x, "na_range", exact = TRUE)
 }
 
@@ -111,11 +113,11 @@ na_range.data.frame <- function(x) {
 }
 
 #' @export
-`na_range<-.labelled` <- function(x, value) {
+`na_range<-.haven_labelled` <- function(x, value) {
   if (is.null(value)) {
     attr(x, "na_range") <- NULL
     if (is.null(attr(x, "na_values")))
-      class(x) <- "labelled"
+      class(x) <- "haven_labelled"
   } else {
     if (is.null(val_labels(x)))
       stop("Value labels need to be defined first. Please use val_labels().")
@@ -169,3 +171,30 @@ set_na_range <- function(.data, ...) {
 
   .data
 }
+
+
+
+#' @rdname na_values
+#' @export
+user_na_to_na <- function(x) {
+  UseMethod("user_na_to_na")
+}
+
+#' @export
+user_na_to_na.default <- function(x) {
+  # do nothing
+  x
+}
+
+#' @export
+user_na_to_na.haven_labelled_spss <- function(x) {
+  remove_user_na(x, user_na_to_na = TRUE)
+}
+
+#' @export
+user_na_to_na.data.frame <- function(x) {
+  x[] <- lapply(x, user_na_to_na)
+  x
+}
+
+

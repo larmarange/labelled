@@ -8,8 +8,6 @@ nolabel_to_na(x)
 }
 \arguments{
 \item{x}{Object to recode.}
-
-\item{...}{Other arguments passed down to method.}
 }
 \description{
 For labelled variables, values with no label will be recoded to \code{NA}.

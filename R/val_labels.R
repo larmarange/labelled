@@ -31,7 +31,7 @@ val_labels.default <- function(x, prefixed = FALSE) {
 
 #' @rdname val_labels
 #' @export
-val_labels.labelled <- function(x, prefixed = FALSE) {
+val_labels.haven_labelled <- function(x, prefixed = FALSE) {
   labels <- attr(x, "labels", exact = TRUE)
   if (prefixed)
     names(labels) <- paste0("[", labels, "] ", names(labels))
@@ -60,7 +60,7 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
 #' @export
 `val_labels<-.numeric` <- function(x, value) {
   if (!is.null(value)) {
-    x <- labelled(x, value)
+    x <- labelled(x, value, label = var_label(x))
   }
   x
 }
@@ -69,26 +69,26 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
 #' @export
 `val_labels<-.character` <- function(x, value) {
   if (!is.null(value)) {
-    x <- labelled(x, value)
+    x <- labelled(x, value, label = var_label(x))
   }
   x
 }
 
 #' @rdname val_labels
 #' @export
-`val_labels<-.labelled` <- function(x, value) {
+`val_labels<-.haven_labelled` <- function(x, value) {
   if (is.null(value)) {
     x <- unclass(x)
     attr(x, "labels") <- NULL
   } else {
-    x <- labelled(x, value)
+    x <- labelled(x, value, label = var_label(x))
   }
   x
 }
 
 #' @rdname val_labels
 #' @export
-`val_labels<-.labelled_spss` <- function(x, value) {
+`val_labels<-.haven_labelled_spss` <- function(x, value) {
   if (is.null(value)) {
     if (is.null(attr(x, "na_values")) & is.null(attr(x, "na_range"))) {
       x <- unclass(x)
@@ -97,7 +97,7 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
       stop("Value labels can't be removed if some user missing values are defined. Please use remove_user_na() first.")
     }
   } else {
-    x <- labelled_spss(x, value, na_values = attr(x, "na_values"), na_range = attr(x, "na_range"))
+    x <- labelled_spss(x, value, na_values = attr(x, "na_values"), na_range = attr(x, "na_range"), label = var_label(x))
   }
   x
 }
@@ -145,7 +145,7 @@ val_label.default <- function(x, v, prefixed = FALSE) {
 
 #' @rdname val_labels
 #' @export
-val_label.labelled <- function(x, v, prefixed = FALSE) {
+val_label.haven_labelled <- function(x, v, prefixed = FALSE) {
   if (length(v) != 1)
     stop("`v` should be a single value", call. = FALSE, domain = "R-labelled")
   labels <- val_labels(x)
@@ -174,7 +174,7 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
 
 #' @rdname val_labels
 #' @export
-`val_label<-.labelled` <- function(x, v, value) {
+`val_label<-.haven_labelled` <- function(x, v, value) {
   if (length(v) != 1)
     stop("`v` should be a single value", call. = FALSE, domain = "R-labelled")
   if (length(value) > 1)
@@ -205,13 +205,13 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
 #' @rdname val_labels
 #' @export
 `val_label<-.numeric` <- function(x, v, value) {
-  `val_label<-.labelled`(x = x, v = v, value = value)
+  `val_label<-.haven_labelled`(x = x, v = v, value = value)
 }
 
 #' @rdname val_labels
 #' @export
 `val_label<-.character` <- function(x, v, value) {
-  `val_label<-.labelled`(x = x, v = v, value = value)
+  `val_label<-.haven_labelled`(x = x, v = v, value = value)
 }
 
 #' @rdname val_labels
@@ -344,7 +344,7 @@ sort_val_labels.default <- function(x, according_to = c("values",
 
 #' @rdname sort_val_labels
 #' @export
-sort_val_labels.labelled <- function(x, according_to = c("values",
+sort_val_labels.haven_labelled <- function(x, according_to = c("values",
   "labels"), decreasing = FALSE) {
   according_to <- match.arg(according_to)
   labels <- val_labels(x)

@@ -6,13 +6,35 @@
 #' @inheritParams haven::labelled
 #' @importFrom haven labelled
 #' @importFrom stats na.omit
+#' @return
+#' An object of class "haven_labelled" or "haven_labelled_spss".
 #' @seealso \code{\link[haven]{labelled}} (\pkg{haven})
 #' @export
 #' @examples
-#' s1 <- labelled(c('M', 'M', 'F'), c(Male = 'M', Female = 'F'))
+#' s1 <- labelled(c("M", "M", "F"), c(Male = "M", Female = "F"))
 #' s1
-#' s2 <- labelled(c(1, 1, 2), c(Male = 1, Female = 2))
+#' str(s1)
+#' s2 <- labelled(c(1, 1, 2), c(Male = 1, Female = 2),
+#'                label="Assigned sex at birth")
 #' s2
+#' str(s2)
+#'
+#' # Unfortunately it's not possible to make as.factor() work for labelled objects
+#' # so instead use to_factor(). This works for all types of labelled vectors.
+#' to_factor(s1)
+#' to_factor(s1, levels = "prefixed")
+#' to_factor(s2)
+#'
+#' # Other statistical software supports multiple types of missing values
+#' s3 <- labelled_spss(c(1, 1, 2, 2, 8, 9),
+#'                c(Male = 1, Female = 2, Refused = 8, "Not applicable" = 9),
+#'                na_values = c(8, 9)
+#'
+#' )
+#' s3
+#' str(s3)
+#' to_factor(s3)
+#' to_factor(s3, user_na_to_na = TRUE)
 labelled <- haven::labelled
 
 #' @rdname labelled

@@ -2,15 +2,16 @@
 % Please edit documentation in R/to_factor.R
 \name{to_factor}
 \alias{to_factor}
-\alias{to_factor.labelled}
+\alias{to_factor.haven_labelled}
 \alias{to_factor.data.frame}
 \title{Convert input to a factor.}
 \usage{
 to_factor(x, ...)
 
-\method{to_factor}{labelled}(x, levels = c("labels", "values", "prefixed"),
-  ordered = FALSE, nolabel_to_na = FALSE, sort_levels = c("auto", "none",
-  "labels", "values"), decreasing = FALSE, drop_unused_labels = FALSE, ...)
+\method{to_factor}{haven_labelled}(x, levels = c("labels", "values",
+  "prefixed"), ordered = FALSE, nolabel_to_na = FALSE,
+  sort_levels = c("auto", "none", "labels", "values"), decreasing = FALSE,
+  drop_unused_labels = FALSE, user_na_to_na = FALSE, ...)
 
 \method{to_factor}{data.frame}(x, levels = c("labels", "values", "prefixed"),
   ordered = FALSE, nolabel_to_na = FALSE, sort_levels = c("auto", "none",
@@ -33,6 +34,8 @@ to_factor(x, ...)
 \item{decreasing}{Should levels be sorted in decreasing order?}
 
 \item{drop_unused_labels}{Should unused value labels be dropped?}
+
+\item{user_na_to_na}{Convert user defined missing values into \code{NA}?}
 
 \item{labelled_only}{for a data.frame, convert only labelled variables to factors?}
 }

@@ -2,13 +2,13 @@
 % Please edit documentation in R/to_character.R
 \name{to_character}
 \alias{to_character}
-\alias{to_character.labelled}
+\alias{to_character.haven_labelled}
 \title{Convert input to a character vector}
 \usage{
 to_character(x, ...)
 
-\method{to_character}{labelled}(x, levels = c("labels", "values", "prefixed"),
-  nolabel_to_na = FALSE, ...)
+\method{to_character}{haven_labelled}(x, levels = c("labels", "values",
+  "prefixed"), nolabel_to_na = FALSE, ...)
 }
 \arguments{
 \item{x}{Object to coerce to a character vector.}

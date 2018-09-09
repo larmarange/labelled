@@ -3,19 +3,19 @@
 \name{val_labels}
 \alias{val_labels}
 \alias{val_labels.default}
-\alias{val_labels.labelled}
+\alias{val_labels.haven_labelled}
 \alias{val_labels.data.frame}
 \alias{val_labels<-}
 \alias{val_labels<-.numeric}
 \alias{val_labels<-.character}
-\alias{val_labels<-.labelled}
-\alias{val_labels<-.labelled_spss}
+\alias{val_labels<-.haven_labelled}
+\alias{val_labels<-.haven_labelled_spss}
 \alias{val_labels<-.data.frame}
 \alias{val_label}
-\alias{val_label.labelled}
+\alias{val_label.haven_labelled}
 \alias{val_label.data.frame}
 \alias{val_label<-}
-\alias{val_label<-.labelled}
+\alias{val_label<-.haven_labelled}
 \alias{val_label<-.numeric}
 \alias{val_label<-.character}
 \alias{val_label<-.data.frame}
@@ -28,7 +28,7 @@ val_labels(x, prefixed = FALSE)
 
 \method{val_labels}{default}(x, prefixed = FALSE)
 
-\method{val_labels}{labelled}(x, prefixed = FALSE)
+\method{val_labels}{haven_labelled}(x, prefixed = FALSE)
 
 \method{val_labels}{data.frame}(x, prefixed = FALSE)
 
@@ -38,21 +38,21 @@ val_labels(x) <- value
 
 \method{val_labels}{character}(x) <- value
 
-\method{val_labels}{labelled}(x) <- value
+\method{val_labels}{haven_labelled}(x) <- value
 
-\method{val_labels}{labelled_spss}(x) <- value
+\method{val_labels}{haven_labelled_spss}(x) <- value
 
 \method{val_labels}{data.frame}(x) <- value
 
 val_label(x, v, prefixed = FALSE)
 
-\method{val_label}{labelled}(x, v, prefixed = FALSE)
+\method{val_label}{haven_labelled}(x, v, prefixed = FALSE)
 
 \method{val_label}{data.frame}(x, v, prefixed = FALSE)
 
 val_label(x, v) <- value
 
-\method{val_label}{labelled}(x, v) <- value
+\method{val_label}{haven_labelled}(x, v) <- value
 
 \method{val_label}{numeric}(x, v) <- value
 

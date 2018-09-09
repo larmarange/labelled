@@ -37,7 +37,7 @@ remove_labels.default <- function(x, user_na_to_na = FALSE) {
 }
 
 #' @export
-remove_labels.labelled_spss <- function(x, user_na_to_na = FALSE) {
+remove_labels.haven_labelled_spss <- function(x, user_na_to_na = FALSE) {
   x <- remove_user_na(x, user_na_to_na = user_na_to_na)
   var_label(x) <- NULL
   val_labels(x) <- NULL
@@ -104,7 +104,7 @@ remove_user_na.default <- function(x, user_na_to_na = FALSE) {
 }
 
 #' @export
-remove_user_na.labelled_spss <- function(x, user_na_to_na = FALSE) {
+remove_user_na.haven_labelled_spss <- function(x, user_na_to_na = FALSE) {
   if (user_na_to_na)
     x[is.na(x)] <- NA
   else if (!is.null(na_values(x)) | !is.null(na_range(x)))
@@ -117,28 +117,5 @@ remove_user_na.labelled_spss <- function(x, user_na_to_na = FALSE) {
 #' @export
 remove_user_na.data.frame <- function(x, user_na_to_na = FALSE) {
   x[] <- lapply(x, remove_user_na, user_na_to_na = user_na_to_na)
-  x
-}
-
-#' @rdname remove_labels
-#' @export
-user_na_to_na <- function(x) {
-  UseMethod("user_na_to_na")
-}
-
-#' @export
-user_na_to_na.default <- function(x) {
-  # do nothing
-  x
-}
-
-#' @export
-user_na_to_na.labelled_spss <- function(x) {
-  remove_user_na(x, user_na_to_na = TRUE)
-}
-
-#' @export
-user_na_to_na.data.frame <- function(x) {
-  x[] <- lapply(x, user_na_to_na)
   x
 }

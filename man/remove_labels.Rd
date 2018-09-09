@@ -5,7 +5,6 @@
 \alias{remove_var_label}
 \alias{remove_val_labels}
 \alias{remove_user_na}
-\alias{user_na_to_na}
 \title{Remove variable label, value labels and user defined missing values}
 \usage{
 remove_labels(x, user_na_to_na = FALSE)
@@ -15,8 +14,6 @@ remove_var_label(x)
 remove_val_labels(x)
 
 remove_user_na(x, user_na_to_na = FALSE)
-
-user_na_to_na(x)
 }
 \arguments{
 \item{x}{A vector or a data frame.}
