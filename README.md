@@ -7,8 +7,9 @@
 
 # Labelled package for R
 
-This package is built on the new class `labelled` introduced by **haven** package
-and propose additional functions to manipulate labelled data.
+This package is built on the new classes `haven_labelled` and `haven_labelled_spss` 
+introduced by **haven** package and propose additional functions to manipulate 
+such labelled data.
 
 ## BREAKING CHANGES
 
