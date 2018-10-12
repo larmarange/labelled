@@ -1,7 +1,7 @@
 [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/0.1.0/active.svg)](http://www.repostatus.org/#active) 
 [![Travis-CI Build Status](https://travis-ci.org/larmarange/labelled.svg?branch=master)](https://travis-ci.org/larmarange/labelled)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/labelled)](https://cran.r-project.org/package=labelled) 
-![downloads](http://cranlogs.r-pkg.org/badges/grand-total/labelled)[![Rdoc](http://www.rdocumentation.org/badges/version/labelled)](http://www.rdocumentation.org/packages/labelled)
+![downloads](http://cranlogs.r-pkg.org/badges/grand-total/labelled) [![Rdoc](http://www.rdocumentation.org/badges/version/labelled)](http://www.rdocumentation.org/packages/labelled)
 
 **Online documentation:** http://larmarange.github.io/labelled/
 
