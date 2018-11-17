@@ -4,7 +4,8 @@
 \alias{recode.haven_labelled}
 \title{Recode values}
 \usage{
-\method{recode}{haven_labelled}(.x, ..., .default = NULL, .missing = NULL)
+\method{recode}{haven_labelled}(.x, ..., .default = NULL,
+  .missing = NULL)
 }
 \arguments{
 \item{.x}{A vector to modify}
