@@ -14,6 +14,7 @@
 * `user_na_to_na` option added to `to_factor()`
 * `foreign_to_labelled()` now import SPSS missing values (#27)
 * a `strict` argument added to `to_factor()` (#25)
+* `remove_attributes()` preserve character vectors (#30)
 
 # labelled 1.1.0
 
