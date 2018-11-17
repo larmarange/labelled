@@ -224,4 +224,13 @@ test_that("update_labelled preserve variable and value labels", {
   expect_equal(val_labels(update_labelled(v)), c(No = 1, Yes = 2))
 })
 
+# remove_attributes --------------------------------------------------------------
 
+test_that("remove_attributes does not transform characters into factors", {
+  d <- data.frame(
+    ch = structure(letters[1:2], some_attribute=TRUE),
+    stringsAsFactors = FALSE
+  )
+  d <- remove_attributes(d, "some_attribute")
+  expect_true(is.character(d$ch))
+})

@@ -98,7 +98,7 @@ foreign_to_labelled <- function(x) {
     if (requireNamespace("dplyr")) {
       x <- dplyr::as_data_frame(x)
     } else {
-      x <- as.data.frame(x, stringsAsFactors = FALSE)
+      x <- dplyr::as_data_frame(x, stringsAsFactors = FALSE)
     }
   }
 

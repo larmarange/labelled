@@ -28,7 +28,7 @@ remove_attributes.default <- function(x, attributes) {
 remove_attributes.data.frame <- function(x, attributes) {
   cl <- class(x)
   x <- remove_attributes.default(x, attributes)
-  x <- as.data.frame(
+  x <- dplyr::as_data_frame(
     lapply(x, remove_attributes, attributes = attributes)
   )
   class(x) <- cl
