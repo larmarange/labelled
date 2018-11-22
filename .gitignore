@@ -5,3 +5,4 @@ README.html
 vignettes/*.md
 vignettes/*.html
 vignettes/*.R
+revdep/
