@@ -1,4 +1,4 @@
-# labelled 1.1.9000 (to become version 2.0.0)
+# labelled 2.0.0
 
 ## BREAKING CHANGE
 
