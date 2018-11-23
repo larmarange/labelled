@@ -1,0 +1,13 @@
+* installing *source* package ‘codebook’ ...
+** package ‘codebook’ correctement décompressé et sommes MD5 vérifiées
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded
+* DONE (codebook)

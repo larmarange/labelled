@@ -1,0 +1,1823 @@
+
+R version 3.5.1 (2018-07-02) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "questionr"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('questionr')
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("addNAstr")
+> ### * addNAstr
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: addNAstr
+> ### Title: Transform missing values of a factor to an extra level
+> ### Aliases: addNAstr
+> 
+> ### ** Examples
+> 
+> f <- as.factor(c("a","b",NA,"a","b"))
+> f
+[1] a    b    <NA> a    b   
+Levels: a b
+> addNAstr(f)
+[1] a  b  NA a  b 
+Levels: a b NA
+> addNAstr(f, value="missing")
+[1] a       b       missing a       b      
+Levels: a b missing
+> addNAstr(f, value=NULL)
+[1] a    b    <NA> a    b   
+Levels: a b <NA>
+> 
+> 
+> 
+> cleanEx()
+> nameEx("chisq.residuals")
+> ### * chisq.residuals
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: chisq.residuals
+> ### Title: Return the chi-squared residuals of a two-way frequency table.
+> ### Aliases: chisq.residuals residus
+> 
+> ### ** Examples
+> 
+> ## Sample table
+> data(Titanic)
+> tab <- apply(Titanic, c(1,4), sum)
+> ## Pearson residuals
+> chisq.residuals(tab)
+      Survived
+Class     No   Yes
+  1st  -6.61  9.57
+  2nd  -1.87  2.70
+  3rd   2.29 -3.32
+  Crew  3.02 -4.37
+> ## Standardized residuals
+> chisq.residuals(tab, std = TRUE)
+      Survived
+Class      No   Yes
+  1st  -12.59 12.59
+  2nd   -3.52  3.52
+  3rd    4.89 -4.89
+  Crew   6.87 -6.87
+> ## Raw residuals
+> chisq.residuals(tab, raw = TRUE)
+      Survived
+Class      No    Yes
+  1st  -98.01  98.01
+  2nd  -25.94  25.94
+  3rd   50.06 -50.06
+  Crew  73.89 -73.89
+> 
+> 
+> 
+> cleanEx()
+> nameEx("clipcopy")
+> ### * clipcopy
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: clipcopy
+> ### Title: Transform an object into HTML and copy it for export
+> ### Aliases: clipcopy copie copie.default clipcopy.default clipcopy.default
+> ###   copie.proptab clipcopy.proptab copie.proptab
+> ### Keywords: connection
+> 
+> ### ** Examples
+> 
+> data(iris)
+> tab <- table(cut(iris$Sepal.Length,8),cut(iris$Sepal.Width,4))
+> ## Not run: copie(tab)
+> ptab <- rprop(tab, percent=TRUE)
+> ## Not run: clipcopy(ptab)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("cprop")
+> ### * cprop
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: cprop
+> ### Title: Column percentages of a two-way frequency table.
+> ### Aliases: cprop cprop.table cprop.data.frame cprop.matrix cprop.tabyl
+> 
+> ### ** Examples
+> 
+> ## Sample table
+> data(Titanic)
+> tab <- apply(Titanic, c(4,1), sum)
+> ## Column percentages
+> cprop(tab)
+        Class
+Survived 1st   2nd   3rd   Crew  All  
+   No     37.5  58.6  74.8  76.0  67.7
+   Yes    62.5  41.4  25.2  24.0  32.3
+   Total 100.0 100.0 100.0 100.0 100.0
+> ## Column percentages with custom display
+> cprop(tab, digits=2, percent=TRUE, total=FALSE)
+        Class
+Survived 1st    2nd    3rd    Crew  
+     No  37.54% 58.60% 74.79% 76.05%
+     Yes 62.46% 41.40% 25.21% 23.95%
+> 
+> 
+> 
+> cleanEx()
+> nameEx("cramer.v")
+> ### * cramer.v
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: cramer.v
+> ### Title: Compute Cramer's V of a two-way frequency table
+> ### Aliases: cramer.v
+> ### Keywords: univar
+> 
+> ### ** Examples
+> 
+> data(Titanic)
+> tab <- apply(Titanic, c(4,1), sum)
+> #' print(tab)
+> cramer.v(tab)
+[1] 0.2941201
+> 
+> 
+> 
+> cleanEx()
+> nameEx("cross.multi.table")
+> ### * cross.multi.table
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: cross.multi.table
+> ### Title: Two-way frequency table between a multiple choices question and
+> ###   a factor
+> ### Aliases: cross.multi.table
+> 
+> ### ** Examples
+> 
+> ## Sample data frame
+> set.seed(1337)
+> sex <- sample(c("Man","Woman"),100,replace=TRUE)
+> jazz <- sample(c(0,1),100,replace=TRUE)
+> rock <- sample(c(TRUE, FALSE),100,replace=TRUE)
+> electronic <- sample(c("Y","N"),100,replace=TRUE)
+> weights <- runif(100)*2
+> df <- data.frame(sex,jazz,rock,electronic,weights)
+> ## Two-way frequency table on 'music' variables by sex
+> cross.multi.table(df[,c("jazz", "rock","electronic")], df$sex, true.codes=list("Y"))
+           Man Woman
+jazz        22    27
+rock        23    30
+electronic  28    29
+> ## Column percentages based on respondants
+> cross.multi.table(df[,c("jazz", "rock","electronic")], df$sex, true.codes=list("Y"), freq=TRUE)
+            Man Woman
+jazz       48.9  49.1
+rock       51.1  54.5
+electronic 62.2  52.7
+> ## Row percentages based on respondants
+> cross.multi.table(df[,c("jazz", "rock","electronic")], 
++                   df$sex, true.codes=list("Y"), freq=TRUE, tfreq="row", n=TRUE)
+            Man Woman  n
+jazz       44.9  55.1 49
+rock       43.4  56.6 53
+electronic 49.1  50.9 57
+> 
+> 
+> 
+> cleanEx()
+> nameEx("describe")
+> ### * describe
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: describe
+> ### Title: Describe the variables of a data.frame
+> ### Aliases: describe describe.factor describe.numeric describe.character
+> ###   describe.default describe.labelled describe.data.frame
+> ###   print.description
+> 
+> ### ** Examples
+> 
+> data(hdv2003)
+> describe(hdv2003$sexe)
+[2000 obs.] 
+nominal factor: "Femme" "Femme" "Homme" "Homme" "Femme" "Femme" "Femme" "Homme" "Femme" "Homme" ...
+2 levels: Homme | Femme
+NAs: 0 (0%)
+
+         n   %
+Homme  899  45
+Femme 1101  55
+Total 2000 100> describe(hdv2003$age)
+[2000 obs.] 
+integer: 28 23 59 34 71 35 60 47 20 28 ...
+min: 18 - max: 97 - NAs: 0 (0%) - 78 unique values> data(fecondite)
+> describe(femmes$milieu)
+[2000 obs.] Milieu de résidence
+labelled double: 2 2 2 2 2 2 2 2 2 2 ...
+min: 1 - max: 2 - NAs: 0 (0%) - 2 unique values
+2 value labels: [1] urbain [2] rural
+
+              n     %
+[1] urbain  912  45.6
+[2] rural  1088  54.4
+Total      2000 100.0> describe(hdv2003)
+[2000 obs. x 20 variables] tbl_df tbl data.frame
+
+$id: 
+integer: 1 2 3 4 5 6 7 8 9 10 ...
+min: 1 - max: 2000 - NAs: 0 (0%) - 2000 unique values
+
+$age: 
+integer: 28 23 59 34 71 35 60 47 20 28 ...
+min: 18 - max: 97 - NAs: 0 (0%) - 78 unique values
+
+$sexe: 
+nominal factor: "Femme" "Femme" "Homme" "Homme" "Femme" "Femme" "Femme" "Homme" "Femme" "Homme" ...
+2 levels: Homme | Femme
+NAs: 0 (0%)
+
+$nivetud: 
+nominal factor: "Enseignement superieur y compris technique superieur" NA "Derniere annee d'etudes primaires" "Enseignement superieur y compris technique superieur" "Derniere annee d'etudes primaires" "Enseignement technique ou professionnel court" "Derniere annee d'etudes primaires" "Enseignement technique ou professionnel court" NA "Enseignement technique ou professionnel long" ...
+8 levels: N'a jamais fait d'etudes | A arrete ses etudes, avant la derniere annee d'etudes primaires | Derniere annee d'etudes primaires | 1er cycle | 2eme cycle | Enseignement technique ou professionnel court | Enseignement technique ou professionnel long | Enseignement superieur y compris technique superieur
+NAs: 112 (5.6%)
+
+$poids: 
+numeric: 2634.3982157 9738.3957759 3994.1024587 5731.6615081 4329.0940022 8674.6993828 6165.8034861 12891.640759 7808.8720636 2277.160471 ...
+min: 78.0783403 - max: 31092.14132 - NAs: 0 (0%) - 1877 unique values
+
+$occup: 
+nominal factor: "Exerce une profession" "Etudiant, eleve" "Exerce une profession" "Exerce une profession" "Retraite" "Exerce une profession" "Au foyer" "Exerce une profession" "Etudiant, eleve" "Exerce une profession" ...
+7 levels: Exerce une profession | Chomeur | Etudiant, eleve | Retraite | Retire des affaires | Au foyer | Autre inactif
+NAs: 0 (0%)
+
+$qualif: 
+nominal factor: "Employe" NA "Technicien" "Technicien" "Employe" "Employe" "Ouvrier qualifie" "Ouvrier qualifie" NA "Autre" ...
+7 levels: Ouvrier specialise | Ouvrier qualifie | Technicien | Profession intermediaire | Cadre | Employe | Autre
+NAs: 347 (17.3%)
+
+$freres.soeurs: 
+integer: 8 2 2 1 0 5 1 5 4 2 ...
+min: 0 - max: 22 - NAs: 0 (0%) - 19 unique values
+
+$clso: 
+nominal factor: "Oui" "Oui" "Non" "Non" "Oui" "Non" "Oui" "Non" "Oui" "Non" ...
+3 levels: Oui | Non | Ne sait pas
+NAs: 0 (0%)
+
+$relig: 
+nominal factor: "Ni croyance ni appartenance" "Ni croyance ni appartenance" "Ni croyance ni appartenance" "Appartenance sans pratique" "Pratiquant regulier" "Ni croyance ni appartenance" "Appartenance sans pratique" "Ni croyance ni appartenance" "Appartenance sans pratique" "Pratiquant occasionnel" ...
+6 levels: Pratiquant regulier | Pratiquant occasionnel | Appartenance sans pratique | Ni croyance ni appartenance | Rejet | NSP ou NVPR
+NAs: 0 (0%)
+
+$trav.imp: 
+nominal factor: "Peu important" NA "Aussi important que le reste" "Moins important que le reste" NA "Le plus important" NA "Peu important" NA "Moins important que le reste" ...
+4 levels: Le plus important | Aussi important que le reste | Moins important que le reste | Peu important
+NAs: 952 (47.6%)
+
+$trav.satisf: 
+nominal factor: "Insatisfaction" NA "Equilibre" "Satisfaction" NA "Equilibre" NA "Insatisfaction" NA "Satisfaction" ...
+3 levels: Satisfaction | Insatisfaction | Equilibre
+NAs: 952 (47.6%)
+
+$hard.rock: 
+nominal factor: "Non" "Non" "Non" "Non" "Non" "Non" "Non" "Non" "Non" "Non" ...
+2 levels: Non | Oui
+NAs: 0 (0%)
+
+$lecture.bd: 
+nominal factor: "Non" "Non" "Non" "Non" "Non" "Non" "Non" "Non" "Non" "Non" ...
+2 levels: Non | Oui
+NAs: 0 (0%)
+
+$peche.chasse: 
+nominal factor: "Non" "Non" "Non" "Non" "Non" "Non" "Oui" "Oui" "Non" "Non" ...
+2 levels: Non | Oui
+NAs: 0 (0%)
+
+$cuisine: 
+nominal factor: "Oui" "Non" "Non" "Oui" "Non" "Non" "Oui" "Oui" "Non" "Non" ...
+2 levels: Non | Oui
+NAs: 0 (0%)
+
+$bricol: 
+nominal factor: "Non" "Non" "Non" "Oui" "Non" "Non" "Non" "Oui" "Non" "Non" ...
+2 levels: Non | Oui
+NAs: 0 (0%)
+
+$cinema: 
+nominal factor: "Non" "Oui" "Non" "Oui" "Non" "Oui" "Non" "Non" "Oui" "Oui" ...
+2 levels: Non | Oui
+NAs: 0 (0%)
+
+$sport: 
+nominal factor: "Non" "Oui" "Oui" "Oui" "Non" "Oui" "Non" "Non" "Non" "Oui" ...
+2 levels: Non | Oui
+NAs: 0 (0%)
+
+$heures.tv: 
+numeric: 0 1 0 2 3 2 2.9 1 2 2 ...
+min: 0 - max: 12 - NAs: 5 (0.2%) - 30 unique values> describe(hdv2003, "cuisine", "heures.tv")
+[2000 obs. x 20 variables] tbl_df tbl data.frame
+
+$cuisine: 
+nominal factor: "Oui" "Non" "Non" "Oui" "Non" "Non" "Oui" "Oui" "Non" "Non" ...
+2 levels: Non | Oui
+NAs: 0 (0%)
+
+$heures.tv: 
+numeric: 0 1 0 2 3 2 2.9 1 2 2 ...
+min: 0 - max: 12 - NAs: 5 (0.2%) - 30 unique values> describe(hdv2003, "trav*")
+[2000 obs. x 20 variables] tbl_df tbl data.frame
+
+$trav.imp: 
+nominal factor: "Peu important" NA "Aussi important que le reste" "Moins important que le reste" NA "Le plus important" NA "Peu important" NA "Moins important que le reste" ...
+4 levels: Le plus important | Aussi important que le reste | Moins important que le reste | Peu important
+NAs: 952 (47.6%)
+
+$trav.satisf: 
+nominal factor: "Insatisfaction" NA "Equilibre" "Satisfaction" NA "Equilibre" NA "Insatisfaction" NA "Satisfaction" ...
+3 levels: Satisfaction | Insatisfaction | Equilibre
+NAs: 952 (47.6%)> describe(hdv2003, "trav|lecture")
+[2000 obs. x 20 variables] tbl_df tbl data.frame
+
+$trav.imp: 
+nominal factor: "Peu important" NA "Aussi important que le reste" "Moins important que le reste" NA "Le plus important" NA "Peu important" NA "Moins important que le reste" ...
+4 levels: Le plus important | Aussi important que le reste | Moins important que le reste | Peu important
+NAs: 952 (47.6%)
+
+$trav.satisf: 
+nominal factor: "Insatisfaction" NA "Equilibre" "Satisfaction" NA "Equilibre" NA "Insatisfaction" NA "Satisfaction" ...
+3 levels: Satisfaction | Insatisfaction | Equilibre
+NAs: 952 (47.6%)
+
+$lecture.bd: 
+nominal factor: "Non" "Non" "Non" "Non" "Non" "Non" "Non" "Non" "Non" "Non" ...
+2 levels: Non | Oui
+NAs: 0 (0%)> describe(hdv2003, "trav", "lecture")
+[2000 obs. x 20 variables] tbl_df tbl data.frame
+
+$trav.imp: 
+nominal factor: "Peu important" NA "Aussi important que le reste" "Moins important que le reste" NA "Le plus important" NA "Peu important" NA "Moins important que le reste" ...
+4 levels: Le plus important | Aussi important que le reste | Moins important que le reste | Peu important
+NAs: 952 (47.6%)
+
+$trav.satisf: 
+nominal factor: "Insatisfaction" NA "Equilibre" "Satisfaction" NA "Equilibre" NA "Insatisfaction" NA "Satisfaction" ...
+3 levels: Satisfaction | Insatisfaction | Equilibre
+NAs: 952 (47.6%)
+
+$lecture.bd: 
+nominal factor: "Non" "Non" "Non" "Non" "Non" "Non" "Non" "Non" "Non" "Non" ...
+2 levels: Non | Oui
+NAs: 0 (0%)> describe(femmes)
+[2000 obs. x 17 variables] tbl_df tbl data.frame
+
+$id_femme: Identifiant de l'enquêtée
+numeric: 391 1643 85 881 1981 1072 1978 1607 738 1656 ...
+min: 1 - max: 2000 - NAs: 0 (0%) - 2000 unique values
+
+$id_menage: Identifiant du ménage
+numeric: 381 1515 85 844 1797 1015 1794 1486 711 1525 ...
+min: 1 - max: 1814 - NAs: 0 (0%) - 1814 unique values
+
+$poids: Poids statistique
+numeric: 1.80315 1.80315 1.80315 1.80315 1.80315 0.997934 0.997934 0.997934 0.192455 0.192455 ...
+min: 0.044629 - max: 4.396831 - NAs: 0 (0%) - 351 unique values
+
+$date_entretien: Date de passation du questionnaire
+Date: 2012-05-05 2012-01-23 2012-01-21 2012-01-06 2012-05-11 2012-02-20 2012-02-23 2012-02-20 2012-03-09 2012-03-15 ...
+min: 2011-12-01 - max: 2012-05-31 - NAs: 0 (0%) - 165 unique values
+
+$date_naissance: Date de naissance
+Date: 1997-03-07 1982-01-06 1979-01-01 1968-03-29 1986-05-25 1993-07-03 1967-01-28 1989-01-21 1962-07-24 1980-12-25 ...
+min: 1962-02-07 - max: 1997-03-13 - NAs: 0 (0%) - 1740 unique values
+
+$age: Âge révolu (en années) à la date de passation du questionnaire
+numeric: 15 30 33 43 25 18 45 23 49 31 ...
+min: 14 - max: 49 - NAs: 0 (0%) - 36 unique values
+
+$milieu: Milieu de résidence
+labelled double: 2 2 2 2 2 2 2 2 2 2 ...
+min: 1 - max: 2 - NAs: 0 (0%) - 2 unique values
+2 value labels: [1] urbain [2] rural
+
+$region: Région de résidence
+labelled double: 4 4 4 4 4 3 3 3 3 3 ...
+min: 1 - max: 4 - NAs: 0 (0%) - 4 unique values
+4 value labels: [1] Nord [2] Est [3] Sud [4] Ouest
+
+$educ: Niveau d'éducation
+labelled double: 0 0 0 0 1 0 0 0 0 0 ...
+min: 0 - max: 3 - NAs: 0 (0%) - 4 unique values
+4 value labels: [0] aucun [1] primaire [2] secondaire [3] supérieur
+
+$travail: A un emploi ?
+labelled_spss double: 1 1 0 1 1 0 1 0 1 1 ...
+min: 0 - max: 9 - NAs: 0 (0%) - 3 unique values
+3 value labels: [0] non [1] oui [9] manquant
+user-defined na values: 9
+
+$matri: Statut matrimonial
+labelled double: 0 2 2 2 1 0 1 1 2 5 ...
+min: 0 - max: 5 - NAs: 0 (0%) - 6 unique values
+6 value labels: [0] célibataire [1] mariée [2] en concubinage [3] veuve [4] divorcée [5] séparée
+
+$religion: Religion
+labelled double: 1 3 2 3 2 2 3 1 3 3 ...
+min: 1 - max: 5 - NAs: 4 (0.2%) - 6 unique values
+5 value labels: [1] musulmane [2] chrétienne [3] protestante [4] sans religion [5] autre
+
+$journal: Lit la presse ?
+labelled double: 0 0 0 0 0 0 0 0 0 0 ...
+min: 0 - max: 1 - NAs: 0 (0%) - 2 unique values
+2 value labels: [0] non [1] oui
+
+$radio: Ecoute la radio ?
+labelled double: 0 1 1 0 0 1 1 0 0 0 ...
+min: 0 - max: 1 - NAs: 0 (0%) - 2 unique values
+2 value labels: [0] non [1] oui
+
+$tv: Regarde la télévision ?
+labelled double: 0 0 0 0 0 1 0 0 0 0 ...
+min: 0 - max: 1 - NAs: 0 (0%) - 2 unique values
+2 value labels: [0] non [1] oui
+
+$nb_enf_ideal: Nombre idéal d'enfants
+labelled_spss double: 4 4 4 4 4 5 10 5 4 5 ...
+min: 0 - max: 99 - NAs: 0 (0%) - 18 unique values
+2 value labels: [96] Ne sait pas [99] manquant
+user-defined na range: 96-99
+
+$test: A déjà fait un test de dépistage du VIH ?
+labelled_spss double: 0 9 0 0 1 0 0 0 0 1 ...
+min: 0 - max: 9 - NAs: 0 (0%) - 3 unique values
+3 value labels: [0] non [1] oui [9] manquant
+user-defined na values: 9> describe(femmes, "ident")
+[2000 obs. x 17 variables] tbl_df tbl data.frame
+
+$id_femme: Identifiant de l'enquêtée
+numeric: 391 1643 85 881 1981 1072 1978 1607 738 1656 ...
+min: 1 - max: 2000 - NAs: 0 (0%) - 2000 unique values
+
+$id_menage: Identifiant du ménage
+numeric: 381 1515 85 844 1797 1015 1794 1486 711 1525 ...
+min: 1 - max: 1814 - NAs: 0 (0%) - 1814 unique values> 
+> 
+> 
+> cleanEx()
+> nameEx("duplicated2")
+> ### * duplicated2
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: duplicated2
+> ### Title: Determine all duplicate elements
+> ### Aliases: duplicated2
+> 
+> ### ** Examples
+> 
+> df <- data.frame(x=c("a","b","c","b","d","c"),y=c(1,2,3,2,4,3))
+> df
+  x y
+1 a 1
+2 b 2
+3 c 3
+4 b 2
+5 d 4
+6 c 3
+> duplicated(df)
+[1] FALSE FALSE FALSE  TRUE FALSE  TRUE
+> duplicated2(df)
+[1] FALSE  TRUE  TRUE  TRUE FALSE  TRUE
+> 
+> 
+> 
+> cleanEx()
+> nameEx("fecondite")
+> ### * fecondite
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: fecondite
+> ### Title: A fertility survey
+> ### Aliases: fecondite
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> data(fecondite)
+> describe(menages)
+[1814 obs. x 5 variables] tbl_df tbl data.frame
+
+$id_menage: Identifiant du ménage
+numeric: 1 2 3 4 5 6 7 8 9 10 ...
+min: 1 - max: 1814 - NAs: 0 (0%) - 1814 unique values
+
+$taille: Taille du ménage (nombre de membres)
+numeric: 7 3 6 5 7 6 15 6 5 19 ...
+min: 1 - max: 31 - NAs: 0 (0%) - 30 unique values
+
+$sexe_chef: Sexe du chef de ménage
+labelled double: 2 1 1 1 1 2 2 2 1 1 ...
+min: 1 - max: 2 - NAs: 0 (0%) - 2 unique values
+2 value labels: [1] homme [2] femme
+
+$structure: Structure démographique du ménage
+labelled double: 4 2 5 4 4 4 5 2 5 5 ...
+min: 1 - max: 5 - NAs: 0 (0%) - 5 unique values
+6 value labels: [0] pas d'adulte [1] un adulte [2] deux adultes de sexe opposé [3] deux adultes de même sexe [4] trois adultes ou plus avec lien de parenté [5] adultes sans lien de parenté
+
+$richesse: Niveau de vie (quintiles)
+labelled double: 1 2 2 1 1 3 2 5 4 3 ...
+min: 1 - max: 5 - NAs: 0 (0%) - 5 unique values
+5 value labels: [1] très pauvre [2] pauvre [3] moyen [4] riche [5] très riche> describe(femmes)
+[2000 obs. x 17 variables] tbl_df tbl data.frame
+
+$id_femme: Identifiant de l'enquêtée
+numeric: 391 1643 85 881 1981 1072 1978 1607 738 1656 ...
+min: 1 - max: 2000 - NAs: 0 (0%) - 2000 unique values
+
+$id_menage: Identifiant du ménage
+numeric: 381 1515 85 844 1797 1015 1794 1486 711 1525 ...
+min: 1 - max: 1814 - NAs: 0 (0%) - 1814 unique values
+
+$poids: Poids statistique
+numeric: 1.80315 1.80315 1.80315 1.80315 1.80315 0.997934 0.997934 0.997934 0.192455 0.192455 ...
+min: 0.044629 - max: 4.396831 - NAs: 0 (0%) - 351 unique values
+
+$date_entretien: Date de passation du questionnaire
+Date: 2012-05-05 2012-01-23 2012-01-21 2012-01-06 2012-05-11 2012-02-20 2012-02-23 2012-02-20 2012-03-09 2012-03-15 ...
+min: 2011-12-01 - max: 2012-05-31 - NAs: 0 (0%) - 165 unique values
+
+$date_naissance: Date de naissance
+Date: 1997-03-07 1982-01-06 1979-01-01 1968-03-29 1986-05-25 1993-07-03 1967-01-28 1989-01-21 1962-07-24 1980-12-25 ...
+min: 1962-02-07 - max: 1997-03-13 - NAs: 0 (0%) - 1740 unique values
+
+$age: Âge révolu (en années) à la date de passation du questionnaire
+numeric: 15 30 33 43 25 18 45 23 49 31 ...
+min: 14 - max: 49 - NAs: 0 (0%) - 36 unique values
+
+$milieu: Milieu de résidence
+labelled double: 2 2 2 2 2 2 2 2 2 2 ...
+min: 1 - max: 2 - NAs: 0 (0%) - 2 unique values
+2 value labels: [1] urbain [2] rural
+
+$region: Région de résidence
+labelled double: 4 4 4 4 4 3 3 3 3 3 ...
+min: 1 - max: 4 - NAs: 0 (0%) - 4 unique values
+4 value labels: [1] Nord [2] Est [3] Sud [4] Ouest
+
+$educ: Niveau d'éducation
+labelled double: 0 0 0 0 1 0 0 0 0 0 ...
+min: 0 - max: 3 - NAs: 0 (0%) - 4 unique values
+4 value labels: [0] aucun [1] primaire [2] secondaire [3] supérieur
+
+$travail: A un emploi ?
+labelled_spss double: 1 1 0 1 1 0 1 0 1 1 ...
+min: 0 - max: 9 - NAs: 0 (0%) - 3 unique values
+3 value labels: [0] non [1] oui [9] manquant
+user-defined na values: 9
+
+$matri: Statut matrimonial
+labelled double: 0 2 2 2 1 0 1 1 2 5 ...
+min: 0 - max: 5 - NAs: 0 (0%) - 6 unique values
+6 value labels: [0] célibataire [1] mariée [2] en concubinage [3] veuve [4] divorcée [5] séparée
+
+$religion: Religion
+labelled double: 1 3 2 3 2 2 3 1 3 3 ...
+min: 1 - max: 5 - NAs: 4 (0.2%) - 6 unique values
+5 value labels: [1] musulmane [2] chrétienne [3] protestante [4] sans religion [5] autre
+
+$journal: Lit la presse ?
+labelled double: 0 0 0 0 0 0 0 0 0 0 ...
+min: 0 - max: 1 - NAs: 0 (0%) - 2 unique values
+2 value labels: [0] non [1] oui
+
+$radio: Ecoute la radio ?
+labelled double: 0 1 1 0 0 1 1 0 0 0 ...
+min: 0 - max: 1 - NAs: 0 (0%) - 2 unique values
+2 value labels: [0] non [1] oui
+
+$tv: Regarde la télévision ?
+labelled double: 0 0 0 0 0 1 0 0 0 0 ...
+min: 0 - max: 1 - NAs: 0 (0%) - 2 unique values
+2 value labels: [0] non [1] oui
+
+$nb_enf_ideal: Nombre idéal d'enfants
+labelled_spss double: 4 4 4 4 4 5 10 5 4 5 ...
+min: 0 - max: 99 - NAs: 0 (0%) - 18 unique values
+2 value labels: [96] Ne sait pas [99] manquant
+user-defined na range: 96-99
+
+$test: A déjà fait un test de dépistage du VIH ?
+labelled_spss double: 0 9 0 0 1 0 0 0 0 1 ...
+min: 0 - max: 9 - NAs: 0 (0%) - 3 unique values
+3 value labels: [0] non [1] oui [9] manquant
+user-defined na values: 9> describe(enfants)
+[1584 obs. x 6 variables] tbl_df tbl data.frame
+
+$id_enfant: Identifiant de l'enfant
+numeric: 1 2 3 4 5 6 7 8 9 10 ...
+min: 1 - max: 1584 - NAs: 0 (0%) - 1584 unique values
+
+$id_femme: Identifiant de la mère
+numeric: 1 2 2 4 5 7 7 11 11 12 ...
+min: 1 - max: 2000 - NAs: 0 (0%) - 1090 unique values
+
+$date_naissance: Date de naissance
+Date: 2010-03-19 2009-10-14 2009-10-14 2008-02-24 2007-12-18 2008-05-07 2011-09-30 2007-10-09 2010-06-09 2010-04-29 ...
+min: 2007-01-03 - max: 2012-04-15 - NAs: 0 (0%) - 1038 unique values
+
+$sexe: Sexe de l'enfant
+labelled double: 2 2 1 1 2 1 1 2 1 2 ...
+min: 1 - max: 2 - NAs: 0 (0%) - 2 unique values
+2 value labels: [1] masculin [2] féminin
+
+$survie: L'enfant est-il toujours en vie ?
+labelled double: 1 0 0 1 1 1 1 1 1 1 ...
+min: 0 - max: 1 - NAs: 0 (0%) - 2 unique values
+2 value labels: [0] non [1] oui
+
+$age_deces: Age au décès (en mois)
+numeric: NaN 0 0 NaN NaN NaN NaN NaN NaN NaN ...
+min: 0 - max: 48 - NAs: 1442 (91%) - 22 unique values> 
+> 
+> 
+> cleanEx()
+> nameEx("fertility")
+> ### * fertility
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: fertility
+> ### Title: A fertility survey
+> ### Aliases: fertility
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> data(fertility)
+> describe(households)
+[1814 obs. x 5 variables] tbl_df tbl data.frame
+
+$id_household: Household Id
+numeric: 1 2 3 4 5 6 7 8 9 10 ...
+min: 1 - max: 1814 - NAs: 0 (0%) - 1814 unique values
+
+$size: Household size (number of members)
+numeric: 7 3 6 5 7 6 15 6 5 19 ...
+min: 1 - max: 31 - NAs: 0 (0%) - 30 unique values
+
+$sex_head: Sex of household head
+labelled double: 2 1 1 1 1 2 2 2 1 1 ...
+min: 1 - max: 2 - NAs: 0 (0%) - 2 unique values
+2 value labels: [1] man [2] woman
+
+$structure: Household's demographic structure
+labelled double: 4 2 5 4 4 4 5 2 5 5 ...
+min: 1 - max: 5 - NAs: 0 (0%) - 5 unique values
+6 value labels: [0] no adult [1] one adult [2] one man and one woman [3] two adults of same sex [4] three adults or more with family ties [5] adults with no family tie
+
+$wealth: Wealth index (quintiles)
+labelled double: 1 2 2 1 1 3 2 5 4 3 ...
+min: 1 - max: 5 - NAs: 0 (0%) - 5 unique values
+5 value labels: [1] very poor [2] poor [3] medium [4] rich [5] very rich> describe(women)
+[2000 obs. x 17 variables] tbl_df tbl data.frame
+
+$id_woman: Woman Id
+numeric: 391 1643 85 881 1981 1072 1978 1607 738 1656 ...
+min: 1 - max: 2000 - NAs: 0 (0%) - 2000 unique values
+
+$id_household: Household Id
+numeric: 381 1515 85 844 1797 1015 1794 1486 711 1525 ...
+min: 1 - max: 1814 - NAs: 0 (0%) - 1814 unique values
+
+$weight: Sample weight
+numeric: 1.80315 1.80315 1.80315 1.80315 1.80315 0.997934 0.997934 0.997934 0.192455 0.192455 ...
+min: 0.044629 - max: 4.396831 - NAs: 0 (0%) - 351 unique values
+
+$interview_date: Interview date
+Date: 2012-05-05 2012-01-23 2012-01-21 2012-01-06 2012-05-11 2012-02-20 2012-02-23 2012-02-20 2012-03-09 2012-03-15 ...
+min: 2011-12-01 - max: 2012-05-31 - NAs: 0 (0%) - 165 unique values
+
+$date_of_birth: Date of birth
+Date: 1997-03-07 1982-01-06 1979-01-01 1968-03-29 1986-05-25 1993-07-03 1967-01-28 1989-01-21 1962-07-24 1980-12-25 ...
+min: 1962-02-07 - max: 1997-03-13 - NAs: 0 (0%) - 1740 unique values
+
+$age: Age at last anniversary (in years)
+numeric: 15 30 33 43 25 18 45 23 49 31 ...
+min: 14 - max: 49 - NAs: 0 (0%) - 36 unique values
+
+$residency: Urban / rural residency
+labelled double: 2 2 2 2 2 2 2 2 2 2 ...
+min: 1 - max: 2 - NAs: 0 (0%) - 2 unique values
+2 value labels: [1] urban [2] rural
+
+$region: Region
+labelled double: 4 4 4 4 4 3 3 3 3 3 ...
+min: 1 - max: 4 - NAs: 0 (0%) - 4 unique values
+4 value labels: [1] North [2] East [3] South [4] West
+
+$instruction: Level of instruction
+labelled double: 0 0 0 0 1 0 0 0 0 0 ...
+min: 0 - max: 3 - NAs: 0 (0%) - 4 unique values
+4 value labels: [0] none [1] primary [2] secondary [3] higher
+
+$employed: Employed?
+labelled_spss double: 1 1 0 1 1 0 1 0 1 1 ...
+min: 0 - max: 9 - NAs: 0 (0%) - 3 unique values
+3 value labels: [0] no [1] yes [9] missing
+user-defined na values: 9
+
+$matri: Matrimonial status
+labelled double: 0 2 2 2 1 0 1 1 2 5 ...
+min: 0 - max: 5 - NAs: 0 (0%) - 6 unique values
+6 value labels: [0] single [1] married [2] living together [3] windowed [4] divorced [5] separated
+
+$religion: Religion
+labelled double: 1 3 2 3 2 2 3 1 3 3 ...
+min: 1 - max: 5 - NAs: 4 (0.2%) - 6 unique values
+5 value labels: [1] Muslim [2] Christian [3] Protestant [4] no religion [5] other
+
+$newspaper: Read newspaper?
+labelled double: 0 0 0 0 0 0 0 0 0 0 ...
+min: 0 - max: 1 - NAs: 0 (0%) - 2 unique values
+2 value labels: [0] no [1] yes
+
+$radio: Listen to radio?
+labelled double: 0 1 1 0 0 1 1 0 0 0 ...
+min: 0 - max: 1 - NAs: 0 (0%) - 2 unique values
+2 value labels: [0] no [1] yes
+
+$tv: Watch TV?
+labelled double: 0 0 0 0 0 1 0 0 0 0 ...
+min: 0 - max: 1 - NAs: 0 (0%) - 2 unique values
+2 value labels: [0] no [1] yes
+
+$ideal_nb_children: Ideal number of children
+labelled_spss double: 4 4 4 4 4 5 10 5 4 5 ...
+min: 0 - max: 99 - NAs: 0 (0%) - 18 unique values
+2 value labels: [96] don't know [99] missing
+user-defined na range: 96-99
+
+$test: Ever tested for HIV?
+labelled_spss double: 0 9 0 0 1 0 0 0 0 1 ...
+min: 0 - max: 9 - NAs: 0 (0%) - 3 unique values
+3 value labels: [0] no [1] yes [9] missing
+user-defined na values: 9> describe(children)
+[1584 obs. x 6 variables] tbl_df tbl data.frame
+
+$id_child: Child Id
+numeric: 1 2 3 4 5 6 7 8 9 10 ...
+min: 1 - max: 1584 - NAs: 0 (0%) - 1584 unique values
+
+$id_woman: Mother Id
+numeric: 1 2 2 4 5 7 7 11 11 12 ...
+min: 1 - max: 2000 - NAs: 0 (0%) - 1090 unique values
+
+$date_of_birth: Date of birth
+Date: 2010-03-19 2009-10-14 2009-10-14 2008-02-24 2007-12-18 2008-05-07 2011-09-30 2007-10-09 2010-06-09 2010-04-29 ...
+min: 2007-01-03 - max: 2012-04-15 - NAs: 0 (0%) - 1038 unique values
+
+$sex: Sex
+labelled double: 2 2 1 1 2 1 1 2 1 2 ...
+min: 1 - max: 2 - NAs: 0 (0%) - 2 unique values
+2 value labels: [1] male [2] female
+
+$alive: Still alive?
+labelled double: 1 0 0 1 1 1 1 1 1 1 ...
+min: 0 - max: 1 - NAs: 0 (0%) - 2 unique values
+2 value labels: [0] no, dead [1] yes, alive
+
+$age_at_death: Age at death (in months)
+numeric: NaN 0 0 NaN NaN NaN NaN NaN NaN NaN ...
+min: 0 - max: 48 - NAs: 1442 (91%) - 22 unique values> 
+> 
+> 
+> cleanEx()
+> nameEx("freq")
+> ### * freq
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: freq
+> ### Title: Generate frequency tables.
+> ### Aliases: freq
+> 
+> ### ** Examples
+> 
+> # factor
+> data(hdv2003)
+> freq(hdv2003$qualif)
+                           n    % val%
+Ouvrier specialise       203 10.2 12.3
+Ouvrier qualifie         292 14.6 17.7
+Technicien                86  4.3  5.2
+Profession intermediaire 160  8.0  9.7
+Cadre                    260 13.0 15.7
+Employe                  594 29.7 35.9
+Autre                     58  2.9  3.5
+NA                       347 17.3   NA
+> freq(hdv2003$qualif, cum = TRUE, total = TRUE)
+                            n     %  val%  %cum val%cum
+Ouvrier specialise        203  10.2  12.3  10.2    12.3
+Ouvrier qualifie          292  14.6  17.7  24.8    29.9
+Technicien                 86   4.3   5.2  29.1    35.1
+Profession intermediaire  160   8.0   9.7  37.0    44.8
+Cadre                     260  13.0  15.7  50.0    60.6
+Employe                   594  29.7  35.9  79.8    96.5
+Autre                      58   2.9   3.5  82.7   100.0
+NA                        347  17.3    NA 100.0      NA
+Total                    2000 100.0 100.0 100.0   100.0
+> freq(hdv2003$qualif, cum = TRUE, total = TRUE, sort ="dec")
+                            n     %  val%  %cum val%cum
+Employe                   594  29.7  35.9  29.7    35.9
+Ouvrier qualifie          292  14.6  17.7  44.3    53.6
+Cadre                     260  13.0  15.7  57.3    69.3
+Ouvrier specialise        203  10.2  12.3  67.5    81.6
+Profession intermediaire  160   8.0   9.7  75.5    91.3
+Technicien                 86   4.3   5.2  79.8    96.5
+Autre                      58   2.9   3.5  82.7   100.0
+NA                        347  17.3    NA 100.0      NA
+Total                    2000 100.0 100.0 100.0   100.0
+> 
+> # labelled data
+> data(fecondite)
+> freq(femmes$region)
+            n    % val%
+[1] Nord  707 35.4 35.4
+[2] Est   324 16.2 16.2
+[3] Sud   407 20.3 20.3
+[4] Ouest 562 28.1 28.1
+> freq(femmes$region, levels = "l")
+        n    % val%
+Nord  707 35.4 35.4
+Est   324 16.2 16.2
+Sud   407 20.3 20.3
+Ouest 562 28.1 28.1
+> freq(femmes$region, levels = "v")
+    n    % val%
+1 707 35.4 35.4
+2 324 16.2 16.2
+3 407 20.3 20.3
+4 562 28.1 28.1
+> 
+> 
+> 
+> cleanEx()
+> nameEx("freq.na")
+> ### * freq.na
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: freq.na
+> ### Title: Generate frequency table of missing values.
+> ### Aliases: freq.na
+> 
+> ### ** Examples
+> 
+> data(hdv2003)
+> ## Examine a single vector.
+> freq.na(hdv2003$qualif)
+missing       % 
+    347      17 
+> ## Examine a data frame.
+> freq.na(hdv2003)
+              missing  %
+trav.imp          952 48
+trav.satisf       952 48
+qualif            347 17
+nivetud           112  6
+heures.tv           5  0
+id                  0  0
+age                 0  0
+sexe                0  0
+poids               0  0
+occup               0  0
+freres.soeurs       0  0
+clso                0  0
+relig               0  0
+hard.rock           0  0
+lecture.bd          0  0
+peche.chasse        0  0
+cuisine             0  0
+bricol              0  0
+cinema              0  0
+sport               0  0
+> ## Examine several variables.
+> freq.na(hdv2003, "nivetud", "trav.satisf")
+            missing  %
+trav.satisf     952 48
+nivetud         112  6
+> ## To see only variables with the most number of missing values
+> head(freq.na(hdv2003))
+            missing  %
+trav.imp        952 48
+trav.satisf     952 48
+qualif          347 17
+nivetud         112  6
+heures.tv         5  0
+id                0  0
+> 
+> 
+> 
+> cleanEx()
+> nameEx("icut")
+> ### * icut
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: icut
+> ### Title: Interactive conversion from numeric to factor
+> ### Aliases: icut
+> 
+> ### ** Examples
+> 
+> ## Not run: 
+> ##D data(hdv2003)
+> ##D icut(hdv2003, "age")
+> ##D irec(hdv2003, heures.tv) ## this also works
+> ## End(Not run)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("iorder")
+> ### * iorder
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: iorder
+> ### Title: Interactive reordering of factor levels
+> ### Aliases: iorder
+> 
+> ### ** Examples
+> 
+> ## Not run: 
+> ##D data(hdv2003)
+> ##D iorder(hdv2003, "qualif")
+> ## End(Not run)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("irec")
+> ### * irec
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: irec
+> ### Title: Interactive recoding
+> ### Aliases: irec
+> 
+> ### ** Examples
+> 
+> ## Not run: 
+> ##D data(hdv2003)
+> ##D irec()
+> ##D v <- sample(c("Red","Green","Blue"), 50, replace=TRUE)
+> ##D irec(v)
+> ##D irec(hdv2003, "qualif")
+> ##D irec(hdv2003, sexe) ## this also works
+> ## End(Not run)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("lookfor")
+> ### * lookfor
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: lookfor
+> ### Title: Look for keywords variable names and descriptions
+> ### Aliases: lookfor
+> 
+> ### ** Examples
+> 
+> lookfor(iris)
+      variable
+1 Sepal.Length
+2  Sepal.Width
+3 Petal.Length
+4  Petal.Width
+5      Species
+> # Look for a single keyword.
+> lookfor(iris, "petal")
+      variable
+3 Petal.Length
+4  Petal.Width
+> lookfor(iris, "s")
+      variable
+1 Sepal.Length
+2  Sepal.Width
+5      Species
+> # Look for with a regular expression
+> lookfor(iris, "petal|species")
+      variable
+3 Petal.Length
+4  Petal.Width
+5      Species
+> lookfor(iris, "s$")
+  variable
+5  Species
+> # Look for with several keywords
+> lookfor(iris, "pet", "sp")
+      variable
+3 Petal.Length
+4  Petal.Width
+5      Species
+> lookfor(iris, "pet", "sp", "width")
+      variable
+2  Sepal.Width
+3 Petal.Length
+4  Petal.Width
+5      Species
+> # Load memisc package and example data.
+> ## Not run: 
+> ##D require(memisc)
+> ##D nes1948.por <- UnZip("anes/NES1948.ZIP","NES1948.POR", package="memisc")
+> ##D nes1948 <- spss.portable.file(nes1948.por)
+> ##D # Look for a vector of keywords.
+> ##D lookfor(nes1948, c("Truman", "Dewey"))
+> ##D # Look for a regular expression.
+> ##D lookfor(nes1948, "truman|dewey")
+> ##D # Look for a phrase.
+> ##D lookfor(nes1948, "personal attribute")
+> ## End(Not run)
+> # Labelled data
+> data(fecondite)
+> lookfor(femmes)
+         variable
+1        id_femme
+2       id_menage
+3           poids
+4  date_entretien
+5  date_naissance
+6             age
+7          milieu
+8          region
+9            educ
+10        travail
+11          matri
+12       religion
+13        journal
+14          radio
+15             tv
+16   nb_enf_ideal
+17           test
+                                                            label
+1                                       Identifiant de l'enquêtée
+2                                           Identifiant du ménage
+3                                               Poids statistique
+4                              Date de passation du questionnaire
+5                                               Date de naissance
+6  Âge révolu (en années) à la date de passation du questionnaire
+7                                             Milieu de résidence
+8                                             Région de résidence
+9                                              Niveau d'éducation
+10                                                  A un emploi ?
+11                                             Statut matrimonial
+12                                                       Religion
+13                                                Lit la presse ?
+14                                              Ecoute la radio ?
+15                                        Regarde la télévision ?
+16                                         Nombre idéal d'enfants
+17                      A déjà fait un test de dépistage du VIH ?
+> lookfor(femmes, "date")
+        variable                                                          label
+4 date_entretien                             Date de passation du questionnaire
+5 date_naissance                                              Date de naissance
+6            age Âge révolu (en années) à la date de passation du questionnaire
+> # Display details
+> lookfor(femmes, details = TRUE)
+         variable
+1        id_femme
+2       id_menage
+3           poids
+4  date_entretien
+5  date_naissance
+6             age
+7          milieu
+8          region
+9            educ
+10        travail
+11          matri
+12       religion
+13        journal
+14          radio
+15             tv
+16   nb_enf_ideal
+17           test
+                                                            label
+1                                       Identifiant de l'enquêtée
+2                                           Identifiant du ménage
+3                                               Poids statistique
+4                              Date de passation du questionnaire
+5                                               Date de naissance
+6  Âge révolu (en années) à la date de passation du questionnaire
+7                                             Milieu de résidence
+8                                             Région de résidence
+9                                              Niveau d'éducation
+10                                                  A un emploi ?
+11                                             Statut matrimonial
+12                                                       Religion
+13                                                Lit la presse ?
+14                                              Ecoute la radio ?
+15                                        Regarde la télévision ?
+16                                         Nombre idéal d'enfants
+17                      A déjà fait un test de dépistage du VIH ?
+                     class   type levels
+1                  numeric double       
+2                  numeric double       
+3                  numeric double       
+4                     Date double       
+5                     Date double       
+6                  numeric double       
+7                 labelled double       
+8                 labelled double       
+9                 labelled double       
+10 labelled_spss, labelled double       
+11                labelled double       
+12                labelled double       
+13                labelled double       
+14                labelled double       
+15                labelled double       
+16 labelled_spss, labelled double       
+17 labelled_spss, labelled double       
+                                                                            value_labels
+1                                                                                       
+2                                                                                       
+3                                                                                       
+4                                                                                       
+5                                                                                       
+6                                                                                       
+7                                                                  [1] urbain; [2] rural
+8                                                  [1] Nord; [2] Est; [3] Sud; [4] Ouest
+9                                 [0] aucun; [1] primaire; [2] secondaire; [3] supérieur
+10                                                        [0] non; [1] oui; [9] manquant
+11 [0] célibataire; [1] mariée; [2] en concubinage; [3] veuve; [4] divorcée; [5] séparée
+12          [1] musulmane; [2] chrétienne; [3] protestante; [4] sans religion; [5] autre
+13                                                                      [0] non; [1] oui
+14                                                                      [0] non; [1] oui
+15                                                                      [0] non; [1] oui
+16                                                       [96] Ne sait pas; [99] manquant
+17                                                        [0] non; [1] oui; [9] manquant
+   unique_values n_na na_values na_range
+1           2000    0                   
+2           1814    0                   
+3            351    0                   
+4            165    0                   
+5           1740    0                   
+6             36    0                   
+7              2    0                   
+8              4    0                   
+9              4    0                   
+10             3    0         9         
+11             6    0                   
+12             6    4                   
+13             2    0                   
+14             2    0                   
+15             2    0                   
+16            18    0              96-99
+17             3    0         9         
+> 
+> 
+> 
+> cleanEx()
+> nameEx("ltabs")
+> ### * ltabs
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: ltabs
+> ### Title: Cross tabulation with labelled variables
+> ### Aliases: ltabs
+> 
+> ### ** Examples
+> 
+> data(fecondite)
+> ltabs(~radio, femmes)
+radio: Ecoute la radio ?
+[0] non [1] oui 
+   1085     915 
+> ltabs(~radio+tv, femmes)
+                        tv: Regarde la télévision ?
+radio: Ecoute la radio ? [0] non [1] oui
+                 [0] non     593     492
+                 [1] oui     168     747
+> ltabs(~radio+tv, femmes, "l")
+                        tv: Regarde la télévision ?
+radio: Ecoute la radio ? non oui
+                     non 593 492
+                     oui 168 747
+> ltabs(~radio+tv, femmes, "v")
+                        tv: Regarde la télévision ?
+radio: Ecoute la radio ?   0   1
+                       0 593 492
+                       1 168 747
+> ltabs(~radio+tv+journal, femmes)
+, , journal: Lit la presse ? = [0] non
+
+                        tv: Regarde la télévision ?
+radio: Ecoute la radio ? [0] non [1] oui
+                 [0] non     586     442
+                 [1] oui     160     492
+
+, , journal: Lit la presse ? = [1] oui
+
+                        tv: Regarde la télévision ?
+radio: Ecoute la radio ? [0] non [1] oui
+                 [0] non       7      50
+                 [1] oui       8     255
+
+> ltabs(~radio+tv, femmes, variable_label = FALSE)
+         tv
+radio     [0] non [1] oui
+  [0] non     593     492
+  [1] oui     168     747
+> 
+> 
+> 
+> cleanEx()
+> nameEx("multi.split")
+> ### * multi.split
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: multi.split
+> ### Title: Split a multiple choices variable in a series of binary
+> ###   variables
+> ### Aliases: multi.split
+> 
+> ### ** Examples
+> 
+> v <- c("red/blue","green","red/green","blue/red")
+> multi.split(v)
+  v.blue v.red v.green
+1      1     1       0
+2      0     0       1
+3      0     1       1
+4      1     1       0
+> ## One-way frequency table of the result
+> multi.table(multi.split(v))
+        n %multi
+v.blue  2     50
+v.red   3     75
+v.green 2     50
+> 
+> 
+> 
+> cleanEx()
+> nameEx("multi.table")
+> ### * multi.table
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: multi.table
+> ### Title: One-way frequency table for multiple choices question
+> ### Aliases: multi.table
+> 
+> ### ** Examples
+> 
+> ## Sample data frame
+> set.seed(1337)
+> sex <- sample(c("Man","Woman"),100,replace=TRUE)
+> jazz <- sample(c(0,1),100,replace=TRUE)
+> rock <- sample(c(TRUE, FALSE),100,replace=TRUE)
+> electronic <- sample(c("Y","N"),100,replace=TRUE)
+> weights <- runif(100)*2
+> df <- data.frame(sex,jazz,rock,electronic,weights)
+> ## Frequency table on 'music' variables
+> multi.table(df[,c("jazz", "rock","electronic")], true.codes=list("Y"))
+            n %multi
+jazz       49     49
+rock       53     53
+electronic 57     57
+> ## Weighted frequency table on 'music' variables
+> multi.table(df[,c("jazz", "rock","electronic")], true.codes=list("Y"), weights=df$weights)
+              n %multi
+jazz       45.2   49.0
+rock       47.1   50.9
+electronic 53.9   58.4
+> ## No percentages
+> multi.table(df[,c("jazz", "rock","electronic")], true.codes=list("Y"), freq=FALSE)
+      jazz       rock electronic 
+        49         53         57 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("na.rm")
+> ### * na.rm
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: na.rm
+> ### Title: Remove observations with missing values
+> ### Aliases: na.rm
+> 
+> ### ** Examples
+> 
+> df <- data.frame(x = c(1, 2, 3), y = c(0, 10, NA), z= c("a",NA,"b"))
+> df
+  x  y    z
+1 1  0    a
+2 2 10 <NA>
+3 3 NA    b
+> na.omit(df)
+  x y z
+1 1 0 a
+> na.rm(df)
+  x y z
+1 1 0 a
+> na.rm(df, c("x","y"))
+  x  y    z
+1 1  0    a
+2 2 10 <NA>
+> na.rm(df, "z")
+  x  y z
+1 1  0 a
+3 3 NA b
+> 
+> 
+> 
+> cleanEx()
+> nameEx("odds.ratio")
+> ### * odds.ratio
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: odds.ratio
+> ### Title: Odds Ratio
+> ### Aliases: odds.ratio odds.ratio.glm odds.ratio.multinom
+> ###   odds.ratio.factor odds.ratio.table odds.ratio.matrix
+> ###   odds.ratio.numeric print.odds.ratio
+> 
+> ### ** Examples
+> 
+> data(hdv2003)
+> reg <- glm(cinema ~ sexe + age, data=hdv2003, family=binomial)
+> odds.ratio(reg)
+Waiting for profiling to be done...
+                  OR    2.5 %  97.5 %      p    
+(Intercept) 10.41153  7.46408 14.6374 <2e-16 ***
+sexeFemme    1.14333  0.93852  1.3934 0.1838    
+age          0.94233  0.93591  0.9486 <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> odds.ratio(hdv2003$sport, hdv2003$cuisine)
+                  OR  2.5 % 97.5 %         p    
+Fisher's test 1.4771 1.2242 1.7829 3.646e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> odds.ratio(table(hdv2003$sport, hdv2003$cuisine))
+                  OR  2.5 % 97.5 %         p    
+Fisher's test 1.4771 1.2242 1.7829 3.646e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> M <- matrix(c(759, 360, 518, 363), ncol = 2)
+> odds.ratio(M)
+                  OR  2.5 % 97.5 %         p    
+Fisher's test 1.4771 1.2242 1.7829 3.646e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> odds.ratio(0.26, 0.42)
+[1] 0.4851995
+> 
+> 
+> 
+> cleanEx()
+> nameEx("prop")
+> ### * prop
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: prop
+> ### Title: Global percentages of a two-way frequency table.
+> ### Aliases: prop prop_table prop.data.frame prop.matrix prop.tabyl
+> 
+> ### ** Examples
+> 
+> ## Sample table
+> data(Titanic)
+> tab <- apply(Titanic, c(1,4), sum)
+> ## Percentages
+> prop(tab)
+       Survived
+Class   No    Yes   Total
+  1st     5.5   9.2  14.8
+  2nd     7.6   5.4  12.9
+  3rd    24.0   8.1  32.1
+  Crew   30.6   9.6  40.2
+  Total  67.7  32.3 100.0
+> ## Percentages with custom display
+> prop(tab, digits=2, percent=TRUE, total=FALSE, n=TRUE)
+      Survived
+Class  No       Yes      n   
+  1st     5.54%    9.22%  325
+  2nd     7.59%    5.36%  285
+  3rd    23.99%    8.09%  706
+  Crew   30.58%    9.63%  885
+  n    1490      711     2201
+> 
+> 
+> 
+> cleanEx()
+> nameEx("qload")
+> ### * qload
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: qload
+> ### Title: Load one or more packages, installing them first if necessary
+> ### Aliases: qload
+> 
+> ### ** Examples
+> 
+> qload("questionr")
+> qload("questionr", silent = FALSE)
+Loaded package: questionr
+> 
+> 
+> 
+> cleanEx()
+> nameEx("qscan")
+> ### * qscan
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: qscan
+> ### Title: Scan R scripts and load/install all detected packages
+> ### Aliases: qscan
+> 
+> ### ** Examples
+> 
+> ## Scan the working directory.
+> ## Not run: qscan()
+> 
+> 
+> 
+> cleanEx()
+> nameEx("quant.cut")
+> ### * quant.cut
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: quant.cut
+> ### Title: Transform a quantitative variable into a qualitative variable
+> ### Aliases: quant.cut
+> 
+> ### ** Examples
+> 
+> data(iris)
+> sepal.width3cl <- quant.cut(iris$Sepal.Width,3)
+> table(sepal.width3cl)
+sepal.width3cl
+  [2,2.9) [2.9,3.2) [3.2,4.4] 
+       47        47        56 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("recode.na")
+> ### * recode.na
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: recode.na
+> ### Title: Recode values of a variable to missing values, using exact or
+> ###   regular expression matching.
+> ### Aliases: recode.na
+> 
+> ### ** Examples
+> 
+> data(hdv2003)
+> ## With exact string matches.
+> hdv2003$nivetud = recode.na(hdv2003$nivetud, "Inconnu")
+Recoded 0 values to NA.
+> ## With regular expressions.
+> hdv2003$relig = recode.na(hdv2003$relig, "[A|a]ppartenance", "Rejet|NSP")
+Recoded 1292 values to NA.
+> ## Showing missing values. 
+> hdv2003$clso = recode.na(hdv2003$clso, "Ne sait pas", verbose = TRUE)
+Recoded 27 values to NA.
+             n
+Ne sait pas 27
+> ## Test results with freq.
+> freq(recode.na(hdv2003$trav.satisf, "Equilibre"))
+Recoded 451 values to NA.
+                  n    % val%
+Satisfaction    480 24.0 80.4
+Insatisfaction  117  5.9 19.6
+NA             1403 70.2   NA
+> ## Truncate a count variable (recommends numeric conversion).
+> freq(recode.na(hdv2003$freres.soeurs, 5:22))
+Recoded 505 values to NA.
+Recoded variable contains only numeric characters. Consider using as.numeric = TRUE.
+     n    % val%
+0  167  8.3 11.2
+1  407 20.3 27.2
+2  427 21.3 28.6
+3  284 14.2 19.0
+4  210 10.5 14.0
+NA 505 25.2   NA
+> 
+> 
+> 
+> cleanEx()
+> nameEx("rename.variable")
+> ### * rename.variable
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: rename.variable
+> ### Title: Rename a data frame column
+> ### Aliases: rename.variable renomme.variable
+> ### Keywords: manip
+> 
+> ### ** Examples
+> 
+> data(iris)
+> str(iris)
+'data.frame':	150 obs. of  5 variables:
+ $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+ $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+ $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+ $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+ $ Species     : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...
+> iris <- rename.variable(iris, "Species", "especes")
+> str(iris)
+'data.frame':	150 obs. of  5 variables:
+ $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+ $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+ $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+ $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+ $ especes     : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...
+> 
+> 
+> 
+> cleanEx()
+> nameEx("rm.unused.levels")
+> ### * rm.unused.levels
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: rm.unused.levels
+> ### Title: Remove unused levels
+> ### Aliases: rm.unused.levels
+> 
+> ### ** Examples
+> 
+> df <- data.frame(v1=c("a","b","a","b"),v2=c("x","x","y","y"))
+> df$v1 <- factor(df$v1,c("a","b","c"))
+> df$v2 <- factor(df$v2,c("x","y","z"))
+> df
+  v1 v2
+1  a  x
+2  b  x
+3  a  y
+4  b  y
+> str(df)
+'data.frame':	4 obs. of  2 variables:
+ $ v1: Factor w/ 3 levels "a","b","c": 1 2 1 2
+ $ v2: Factor w/ 3 levels "x","y","z": 1 1 2 2
+> str(rm.unused.levels(df))
+'data.frame':	4 obs. of  2 variables:
+ $ v1: Factor w/ 2 levels "a","b": 1 2 1 2
+ $ v2: Factor w/ 2 levels "x","y": 1 1 2 2
+> str(rm.unused.levels(df,"v1"))
+'data.frame':	4 obs. of  2 variables:
+ $ v1: Factor w/ 2 levels "a","b": 1 2 1 2
+ $ v2: Factor w/ 3 levels "x","y","z": 1 1 2 2
+> 
+> 
+> 
+> cleanEx()
+> nameEx("rprop")
+> ### * rprop
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: rprop
+> ### Title: Row percentages of a two-way frequency table.
+> ### Aliases: rprop lprop rprop.table rprop.data.frame rprop.matrix
+> ###   rprop.tabyl
+> 
+> ### ** Examples
+> 
+> ## Sample table
+> data(Titanic)
+> tab <- apply(Titanic, c(1,4), sum)
+> ## Column percentages
+> rprop(tab)
+      Survived
+Class  No    Yes   Total
+  1st   37.5  62.5 100.0
+  2nd   58.6  41.4 100.0
+  3rd   74.8  25.2 100.0
+  Crew  76.0  24.0 100.0
+  All   67.7  32.3 100.0
+> ## Column percentages with custom display
+> rprop(tab, digits=2, percent=TRUE, total=FALSE)
+      Survived
+Class  No     Yes   
+  1st  37.54% 62.46%
+  2nd  58.60% 41.40%
+  3rd  74.79% 25.21%
+  Crew 76.05% 23.95%
+> 
+> 
+> 
+> cleanEx()
+> nameEx("tabs")
+> ### * tabs
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: tabs
+> ### Title: Weighted Crossresult
+> ### Aliases: tabs
+> 
+> ### ** Examples
+> 
+> data(hdv2003) 
+> tabs(hdv2003, x = "relig", y = c("qualif", "trav.imp"), weight = "poids")
+                            Overall Ouvrier specialise Ouvrier qualifie
+Pratiquant regulier         12.5     1.5                1.2            
+Pratiquant occasionnel      21.8     2.1                3.2            
+Appartenance sans pratique  37.9     4.7                7.0            
+Ni croyance ni appartenance 21.3     2.9                4.0            
+Rejet                        4.7     0.2                1.4            
+NSP ou NVPR                  1.9     0.3                0.2            
+                            Technicien Profession intermediaire Cadre Employe
+Pratiquant regulier          0.2        1.2                      1.7   4.8   
+Pratiquant occasionnel       0.8        2.3                      4.0   8.3   
+Appartenance sans pratique   3.1        3.1                      6.5  13.3   
+Ni croyance ni appartenance  1.2        2.1                      3.5   7.6   
+Rejet                        0.4        0.3                      0.6   1.4   
+NSP ou NVPR                  0.1        0.5                      0.1   0.9   
+                            Autre Le plus important
+Pratiquant regulier          0.3   0.1             
+Pratiquant occasionnel       0.9   0.4             
+Appartenance sans pratique   1.1   0.9             
+Ni croyance ni appartenance  0.4   0.5             
+Rejet                        0.4   0.1             
+NSP ou NVPR                  0.1   0.0             
+                            Aussi important que le reste
+Pratiquant regulier          2.3                        
+Pratiquant occasionnel       4.0                        
+Appartenance sans pratique   9.9                        
+Ni croyance ni appartenance  7.4                        
+Rejet                        0.9                        
+NSP ou NVPR                  0.2                        
+                            Moins important que le reste Peu important
+Pratiquant regulier          4.4                          0.3         
+Pratiquant occasionnel      15.9                          0.7         
+Appartenance sans pratique  28.0                          1.3         
+Ni croyance ni appartenance 16.5                          1.9         
+Rejet                        3.0                          0.4         
+NSP ou NVPR                  0.8                          0.0         
+> result <- tabs(hdv2003, x = "relig", y = c("qualif", "trav.imp"), type = "counts")
+> format(result, digits = 3)
+                            Overall Ouvrier specialise Ouvrier qualifie
+Pratiquant regulier         "266"   " 33"              " 22"           
+Pratiquant occasionnel      "442"   " 45"              " 59"           
+Appartenance sans pratique  "760"   " 75"              "120"           
+Ni croyance ni appartenance "399"   " 41"              " 69"           
+Rejet                       " 93"   "  4"              " 17"           
+NSP ou NVPR                 " 40"   "  5"              "  5"           
+                            Technicien Profession intermediaire Cadre Employe
+Pratiquant regulier         "  5"      " 17"                    " 29" " 86"  
+Pratiquant occasionnel      " 10"      " 34"                    " 59" "139"  
+Appartenance sans pratique  " 44"      " 57"                    "106" "222"  
+Ni croyance ni appartenance " 18"      " 40"                    " 52" "104"  
+Rejet                       "  6"      "  7"                    " 12" " 27"  
+NSP ou NVPR                 "  3"      "  5"                    "  2" " 16"  
+                            Autre Le plus important
+Pratiquant regulier         " 10" "  2"            
+Pratiquant occasionnel      " 17" "  7"            
+Appartenance sans pratique  " 20" " 12"            
+Ni croyance ni appartenance "  5" "  6"            
+Rejet                       "  4" "  2"            
+NSP ou NVPR                 "  2" "  0"            
+                            Aussi important que le reste
+Pratiquant regulier         " 24"                       
+Pratiquant occasionnel      " 49"                       
+Appartenance sans pratique  "107"                       
+Ni croyance ni appartenance " 66"                       
+Rejet                       " 10"                       
+NSP ou NVPR                 "  3"                       
+                            Moins important que le reste Peu important
+Pratiquant regulier         " 54"                        "  5"        
+Pratiquant occasionnel      "163"                        "  9"        
+Appartenance sans pratique  "283"                        " 16"        
+Ni croyance ni appartenance "160"                        " 16"        
+Rejet                       " 35"                        "  5"        
+NSP ou NVPR                 " 13"                        "  1"        
+> # library(knitr)
+> # xt <- tabs(hdv2003, x = "relig", y = c("qualif", "trav.imp"), weight = "poids")
+> # kable(format(xt))                        # to use with RMarkdown...
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("wtd.mean")
+> ### * wtd.mean
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: wtd.mean
+> ### Title: Weighted mean and variance of a vector
+> ### Aliases: wtd.mean wtd.var
+> 
+> ### ** Examples
+> 
+> data(hdv2003)
+> mean(hdv2003$age)
+[1] 48.157
+> wtd.mean(hdv2003$age, weights=hdv2003$poids)
+[1] 46.34726
+> var(hdv2003$age)
+[1] 287.0249
+> wtd.var(hdv2003$age, weights=hdv2003$poids)
+[1] 325.2658
+> 
+> 
+> 
+> cleanEx()
+> nameEx("wtd.table")
+> ### * wtd.table
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: wtd.table
+> ### Title: Weighted one-way and two-way frequency tables.
+> ### Aliases: wtd.table
+> 
+> ### ** Examples
+> 
+> data(hdv2003)
+> wtd.table(hdv2003$sexe, weights=hdv2003$poids)
+  Homme   Femme 
+5149382 5921844 
+> wtd.table(hdv2003$sexe, weights=hdv2003$poids, normwt=TRUE)
+   Homme    Femme 
+ 930.228 1069.772 
+> table(hdv2003$sexe, hdv2003$hard.rock)
+       
+         Non  Oui
+  Homme  892    7
+  Femme 1094    7
+> wtd.table(hdv2003$sexe, hdv2003$hard.rock, weights=hdv2003$poids)
+             Non        Oui
+Homme 5109366.41   40016.02
+Femme 5872596.42   49247.49
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cleanEx()
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  0.931 0.064 0.998 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

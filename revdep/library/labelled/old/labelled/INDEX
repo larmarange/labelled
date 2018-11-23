@@ -1,0 +1,20 @@
+as.data.frame.labelled
+                        as.data.frame method for labelled vectors
+copy_labels             Copy variable and value labels
+labelled                Create a labelled vector.
+labelled_spss           Create a labelled vector with SPSS style of
+                        missing values.
+mean.labelled           Arithmetic mean for numeric labelled vectors
+na_values               Get / Set SPSS missing values
+nolabel_to_na           Recode values with no label to NA
+recode.labelled         Recode values
+remove_attributes       Remove attributes
+remove_labels           Remove variable label, value labels and user
+                        defined missing values
+sort_val_labels         Sort value labels
+to_character            Convert input to a character vector
+to_factor               Convert input to a factor.
+to_labelled             Convert to labelled data
+val_labels              Get / Set value labels
+val_labels_to_na        Recode value labels to NA
+var_label               Get / Set a variable label

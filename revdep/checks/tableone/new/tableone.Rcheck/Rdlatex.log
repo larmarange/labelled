@@ -1,0 +1,1583 @@
+Hmm ... looks like a package
+
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, lo
+aded.
+(./Rd2.tex
+(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/bk10.clo))
+(/opt/R/3.5.1/lib64/R/share/texmf/tex/latex/Rd.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def))
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def))
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.dfu))
+(/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def))
+Writing index file Rd2.idx
+No file Rd2.aux.
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [1{/usr/share/texlive/t
+exmf/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (11.13794pt too wide) in paragraph at lines 56--57
+[]\T1/ptm/m/n/10 Hadley Wick-ham for pack-ag-ing ad-vice and for cre-at-ing too
+ls this pack-age was made with (\T1/pcr/m/n/10 roxygen2\T1/ptm/m/n/10 ,
+
+Overfull \hbox (60.86096pt too wide) in paragraph at lines 79--80
+[][][]\T1/pcr/m/n/10 CreateTableOne[][][]\T1/ptm/m/n/10 , [][]\T1/pcr/m/n/10 sv
+yCreateTableOne[][][]\T1/ptm/m/n/10 , [][]\T1/pcr/m/n/10 print.TableOne[][][]\T
+1/ptm/m/n/10 , [][]\T1/pcr/m/n/10 summary.TableOne[][][]\T1/ptm/m/n/10 , [][]\T
+1/pcr/m/n/10 ShowRegTable[][][] 
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (0.78088pt too wide) in paragraph at lines 98--98
+ []\T1/pcr/m/n/10 CreateCatTable(vars, strata, data, includeNA = FALSE, test = 
+TRUE,[] 
+[2]
+Overfull \hbox (0.78088pt too wide) in paragraph at lines 100--100
+ []  \T1/pcr/m/n/10 testExact = fisher.test, argsExact = list(workspace = 2 * 1
+0^5),[] 
+[3]
+Overfull \hbox (4.38043pt too wide) in paragraph at lines 169--169
+ []\T1/pcr/m/n/9 ## You can choose form frequencies ("f") and/or percentages ("
+p") or both.[] 
+
+Overfull \hbox (15.18042pt too wide) in paragraph at lines 170--170
+ []\T1/pcr/m/n/9 ## "fp" frequency (percentage) is the default. Row names chang
+e accordingly.[] 
+
+Overfull \hbox (20.58041pt too wide) in paragraph at lines 182--182
+ []\T1/pcr/m/n/9 ## print now includes p-values which are by default calculated
+ by chisq.test.[] 
+[4]
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 194--194
+ []\T1/pcr/m/n/9 ## If your work flow includes copying to Excel and Word when w
+riting manuscripts,[] 
+
+Overfull \hbox (25.98041pt too wide) in paragraph at lines 195--195
+ []\T1/pcr/m/n/9 ## you may benefit from the quote argument. This will quote ev
+erything so that[] 
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (36.78088pt too wide) in paragraph at lines 213--213
+ []\T1/pcr/m/n/10 CreateContTable(vars, strata, data, funcNames = c("n", "miss"
+, "p.miss",[] 
+
+Overfull \hbox (24.78088pt too wide) in paragraph at lines 214--214
+ []  \T1/pcr/m/n/10 "mean", "sd", "median", "p25", "p75", "min", "max", "skew",
+ "kurt"),[] 
+
+Overfull \hbox (12.78088pt too wide) in paragraph at lines 216--216
+ []  \T1/pcr/m/n/10 argsNormal = list(var.equal = TRUE), testNonNormal = kruska
+l.test,[] 
+
+Overfull \hbox (25.83873pt too wide) in paragraph at lines 231--232
+[]\T1/ptm/m/n/10 Additional func-tions can be given as a named list. For ex-am-
+ple, \T1/pcr/m/n/10 list(sum = sum)\T1/ptm/m/n/10 . 
+[5]
+Overfull \hbox (14.96764pt too wide) in paragraph at lines 239--240
+[]\T1/ptm/m/n/10 A func-tion used to per-form the non-para-met-ric tests. The d
+e-fault is \T1/pcr/m/n/10 kruskal.test
+
+Overfull \hbox (2.68791pt too wide) in paragraph at lines 241--242
+[]\T1/ptm/m/n/10 A named list of ar-gu-ments passed to the func-tion spec-i-fie
+d in \T1/pcr/m/n/10 testNonNormal\T1/ptm/m/n/10 .
+
+Overfull \hbox (20.58041pt too wide) in paragraph at lines 284--284
+ []\T1/pcr/m/n/9 ## c("age","chol","copper","alk.phos","trig","protime") appear
+ highly skewed.[] 
+
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 285--285
+ []\T1/pcr/m/n/9 ## Specify them in the nonnormal argument, and the display cha
+nges to the median,[] 
+[6]
+Overfull \hbox (63.78036pt too wide) in paragraph at lines 297--297
+ []\T1/pcr/m/n/9 ## print now includes p-values which are by default calculated
+ by oneway.test (t-test[] 
+
+Overfull \hbox (58.38037pt too wide) in paragraph at lines 298--298
+ []\T1/pcr/m/n/9 ## equivalent in the two group case). It is formatted at the d
+ecimal place specified[] 
+
+Overfull \hbox (31.3804pt too wide) in paragraph at lines 302--302
+ []\T1/pcr/m/n/9 ## The nonnormal argument toggles the p-values to the nonparam
+etric result from[] 
+
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 309--309
+ []\T1/pcr/m/n/9 ## If your work flow includes copying to Excel and Word when w
+riting manuscripts,[] 
+
+Overfull \hbox (25.98041pt too wide) in paragraph at lines 310--310
+ []\T1/pcr/m/n/9 ## you may benefit from the quote argument. This will quote ev
+erything so that[] 
+
+Overfull \hbox (47.58038pt too wide) in paragraph at lines 315--315
+ []\T1/pcr/m/n/9 print(contTableBySexTrt, nonnormal = nonNormalVars, quote = TR
+UE, noSpaces = TRUE)[] 
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (48.78088pt too wide) in paragraph at lines 329--329
+ []  \T1/pcr/m/n/10 test = TRUE, testApprox = chisq.test, argsApprox = list(cor
+rect = TRUE),[] 
+
+Overfull \hbox (0.78088pt too wide) in paragraph at lines 330--330
+ []  \T1/pcr/m/n/10 testExact = fisher.test, argsExact = list(workspace = 2 * 1
+0^5),[] 
+
+Overfull \hbox (30.78088pt too wide) in paragraph at lines 332--332
+ []  \T1/pcr/m/n/10 testNonNormal = kruskal.test, argsNonNormal = list(NULL), s
+md = TRUE)[] 
+[7]
+Overfull \hbox (14.96764pt too wide) in paragraph at lines 362--363
+[]\T1/ptm/m/n/10 A func-tion used to per-form the non-para-met-ric tests. The d
+e-fault is \T1/pcr/m/n/10 kruskal.test
+
+Overfull \hbox (2.68791pt too wide) in paragraph at lines 364--365
+[]\T1/ptm/m/n/10 A named list of ar-gu-ments passed to the func-tion spec-i-fie
+d in \T1/pcr/m/n/10 testNonNormal\T1/ptm/m/n/10 .
+[8]
+Overfull \hbox (25.98041pt too wide) in paragraph at lines 419--419
+ []\T1/pcr/m/n/9 varsToFactor <- c("status","trt","ascites","hepato","spiders",
+"edema","stage")[] 
+[9]
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 453--453
+ []\T1/pcr/m/n/9 ## If your work flow includes copying to Excel and Word when w
+riting manuscripts,[] 
+
+Overfull \hbox (25.98041pt too wide) in paragraph at lines 454--454
+ []\T1/pcr/m/n/9 ## you may benefit from the quote argument. This will quote ev
+erything so that[] 
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [10]
+Overfull \hbox (82.58788pt too wide) in paragraph at lines 485--486
+[]\T1/ptm/m/n/10 Whether to re-place vari-able names with vari-able la-bels ob-
+tained from \T1/pcr/m/n/10 labelled::var_label()
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1pcr.fd)
+Overfull \hbox (36.78088pt too wide) in paragraph at lines 519--519
+ []  \T1/pcr/m/n/10 missing = FALSE, explain = TRUE, printToggle = TRUE, noSpac
+es = FALSE,[] 
+[11]
+Overfull \hbox (6.0772pt too wide) in paragraph at lines 558--559
+[]\T1/ptm/m/n/10 Whether to show the cross ta-ble ob-jects held in-ter-nally us
+-ing gmod-els::CrossTable
+[12]
+Overfull \hbox (4.38043pt too wide) in paragraph at lines 603--603
+ []\T1/pcr/m/n/9 ## You can choose form frequencies ("f") and/or percentages ("
+p") or both.[] 
+
+Overfull \hbox (15.18042pt too wide) in paragraph at lines 604--604
+ []\T1/pcr/m/n/9 ## "fp" frequency (percentage) is the default. Row names chang
+e accordingly.[] 
+
+Overfull \hbox (20.58041pt too wide) in paragraph at lines 616--616
+ []\T1/pcr/m/n/9 ## print now includes p-values which are by default calculated
+ by chisq.test.[] 
+
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 628--628
+ []\T1/pcr/m/n/9 ## If your work flow includes copying to Excel and Word when w
+riting manuscripts,[] 
+
+Overfull \hbox (25.98041pt too wide) in paragraph at lines 629--629
+ []\T1/pcr/m/n/9 ## you may benefit from the quote argument. This will quote ev
+erything so that[] 
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [13]
+Overfull \hbox (36.78088pt too wide) in paragraph at lines 649--649
+ []  \T1/pcr/m/n/10 missing = FALSE, explain = TRUE, printToggle = TRUE, noSpac
+es = FALSE,[] 
+
+Overfull \hbox (18.78088pt too wide) in paragraph at lines 650--650
+ []  \T1/pcr/m/n/10 nonnormal = NULL, minMax = FALSE, insertLevel = FALSE, test
+ = TRUE,[] 
+[14]
+Overfull \hbox (20.58041pt too wide) in paragraph at lines 724--724
+ []\T1/pcr/m/n/9 ## c("age","chol","copper","alk.phos","trig","protime") appear
+ highly skewed.[] 
+
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 725--725
+ []\T1/pcr/m/n/9 ## Specify them in the nonnormal argument, and the display cha
+nges to the median,[] 
+
+Overfull \hbox (63.78036pt too wide) in paragraph at lines 737--737
+ []\T1/pcr/m/n/9 ## print now includes p-values which are by default calculated
+ by oneway.test (t-test[] 
+
+Overfull \hbox (58.38037pt too wide) in paragraph at lines 738--738
+ []\T1/pcr/m/n/9 ## equivalent in the two group case). It is formatted at the d
+ecimal place specified[] 
+
+Overfull \hbox (31.3804pt too wide) in paragraph at lines 742--742
+ []\T1/pcr/m/n/9 ## The nonnormal argument toggles the p-values to the nonparam
+etric result from[] 
+
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 752--752
+ []\T1/pcr/m/n/9 ## If your work flow includes copying to Excel and Word when w
+riting manuscripts,[] 
+[15]
+Overfull \hbox (25.98041pt too wide) in paragraph at lines 753--753
+ []\T1/pcr/m/n/9 ## you may benefit from the quote argument. This will quote ev
+erything so that[] 
+
+Overfull \hbox (47.58038pt too wide) in paragraph at lines 758--758
+ []\T1/pcr/m/n/9 print(contTableBySexTrt, nonnormal = nonNormalVars, quote = TR
+UE, noSpaces = TRUE)[] 
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (36.78088pt too wide) in paragraph at lines 773--773
+ []  \T1/pcr/m/n/10 missing = FALSE, explain = TRUE, printToggle = TRUE, noSpac
+es = FALSE,[] 
+[16]
+Overfull \hbox (6.0772pt too wide) in paragraph at lines 812--813
+[]\T1/ptm/m/n/10 Whether to show the cross ta-ble ob-jects held in-ter-nally us
+-ing gmod-els::CrossTable
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (36.78088pt too wide) in paragraph at lines 848--848
+ []  \T1/pcr/m/n/10 missing = FALSE, explain = TRUE, printToggle = TRUE, noSpac
+es = FALSE,[] 
+
+Overfull \hbox (18.78088pt too wide) in paragraph at lines 849--849
+ []  \T1/pcr/m/n/10 nonnormal = NULL, minMax = FALSE, insertLevel = FALSE, test
+ = TRUE,[] 
+[17] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [18]
+Overfull \hbox (18.78088pt too wide) in paragraph at lines 916--916
+ []  \T1/pcr/m/n/10 quote = FALSE, missing = FALSE, explain = TRUE, printToggle
+ = TRUE,[] 
+
+Overfull \hbox (0.78088pt too wide) in paragraph at lines 917--917
+ []  \T1/pcr/m/n/10 test = TRUE, smd = FALSE, noSpaces = FALSE, padColnames = F
+ALSE,[] 
+
+Overfull \hbox (82.58788pt too wide) in paragraph at lines 950--951
+[]\T1/ptm/m/n/10 Whether to re-place vari-able names with vari-able la-bels ob-
+tained from \T1/pcr/m/n/10 labelled::var_label()
+[19] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [20]
+Overfull \hbox (58.38037pt too wide) in paragraph at lines 1042--1042
+ []\T1/pcr/m/n/9 objCoxph <- coxph(formula = Surv(time, status == 2) ~ trt + ag
+e + albumin + ascites,[] 
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [21]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (7.28667pt too wide) in paragraph at lines 1100--1101
+\T1/ptm/m/n/10 sum-mary statis-tics and, if avail-able, p-values from the nor-m
+al assupmtion-based test (\T1/pcr/m/n/10 oneway.test
+[22] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [23]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (26.96645pt too wide) in paragraph at lines 1186--1187
+\T1/ptm/m/n/10 with sum-mary statis-tics and, if avail-able, p-values from the 
+nor-mal assupmtion-based test (\T1/pcr/m/n/10 regTermTest
+[24] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (18.78088pt too wide) in paragraph at lines 1277--1277
+ []\T1/pcr/m/n/10 svyCreateCatTable(vars, strata, data, includeNA = FALSE, test
+ = TRUE,[] 
+[25]
+Overfull \hbox (5.258pt too wide) in paragraph at lines 1288--1289
+\T1/ptm/m/n/10 and strata) must be in this sur-vey de-sign ob-ject. It is cre-a
+ted with the \T1/pcr/m/n/10 svydesign
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [26]
+Underfull \hbox (badness 1325) in paragraph at lines 1322--1322
+[]\T1/ptm/m/it/10 Create an ob-ject sum-ma-riz-ing con-ti-nous vari-ables for w
+eighted
+
+Overfull \hbox (18.78088pt too wide) in paragraph at lines 1332--1332
+ []  \T1/pcr/m/n/10 testNonNormal = svyTestNonNormal, argsNonNormal = NULL, smd
+ = TRUE)[] 
+
+Overfull \hbox (5.258pt too wide) in paragraph at lines 1342--1343
+\T1/ptm/m/n/10 and strata) must be in this sur-vey de-sign ob-ject. It is cre-a
+ted with the \T1/pcr/m/n/10 svydesign
+
+Overfull \hbox (11.46764pt too wide) in paragraph at lines 1350--1351
+[]\T1/ptm/m/n/10 A func-tion used to per-form the non-para-met-ric tests. The d
+e-fault is \T1/pcr/m/n/10 svyranktest\T1/ptm/m/n/10 . 
+
+Overfull \hbox (2.68791pt too wide) in paragraph at lines 1352--1353
+[]\T1/ptm/m/n/10 A named list of ar-gu-ments passed to the func-tion spec-i-fie
+d in \T1/pcr/m/n/10 testNonNormal\T1/ptm/m/n/10 . 
+[27] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (12.78088pt too wide) in paragraph at lines 1386--1386
+ []\T1/pcr/m/n/10 svyCreateTableOne(vars, strata, data, factorVars, includeNA =
+ FALSE,[] 
+
+Overfull \hbox (18.78088pt too wide) in paragraph at lines 1389--1389
+ []  \T1/pcr/m/n/10 testNonNormal = svyTestNonNormal, argsNonNormal = NULL, smd
+ = TRUE)[] 
+
+Overfull \hbox (5.258pt too wide) in paragraph at lines 1399--1400
+\T1/ptm/m/n/10 and strata) must be in this sur-vey de-sign ob-ject. It is cre-a
+ted with the \T1/pcr/m/n/10 svydesign
+[28]
+Overfull \hbox (11.46764pt too wide) in paragraph at lines 1415--1416
+[]\T1/ptm/m/n/10 A func-tion used to per-form the non-para-met-ric tests. The d
+e-fault is \T1/pcr/m/n/10 svyranktest\T1/ptm/m/n/10 . 
+
+Overfull \hbox (2.68791pt too wide) in paragraph at lines 1417--1418
+[]\T1/ptm/m/n/10 A named list of ar-gu-ments passed to the func-tion spec-i-fie
+d in \T1/pcr/m/n/10 testNonNormal\T1/ptm/m/n/10 . 
+
+Overfull \hbox (47.58038pt too wide) in paragraph at lines 1456--1456
+ []\T1/pcr/m/n/9 nhanesSvy <- svydesign(ids = ~ SDMVPSU, strata = ~ SDMVSTRA, w
+eights = ~ WTMEC2YR,[] 
+
+Overfull \hbox (20.58041pt too wide) in paragraph at lines 1460--1460
+ []\T1/pcr/m/n/9 ## factorVars are converted to factors; no need for variables 
+already factors[] 
+
+Overfull \hbox (20.58041pt too wide) in paragraph at lines 1461--1461
+ []\T1/pcr/m/n/9 ## strata will stratify summaries; leave it unspecified for ov
+erall summaries[] 
+[29]
+Overfull \hbox (4.38043pt too wide) in paragraph at lines 1480--1480
+ []\T1/pcr/m/n/9 ## showAllLevels can be used tow show levels for all categoric
+al variables[] 
+No file Rd2.ind.
+[30] (./Rd2.aux)
+
+Package rerunfilecheck Warning: File `Rd2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information){/usr/share/texlive/texmf-d
+ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/
+courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr
+8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (30 pages, 139516 bytes).
+Transcript written on Rd2.log.
+This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
+Scanning input file Rd2.idx....done (89 entries accepted, 0 rejected).
+Sorting entries....done (616 comparisons).
+Generating output file Rd2.ind....done (72 lines written, 1 warning).
+Output written in Rd2.ind.
+Transcript written in Rd2.ilg.
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, lo
+aded.
+(./Rd2.tex
+(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/bk10.clo))
+(/opt/R/3.5.1/lib64/R/share/texmf/tex/latex/Rd.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def))
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def))
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.dfu))
+(/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def))
+Writing index file Rd2.idx
+(./Rd2.aux) (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(./Rd2.out) (./Rd2.out)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd) (./Rd2.toc [1{/usr/sh
+are/texlive/texmf/fonts/map/pdftex/updmap/pdftex.map}])
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (11.13794pt too wide) in paragraph at lines 56--57
+[]\T1/ptm/m/n/10 Hadley Wick-ham for pack-ag-ing ad-vice and for cre-at-ing too
+ls this pack-age was made with (\T1/pcr/m/n/10 roxygen2\T1/ptm/m/n/10 ,
+
+Overfull \hbox (60.86096pt too wide) in paragraph at lines 79--80
+[][][]\T1/pcr/m/n/10 CreateTableOne[][][]\T1/ptm/m/n/10 , [][]\T1/pcr/m/n/10 sv
+yCreateTableOne[][][]\T1/ptm/m/n/10 , [][]\T1/pcr/m/n/10 print.TableOne[][][]\T
+1/ptm/m/n/10 , [][]\T1/pcr/m/n/10 summary.TableOne[][][]\T1/ptm/m/n/10 , [][]\T
+1/pcr/m/n/10 ShowRegTable[][][] 
+[2] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (0.78088pt too wide) in paragraph at lines 98--98
+ []\T1/pcr/m/n/10 CreateCatTable(vars, strata, data, includeNA = FALSE, test = 
+TRUE,[] 
+
+Overfull \hbox (0.78088pt too wide) in paragraph at lines 100--100
+ []  \T1/pcr/m/n/10 testExact = fisher.test, argsExact = list(workspace = 2 * 1
+0^5),[] 
+[3]
+Overfull \hbox (4.38043pt too wide) in paragraph at lines 169--169
+ []\T1/pcr/m/n/9 ## You can choose form frequencies ("f") and/or percentages ("
+p") or both.[] 
+
+Overfull \hbox (15.18042pt too wide) in paragraph at lines 170--170
+ []\T1/pcr/m/n/9 ## "fp" frequency (percentage) is the default. Row names chang
+e accordingly.[] 
+
+Overfull \hbox (20.58041pt too wide) in paragraph at lines 182--182
+ []\T1/pcr/m/n/9 ## print now includes p-values which are by default calculated
+ by chisq.test.[] 
+[4]
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 194--194
+ []\T1/pcr/m/n/9 ## If your work flow includes copying to Excel and Word when w
+riting manuscripts,[] 
+
+Overfull \hbox (25.98041pt too wide) in paragraph at lines 195--195
+ []\T1/pcr/m/n/9 ## you may benefit from the quote argument. This will quote ev
+erything so that[] 
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (36.78088pt too wide) in paragraph at lines 213--213
+ []\T1/pcr/m/n/10 CreateContTable(vars, strata, data, funcNames = c("n", "miss"
+, "p.miss",[] 
+
+Overfull \hbox (24.78088pt too wide) in paragraph at lines 214--214
+ []  \T1/pcr/m/n/10 "mean", "sd", "median", "p25", "p75", "min", "max", "skew",
+ "kurt"),[] 
+
+Overfull \hbox (12.78088pt too wide) in paragraph at lines 216--216
+ []  \T1/pcr/m/n/10 argsNormal = list(var.equal = TRUE), testNonNormal = kruska
+l.test,[] 
+
+Overfull \hbox (25.83873pt too wide) in paragraph at lines 231--232
+[]\T1/ptm/m/n/10 Additional func-tions can be given as a named list. For ex-am-
+ple, \T1/pcr/m/n/10 list(sum = sum)\T1/ptm/m/n/10 . 
+[5]
+Overfull \hbox (14.96764pt too wide) in paragraph at lines 239--240
+[]\T1/ptm/m/n/10 A func-tion used to per-form the non-para-met-ric tests. The d
+e-fault is \T1/pcr/m/n/10 kruskal.test
+
+Overfull \hbox (2.68791pt too wide) in paragraph at lines 241--242
+[]\T1/ptm/m/n/10 A named list of ar-gu-ments passed to the func-tion spec-i-fie
+d in \T1/pcr/m/n/10 testNonNormal\T1/ptm/m/n/10 .
+
+Overfull \hbox (20.58041pt too wide) in paragraph at lines 284--284
+ []\T1/pcr/m/n/9 ## c("age","chol","copper","alk.phos","trig","protime") appear
+ highly skewed.[] 
+
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 285--285
+ []\T1/pcr/m/n/9 ## Specify them in the nonnormal argument, and the display cha
+nges to the median,[] 
+[6]
+Overfull \hbox (63.78036pt too wide) in paragraph at lines 297--297
+ []\T1/pcr/m/n/9 ## print now includes p-values which are by default calculated
+ by oneway.test (t-test[] 
+
+Overfull \hbox (58.38037pt too wide) in paragraph at lines 298--298
+ []\T1/pcr/m/n/9 ## equivalent in the two group case). It is formatted at the d
+ecimal place specified[] 
+
+Overfull \hbox (31.3804pt too wide) in paragraph at lines 302--302
+ []\T1/pcr/m/n/9 ## The nonnormal argument toggles the p-values to the nonparam
+etric result from[] 
+
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 309--309
+ []\T1/pcr/m/n/9 ## If your work flow includes copying to Excel and Word when w
+riting manuscripts,[] 
+
+Overfull \hbox (25.98041pt too wide) in paragraph at lines 310--310
+ []\T1/pcr/m/n/9 ## you may benefit from the quote argument. This will quote ev
+erything so that[] 
+
+Overfull \hbox (47.58038pt too wide) in paragraph at lines 315--315
+ []\T1/pcr/m/n/9 print(contTableBySexTrt, nonnormal = nonNormalVars, quote = TR
+UE, noSpaces = TRUE)[] 
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (48.78088pt too wide) in paragraph at lines 329--329
+ []  \T1/pcr/m/n/10 test = TRUE, testApprox = chisq.test, argsApprox = list(cor
+rect = TRUE),[] 
+
+Overfull \hbox (0.78088pt too wide) in paragraph at lines 330--330
+ []  \T1/pcr/m/n/10 testExact = fisher.test, argsExact = list(workspace = 2 * 1
+0^5),[] 
+
+Overfull \hbox (30.78088pt too wide) in paragraph at lines 332--332
+ []  \T1/pcr/m/n/10 testNonNormal = kruskal.test, argsNonNormal = list(NULL), s
+md = TRUE)[] 
+[7]
+Overfull \hbox (14.96764pt too wide) in paragraph at lines 362--363
+[]\T1/ptm/m/n/10 A func-tion used to per-form the non-para-met-ric tests. The d
+e-fault is \T1/pcr/m/n/10 kruskal.test
+
+Overfull \hbox (2.68791pt too wide) in paragraph at lines 364--365
+[]\T1/ptm/m/n/10 A named list of ar-gu-ments passed to the func-tion spec-i-fie
+d in \T1/pcr/m/n/10 testNonNormal\T1/ptm/m/n/10 .
+[8]
+Overfull \hbox (25.98041pt too wide) in paragraph at lines 419--419
+ []\T1/pcr/m/n/9 varsToFactor <- c("status","trt","ascites","hepato","spiders",
+"edema","stage")[] 
+[9]
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 453--453
+ []\T1/pcr/m/n/9 ## If your work flow includes copying to Excel and Word when w
+riting manuscripts,[] 
+
+Overfull \hbox (25.98041pt too wide) in paragraph at lines 454--454
+ []\T1/pcr/m/n/9 ## you may benefit from the quote argument. This will quote ev
+erything so that[] 
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [10]
+Overfull \hbox (82.58788pt too wide) in paragraph at lines 485--486
+[]\T1/ptm/m/n/10 Whether to re-place vari-able names with vari-able la-bels ob-
+tained from \T1/pcr/m/n/10 labelled::var_label()
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1pcr.fd)
+Overfull \hbox (36.78088pt too wide) in paragraph at lines 519--519
+ []  \T1/pcr/m/n/10 missing = FALSE, explain = TRUE, printToggle = TRUE, noSpac
+es = FALSE,[] 
+[11]
+Overfull \hbox (6.0772pt too wide) in paragraph at lines 558--559
+[]\T1/ptm/m/n/10 Whether to show the cross ta-ble ob-jects held in-ter-nally us
+-ing gmod-els::CrossTable
+[12]
+Overfull \hbox (4.38043pt too wide) in paragraph at lines 603--603
+ []\T1/pcr/m/n/9 ## You can choose form frequencies ("f") and/or percentages ("
+p") or both.[] 
+
+Overfull \hbox (15.18042pt too wide) in paragraph at lines 604--604
+ []\T1/pcr/m/n/9 ## "fp" frequency (percentage) is the default. Row names chang
+e accordingly.[] 
+
+Overfull \hbox (20.58041pt too wide) in paragraph at lines 616--616
+ []\T1/pcr/m/n/9 ## print now includes p-values which are by default calculated
+ by chisq.test.[] 
+
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 628--628
+ []\T1/pcr/m/n/9 ## If your work flow includes copying to Excel and Word when w
+riting manuscripts,[] 
+
+Overfull \hbox (25.98041pt too wide) in paragraph at lines 629--629
+ []\T1/pcr/m/n/9 ## you may benefit from the quote argument. This will quote ev
+erything so that[] 
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [13]
+Overfull \hbox (36.78088pt too wide) in paragraph at lines 649--649
+ []  \T1/pcr/m/n/10 missing = FALSE, explain = TRUE, printToggle = TRUE, noSpac
+es = FALSE,[] 
+
+Overfull \hbox (18.78088pt too wide) in paragraph at lines 650--650
+ []  \T1/pcr/m/n/10 nonnormal = NULL, minMax = FALSE, insertLevel = FALSE, test
+ = TRUE,[] 
+[14]
+Overfull \hbox (20.58041pt too wide) in paragraph at lines 724--724
+ []\T1/pcr/m/n/9 ## c("age","chol","copper","alk.phos","trig","protime") appear
+ highly skewed.[] 
+
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 725--725
+ []\T1/pcr/m/n/9 ## Specify them in the nonnormal argument, and the display cha
+nges to the median,[] 
+
+Overfull \hbox (63.78036pt too wide) in paragraph at lines 737--737
+ []\T1/pcr/m/n/9 ## print now includes p-values which are by default calculated
+ by oneway.test (t-test[] 
+
+Overfull \hbox (58.38037pt too wide) in paragraph at lines 738--738
+ []\T1/pcr/m/n/9 ## equivalent in the two group case). It is formatted at the d
+ecimal place specified[] 
+
+Overfull \hbox (31.3804pt too wide) in paragraph at lines 742--742
+ []\T1/pcr/m/n/9 ## The nonnormal argument toggles the p-values to the nonparam
+etric result from[] 
+
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 752--752
+ []\T1/pcr/m/n/9 ## If your work flow includes copying to Excel and Word when w
+riting manuscripts,[] 
+[15]
+Overfull \hbox (25.98041pt too wide) in paragraph at lines 753--753
+ []\T1/pcr/m/n/9 ## you may benefit from the quote argument. This will quote ev
+erything so that[] 
+
+Overfull \hbox (47.58038pt too wide) in paragraph at lines 758--758
+ []\T1/pcr/m/n/9 print(contTableBySexTrt, nonnormal = nonNormalVars, quote = TR
+UE, noSpaces = TRUE)[] 
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (36.78088pt too wide) in paragraph at lines 773--773
+ []  \T1/pcr/m/n/10 missing = FALSE, explain = TRUE, printToggle = TRUE, noSpac
+es = FALSE,[] 
+[16]
+Overfull \hbox (6.0772pt too wide) in paragraph at lines 812--813
+[]\T1/ptm/m/n/10 Whether to show the cross ta-ble ob-jects held in-ter-nally us
+-ing gmod-els::CrossTable
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (36.78088pt too wide) in paragraph at lines 848--848
+ []  \T1/pcr/m/n/10 missing = FALSE, explain = TRUE, printToggle = TRUE, noSpac
+es = FALSE,[] 
+
+Overfull \hbox (18.78088pt too wide) in paragraph at lines 849--849
+ []  \T1/pcr/m/n/10 nonnormal = NULL, minMax = FALSE, insertLevel = FALSE, test
+ = TRUE,[] 
+[17] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [18]
+Overfull \hbox (18.78088pt too wide) in paragraph at lines 916--916
+ []  \T1/pcr/m/n/10 quote = FALSE, missing = FALSE, explain = TRUE, printToggle
+ = TRUE,[] 
+
+Overfull \hbox (0.78088pt too wide) in paragraph at lines 917--917
+ []  \T1/pcr/m/n/10 test = TRUE, smd = FALSE, noSpaces = FALSE, padColnames = F
+ALSE,[] 
+
+Overfull \hbox (82.58788pt too wide) in paragraph at lines 950--951
+[]\T1/ptm/m/n/10 Whether to re-place vari-able names with vari-able la-bels ob-
+tained from \T1/pcr/m/n/10 labelled::var_label()
+[19] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [20]
+Overfull \hbox (58.38037pt too wide) in paragraph at lines 1042--1042
+ []\T1/pcr/m/n/9 objCoxph <- coxph(formula = Surv(time, status == 2) ~ trt + ag
+e + albumin + ascites,[] 
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [21]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (7.28667pt too wide) in paragraph at lines 1100--1101
+\T1/ptm/m/n/10 sum-mary statis-tics and, if avail-able, p-values from the nor-m
+al assupmtion-based test (\T1/pcr/m/n/10 oneway.test
+[22] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [23]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (26.96645pt too wide) in paragraph at lines 1186--1187
+\T1/ptm/m/n/10 with sum-mary statis-tics and, if avail-able, p-values from the 
+nor-mal assupmtion-based test (\T1/pcr/m/n/10 regTermTest
+[24] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (18.78088pt too wide) in paragraph at lines 1277--1277
+ []\T1/pcr/m/n/10 svyCreateCatTable(vars, strata, data, includeNA = FALSE, test
+ = TRUE,[] 
+[25]
+Overfull \hbox (5.258pt too wide) in paragraph at lines 1288--1289
+\T1/ptm/m/n/10 and strata) must be in this sur-vey de-sign ob-ject. It is cre-a
+ted with the \T1/pcr/m/n/10 svydesign
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [26]
+Underfull \hbox (badness 1325) in paragraph at lines 1322--1322
+[]\T1/ptm/m/it/10 Create an ob-ject sum-ma-riz-ing con-ti-nous vari-ables for w
+eighted
+
+Overfull \hbox (18.78088pt too wide) in paragraph at lines 1332--1332
+ []  \T1/pcr/m/n/10 testNonNormal = svyTestNonNormal, argsNonNormal = NULL, smd
+ = TRUE)[] 
+
+Overfull \hbox (5.258pt too wide) in paragraph at lines 1342--1343
+\T1/ptm/m/n/10 and strata) must be in this sur-vey de-sign ob-ject. It is cre-a
+ted with the \T1/pcr/m/n/10 svydesign
+
+Overfull \hbox (11.46764pt too wide) in paragraph at lines 1350--1351
+[]\T1/ptm/m/n/10 A func-tion used to per-form the non-para-met-ric tests. The d
+e-fault is \T1/pcr/m/n/10 svyranktest\T1/ptm/m/n/10 . 
+
+Overfull \hbox (2.68791pt too wide) in paragraph at lines 1352--1353
+[]\T1/ptm/m/n/10 A named list of ar-gu-ments passed to the func-tion spec-i-fie
+d in \T1/pcr/m/n/10 testNonNormal\T1/ptm/m/n/10 . 
+[27] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (12.78088pt too wide) in paragraph at lines 1386--1386
+ []\T1/pcr/m/n/10 svyCreateTableOne(vars, strata, data, factorVars, includeNA =
+ FALSE,[] 
+
+Overfull \hbox (18.78088pt too wide) in paragraph at lines 1389--1389
+ []  \T1/pcr/m/n/10 testNonNormal = svyTestNonNormal, argsNonNormal = NULL, smd
+ = TRUE)[] 
+
+Overfull \hbox (5.258pt too wide) in paragraph at lines 1399--1400
+\T1/ptm/m/n/10 and strata) must be in this sur-vey de-sign ob-ject. It is cre-a
+ted with the \T1/pcr/m/n/10 svydesign
+[28]
+Overfull \hbox (11.46764pt too wide) in paragraph at lines 1415--1416
+[]\T1/ptm/m/n/10 A func-tion used to per-form the non-para-met-ric tests. The d
+e-fault is \T1/pcr/m/n/10 svyranktest\T1/ptm/m/n/10 . 
+
+Overfull \hbox (2.68791pt too wide) in paragraph at lines 1417--1418
+[]\T1/ptm/m/n/10 A named list of ar-gu-ments passed to the func-tion spec-i-fie
+d in \T1/pcr/m/n/10 testNonNormal\T1/ptm/m/n/10 . 
+
+Overfull \hbox (47.58038pt too wide) in paragraph at lines 1456--1456
+ []\T1/pcr/m/n/9 nhanesSvy <- svydesign(ids = ~ SDMVPSU, strata = ~ SDMVSTRA, w
+eights = ~ WTMEC2YR,[] 
+
+Overfull \hbox (20.58041pt too wide) in paragraph at lines 1460--1460
+ []\T1/pcr/m/n/9 ## factorVars are converted to factors; no need for variables 
+already factors[] 
+
+Overfull \hbox (20.58041pt too wide) in paragraph at lines 1461--1461
+ []\T1/pcr/m/n/9 ## strata will stratify summaries; leave it unspecified for ov
+erall summaries[] 
+[29]
+Overfull \hbox (4.38043pt too wide) in paragraph at lines 1480--1480
+ []\T1/pcr/m/n/9 ## showAllLevels can be used tow show levels for all categoric
+al variables[] 
+(./Rd2.ind [30] [31]) (./Rd2.aux)
+
+Package rerunfilecheck Warning: File `Rd2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information){/usr/share/texlive/texmf-d
+ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/
+courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrro
+8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/font
+s/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/tim
+es/utmri8a.pfb>
+Output written on Rd2.pdf (31 pages, 153005 bytes).
+Transcript written on Rd2.log.
+This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
+Scanning input file Rd2.idx....done (89 entries accepted, 0 rejected).
+Sorting entries....done (616 comparisons).
+Generating output file Rd2.ind....done (72 lines written, 1 warning).
+Output written in Rd2.ind.
+Transcript written in Rd2.ilg.
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, lo
+aded.
+(./Rd2.tex
+(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/bk10.clo))
+(/opt/R/3.5.1/lib64/R/share/texmf/tex/latex/Rd.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def))
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def))
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.dfu))
+(/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def))
+Writing index file Rd2.idx
+(./Rd2.aux) (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(./Rd2.out) (./Rd2.out)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd) (./Rd2.toc [1{/usr/sh
+are/texlive/texmf/fonts/map/pdftex/updmap/pdftex.map}])
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (11.13794pt too wide) in paragraph at lines 56--57
+[]\T1/ptm/m/n/10 Hadley Wick-ham for pack-ag-ing ad-vice and for cre-at-ing too
+ls this pack-age was made with (\T1/pcr/m/n/10 roxygen2\T1/ptm/m/n/10 ,
+
+Overfull \hbox (60.86096pt too wide) in paragraph at lines 79--80
+[][][]\T1/pcr/m/n/10 CreateTableOne[][][]\T1/ptm/m/n/10 , [][]\T1/pcr/m/n/10 sv
+yCreateTableOne[][][]\T1/ptm/m/n/10 , [][]\T1/pcr/m/n/10 print.TableOne[][][]\T
+1/ptm/m/n/10 , [][]\T1/pcr/m/n/10 summary.TableOne[][][]\T1/ptm/m/n/10 , [][]\T
+1/pcr/m/n/10 ShowRegTable[][][] 
+[2] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (0.78088pt too wide) in paragraph at lines 98--98
+ []\T1/pcr/m/n/10 CreateCatTable(vars, strata, data, includeNA = FALSE, test = 
+TRUE,[] 
+
+Overfull \hbox (0.78088pt too wide) in paragraph at lines 100--100
+ []  \T1/pcr/m/n/10 testExact = fisher.test, argsExact = list(workspace = 2 * 1
+0^5),[] 
+[3]
+Overfull \hbox (4.38043pt too wide) in paragraph at lines 169--169
+ []\T1/pcr/m/n/9 ## You can choose form frequencies ("f") and/or percentages ("
+p") or both.[] 
+
+Overfull \hbox (15.18042pt too wide) in paragraph at lines 170--170
+ []\T1/pcr/m/n/9 ## "fp" frequency (percentage) is the default. Row names chang
+e accordingly.[] 
+[4]
+Overfull \hbox (20.58041pt too wide) in paragraph at lines 182--182
+ []\T1/pcr/m/n/9 ## print now includes p-values which are by default calculated
+ by chisq.test.[] 
+
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 194--194
+ []\T1/pcr/m/n/9 ## If your work flow includes copying to Excel and Word when w
+riting manuscripts,[] 
+
+Overfull \hbox (25.98041pt too wide) in paragraph at lines 195--195
+ []\T1/pcr/m/n/9 ## you may benefit from the quote argument. This will quote ev
+erything so that[] 
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (36.78088pt too wide) in paragraph at lines 213--213
+ []\T1/pcr/m/n/10 CreateContTable(vars, strata, data, funcNames = c("n", "miss"
+, "p.miss",[] 
+
+Overfull \hbox (24.78088pt too wide) in paragraph at lines 214--214
+ []  \T1/pcr/m/n/10 "mean", "sd", "median", "p25", "p75", "min", "max", "skew",
+ "kurt"),[] 
+
+Overfull \hbox (12.78088pt too wide) in paragraph at lines 216--216
+ []  \T1/pcr/m/n/10 argsNormal = list(var.equal = TRUE), testNonNormal = kruska
+l.test,[] 
+
+Overfull \hbox (25.83873pt too wide) in paragraph at lines 231--232
+[]\T1/ptm/m/n/10 Additional func-tions can be given as a named list. For ex-am-
+ple, \T1/pcr/m/n/10 list(sum = sum)\T1/ptm/m/n/10 . 
+[5]
+Overfull \hbox (14.96764pt too wide) in paragraph at lines 239--240
+[]\T1/ptm/m/n/10 A func-tion used to per-form the non-para-met-ric tests. The d
+e-fault is \T1/pcr/m/n/10 kruskal.test
+
+Overfull \hbox (2.68791pt too wide) in paragraph at lines 241--242
+[]\T1/ptm/m/n/10 A named list of ar-gu-ments passed to the func-tion spec-i-fie
+d in \T1/pcr/m/n/10 testNonNormal\T1/ptm/m/n/10 .
+[6]
+Overfull \hbox (20.58041pt too wide) in paragraph at lines 284--284
+ []\T1/pcr/m/n/9 ## c("age","chol","copper","alk.phos","trig","protime") appear
+ highly skewed.[] 
+
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 285--285
+ []\T1/pcr/m/n/9 ## Specify them in the nonnormal argument, and the display cha
+nges to the median,[] 
+
+Overfull \hbox (63.78036pt too wide) in paragraph at lines 297--297
+ []\T1/pcr/m/n/9 ## print now includes p-values which are by default calculated
+ by oneway.test (t-test[] 
+
+Overfull \hbox (58.38037pt too wide) in paragraph at lines 298--298
+ []\T1/pcr/m/n/9 ## equivalent in the two group case). It is formatted at the d
+ecimal place specified[] 
+
+Overfull \hbox (31.3804pt too wide) in paragraph at lines 302--302
+ []\T1/pcr/m/n/9 ## The nonnormal argument toggles the p-values to the nonparam
+etric result from[] 
+
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 309--309
+ []\T1/pcr/m/n/9 ## If your work flow includes copying to Excel and Word when w
+riting manuscripts,[] 
+
+Overfull \hbox (25.98041pt too wide) in paragraph at lines 310--310
+ []\T1/pcr/m/n/9 ## you may benefit from the quote argument. This will quote ev
+erything so that[] 
+
+Overfull \hbox (47.58038pt too wide) in paragraph at lines 315--315
+ []\T1/pcr/m/n/9 print(contTableBySexTrt, nonnormal = nonNormalVars, quote = TR
+UE, noSpaces = TRUE)[] 
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (48.78088pt too wide) in paragraph at lines 329--329
+ []  \T1/pcr/m/n/10 test = TRUE, testApprox = chisq.test, argsApprox = list(cor
+rect = TRUE),[] 
+
+Overfull \hbox (0.78088pt too wide) in paragraph at lines 330--330
+ []  \T1/pcr/m/n/10 testExact = fisher.test, argsExact = list(workspace = 2 * 1
+0^5),[] 
+
+Overfull \hbox (30.78088pt too wide) in paragraph at lines 332--332
+ []  \T1/pcr/m/n/10 testNonNormal = kruskal.test, argsNonNormal = list(NULL), s
+md = TRUE)[] 
+[7]
+Overfull \hbox (14.96764pt too wide) in paragraph at lines 362--363
+[]\T1/ptm/m/n/10 A func-tion used to per-form the non-para-met-ric tests. The d
+e-fault is \T1/pcr/m/n/10 kruskal.test
+
+Overfull \hbox (2.68791pt too wide) in paragraph at lines 364--365
+[]\T1/ptm/m/n/10 A named list of ar-gu-ments passed to the func-tion spec-i-fie
+d in \T1/pcr/m/n/10 testNonNormal\T1/ptm/m/n/10 .
+[8] [9]
+Overfull \hbox (25.98041pt too wide) in paragraph at lines 419--419
+ []\T1/pcr/m/n/9 varsToFactor <- c("status","trt","ascites","hepato","spiders",
+"edema","stage")[] 
+
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 453--453
+ []\T1/pcr/m/n/9 ## If your work flow includes copying to Excel and Word when w
+riting manuscripts,[] 
+
+Overfull \hbox (25.98041pt too wide) in paragraph at lines 454--454
+ []\T1/pcr/m/n/9 ## you may benefit from the quote argument. This will quote ev
+erything so that[] 
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [10]
+Overfull \hbox (82.58788pt too wide) in paragraph at lines 485--486
+[]\T1/ptm/m/n/10 Whether to re-place vari-able names with vari-able la-bels ob-
+tained from \T1/pcr/m/n/10 labelled::var_label()
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1pcr.fd)
+Overfull \hbox (36.78088pt too wide) in paragraph at lines 519--519
+ []  \T1/pcr/m/n/10 missing = FALSE, explain = TRUE, printToggle = TRUE, noSpac
+es = FALSE,[] 
+[11]
+Overfull \hbox (6.0772pt too wide) in paragraph at lines 558--559
+[]\T1/ptm/m/n/10 Whether to show the cross ta-ble ob-jects held in-ter-nally us
+-ing gmod-els::CrossTable
+[12]
+Overfull \hbox (4.38043pt too wide) in paragraph at lines 603--603
+ []\T1/pcr/m/n/9 ## You can choose form frequencies ("f") and/or percentages ("
+p") or both.[] 
+
+Overfull \hbox (15.18042pt too wide) in paragraph at lines 604--604
+ []\T1/pcr/m/n/9 ## "fp" frequency (percentage) is the default. Row names chang
+e accordingly.[] 
+
+Overfull \hbox (20.58041pt too wide) in paragraph at lines 616--616
+ []\T1/pcr/m/n/9 ## print now includes p-values which are by default calculated
+ by chisq.test.[] 
+
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 628--628
+ []\T1/pcr/m/n/9 ## If your work flow includes copying to Excel and Word when w
+riting manuscripts,[] 
+
+Overfull \hbox (25.98041pt too wide) in paragraph at lines 629--629
+ []\T1/pcr/m/n/9 ## you may benefit from the quote argument. This will quote ev
+erything so that[] 
+
+Underfull \vbox (badness 10000) has occurred while \output is active [13]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (36.78088pt too wide) in paragraph at lines 649--649
+ []  \T1/pcr/m/n/10 missing = FALSE, explain = TRUE, printToggle = TRUE, noSpac
+es = FALSE,[] 
+
+Overfull \hbox (18.78088pt too wide) in paragraph at lines 650--650
+ []  \T1/pcr/m/n/10 nonnormal = NULL, minMax = FALSE, insertLevel = FALSE, test
+ = TRUE,[] 
+[14]
+Overfull \hbox (20.58041pt too wide) in paragraph at lines 724--724
+ []\T1/pcr/m/n/9 ## c("age","chol","copper","alk.phos","trig","protime") appear
+ highly skewed.[] 
+
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 725--725
+ []\T1/pcr/m/n/9 ## Specify them in the nonnormal argument, and the display cha
+nges to the median,[] 
+
+Overfull \hbox (63.78036pt too wide) in paragraph at lines 737--737
+ []\T1/pcr/m/n/9 ## print now includes p-values which are by default calculated
+ by oneway.test (t-test[] 
+
+Overfull \hbox (58.38037pt too wide) in paragraph at lines 738--738
+ []\T1/pcr/m/n/9 ## equivalent in the two group case). It is formatted at the d
+ecimal place specified[] 
+
+Overfull \hbox (31.3804pt too wide) in paragraph at lines 742--742
+ []\T1/pcr/m/n/9 ## The nonnormal argument toggles the p-values to the nonparam
+etric result from[] 
+[15]
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 752--752
+ []\T1/pcr/m/n/9 ## If your work flow includes copying to Excel and Word when w
+riting manuscripts,[] 
+
+Overfull \hbox (25.98041pt too wide) in paragraph at lines 753--753
+ []\T1/pcr/m/n/9 ## you may benefit from the quote argument. This will quote ev
+erything so that[] 
+
+Overfull \hbox (47.58038pt too wide) in paragraph at lines 758--758
+ []\T1/pcr/m/n/9 print(contTableBySexTrt, nonnormal = nonNormalVars, quote = TR
+UE, noSpaces = TRUE)[] 
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (36.78088pt too wide) in paragraph at lines 773--773
+ []  \T1/pcr/m/n/10 missing = FALSE, explain = TRUE, printToggle = TRUE, noSpac
+es = FALSE,[] 
+[16]
+Overfull \hbox (6.0772pt too wide) in paragraph at lines 812--813
+[]\T1/ptm/m/n/10 Whether to show the cross ta-ble ob-jects held in-ter-nally us
+-ing gmod-els::CrossTable
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (36.78088pt too wide) in paragraph at lines 848--848
+ []  \T1/pcr/m/n/10 missing = FALSE, explain = TRUE, printToggle = TRUE, noSpac
+es = FALSE,[] 
+
+Overfull \hbox (18.78088pt too wide) in paragraph at lines 849--849
+ []  \T1/pcr/m/n/10 nonnormal = NULL, minMax = FALSE, insertLevel = FALSE, test
+ = TRUE,[] 
+[17] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [18]
+Overfull \hbox (18.78088pt too wide) in paragraph at lines 916--916
+ []  \T1/pcr/m/n/10 quote = FALSE, missing = FALSE, explain = TRUE, printToggle
+ = TRUE,[] 
+
+Overfull \hbox (0.78088pt too wide) in paragraph at lines 917--917
+ []  \T1/pcr/m/n/10 test = TRUE, smd = FALSE, noSpaces = FALSE, padColnames = F
+ALSE,[] 
+
+Overfull \hbox (82.58788pt too wide) in paragraph at lines 950--951
+[]\T1/ptm/m/n/10 Whether to re-place vari-able names with vari-able la-bels ob-
+tained from \T1/pcr/m/n/10 labelled::var_label()
+[19] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [20]
+Overfull \hbox (58.38037pt too wide) in paragraph at lines 1042--1042
+ []\T1/pcr/m/n/9 objCoxph <- coxph(formula = Surv(time, status == 2) ~ trt + ag
+e + albumin + ascites,[] 
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [21]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (7.28667pt too wide) in paragraph at lines 1100--1101
+\T1/ptm/m/n/10 sum-mary statis-tics and, if avail-able, p-values from the nor-m
+al assupmtion-based test (\T1/pcr/m/n/10 oneway.test
+[22] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [23]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (26.96645pt too wide) in paragraph at lines 1186--1187
+\T1/ptm/m/n/10 with sum-mary statis-tics and, if avail-able, p-values from the 
+nor-mal assupmtion-based test (\T1/pcr/m/n/10 regTermTest
+[24] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (18.78088pt too wide) in paragraph at lines 1277--1277
+ []\T1/pcr/m/n/10 svyCreateCatTable(vars, strata, data, includeNA = FALSE, test
+ = TRUE,[] 
+[25]
+Overfull \hbox (5.258pt too wide) in paragraph at lines 1288--1289
+\T1/ptm/m/n/10 and strata) must be in this sur-vey de-sign ob-ject. It is cre-a
+ted with the \T1/pcr/m/n/10 svydesign
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [26]
+Underfull \hbox (badness 1325) in paragraph at lines 1322--1322
+[]\T1/ptm/m/it/10 Create an ob-ject sum-ma-riz-ing con-ti-nous vari-ables for w
+eighted
+
+Overfull \hbox (18.78088pt too wide) in paragraph at lines 1332--1332
+ []  \T1/pcr/m/n/10 testNonNormal = svyTestNonNormal, argsNonNormal = NULL, smd
+ = TRUE)[] 
+
+Overfull \hbox (5.258pt too wide) in paragraph at lines 1342--1343
+\T1/ptm/m/n/10 and strata) must be in this sur-vey de-sign ob-ject. It is cre-a
+ted with the \T1/pcr/m/n/10 svydesign
+
+Overfull \hbox (11.46764pt too wide) in paragraph at lines 1350--1351
+[]\T1/ptm/m/n/10 A func-tion used to per-form the non-para-met-ric tests. The d
+e-fault is \T1/pcr/m/n/10 svyranktest\T1/ptm/m/n/10 . 
+
+Overfull \hbox (2.68791pt too wide) in paragraph at lines 1352--1353
+[]\T1/ptm/m/n/10 A named list of ar-gu-ments passed to the func-tion spec-i-fie
+d in \T1/pcr/m/n/10 testNonNormal\T1/ptm/m/n/10 . 
+[27] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (12.78088pt too wide) in paragraph at lines 1386--1386
+ []\T1/pcr/m/n/10 svyCreateTableOne(vars, strata, data, factorVars, includeNA =
+ FALSE,[] 
+
+Overfull \hbox (18.78088pt too wide) in paragraph at lines 1389--1389
+ []  \T1/pcr/m/n/10 testNonNormal = svyTestNonNormal, argsNonNormal = NULL, smd
+ = TRUE)[] 
+
+Overfull \hbox (5.258pt too wide) in paragraph at lines 1399--1400
+\T1/ptm/m/n/10 and strata) must be in this sur-vey de-sign ob-ject. It is cre-a
+ted with the \T1/pcr/m/n/10 svydesign
+[28]
+Overfull \hbox (11.46764pt too wide) in paragraph at lines 1415--1416
+[]\T1/ptm/m/n/10 A func-tion used to per-form the non-para-met-ric tests. The d
+e-fault is \T1/pcr/m/n/10 svyranktest\T1/ptm/m/n/10 . 
+
+Overfull \hbox (2.68791pt too wide) in paragraph at lines 1417--1418
+[]\T1/ptm/m/n/10 A named list of ar-gu-ments passed to the func-tion spec-i-fie
+d in \T1/pcr/m/n/10 testNonNormal\T1/ptm/m/n/10 . 
+
+Overfull \hbox (47.58038pt too wide) in paragraph at lines 1456--1456
+ []\T1/pcr/m/n/9 nhanesSvy <- svydesign(ids = ~ SDMVPSU, strata = ~ SDMVSTRA, w
+eights = ~ WTMEC2YR,[] 
+
+Overfull \hbox (20.58041pt too wide) in paragraph at lines 1460--1460
+ []\T1/pcr/m/n/9 ## factorVars are converted to factors; no need for variables 
+already factors[] 
+
+Overfull \hbox (20.58041pt too wide) in paragraph at lines 1461--1461
+ []\T1/pcr/m/n/9 ## strata will stratify summaries; leave it unspecified for ov
+erall summaries[] 
+[29]
+Overfull \hbox (4.38043pt too wide) in paragraph at lines 1480--1480
+ []\T1/pcr/m/n/9 ## showAllLevels can be used tow show levels for all categoric
+al variables[] 
+(./Rd2.ind [30] [31]) (./Rd2.aux) )
+(see the transcript file for additional information){/usr/share/texlive/texmf-d
+ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/
+courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrro
+8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/font
+s/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/tim
+es/utmri8a.pfb>
+Output written on Rd2.pdf (31 pages, 153263 bytes).
+Transcript written on Rd2.log.
+This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
+Scanning input file Rd2.idx....done (89 entries accepted, 0 rejected).
+Sorting entries....done (618 comparisons).
+Generating output file Rd2.ind....done (72 lines written, 1 warning).
+Output written in Rd2.ind.
+Transcript written in Rd2.ilg.
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, lo
+aded.
+(./Rd2.tex
+(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/bk10.clo))
+(/opt/R/3.5.1/lib64/R/share/texmf/tex/latex/Rd.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def))
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def))
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.dfu))
+(/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def))
+Writing index file Rd2.idx
+(./Rd2.aux) (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(./Rd2.out) (./Rd2.out)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd) (./Rd2.toc [1{/usr/sh
+are/texlive/texmf/fonts/map/pdftex/updmap/pdftex.map}])
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (11.13794pt too wide) in paragraph at lines 56--57
+[]\T1/ptm/m/n/10 Hadley Wick-ham for pack-ag-ing ad-vice and for cre-at-ing too
+ls this pack-age was made with (\T1/pcr/m/n/10 roxygen2\T1/ptm/m/n/10 ,
+
+Overfull \hbox (60.86096pt too wide) in paragraph at lines 79--80
+[][][]\T1/pcr/m/n/10 CreateTableOne[][][]\T1/ptm/m/n/10 , [][]\T1/pcr/m/n/10 sv
+yCreateTableOne[][][]\T1/ptm/m/n/10 , [][]\T1/pcr/m/n/10 print.TableOne[][][]\T
+1/ptm/m/n/10 , [][]\T1/pcr/m/n/10 summary.TableOne[][][]\T1/ptm/m/n/10 , [][]\T
+1/pcr/m/n/10 ShowRegTable[][][] 
+[2] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (0.78088pt too wide) in paragraph at lines 98--98
+ []\T1/pcr/m/n/10 CreateCatTable(vars, strata, data, includeNA = FALSE, test = 
+TRUE,[] 
+
+Overfull \hbox (0.78088pt too wide) in paragraph at lines 100--100
+ []  \T1/pcr/m/n/10 testExact = fisher.test, argsExact = list(workspace = 2 * 1
+0^5),[] 
+[3]
+Overfull \hbox (4.38043pt too wide) in paragraph at lines 169--169
+ []\T1/pcr/m/n/9 ## You can choose form frequencies ("f") and/or percentages ("
+p") or both.[] 
+
+Overfull \hbox (15.18042pt too wide) in paragraph at lines 170--170
+ []\T1/pcr/m/n/9 ## "fp" frequency (percentage) is the default. Row names chang
+e accordingly.[] 
+[4]
+Overfull \hbox (20.58041pt too wide) in paragraph at lines 182--182
+ []\T1/pcr/m/n/9 ## print now includes p-values which are by default calculated
+ by chisq.test.[] 
+
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 194--194
+ []\T1/pcr/m/n/9 ## If your work flow includes copying to Excel and Word when w
+riting manuscripts,[] 
+
+Overfull \hbox (25.98041pt too wide) in paragraph at lines 195--195
+ []\T1/pcr/m/n/9 ## you may benefit from the quote argument. This will quote ev
+erything so that[] 
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (36.78088pt too wide) in paragraph at lines 213--213
+ []\T1/pcr/m/n/10 CreateContTable(vars, strata, data, funcNames = c("n", "miss"
+, "p.miss",[] 
+
+Overfull \hbox (24.78088pt too wide) in paragraph at lines 214--214
+ []  \T1/pcr/m/n/10 "mean", "sd", "median", "p25", "p75", "min", "max", "skew",
+ "kurt"),[] 
+
+Overfull \hbox (12.78088pt too wide) in paragraph at lines 216--216
+ []  \T1/pcr/m/n/10 argsNormal = list(var.equal = TRUE), testNonNormal = kruska
+l.test,[] 
+
+Overfull \hbox (25.83873pt too wide) in paragraph at lines 231--232
+[]\T1/ptm/m/n/10 Additional func-tions can be given as a named list. For ex-am-
+ple, \T1/pcr/m/n/10 list(sum = sum)\T1/ptm/m/n/10 . 
+[5]
+Overfull \hbox (14.96764pt too wide) in paragraph at lines 239--240
+[]\T1/ptm/m/n/10 A func-tion used to per-form the non-para-met-ric tests. The d
+e-fault is \T1/pcr/m/n/10 kruskal.test
+
+Overfull \hbox (2.68791pt too wide) in paragraph at lines 241--242
+[]\T1/ptm/m/n/10 A named list of ar-gu-ments passed to the func-tion spec-i-fie
+d in \T1/pcr/m/n/10 testNonNormal\T1/ptm/m/n/10 .
+[6]
+Overfull \hbox (20.58041pt too wide) in paragraph at lines 284--284
+ []\T1/pcr/m/n/9 ## c("age","chol","copper","alk.phos","trig","protime") appear
+ highly skewed.[] 
+
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 285--285
+ []\T1/pcr/m/n/9 ## Specify them in the nonnormal argument, and the display cha
+nges to the median,[] 
+
+Overfull \hbox (63.78036pt too wide) in paragraph at lines 297--297
+ []\T1/pcr/m/n/9 ## print now includes p-values which are by default calculated
+ by oneway.test (t-test[] 
+
+Overfull \hbox (58.38037pt too wide) in paragraph at lines 298--298
+ []\T1/pcr/m/n/9 ## equivalent in the two group case). It is formatted at the d
+ecimal place specified[] 
+
+Overfull \hbox (31.3804pt too wide) in paragraph at lines 302--302
+ []\T1/pcr/m/n/9 ## The nonnormal argument toggles the p-values to the nonparam
+etric result from[] 
+
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 309--309
+ []\T1/pcr/m/n/9 ## If your work flow includes copying to Excel and Word when w
+riting manuscripts,[] 
+
+Overfull \hbox (25.98041pt too wide) in paragraph at lines 310--310
+ []\T1/pcr/m/n/9 ## you may benefit from the quote argument. This will quote ev
+erything so that[] 
+
+Overfull \hbox (47.58038pt too wide) in paragraph at lines 315--315
+ []\T1/pcr/m/n/9 print(contTableBySexTrt, nonnormal = nonNormalVars, quote = TR
+UE, noSpaces = TRUE)[] 
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (48.78088pt too wide) in paragraph at lines 329--329
+ []  \T1/pcr/m/n/10 test = TRUE, testApprox = chisq.test, argsApprox = list(cor
+rect = TRUE),[] 
+
+Overfull \hbox (0.78088pt too wide) in paragraph at lines 330--330
+ []  \T1/pcr/m/n/10 testExact = fisher.test, argsExact = list(workspace = 2 * 1
+0^5),[] 
+
+Overfull \hbox (30.78088pt too wide) in paragraph at lines 332--332
+ []  \T1/pcr/m/n/10 testNonNormal = kruskal.test, argsNonNormal = list(NULL), s
+md = TRUE)[] 
+[7]
+Overfull \hbox (14.96764pt too wide) in paragraph at lines 362--363
+[]\T1/ptm/m/n/10 A func-tion used to per-form the non-para-met-ric tests. The d
+e-fault is \T1/pcr/m/n/10 kruskal.test
+
+Overfull \hbox (2.68791pt too wide) in paragraph at lines 364--365
+[]\T1/ptm/m/n/10 A named list of ar-gu-ments passed to the func-tion spec-i-fie
+d in \T1/pcr/m/n/10 testNonNormal\T1/ptm/m/n/10 .
+[8] [9]
+Overfull \hbox (25.98041pt too wide) in paragraph at lines 419--419
+ []\T1/pcr/m/n/9 varsToFactor <- c("status","trt","ascites","hepato","spiders",
+"edema","stage")[] 
+
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 453--453
+ []\T1/pcr/m/n/9 ## If your work flow includes copying to Excel and Word when w
+riting manuscripts,[] 
+
+Overfull \hbox (25.98041pt too wide) in paragraph at lines 454--454
+ []\T1/pcr/m/n/9 ## you may benefit from the quote argument. This will quote ev
+erything so that[] 
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [10]
+Overfull \hbox (82.58788pt too wide) in paragraph at lines 485--486
+[]\T1/ptm/m/n/10 Whether to re-place vari-able names with vari-able la-bels ob-
+tained from \T1/pcr/m/n/10 labelled::var_label()
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1pcr.fd)
+Overfull \hbox (36.78088pt too wide) in paragraph at lines 519--519
+ []  \T1/pcr/m/n/10 missing = FALSE, explain = TRUE, printToggle = TRUE, noSpac
+es = FALSE,[] 
+[11]
+Overfull \hbox (6.0772pt too wide) in paragraph at lines 558--559
+[]\T1/ptm/m/n/10 Whether to show the cross ta-ble ob-jects held in-ter-nally us
+-ing gmod-els::CrossTable
+[12]
+Overfull \hbox (4.38043pt too wide) in paragraph at lines 603--603
+ []\T1/pcr/m/n/9 ## You can choose form frequencies ("f") and/or percentages ("
+p") or both.[] 
+
+Overfull \hbox (15.18042pt too wide) in paragraph at lines 604--604
+ []\T1/pcr/m/n/9 ## "fp" frequency (percentage) is the default. Row names chang
+e accordingly.[] 
+
+Overfull \hbox (20.58041pt too wide) in paragraph at lines 616--616
+ []\T1/pcr/m/n/9 ## print now includes p-values which are by default calculated
+ by chisq.test.[] 
+
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 628--628
+ []\T1/pcr/m/n/9 ## If your work flow includes copying to Excel and Word when w
+riting manuscripts,[] 
+
+Overfull \hbox (25.98041pt too wide) in paragraph at lines 629--629
+ []\T1/pcr/m/n/9 ## you may benefit from the quote argument. This will quote ev
+erything so that[] 
+
+Underfull \vbox (badness 10000) has occurred while \output is active [13]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (36.78088pt too wide) in paragraph at lines 649--649
+ []  \T1/pcr/m/n/10 missing = FALSE, explain = TRUE, printToggle = TRUE, noSpac
+es = FALSE,[] 
+
+Overfull \hbox (18.78088pt too wide) in paragraph at lines 650--650
+ []  \T1/pcr/m/n/10 nonnormal = NULL, minMax = FALSE, insertLevel = FALSE, test
+ = TRUE,[] 
+[14]
+Overfull \hbox (20.58041pt too wide) in paragraph at lines 724--724
+ []\T1/pcr/m/n/9 ## c("age","chol","copper","alk.phos","trig","protime") appear
+ highly skewed.[] 
+
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 725--725
+ []\T1/pcr/m/n/9 ## Specify them in the nonnormal argument, and the display cha
+nges to the median,[] 
+
+Overfull \hbox (63.78036pt too wide) in paragraph at lines 737--737
+ []\T1/pcr/m/n/9 ## print now includes p-values which are by default calculated
+ by oneway.test (t-test[] 
+
+Overfull \hbox (58.38037pt too wide) in paragraph at lines 738--738
+ []\T1/pcr/m/n/9 ## equivalent in the two group case). It is formatted at the d
+ecimal place specified[] 
+
+Overfull \hbox (31.3804pt too wide) in paragraph at lines 742--742
+ []\T1/pcr/m/n/9 ## The nonnormal argument toggles the p-values to the nonparam
+etric result from[] 
+[15]
+Overfull \hbox (42.18039pt too wide) in paragraph at lines 752--752
+ []\T1/pcr/m/n/9 ## If your work flow includes copying to Excel and Word when w
+riting manuscripts,[] 
+
+Overfull \hbox (25.98041pt too wide) in paragraph at lines 753--753
+ []\T1/pcr/m/n/9 ## you may benefit from the quote argument. This will quote ev
+erything so that[] 
+
+Overfull \hbox (47.58038pt too wide) in paragraph at lines 758--758
+ []\T1/pcr/m/n/9 print(contTableBySexTrt, nonnormal = nonNormalVars, quote = TR
+UE, noSpaces = TRUE)[] 
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (36.78088pt too wide) in paragraph at lines 773--773
+ []  \T1/pcr/m/n/10 missing = FALSE, explain = TRUE, printToggle = TRUE, noSpac
+es = FALSE,[] 
+[16]
+Overfull \hbox (6.0772pt too wide) in paragraph at lines 812--813
+[]\T1/ptm/m/n/10 Whether to show the cross ta-ble ob-jects held in-ter-nally us
+-ing gmod-els::CrossTable
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (36.78088pt too wide) in paragraph at lines 848--848
+ []  \T1/pcr/m/n/10 missing = FALSE, explain = TRUE, printToggle = TRUE, noSpac
+es = FALSE,[] 
+
+Overfull \hbox (18.78088pt too wide) in paragraph at lines 849--849
+ []  \T1/pcr/m/n/10 nonnormal = NULL, minMax = FALSE, insertLevel = FALSE, test
+ = TRUE,[] 
+[17] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [18]
+Overfull \hbox (18.78088pt too wide) in paragraph at lines 916--916
+ []  \T1/pcr/m/n/10 quote = FALSE, missing = FALSE, explain = TRUE, printToggle
+ = TRUE,[] 
+
+Overfull \hbox (0.78088pt too wide) in paragraph at lines 917--917
+ []  \T1/pcr/m/n/10 test = TRUE, smd = FALSE, noSpaces = FALSE, padColnames = F
+ALSE,[] 
+
+Overfull \hbox (82.58788pt too wide) in paragraph at lines 950--951
+[]\T1/ptm/m/n/10 Whether to re-place vari-able names with vari-able la-bels ob-
+tained from \T1/pcr/m/n/10 labelled::var_label()
+[19] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [20]
+Overfull \hbox (58.38037pt too wide) in paragraph at lines 1042--1042
+ []\T1/pcr/m/n/9 objCoxph <- coxph(formula = Surv(time, status == 2) ~ trt + ag
+e + albumin + ascites,[] 
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [21]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (7.28667pt too wide) in paragraph at lines 1100--1101
+\T1/ptm/m/n/10 sum-mary statis-tics and, if avail-able, p-values from the nor-m
+al assupmtion-based test (\T1/pcr/m/n/10 oneway.test
+[22] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [23]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (26.96645pt too wide) in paragraph at lines 1186--1187
+\T1/ptm/m/n/10 with sum-mary statis-tics and, if avail-able, p-values from the 
+nor-mal assupmtion-based test (\T1/pcr/m/n/10 regTermTest
+[24] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (18.78088pt too wide) in paragraph at lines 1277--1277
+ []\T1/pcr/m/n/10 svyCreateCatTable(vars, strata, data, includeNA = FALSE, test
+ = TRUE,[] 
+[25]
+Overfull \hbox (5.258pt too wide) in paragraph at lines 1288--1289
+\T1/ptm/m/n/10 and strata) must be in this sur-vey de-sign ob-ject. It is cre-a
+ted with the \T1/pcr/m/n/10 svydesign
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [26]
+Underfull \hbox (badness 1325) in paragraph at lines 1322--1322
+[]\T1/ptm/m/it/10 Create an ob-ject sum-ma-riz-ing con-ti-nous vari-ables for w
+eighted
+
+Overfull \hbox (18.78088pt too wide) in paragraph at lines 1332--1332
+ []  \T1/pcr/m/n/10 testNonNormal = svyTestNonNormal, argsNonNormal = NULL, smd
+ = TRUE)[] 
+
+Overfull \hbox (5.258pt too wide) in paragraph at lines 1342--1343
+\T1/ptm/m/n/10 and strata) must be in this sur-vey de-sign ob-ject. It is cre-a
+ted with the \T1/pcr/m/n/10 svydesign
+
+Overfull \hbox (11.46764pt too wide) in paragraph at lines 1350--1351
+[]\T1/ptm/m/n/10 A func-tion used to per-form the non-para-met-ric tests. The d
+e-fault is \T1/pcr/m/n/10 svyranktest\T1/ptm/m/n/10 . 
+
+Overfull \hbox (2.68791pt too wide) in paragraph at lines 1352--1353
+[]\T1/ptm/m/n/10 A named list of ar-gu-ments passed to the func-tion spec-i-fie
+d in \T1/pcr/m/n/10 testNonNormal\T1/ptm/m/n/10 . 
+[27] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (12.78088pt too wide) in paragraph at lines 1386--1386
+ []\T1/pcr/m/n/10 svyCreateTableOne(vars, strata, data, factorVars, includeNA =
+ FALSE,[] 
+
+Overfull \hbox (18.78088pt too wide) in paragraph at lines 1389--1389
+ []  \T1/pcr/m/n/10 testNonNormal = svyTestNonNormal, argsNonNormal = NULL, smd
+ = TRUE)[] 
+
+Overfull \hbox (5.258pt too wide) in paragraph at lines 1399--1400
+\T1/ptm/m/n/10 and strata) must be in this sur-vey de-sign ob-ject. It is cre-a
+ted with the \T1/pcr/m/n/10 svydesign
+[28]
+Overfull \hbox (11.46764pt too wide) in paragraph at lines 1415--1416
+[]\T1/ptm/m/n/10 A func-tion used to per-form the non-para-met-ric tests. The d
+e-fault is \T1/pcr/m/n/10 svyranktest\T1/ptm/m/n/10 . 
+
+Overfull \hbox (2.68791pt too wide) in paragraph at lines 1417--1418
+[]\T1/ptm/m/n/10 A named list of ar-gu-ments passed to the func-tion spec-i-fie
+d in \T1/pcr/m/n/10 testNonNormal\T1/ptm/m/n/10 . 
+
+Overfull \hbox (47.58038pt too wide) in paragraph at lines 1456--1456
+ []\T1/pcr/m/n/9 nhanesSvy <- svydesign(ids = ~ SDMVPSU, strata = ~ SDMVSTRA, w
+eights = ~ WTMEC2YR,[] 
+
+Overfull \hbox (20.58041pt too wide) in paragraph at lines 1460--1460
+ []\T1/pcr/m/n/9 ## factorVars are converted to factors; no need for variables 
+already factors[] 
+
+Overfull \hbox (20.58041pt too wide) in paragraph at lines 1461--1461
+ []\T1/pcr/m/n/9 ## strata will stratify summaries; leave it unspecified for ov
+erall summaries[] 
+[29]
+Overfull \hbox (4.38043pt too wide) in paragraph at lines 1480--1480
+ []\T1/pcr/m/n/9 ## showAllLevels can be used tow show levels for all categoric
+al variables[] 
+(./Rd2.ind [30] [31]) (./Rd2.aux) )
+(see the transcript file for additional information){/usr/share/texlive/texmf-d
+ist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/
+courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrro
+8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/font
+s/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/tim
+es/utmri8a.pfb>
+Output written on Rd2.pdf (31 pages, 153306 bytes).
+Transcript written on Rd2.log.
+Saving output to ‘tableone-manual.pdf’ ...
+Done
+You may want to clean up by 'rm -Rf /tmp/RtmpIrtamW/Rd2pdf1d2553ce19b5e'

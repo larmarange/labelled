@@ -1,0 +1,10 @@
+package,old,new,delta
+labelled,1.1.0,2.0.0,*
+cli,NA,1.0.1,*
+dplyr,NA,0.7.8,*
+fansi,NA,0.4.0,*
+haven,NA,2.0.0,*
+pkgconfig,NA,2.0.2,*
+R6,NA,2.3.0,*
+Rcpp,NA,1.0.0,*
+readr,NA,1.2.1,*

@@ -1,0 +1,12 @@
+* installing *source* package ‘questionr’ ...
+** package ‘questionr’ correctement décompressé et sommes MD5 vérifiées
+** R
+** data
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded
+* DONE (questionr)

@@ -1,0 +1,30 @@
+
+R version 3.5.1 (2018-07-02) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(testthat)
+> library(crosswalkr)
+> 
+> test_check("crosswalkr")
+[31m──[39m [31m1. Failure: Not proper labelled class (@test-encodefrom.R#40) [39m [31m─────────────────────────────────────────────────────────────[39m
+`vec` inherits from `haven_labelled` not `labelled`.
+
+══ testthat results  ══════════════════════════════════════════════════════════════════════════════════════════════════════════
+OK: 36 SKIPPED: 0 FAILED: 1
+1. Failure: Not proper labelled class (@test-encodefrom.R#40) 
+
+Error: testthat unit tests failed
+Execution halted

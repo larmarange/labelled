@@ -1,0 +1,34 @@
+Package: labelled
+Type: Package
+Title: Manipulating Labelled Data
+Version: 2.0.0
+Maintainer: Joseph Larmarange <joseph@larmarange.net>
+Authors@R: c(
+  person("Joseph", "Larmarange", email = "joseph@larmarange.net", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-7097-700X")),
+  person("Daniel", "Ludecke", role = "ctb"),
+  person("Hadley", "Wickham", role = "ctb"),
+  person("Bojanowski", "Michal", role = "ctb")
+  )
+Description: Work with labelled data imported from
+    'SPSS' or 'Stata' with 'haven' or 'foreign'. This package
+    provides useful functions to deal with "haven_labelled" and
+    "haven_labelled_spss" classes introduced by 'haven' package.
+License: GPL-3
+Encoding: UTF-8
+Imports: haven (>= 2.0.0), dplyr, stats
+Suggests: testthat, knitr, rmarkdown, questionr
+Enhances: memisc
+LazyData: true
+URL: https://github.com/larmarange/labelled
+BugReports: https://github.com/larmarange/labelled/issues
+VignetteBuilder: knitr
+RoxygenNote: 6.1.1
+RemoteType: local
+RemoteUrl: /data/user/l/jlarmarange/zPublish/shiny/labelled
+NeedsCompilation: no
+Packaged: 2018-11-23 20:39:33 UTC; jlarmarange
+Author: Joseph Larmarange [aut, cre] (<https://orcid.org/0000-0001-7097-700X>),
+  Daniel Ludecke [ctb],
+  Hadley Wickham [ctb],
+  Bojanowski Michal [ctb]
+Built: R 3.5.1; ; 2018-11-23 20:39:33 UTC; unix
