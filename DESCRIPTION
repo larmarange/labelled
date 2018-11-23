@@ -9,8 +9,8 @@ Authors@R: c(
   person("Hadley", "Wickham", role = "ctb"),
   person("Bojanowski", "Michal", role = "ctb")
   )
-Description: Work with labelled data imported from
-    'SPSS' or 'Stata' with 'haven' or 'foreign'. This package
+Description: Work with labelled data imported from 'SPSS'
+    or 'Stata' with 'haven' or 'foreign'. This package
     provides useful functions to deal with "haven_labelled" and
     "haven_labelled_spss" classes introduced by 'haven' package.
 License: GPL-3
