@@ -1,3 +1,7 @@
+# labelled 2.0.1
+
+* `update_labelled()` bug fix then applied on a data.frame (#31)
+
 # labelled 2.0.0
 
 ## BREAKING CHANGE
