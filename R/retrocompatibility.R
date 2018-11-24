@@ -18,8 +18,8 @@ update_labelled <- function(x) {
 
 #' @export
 update_labelled.default <- function(x) {
-  # return nothing
-  NULL
+  # return x
+  x
 }
 
 #' @rdname update_labelled

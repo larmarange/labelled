@@ -224,6 +224,11 @@ test_that("update_labelled preserve variable and value labels", {
   expect_equal(val_labels(update_labelled(v)), c(No = 1, Yes = 2))
 })
 
+test_that("update_labelled do nothing if it's not a labelled vector", {
+  x <- 1:10
+  expect_equal(update_labelled(x), x)
+})
+
 # remove_attributes --------------------------------------------------------------
 
 test_that("remove_attributes does not transform characters into factors", {
