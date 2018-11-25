@@ -3,7 +3,7 @@ author: "Joseph Larmarange"
 title: "Introduction to labelled"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{lebelled}
+  %\VignetteIndexEntry{Introduction to labelled}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
