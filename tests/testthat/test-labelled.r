@@ -96,6 +96,22 @@ test_that("strict option of to_factor works correctly", {
   expect_s3_class(to_factor(v, strict = TRUE), "haven_labelled")
 })
 
+test_that("to_factor works on data.frame", {
+  df <- data.frame(
+    x = labelled(c(1, 1, 2), c(yes = 1, no = 2)),
+    y = c("a", "a", "b"),
+    z = 1:3,
+    stringsAsFactors = FALSE
+  )
+
+  df2 <- to_factor(df)
+
+  expect_true(is.factor(df2$x))
+  expect_equal(class(df2$y), class(df$y))
+  expect_equal(class(df2$z), class(df$z))
+})
+
+
 # to_character --------------------------------------------------------------------
 
 test_that("to_character produce an appropriate character vector", {
