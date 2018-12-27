@@ -141,7 +141,7 @@ to_factor.data.frame <- function(x, levels = c("labels", "values", "prefixed"),
                                       decreasing = FALSE, labelled_only = TRUE,
                                       drop_unused_labels = FALSE, strict = FALSE,
                                       ...) {
-  if (inherits(x, "labelled"))
+  if (inherits(x, "haven_labelled"))
     x <- to_factor(x, levels = levels, ordered = ordered,
                    nolabel_to_na = nolabel_to_na, sort_levels = sort_levels, decreasing = decreasing,
                    drop_unused_labels = drop_unused_labels, strict = strict, ...)

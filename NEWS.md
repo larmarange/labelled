@@ -1,3 +1,7 @@
+# labelled 2.0.1.9000
+
+* `to_factor()` bug fix then applied on a data.frame (#33)
+
 # labelled 2.0.1
 
 * `update_labelled()` bug fix then applied on a data.frame (#31)
