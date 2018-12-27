@@ -1,4 +1,4 @@
-# labelled 2.0.1.9000
+# labelled 2.0.2
 
 * `to_factor()` bug fix then applied on a data.frame (#33)
 
