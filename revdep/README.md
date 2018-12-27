@@ -10,21 +10,22 @@
 |collate  |fr_FR.UTF-8                  |
 |ctype    |fr_FR.UTF-8                  |
 |tz       |Europe/Paris                 |
-|date     |2018-11-23                   |
+|date     |2018-12-27                   |
 
 # Dependencies
 
-|package   |old   |new   |Δ  |
-|:---------|:-----|:-----|:--|
-|labelled  |1.1.0 |2.0.0 |*  |
-|cli       |NA    |1.0.1 |*  |
-|dplyr     |NA    |0.7.8 |*  |
-|fansi     |NA    |0.4.0 |*  |
-|haven     |NA    |2.0.0 |*  |
-|pkgconfig |NA    |2.0.2 |*  |
-|R6        |NA    |2.3.0 |*  |
-|Rcpp      |NA    |1.0.0 |*  |
-|readr     |NA    |1.2.1 |*  |
+|package   |old   |new        |Δ  |
+|:---------|:-----|:----------|:--|
+|labelled  |2.0.1 |2.0.1.9000 |*  |
+|cli       |NA    |1.0.1      |*  |
+|dplyr     |NA    |0.7.8      |*  |
+|fansi     |NA    |0.4.0      |*  |
+|haven     |2.0.0 |2.0.0      |   |
+|pillar    |NA    |1.3.1      |*  |
+|pkgconfig |NA    |2.0.2      |*  |
+|R6        |NA    |2.3.0      |*  |
+|Rcpp      |NA    |1.0.0      |*  |
+|readr     |NA    |1.3.1      |*  |
 
 # Revdeps
 
@@ -38,9 +39,9 @@
 
 |package                              |version |error |warning |note |
 |:------------------------------------|:-------|:-----|:-------|:----|
-|[codebook](problems.md#codebook)     |0.6.3   |1     |1       |2    |
-|[crosswalkr](problems.md#crosswalkr) |0.1.1   |1     |        |1    |
-|[questionr](problems.md#questionr)   |0.6.3   |      |        |1    |
+|[codebook](problems.md#codebook)     |0.7.5   |      |1       |2    |
+|[crosswalkr](problems.md#crosswalkr) |0.2.2   |      |        |1    |
+|[questionr](problems.md#questionr)   |0.7.0   |      |        |1    |
 |SEERaBomb                            |?       |      |        |     |
 |[tableone](problems.md#tableone)     |0.9.3   |      |        |1    |
 
