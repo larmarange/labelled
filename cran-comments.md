@@ -1,5 +1,4 @@
 ## Test environments
-* local Windows 10 install, R 3.5.1
 * local CentOS 7 instal, R 3.5.2
 * ubuntu 14.04 (on travis-ci), R 3.5.1
 * win-builder (devel and release)
