@@ -9,8 +9,8 @@
 #' value labels attached to a variable. \code{copy_labels} coud be used
 #' to restore these attributes.
 #'
-#' @param from Object to copy labels from.
-#' @param to Object to copu labels to.
+#' @param from A data.frame (or tibble) to copy labels from.
+#' @param to A data.frame (or tibble) to copy labels to.
 #' @export
 copy_labels <- function(from, to) {
   UseMethod("copy_labels")
