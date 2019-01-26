@@ -1,5 +1,41 @@
 context("Labelled")
 
+# var_label --------------------------------------------------------------
+
+test_that("var_label works properly", {
+  x <- 1:3
+  var_label(x) <- "value"
+  expect_equal(attr(x, "label"), "value")
+  expect_equal(var_label(x), "value")
+  var_label(x) <- NULL
+  expect_null(attr(x, "label"))
+  expect_null(var_label(x))
+})
+
+test_that("var_label works on data.frame", {
+  df <- data.frame(x = 1:3, y = c("a", "b", "c"))
+  var_label(df$x) <- "var x"
+  expect_equal(var_label(df$x), "var x")
+  expect_equal(var_label(df), list(x = "var x", y = NULL))
+  var_label(df) <- list(y = "YY", x = "XX")
+  expect_equal(var_label(df), list(x = "XX", y = "YY"))
+  var_label(df) <- NULL
+  expect_equal(var_label(df), list(x = NULL, y = NULL))
+  var_label(df) <- c("var1", "var2")
+  expect_equal(var_label(df), list(x = "var1", y = "var2"))
+})
+
+test_that("var_label preserved data.frame type", {
+  tb <- dplyr::tibble(x = 1:3, y = c("a", "b", "c"))
+  before <- class(tb)
+  var_label(tb$x) <- "var x"
+  var_label(tb) <- list(y = "YY", x = "XX")
+  after <- class(tb)
+  expect_equal(before, after)
+})
+
+# labelled --------------------------------------------------------------
+
 test_that("labelled return an object of class haven_labelled",{
   x <- labelled(c(1,2,3), c(yes = 1, maybe = 2, no = 3))
   expect_that(is.labelled(x), is_true())
@@ -21,7 +57,7 @@ test_that("labels must have names", {
 })
 
 
-# var_labels and var_label ------------------------------------------------
+# val_labels and val_label ------------------------------------------------
 
 test_that("val_labels preserves variable label", {
   x <- 1:3

@@ -7,9 +7,9 @@
 copy_labels(from, to)
 }
 \arguments{
-\item{from}{Object to copy labels from.}
+\item{from}{A vector or a data.frame (or tibble) to copy labels from.}
 
-\item{to}{Object to copu labels to.}
+\item{to}{A vector or data.frame (or tibble) to copy labels to.}
 }
 \description{
 This function copies variable and value labels (including missing values)

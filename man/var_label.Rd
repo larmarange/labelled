@@ -15,8 +15,9 @@ set_variable_labels(.data, ...)
 \arguments{
 \item{x}{An object.}
 
-\item{value}{A character string or \code{NULL} to remove the label. For data frames,
-it could also be a named list.}
+\item{value}{A character string or \code{NULL} to remove the label.
+For data frames, it could also be a named list or a character vector
+of same length as the number of columns in \code{x}.}
 
 \item{.data}{a data frame}
 
@@ -30,7 +31,9 @@ Get / Set a variable label
 }
 \details{
 For data frames, if \code{value} is a named list, only elements whose name will
-  match a column of the data frame will be taken into account.
+  match a column of the data frame will be taken into account. If \code{value}
+  is a character vector, labels should in the same order as the columns of the
+  data.frame.
 }
 \note{
 \code{set_variable_labels} could be used with \code{dplyr}.
@@ -43,6 +46,17 @@ var_label(iris$Sepal.Length) <- 'Length of the sepal'
 }
 # To remove a variable label
 var_label(iris$Sepal.Length) <- NULL
+# To change several variable labels at once
+var_label(iris) <- c(
+  "sepal length", "sepal width", "petal length",
+  "petal width", "species"
+)
+var_label(iris)
+var_label(iris) <- list(
+  Petal.Width = "width of the petal",
+  Petal.Length = "length of the petal"
+)
+var_label(iris)
 if (require(dplyr)) {
   # adding some variable labels
   df <- data_frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2)) \%>\%
