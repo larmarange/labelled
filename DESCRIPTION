@@ -23,7 +23,8 @@ Suggests:
     testthat,
     knitr,
     rmarkdown,
-    questionr
+    questionr,
+    snakecase
 Enhances: memisc
 LazyData: true
 URL: https://github.com/larmarange/labelled

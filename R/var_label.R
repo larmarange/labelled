@@ -80,6 +80,10 @@ var_label.data.frame <- function(x) {
       x <- NULL
     })
   }
+
+  if (!all(names(value) %in% names(x)))
+    stop("some variables not found in x")
+
   value <- value[names(value) %in% names(x)]
   for (var in names(value)) var_label(x[[var]]) <- value[[var]]
   x
@@ -89,6 +93,8 @@ var_label.data.frame <- function(x) {
 #' @rdname var_label
 #' @param .data a data frame
 #' @param ... name-value pairs of variable labels (see examples)
+#' @param .labels variable labels to be applied to the data.frame,
+#'   using the same syntax as \code{value} in `var_label(df) <- value`.
 #' @note
 #'   \code{set_variable_labels} could be used with \code{dplyr}.
 #' @return
@@ -103,15 +109,27 @@ var_label.data.frame <- function(x) {
 #'   # removing a variable label
 #'   df <- df %>% set_variable_labels(s2 = NULL)
 #'   var_label(df$s2)
+#'
+#'   # defining variable labels derived from variable names
+#'   if (require(snakecase)) {
+#'     iris <- iris %>%
+#'       set_variable_labels(.labels = to_sentence_case(names(iris)))
+#'     var_label(iris)
+#'   }
 #' }
 #' @export
-set_variable_labels <- function(.data, ...) {
+set_variable_labels <- function(.data, ..., .labels = NA) {
+  if (!identical(.labels, NA)) {
+    var_label(.data) <- .labels
+  }
   values <- list(...)
-  if (!all(names(values) %in% names(.data)))
-    stop("some variables not found in .data")
+  if (length(values) > 0) {
+    if (!all(names(values) %in% names(.data)))
+      stop("some variables not found in .data")
 
-  for (v in names(values))
-    var_label(.data[[v]]) <- values[[v]]
+    for (v in names(values))
+      var_label(.data[[v]]) <- values[[v]]
+  }
 
   .data
 }

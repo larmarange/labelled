@@ -23,6 +23,17 @@ test_that("var_label works on data.frame", {
   expect_equal(var_label(df), list(x = NULL, y = NULL))
   var_label(df) <- c("var1", "var2")
   expect_equal(var_label(df), list(x = "var1", y = "var2"))
+  df <- set_variable_labels(df, x = "XX", .labels = "other")
+  expect_equal(var_label(df), list(x = "XX", y = "other"))
+  df <- set_variable_labels(df, .labels = c("var1", "var2"))
+  expect_equal(var_label(df), list(x = "var1", y = "var2"))
+})
+
+
+test_that("var_label produce appropriate errors", {
+  df <- data.frame(x = 1:3, y = c("a", "b", "c"))
+  expect_error(var_label(df) <- c("var1", "var2", "var3"))
+  expect_error(var_label(df) <- list(x = "xx", z = "zz"))
 })
 
 test_that("var_label preserved data.frame type", {

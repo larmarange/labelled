@@ -2,6 +2,7 @@
 
 * `var_label()`, applied to a data.frame, now accepts a character 
   vector of same length as the number of columns.
+* `set_variable_labels` has a new `.labels` argument.
 
 # labelled 2.0.2
 

@@ -10,7 +10,7 @@ var_label(x)
 
 var_label(x) <- value
 
-set_variable_labels(.data, ...)
+set_variable_labels(.data, ..., .labels = NA)
 }
 \arguments{
 \item{x}{An object.}
@@ -22,6 +22,9 @@ of same length as the number of columns in \code{x}.}
 \item{.data}{a data frame}
 
 \item{...}{name-value pairs of variable labels (see examples)}
+
+\item{.labels}{variable labels to be applied to the data.frame,
+using the same syntax as \code{value} in `var_label(df) <- value`.}
 }
 \value{
 \code{set_variable_labels} will return an updated copy of \code{.data}.
@@ -66,5 +69,12 @@ if (require(dplyr)) {
   # removing a variable label
   df <- df \%>\% set_variable_labels(s2 = NULL)
   var_label(df$s2)
+
+  # defining variable labels derived from variable names
+  if (require(snakecase)) {
+    iris <- iris \%>\%
+      set_variable_labels(.labels = to_sentence_case(names(iris)))
+    var_label(iris)
+  }
 }
 }
