@@ -32,6 +32,7 @@ to_factor.default <- function(x, ...) {
 #' @param sort_levels How the factor levels should be sorted? (see Details)
 #' @param decreasing Should levels be sorted in decreasing order?
 #' @param drop_unused_labels Should unused value labels be dropped?
+#'   (applied only if \code{strict = FALSE})
 #' @param user_na_to_na Convert user defined missing values into \code{NA}?
 #' @param strict Convert to factor only if all values have a defined label?
 #' @details
