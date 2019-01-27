@@ -141,6 +141,7 @@ test_that("strict option of to_factor works correctly", {
   v <- labelled(c(1, 1, 2, 3), labels = c(No = 1, Yes = 2))
   expect_s3_class(to_factor(v, strict = FALSE), "factor")
   expect_s3_class(to_factor(v, strict = TRUE), "haven_labelled")
+  expect_equal(class(to_factor(v, strict = TRUE, unclass = TRUE)), "numeric")
 })
 
 test_that("to_factor works on data.frame", {
