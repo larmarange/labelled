@@ -70,6 +70,8 @@ to_factor.haven_labelled <- function(x, levels = c("labels", "values",
   vl <- var_label(x)
   levels <- match.arg(levels)
   sort_levels <- match.arg(sort_levels)
+  if (user_na_to_na)
+    x <- user_na_to_na(x)
   if (strict) {
     allval <- unique(x)
     allval <- allval[!is.na(allval)]
@@ -79,8 +81,6 @@ to_factor.haven_labelled <- function(x, levels = c("labels", "values",
   }
   if (nolabel_to_na)
     x <- nolabel_to_na(x)
-  if (user_na_to_na)
-    x <- user_na_to_na(x)
   labels <- val_labels(x)
   allval <- unique(x)
   allval <- allval[!is.na(allval)]
