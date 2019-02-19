@@ -1,7 +1,9 @@
+^pkgdown$
+^_pkgdown\.yml$
+^docs$
 ^cran-comments\.md$
 ^CRAN-RELEASE$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.travis\.yml$
-^docs$
 ^revdep$
