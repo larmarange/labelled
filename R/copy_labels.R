@@ -1,4 +1,4 @@
-#' Copy variable and value labels
+#' Copy variable and value labels and SPSS style missing value
 #'
 #' This function copies variable and value labels (including missing values)
 #' from one vector to another or from one data frame to another data frame.
