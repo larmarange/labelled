@@ -2,7 +2,7 @@
 % Please edit documentation in R/copy_labels.R
 \name{copy_labels}
 \alias{copy_labels}
-\title{Copy variable and value labels}
+\title{Copy variable and value labels and SPSS style missing value}
 \usage{
 copy_labels(from, to)
 }

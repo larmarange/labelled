@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">labelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.2.9000</span>
       </span>
     </div>
 
@@ -129,7 +129,7 @@
 
 <span class='fu'>var_label</span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
 
-<span class='fu'>set_variable_labels</span>(<span class='no'>.data</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>set_variable_labels</span>(<span class='no'>.data</span>, <span class='no'>...</span>, <span class='kw'>.labels</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -140,8 +140,9 @@
     </tr>
     <tr>
       <th>value</th>
-      <td><p>A character string or <code>NULL</code> to remove the label. For data frames,
-it could also be a named list.</p></td>
+      <td><p>A character string or <code>NULL</code> to remove the label.
+For data frames, it could also be a named list or a character vector
+of same length as the number of columns in <code>x</code>.</p></td>
     </tr>
     <tr>
       <th>.data</th>
@@ -150,6 +151,11 @@ it could also be a named list.</p></td>
     <tr>
       <th>...</th>
       <td><p>name-value pairs of variable labels (see examples)</p></td>
+    </tr>
+    <tr>
+      <th>.labels</th>
+      <td><p>variable labels to be applied to the data.frame,
+using the same syntax as <code>value</code> in `var_label(df) &lt;- value`.</p></td>
     </tr>
     </table>
     
@@ -160,7 +166,9 @@ it could also be a named list.</p></td>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>For data frames, if <code>value</code> is a named list, only elements whose name will
-  match a column of the data frame will be taken into account.</p>
+  match a column of the data frame will be taken into account. If <code>value</code>
+  is a character vector, labels should in the same order as the columns of the
+  data.frame.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
@@ -172,7 +180,44 @@ it could also be a named list.</p></td>
  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/View'>View</a></span>(<span class='no'>iris</span>)
 <span class='co'># }</span><div class='input'><span class='co'># To remove a variable label</span>
 <span class='fu'>var_label</span>(<span class='no'>iris</span>$<span class='no'>Sepal.Length</span>) <span class='kw'>&lt;-</span> <span class='kw'>NULL</span>
-<span class='kw'>if</span> (<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>require</a></span>(<span class='no'>dplyr</span>)) {
+<span class='co'># To change several variable labels at once</span>
+<span class='fu'>var_label</span>(<span class='no'>iris</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(
+  <span class='st'>"sepal length"</span>, <span class='st'>"sepal width"</span>, <span class='st'>"petal length"</span>,
+  <span class='st'>"petal width"</span>, <span class='st'>"species"</span>
+)
+<span class='fu'>var_label</span>(<span class='no'>iris</span>)</div><div class='output co'>#&gt; $Sepal.Length
+#&gt; [1] "sepal length"
+#&gt; 
+#&gt; $Sepal.Width
+#&gt; [1] "sepal width"
+#&gt; 
+#&gt; $Petal.Length
+#&gt; [1] "petal length"
+#&gt; 
+#&gt; $Petal.Width
+#&gt; [1] "petal width"
+#&gt; 
+#&gt; $Species
+#&gt; [1] "species"
+#&gt; </div><div class='input'><span class='fu'>var_label</span>(<span class='no'>iris</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
+  <span class='kw'>Petal.Width</span> <span class='kw'>=</span> <span class='st'>"width of the petal"</span>,
+  <span class='kw'>Petal.Length</span> <span class='kw'>=</span> <span class='st'>"length of the petal"</span>
+)
+<span class='fu'>var_label</span>(<span class='no'>iris</span>)</div><div class='output co'>#&gt; $Sepal.Length
+#&gt; [1] "sepal length"
+#&gt; 
+#&gt; $Sepal.Width
+#&gt; [1] "sepal width"
+#&gt; 
+#&gt; $Petal.Length
+#&gt; [1] "length of the petal"
+#&gt; 
+#&gt; $Petal.Width
+#&gt; [1] "width of the petal"
+#&gt; 
+#&gt; $Species
+#&gt; [1] "species"
+#&gt; </div><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>require</a></span>(<span class='no'>dplyr</span>)) {
   <span class='co'># adding some variable labels</span>
   <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>data_frame</a></span>(<span class='kw'>s1</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"M"</span>, <span class='st'>"M"</span>, <span class='st'>"F"</span>), <span class='kw'>s2</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>)) <span class='kw'>%&gt;%</span>
     <span class='fu'>set_variable_labels</span>(<span class='kw'>s1</span> <span class='kw'>=</span> <span class='st'>"Sex"</span>, <span class='kw'>s2</span> <span class='kw'>=</span> <span class='st'>"Yes or No?"</span>)
@@ -181,7 +226,28 @@ it could also be a named list.</p></td>
   <span class='co'># removing a variable label</span>
   <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='no'>df</span> <span class='kw'>%&gt;%</span> <span class='fu'>set_variable_labels</span>(<span class='kw'>s2</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
   <span class='fu'>var_label</span>(<span class='no'>df</span>$<span class='no'>s2</span>)
-}</div><div class='output co'>#&gt; NULL</div></pre>
+
+  <span class='co'># defining variable labels derived from variable names</span>
+  <span class='kw'>if</span> (<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>require</a></span>(<span class='no'>snakecase</span>)) {
+    <span class='no'>iris</span> <span class='kw'>&lt;-</span> <span class='no'>iris</span> <span class='kw'>%&gt;%</span>
+      <span class='fu'>set_variable_labels</span>(<span class='kw'>.labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/snakecase/topics/caseconverter'>to_sentence_case</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='no'>iris</span>)))
+    <span class='fu'>var_label</span>(<span class='no'>iris</span>)
+  }
+}</div><div class='output co'>#&gt; <span class='message'>Le chargement a nécessité le package : snakecase</span></div><div class='output co'>#&gt; $Sepal.Length
+#&gt; [1] "Sepal length"
+#&gt; 
+#&gt; $Sepal.Width
+#&gt; [1] "Sepal width"
+#&gt; 
+#&gt; $Petal.Length
+#&gt; [1] "Petal length"
+#&gt; 
+#&gt; $Petal.Width
+#&gt; [1] "Petal width"
+#&gt; 
+#&gt; $Species
+#&gt; [1] "Species"
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -206,7 +272,7 @@ it could also be a named list.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
 </div>
       </footer>
    </div>

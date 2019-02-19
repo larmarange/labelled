@@ -60,7 +60,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">labelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.2.9000</span>
       </span>
     </div>
 
@@ -125,17 +125,37 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
+          <h2 id="section-manipulating-variable-labels" class="hasAnchor"><a href="#section-manipulating-variable-labels" class="anchor"></a>Manipulating variable labels</h2>
+          <p class="section-desc"><p>Functions to set, manipulate and remove variable labels</p></p>
         </th>
       </tr>
       <tr>
         
         <td>
+          <p><code><a href="var_label.html">var_label()</a></code> <code><a href="var_label.html">`var_label<-`()</a></code> <code><a href="var_label.html">set_variable_labels()</a></code> </p>
+        </td>
+        <td><p>Get / Set a variable label</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="remove_labels.html">remove_labels()</a></code> <code><a href="remove_labels.html">remove_var_label()</a></code> <code><a href="remove_labels.html">remove_val_labels()</a></code> <code><a href="remove_labels.html">remove_user_na()</a></code> </p>
+        </td>
+        <td><p>Remove variable label, value labels and user defined missing values</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="copy_labels.html">copy_labels()</a></code> </p>
         </td>
-        <td><p>Copy variable and value labels</p></td>
-      </tr><tr>
+        <td><p>Copy variable and value labels and SPSS style missing value</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-manipulating-value-labels" class="hasAnchor"><a href="#section-manipulating-value-labels" class="anchor"></a>Manipulating value labels</h2>
+          <p class="section-desc"><p>Functions to set, manipulate and remove value labels</p></p>
+        </th>
+      </tr>
+      <tr>
         
         <td>
           <p><code><a href="labelled.html">labelled()</a></code> <code><a href="labelled.html">is.labelled()</a></code> </p>
@@ -144,39 +164,9 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="labelled_spss.html">labelled_spss()</a></code> </p>
+          <p><code><a href="val_labels.html">val_labels()</a></code> <code><a href="val_labels.html">`val_labels<-`()</a></code> <code><a href="val_labels.html">val_label()</a></code> <code><a href="val_labels.html">`val_label<-`()</a></code> <code><a href="val_labels.html">set_value_labels()</a></code> <code><a href="val_labels.html">add_value_labels()</a></code> <code><a href="val_labels.html">remove_value_labels()</a></code> </p>
         </td>
-        <td><p>Create a labelled vector with SPSS style of missing values.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mean.haven_labelled.html">mean(<i>&lt;haven_labelled&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Arithmetic mean for numeric labelled vectors</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="na_values.html">na_values()</a></code> <code><a href="na_values.html">`na_values<-`()</a></code> <code><a href="na_values.html">na_range()</a></code> <code><a href="na_values.html">`na_range<-`()</a></code> <code><a href="na_values.html">set_na_values()</a></code> <code><a href="na_values.html">set_na_range()</a></code> <code><a href="na_values.html">user_na_to_na()</a></code> </p>
-        </td>
-        <td><p>Get / Set SPSS missing values</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="nolabel_to_na.html">nolabel_to_na()</a></code> </p>
-        </td>
-        <td><p>Recode values with no label to NA</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="recode.haven_labelled.html">recode(<i>&lt;haven_labelled&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Recode values</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="remove_attributes.html">remove_attributes()</a></code> </p>
-        </td>
-        <td><p>Remove attributes</p></td>
+        <td><p>Get / Set value labels</p></td>
       </tr><tr>
         
         <td>
@@ -190,6 +180,64 @@
         </td>
         <td><p>Sort value labels</p></td>
       </tr><tr>
+        
+        <td>
+          <p><code><a href="val_labels_to_na.html">val_labels_to_na()</a></code> </p>
+        </td>
+        <td><p>Recode value labels  to NA</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="nolabel_to_na.html">nolabel_to_na()</a></code> </p>
+        </td>
+        <td><p>Recode values with no label to NA</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="copy_labels.html">copy_labels()</a></code> </p>
+        </td>
+        <td><p>Copy variable and value labels and SPSS style missing value</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-manipulating-spss-style-missing-values" class="hasAnchor"><a href="#section-manipulating-spss-style-missing-values" class="anchor"></a>Manipulating SPSS style missing values</h2>
+          <p class="section-desc"><p>Functions to set, manipulate and remove SPSS style missing values</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="labelled_spss.html">labelled_spss()</a></code> </p>
+        </td>
+        <td><p>Create a labelled vector with SPSS style of missing values.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="na_values.html">na_values()</a></code> <code><a href="na_values.html">`na_values<-`()</a></code> <code><a href="na_values.html">na_range()</a></code> <code><a href="na_values.html">`na_range<-`()</a></code> <code><a href="na_values.html">set_na_values()</a></code> <code><a href="na_values.html">set_na_range()</a></code> <code><a href="na_values.html">user_na_to_na()</a></code> </p>
+        </td>
+        <td><p>Get / Set SPSS missing values</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="copy_labels.html">copy_labels()</a></code> </p>
+        </td>
+        <td><p>Copy variable and value labels and SPSS style missing value</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="remove_labels.html">remove_labels()</a></code> <code><a href="remove_labels.html">remove_var_label()</a></code> <code><a href="remove_labels.html">remove_val_labels()</a></code> <code><a href="remove_labels.html">remove_user_na()</a></code> </p>
+        </td>
+        <td><p>Remove variable label, value labels and user defined missing values</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-converting" class="hasAnchor"><a href="#section-converting" class="anchor"></a>Converting</h2>
+          <p class="section-desc"><p>Functions to convert from and to labelled classes</p></p>
+        </th>
+      </tr>
+      <tr>
         
         <td>
           <p><code><a href="to_character.html">to_character()</a></code> </p>
@@ -213,24 +261,32 @@
           <p><code><a href="update_labelled.html">update_labelled()</a></code> </p>
         </td>
         <td><p>Update labelled data to version 2.0.0</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-other-functions-and-methods" class="hasAnchor"><a href="#section-other-functions-and-methods" class="anchor"></a>Other functions and methods</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="mean.haven_labelled.html">mean(<i>&lt;haven_labelled&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Arithmetic mean for numeric labelled vectors</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="val_labels.html">val_labels()</a></code> <code><a href="val_labels.html">`val_labels<-`()</a></code> <code><a href="val_labels.html">val_label()</a></code> <code><a href="val_labels.html">`val_label<-`()</a></code> <code><a href="val_labels.html">set_value_labels()</a></code> <code><a href="val_labels.html">add_value_labels()</a></code> <code><a href="val_labels.html">remove_value_labels()</a></code> </p>
+          <p><code><a href="recode.haven_labelled.html">recode(<i>&lt;haven_labelled&gt;</i>)</a></code> </p>
         </td>
-        <td><p>Get / Set value labels</p></td>
+        <td><p>Recode values</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="val_labels_to_na.html">val_labels_to_na()</a></code> </p>
+          <p><code><a href="remove_attributes.html">remove_attributes()</a></code> </p>
         </td>
-        <td><p>Recode value labels  to NA</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="var_label.html">var_label()</a></code> <code><a href="var_label.html">`var_label<-`()</a></code> <code><a href="var_label.html">set_variable_labels()</a></code> </p>
-        </td>
-        <td><p>Get / Set a variable label</p></td>
+        <td><p>Remove attributes</p></td>
       </tr>
     </tbody>
     </table>
@@ -239,7 +295,11 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#section-manipulating-variable-labels">Manipulating variable labels</a></li>
+      <li><a href="#section-manipulating-value-labels">Manipulating value labels</a></li>
+      <li><a href="#section-manipulating-spss-style-missing-values">Manipulating SPSS style missing values</a></li>
+      <li><a href="#section-converting">Converting</a></li>
+      <li><a href="#section-other-functions-and-methods">Other functions and methods</a></li>
     </ul>
   </div>
 </div>
@@ -250,7 +310,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
 </div>
       </footer>
    </div>
