@@ -1,1 +1,37 @@
 destination: docs
+reference:
+- title: Manipulating variable labels
+  desc:  Functions to set, manipulate and remove variable labels
+  contents:
+  - var_label
+  - remove_var_label
+  - copy_labels
+- title: Manipulating value labels
+  desc:  Functions to set, manipulate and remove value labels
+  contents:
+  - labelled
+  - val_label
+  - remove_var_label
+  - sort_val_labels
+  - val_labels_to_na
+  - nolabel_to_na
+  - copy_labels
+- title: Manipulating SPSS style missing values
+  desc:  Functions to set, manipulate and remove SPSS style missing values
+  contents:
+  - labelled_spss
+  - na_values
+  - copy_labels
+  - remove_user_na
+- title: Converting
+  desc: Functions to convert from and to labelled classes
+  contents:
+  - starts_with("to")
+  - update_labelled
+- title: Other functions and methods
+  contents:
+  - mean.haven_labelled
+  - recode.haven_labelled
+  - remove_attributes
+
+
