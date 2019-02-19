@@ -108,12 +108,14 @@ test_that("val_labels and val_label preserves spss missing values", {
   expect_equal(attr(x, "labels", exact = TRUE), c(yes = 1, no = 3, maybe = 2))
 })
 
-test_that("value labels can't be removed if missing values are defined", {
+test_that("value labels can be removed if missing values are defined", {
   x <- labelled_spss(1:10, c(Good = 1, Bad = 8), na_values = c(9, 10))
-  expect_error(`val_labels<-`(x, NULL))
+  val_labels(x) <- NULL
+  expect_null(val_labels(x))
 
   x <- labelled_spss(1:10, c(Good = 1), na_range = c(9, 20))
-  expect_error(`val_label<-`(x, 1, NULL))
+  val_labels(x) <- NULL
+  expect_null(val_labels(x))
 })
 
 # remove_labels --------------------------------------------------------------
@@ -241,9 +243,14 @@ test_that("set_variable_labels updates variable labels", {
 
 # missing values -------------------------------------------------------------------
 
-test_that("it is not possible to define missing values if no value labels were defined", {
-  expect_error(`na_values<-`(1:3, 9))
-  expect_error(`na_range<-`(1:3, c(9, Inf)))
+test_that("it is possible to define missing values if no value labels were defined", {
+  x <- c(1, 2, 2, 9)
+  na_values(x) <- 9
+  expect_equal(na_values(x), 9)
+
+  x <- c(1, 2, 2, 9)
+  na_range(x) <- 9:10
+  expect_equal(na_range(x), 9:10)
 })
 
 # recode (dplyr) -------------------------------------------------------------------

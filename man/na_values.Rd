@@ -49,7 +49,7 @@ Get / Set SPSS missing values
 }
 \details{
 See \code{\link{labelled_spss}} for a presentation of SPSS's user defined missing values.
-Note that it is mandatory to define value labels before defining missing values.
+Note that \code{is.na} will return \code{TRUE} for user defined misssing values.
 You can use \code{\link{user_na_to_na}} to convert user defined missing values to \code{NA}.
 }
 \note{
@@ -61,6 +61,7 @@ v
 na_values(v) <- 9
 na_values(v)
 v
+is.na(v)
 user_na_to_na(v)
 na_values(v) <- NULL
 v

@@ -7,7 +7,7 @@
 #' want the range to be open ended).
 #' @details
 #' See \code{\link{labelled_spss}} for a presentation of SPSS's user defined missing values.
-#' Note that it is mandatory to define value labels before defining missing values.
+#' Note that \code{is.na} will return \code{TRUE} for user defined misssing values.
 #' You can use \code{\link{user_na_to_na}} to convert user defined missing values to \code{NA}.
 #' @return
 #'   \code{na_values} will return a vector of values that should also be considered as missing.
@@ -20,6 +20,7 @@
 #' na_values(v) <- 9
 #' na_values(v)
 #' v
+#' is.na(v)
 #' user_na_to_na(v)
 #' na_values(v) <- NULL
 #' v
@@ -56,8 +57,8 @@ na_values.data.frame <- function(x) {
 
 #' @export
 `na_values<-.default` <- function(x, value) {
-  if (is.null(val_labels(x)) & !is.null(value))
-    stop("Value labels need to be defined first. Please use val_labels().")
+  if (!is.null(value))
+    x <- labelled_spss(x, val_labels(x), na_values = value, na_range = attr(x, "na_range"))
   # else do nothing
   x
 }
@@ -69,8 +70,6 @@ na_values.data.frame <- function(x) {
     if (is.null(attr(x, "na_range")))
       class(x) <- "haven_labelled"
   } else {
-    if (is.null(val_labels(x)))
-      stop("Value labels need to be defined first. Please use val_labels().")
     x <- labelled_spss(x, val_labels(x), na_values = value, na_range = attr(x, "na_range"))
   }
   x
@@ -106,8 +105,8 @@ na_range.data.frame <- function(x) {
 
 #' @export
 `na_range<-.default` <- function(x, value) {
-  if (is.null(val_labels(x)) & !is.null(value))
-    stop("Value labels need to be defined first. Please use val_labels().")
+  if (!is.null(value))
+    x <- labelled_spss(x, val_labels(x), na_values = attr(x, "na_values"), na_range = value)
   # else do nothing
   x
 }
@@ -119,8 +118,6 @@ na_range.data.frame <- function(x) {
     if (is.null(attr(x, "na_values")))
       class(x) <- "haven_labelled"
   } else {
-    if (is.null(val_labels(x)))
-      stop("Value labels need to be defined first. Please use val_labels().")
     x <- labelled_spss(x, val_labels(x), na_values = attr(x, "na_values"), na_range = value)
   }
   x

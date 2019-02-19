@@ -4,6 +4,9 @@
   vector of same length as the number of columns.
 * `set_variable_labels` has a new `.labels` argument.
 * New `unclass` option in `to_factor()`, to be used when `strict = TRUE` (#36)
+* Following `haven` version 2.1.0, it is not mandatory anymore to define a value 
+  label before defining a SPSS style missing value. `labelled_spss()`, `na_values()`
+  and `na_range()` have been updated accordingly (#37)
 
 # labelled 2.0.2
 

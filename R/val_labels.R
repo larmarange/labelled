@@ -89,13 +89,9 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
 #' @rdname val_labels
 #' @export
 `val_labels<-.haven_labelled_spss` <- function(x, value) {
-  if (is.null(value)) {
-    if (is.null(attr(x, "na_values")) & is.null(attr(x, "na_range"))) {
-      x <- unclass(x)
-      attr(x, "labels") <- NULL
-    } else {
-      stop("Value labels can't be removed if some user missing values are defined. Please use remove_user_na() first.")
-    }
+  if (is.null(value) & is.null(attr(x, "na_values")) & is.null(attr(x, "na_range"))) {
+    x <- unclass(x)
+    attr(x, "labels") <- NULL
   } else {
     x <- labelled_spss(x, value, na_values = attr(x, "na_values"), na_range = attr(x, "na_range"), label = var_label(x))
   }
