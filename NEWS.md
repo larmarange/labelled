@@ -1,3 +1,5 @@
+# labelled (development version)
+
 # labelled 2.0.1
 
 * `var_label()`, applied to a data.frame, now accepts a character 
