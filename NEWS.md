@@ -1,4 +1,4 @@
-# labelled 2.0.2.9000
+# labelled 2.0.1
 
 * `var_label()`, applied to a data.frame, now accepts a character 
   vector of same length as the number of columns.
