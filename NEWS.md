@@ -1,5 +1,7 @@
 # labelled (development version)
 
+* new function `copy_labels_from()`, compliant with `dplyr` syntax
+
 # labelled 2.0.1
 
 * `var_label()`, applied to a data.frame, now accepts a character 

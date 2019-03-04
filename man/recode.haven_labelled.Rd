@@ -10,13 +10,16 @@
 \arguments{
 \item{.x}{A vector to modify}
 
-\item{...}{Replacements. These should be named for character and factor
-\code{.x}, and can be named for numeric \code{.x}. The argument names should be the
-current values to be replaced, and the argument values should be the new
-(replacement) values.
+\item{...}{Replacements. For character and factor \code{.x}, these should be named
+and replacement is based only on their name. For numeric \code{.x}, these can be
+named or not. If not named, the replacement is done based on position i.e.
+\code{.x} represents positions to look for in replacements. See examples.
+
+When named, the argument names should be the current values to be replaced, and the
+argument values should be the new (replacement) values.
 
 All replacements must be the same type, and must have either
-length one or the same length as x.
+length one or the same length as \code{.x}.
 
 These dots support \link[rlang:tidy-dots]{tidy dots} features.}
 

@@ -2,9 +2,12 @@
 % Please edit documentation in R/copy_labels.R
 \name{copy_labels}
 \alias{copy_labels}
+\alias{copy_labels_from}
 \title{Copy variable and value labels and SPSS style missing value}
 \usage{
 copy_labels(from, to)
+
+copy_labels_from(to, from)
 }
 \arguments{
 \item{from}{A vector or a data.frame (or tibble) to copy labels from.}
@@ -21,4 +24,29 @@ if variables are the same type in both data frames.
 Some base \R functions like \code{\link[base]{subset}} drop variable and
 value labels attached to a variable. \code{copy_labels} coud be used
 to restore these attributes.
+
+\code{copy_labels_from} is intended to be used with \code{dplyr} syntax,
+see examples.
+}
+\examples{
+library(dplyr)
+df <- tibble(
+  id = 1:3,
+  happy = factor(c('yes', 'no', 'yes')),
+  gender = labelled(c(1, 1, 2), c(female = 1, male = 2))
+) \%>\%
+set_variable_labels(
+  id = "Individual ID",
+  happy = "Are you happy?",
+  gender = "Gender of respondent"
+)
+var_label(df)
+fdf <- df \%>\% filter(id < 3)
+var_label(fdf) # some variable labels have been lost
+fdf <- fdf \%>\% copy_labels_from(df)
+var_label(fdf)
+
+# Alternative syntax
+fdf <- subset(df, id < 3)
+fdf <- copy_labels(from = df, to = fdf)
 }

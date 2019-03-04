@@ -9,9 +9,33 @@
 #' value labels attached to a variable. \code{copy_labels} coud be used
 #' to restore these attributes.
 #'
+#' \code{copy_labels_from} is intended to be used with \code{dplyr} syntax,
+#' see examples.
+#'
 #' @param from A vector or a data.frame (or tibble) to copy labels from.
 #' @param to A vector or data.frame (or tibble) to copy labels to.
 #' @export
+#' @examples
+#' library(dplyr)
+#' df <- tibble(
+#'   id = 1:3,
+#'   happy = factor(c('yes', 'no', 'yes')),
+#'   gender = labelled(c(1, 1, 2), c(female = 1, male = 2))
+#' ) %>%
+#' set_variable_labels(
+#'   id = "Individual ID",
+#'   happy = "Are you happy?",
+#'   gender = "Gender of respondent"
+#' )
+#' var_label(df)
+#' fdf <- df %>% filter(id < 3)
+#' var_label(fdf) # some variable labels have been lost
+#' fdf <- fdf %>% copy_labels_from(df)
+#' var_label(fdf)
+#'
+#' # Alternative syntax
+#' fdf <- subset(df, id < 3)
+#' fdf <- copy_labels(from = df, to = fdf)
 copy_labels <- function(from, to) {
   UseMethod("copy_labels")
 }
@@ -43,5 +67,8 @@ copy_labels.data.frame <- function(from, to) {
   to
 }
 
-
-
+#' @rdname copy_labels
+#' @export
+copy_labels_from <- function(to, from) {
+  copy_labels(from, to)
+}
