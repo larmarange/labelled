@@ -40,7 +40,7 @@ labelled <- haven::labelled
 #' @rdname labelled
 #' @inheritParams haven::is.labelled
 #' @importFrom haven is.labelled
-#' @seealso \code{\link[haven]{is.labelled}} (\pkg{haven})
+#' @seealso \code{\link[haven:labelled]{haven::is.labelled()}} (\pkg{haven})
 #' @export
 #' @examples
 #' is.labelled(s1)
