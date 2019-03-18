@@ -1,7 +1,7 @@
 #' Convert input to a factor.
 #'
-#' The base function \code{\link[base]{as.factor}} is not a generic, but this variant
-#' is. By default, \code{to_factor} is a wrapper for \code{\link[base]{as.factor}}.
+#' The base function \code{\link[base:factor]{base::as.factor()}} is not a generic, but this variant
+#' is. By default, \code{to_factor} is a wrapper for \code{\link[base:factor]{base::as.factor()}}.
 #' Please note that \code{to_factor} differs slightly from \code{\link[haven]{as_factor}}
 #' method provided by \code{haven} package.
 #'
