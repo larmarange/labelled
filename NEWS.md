@@ -1,6 +1,7 @@
 # labelled (development version)
 
 * new function `copy_labels_from()`, compliant with `dplyr` syntax
+* `update_labelled()` is now more strict (#42 by @iago-pssjd)
 
 # labelled 2.0.1
 
