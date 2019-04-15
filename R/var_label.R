@@ -4,6 +4,7 @@
 #' @param value A character string or \code{NULL} to remove the label.
 #'  For data frames, it could also be a named list or a character vector
 #'  of same length as the number of columns in \code{x}.
+#' @param unlist for data frames, return a named vector instead of a list
 #' @details
 #'   For data frames, if \code{value} is a named list, only elements whose name will
 #'   match a column of the data frame will be taken into account. If \code{value}
@@ -28,19 +29,25 @@
 #'   Petal.Length = "length of the petal"
 #' )
 #' var_label(iris)
+#' var_label(iris, unlist = TRUE)
 #' @export
-var_label <- function(x) {
+var_label <- function(x, unlist = FALSE) {
   UseMethod("var_label")
 }
 
 #' @export
-var_label.default <- function(x) {
+var_label.default <- function(x, unlist = FALSE) {
   attr(x, "label", exact = TRUE)
 }
 
 #' @export
-var_label.data.frame <- function(x) {
-  lapply(x, var_label)
+var_label.data.frame <- function(x, unlist = FALSE) {
+  r <- lapply(x, var_label)
+  if (unlist) {
+    r <- lapply(r, function(x){if (is.null(x)) "" else x})
+    base::unlist(r, use.names = TRUE)
+  } else
+    r
 }
 
 #' @rdname var_label

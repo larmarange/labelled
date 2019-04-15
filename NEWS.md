@@ -3,6 +3,7 @@
 * new function `copy_labels_from()`, compliant with `dplyr` syntax
 * `update_labelled()` is now more strict (#42 by @iago-pssjd)
 * new function `lookfor()` imported from `questionr` (#44)
+- new `unlist` option for `var_label()`
 
 # labelled 2.1.0
 

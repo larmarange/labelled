@@ -6,7 +6,7 @@
 \alias{set_variable_labels}
 \title{Get / Set a variable label}
 \usage{
-var_label(x)
+var_label(x, unlist = FALSE)
 
 var_label(x) <- value
 
@@ -14,6 +14,8 @@ set_variable_labels(.data, ..., .labels = NA)
 }
 \arguments{
 \item{x}{An object.}
+
+\item{unlist}{for data frames, return a named vector instead of a list}
 
 \item{value}{A character string or \code{NULL} to remove the label.
 For data frames, it could also be a named list or a character vector
@@ -60,6 +62,7 @@ var_label(iris) <- list(
   Petal.Length = "length of the petal"
 )
 var_label(iris)
+var_label(iris, unlist = TRUE)
 if (require(dplyr)) {
   # adding some variable labels
   df <- data_frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2)) \%>\%
