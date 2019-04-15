@@ -4,7 +4,7 @@
 * `update_labelled()` is now more strict (#42 by @iago-pssjd)
 * new function `lookfor()` imported from `questionr` (#44)
 
-# labelled 2.0.1
+# labelled 2.1.0
 
 * `var_label()`, applied to a data.frame, now accepts a character 
   vector of same length as the number of columns.
