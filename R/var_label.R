@@ -1,7 +1,7 @@
 #' Get / Set a variable label
 #'
-#' @param x An object.
-#' @param value A character string or \code{NULL} to remove the label.
+#' @param x an object
+#' @param value a character string or \code{NULL} to remove the label
 #'  For data frames, it could also be a named list or a character vector
 #'  of same length as the number of columns in \code{x}.
 #' @param unlist for data frames, return a named vector instead of a list
