@@ -20,7 +20,7 @@ to_character(x, ...)
 \item{nolabel_to_na}{Should values with no label be converted to `NA`?}
 }
 \description{
-By default, \code{to_character} is a wrapper for \code{\link[base]{as.character}}.
+By default, \code{to_character} is a wrapper for \code{\link[base:character]{base::as.character()}}.
 For labelled vector, to_character allows to specify if value, labels or labels prefixed
 with values should be used for conversion.
 }

@@ -56,5 +56,5 @@ is.labelled(s1)
 \seealso{
 \code{\link[haven]{labelled}} (\pkg{haven})
 
-\code{\link[haven]{is.labelled}} (\pkg{haven})
+\code{\link[haven:labelled]{haven::is.labelled()}} (\pkg{haven})
 }
