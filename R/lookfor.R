@@ -1,6 +1,6 @@
 #' Look for keywords variable names and descriptions
 #'
-#' \code{lookfor} emulates the \code{lookfor} Stata command in R. It supports
+#' \code{look_for} emulates the \code{lookfor} Stata command in R. It supports
 #' searching into the variable names of regular R data frames as well as into
 #' variable labels descriptions.
 #' The command is meant to help users finding variables in large datasets.
@@ -17,30 +17,32 @@
 #' variable labels are included in the search scope.
 #' Variable labels of data.frame imported with \pkg{foreign} or
 #' \pkg{memisc} packages will also be taken into account (see \code{\link{to_labelled}}).
+#'
+#' \code{look_for} and \code{lookfor} are equivalent.
 #' @author François Briatte <f.briatte@@gmail.com>
 #' @examples
-#' lookfor(iris)
+#' look_for(iris)
 #' # Look for a single keyword.
-#' lookfor(iris, "petal")
-#' lookfor(iris, "s")
+#' look_for(iris, "petal")
+#' look_for(iris, "s")
 #' # Look for with a regular expression
-#' lookfor(iris, "petal|species")
-#' lookfor(iris, "s$")
+#' look_for(iris, "petal|species")
+#' look_for(iris, "s$")
 #' # Look for with several keywords
-#' lookfor(iris, "pet", "sp")
-#' lookfor(iris, "pet", "sp", "width")
+#' look_for(iris, "pet", "sp")
+#' look_for(iris, "pet", "sp", "width")
 #' # Labelled data
 #' \dontrun{require(questionr)
 #' data(fertility)
-#' lookfor(women)
-#' lookfor(women, "date")
+#' look_for(women)
+#' look_for(women, "date")
 #' # Display details
-#' lookfor(women, details = TRUE)
+#' look_for(women, details = TRUE)
 #' }
 #' @source Based on the behaviour of the \code{lookfor} command in Stata.
 #' @export
 
-lookfor <- function(data,
+look_for <- function(data,
                     ...,
                     labels = TRUE,
                     ignore.case = TRUE,
@@ -103,4 +105,16 @@ lookfor <- function(data,
   } else {
     message("Nothing found. Sorry.")
   }
+}
+
+
+#' @rdname look_for
+#' @export
+
+lookfor <- function(data,
+                     ...,
+                     labels = TRUE,
+                     ignore.case = TRUE,
+                     details = FALSE) {
+  look_for(data = data, ..., labels = labels, ignore.case = ignore.case, details = details)
 }

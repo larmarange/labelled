@@ -13,11 +13,11 @@ var_label(x) <- value
 set_variable_labels(.data, ..., .labels = NA)
 }
 \arguments{
-\item{x}{An object.}
+\item{x}{an object}
 
 \item{unlist}{for data frames, return a named vector instead of a list}
 
-\item{value}{A character string or \code{NULL} to remove the label.
+\item{value}{a character string or \code{NULL} to remove the label
 For data frames, it could also be a named list or a character vector
 of same length as the number of columns in \code{x}.}
 

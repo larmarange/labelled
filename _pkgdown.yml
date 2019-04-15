@@ -6,6 +6,7 @@ reference:
   - var_label
   - remove_var_label
   - copy_labels
+  - look_for
 - title: Manipulating value labels
   desc:  Functions to set, manipulate and remove value labels
   contents:
