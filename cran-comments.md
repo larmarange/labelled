@@ -1,6 +1,6 @@
 ## Test environments
-* local CentOS 7 instal, R 3.5.2
-* ubuntu 14.04 (on travis-ci), R 3.5.2
+* local CentOS 7 install, R 3.5.3
+* ubuntu 14.04 (on travis-ci)
 * win-builder (devel and release)
 
 ## R CMD check results
