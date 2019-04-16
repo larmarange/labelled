@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">labelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
       </span>
     </div>
 
@@ -125,7 +125,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>var_label</span>(<span class='no'>x</span>)
+    <pre class="usage"><span class='fu'>var_label</span>(<span class='no'>x</span>, <span class='kw'>unlist</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='fu'>var_label</span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
 
@@ -136,11 +136,15 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>An object.</p></td>
+      <td><p>an object</p></td>
+    </tr>
+    <tr>
+      <th>unlist</th>
+      <td><p>for data frames, return a named vector instead of a list</p></td>
     </tr>
     <tr>
       <th>value</th>
-      <td><p>A character string or <code>NULL</code> to remove the label.
+      <td><p>a character string or <code>NULL</code> to remove the label
 For data frames, it could also be a named list or a character vector
 of same length as the number of columns in <code>x</code>.</p></td>
     </tr>
@@ -217,7 +221,10 @@ using the same syntax as <code>value</code> in `var_label(df) &lt;- value`.</p><
 #&gt; 
 #&gt; $Species
 #&gt; [1] "species"
-#&gt; </div><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>require</a></span>(<span class='no'>dplyr</span>)) {
+#&gt; </div><div class='input'><span class='fu'>var_label</span>(<span class='no'>iris</span>, <span class='kw'>unlist</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;          Sepal.Length           Sepal.Width          Petal.Length 
+#&gt;        "sepal length"         "sepal width" "length of the petal" 
+#&gt;           Petal.Width               Species 
+#&gt;  "width of the petal"             "species" </div><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>require</a></span>(<span class='no'>dplyr</span>)) {
   <span class='co'># adding some variable labels</span>
   <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>data_frame</a></span>(<span class='kw'>s1</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"M"</span>, <span class='st'>"M"</span>, <span class='st'>"F"</span>), <span class='kw'>s2</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>)) <span class='kw'>%&gt;%</span>
     <span class='fu'>set_variable_labels</span>(<span class='kw'>s1</span> <span class='kw'>=</span> <span class='st'>"Sex"</span>, <span class='kw'>s2</span> <span class='kw'>=</span> <span class='st'>"Yes or No?"</span>)

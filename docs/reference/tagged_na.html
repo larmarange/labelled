@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a labelled vector with SPSS style of missing values. — labelled_spss • labelled</title>
+<title>"Tagged" missing values — tagged_na • labelled</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,11 +30,12 @@
 
 
 
-<meta property="og:title" content="Create a labelled vector with SPSS style of missing values. — labelled_spss" />
+<meta property="og:title" content=""Tagged" missing values — tagged_na" />
 
-<meta property="og:description" content="It is similar to the labelled class but it also models SPSS's
- user-defined missings, which can be up to three distinct values,
- or for numeric vectors a range." />
+<meta property="og:description" content="&quot;Tagged&quot; missing values work exactly like regular R missing values except
+that they store one additional byte of information a tag, which is usually
+a letter (&quot;a&quot; to &quot;z&quot;). When by loading a SAS and Stata file, the tagged
+missing values always use lower case values." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -116,82 +117,78 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a labelled vector with SPSS style of missing values.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/larmarange/labelled/blob/master/R/labelled.R'><code>R/labelled.R</code></a></small>
-    <div class="hidden name"><code>labelled_spss.Rd</code></div>
+    <h1>"Tagged" missing values</h1>
+    <small class="dont-index">Source: <a href='https://github.com/larmarange/labelled/blob/master/R/tagged_na.R'><code>R/tagged_na.R</code></a></small>
+    <div class="hidden name"><code>tagged_na.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>It is similar to the <code><a href='labelled.html'>labelled</a></code> class but it also models SPSS's
- user-defined missings, which can be up to three distinct values,
- or for numeric vectors a range.</p>
+    <p>"Tagged" missing values work exactly like regular R missing values except
+that they store one additional byte of information a tag, which is usually
+a letter ("a" to "z"). When by loading a SAS and Stata file, the tagged
+missing values always use lower case values.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>labelled_spss</span>(<span class='no'>x</span>, <span class='no'>labels</span>, <span class='kw'>na_values</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>na_range</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>tagged_na</span>(<span class='no'>...</span>)
+
+<span class='fu'>na_tag</span>(<span class='no'>x</span>)
+
+<span class='fu'>is_tagged_na</span>(<span class='no'>x</span>, <span class='kw'>tag</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+
+<span class='fu'>format_tagged_na</span>(<span class='no'>x</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='st'>"digits"</span>))
+
+<span class='fu'>print_tagged_na</span>(<span class='no'>x</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='st'>"digits"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>...</th>
+      <td><p>Vectors containing single character. The letter will be used to
+"tag" the missing value.</p></td>
+    </tr>
+    <tr>
       <th>x</th>
-      <td><p>A vector to label. Must be either numeric (integer or double) or
-character.</p></td>
+      <td><p>A numeric vector</p></td>
     </tr>
     <tr>
-      <th>labels</th>
-      <td><p>A named vector or <code>NULL</code>. The vector should be the same type
-as <code>x</code>. Unlike factors, labels don't need to be exhaustive: only a fraction
-of the values might be labelled.</p></td>
+      <th>tag</th>
+      <td><p>If <code>NULL</code>, will only return true if the tag has this value.</p></td>
     </tr>
     <tr>
-      <th>na_values</th>
-      <td><p>A vector of values that should also be considered as missing.</p></td>
-    </tr>
-    <tr>
-      <th>na_range</th>
-      <td><p>A numeric vector of length two giving the (inclusive) extents
-of the range. Use <code>-Inf</code> and <code>Inf</code> if you want the range to be
-open ended.</p></td>
-    </tr>
-    <tr>
-      <th>label</th>
-      <td><p>A short, human-readable description of the vector.</p></td>
+      <th>digits</th>
+      <td><p>Number of digits to use in string representation</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <div class='dont-index'><p><code><a href='https://haven.tidyverse.org/reference/labelled_spss.html'>labelled_spss</a></code> (<span class="pkg">haven</span>)</p></div>
+    <p>`format_tagged_na()` and `print_tagged_na()` format tagged
+NA's as NA(a), NA(b), etc.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x1</span> <span class='kw'>&lt;-</span> <span class='fu'>labelled_spss</span>(<span class='fl'>1</span>:<span class='fl'>10</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>Good</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>Bad</span> <span class='kw'>=</span> <span class='fl'>8</span>), <span class='kw'>na_values</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>9</span>, <span class='fl'>10</span>))
-<span class='no'>x1</span></div><div class='output co'>#&gt; &lt;Labelled SPSS integer&gt;
-#&gt;  [1]  1  2  3  4  5  6  7  8  9 10
-#&gt; Missing values: 9, 10
-#&gt; 
-#&gt; Labels:
-#&gt;  value label
-#&gt;      1  Good
-#&gt;      8   Bad</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/NA'>is.na</a></span>(<span class='no'>x1</span>)</div><div class='output co'>#&gt;  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE</div><div class='input'><span class='no'>x2</span> <span class='kw'>&lt;-</span> <span class='fu'>labelled_spss</span>(<span class='fl'>1</span>:<span class='fl'>10</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>Good</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>Bad</span> <span class='kw'>=</span> <span class='fl'>8</span>), <span class='kw'>na_range</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>9</span>, <span class='fl'>Inf</span>))
-<span class='no'>x2</span></div><div class='output co'>#&gt; &lt;Labelled SPSS integer&gt;
-#&gt;  [1]  1  2  3  4  5  6  7  8  9 10
-#&gt; Missing range:  [9, Inf]
-#&gt; 
-#&gt; Labels:
-#&gt;  value label
-#&gt;      1  Good
-#&gt;      8   Bad</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/NA'>is.na</a></span>(<span class='no'>x2</span>)</div><div class='output co'>#&gt;  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>5</span>, <span class='fu'>tagged_na</span>(<span class='st'>"a"</span>), <span class='fu'>tagged_na</span>(<span class='st'>"z"</span>), <span class='fl'>NA</span>)
+
+<span class='co'># Tagged NA's work identically to regular NAs</span>
+<span class='no'>x</span></div><div class='output co'>#&gt; [1]  1  2  3  4  5 NA NA NA</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/NA'>is.na</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE</div><div class='input'>
+<span class='co'># To see that they're special, you need to use na_tag(),</span>
+<span class='co'># is_tagged_na(), or print_tagged_na():</span>
+<span class='fu'>is_tagged_na</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE</div><div class='input'><span class='fu'>na_tag</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] NA  NA  NA  NA  NA  "a" "z" NA </div><div class='input'><span class='fu'>print_tagged_na</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1]     1     2     3     4     5 NA(a) NA(z)    NA</div><div class='input'>
+<span class='co'># You can test for specific tagged NAs with the second argument</span>
+<span class='fu'>is_tagged_na</span>(<span class='no'>x</span>, <span class='st'>"a"</span>)</div><div class='output co'>#&gt; [1] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE</div><div class='input'>
+<span class='co'># Because the support for tagged's NAs is somewhat tagged on to R,</span>
+<span class='co'># the left-most NA will tend to be preserved in arithmetic operations.</span>
+<span class='fu'>na_tag</span>(<span class='fu'>tagged_na</span>(<span class='st'>"a"</span>) + <span class='fu'>tagged_na</span>(<span class='st'>"z"</span>))</div><div class='output co'>#&gt; [1] "a"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#see-also">See also</a></li>
+      <li><a href="#details">Details</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

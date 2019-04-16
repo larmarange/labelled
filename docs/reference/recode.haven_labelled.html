@@ -64,7 +64,7 @@ works with labelled vectors." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">labelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
       </span>
     </div>
 
@@ -140,12 +140,14 @@ works with labelled vectors.</p>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Replacements. These should be named for character and factor
-<code>.x</code>, and can be named for numeric <code>.x</code>. The argument names should be the
-current values to be replaced, and the argument values should be the new
-(replacement) values.</p>
+      <td><p>Replacements. For character and factor <code>.x</code>, these should be named
+and replacement is based only on their name. For numeric <code>.x</code>, these can be
+named or not. If not named, the replacement is done based on position i.e.
+<code>.x</code> represents positions to look for in replacements. See examples.</p>
+<p>When named, the argument names should be the current values to be replaced, and the
+argument values should be the new (replacement) values.</p>
 <p>All replacements must be the same type, and must have either
-length one or the same length as x.</p>
+length one or the same length as <code>.x</code>.</p>
 <p>These dots support <a href='https://rlang.r-lib.org/reference/tidy-dots.html'>tidy dots</a> features.</p></td>
     </tr>
     <tr>
