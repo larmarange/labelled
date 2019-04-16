@@ -24,6 +24,9 @@ reference:
   - na_values
   - copy_labels
   - remove_user_na
+- title: Tagged missing values
+  contents:
+  - tagged_na
 - title: Converting
   desc: Functions to convert from and to labelled classes
   contents:
