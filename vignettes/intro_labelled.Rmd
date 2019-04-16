@@ -48,6 +48,15 @@ In **RStudio**, variable labels will be displayed in data viewer.
 View(iris)
 ```
 
+You can display and search through variable names and labels with `look_for()`:
+
+```{r}
+look_for(iris)
+look_for(iris, "pet")
+look_for(iris, details = TRUE)
+```
+
+
 ## Value labels
 
 The first way to create a labelled vector is to use the `labelled` function.
