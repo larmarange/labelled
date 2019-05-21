@@ -1,7 +1,7 @@
 Package: labelled
 Type: Package
 Title: Manipulating Labelled Data
-Version: 2.2.0
+Version: 2.2.0.9000
 Maintainer: Joseph Larmarange <joseph@larmarange.net>
 Authors@R: c(
   person("Joseph", "Larmarange", email = "joseph@larmarange.net", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-7097-700X")),
@@ -28,7 +28,7 @@ Suggests:
     snakecase
 Enhances: memisc
 LazyData: true
-URL: https://github.com/larmarange/labelled
+URL: http://larmarange.github.io/labelled/
 BugReports: https://github.com/larmarange/labelled/issues
 VignetteBuilder: knitr
 RoxygenNote: 6.1.1
