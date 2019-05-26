@@ -1,5 +1,8 @@
 # labelled (development version)
 
+* bug fix for `na_range()` and `na_values()`: variable labels 
+  are now preserved (#48, thanks to @mspittler)
+
 # labelled 2.2.0
 
 * new function `copy_labels_from()`, compliant with `dplyr` syntax

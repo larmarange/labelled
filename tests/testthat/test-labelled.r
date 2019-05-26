@@ -49,7 +49,7 @@ test_that("var_label preserved data.frame type", {
 
 test_that("labelled return an object of class haven_labelled",{
   x <- labelled(c(1,2,3), c(yes = 1, maybe = 2, no = 3))
-  expect_that(is.labelled(x), is_true())
+  expect_true(is.labelled(x))
   expect_equal(class(x), "haven_labelled")
 })
 
@@ -253,6 +253,15 @@ test_that("it is possible to define missing values if no value labels were defin
   expect_equal(na_range(x), 9:10)
 })
 
+test_that("na_values and na_range keep variable label", {
+  vl <- "variable label"
+  x <- 1:9
+  var_label(x) <- vl
+  na_values(x) <- 8
+  na_range(x) <- c(9, Inf)
+  expect_equal(var_label(x), vl)
+})
+
 # recode (dplyr) -------------------------------------------------------------------
 test_that("dplyr::recode could be applied to numeric labelled vector", {
   x <- dplyr::recode(labelled(1:3, c(yes = 1, no = 2)), `3` = 2L)
@@ -273,7 +282,7 @@ test_that("update_labelled update previous haven's labelled objects but not Hmis
   expect_equal(class(update_labelled(vhaven)), "haven_labelled")
   expect_equal(class(update_labelled(vHmisc)), "labelled")
 
-  df <- dplyr::data_frame(vhaven, vHmisc)
+  df <- dplyr::tibble(vhaven, vHmisc)
   expect_equal(class(update_labelled(df)$vhaven), "haven_labelled")
   expect_equal(class(update_labelled(df)$vHmisc), "labelled")
 })

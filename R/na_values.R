@@ -58,7 +58,7 @@ na_values.data.frame <- function(x) {
 #' @export
 `na_values<-.default` <- function(x, value) {
   if (!is.null(value))
-    x <- labelled_spss(x, val_labels(x), na_values = value, na_range = attr(x, "na_range"))
+    x <- labelled_spss(x, val_labels(x), na_values = value, na_range = attr(x, "na_range"), label = var_label(x))
   # else do nothing
   x
 }
@@ -70,7 +70,7 @@ na_values.data.frame <- function(x) {
     if (is.null(attr(x, "na_range")))
       class(x) <- "haven_labelled"
   } else {
-    x <- labelled_spss(x, val_labels(x), na_values = value, na_range = attr(x, "na_range"))
+    x <- labelled_spss(x, val_labels(x), na_values = value, na_range = attr(x, "na_range"), label = var_label(x))
   }
   x
 }
@@ -106,7 +106,7 @@ na_range.data.frame <- function(x) {
 #' @export
 `na_range<-.default` <- function(x, value) {
   if (!is.null(value))
-    x <- labelled_spss(x, val_labels(x), na_values = attr(x, "na_values"), na_range = value)
+    x <- labelled_spss(x, val_labels(x), na_values = attr(x, "na_values"), na_range = value, label = var_label(x))
   # else do nothing
   x
 }
@@ -118,7 +118,7 @@ na_range.data.frame <- function(x) {
     if (is.null(attr(x, "na_values")))
       class(x) <- "haven_labelled"
   } else {
-    x <- labelled_spss(x, val_labels(x), na_values = attr(x, "na_values"), na_range = value)
+    x <- labelled_spss(x, val_labels(x), na_values = attr(x, "na_values"), na_range = value, label = var_label(x))
   }
   x
 }
