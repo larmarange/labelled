@@ -9,4 +9,5 @@
 ^\.travis\.yml$
 ^revdep$
 ^\.httr-oauth$
+^cheatsheet$
 ^icons$
