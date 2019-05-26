@@ -1,5 +1,5 @@
-release_date: Feb 25
-rel_release_date: three days
+release_date: May 26
+rel_release_date: today
 my_news_url: https://github.com/larmarange/labelled/blob/master/NEWS.md
-release_version: 2.1.0
-release_details: Following 'haven' 2.1.0, labelled_spss() can accept a NULL value for labels
+release_version: 2.2.1
+release_details: bug fix for na_values() and na_range()
