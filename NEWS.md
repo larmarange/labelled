@@ -1,7 +1,5 @@
 # labelled 2.2.1
 
-# labelled (development version)
-
 * bug fix for `na_range()` and `na_values()`: variable labels 
   are now preserved (#48, thanks to @mspittler)
 
