@@ -60,7 +60,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">labelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -93,12 +93,7 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="https://github.com/larmarange/labelled">
-    <span class="fa fa-github fa-lg"></span>
-     
-  </a>
-</li>
+        
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -112,18 +107,23 @@
   <div class="col-md-9 contents">
     <div class="page-header">
       <h1>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/larmarange/labelled/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+      
     </div>
 
+    <div id="labelled-2-2-1" class="section level1">
+<h1 class="page-header">
+<a href="#labelled-2-2-1" class="anchor"></a>labelled 2.2.1<small> Unreleased </small>
+</h1>
+</div>
     <div id="labelled-2-2-0" class="section level1">
 <h1 class="page-header">
-<a href="#labelled-2-2-0" class="anchor"></a>labelled 2.2.0<small> Unreleased </small>
+<a href="#labelled-2-2-0" class="anchor"></a>labelled 2.2.0<small> 2019-04-16 </small>
 </h1>
 <ul>
 <li>new function <code><a href="../reference/copy_labels.html">copy_labels_from()</a></code>, compliant with <code>dplyr</code> syntax</li>
 <li>
-<code><a href="../reference/update_labelled.html">update_labelled()</a></code> is now more strict (<a href='https://github.com/larmarange/labelled/issues/42'>#42</a> by <a href='https://github.com/iago-pssjd'>@iago-pssjd</a>)</li>
-<li>new functions <code><a href="../reference/look_for.html">look_for()</a></code> and <code><a href="../reference/look_for.html">lookfor()</a></code> imported from <code>questionr</code> (<a href='https://github.com/larmarange/labelled/issues/44'>#44</a>)</li>
+<code><a href="../reference/update_labelled.html">update_labelled()</a></code> is now more strict (#42 by <a href='https://github.com/iago-pssjd'>@iago-pssjd</a>)</li>
+<li>new functions <code><a href="../reference/look_for.html">look_for()</a></code> and <code><a href="../reference/look_for.html">lookfor()</a></code> imported from <code>questionr</code> (#44)</li>
 <li>new <code>unlist</code> option for <code><a href="../reference/var_label.html">var_label()</a></code>
 </li>
 <li>
@@ -140,8 +140,8 @@
 <code><a href="../reference/var_label.html">var_label()</a></code>, applied to a data.frame, now accepts a character vector of same length as the number of columns.</li>
 <li>
 <code>set_variable_labels</code> has a new <code>.labels</code> argument.</li>
-<li>New <code>unclass</code> option in <code><a href="../reference/to_factor.html">to_factor()</a></code>, to be used when <code>strict = TRUE</code> (<a href='https://github.com/larmarange/labelled/issues/36'>#36</a>)</li>
-<li>Following <code>haven</code> version 2.1.0, it is not mandatory anymore to define a value label before defining a SPSS style missing value. <code><a href="../reference/labelled_spss.html">labelled_spss()</a></code>, <code><a href="../reference/na_values.html">na_values()</a></code> and <code><a href="../reference/na_values.html">na_range()</a></code> have been updated accordingly (<a href='https://github.com/larmarange/labelled/issues/37'>#37</a>)</li>
+<li>New <code>unclass</code> option in <code><a href="../reference/to_factor.html">to_factor()</a></code>, to be used when <code>strict = TRUE</code> (#36)</li>
+<li>Following <code>haven</code> version 2.1.0, it is not mandatory anymore to define a value label before defining a SPSS style missing value. <code><a href="../reference/labelled_spss.html">labelled_spss()</a></code>, <code><a href="../reference/na_values.html">na_values()</a></code> and <code><a href="../reference/na_values.html">na_range()</a></code> have been updated accordingly (#37)</li>
 </ul>
 </div>
     <div id="labelled-2-0-2" class="section level1">
@@ -150,7 +150,7 @@
 </h1>
 <ul>
 <li>
-<code><a href="../reference/to_factor.html">to_factor()</a></code> bug fix then applied on a data.frame (<a href='https://github.com/larmarange/labelled/issues/33'>#33</a>)</li>
+<code><a href="../reference/to_factor.html">to_factor()</a></code> bug fix then applied on a data.frame (#33)</li>
 </ul>
 </div>
     <div id="labelled-2-0-1" class="section level1">
@@ -159,7 +159,7 @@
 </h1>
 <ul>
 <li>
-<code><a href="../reference/update_labelled.html">update_labelled()</a></code> bug fix then applied on a data.frame (<a href='https://github.com/larmarange/labelled/issues/31'>#31</a>)</li>
+<code><a href="../reference/update_labelled.html">update_labelled()</a></code> bug fix then applied on a data.frame (#31)</li>
 </ul>
 </div>
     <div id="labelled-2-0-0" class="section level1">
@@ -182,10 +182,10 @@
 <code>user_na_to_na</code> option added to <code><a href="../reference/to_factor.html">to_factor()</a></code>
 </li>
 <li>
-<code><a href="../reference/to_labelled.html">foreign_to_labelled()</a></code> now import SPSS missing values (<a href='https://github.com/larmarange/labelled/issues/27'>#27</a>)</li>
-<li>a <code>strict</code> argument added to <code><a href="../reference/to_factor.html">to_factor()</a></code> (<a href='https://github.com/larmarange/labelled/issues/25'>#25</a>)</li>
+<code><a href="../reference/to_labelled.html">foreign_to_labelled()</a></code> now import SPSS missing values (#27)</li>
+<li>a <code>strict</code> argument added to <code><a href="../reference/to_factor.html">to_factor()</a></code> (#25)</li>
 <li>
-<code><a href="../reference/remove_attributes.html">remove_attributes()</a></code> preserve character vectors (<a href='https://github.com/larmarange/labelled/issues/30'>#30</a>)</li>
+<code><a href="../reference/remove_attributes.html">remove_attributes()</a></code> preserve character vectors (#30)</li>
 </ul>
 </div>
 </div>
@@ -209,7 +209,7 @@
 <li>bug fix: argument <code>drop_unused_labels</code> could now be used with <code><a href="../reference/to_factor.html">to_factor.data.frame()</a></code>
 </li>
 <li>new labels argument for <code><a href="../reference/to_labelled.html">to_labelled()</a></code> method when applied to a factor</li>
-<li>bug fix: appropriate column names with <code>data.frame</code> (<a href='https://github.com/larmarange/labelled/issues/20'>#20</a>)</li>
+<li>bug fix: appropriate column names with <code>data.frame</code> (#20)</li>
 </ul>
 </div>
     <div id="labelled-1-0-0" class="section level1">
@@ -265,6 +265,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#labelled-2-2-1">2.2.1</a></li>
         <li><a href="#labelled-2-2-0">2.2.0</a></li>
         <li><a href="#labelled-2-1-0">2.1.0</a></li>
         <li><a href="#labelled-2-0-2">2.0.2</a></li>
