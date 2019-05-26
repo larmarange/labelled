@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# labelled <img src="icons/labelled.png" align="right" width="120" />
+# labelled <img src="man/figures/labelled.png" align="right" width="120" />
 
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
