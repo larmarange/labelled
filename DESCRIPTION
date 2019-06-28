@@ -7,8 +7,8 @@ Authors@R: c(
   person("Joseph", "Larmarange", email = "joseph@larmarange.net", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-7097-700X")),
   person("Daniel", "Ludecke", role = "ctb"),
   person("Hadley", "Wickham", role = "ctb"),
-  person("Bojanowski", "Michal", role = "ctb"),
-  person("Briatte", "François", role = "ctb")
+  person("Michal", "Bojanowski", role = "ctb"),
+  person("François", "Briatte", role = "ctb")
   )
 Description: Work with labelled data imported from 'SPSS'
     or 'Stata' with 'haven' or 'foreign'. This package
