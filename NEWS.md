@@ -1,5 +1,7 @@
 # labelled (development version)
 
+* bug fix for `look_for()` (#52 by @NoahMarconi)
+
 # labelled 2.2.1
 
 * bug fix for `na_range()` and `na_values()`: variable labels 
