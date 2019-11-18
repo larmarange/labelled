@@ -71,10 +71,11 @@ look_for <- function(data,
     pos <- which(n %in% variable)
     # reordering according to pos
     # not forgetting that some variables don't have a label
-    if (length(l))
+    if (length(l)) {
       res <- data.frame(variable = n[pos], label = l[n[pos]], row.names = pos, stringsAsFactors = FALSE)
-    else
+    } else {
       res <- data.frame(variable = n[pos], row.names = pos, stringsAsFactors = FALSE)
+    }
 
     if (details) {
       res$class <- ""
