@@ -6,14 +6,11 @@
 \alias{sort_val_labels.data.frame}
 \title{Sort value labels}
 \usage{
-sort_val_labels(x, according_to = c("values", "labels"),
-  decreasing = FALSE)
+sort_val_labels(x, according_to = c("values", "labels"), decreasing = FALSE)
 
-\method{sort_val_labels}{haven_labelled}(x, according_to = c("values",
-  "labels"), decreasing = FALSE)
+\method{sort_val_labels}{haven_labelled}(x, according_to = c("values", "labels"), decreasing = FALSE)
 
-\method{sort_val_labels}{data.frame}(x, according_to = c("values",
-  "labels"), decreasing = FALSE)
+\method{sort_val_labels}{data.frame}(x, according_to = c("values", "labels"), decreasing = FALSE)
 }
 \arguments{
 \item{x}{A labelled vector.}

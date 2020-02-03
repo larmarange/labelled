@@ -8,8 +8,6 @@ val_labels_to_na(x)
 }
 \arguments{
 \item{x}{Object to recode.}
-
-\item{...}{Other arguments passed down to method.}
 }
 \description{
 For labelled variables, values with a label will be recoded to \code{NA}.

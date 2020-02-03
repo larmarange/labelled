@@ -8,17 +8,33 @@
 \usage{
 to_factor(x, ...)
 
-\method{to_factor}{haven_labelled}(x, levels = c("labels", "values",
-  "prefixed"), ordered = FALSE, nolabel_to_na = FALSE,
+\method{to_factor}{haven_labelled}(
+  x,
+  levels = c("labels", "values", "prefixed"),
+  ordered = FALSE,
+  nolabel_to_na = FALSE,
   sort_levels = c("auto", "none", "labels", "values"),
-  decreasing = FALSE, drop_unused_labels = FALSE,
-  user_na_to_na = FALSE, strict = FALSE, unclass = FALSE, ...)
+  decreasing = FALSE,
+  drop_unused_labels = FALSE,
+  user_na_to_na = FALSE,
+  strict = FALSE,
+  unclass = FALSE,
+  ...
+)
 
-\method{to_factor}{data.frame}(x, levels = c("labels", "values",
-  "prefixed"), ordered = FALSE, nolabel_to_na = FALSE,
+\method{to_factor}{data.frame}(
+  x,
+  levels = c("labels", "values", "prefixed"),
+  ordered = FALSE,
+  nolabel_to_na = FALSE,
   sort_levels = c("auto", "none", "labels", "values"),
-  decreasing = FALSE, labelled_only = TRUE,
-  drop_unused_labels = FALSE, strict = FALSE, unclass = FALSE, ...)
+  decreasing = FALSE,
+  labelled_only = TRUE,
+  drop_unused_labels = FALSE,
+  strict = FALSE,
+  unclass = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{Object to coerce to a factor.}
