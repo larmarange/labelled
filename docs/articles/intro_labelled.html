@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Introduction to labelled • labelled</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to labelled">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
@@ -30,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">labelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.2</span>
       </span>
     </div>
 
@@ -38,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -70,6 +71,7 @@
 <!--/.navbar -->
 
       
+
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -89,11 +91,11 @@
 <h2 class="hasAnchor">
 <a href="#variable-labels" class="anchor"></a>Variable labels</h2>
 <p>A variable label could be specified for any vector using <code>var_label</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(labelled)</a>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(labelled)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="../reference/var_label.html">var_label</a></span>(iris<span class="op">$</span>Sepal.Length) &lt;-<span class="st"> "Length of sepal"</span></a></code></pre></div>
 <p>It’s possible to add a variable label to several columns of a data frame using a named list.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="../reference/var_label.html">var_label</a></span>(iris) &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">Petal.Length =</span> <span class="st">"Length of petal"</span>, <span class="dt">Petal.Width =</span> <span class="st">"Width of Petal"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="../reference/var_label.html">var_label</a></span>(iris) &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">Petal.Length =</span> <span class="st">"Length of petal"</span>, <span class="dt">Petal.Width =</span> <span class="st">"Width of Petal"</span>)</a></code></pre></div>
 <p>To get the variable label, simply call <code>var_label</code>.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/var_label.html">var_label</a></span>(iris<span class="op">$</span>Petal.Width)</a></code></pre></div>
 <pre><code>## [1] "Width of Petal"</code></pre>
@@ -115,7 +117,7 @@
 <p>To remove a variable label, use <code>NULL</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="../reference/var_label.html">var_label</a></span>(iris<span class="op">$</span>Sepal.Length) &lt;-<span class="st"> </span><span class="ot">NULL</span></a></code></pre></div>
 <p>In <strong>RStudio</strong>, variable labels will be displayed in data viewer.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/View">View</a></span>(iris)</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/View.html">View</a></span>(iris)</a></code></pre></div>
 <p>You can display and search through variable names and labels with <code><a href="../reference/look_for.html">look_for()</a></code>:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="../reference/look_for.html">look_for</a></span>(iris)</a></code></pre></div>
 <pre><code>##       variable           label
@@ -129,30 +131,24 @@
 ## 3 Petal.Length Length of petal
 ## 4  Petal.Width  Width of Petal</code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="../reference/look_for.html">look_for</a></span>(iris, <span class="dt">details =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<pre><code>##       variable           label   class    type
-## 1 Sepal.Length            &lt;NA&gt; numeric  double
-## 2  Sepal.Width            &lt;NA&gt; numeric  double
-## 3 Petal.Length Length of petal numeric  double
-## 4  Petal.Width  Width of Petal numeric  double
-## 5      Species            &lt;NA&gt;  factor integer
-##                          levels value_labels unique_values n_na na_values
-## 1                                                       35    0          
-## 2                                                       23    0          
-## 3                                                       43    0          
-## 4                                                       22    0          
-## 5 setosa; versicolor; virginica                          3    0          
-##   na_range
-## 1         
-## 2         
-## 3         
-## 4         
-## 5</code></pre>
+<pre><code>##       variable           label   class    type                        levels
+## 1 Sepal.Length            &lt;NA&gt; numeric  double                              
+## 2  Sepal.Width            &lt;NA&gt; numeric  double                              
+## 3 Petal.Length Length of petal numeric  double                              
+## 4  Petal.Width  Width of Petal numeric  double                              
+## 5      Species            &lt;NA&gt;  factor integer setosa; versicolor; virginica
+##   value_labels unique_values n_na na_values na_range
+## 1                         35    0                   
+## 2                         23    0                   
+## 3                         43    0                   
+## 4                         22    0                   
+## 5                          3    0</code></pre>
 </div>
 <div id="value-labels" class="section level2">
 <h2 class="hasAnchor">
 <a href="#value-labels" class="anchor"></a>Value labels</h2>
 <p>The first way to create a labelled vector is to use the <code>labelled</code> function. It’s not mandatory to provide a label for each value observed in your vector. You can also provide a label for values not observed.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">v &lt;-<span class="st"> </span><span class="kw"><a href="../reference/labelled.html">labelled</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="ot">NA</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">yes =</span> <span class="dv">1</span>, <span class="dt">no =</span> <span class="dv">3</span>, <span class="st">"don't know"</span> =<span class="st"> </span><span class="dv">8</span>, <span class="dt">refused =</span> <span class="dv">9</span>))</a>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">v &lt;-<span class="st"> </span><span class="kw"><a href="../reference/labelled.html">labelled</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="ot">NA</span>), <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">yes =</span> <span class="dv">1</span>, <span class="dt">no =</span> <span class="dv">3</span>, <span class="st">"don't know"</span> =<span class="st"> </span><span class="dv">8</span>, <span class="dt">refused =</span> <span class="dv">9</span>))</a>
 <a class="sourceLine" id="cb15-2" data-line-number="2">v</a></code></pre></div>
 <pre><code>## &lt;Labelled double&gt;
 ##  [1]  1  2  2  2  3  9  1  3  2 NA
@@ -170,7 +166,7 @@
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw"><a href="../reference/val_labels.html">val_label</a></span>(v, <span class="dv">8</span>)</a></code></pre></div>
 <pre><code>## [1] "don't know"</code></pre>
 <p><code>val_labels</code> could also be used to modify all the value labels attached to a vector, while <code>val_label</code> will update only one specific value label.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw"><a href="../reference/val_labels.html">val_labels</a></span>(v) &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">yes =</span> <span class="dv">1</span>, <span class="dt">nno =</span> <span class="dv">3</span>, <span class="dt">bug =</span> <span class="dv">5</span>)</a>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw"><a href="../reference/val_labels.html">val_labels</a></span>(v) &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">yes =</span> <span class="dv">1</span>, <span class="dt">nno =</span> <span class="dv">3</span>, <span class="dt">bug =</span> <span class="dv">5</span>)</a>
 <a class="sourceLine" id="cb21-2" data-line-number="2">v</a></code></pre></div>
 <pre><code>## &lt;Labelled double&gt;
 ##  [1]  1  2  2  2  3  9  1  3  2 NA
@@ -216,20 +212,20 @@
 ##  value label
 ##      1   yes</code></pre>
 <p>Note that applying <code>val_labels</code> to a factor will have no effect!</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">f &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/factor">factor</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)</a>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">f &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)</a>
 <a class="sourceLine" id="cb31-2" data-line-number="2">f</a></code></pre></div>
 <pre><code>## [1] 1 2 3
 ## Levels: 1 2 3</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw"><a href="../reference/val_labels.html">val_labels</a></span>(f) &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">yes =</span> <span class="dv">1</span>, <span class="dt">no =</span> <span class="dv">3</span>)</a>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw"><a href="../reference/val_labels.html">val_labels</a></span>(f) &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">yes =</span> <span class="dv">1</span>, <span class="dt">no =</span> <span class="dv">3</span>)</a>
 <a class="sourceLine" id="cb33-2" data-line-number="2">f</a></code></pre></div>
 <pre><code>## [1] 1 2 3
 ## Levels: 1 2 3</code></pre>
 <p>You could also apply value labels to several columns of a data frame.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">v1 =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">v2 =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>), <span class="dt">v3 =</span> <span class="dv">3</span><span class="op">:</span><span class="dv">1</span>)</a>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">v1 =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">v2 =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>), <span class="dt">v3 =</span> <span class="dv">3</span><span class="op">:</span><span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb35-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb35-3" data-line-number="3"><span class="kw"><a href="../reference/val_labels.html">val_label</a></span>(df, <span class="dv">1</span>) &lt;-<span class="st"> "yes"</span></a>
-<a class="sourceLine" id="cb35-4" data-line-number="4"><span class="kw"><a href="../reference/val_labels.html">val_label</a></span>(df[, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"v1"</span>, <span class="st">"v3"</span>)], <span class="dv">2</span>) &lt;-<span class="st"> "maybe"</span></a>
-<a class="sourceLine" id="cb35-5" data-line-number="5"><span class="kw"><a href="../reference/val_labels.html">val_label</a></span>(df[, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"v2"</span>, <span class="st">"v3"</span>)], <span class="dv">3</span>) &lt;-<span class="st"> "no"</span></a>
+<a class="sourceLine" id="cb35-4" data-line-number="4"><span class="kw"><a href="../reference/val_labels.html">val_label</a></span>(df[, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"v1"</span>, <span class="st">"v3"</span>)], <span class="dv">2</span>) &lt;-<span class="st"> "maybe"</span></a>
+<a class="sourceLine" id="cb35-5" data-line-number="5"><span class="kw"><a href="../reference/val_labels.html">val_label</a></span>(df[, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"v2"</span>, <span class="st">"v3"</span>)], <span class="dv">3</span>) &lt;-<span class="st"> "no"</span></a>
 <a class="sourceLine" id="cb35-6" data-line-number="6"><span class="kw"><a href="../reference/val_labels.html">val_labels</a></span>(df)</a></code></pre></div>
 <pre><code>## $v1
 ##   yes maybe 
@@ -242,7 +238,7 @@
 ## $v3
 ##   yes maybe    no 
 ##     1     2     3</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="kw"><a href="../reference/val_labels.html">val_labels</a></span>(df[, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"v1"</span>, <span class="st">"v3"</span>)]) &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">YES =</span> <span class="dv">1</span>, <span class="dt">MAYBE =</span> <span class="dv">2</span>, <span class="dt">NO =</span> <span class="dv">3</span>)</a>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="kw"><a href="../reference/val_labels.html">val_labels</a></span>(df[, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"v1"</span>, <span class="st">"v3"</span>)]) &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">YES =</span> <span class="dv">1</span>, <span class="dt">MAYBE =</span> <span class="dv">2</span>, <span class="dt">NO =</span> <span class="dv">3</span>)</a>
 <a class="sourceLine" id="cb37-2" data-line-number="2"><span class="kw"><a href="../reference/val_labels.html">val_labels</a></span>(df)</a></code></pre></div>
 <pre><code>## $v1
 ##   YES MAYBE    NO 
@@ -265,7 +261,7 @@
 ## 
 ## $v3
 ## NULL</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw"><a href="../reference/val_labels.html">val_labels</a></span>(df) &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">v1 =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">yes =</span> <span class="dv">1</span>, <span class="dt">no =</span> <span class="dv">3</span>), <span class="dt">v2 =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="dv">2</span>, <span class="dt">c =</span> <span class="dv">3</span>))</a>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw"><a href="../reference/val_labels.html">val_labels</a></span>(df) &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">v1 =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">yes =</span> <span class="dv">1</span>, <span class="dt">no =</span> <span class="dv">3</span>), <span class="dt">v2 =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="dv">2</span>, <span class="dt">c =</span> <span class="dv">3</span>))</a>
 <a class="sourceLine" id="cb41-2" data-line-number="2"><span class="kw"><a href="../reference/val_labels.html">val_labels</a></span>(df)</a></code></pre></div>
 <pre><code>## $v1
 ## yes  no 
@@ -282,7 +278,7 @@
 <h2 class="hasAnchor">
 <a href="#sorting-value-labels" class="anchor"></a>Sorting value labels</h2>
 <p>Value labels are sorted by default in the order they have been created.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">v &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="ot">NA</span>)</a>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">v &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="ot">NA</span>)</a>
 <a class="sourceLine" id="cb43-2" data-line-number="2"><span class="kw"><a href="../reference/val_labels.html">val_label</a></span>(v, <span class="dv">1</span>) &lt;-<span class="st"> "yes"</span></a>
 <a class="sourceLine" id="cb43-3" data-line-number="3"><span class="kw"><a href="../reference/val_labels.html">val_label</a></span>(v, <span class="dv">3</span>) &lt;-<span class="st"> "no"</span></a>
 <a class="sourceLine" id="cb43-4" data-line-number="4"><span class="kw"><a href="../reference/val_labels.html">val_label</a></span>(v, <span class="dv">9</span>) &lt;-<span class="st"> "refused"</span></a>
@@ -339,8 +335,8 @@
 <h2 class="hasAnchor">
 <a href="#user-defined-missing-values-spsss-style" class="anchor"></a>User defined missing values (SPSS’s style)</h2>
 <p><code>haven</code> (&gt;= 2.0.0) introduced an additional <code>haven_labelled_spss</code> class to deal with user defined missing values. In such case, additional atributes will be used to indicate with values should be considered as missing, but such values will not be stored as internal <code>NA</code> values. You should note that most R function will not take this information into account. Therefore, you will have to convert missing values into <code>NA</code> if required before analysis. These defined missing values could co-exist with internal <code>NA</code> values.</p>
-<p>It is possible to manipulate this missing values with <code><a href="../reference/na_values.html">na_values()</a></code> and <code><a href="../reference/na_values.html">na_range()</a></code>. Note that <code><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na()</a></code> will return <code>TRUE</code> as well for user-defined missing values.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">v &lt;-<span class="st"> </span><span class="kw"><a href="../reference/labelled.html">labelled</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="ot">NA</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">yes =</span> <span class="dv">1</span>, <span class="dt">no =</span> <span class="dv">3</span>, <span class="st">"don't know"</span> =<span class="st"> </span><span class="dv">9</span>))</a>
+<p>It is possible to manipulate this missing values with <code><a href="../reference/na_values.html">na_values()</a></code> and <code><a href="../reference/na_values.html">na_range()</a></code>. Note that <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> will return <code>TRUE</code> as well for user-defined missing values.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">v &lt;-<span class="st"> </span><span class="kw"><a href="../reference/labelled.html">labelled</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="ot">NA</span>), <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">yes =</span> <span class="dv">1</span>, <span class="dt">no =</span> <span class="dv">3</span>, <span class="st">"don't know"</span> =<span class="st"> </span><span class="dv">9</span>))</a>
 <a class="sourceLine" id="cb51-2" data-line-number="2">v</a></code></pre></div>
 <pre><code>## &lt;Labelled double&gt;
 ##  [1]  1  2  2  2  3  9  1  3  2 NA
@@ -363,7 +359,7 @@
 ##      1        yes
 ##      3         no
 ##      9 don't know</code></pre>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(v)</a></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(v)</a></code></pre></div>
 <pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE</code></pre>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1"><span class="kw"><a href="../reference/na_values.html">na_values</a></span>(v) &lt;-<span class="st"> </span><span class="ot">NULL</span></a>
 <a class="sourceLine" id="cb59-2" data-line-number="2">v</a></code></pre></div>
@@ -375,7 +371,7 @@
 ##      1        yes
 ##      3         no
 ##      9 don't know</code></pre>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="kw"><a href="../reference/na_values.html">na_range</a></span>(v) &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">5</span>, <span class="ot">Inf</span>)</a>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="kw"><a href="../reference/na_values.html">na_range</a></span>(v) &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">5</span>, <span class="ot">Inf</span>)</a>
 <a class="sourceLine" id="cb61-2" data-line-number="2"><span class="kw"><a href="../reference/na_values.html">na_range</a></span>(v)</a></code></pre></div>
 <pre><code>## [1]   5 Inf</code></pre>
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1">v</a></code></pre></div>
@@ -389,11 +385,11 @@
 ##      3         no
 ##      9 don't know</code></pre>
 <p>Since version 2.1.0, it is not mandatory to define at least one value label before defining missing values.</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">9</span>)</a>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">9</span>)</a>
 <a class="sourceLine" id="cb65-2" data-line-number="2"><span class="kw"><a href="../reference/na_values.html">na_values</a></span>(x) &lt;-<span class="st"> </span><span class="dv">9</span></a>
 <a class="sourceLine" id="cb65-3" data-line-number="3">x</a></code></pre></div>
 <p>To convert user defined missing values into <code>NA</code>, simply use <code><a href="../reference/na_values.html">user_na_to_na()</a></code>.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1">v &lt;-<span class="st"> </span><span class="kw"><a href="../reference/labelled_spss.html">labelled_spss</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">Good =</span> <span class="dv">1</span>, <span class="dt">Bad =</span> <span class="dv">8</span>), <span class="dt">na_values =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">9</span>, <span class="dv">10</span>))</a>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1">v &lt;-<span class="st"> </span><span class="kw"><a href="../reference/labelled_spss.html">labelled_spss</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">Good =</span> <span class="dv">1</span>, <span class="dt">Bad =</span> <span class="dv">8</span>), <span class="dt">na_values =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">9</span>, <span class="dv">10</span>))</a>
 <a class="sourceLine" id="cb66-2" data-line-number="2">v</a></code></pre></div>
 <pre><code>## &lt;Labelled SPSS integer&gt;
 ##  [1]  1  2  3  4  5  6  7  8  9 10
@@ -413,7 +409,7 @@
 ##      1  Good
 ##      8   Bad</code></pre>
 <p>You can also remove user missing values definition without converting these values to <code>NA</code>.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1">v &lt;-<span class="st"> </span><span class="kw"><a href="../reference/labelled_spss.html">labelled_spss</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">Good =</span> <span class="dv">1</span>, <span class="dt">Bad =</span> <span class="dv">8</span>), <span class="dt">na_values =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">9</span>, <span class="dv">10</span>))</a>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1">v &lt;-<span class="st"> </span><span class="kw"><a href="../reference/labelled_spss.html">labelled_spss</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">Good =</span> <span class="dv">1</span>, <span class="dt">Bad =</span> <span class="dv">8</span>), <span class="dt">na_values =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">9</span>, <span class="dv">10</span>))</a>
 <a class="sourceLine" id="cb70-2" data-line-number="2">v</a></code></pre></div>
 <pre><code>## &lt;Labelled SPSS integer&gt;
 ##  [1]  1  2  3  4  5  6  7  8  9 10
@@ -434,7 +430,7 @@
 ##      1  Good
 ##      8   Bad</code></pre>
 <p>or</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1">v &lt;-<span class="st"> </span><span class="kw"><a href="../reference/labelled_spss.html">labelled_spss</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">Good =</span> <span class="dv">1</span>, <span class="dt">Bad =</span> <span class="dv">8</span>), <span class="dt">na_values =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">9</span>, <span class="dv">10</span>))</a>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1">v &lt;-<span class="st"> </span><span class="kw"><a href="../reference/labelled_spss.html">labelled_spss</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">Good =</span> <span class="dv">1</span>, <span class="dt">Bad =</span> <span class="dv">8</span>), <span class="dt">na_values =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">9</span>, <span class="dv">10</span>))</a>
 <a class="sourceLine" id="cb76-2" data-line-number="2">v</a></code></pre></div>
 <pre><code>## &lt;Labelled SPSS integer&gt;
 ##  [1]  1  2  3  4  5  6  7  8  9 10
@@ -458,7 +454,7 @@
 <h2 class="hasAnchor">
 <a href="#other-conversion-to-na" class="anchor"></a>Other conversion to NA</h2>
 <p>In some cases, values who don’t have an attached value label could be considered as missing. <code>nolabel_to_na</code> will convert them to <code>NA</code>.</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1">v &lt;-<span class="st"> </span><span class="kw"><a href="../reference/labelled.html">labelled</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="ot">NA</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">yes =</span> <span class="dv">1</span>, <span class="dt">maybe =</span> <span class="dv">2</span>, <span class="dt">no =</span> <span class="dv">3</span>))</a>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1">v &lt;-<span class="st"> </span><span class="kw"><a href="../reference/labelled.html">labelled</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="ot">NA</span>), <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">yes =</span> <span class="dv">1</span>, <span class="dt">maybe =</span> <span class="dv">2</span>, <span class="dt">no =</span> <span class="dv">3</span>))</a>
 <a class="sourceLine" id="cb80-2" data-line-number="2">v</a></code></pre></div>
 <pre><code>## &lt;Labelled double&gt;
 ##  [1]  1  2  2  2  3  9  1  3  2 NA
@@ -478,7 +474,7 @@
 ##      2 maybe
 ##      3    no</code></pre>
 <p>In other cases, a value label is attached only to specific values that corresponds to a missing value. For example:</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1">size &lt;-<span class="st"> </span><span class="kw"><a href="../reference/labelled.html">labelled</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">1.88</span>, <span class="fl">1.62</span>, <span class="fl">1.78</span>, <span class="dv">99</span>, <span class="fl">1.91</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"not measured"</span> =<span class="st"> </span><span class="dv">99</span>))</a>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1">size &lt;-<span class="st"> </span><span class="kw"><a href="../reference/labelled.html">labelled</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1.88</span>, <span class="fl">1.62</span>, <span class="fl">1.78</span>, <span class="dv">99</span>, <span class="fl">1.91</span>), <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"not measured"</span> =<span class="st"> </span><span class="dv">99</span>))</a>
 <a class="sourceLine" id="cb84-2" data-line-number="2">size</a></code></pre></div>
 <pre><code>## &lt;Labelled double&gt;
 ## [1]  1.88  1.62  1.78 99.00  1.91
@@ -495,7 +491,7 @@
 <h2 class="hasAnchor">
 <a href="#converting-to-factor" class="anchor"></a>Converting to factor</h2>
 <p>A labelled vector could easily be converted to a factor with <code>to_factor</code>.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1">v &lt;-<span class="st"> </span><span class="kw"><a href="../reference/labelled.html">labelled</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="ot">NA</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">yes =</span> <span class="dv">1</span>, <span class="dt">no =</span> <span class="dv">3</span>, <span class="st">"don't know"</span> =<span class="st"> </span><span class="dv">8</span>, <span class="dt">refused =</span> <span class="dv">9</span>))</a>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1">v &lt;-<span class="st"> </span><span class="kw"><a href="../reference/labelled.html">labelled</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="ot">NA</span>), <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">yes =</span> <span class="dv">1</span>, <span class="dt">no =</span> <span class="dv">3</span>, <span class="st">"don't know"</span> =<span class="st"> </span><span class="dv">8</span>, <span class="dt">refused =</span> <span class="dv">9</span>))</a>
 <a class="sourceLine" id="cb88-2" data-line-number="2">v</a></code></pre></div>
 <pre><code>## &lt;Labelled double&gt;
 ##  [1]  1  2  2  2  3  9  1  3  2 NA
@@ -507,46 +503,46 @@
 ##      8 don't know
 ##      9    refused</code></pre>
 <div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1"><span class="kw"><a href="../reference/to_factor.html">to_factor</a></span>(v)</a></code></pre></div>
-<pre><code>##  [1] yes     2       2       2       no      refused yes     no     
-##  [9] 2       &lt;NA&gt;   
+<pre><code>##  [1] yes     2       2       2       no      refused yes     no      2      
+## [10] &lt;NA&gt;   
 ## Levels: yes 2 no don't know refused</code></pre>
 <p>The <code>levels</code> argument allows to specify what should be used as the factor levels, i.e. the labels (default), the values or the labels prefixed with values.</p>
 <div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1"><span class="kw"><a href="../reference/to_factor.html">to_factor</a></span>(v, <span class="dt">levels =</span> <span class="st">"v"</span>)</a></code></pre></div>
 <pre><code>##  [1] 1    2    2    2    3    9    1    3    2    &lt;NA&gt;
 ## Levels: 1 2 3 8 9</code></pre>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1"><span class="kw"><a href="../reference/to_factor.html">to_factor</a></span>(v, <span class="dt">levels =</span> <span class="st">"p"</span>)</a></code></pre></div>
-<pre><code>##  [1] [1] yes     [2] 2       [2] 2       [2] 2       [3] no     
-##  [6] [9] refused [1] yes     [3] no      [2] 2       &lt;NA&gt;       
+<pre><code>##  [1] [1] yes     [2] 2       [2] 2       [2] 2       [3] no      [9] refused
+##  [7] [1] yes     [3] no      [2] 2       &lt;NA&gt;       
 ## Levels: [1] yes [2] 2 [3] no [8] don't know [9] refused</code></pre>
 <p>The <code>ordered</code> argument will create an ordinal factor.</p>
 <div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1"><span class="kw"><a href="../reference/to_factor.html">to_factor</a></span>(v, <span class="dt">ordered =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<pre><code>##  [1] yes     2       2       2       no      refused yes     no     
-##  [9] 2       &lt;NA&gt;   
+<pre><code>##  [1] yes     2       2       2       no      refused yes     no      2      
+## [10] &lt;NA&gt;   
 ## Levels: yes &lt; 2 &lt; no &lt; don't know &lt; refused</code></pre>
 <p>The argument <code>nolabel_to_na</code> specify if the corresponding function should be applied before converting to a factor. Therefore, the two following commands are equivalent.</p>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1"><span class="kw"><a href="../reference/to_factor.html">to_factor</a></span>(v, <span class="dt">nolabel_to_na =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<pre><code>##  [1] yes     &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;    no      refused yes     no     
-##  [9] &lt;NA&gt;    &lt;NA&gt;   
+<pre><code>##  [1] yes     &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;    no      refused yes     no      &lt;NA&gt;   
+## [10] &lt;NA&gt;   
 ## Levels: yes no don't know refused</code></pre>
 <div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1"><span class="kw"><a href="../reference/to_factor.html">to_factor</a></span>(<span class="kw"><a href="../reference/nolabel_to_na.html">nolabel_to_na</a></span>(v))</a></code></pre></div>
-<pre><code>##  [1] yes     &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;    no      refused yes     no     
-##  [9] &lt;NA&gt;    &lt;NA&gt;   
+<pre><code>##  [1] yes     &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;    no      refused yes     no      &lt;NA&gt;   
+## [10] &lt;NA&gt;   
 ## Levels: yes no don't know refused</code></pre>
 <p><code>sort_levels</code> specifies how the levels should be sorted: <code>"none"</code> to keep the order in which value labels have been defined, <code>"values"</code> to order the levels according to the values and <code>"labels"</code> according to the labels. <code>"auto"</code> (default) will be equivalent to <code>"none"</code> except if some values with no attached labels are found and are not dropped. In that case, <code>"values"</code> will be used.</p>
 <div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1"><span class="kw"><a href="../reference/to_factor.html">to_factor</a></span>(v, <span class="dt">sort_levels =</span> <span class="st">"n"</span>)</a></code></pre></div>
-<pre><code>##  [1] yes     2       2       2       no      refused yes     no     
-##  [9] 2       &lt;NA&gt;   
+<pre><code>##  [1] yes     2       2       2       no      refused yes     no      2      
+## [10] &lt;NA&gt;   
 ## Levels: yes no don't know refused 2</code></pre>
 <div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1"><span class="kw"><a href="../reference/to_factor.html">to_factor</a></span>(v, <span class="dt">sort_levels =</span> <span class="st">"v"</span>)</a></code></pre></div>
-<pre><code>##  [1] yes     2       2       2       no      refused yes     no     
-##  [9] 2       &lt;NA&gt;   
+<pre><code>##  [1] yes     2       2       2       no      refused yes     no      2      
+## [10] &lt;NA&gt;   
 ## Levels: yes 2 no don't know refused</code></pre>
 <div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1"><span class="kw"><a href="../reference/to_factor.html">to_factor</a></span>(v, <span class="dt">sort_levels =</span> <span class="st">"l"</span>)</a></code></pre></div>
-<pre><code>##  [1] yes     2       2       2       no      refused yes     no     
-##  [9] 2       &lt;NA&gt;   
+<pre><code>##  [1] yes     2       2       2       no      refused yes     no      2      
+## [10] &lt;NA&gt;   
 ## Levels: 2 don't know no refused yes</code></pre>
 <p>The function <code>to_labelled</code> could be used to turn a factor into a labelled numeric vector.</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1">f &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/factor">factor</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">labels =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>))</a>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1">f &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">labels =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>))</a>
 <a class="sourceLine" id="cb108-2" data-line-number="2"><span class="kw"><a href="../reference/to_labelled.html">to_labelled</a></span>(f)</a></code></pre></div>
 <pre><code>## &lt;Labelled double&gt;
 ## [1] 1 2 3
@@ -590,31 +586,31 @@
 </ul>
 <p>The <strong>memisc</strong> package provide functions to import variable metadata and store them in specific object of class <code>data.set</code>. The <code>to_labelled</code> method can convert a data.set into a labelled data frame.</p>
 <div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1">  <span class="co"># from foreign</span></a>
-<a class="sourceLine" id="cb114-2" data-line-number="2">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(foreign)</a>
-<a class="sourceLine" id="cb114-3" data-line-number="3">  df &lt;-<span class="st"> </span><span class="kw"><a href="../reference/to_labelled.html">to_labelled</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/foreign/topics/read.spss">read.spss</a></span>(</a>
+<a class="sourceLine" id="cb114-2" data-line-number="2">  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(foreign)</a>
+<a class="sourceLine" id="cb114-3" data-line-number="3">  df &lt;-<span class="st"> </span><span class="kw"><a href="../reference/to_labelled.html">to_labelled</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/foreign/man/read.spss.html">read.spss</a></span>(</a>
 <a class="sourceLine" id="cb114-4" data-line-number="4">    <span class="st">"file.sav"</span>,</a>
 <a class="sourceLine" id="cb114-5" data-line-number="5">    <span class="dt">to.data.frame =</span> <span class="ot">FALSE</span>,</a>
 <a class="sourceLine" id="cb114-6" data-line-number="6">    <span class="dt">use.value.labels =</span> <span class="ot">FALSE</span>,</a>
 <a class="sourceLine" id="cb114-7" data-line-number="7">    <span class="dt">use.missings =</span> <span class="ot">FALSE</span></a>
 <a class="sourceLine" id="cb114-8" data-line-number="8"> ))</a>
-<a class="sourceLine" id="cb114-9" data-line-number="9"> df &lt;-<span class="st"> </span><span class="kw"><a href="../reference/to_labelled.html">to_labelled</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/foreign/topics/read.dta">read.dta</a></span>(</a>
+<a class="sourceLine" id="cb114-9" data-line-number="9"> df &lt;-<span class="st"> </span><span class="kw"><a href="../reference/to_labelled.html">to_labelled</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/foreign/man/read.dta.html">read.dta</a></span>(</a>
 <a class="sourceLine" id="cb114-10" data-line-number="10">   <span class="st">"file.dta"</span>,</a>
 <a class="sourceLine" id="cb114-11" data-line-number="11">   <span class="dt">convert.factors =</span> <span class="ot">FALSE</span></a>
 <a class="sourceLine" id="cb114-12" data-line-number="12"> ))</a>
 <a class="sourceLine" id="cb114-13" data-line-number="13"></a>
 <a class="sourceLine" id="cb114-14" data-line-number="14"> <span class="co"># from memisc</span></a>
-<a class="sourceLine" id="cb114-15" data-line-number="15"> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(memisc)</a>
+<a class="sourceLine" id="cb114-15" data-line-number="15"> <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(memisc)</a>
 <a class="sourceLine" id="cb114-16" data-line-number="16"> nes1948.por &lt;-<span class="st"> </span><span class="kw">UnZip</span>(<span class="st">"anes/NES1948.ZIP"</span>, <span class="st">"NES1948.POR"</span>, <span class="dt">package=</span><span class="st">"memisc"</span>)</a>
-<a class="sourceLine" id="cb114-17" data-line-number="17"> nes1948 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/memisc/topics/importers">spss.portable.file</a></span>(nes1948.por)</a>
+<a class="sourceLine" id="cb114-17" data-line-number="17"> nes1948 &lt;-<span class="st"> </span><span class="kw">spss.portable.file</span>(nes1948.por)</a>
 <a class="sourceLine" id="cb114-18" data-line-number="18"> df &lt;-<span class="st"> </span><span class="kw"><a href="../reference/to_labelled.html">to_labelled</a></span>(nes1948)</a>
-<a class="sourceLine" id="cb114-19" data-line-number="19"> ds &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/memisc/topics/dataSets">as.data.set</a></span>(nes19480)</a>
+<a class="sourceLine" id="cb114-19" data-line-number="19"> ds &lt;-<span class="st"> </span><span class="kw">as.data.set</span>(nes19480)</a>
 <a class="sourceLine" id="cb114-20" data-line-number="20"> df &lt;-<span class="st"> </span><span class="kw"><a href="../reference/to_labelled.html">to_labelled</a></span>(ds)</a></code></pre></div>
 </div>
 <div id="using-labelled-with-dplyrmagrittr" class="section level2">
 <h2 class="hasAnchor">
 <a href="#using-labelled-with-dplyrmagrittr" class="anchor"></a>Using labelled with dplyr/magrittr</h2>
-<p>If you are using the <code>%&gt;%</code> operator, you can use the functions <code>set_variable_labels</code>, <code>set_value_labels</code>, <code>add_value_labels</code> and <code>remove_value_labels</code>.</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</a></code></pre></div>
+<p>If you are using the <code><a href="https://dplyr.tidyverse.org/reference/reexports.html">%&gt;%</a></code> operator, you can use the functions <code>set_variable_labels</code>, <code>set_value_labels</code>, <code>add_value_labels</code> and <code>remove_value_labels</code>.</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a></code></pre></div>
 <pre><code>## 
 ## Attachement du package : 'dplyr'</code></pre>
 <pre><code>## The following objects are masked from 'package:stats':
@@ -623,9 +619,9 @@
 <pre><code>## The following objects are masked from 'package:base':
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/reexports.html">data_frame</a></span>(<span class="dt">s1 =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"M"</span>, <span class="st">"M"</span>, <span class="st">"F"</span>), <span class="dt">s2 =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/reexports.html">data_frame</a></span>(<span class="dt">s1 =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"M"</span>, <span class="st">"M"</span>, <span class="st">"F"</span>), <span class="dt">s2 =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb119-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/var_label.html">set_variable_labels</a></span>(<span class="dt">s1 =</span> <span class="st">"Sex"</span>, <span class="dt">s2 =</span> <span class="st">"Question"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb119-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/val_labels.html">set_value_labels</a></span>(<span class="dt">s1 =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">Male =</span> <span class="st">"M"</span>, <span class="dt">Female =</span> <span class="st">"F"</span>), <span class="dt">s2 =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">Yes =</span> <span class="dv">1</span>, <span class="dt">No =</span> <span class="dv">2</span>))</a></code></pre></div>
+<a class="sourceLine" id="cb119-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/val_labels.html">set_value_labels</a></span>(<span class="dt">s1 =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">Male =</span> <span class="st">"M"</span>, <span class="dt">Female =</span> <span class="st">"F"</span>), <span class="dt">s2 =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">Yes =</span> <span class="dv">1</span>, <span class="dt">No =</span> <span class="dv">2</span>))</a></code></pre></div>
 <pre><code>## Warning: `data_frame()` is deprecated, use `tibble()`.
 ## This warning is displayed once per session.</code></pre>
 <div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1">df<span class="op">$</span>s2</a></code></pre></div>
@@ -638,7 +634,7 @@
 ##      2    No</code></pre>
 <p><code>set_value_labels</code> will replace the list of value labels while <code>add_value_labels</code> will update it.</p>
 <div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1">df &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb123-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/val_labels.html">set_value_labels</a></span>(<span class="dt">s2 =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">Yes =</span> <span class="dv">1</span>, <span class="st">"Don't know"</span> =<span class="st"> </span><span class="dv">8</span>, <span class="dt">Unknown =</span> <span class="dv">9</span>))</a>
+<a class="sourceLine" id="cb123-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/val_labels.html">set_value_labels</a></span>(<span class="dt">s2 =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">Yes =</span> <span class="dv">1</span>, <span class="st">"Don't know"</span> =<span class="st"> </span><span class="dv">8</span>, <span class="dt">Unknown =</span> <span class="dv">9</span>))</a>
 <a class="sourceLine" id="cb123-3" data-line-number="3">df<span class="op">$</span>s2</a></code></pre></div>
 <pre><code>## &lt;Labelled double&gt;: Question
 ## [1] 1 1 2
@@ -649,7 +645,7 @@
 ##      8 Don't know
 ##      9    Unknown</code></pre>
 <div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1">df &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb125-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/val_labels.html">add_value_labels</a></span>(<span class="dt">s2 =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">No =</span> <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb125-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/val_labels.html">add_value_labels</a></span>(<span class="dt">s2 =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">No =</span> <span class="dv">2</span>))</a>
 <a class="sourceLine" id="cb125-3" data-line-number="3">df<span class="op">$</span>s2</a></code></pre></div>
 <pre><code>## &lt;Labelled double&gt;: Question
 ## [1] 1 1 2
@@ -694,97 +690,98 @@
 ## attr(,"label")
 ## [1] "Question"</code></pre>
 <p>To convert variables, you can use functions as <code>mutate_if</code> or <code>mutate_at</code>. See the example below.</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(questionr)</a></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(questionr)</a></code></pre></div>
 <pre><code>## 
 ## Attachement du package : 'questionr'</code></pre>
 <pre><code>## The following object is masked from 'package:labelled':
 ## 
 ##     lookfor</code></pre>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(fertility)</a>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(fertility)</a>
 <a class="sourceLine" id="cb136-2" data-line-number="2"><span class="kw"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(women)</a></code></pre></div>
 <pre><code>## Observations: 2,000
 ## Variables: 17
-## $ id_woman          &lt;dbl&gt; 391, 1643, 85, 881, 1981, 1072, 1978, 1607, 73…
-## $ id_household      &lt;dbl&gt; 381, 1515, 85, 844, 1797, 1015, 1794, 1486, 71…
-## $ weight            &lt;dbl&gt; 1.803150, 1.803150, 1.803150, 1.803150, 1.8031…
-## $ interview_date    &lt;date&gt; 2012-05-05, 2012-01-23, 2012-01-21, 2012-01-0…
-## $ date_of_birth     &lt;date&gt; 1997-03-07, 1982-01-06, 1979-01-01, 1968-03-2…
-## $ age               &lt;dbl&gt; 15, 30, 33, 43, 25, 18, 45, 23, 49, 31, 26, 45…
-## $ residency         &lt;dbl+lbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, …
-## $ region            &lt;dbl+lbl&gt; 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 2, 2, …
-## $ instruction       &lt;dbl+lbl&gt; 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 2, …
-## $ employed          &lt;dbl+lbl&gt; 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, …
-## $ matri             &lt;dbl+lbl&gt; 0, 2, 2, 2, 1, 0, 1, 1, 2, 5, 2, 3, 0, 2, …
-## $ religion          &lt;dbl+lbl&gt; 1, 3, 2, 3, 2, 2, 3, 1, 3, 3, 2, 3, 2, 2, …
-## $ newspaper         &lt;dbl+lbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, …
-## $ radio             &lt;dbl+lbl&gt; 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, …
-## $ tv                &lt;dbl+lbl&gt; 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, …
-## $ ideal_nb_children &lt;dbl+lbl&gt; 4, 4, 4, 4, 4, 5, 10, 5, 4, 5, 6, 10, 2, 6…
-## $ test              &lt;dbl+lbl&gt; 0, 9, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, …</code></pre>
+## $ id_woman          &lt;dbl&gt; 391, 1643, 85, 881, 1981, 1072, 1978, 1607, 738, 16…
+## $ id_household      &lt;dbl&gt; 381, 1515, 85, 844, 1797, 1015, 1794, 1486, 711, 15…
+## $ weight            &lt;dbl&gt; 1.803150, 1.803150, 1.803150, 1.803150, 1.803150, 0…
+## $ interview_date    &lt;date&gt; 2012-05-05, 2012-01-23, 2012-01-21, 2012-01-06, 20…
+## $ date_of_birth     &lt;date&gt; 1997-03-07, 1982-01-06, 1979-01-01, 1968-03-29, 19…
+## $ age               &lt;dbl&gt; 15, 30, 33, 43, 25, 18, 45, 23, 49, 31, 26, 45, 25,…
+## $ residency         &lt;dbl+lbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,…
+## $ region            &lt;dbl+lbl&gt; 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2,…
+## $ instruction       &lt;dbl+lbl&gt; 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 2, 1, 0,…
+## $ employed          &lt;dbl+lbl&gt; 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1,…
+## $ matri             &lt;dbl+lbl&gt; 0, 2, 2, 2, 1, 0, 1, 1, 2, 5, 2, 3, 0, 2, 1, 2,…
+## $ religion          &lt;dbl+lbl&gt; 1, 3, 2, 3, 2, 2, 3, 1, 3, 3, 2, 3, 2, 2, 2, 2,…
+## $ newspaper         &lt;dbl+lbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,…
+## $ radio             &lt;dbl+lbl&gt; 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0,…
+## $ tv                &lt;dbl+lbl&gt; 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,…
+## $ ideal_nb_children &lt;dbl+lbl&gt; 4, 4, 4, 4, 4, 5, 10, 5, 4, 5, 6, 10, 2, 6, 6, …
+## $ test              &lt;dbl+lbl&gt; 0, 9, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0,…</code></pre>
 <div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1"><span class="kw"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="kw"><a href="../reference/to_factor.html">to_factor</a></span>(women))</a></code></pre></div>
 <pre><code>## Observations: 2,000
 ## Variables: 17
-## $ id_woman          &lt;dbl&gt; 391, 1643, 85, 881, 1981, 1072, 1978, 1607, 73…
-## $ id_household      &lt;dbl&gt; 381, 1515, 85, 844, 1797, 1015, 1794, 1486, 71…
-## $ weight            &lt;dbl&gt; 1.803150, 1.803150, 1.803150, 1.803150, 1.8031…
-## $ interview_date    &lt;date&gt; 2012-05-05, 2012-01-23, 2012-01-21, 2012-01-0…
-## $ date_of_birth     &lt;date&gt; 1997-03-07, 1982-01-06, 1979-01-01, 1968-03-2…
-## $ age               &lt;dbl&gt; 15, 30, 33, 43, 25, 18, 45, 23, 49, 31, 26, 45…
-## $ residency         &lt;fct&gt; rural, rural, rural, rural, rural, rural, rura…
-## $ region            &lt;fct&gt; West, West, West, West, West, South, South, So…
-## $ instruction       &lt;fct&gt; none, none, none, none, primary, none, none, n…
-## $ employed          &lt;fct&gt; yes, yes, no, yes, yes, no, yes, no, yes, yes,…
-## $ matri             &lt;fct&gt; single, living together, living together, livi…
-## $ religion          &lt;fct&gt; Muslim, Protestant, Christian, Protestant, Chr…
-## $ newspaper         &lt;fct&gt; no, no, no, no, no, no, no, no, no, no, no, no…
-## $ radio             &lt;fct&gt; no, yes, yes, no, no, yes, yes, no, no, no, ye…
-## $ tv                &lt;fct&gt; no, no, no, no, no, yes, no, no, no, no, yes, …
-## $ ideal_nb_children &lt;fct&gt; 4, 4, 4, 4, 4, 5, 10, 5, 4, 5, 6, 10, 2, 6, 6,…
-## $ test              &lt;fct&gt; no, missing, no, no, yes, no, no, no, no, yes,…</code></pre>
+## $ id_woman          &lt;dbl&gt; 391, 1643, 85, 881, 1981, 1072, 1978, 1607, 738, 16…
+## $ id_household      &lt;dbl&gt; 381, 1515, 85, 844, 1797, 1015, 1794, 1486, 711, 15…
+## $ weight            &lt;dbl&gt; 1.803150, 1.803150, 1.803150, 1.803150, 1.803150, 0…
+## $ interview_date    &lt;date&gt; 2012-05-05, 2012-01-23, 2012-01-21, 2012-01-06, 20…
+## $ date_of_birth     &lt;date&gt; 1997-03-07, 1982-01-06, 1979-01-01, 1968-03-29, 19…
+## $ age               &lt;dbl&gt; 15, 30, 33, 43, 25, 18, 45, 23, 49, 31, 26, 45, 25,…
+## $ residency         &lt;fct&gt; rural, rural, rural, rural, rural, rural, rural, ru…
+## $ region            &lt;fct&gt; West, West, West, West, West, South, South, South, …
+## $ instruction       &lt;fct&gt; none, none, none, none, primary, none, none, none, …
+## $ employed          &lt;fct&gt; yes, yes, no, yes, yes, no, yes, no, yes, yes, yes,…
+## $ matri             &lt;fct&gt; single, living together, living together, living to…
+## $ religion          &lt;fct&gt; Muslim, Protestant, Christian, Protestant, Christia…
+## $ newspaper         &lt;fct&gt; no, no, no, no, no, no, no, no, no, no, no, no, no,…
+## $ radio             &lt;fct&gt; no, yes, yes, no, no, yes, yes, no, no, no, yes, ye…
+## $ tv                &lt;fct&gt; no, no, no, no, no, yes, no, no, no, no, yes, yes, …
+## $ ideal_nb_children &lt;fct&gt; 4, 4, 4, 4, 4, 5, 10, 5, 4, 5, 6, 10, 2, 6, 6, 6, 4…
+## $ test              &lt;fct&gt; no, missing, no, no, yes, no, no, no, no, yes, yes,…</code></pre>
 <div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1"><span class="kw"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(women <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_if</a></span>(is.labelled, to_factor))</a></code></pre></div>
 <pre><code>## Observations: 2,000
 ## Variables: 17
-## $ id_woman          &lt;dbl&gt; 391, 1643, 85, 881, 1981, 1072, 1978, 1607, 73…
-## $ id_household      &lt;dbl&gt; 381, 1515, 85, 844, 1797, 1015, 1794, 1486, 71…
-## $ weight            &lt;dbl&gt; 1.803150, 1.803150, 1.803150, 1.803150, 1.8031…
-## $ interview_date    &lt;date&gt; 2012-05-05, 2012-01-23, 2012-01-21, 2012-01-0…
-## $ date_of_birth     &lt;date&gt; 1997-03-07, 1982-01-06, 1979-01-01, 1968-03-2…
-## $ age               &lt;dbl&gt; 15, 30, 33, 43, 25, 18, 45, 23, 49, 31, 26, 45…
-## $ residency         &lt;fct&gt; rural, rural, rural, rural, rural, rural, rura…
-## $ region            &lt;fct&gt; West, West, West, West, West, South, South, So…
-## $ instruction       &lt;fct&gt; none, none, none, none, primary, none, none, n…
-## $ employed          &lt;fct&gt; yes, yes, no, yes, yes, no, yes, no, yes, yes,…
-## $ matri             &lt;fct&gt; single, living together, living together, livi…
-## $ religion          &lt;fct&gt; Muslim, Protestant, Christian, Protestant, Chr…
-## $ newspaper         &lt;fct&gt; no, no, no, no, no, no, no, no, no, no, no, no…
-## $ radio             &lt;fct&gt; no, yes, yes, no, no, yes, yes, no, no, no, ye…
-## $ tv                &lt;fct&gt; no, no, no, no, no, yes, no, no, no, no, yes, …
-## $ ideal_nb_children &lt;fct&gt; 4, 4, 4, 4, 4, 5, 10, 5, 4, 5, 6, 10, 2, 6, 6,…
-## $ test              &lt;fct&gt; no, missing, no, no, yes, no, no, no, no, yes,…</code></pre>
+## $ id_woman          &lt;dbl&gt; 391, 1643, 85, 881, 1981, 1072, 1978, 1607, 738, 16…
+## $ id_household      &lt;dbl&gt; 381, 1515, 85, 844, 1797, 1015, 1794, 1486, 711, 15…
+## $ weight            &lt;dbl&gt; 1.803150, 1.803150, 1.803150, 1.803150, 1.803150, 0…
+## $ interview_date    &lt;date&gt; 2012-05-05, 2012-01-23, 2012-01-21, 2012-01-06, 20…
+## $ date_of_birth     &lt;date&gt; 1997-03-07, 1982-01-06, 1979-01-01, 1968-03-29, 19…
+## $ age               &lt;dbl&gt; 15, 30, 33, 43, 25, 18, 45, 23, 49, 31, 26, 45, 25,…
+## $ residency         &lt;fct&gt; rural, rural, rural, rural, rural, rural, rural, ru…
+## $ region            &lt;fct&gt; West, West, West, West, West, South, South, South, …
+## $ instruction       &lt;fct&gt; none, none, none, none, primary, none, none, none, …
+## $ employed          &lt;fct&gt; yes, yes, no, yes, yes, no, yes, no, yes, yes, yes,…
+## $ matri             &lt;fct&gt; single, living together, living together, living to…
+## $ religion          &lt;fct&gt; Muslim, Protestant, Christian, Protestant, Christia…
+## $ newspaper         &lt;fct&gt; no, no, no, no, no, no, no, no, no, no, no, no, no,…
+## $ radio             &lt;fct&gt; no, yes, yes, no, no, yes, yes, no, no, no, yes, ye…
+## $ tv                &lt;fct&gt; no, no, no, no, no, yes, no, no, no, no, yes, yes, …
+## $ ideal_nb_children &lt;fct&gt; 4, 4, 4, 4, 4, 5, 10, 5, 4, 5, 6, 10, 2, 6, 6, 6, 4…
+## $ test              &lt;fct&gt; no, missing, no, no, yes, no, no, no, no, yes, yes,…</code></pre>
 <div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1"><span class="kw"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(women <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span>(employed<span class="op">:</span>tv), to_factor))</a></code></pre></div>
 <pre><code>## Observations: 2,000
 ## Variables: 17
-## $ id_woman          &lt;dbl&gt; 391, 1643, 85, 881, 1981, 1072, 1978, 1607, 73…
-## $ id_household      &lt;dbl&gt; 381, 1515, 85, 844, 1797, 1015, 1794, 1486, 71…
-## $ weight            &lt;dbl&gt; 1.803150, 1.803150, 1.803150, 1.803150, 1.8031…
-## $ interview_date    &lt;date&gt; 2012-05-05, 2012-01-23, 2012-01-21, 2012-01-0…
-## $ date_of_birth     &lt;date&gt; 1997-03-07, 1982-01-06, 1979-01-01, 1968-03-2…
-## $ age               &lt;dbl&gt; 15, 30, 33, 43, 25, 18, 45, 23, 49, 31, 26, 45…
-## $ residency         &lt;dbl+lbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, …
-## $ region            &lt;dbl+lbl&gt; 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 2, 2, …
-## $ instruction       &lt;dbl+lbl&gt; 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 2, …
-## $ employed          &lt;fct&gt; yes, yes, no, yes, yes, no, yes, no, yes, yes,…
-## $ matri             &lt;fct&gt; single, living together, living together, livi…
-## $ religion          &lt;fct&gt; Muslim, Protestant, Christian, Protestant, Chr…
-## $ newspaper         &lt;fct&gt; no, no, no, no, no, no, no, no, no, no, no, no…
-## $ radio             &lt;fct&gt; no, yes, yes, no, no, yes, yes, no, no, no, ye…
-## $ tv                &lt;fct&gt; no, no, no, no, no, yes, no, no, no, no, yes, …
-## $ ideal_nb_children &lt;dbl+lbl&gt; 4, 4, 4, 4, 4, 5, 10, 5, 4, 5, 6, 10, 2, 6…
-## $ test              &lt;dbl+lbl&gt; 0, 9, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, …</code></pre>
+## $ id_woman          &lt;dbl&gt; 391, 1643, 85, 881, 1981, 1072, 1978, 1607, 738, 16…
+## $ id_household      &lt;dbl&gt; 381, 1515, 85, 844, 1797, 1015, 1794, 1486, 711, 15…
+## $ weight            &lt;dbl&gt; 1.803150, 1.803150, 1.803150, 1.803150, 1.803150, 0…
+## $ interview_date    &lt;date&gt; 2012-05-05, 2012-01-23, 2012-01-21, 2012-01-06, 20…
+## $ date_of_birth     &lt;date&gt; 1997-03-07, 1982-01-06, 1979-01-01, 1968-03-29, 19…
+## $ age               &lt;dbl&gt; 15, 30, 33, 43, 25, 18, 45, 23, 49, 31, 26, 45, 25,…
+## $ residency         &lt;dbl+lbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,…
+## $ region            &lt;dbl+lbl&gt; 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2,…
+## $ instruction       &lt;dbl+lbl&gt; 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 2, 1, 0,…
+## $ employed          &lt;fct&gt; yes, yes, no, yes, yes, no, yes, no, yes, yes, yes,…
+## $ matri             &lt;fct&gt; single, living together, living together, living to…
+## $ religion          &lt;fct&gt; Muslim, Protestant, Christian, Protestant, Christia…
+## $ newspaper         &lt;fct&gt; no, no, no, no, no, no, no, no, no, no, no, no, no,…
+## $ radio             &lt;fct&gt; no, yes, yes, no, no, yes, yes, no, no, no, yes, ye…
+## $ tv                &lt;fct&gt; no, no, no, no, no, yes, no, no, no, no, yes, yes, …
+## $ ideal_nb_children &lt;dbl+lbl&gt; 4, 4, 4, 4, 4, 5, 10, 5, 4, 5, 6, 10, 2, 6, 6, …
+## $ test              &lt;dbl+lbl&gt; 0, 9, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0,…</code></pre>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+
         <div id="tocnav">
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
@@ -804,17 +801,20 @@
 </div>
 
 
+
       <footer><div class="copyright">
   <p>Developed by Joseph Larmarange.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>
