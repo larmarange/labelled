@@ -1,4 +1,4 @@
-# labelled (development version)
+# labelled 2.2.2
 
 * bug fix for `look_for()` (#52 by @NoahMarconi)
 * bug fix in `val_labels_to_na()` documentation
