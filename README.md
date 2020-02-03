@@ -50,7 +50,7 @@ imported with an older version of `haven` to the new classes.
 
 ## Some general principles
 
-1.  Functions are intented to support `labelled` metadata structures
+1.  Functions are intented to support `haven_labelled` metadata structures
     only. However, `to_labelled` method allows to convert metadata from
     **foreign** and **memisc** packages.
 2.  Functions should, by default, modify metadata only (i.e. classes and
