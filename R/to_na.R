@@ -37,7 +37,6 @@ nolabel_to_na.data.frame <- function(x) {
 #' For labelled variables, values with a label will be recoded to \code{NA}.
 #'
 #' @param x Object to recode.
-#' @param ... Other arguments passed down to method.
 #' @seealso \code{\link[haven]{zap_labels}}
 #' @examples
 #' v <- labelled(c(1, 2, 9, 1, 9), c(dk = 9))

@@ -1,6 +1,7 @@
 # labelled (development version)
 
 * bug fix for `look_for()` (#52 by @NoahMarconi)
+* bug fix in `val_labels_to_na()` documentation
 
 # labelled 2.2.1
 
