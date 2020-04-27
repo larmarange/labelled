@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -39,8 +43,9 @@
 <meta property="og:description" content="The base function base::as.factor() is not a generic, but this variant
 is. By default, to_factor is a wrapper for base::as.factor().
 Please note that to_factor differs slightly from as_factor
-method provided by haven package." />
-<meta name="twitter:card" content="summary" />
+method provided by haven package.
+unlabelled(x) is a shortcut for
+to_factor(x, strict = TRUE, unclass = TRUE, labelled_only = TRUE)." />
 
 
 
@@ -58,7 +63,7 @@ method provided by haven package." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -72,7 +77,7 @@ method provided by haven package." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">labelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.3.0</span>
       </span>
     </div>
 
@@ -104,7 +109,12 @@ method provided by haven package." />
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/larmarange/labelled/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -119,7 +129,7 @@ method provided by haven package." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Convert input to a factor.</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/larmarange/labelled/blob/master/R/to_factor.R'><code>R/to_factor.R</code></a></small>
     <div class="hidden name"><code>to_factor.Rd</code></div>
     </div>
 
@@ -128,6 +138,8 @@ method provided by haven package." />
 is. By default, <code>to_factor</code> is a wrapper for <code><a href='https://rdrr.io/r/base/factor.html'>base::as.factor()</a></code>.
 Please note that <code>to_factor</code> differs slightly from <code><a href='https://haven.tidyverse.org/reference/as_factor.html'>as_factor</a></code>
 method provided by <code>haven</code> package.</p>
+<p><code>unlabelled(x)</code> is a shortcut for
+<code>to_factor(x, strict = TRUE, unclass = TRUE, labelled_only = TRUE)</code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>to_factor</span>(<span class='no'>x</span>, <span class='no'>...</span>)
@@ -160,7 +172,9 @@ method provided by <code>haven</code> package.</p>
   <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>unclass</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='no'>...</span>
-)</pre>
+)
+
+<span class='fu'>unlabelled</span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -230,6 +244,10 @@ convert to a character or a numeric factor?</p></td>
   be applied.</p>
 <p>When applied to a data.frame, only labelled vectors are converted by default to a
   factor. Use <code>labelled_only = FALSE</code> to convert all variables to factors.</p>
+<p><code>unlabelled()</code> is a shortcut for quickly removing value labels of a vector
+or of a data.frame. If all observed values have a value label, then the vector
+will be converted into a factor. Otherwise, value labels will be simply removed.
+If you want to remove value labels in all cases, use <code><a href='remove_labels.html'>remove_val_labels</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>v</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>2</span>,<span class='fl'>2</span>,<span class='fl'>3</span>,<span class='fl'>9</span>,<span class='fl'>1</span>,<span class='fl'>3</span>,<span class='fl'>2</span>,<span class='fl'>NA</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>yes</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>no</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='st'>"don't know"</span> <span class='kw'>=</span> <span class='fl'>9</span>))
@@ -260,14 +278,10 @@ convert to a character or a numeric factor?</p></td>
 #&gt;      1    No
 #&gt;      2   Yes</div><div class='input'><span class='fu'>to_factor</span>(<span class='no'>v</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>unclass</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] 1 1 2 3</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -278,7 +292,7 @@ convert to a character or a numeric factor?</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
