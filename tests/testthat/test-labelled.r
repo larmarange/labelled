@@ -319,3 +319,19 @@ test_that("remove_attributes does not transform characters into factors", {
   d <- remove_attributes(d, "some_attribute")
   expect_true(is.character(d$ch))
 })
+
+
+# unlabelled --------------------------------------------------------------------
+
+test_that("unlabelled works correctly", {
+  df <- data.frame(
+    a = labelled(c(1, 1, 2, 3), labels = c(No = 1, Yes = 2)),
+    b = labelled(c(1, 1, 2, 3), labels = c(No = 1, Yes = 2, DK = 3)),
+    c = labelled(c("a", "a", "b", "c"), labels = c(No = "a", Yes = "b"))
+  )
+
+  df <- unlabelled(df)
+  expect_equal(class(df$a), "numeric")
+  expect_s3_class(df$b, "factor")
+  expect_equal(class(df$c), "character")
+})
