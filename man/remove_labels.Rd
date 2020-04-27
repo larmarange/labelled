@@ -30,6 +30,9 @@ Be careful with \code{remove_user_na} and \code{remove_labels}, user defined mis
 will not be automatically converted to \code{NA}, except if you specify
 \code{user_na_to_na = TRUE}.
 \code{user_na_to_na(x)} is an equivalent of \code{remove_user_na(x, user_na_to_na = TRUE)}.
+
+If you prefer to convert variables with value labels into factors, use \code{\link{to_factor}}
+or use \code{\link{unlabelled}}.
 }
 \examples{
 x1 <- labelled_spss(1:10, c(Good = 1, Bad = 8), na_values = c(9, 10))

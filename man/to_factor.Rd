@@ -4,6 +4,7 @@
 \alias{to_factor}
 \alias{to_factor.haven_labelled}
 \alias{to_factor.data.frame}
+\alias{unlabelled}
 \title{Convert input to a factor.}
 \usage{
 to_factor(x, ...)
@@ -35,6 +36,8 @@ to_factor(x, ...)
   unclass = FALSE,
   ...
 )
+
+unlabelled(x, ...)
 }
 \arguments{
 \item{x}{Object to coerce to a factor.}
@@ -68,6 +71,9 @@ The base function \code{\link[base:factor]{base::as.factor()}} is not a generic,
 is. By default, \code{to_factor} is a wrapper for \code{\link[base:factor]{base::as.factor()}}.
 Please note that \code{to_factor} differs slightly from \code{\link[haven]{as_factor}}
 method provided by \code{haven} package.
+
+\code{unlabelled(x)} is a shortcut for
+\code{to_factor(x, strict = TRUE, unclass = TRUE, labelled_only = TRUE)}.
 }
 \details{
 If some values doesn't have a label, automatic labels will be created, except if
@@ -83,6 +89,11 @@ If some values doesn't have a label, automatic labels will be created, except if
 
 When applied to a data.frame, only labelled vectors are converted by default to a
   factor. Use \code{labelled_only = FALSE} to convert all variables to factors.
+
+\code{unlabelled()} is a shortcut for quickly removing value labels of a vector
+or of a data.frame. If all observed values have a value label, then the vector
+will be converted into a factor. Otherwise, value labels will be simply removed.
+If you want to remove value labels in all cases, use \code{\link{remove_val_labels}}.
 }
 \examples{
 v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
