@@ -1,5 +1,9 @@
 # labelled (development version)
 
+* bug fix for `unlabelled()` when applied on a vector
+* when using `unclass = TRUE` with `to_factor()`, attributes 
+  are not removed anymore
+
 # labelled 2.3.0
 
 * new function `unlabelled()`

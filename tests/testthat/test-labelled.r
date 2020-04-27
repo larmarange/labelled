@@ -334,4 +334,10 @@ test_that("unlabelled works correctly", {
   expect_equal(class(df$a), "numeric")
   expect_s3_class(df$b, "factor")
   expect_equal(class(df$c), "character")
+
+  v <- labelled(c(1, 1, 2, 3), labels = c(No = 1, Yes = 2, DK = 3))
+  expect_s3_class(unlabelled(v), "factor")
+
+  v <- labelled(c(1, 1, 2, 3), labels = c(No = 1, Yes = 2))
+  expect_false(inherits(unlabelled(v), "haven_labelled"))
 })

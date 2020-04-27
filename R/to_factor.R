@@ -83,9 +83,7 @@ to_factor.haven_labelled <- function(x, levels = c("labels", "values",
     nolabel <- allval[!allval %in% val_labels(x)]
     if (length(nolabel) > 0) {
       if (unclass) {
-        na_values(x) <- NULL
-        na_range(x) <- NULL
-        val_labels(x) <- NULL
+        x <- unclass(x)
       }
       return(x)
     }
@@ -175,6 +173,9 @@ to_factor.data.frame <- function(x, levels = c("labels", "values", "prefixed"),
 #' If you want to remove value labels in all cases, use \code{\link{remove_val_labels}}.
 #' @export
 unlabelled <- function(x, ...) {
-  to_factor(x, strict = TRUE, unclass = TRUE, labelled_only = TRUE, ...)
+  if (is.data.frame(x))
+    to_factor(x, strict = TRUE, unclass = TRUE, labelled_only = TRUE, ...)
+  else
+    to_factor(x, strict = TRUE, unclass = TRUE, ...)
 }
 
