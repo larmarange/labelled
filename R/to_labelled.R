@@ -96,9 +96,9 @@ foreign_to_labelled <- function(x) {
   # list, not a df
   if (!is.data.frame(x)) {
     if (requireNamespace("dplyr")) {
-      x <- dplyr::as_data_frame(x)
+      x <- dplyr::as_tibble(x)
     } else {
-      x <- dplyr::as_data_frame(x, stringsAsFactors = FALSE)
+      x <- as.data.frame(x, stringsAsFactors = FALSE)
     }
   }
 

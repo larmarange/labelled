@@ -140,7 +140,7 @@ to_factor.data.frame <- function(x, levels = c("labels", "values", "prefixed"),
                                  unclass = FALSE,
                                  ...) {
   cl <- class(x)
-  x <- dplyr::as_data_frame(lapply(x, .to_factor_col_data_frame, levels = levels, ordered = ordered,
+  x <- dplyr::as_tibble(lapply(x, .to_factor_col_data_frame, levels = levels, ordered = ordered,
          nolabel_to_na = nolabel_to_na, sort_levels = sort_levels, decreasing = decreasing,
          labelled_only = labelled_only, drop_unused_labels = drop_unused_labels, strict = strict,
          unclass = unclass, ...))
