@@ -6,6 +6,7 @@
 #'
 #' @param x A vector or a data frame.
 #' @param user_na_to_na Convert user defined missing values into \code{NA}?
+#' @param keep_var_label Keep variable label?
 #' @details
 #' Be careful with \code{remove_user_na} and \code{remove_labels}, user defined missing values
 #' will not be automatically converted to \code{NA}, except if you specify
@@ -26,23 +27,23 @@
 #' x4 <- remove_user_na(x1, user_na_to_na = TRUE)
 #' x4
 #' @export
-remove_labels <- function(x, user_na_to_na = FALSE) {
+remove_labels <- function(x, user_na_to_na = FALSE, keep_var_label = FALSE) {
   UseMethod("remove_labels")
 }
 
 
 #' @export
-remove_labels.default <- function(x, user_na_to_na = FALSE) {
-  var_label(x) <- NULL
+remove_labels.default <- function(x, user_na_to_na = FALSE, keep_var_label = FALSE) {
+  if (!keep_var_label) var_label(x) <- NULL
   val_labels(x) <- NULL
   attr(x,"format.spss") <- NULL
   x
 }
 
 #' @export
-remove_labels.haven_labelled_spss <- function(x, user_na_to_na = FALSE) {
+remove_labels.haven_labelled_spss <- function(x, user_na_to_na = FALSE, keep_var_label = FALSE) {
   x <- remove_user_na(x, user_na_to_na = user_na_to_na)
-  var_label(x) <- NULL
+  if (!keep_var_label) var_label(x) <- NULL
   val_labels(x) <- NULL
   attr(x,"format.spss") <- NULL
   x
@@ -50,8 +51,12 @@ remove_labels.haven_labelled_spss <- function(x, user_na_to_na = FALSE) {
 
 
 #' @export
-remove_labels.data.frame <- function(x, user_na_to_na = FALSE) {
-  x[] <- lapply(x, remove_labels, user_na_to_na = user_na_to_na)
+remove_labels.data.frame <- function(x, user_na_to_na = FALSE, keep_var_label = FALSE) {
+  x[] <- lapply(
+    x, remove_labels,
+    user_na_to_na = user_na_to_na,
+    keep_var_label = keep_var_label
+  )
   x
 }
 

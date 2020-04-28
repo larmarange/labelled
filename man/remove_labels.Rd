@@ -7,7 +7,7 @@
 \alias{remove_user_na}
 \title{Remove variable label, value labels and user defined missing values}
 \usage{
-remove_labels(x, user_na_to_na = FALSE)
+remove_labels(x, user_na_to_na = FALSE, keep_var_label = FALSE)
 
 remove_var_label(x)
 
@@ -19,6 +19,8 @@ remove_user_na(x, user_na_to_na = FALSE)
 \item{x}{A vector or a data frame.}
 
 \item{user_na_to_na}{Convert user defined missing values into \code{NA}?}
+
+\item{keep_var_label}{Keep variable label?}
 }
 \description{
 Use \code{remove_var_label} to remove variable label, \code{remove_val_labels}

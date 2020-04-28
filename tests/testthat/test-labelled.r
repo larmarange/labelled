@@ -321,6 +321,7 @@ test_that("remove_attributes does not transform characters into factors", {
 })
 
 
+
 # unlabelled --------------------------------------------------------------------
 
 test_that("unlabelled works correctly", {
@@ -340,4 +341,21 @@ test_that("unlabelled works correctly", {
 
   v <- labelled(c(1, 1, 2, 3), labels = c(No = 1, Yes = 2))
   expect_false(inherits(unlabelled(v), "haven_labelled"))
+})
+
+# remove_label ------------------------------------------
+
+
+test_that("remove_label works correctly", {
+  x <- c(1, 2, 2, 9)
+  na_values(x) <- 9
+  val_labels(x) <- c(yes = 1, no = 2)
+  var_label(x) <- "A test variable"
+
+  expect_false(inherits(remove_labels(x), "haven_labelled"))
+  expect_null(var_label(remove_labels(x)))
+  expect_equal(
+    var_label(remove_labels(x, keep_var_label = TRUE)),
+    var_label(x)
+  )
 })
