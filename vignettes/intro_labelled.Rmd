@@ -13,6 +13,33 @@ metadata as variable labels, value labels and defined missing values
 using the `haven_labelled` and `haven_labelled_spss` classes
 introduced in `haven` package.
 
+These classes allow to add metadata (variable, value labels and SPSS-style 
+missing values) to vectors. 
+
+It should be noted that **value labels** doesn't 
+imply that your vectors should be considered as categorical or continuous.
+Therefore, value labels are not intended to be use for data analyis.
+For example, before performing modelling, you should convert vectors
+with value labels into factors or into classic numeric/character vectors.
+
+Therefore, two main approaches could be considered.
+
+![Two main approaches](approaches.png){width=100%}
+
+In **aproach A**, `haven_labelled` vectors are converted into factors or
+into numeric/character vectors just after data import, using `unlabelled()`,
+`to_factor()` or `unclass()`. Then, data cleaning, recoding and analysis
+are performed using classic **R** vector types.
+
+In **aproach B**, `haven_labelled` vectors are kept for data cleaning and
+recoding, allowing to preserved original recoding, in particular if data
+should be rexported after that step. Functions provided by `labelled` will
+be useful for managing value labels. However, as un approach A, `haven_labelled`
+vectors will have to be converted into classic factors or numeric vectors
+before data analysis (in particular modelling) as this is the way categorical
+and continous variables should be coded for analysis functions.
+
+
 ## Variable labels
 
 A variable label could be specified for any vector using `var_label`.
@@ -184,7 +211,7 @@ v
 
 Since version 2.1.0, it is not mandatory to define at least one value label before defining missing values.
 
-```{r, eval=FALSE}
+```{r}
 x <- c(1, 2, 2, 9)
 na_values(x) <- 9
 x
@@ -304,6 +331,98 @@ v
 to_labelled(to_factor(v))
 ```
 
+## Other type of conversions
+
+You can use `to_character()` for converting into a character vector instead of
+a factor.
+
+```{r}
+v
+to_character(v)
+```
+
+To remove the `haven_class`, you can simply use `unclass()`.
+
+```{r}
+unclass(v)
+```
+
+Note that value labels will be preserved as an attribute to the vector.
+
+```{r}
+remove_val_labels(v)
+```
+
+To remove value labels, use `remove_val_labels()`.
+
+```{r}
+remove_val_labels(v)
+```
+
+Note that if your vector does have user-defined missing values, 
+you may also want to use `remove_user_na()`.
+
+```{r}
+x <- c(1, 2, 2, 9)
+na_values(x) <- 9
+val_labels(x) <- c(yes = 1, no = 2)
+var_label(x) <- "A test variable"
+x
+remove_val_labels(x)
+remove_user_na(x)
+remove_user_na(x, user_na_to_na = TRUE)
+remove_val_labels(remove_user_na(x))
+unclass(x)
+```
+
+You can remove all labels and user-defined missing values with
+`remove_labels()`. Use `keep_var_label = TRUE` to preserve only
+variable label.
+
+```{r}
+remove_labels(x, user_na_to_na = TRUE)
+remove_labels(x, user_na_to_na = TRUE, keep_var_label = TRUE)
+```
+
+## Conditionnal conversion to factors
+
+For anay analysis, tt is the responsability of user to identify which variables
+should be considered as categorical (and therefore converted into factors) and
+which variables should be treated as continuous (and therefore unclassed into numeric).
+
+In most of cases, if data documentation was properly done, categorical variables
+corresponds to vectors where all observed values have a value label while vectors
+where only few values have a value label should be considered as continuous.
+
+In that situation, you could apply the `unlabelled()` method to an overall data frame.
+By default, `unlabelled()` works as follow:
+
+- if a column doesn't inherit the `haven_labelled` class, it will be not affected;
+- if all observed values have a corresponding value label, the column will be converted
+  into a facter;
+- otherwise, the column will be unclassed (and converted back to a numeric or character
+  vector).
+  
+```{r}
+df <- data.frame(
+  a = labelled(c(1, 1, 2, 3), labels = c(No = 1, Yes = 2)),
+  b = labelled(c(1, 1, 2, 3), labels = c(No = 1, Yes = 2, DK = 3)),
+  c = labelled(c(1, 1, 2, 2), labels = c(No = 1, Yes = 2, DK = 3)),
+  d = labelled(c("a", "a", "b", "c"), labels = c(No = "a", Yes = "b")),
+  e = labelled_spss(
+    c(1, 9, 1, 2), 
+    labels = c(No = 1, Yes = 2),
+    na_values = 9
+    )
+)
+dplyr::glimpse(df)
+dplyr::glimpse(unlabelled(df))
+dplyr::glimpse(unlabelled(df, user_na_to_na = TRUE))
+dplyr::glimpse(unlabelled(df, drop_unused_labels = TRUE))
+```
+
+
+
 ## Importing labelled data
 
 In **haven** package, `read_spss`, `read_stata` and `read_sas` are natively importing data
@@ -396,15 +515,22 @@ df <- df %>%
 df$s2
 ```
 
-To convert variables, you can use functions as `mutate_if` or `mutate_at`. See the example below.
+To convert variables, the easiest is to use `unlabelled()`.
 
 ```{r}
 library(questionr)
 data(fertility)
 glimpse(women)
+glimpse(women %>% unlabelled())
+```
+
+
+Alternatively, you can use functions as `mutate_if` or `mutate_at`. See the example below.
+
+```{r}
 glimpse(to_factor(women))
 glimpse(women %>% mutate_if(is.labelled, to_factor))
-glimpse(women %>% mutate_at(vars(employed:tv), to_factor))
+glimpse(women %>% mutate_at(vars(employed:religion), to_factor))
 ```
 
 
