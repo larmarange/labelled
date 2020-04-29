@@ -74,7 +74,7 @@ and remove_labels to remove all." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">labelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.3.1</span>
       </span>
     </div>
 
@@ -136,7 +136,7 @@ to remove value labels, <code>remove_user_na</code> to remove user defined missi
 and <code>remove_labels</code> to remove all.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>remove_labels</span>(<span class='no'>x</span>, <span class='kw'>user_na_to_na</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>remove_labels</span>(<span class='no'>x</span>, <span class='kw'>user_na_to_na</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>keep_var_label</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='fu'>remove_var_label</span>(<span class='no'>x</span>)
 
@@ -154,6 +154,10 @@ and <code>remove_labels</code> to remove all.</p>
     <tr>
       <th>user_na_to_na</th>
       <td><p>Convert user defined missing values into <code>NA</code>?</p></td>
+    </tr>
+    <tr>
+      <th>keep_var_label</th>
+      <td><p>Keep variable label?</p></td>
     </tr>
     </table>
 

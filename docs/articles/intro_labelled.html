@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">labelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.3.1</span>
       </span>
     </div>
 
@@ -94,6 +94,14 @@
     
     
 <p>The purpose of the <strong>labelled</strong> package is to provide functions to manipulate metadata as variable labels, value labels and defined missing values using the <code>haven_labelled</code> and <code>haven_labelled_spss</code> classes introduced in <code>haven</code> package.</p>
+<p>These classes allow to add metadata (variable, value labels and SPSS-style missing values) to vectors.</p>
+<p>It should be noted that <strong>value labels</strong> doesn’t imply that your vectors should be considered as categorical or continuous. Therefore, value labels are not intended to be use for data analyis. For example, before performing modelling, you should convert vectors with value labels into factors or into classic numeric/character vectors.</p>
+<p>Therefore, two main approaches could be considered.</p>
+<div class="figure">
+<img src="approaches.png" alt="Two main approaches" style="width:100.0%"><p class="caption">Two main approaches</p>
+</div>
+<p>In <strong>aproach A</strong>, <code>haven_labelled</code> vectors are converted into factors or into numeric/character vectors just after data import, using <code><a href="../reference/to_factor.html">unlabelled()</a></code>, <code><a href="../reference/to_factor.html">to_factor()</a></code> or <code><a href="https://rdrr.io/r/base/class.html">unclass()</a></code>. Then, data cleaning, recoding and analysis are performed using classic <strong>R</strong> vector types.</p>
+<p>In <strong>aproach B</strong>, <code>haven_labelled</code> vectors are kept for data cleaning and recoding, allowing to preserved original recoding, in particular if data should be rexported after that step. Functions provided by <code>labelled</code> will be useful for managing value labels. However, as un approach A, <code>haven_labelled</code> vectors will have to be converted into classic factors or numeric vectors before data analysis (in particular modelling) as this is the way categorical and continous variables should be coded for analysis functions.</p>
 <div id="variable-labels" class="section level2">
 <h2 class="hasAnchor">
 <a href="#variable-labels" class="anchor"></a>Variable labels</h2>
@@ -395,8 +403,11 @@
 <div class="sourceCode" id="cb65"><html><body><pre class="r"><span class="no">x</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">9</span>)
 <span class="fu"><a href="../reference/na_values.html">na_values</a></span>(<span class="no">x</span>) <span class="kw">&lt;-</span> <span class="fl">9</span>
 <span class="no">x</span></pre></body></html></div>
+<pre><code>## &lt;Labelled SPSS double&gt;
+## [1] 1 2 2 9
+## Missing values: 9</code></pre>
 <p>To convert user defined missing values into <code>NA</code>, simply use <code><a href="../reference/na_values.html">user_na_to_na()</a></code>.</p>
-<div class="sourceCode" id="cb66"><html><body><pre class="r"><span class="no">v</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/labelled_spss.html">labelled_spss</a></span>(<span class="fl">1</span>:<span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">Good</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">Bad</span> <span class="kw">=</span> <span class="fl">8</span>), <span class="kw">na_values</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">9</span>, <span class="fl">10</span>))
+<div class="sourceCode" id="cb67"><html><body><pre class="r"><span class="no">v</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/labelled_spss.html">labelled_spss</a></span>(<span class="fl">1</span>:<span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">Good</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">Bad</span> <span class="kw">=</span> <span class="fl">8</span>), <span class="kw">na_values</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">9</span>, <span class="fl">10</span>))
 <span class="no">v</span></pre></body></html></div>
 <pre><code>## &lt;Labelled SPSS integer&gt;
 ##  [1]  1  2  3  4  5  6  7  8  9 10
@@ -406,7 +417,7 @@
 ##  value label
 ##      1  Good
 ##      8   Bad</code></pre>
-<div class="sourceCode" id="cb68"><html><body><pre class="r"><span class="no">v2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/na_values.html">user_na_to_na</a></span>(<span class="no">v</span>)
+<div class="sourceCode" id="cb69"><html><body><pre class="r"><span class="no">v2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/na_values.html">user_na_to_na</a></span>(<span class="no">v</span>)
 <span class="no">v2</span></pre></body></html></div>
 <pre><code>## &lt;Labelled integer&gt;
 ##  [1]  1  2  3  4  5  6  7  8 NA NA
@@ -416,7 +427,7 @@
 ##      1  Good
 ##      8   Bad</code></pre>
 <p>You can also remove user missing values definition without converting these values to <code>NA</code>.</p>
-<div class="sourceCode" id="cb70"><html><body><pre class="r"><span class="no">v</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/labelled_spss.html">labelled_spss</a></span>(<span class="fl">1</span>:<span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">Good</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">Bad</span> <span class="kw">=</span> <span class="fl">8</span>), <span class="kw">na_values</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">9</span>, <span class="fl">10</span>))
+<div class="sourceCode" id="cb71"><html><body><pre class="r"><span class="no">v</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/labelled_spss.html">labelled_spss</a></span>(<span class="fl">1</span>:<span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">Good</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">Bad</span> <span class="kw">=</span> <span class="fl">8</span>), <span class="kw">na_values</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">9</span>, <span class="fl">10</span>))
 <span class="no">v</span></pre></body></html></div>
 <pre><code>## &lt;Labelled SPSS integer&gt;
 ##  [1]  1  2  3  4  5  6  7  8  9 10
@@ -426,9 +437,9 @@
 ##  value label
 ##      1  Good
 ##      8   Bad</code></pre>
-<div class="sourceCode" id="cb72"><html><body><pre class="r"><span class="no">v2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/remove_labels.html">remove_user_na</a></span>(<span class="no">v</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb73"><html><body><pre class="r"><span class="no">v2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/remove_labels.html">remove_user_na</a></span>(<span class="no">v</span>)</pre></body></html></div>
 <pre><code>## Some user defined missing values have been removed but not converted to NA.</code></pre>
-<div class="sourceCode" id="cb74"><html><body><pre class="r"><span class="no">v2</span></pre></body></html></div>
+<div class="sourceCode" id="cb75"><html><body><pre class="r"><span class="no">v2</span></pre></body></html></div>
 <pre><code>## &lt;Labelled integer&gt;
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 ## 
@@ -437,7 +448,7 @@
 ##      1  Good
 ##      8   Bad</code></pre>
 <p>or</p>
-<div class="sourceCode" id="cb76"><html><body><pre class="r"><span class="no">v</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/labelled_spss.html">labelled_spss</a></span>(<span class="fl">1</span>:<span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">Good</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">Bad</span> <span class="kw">=</span> <span class="fl">8</span>), <span class="kw">na_values</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">9</span>, <span class="fl">10</span>))
+<div class="sourceCode" id="cb77"><html><body><pre class="r"><span class="no">v</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/labelled_spss.html">labelled_spss</a></span>(<span class="fl">1</span>:<span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">Good</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">Bad</span> <span class="kw">=</span> <span class="fl">8</span>), <span class="kw">na_values</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">9</span>, <span class="fl">10</span>))
 <span class="no">v</span></pre></body></html></div>
 <pre><code>## &lt;Labelled SPSS integer&gt;
 ##  [1]  1  2  3  4  5  6  7  8  9 10
@@ -447,7 +458,7 @@
 ##  value label
 ##      1  Good
 ##      8   Bad</code></pre>
-<div class="sourceCode" id="cb78"><html><body><pre class="r"><span class="fu"><a href="../reference/na_values.html">na_values</a></span>(<span class="no">v</span>) <span class="kw">&lt;-</span> <span class="kw">NULL</span>
+<div class="sourceCode" id="cb79"><html><body><pre class="r"><span class="fu"><a href="../reference/na_values.html">na_values</a></span>(<span class="no">v</span>) <span class="kw">&lt;-</span> <span class="kw">NULL</span>
 <span class="no">v</span></pre></body></html></div>
 <pre><code>## &lt;Labelled integer&gt;
 ##  [1]  1  2  3  4  5  6  7  8  9 10
@@ -461,7 +472,7 @@
 <h2 class="hasAnchor">
 <a href="#other-conversion-to-na" class="anchor"></a>Other conversion to NA</h2>
 <p>In some cases, values who don’t have an attached value label could be considered as missing. <code>nolabel_to_na</code> will convert them to <code>NA</code>.</p>
-<div class="sourceCode" id="cb80"><html><body><pre class="r"><span class="no">v</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/labelled.html">labelled</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">9</span>,<span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">2</span>,<span class="fl">NA</span>), <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">yes</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">maybe</span> <span class="kw">=</span> <span class="fl">2</span>, <span class="kw">no</span> <span class="kw">=</span> <span class="fl">3</span>))
+<div class="sourceCode" id="cb81"><html><body><pre class="r"><span class="no">v</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/labelled.html">labelled</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">9</span>,<span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">2</span>,<span class="fl">NA</span>), <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">yes</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">maybe</span> <span class="kw">=</span> <span class="fl">2</span>, <span class="kw">no</span> <span class="kw">=</span> <span class="fl">3</span>))
 <span class="no">v</span></pre></body></html></div>
 <pre><code>## &lt;Labelled double&gt;
 ##  [1]  1  2  2  2  3  9  1  3  2 NA
@@ -471,7 +482,7 @@
 ##      1   yes
 ##      2 maybe
 ##      3    no</code></pre>
-<div class="sourceCode" id="cb82"><html><body><pre class="r"><span class="fu"><a href="../reference/nolabel_to_na.html">nolabel_to_na</a></span>(<span class="no">v</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb83"><html><body><pre class="r"><span class="fu"><a href="../reference/nolabel_to_na.html">nolabel_to_na</a></span>(<span class="no">v</span>)</pre></body></html></div>
 <pre><code>## &lt;Labelled double&gt;
 ##  [1]  1  2  2  2  3 NA  1  3  2 NA
 ## 
@@ -481,7 +492,7 @@
 ##      2 maybe
 ##      3    no</code></pre>
 <p>In other cases, a value label is attached only to specific values that corresponds to a missing value. For example:</p>
-<div class="sourceCode" id="cb84"><html><body><pre class="r"><span class="no">size</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/labelled.html">labelled</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1.88</span>, <span class="fl">1.62</span>, <span class="fl">1.78</span>, <span class="fl">99</span>, <span class="fl">1.91</span>), <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"not measured"</span> <span class="kw">=</span> <span class="fl">99</span>))
+<div class="sourceCode" id="cb85"><html><body><pre class="r"><span class="no">size</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/labelled.html">labelled</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1.88</span>, <span class="fl">1.62</span>, <span class="fl">1.78</span>, <span class="fl">99</span>, <span class="fl">1.91</span>), <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"not measured"</span> <span class="kw">=</span> <span class="fl">99</span>))
 <span class="no">size</span></pre></body></html></div>
 <pre><code>## &lt;Labelled double&gt;
 ## [1]  1.88  1.62  1.78 99.00  1.91
@@ -490,7 +501,7 @@
 ##  value        label
 ##     99 not measured</code></pre>
 <p>In such cases, <code>val_labels_to_na</code> could be appropriate.</p>
-<div class="sourceCode" id="cb86"><html><body><pre class="r"><span class="fu"><a href="../reference/val_labels_to_na.html">val_labels_to_na</a></span>(<span class="no">size</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb87"><html><body><pre class="r"><span class="fu"><a href="../reference/val_labels_to_na.html">val_labels_to_na</a></span>(<span class="no">size</span>)</pre></body></html></div>
 <pre><code>## [1] 1.88 1.62 1.78   NA 1.91</code></pre>
 <p>These two functions could also be applied to an overall data frame. Only labelled vectors will be impacted.</p>
 </div>
@@ -498,7 +509,7 @@
 <h2 class="hasAnchor">
 <a href="#converting-to-factor" class="anchor"></a>Converting to factor</h2>
 <p>A labelled vector could easily be converted to a factor with <code>to_factor</code>.</p>
-<div class="sourceCode" id="cb88"><html><body><pre class="r"><span class="no">v</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/labelled.html">labelled</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">9</span>,<span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">2</span>,<span class="fl">NA</span>), <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">yes</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">no</span> <span class="kw">=</span> <span class="fl">3</span>, <span class="st">"don't know"</span> <span class="kw">=</span> <span class="fl">8</span>, <span class="kw">refused</span> <span class="kw">=</span> <span class="fl">9</span>))
+<div class="sourceCode" id="cb89"><html><body><pre class="r"><span class="no">v</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/labelled.html">labelled</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">9</span>,<span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">2</span>,<span class="fl">NA</span>), <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">yes</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">no</span> <span class="kw">=</span> <span class="fl">3</span>, <span class="st">"don't know"</span> <span class="kw">=</span> <span class="fl">8</span>, <span class="kw">refused</span> <span class="kw">=</span> <span class="fl">9</span>))
 <span class="no">v</span></pre></body></html></div>
 <pre><code>## &lt;Labelled double&gt;
 ##  [1]  1  2  2  2  3  9  1  3  2 NA
@@ -509,47 +520,47 @@
 ##      3         no
 ##      8 don't know
 ##      9    refused</code></pre>
-<div class="sourceCode" id="cb90"><html><body><pre class="r"><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span>(<span class="no">v</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb91"><html><body><pre class="r"><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span>(<span class="no">v</span>)</pre></body></html></div>
 <pre><code>##  [1] yes     2       2       2       no      refused yes     no      2      
 ## [10] &lt;NA&gt;   
 ## Levels: yes 2 no don't know refused</code></pre>
 <p>The <code>levels</code> argument allows to specify what should be used as the factor levels, i.e. the labels (default), the values or the labels prefixed with values.</p>
-<div class="sourceCode" id="cb92"><html><body><pre class="r"><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span>(<span class="no">v</span>, <span class="kw">levels</span> <span class="kw">=</span> <span class="st">"v"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb93"><html><body><pre class="r"><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span>(<span class="no">v</span>, <span class="kw">levels</span> <span class="kw">=</span> <span class="st">"v"</span>)</pre></body></html></div>
 <pre><code>##  [1] 1    2    2    2    3    9    1    3    2    &lt;NA&gt;
 ## Levels: 1 2 3 8 9</code></pre>
-<div class="sourceCode" id="cb94"><html><body><pre class="r"><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span>(<span class="no">v</span>, <span class="kw">levels</span> <span class="kw">=</span> <span class="st">"p"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb95"><html><body><pre class="r"><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span>(<span class="no">v</span>, <span class="kw">levels</span> <span class="kw">=</span> <span class="st">"p"</span>)</pre></body></html></div>
 <pre><code>##  [1] [1] yes     [2] 2       [2] 2       [2] 2       [3] no      [9] refused
 ##  [7] [1] yes     [3] no      [2] 2       &lt;NA&gt;       
 ## Levels: [1] yes [2] 2 [3] no [8] don't know [9] refused</code></pre>
 <p>The <code>ordered</code> argument will create an ordinal factor.</p>
-<div class="sourceCode" id="cb96"><html><body><pre class="r"><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span>(<span class="no">v</span>, <span class="kw">ordered</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb97"><html><body><pre class="r"><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span>(<span class="no">v</span>, <span class="kw">ordered</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
 <pre><code>##  [1] yes     2       2       2       no      refused yes     no      2      
 ## [10] &lt;NA&gt;   
 ## Levels: yes &lt; 2 &lt; no &lt; don't know &lt; refused</code></pre>
 <p>The argument <code>nolabel_to_na</code> specify if the corresponding function should be applied before converting to a factor. Therefore, the two following commands are equivalent.</p>
-<div class="sourceCode" id="cb98"><html><body><pre class="r"><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span>(<span class="no">v</span>, <span class="kw">nolabel_to_na</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb99"><html><body><pre class="r"><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span>(<span class="no">v</span>, <span class="kw">nolabel_to_na</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
 <pre><code>##  [1] yes     &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;    no      refused yes     no      &lt;NA&gt;   
 ## [10] &lt;NA&gt;   
 ## Levels: yes no don't know refused</code></pre>
-<div class="sourceCode" id="cb100"><html><body><pre class="r"><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span>(<span class="fu"><a href="../reference/nolabel_to_na.html">nolabel_to_na</a></span>(<span class="no">v</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb101"><html><body><pre class="r"><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span>(<span class="fu"><a href="../reference/nolabel_to_na.html">nolabel_to_na</a></span>(<span class="no">v</span>))</pre></body></html></div>
 <pre><code>##  [1] yes     &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;    no      refused yes     no      &lt;NA&gt;   
 ## [10] &lt;NA&gt;   
 ## Levels: yes no don't know refused</code></pre>
 <p><code>sort_levels</code> specifies how the levels should be sorted: <code>"none"</code> to keep the order in which value labels have been defined, <code>"values"</code> to order the levels according to the values and <code>"labels"</code> according to the labels. <code>"auto"</code> (default) will be equivalent to <code>"none"</code> except if some values with no attached labels are found and are not dropped. In that case, <code>"values"</code> will be used.</p>
-<div class="sourceCode" id="cb102"><html><body><pre class="r"><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span>(<span class="no">v</span>, <span class="kw">sort_levels</span> <span class="kw">=</span> <span class="st">"n"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb103"><html><body><pre class="r"><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span>(<span class="no">v</span>, <span class="kw">sort_levels</span> <span class="kw">=</span> <span class="st">"n"</span>)</pre></body></html></div>
 <pre><code>##  [1] yes     2       2       2       no      refused yes     no      2      
 ## [10] &lt;NA&gt;   
 ## Levels: yes no don't know refused 2</code></pre>
-<div class="sourceCode" id="cb104"><html><body><pre class="r"><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span>(<span class="no">v</span>, <span class="kw">sort_levels</span> <span class="kw">=</span> <span class="st">"v"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb105"><html><body><pre class="r"><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span>(<span class="no">v</span>, <span class="kw">sort_levels</span> <span class="kw">=</span> <span class="st">"v"</span>)</pre></body></html></div>
 <pre><code>##  [1] yes     2       2       2       no      refused yes     no      2      
 ## [10] &lt;NA&gt;   
 ## Levels: yes 2 no don't know refused</code></pre>
-<div class="sourceCode" id="cb106"><html><body><pre class="r"><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span>(<span class="no">v</span>, <span class="kw">sort_levels</span> <span class="kw">=</span> <span class="st">"l"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb107"><html><body><pre class="r"><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span>(<span class="no">v</span>, <span class="kw">sort_levels</span> <span class="kw">=</span> <span class="st">"l"</span>)</pre></body></html></div>
 <pre><code>##  [1] yes     2       2       2       no      refused yes     no      2      
 ## [10] &lt;NA&gt;   
 ## Levels: 2 don't know no refused yes</code></pre>
 <p>The function <code>to_labelled</code> could be used to turn a factor into a labelled numeric vector.</p>
-<div class="sourceCode" id="cb108"><html><body><pre class="r"><span class="no">f</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(<span class="fl">1</span>:<span class="fl">3</span>, <span class="kw">labels</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>))
+<div class="sourceCode" id="cb109"><html><body><pre class="r"><span class="no">f</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(<span class="fl">1</span>:<span class="fl">3</span>, <span class="kw">labels</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>))
 <span class="fu"><a href="../reference/to_labelled.html">to_labelled</a></span>(<span class="no">f</span>)</pre></body></html></div>
 <pre><code>## &lt;Labelled double&gt;
 ## [1] 1 2 3
@@ -560,7 +571,7 @@
 ##      2     b
 ##      3     c</code></pre>
 <p>Note that <code><a href="../reference/to_labelled.html">to_labelled(to_factor(v))</a></code> will not be equal to <code>v</code> due to the way factors are stored internally by <strong>R</strong>.</p>
-<div class="sourceCode" id="cb110"><html><body><pre class="r"><span class="no">v</span></pre></body></html></div>
+<div class="sourceCode" id="cb111"><html><body><pre class="r"><span class="no">v</span></pre></body></html></div>
 <pre><code>## &lt;Labelled double&gt;
 ##  [1]  1  2  2  2  3  9  1  3  2 NA
 ## 
@@ -570,7 +581,7 @@
 ##      3         no
 ##      8 don't know
 ##      9    refused</code></pre>
-<div class="sourceCode" id="cb112"><html><body><pre class="r"><span class="fu"><a href="../reference/to_labelled.html">to_labelled</a></span>(<span class="fu"><a href="../reference/to_factor.html">to_factor</a></span>(<span class="no">v</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb113"><html><body><pre class="r"><span class="fu"><a href="../reference/to_labelled.html">to_labelled</a></span>(<span class="fu"><a href="../reference/to_factor.html">to_factor</a></span>(<span class="no">v</span>))</pre></body></html></div>
 <pre><code>## &lt;Labelled double&gt;
 ##  [1]  1  2  2  2  3  5  1  3  2 NA
 ## 
@@ -582,6 +593,147 @@
 ##      4 don't know
 ##      5    refused</code></pre>
 </div>
+<div id="other-type-of-conversions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#other-type-of-conversions" class="anchor"></a>Other type of conversions</h2>
+<p>You can use <code><a href="../reference/to_character.html">to_character()</a></code> for converting into a character vector instead of a factor.</p>
+<div class="sourceCode" id="cb115"><html><body><pre class="r"><span class="no">v</span></pre></body></html></div>
+<pre><code>## &lt;Labelled double&gt;
+##  [1]  1  2  2  2  3  9  1  3  2 NA
+## 
+## Labels:
+##  value      label
+##      1        yes
+##      3         no
+##      8 don't know
+##      9    refused</code></pre>
+<div class="sourceCode" id="cb117"><html><body><pre class="r"><span class="fu"><a href="../reference/to_character.html">to_character</a></span>(<span class="no">v</span>)</pre></body></html></div>
+<pre><code>##  [1] "yes"     "2"       "2"       "2"       "no"      "refused" "yes"    
+##  [8] "no"      "2"       NA</code></pre>
+<p>To remove the <code>haven_class</code>, you can simply use <code><a href="https://rdrr.io/r/base/class.html">unclass()</a></code>.</p>
+<div class="sourceCode" id="cb119"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/class.html">unclass</a></span>(<span class="no">v</span>)</pre></body></html></div>
+<pre><code>##  [1]  1  2  2  2  3  9  1  3  2 NA
+## attr(,"labels")
+##        yes         no don't know    refused 
+##          1          3          8          9</code></pre>
+<p>Note that value labels will be preserved as an attribute to the vector.</p>
+<div class="sourceCode" id="cb121"><html><body><pre class="r"><span class="fu"><a href="../reference/remove_labels.html">remove_val_labels</a></span>(<span class="no">v</span>)</pre></body></html></div>
+<pre><code>##  [1]  1  2  2  2  3  9  1  3  2 NA</code></pre>
+<p>To remove value labels, use <code><a href="../reference/remove_labels.html">remove_val_labels()</a></code>.</p>
+<div class="sourceCode" id="cb123"><html><body><pre class="r"><span class="fu"><a href="../reference/remove_labels.html">remove_val_labels</a></span>(<span class="no">v</span>)</pre></body></html></div>
+<pre><code>##  [1]  1  2  2  2  3  9  1  3  2 NA</code></pre>
+<p>Note that if your vector does have user-defined missing values, you may also want to use <code><a href="../reference/remove_labels.html">remove_user_na()</a></code>.</p>
+<div class="sourceCode" id="cb125"><html><body><pre class="r"><span class="no">x</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">9</span>)
+<span class="fu"><a href="../reference/na_values.html">na_values</a></span>(<span class="no">x</span>) <span class="kw">&lt;-</span> <span class="fl">9</span>
+<span class="fu"><a href="../reference/val_labels.html">val_labels</a></span>(<span class="no">x</span>) <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">yes</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">no</span> <span class="kw">=</span> <span class="fl">2</span>)
+<span class="fu"><a href="../reference/var_label.html">var_label</a></span>(<span class="no">x</span>) <span class="kw">&lt;-</span> <span class="st">"A test variable"</span>
+<span class="no">x</span></pre></body></html></div>
+<pre><code>## &lt;Labelled SPSS double&gt;: A test variable
+## [1] 1 2 2 9
+## Missing values: 9
+## 
+## Labels:
+##  value label
+##      1   yes
+##      2    no</code></pre>
+<div class="sourceCode" id="cb127"><html><body><pre class="r"><span class="fu"><a href="../reference/remove_labels.html">remove_val_labels</a></span>(<span class="no">x</span>)</pre></body></html></div>
+<pre><code>## &lt;Labelled SPSS double&gt;: A test variable
+## [1] 1 2 2 9
+## Missing values: 9</code></pre>
+<div class="sourceCode" id="cb129"><html><body><pre class="r"><span class="fu"><a href="../reference/remove_labels.html">remove_user_na</a></span>(<span class="no">x</span>)</pre></body></html></div>
+<pre><code>## Some user defined missing values have been removed but not converted to NA.</code></pre>
+<pre><code>## &lt;Labelled double&gt;: A test variable
+## [1] 1 2 2 9
+## 
+## Labels:
+##  value label
+##      1   yes
+##      2    no</code></pre>
+<div class="sourceCode" id="cb132"><html><body><pre class="r"><span class="fu"><a href="../reference/remove_labels.html">remove_user_na</a></span>(<span class="no">x</span>, <span class="kw">user_na_to_na</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
+<pre><code>## &lt;Labelled double&gt;: A test variable
+## [1]  1  2  2 NA
+## 
+## Labels:
+##  value label
+##      1   yes
+##      2    no</code></pre>
+<div class="sourceCode" id="cb134"><html><body><pre class="r"><span class="fu"><a href="../reference/remove_labels.html">remove_val_labels</a></span>(<span class="fu"><a href="../reference/remove_labels.html">remove_user_na</a></span>(<span class="no">x</span>))</pre></body></html></div>
+<pre><code>## Some user defined missing values have been removed but not converted to NA.</code></pre>
+<pre><code>## [1] 1 2 2 9
+## attr(,"label")
+## [1] "A test variable"</code></pre>
+<div class="sourceCode" id="cb137"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/class.html">unclass</a></span>(<span class="no">x</span>)</pre></body></html></div>
+<pre><code>## [1] 1 2 2 9
+## attr(,"na_values")
+## [1] 9
+## attr(,"labels")
+## yes  no 
+##   1   2 
+## attr(,"label")
+## [1] "A test variable"</code></pre>
+<p>You can remove all labels and user-defined missing values with <code><a href="../reference/remove_labels.html">remove_labels()</a></code>. Use <code>keep_var_label = TRUE</code> to preserve only variable label.</p>
+<div class="sourceCode" id="cb139"><html><body><pre class="r"><span class="fu"><a href="../reference/remove_labels.html">remove_labels</a></span>(<span class="no">x</span>, <span class="kw">user_na_to_na</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
+<pre><code>## [1]  1  2  2 NA</code></pre>
+<div class="sourceCode" id="cb141"><html><body><pre class="r"><span class="fu"><a href="../reference/remove_labels.html">remove_labels</a></span>(<span class="no">x</span>, <span class="kw">user_na_to_na</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">keep_var_label</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
+<pre><code>## [1]  1  2  2 NA
+## attr(,"label")
+## [1] "A test variable"</code></pre>
+</div>
+<div id="conditionnal-conversion-to-factors" class="section level2">
+<h2 class="hasAnchor">
+<a href="#conditionnal-conversion-to-factors" class="anchor"></a>Conditionnal conversion to factors</h2>
+<p>For anay analysis, tt is the responsability of user to identify which variables should be considered as categorical (and therefore converted into factors) and which variables should be treated as continuous (and therefore unclassed into numeric).</p>
+<p>In most of cases, if data documentation was properly done, categorical variables corresponds to vectors where all observed values have a value label while vectors where only few values have a value label should be considered as continuous.</p>
+<p>In that situation, you could apply the <code><a href="../reference/to_factor.html">unlabelled()</a></code> method to an overall data frame. By default, <code><a href="../reference/to_factor.html">unlabelled()</a></code> works as follow:</p>
+<ul>
+<li>if a column doesn’t inherit the <code>haven_labelled</code> class, it will be not affected;</li>
+<li>if all observed values have a corresponding value label, the column will be converted into a facter;</li>
+<li>otherwise, the column will be unclassed (and converted back to a numeric or character vector).</li>
+</ul>
+<div class="sourceCode" id="cb143"><html><body><pre class="r"><span class="no">df</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(
+  <span class="kw">a</span> <span class="kw">=</span> <span class="fu"><a href="../reference/labelled.html">labelled</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>), <span class="kw">labels</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">No</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">Yes</span> <span class="kw">=</span> <span class="fl">2</span>)),
+  <span class="kw">b</span> <span class="kw">=</span> <span class="fu"><a href="../reference/labelled.html">labelled</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>), <span class="kw">labels</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">No</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">Yes</span> <span class="kw">=</span> <span class="fl">2</span>, <span class="kw">DK</span> <span class="kw">=</span> <span class="fl">3</span>)),
+  <span class="kw">c</span> <span class="kw">=</span> <span class="fu"><a href="../reference/labelled.html">labelled</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">2</span>), <span class="kw">labels</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">No</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">Yes</span> <span class="kw">=</span> <span class="fl">2</span>, <span class="kw">DK</span> <span class="kw">=</span> <span class="fl">3</span>)),
+  <span class="kw">d</span> <span class="kw">=</span> <span class="fu"><a href="../reference/labelled.html">labelled</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"a"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="kw">labels</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">No</span> <span class="kw">=</span> <span class="st">"a"</span>, <span class="kw">Yes</span> <span class="kw">=</span> <span class="st">"b"</span>)),
+  <span class="kw">e</span> <span class="kw">=</span> <span class="fu"><a href="../reference/labelled_spss.html">labelled_spss</a></span>(
+    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>, <span class="fl">9</span>, <span class="fl">1</span>, <span class="fl">2</span>),
+    <span class="kw">labels</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">No</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">Yes</span> <span class="kw">=</span> <span class="fl">2</span>),
+    <span class="kw">na_values</span> <span class="kw">=</span> <span class="fl">9</span>
+    )
+)
+<span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="no">df</span>)</pre></body></html></div>
+<pre><code>## Rows: 4
+## Columns: 5
+## $ a &lt;dbl+lbl&gt; 1, 1, 2, 3
+## $ b &lt;dbl+lbl&gt; 1, 1, 2, 3
+## $ c &lt;dbl+lbl&gt; 1, 1, 2, 2
+## $ d &lt;chr+lbl&gt; a, a, b, c
+## $ e &lt;dbl+lbl&gt; 1, 9, 1, 2</code></pre>
+<div class="sourceCode" id="cb145"><html><body><pre class="r"><span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span>(<span class="no">df</span>))</pre></body></html></div>
+<pre><code>## Rows: 4
+## Columns: 5
+## $ a &lt;dbl&gt; 1, 1, 2, 3
+## $ b &lt;fct&gt; No, No, Yes, DK
+## $ c &lt;fct&gt; No, No, Yes, Yes
+## $ d &lt;chr&gt; "a", "a", "b", "c"
+## $ e &lt;dbl&gt; 1, 9, 1, 2</code></pre>
+<div class="sourceCode" id="cb147"><html><body><pre class="r"><span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span>(<span class="no">df</span>, <span class="kw">user_na_to_na</span> <span class="kw">=</span> <span class="fl">TRUE</span>))</pre></body></html></div>
+<pre><code>## Rows: 4
+## Columns: 5
+## $ a &lt;dbl&gt; 1, 1, 2, 3
+## $ b &lt;fct&gt; No, No, Yes, DK
+## $ c &lt;fct&gt; No, No, Yes, Yes
+## $ d &lt;chr&gt; "a", "a", "b", "c"
+## $ e &lt;fct&gt; No, NA, No, Yes</code></pre>
+<div class="sourceCode" id="cb149"><html><body><pre class="r"><span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span>(<span class="no">df</span>, <span class="kw">drop_unused_labels</span> <span class="kw">=</span> <span class="fl">TRUE</span>))</pre></body></html></div>
+<pre><code>## Rows: 4
+## Columns: 5
+## $ a &lt;dbl&gt; 1, 1, 2, 3
+## $ b &lt;fct&gt; No, No, Yes, DK
+## $ c &lt;fct&gt; No, No, Yes, Yes
+## $ d &lt;chr&gt; "a", "a", "b", "c"
+## $ e &lt;dbl&gt; 1, 9, 1, 2</code></pre>
+</div>
 <div id="importing-labelled-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#importing-labelled-data" class="anchor"></a>Importing labelled data</h2>
@@ -592,7 +744,7 @@
 <li>For <strong>Stata</strong> files, set <code>convert.factors = FALSE</code> when calling <code>read.dta</code> to avoid conversion of variables with value labels into factors. So far, missing values defined in Stata are always imported as <code>NA</code> by <code>read.dta</code> and could not be retrieved by <code>foreign_to_labelled</code>.</li>
 </ul>
 <p>The <strong>memisc</strong> package provide functions to import variable metadata and store them in specific object of class <code>data.set</code>. The <code>to_labelled</code> method can convert a data.set into a labelled data frame.</p>
-<div class="sourceCode" id="cb114"><html><body><pre class="r">  <span class="co"># from foreign</span>
+<div class="sourceCode" id="cb151"><html><body><pre class="r">  <span class="co"># from foreign</span>
   <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">foreign</span>)
   <span class="no">df</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/to_labelled.html">to_labelled</a></span>(<span class="fu"><a href="https://rdrr.io/pkg/foreign/man/read.spss.html">read.spss</a></span>(
     <span class="st">"file.sav"</span>,
@@ -617,7 +769,7 @@
 <h2 class="hasAnchor">
 <a href="#using-labelled-with-dplyrmagrittr" class="anchor"></a>Using labelled with dplyr/magrittr</h2>
 <p>If you are using the <code><a href="https://dplyr.tidyverse.org/reference/reexports.html">%&gt;%</a></code> operator, you can use the functions <code>set_variable_labels</code>, <code>set_value_labels</code>, <code>add_value_labels</code> and <code>remove_value_labels</code>.</p>
-<div class="sourceCode" id="cb115"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb152"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)</pre></body></html></div>
 <pre><code>## 
 ## Attachement du package : 'dplyr'</code></pre>
 <pre><code>## The following objects are masked from 'package:stats':
@@ -626,14 +778,14 @@
 <pre><code>## The following objects are masked from 'package:base':
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode" id="cb119"><html><body><pre class="r"><span class="no">df</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">data_frame</a></span>(<span class="kw">s1</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"M"</span>, <span class="st">"M"</span>, <span class="st">"F"</span>), <span class="kw">s2</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span>)) <span class="kw">%&gt;%</span>
+<div class="sourceCode" id="cb156"><html><body><pre class="r"><span class="no">df</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">data_frame</a></span>(<span class="kw">s1</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"M"</span>, <span class="st">"M"</span>, <span class="st">"F"</span>), <span class="kw">s2</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span>)) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/var_label.html">set_variable_labels</a></span>(<span class="kw">s1</span> <span class="kw">=</span> <span class="st">"Sex"</span>, <span class="kw">s2</span> <span class="kw">=</span> <span class="st">"Question"</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/val_labels.html">set_value_labels</a></span>(<span class="kw">s1</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">Male</span> <span class="kw">=</span> <span class="st">"M"</span>, <span class="kw">Female</span> <span class="kw">=</span> <span class="st">"F"</span>), <span class="kw">s2</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">Yes</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">No</span> <span class="kw">=</span> <span class="fl">2</span>))</pre></body></html></div>
 <pre><code>## Warning: `data_frame()` is deprecated as of tibble 1.1.0.
 ## Please use `tibble()` instead.
 ## This warning is displayed once every 8 hours.
 ## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
-<div class="sourceCode" id="cb121"><html><body><pre class="r"><span class="no">df</span>$<span class="no">s2</span></pre></body></html></div>
+<div class="sourceCode" id="cb158"><html><body><pre class="r"><span class="no">df</span>$<span class="no">s2</span></pre></body></html></div>
 <pre><code>## &lt;Labelled double&gt;: Question
 ## [1] 1 1 2
 ## 
@@ -642,7 +794,7 @@
 ##      1   Yes
 ##      2    No</code></pre>
 <p><code>set_value_labels</code> will replace the list of value labels while <code>add_value_labels</code> will update it.</p>
-<div class="sourceCode" id="cb123"><html><body><pre class="r"><span class="no">df</span> <span class="kw">&lt;-</span> <span class="no">df</span> <span class="kw">%&gt;%</span>
+<div class="sourceCode" id="cb160"><html><body><pre class="r"><span class="no">df</span> <span class="kw">&lt;-</span> <span class="no">df</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/val_labels.html">set_value_labels</a></span>(<span class="kw">s2</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">Yes</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="st">"Don't know"</span> <span class="kw">=</span> <span class="fl">8</span>, <span class="kw">Unknown</span> <span class="kw">=</span> <span class="fl">9</span>))
 <span class="no">df</span>$<span class="no">s2</span></pre></body></html></div>
 <pre><code>## &lt;Labelled double&gt;: Question
@@ -653,7 +805,7 @@
 ##      1        Yes
 ##      8 Don't know
 ##      9    Unknown</code></pre>
-<div class="sourceCode" id="cb125"><html><body><pre class="r"><span class="no">df</span> <span class="kw">&lt;-</span> <span class="no">df</span> <span class="kw">%&gt;%</span>
+<div class="sourceCode" id="cb162"><html><body><pre class="r"><span class="no">df</span> <span class="kw">&lt;-</span> <span class="no">df</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/val_labels.html">add_value_labels</a></span>(<span class="kw">s2</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">No</span> <span class="kw">=</span> <span class="fl">2</span>))
 <span class="no">df</span>$<span class="no">s2</span></pre></body></html></div>
 <pre><code>## &lt;Labelled double&gt;: Question
@@ -666,7 +818,7 @@
 ##      9    Unknown
 ##      2         No</code></pre>
 <p>You can also remove some variable and/or value labels.</p>
-<div class="sourceCode" id="cb127"><html><body><pre class="r"><span class="no">df</span> <span class="kw">&lt;-</span> <span class="no">df</span> <span class="kw">%&gt;%</span>
+<div class="sourceCode" id="cb164"><html><body><pre class="r"><span class="no">df</span> <span class="kw">&lt;-</span> <span class="no">df</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/var_label.html">set_variable_labels</a></span>(<span class="kw">s1</span> <span class="kw">=</span> <span class="kw">NULL</span>)
 
 <span class="co"># removing one value label</span>
@@ -681,7 +833,7 @@
 ##      1        Yes
 ##      8 Don't know
 ##      9    Unknown</code></pre>
-<div class="sourceCode" id="cb129"><html><body><pre class="r"><span class="co"># removing several value labels</span>
+<div class="sourceCode" id="cb166"><html><body><pre class="r"><span class="co"># removing several value labels</span>
 <span class="no">df</span> <span class="kw">&lt;-</span> <span class="no">df</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/val_labels.html">remove_value_labels</a></span>(<span class="kw">s2</span> <span class="kw">=</span> <span class="fl">8</span>:<span class="fl">9</span>)
 <span class="no">df</span>$<span class="no">s2</span></pre></body></html></div>
@@ -691,21 +843,21 @@
 ## Labels:
 ##  value label
 ##      1   Yes</code></pre>
-<div class="sourceCode" id="cb131"><html><body><pre class="r"><span class="co"># removing all value labels</span>
+<div class="sourceCode" id="cb168"><html><body><pre class="r"><span class="co"># removing all value labels</span>
 <span class="no">df</span> <span class="kw">&lt;-</span> <span class="no">df</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/val_labels.html">set_value_labels</a></span>(<span class="kw">s2</span> <span class="kw">=</span> <span class="kw">NULL</span>)
 <span class="no">df</span>$<span class="no">s2</span></pre></body></html></div>
 <pre><code>## [1] 1 1 2
 ## attr(,"label")
 ## [1] "Question"</code></pre>
-<p>To convert variables, you can use functions as <code>mutate_if</code> or <code>mutate_at</code>. See the example below.</p>
-<div class="sourceCode" id="cb133"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">questionr</span>)</pre></body></html></div>
+<p>To convert variables, the easiest is to use <code><a href="../reference/to_factor.html">unlabelled()</a></code>.</p>
+<div class="sourceCode" id="cb170"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">questionr</span>)</pre></body></html></div>
 <pre><code>## 
 ## Attachement du package : 'questionr'</code></pre>
 <pre><code>## The following object is masked from 'package:labelled':
 ## 
 ##     lookfor</code></pre>
-<div class="sourceCode" id="cb136"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">fertility</span>)
+<div class="sourceCode" id="cb173"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">fertility</span>)
 <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="no">women</span>)</pre></body></html></div>
 <pre><code>## Rows: 2,000
 ## Columns: 17
@@ -726,7 +878,28 @@
 ## $ tv                &lt;dbl+lbl&gt; 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, ...
 ## $ ideal_nb_children &lt;dbl+lbl&gt; 4, 4, 4, 4, 4, 5, 10, 5, 4, 5, 6, 10, 2, 6, 6...
 ## $ test              &lt;dbl+lbl&gt; 0, 9, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, ...</code></pre>
-<div class="sourceCode" id="cb138"><html><body><pre class="r"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="fu"><a href="../reference/to_factor.html">to_factor</a></span>(<span class="no">women</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb175"><html><body><pre class="r"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="no">women</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span>())</pre></body></html></div>
+<pre><code>## Rows: 2,000
+## Columns: 17
+## $ id_woman          &lt;dbl&gt; 391, 1643, 85, 881, 1981, 1072, 1978, 1607, 738, ...
+## $ id_household      &lt;dbl&gt; 381, 1515, 85, 844, 1797, 1015, 1794, 1486, 711, ...
+## $ weight            &lt;dbl&gt; 1.803150, 1.803150, 1.803150, 1.803150, 1.803150,...
+## $ interview_date    &lt;date&gt; 2012-05-05, 2012-01-23, 2012-01-21, 2012-01-06, ...
+## $ date_of_birth     &lt;date&gt; 1997-03-07, 1982-01-06, 1979-01-01, 1968-03-29, ...
+## $ age               &lt;dbl&gt; 15, 30, 33, 43, 25, 18, 45, 23, 49, 31, 26, 45, 2...
+## $ residency         &lt;fct&gt; rural, rural, rural, rural, rural, rural, rural, ...
+## $ region            &lt;fct&gt; West, West, West, West, West, South, South, South...
+## $ instruction       &lt;fct&gt; none, none, none, none, primary, none, none, none...
+## $ employed          &lt;fct&gt; yes, yes, no, yes, yes, no, yes, no, yes, yes, ye...
+## $ matri             &lt;fct&gt; single, living together, living together, living ...
+## $ religion          &lt;fct&gt; Muslim, Protestant, Christian, Protestant, Christ...
+## $ newspaper         &lt;fct&gt; no, no, no, no, no, no, no, no, no, no, no, no, n...
+## $ radio             &lt;fct&gt; no, yes, yes, no, no, yes, yes, no, no, no, yes, ...
+## $ tv                &lt;fct&gt; no, no, no, no, no, yes, no, no, no, no, yes, yes...
+## $ ideal_nb_children &lt;dbl&gt; 4, 4, 4, 4, 4, 5, 10, 5, 4, 5, 6, 10, 2, 6, 6, 6,...
+## $ test              &lt;fct&gt; no, missing, no, no, yes, no, no, no, no, yes, ye...</code></pre>
+<p>Alternatively, you can use functions as <code>mutate_if</code> or <code>mutate_at</code>. See the example below.</p>
+<div class="sourceCode" id="cb177"><html><body><pre class="r"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="fu"><a href="../reference/to_factor.html">to_factor</a></span>(<span class="no">women</span>))</pre></body></html></div>
 <pre><code>## Rows: 2,000
 ## Columns: 17
 ## $ id_woman          &lt;dbl&gt; 391, 1643, 85, 881, 1981, 1072, 1978, 1607, 738, ...
@@ -746,7 +919,7 @@
 ## $ tv                &lt;fct&gt; no, no, no, no, no, yes, no, no, no, no, yes, yes...
 ## $ ideal_nb_children &lt;fct&gt; 4, 4, 4, 4, 4, 5, 10, 5, 4, 5, 6, 10, 2, 6, 6, 6,...
 ## $ test              &lt;fct&gt; no, missing, no, no, yes, no, no, no, no, yes, ye...</code></pre>
-<div class="sourceCode" id="cb140"><html><body><pre class="r"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="no">women</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_if</a></span>(<span class="no">is.labelled</span>, <span class="no">to_factor</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb179"><html><body><pre class="r"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="no">women</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_if</a></span>(<span class="no">is.labelled</span>, <span class="no">to_factor</span>))</pre></body></html></div>
 <pre><code>## Rows: 2,000
 ## Columns: 17
 ## $ id_woman          &lt;dbl&gt; 391, 1643, 85, 881, 1981, 1072, 1978, 1607, 738, ...
@@ -766,7 +939,7 @@
 ## $ tv                &lt;fct&gt; no, no, no, no, no, yes, no, no, no, no, yes, yes...
 ## $ ideal_nb_children &lt;fct&gt; 4, 4, 4, 4, 4, 5, 10, 5, 4, 5, 6, 10, 2, 6, 6, 6,...
 ## $ test              &lt;fct&gt; no, missing, no, no, yes, no, no, no, no, yes, ye...</code></pre>
-<div class="sourceCode" id="cb142"><html><body><pre class="r"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="no">women</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span>(<span class="no">employed</span>:<span class="no">tv</span>), <span class="no">to_factor</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb181"><html><body><pre class="r"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="no">women</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span>(<span class="no">employed</span>:<span class="no">religion</span>), <span class="no">to_factor</span>))</pre></body></html></div>
 <pre><code>## Rows: 2,000
 ## Columns: 17
 ## $ id_woman          &lt;dbl&gt; 391, 1643, 85, 881, 1981, 1072, 1978, 1607, 738, ...
@@ -781,9 +954,9 @@
 ## $ employed          &lt;fct&gt; yes, yes, no, yes, yes, no, yes, no, yes, yes, ye...
 ## $ matri             &lt;fct&gt; single, living together, living together, living ...
 ## $ religion          &lt;fct&gt; Muslim, Protestant, Christian, Protestant, Christ...
-## $ newspaper         &lt;fct&gt; no, no, no, no, no, no, no, no, no, no, no, no, n...
-## $ radio             &lt;fct&gt; no, yes, yes, no, no, yes, yes, no, no, no, yes, ...
-## $ tv                &lt;fct&gt; no, no, no, no, no, yes, no, no, no, no, yes, yes...
+## $ newspaper         &lt;dbl+lbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, ...
+## $ radio             &lt;dbl+lbl&gt; 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, ...
+## $ tv                &lt;dbl+lbl&gt; 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, ...
 ## $ ideal_nb_children &lt;dbl+lbl&gt; 4, 4, 4, 4, 4, 5, 10, 5, 4, 5, 6, 10, 2, 6, 6...
 ## $ test              &lt;dbl+lbl&gt; 0, 9, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, ...</code></pre>
 </div>
