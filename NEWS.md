@@ -1,4 +1,4 @@
-# labelled (development version)
+# labelled 2.3.1
 
 * an additional argument `keep_var_label` for `remove_labels()`
 * bug fix for `unlabelled()` when applied on a vector
