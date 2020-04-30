@@ -34,7 +34,7 @@ are performed using classic **R** vector types.
 In **aproach B**, `haven_labelled` vectors are kept for data cleaning and
 recoding, allowing to preserved original recoding, in particular if data
 should be rexported after that step. Functions provided by `labelled` will
-be useful for managing value labels. However, as un approach A, `haven_labelled`
+be useful for managing value labels. However, as in approach A, `haven_labelled`
 vectors will have to be converted into classic factors or numeric vectors
 before data analysis (in particular modelling) as this is the way categorical
 and continous variables should be coded for analysis functions.
