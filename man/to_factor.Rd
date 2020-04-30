@@ -112,4 +112,17 @@ v <- labelled(c(1, 1, 2, 3), labels = c(No = 1, Yes = 2))
 to_factor(v)
 to_factor(v, strict = TRUE) # Not converted because 3 does not have a label
 to_factor(v, strict = TRUE, unclass = TRUE)
+
+df <- data.frame(
+  a = labelled(c(1, 1, 2, 3), labels = c(No = 1, Yes = 2)),
+  b = labelled(c(1, 1, 2, 3), labels = c(No = 1, Yes = 2, DK = 3)),
+  c = labelled(c("a", "a", "b", "c"), labels = c(No = "a", Maybe = "b", Yes = "c")),
+  d = 1:4,
+  e = factor(c("item1", "item2", "item1", "item2")),
+  f = c("itemA", "itemA", "itemB", "itemB")
+)
+if (require(dplyr)) {
+  glimpse(df)
+  glimpse(unlabelled(df))
+}
 }

@@ -171,6 +171,20 @@ to_factor.data.frame <- function(x, levels = c("labels", "values", "prefixed"),
 #' or of a data.frame. If all observed values have a value label, then the vector
 #' will be converted into a factor. Otherwise, the vector will be unclassed.
 #' If you want to remove value labels in all cases, use \code{\link{remove_val_labels}}.
+#' @examples
+#'
+#' df <- data.frame(
+#'   a = labelled(c(1, 1, 2, 3), labels = c(No = 1, Yes = 2)),
+#'   b = labelled(c(1, 1, 2, 3), labels = c(No = 1, Yes = 2, DK = 3)),
+#'   c = labelled(c("a", "a", "b", "c"), labels = c(No = "a", Maybe = "b", Yes = "c")),
+#'   d = 1:4,
+#'   e = factor(c("item1", "item2", "item1", "item2")),
+#'   f = c("itemA", "itemA", "itemB", "itemB")
+#' )
+#' if (require(dplyr)) {
+#'   glimpse(df)
+#'   glimpse(unlabelled(df))
+#' }
 #' @export
 unlabelled <- function(x, ...) {
   if (is.data.frame(x))
