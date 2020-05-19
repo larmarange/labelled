@@ -67,8 +67,9 @@ na_values.data.frame <- function(x) {
 `na_values<-.haven_labelled` <- function(x, value) {
   if (is.null(value)) {
     attr(x, "na_values") <- NULL
-    if (is.null(attr(x, "na_range")))
-      class(x) <- "haven_labelled"
+    if (is.null(attr(x, "na_range"))) {
+      x <- labelled(x, val_labels(x), label = var_label(x))
+    }
   } else {
     x <- labelled_spss(x, val_labels(x), na_values = value, na_range = attr(x, "na_range"), label = var_label(x))
   }
@@ -115,8 +116,9 @@ na_range.data.frame <- function(x) {
 `na_range<-.haven_labelled` <- function(x, value) {
   if (is.null(value)) {
     attr(x, "na_range") <- NULL
-    if (is.null(attr(x, "na_values")))
-      class(x) <- "haven_labelled"
+    if (is.null(attr(x, "na_values"))) {
+      x <- labelled(x, val_labels(x), label = var_label(x))
+    }
   } else {
     x <- labelled_spss(x, val_labels(x), na_values = attr(x, "na_values"), na_range = value, label = var_label(x))
   }
