@@ -50,7 +50,7 @@ test_that("var_label preserved data.frame type", {
 test_that("labelled return an object of class haven_labelled",{
   x <- labelled(c(1,2,3), c(yes = 1, maybe = 2, no = 3))
   expect_true(is.labelled(x))
-  expect_equal(class(x), "haven_labelled")
+  expect_s3_class(x, "haven_labelled")
 })
 
 test_that("x must be numeric or character", {
@@ -279,12 +279,12 @@ test_that("update_labelled update previous haven's labelled objects but not Hmis
   vhaven <- structure(1:4, label = "label", labels = c(No = 1, Yes = 2), class = "labelled")
   vHmisc <- structure(1:4, label = "label", class = "labelled")
 
-  expect_equal(class(update_labelled(vhaven)), "haven_labelled")
-  expect_equal(class(update_labelled(vHmisc)), "labelled")
+  expect_s3_class(update_labelled(vhaven), "haven_labelled")
+  expect_s3_class(update_labelled(vHmisc), "labelled")
 
   df <- dplyr::tibble(vhaven, vHmisc)
-  expect_equal(class(update_labelled(df)$vhaven), "haven_labelled")
-  expect_equal(class(update_labelled(df)$vHmisc), "labelled")
+  expect_s3_class(update_labelled(df)$vhaven, "haven_labelled")
+  expect_s3_class(update_labelled(df)$vHmisc, "labelled")
 })
 
 test_that("update_labelled update to haven_labelled_spss if there are na values", {
@@ -293,8 +293,8 @@ test_that("update_labelled update to haven_labelled_spss if there are na values"
   v2 <- structure(1:4, label = "label", labels = c(No = 1, Yes = 2),
                   na_range = c(8, 9), class = c("labelled_spss", "labelled"))
 
-  expect_equal(class(update_labelled(v1)), c("haven_labelled_spss", "haven_labelled"))
-  expect_equal(class(update_labelled(v1)), c("haven_labelled_spss", "haven_labelled"))
+  expect_s3_class(update_labelled(v1), "haven_labelled_spss")
+  expect_s3_class(update_labelled(v1), "haven_labelled_spss")
 })
 
 test_that("update_labelled preserve variable and value labels", {
