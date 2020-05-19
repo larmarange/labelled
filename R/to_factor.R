@@ -96,7 +96,7 @@ to_factor.haven_labelled <- function(x, levels = c("labels", "values",
   nolabel <- sort(allval[!allval %in% labels])
   # if there are some values with no label
   if (length(nolabel) > 0) {
-    names(nolabel) <- nolabel
+    names(nolabel) <- as.character(nolabel)
     levs <- c(labels, nolabel)
   } else {
     levs <- labels
