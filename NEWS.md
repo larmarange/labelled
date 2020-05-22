@@ -1,5 +1,7 @@
 # labelled (development version)
 
+* fixes for haven 2.3.0 (#59 by @hadley)
+
 # labelled 2.3.1
 
 * an additional argument `keep_var_label` for `remove_labels()`
