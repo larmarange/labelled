@@ -1,6 +1,6 @@
 ## Test environments
 * local Windows R, R 4.0.0
-* local CentOS 7 install, R 3.6.3
+* local CentOS 7 install, R 4.0.0
 * ubuntu (on travis-ci)
 * win-builder (devel and release)
 
