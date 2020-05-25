@@ -1,6 +1,7 @@
 # labelled (development version)
 
 * fixes for haven 2.3.0 (#59 by @hadley)
+* correct re-export of functions from `haven`
 
 # labelled 2.3.1
 
