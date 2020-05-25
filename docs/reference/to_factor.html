@@ -77,7 +77,7 @@ to_factor(x, strict = TRUE, unclass = TRUE, labelled_only = TRUE)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">labelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.4.0</span>
       </span>
     </div>
 
@@ -250,7 +250,7 @@ will be converted into a factor. Otherwise, the vector will be unclassed.
 If you want to remove value labels in all cases, use <code><a href='remove_labels.html'>remove_val_labels</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>v</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>2</span>,<span class='fl'>2</span>,<span class='fl'>3</span>,<span class='fl'>9</span>,<span class='fl'>1</span>,<span class='fl'>3</span>,<span class='fl'>2</span>,<span class='fl'>NA</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>yes</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>no</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='st'>"don't know"</span> <span class='kw'>=</span> <span class='fl'>9</span>))
+    <pre class="examples"><div class='input'><span class='no'>v</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>2</span>,<span class='fl'>2</span>,<span class='fl'>3</span>,<span class='fl'>9</span>,<span class='fl'>1</span>,<span class='fl'>3</span>,<span class='fl'>2</span>,<span class='fl'>NA</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>yes</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>no</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='st'>"don't know"</span> <span class='kw'>=</span> <span class='fl'>9</span>))
 <span class='fu'>to_factor</span>(<span class='no'>v</span>)</div><div class='output co'>#&gt;  [1] yes        2          2          2          no         don't know
 #&gt;  [7] yes        no         2          &lt;NA&gt;      
 #&gt; Levels: yes 2 no don't know</div><div class='input'><span class='fu'>to_factor</span>(<span class='no'>v</span>, <span class='kw'>nolabel_to_na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;  [1] yes        &lt;NA&gt;       &lt;NA&gt;       &lt;NA&gt;       no         don't know
@@ -264,13 +264,13 @@ If you want to remove value labels in all cases, use <code><a href='remove_label
 #&gt; Levels: yes no don't know 2</div><div class='input'><span class='fu'>to_factor</span>(<span class='no'>v</span>, <span class='kw'>sort_levels</span> <span class='kw'>=</span> <span class='st'>'l'</span>)</div><div class='output co'>#&gt;  [1] yes        2          2          2          no         don't know
 #&gt;  [7] yes        no         2          &lt;NA&gt;      
 #&gt; Levels: 2 don't know no yes</div><div class='input'>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>'H'</span>, <span class='st'>'M'</span>, <span class='st'>'H'</span>, <span class='st'>'L'</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>low</span> <span class='kw'>=</span> <span class='st'>'L'</span>, <span class='kw'>medium</span> <span class='kw'>=</span> <span class='st'>'M'</span>, <span class='kw'>high</span> <span class='kw'>=</span> <span class='st'>'H'</span>))
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>'H'</span>, <span class='st'>'M'</span>, <span class='st'>'H'</span>, <span class='st'>'L'</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>low</span> <span class='kw'>=</span> <span class='st'>'L'</span>, <span class='kw'>medium</span> <span class='kw'>=</span> <span class='st'>'M'</span>, <span class='kw'>high</span> <span class='kw'>=</span> <span class='st'>'H'</span>))
 <span class='fu'>to_factor</span>(<span class='no'>x</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] high   medium high   low   
 #&gt; Levels: low &lt; medium &lt; high</div><div class='input'>
 <span class='co'># Strict conversion</span>
-<span class='no'>v</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>No</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>Yes</span> <span class='kw'>=</span> <span class='fl'>2</span>))
+<span class='no'>v</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>No</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>Yes</span> <span class='kw'>=</span> <span class='fl'>2</span>))
 <span class='fu'>to_factor</span>(<span class='no'>v</span>)</div><div class='output co'>#&gt; [1] No  No  Yes 3  
-#&gt; Levels: No Yes 3</div><div class='input'><span class='fu'>to_factor</span>(<span class='no'>v</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='co'># Not converted because 3 does not have a label</span></div><div class='output co'>#&gt; &lt;Labelled double&gt;
+#&gt; Levels: No Yes 3</div><div class='input'><span class='fu'>to_factor</span>(<span class='no'>v</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='co'># Not converted because 3 does not have a label</span></div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[4]&gt;
 #&gt; [1] 1 1 2 3
 #&gt; 
 #&gt; Labels:
@@ -279,7 +279,34 @@ If you want to remove value labels in all cases, use <code><a href='remove_label
 #&gt;      2   Yes</div><div class='input'><span class='fu'>to_factor</span>(<span class='no'>v</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>unclass</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] 1 1 2 3
 #&gt; attr(,"labels")
 #&gt;  No Yes 
-#&gt;   1   2 </div></pre>
+#&gt;   1   2 </div><div class='input'>
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
+  <span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>No</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>Yes</span> <span class='kw'>=</span> <span class='fl'>2</span>)),
+  <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>No</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>Yes</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>DK</span> <span class='kw'>=</span> <span class='fl'>3</span>)),
+  <span class='kw'>c</span> <span class='kw'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>No</span> <span class='kw'>=</span> <span class='st'>"a"</span>, <span class='kw'>Maybe</span> <span class='kw'>=</span> <span class='st'>"b"</span>, <span class='kw'>Yes</span> <span class='kw'>=</span> <span class='st'>"c"</span>)),
+  <span class='kw'>d</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>4</span>,
+  <span class='kw'>e</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"item1"</span>, <span class='st'>"item2"</span>, <span class='st'>"item1"</span>, <span class='st'>"item2"</span>)),
+  <span class='kw'>f</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"itemA"</span>, <span class='st'>"itemA"</span>, <span class='st'>"itemB"</span>, <span class='st'>"itemB"</span>)
+)
+<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='no'>dplyr</span>)) {
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>glimpse</a></span>(<span class='no'>df</span>)
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>glimpse</a></span>(<span class='fu'>unlabelled</span>(<span class='no'>df</span>))
+}</div><div class='output co'>#&gt; Rows: 4
+#&gt; Columns: 6
+#&gt; $ a <span style='color: #555555;font-style: italic;'>&lt;dbl+lbl&gt;</span><span> 1, 1, 2, 3
+#&gt; $ b </span><span style='color: #555555;font-style: italic;'>&lt;dbl+lbl&gt;</span><span> 1, 1, 2, 3
+#&gt; $ c </span><span style='color: #555555;font-style: italic;'>&lt;chr+lbl&gt;</span><span> "a", "a", "b", "c"
+#&gt; $ d </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> 1, 2, 3, 4
+#&gt; $ e </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> item1, item2, item1, item2
+#&gt; $ f </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "itemA", "itemA", "itemB", "itemB"
+#&gt; Rows: 4
+#&gt; Columns: 6
+#&gt; $ a </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 1, 1, 2, 3
+#&gt; $ b </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> No, No, Yes, DK
+#&gt; $ c </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> No, No, Maybe, Yes
+#&gt; $ d </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> 1, 2, 3, 4
+#&gt; $ e </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> item1, item2, item1, item2
+#&gt; $ f </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "itemA", "itemA", "itemB", "itemB"</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

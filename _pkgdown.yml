@@ -34,7 +34,6 @@ reference:
   - update_labelled
 - title: Other functions and methods
   contents:
-  - mean.haven_labelled
   - recode.haven_labelled
   - remove_attributes
 

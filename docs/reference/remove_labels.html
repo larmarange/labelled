@@ -74,7 +74,7 @@ and remove_labels to remove all." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">labelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.4.0</span>
       </span>
     </div>
 
@@ -171,9 +171,9 @@ will not be automatically converted to <code>NA</code>, except if you specify
 or use <code><a href='to_factor.html'>unlabelled</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='labelled_spss.html'>labelled_spss</a></span>(<span class='fl'>1</span>:<span class='fl'>10</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>Good</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>Bad</span> <span class='kw'>=</span> <span class='fl'>8</span>), <span class='kw'>na_values</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>9</span>, <span class='fl'>10</span>))
+    <pre class="examples"><div class='input'><span class='no'>x1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled_spss.html'>labelled_spss</a></span>(<span class='fl'>1</span>:<span class='fl'>10</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>Good</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>Bad</span> <span class='kw'>=</span> <span class='fl'>8</span>), <span class='kw'>na_values</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>9</span>, <span class='fl'>10</span>))
 <span class='fu'><a href='var_label.html'>var_label</a></span>(<span class='no'>x1</span>) <span class='kw'>&lt;-</span> <span class='st'>"A variable"</span>
-<span class='no'>x1</span></div><div class='output co'>#&gt; &lt;Labelled SPSS integer&gt;: A variable
+<span class='no'>x1</span></div><div class='output co'>#&gt; &lt;labelled_spss&lt;integer&gt;[10]&gt;: A variable
 #&gt;  [1]  1  2  3  4  5  6  7  8  9 10
 #&gt; Missing values: 9, 10
 #&gt; 
@@ -183,7 +183,7 @@ or use <code><a href='to_factor.html'>unlabelled</a></code>.</p>
 #&gt;      8   Bad</div><div class='input'>
 <span class='no'>x2</span> <span class='kw'>&lt;-</span> <span class='fu'>remove_labels</span>(<span class='no'>x1</span>)</div><div class='output co'>#&gt; <span class='message'>Some user defined missing values have been removed but not converted to NA.</span></div><div class='input'><span class='no'>x2</span></div><div class='output co'>#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</div><div class='input'><span class='no'>x3</span> <span class='kw'>&lt;-</span> <span class='fu'>remove_labels</span>(<span class='no'>x1</span>, <span class='kw'>user_na_to_na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 <span class='no'>x3</span></div><div class='output co'>#&gt;  [1]  1  2  3  4  5  6  7  8 NA NA</div><div class='input'><span class='no'>x4</span> <span class='kw'>&lt;-</span> <span class='fu'>remove_user_na</span>(<span class='no'>x1</span>, <span class='kw'>user_na_to_na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='no'>x4</span></div><div class='output co'>#&gt; &lt;Labelled integer&gt;: A variable
+<span class='no'>x4</span></div><div class='output co'>#&gt; &lt;labelled&lt;integer&gt;[10]&gt;: A variable
 #&gt;  [1]  1  2  3  4  5  6  7  8 NA NA
 #&gt; 
 #&gt; Labels:

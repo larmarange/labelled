@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Update labelled data to version 2.0.0 — update_labelled • labelled</title>
+<title>Update labelled data to last version — update_labelled • labelled</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Update labelled data to version 2.0.0 — update_labelled" />
+<meta property="og:title" content="Update labelled data to last version — update_labelled" />
 <meta property="og:description" content="Labelled data imported with haven version 1.1.2 or before or
 created with labelled version 1.1.0 or before was using
 &quot;labelled&quot; and &quot;labelled_spss&quot; classes." />
@@ -74,7 +74,7 @@ created with labelled version 1.1.0 or before was using
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">labelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.4.0</span>
       </span>
     </div>
 
@@ -125,7 +125,7 @@ created with labelled version 1.1.0 or before was using
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Update labelled data to version 2.0.0</h1>
+    <h1>Update labelled data to last version</h1>
     <small class="dont-index">Source: <a href='https://github.com/larmarange/labelled/blob/master/R/retrocompatibility.R'><code>R/retrocompatibility.R</code></a></small>
     <div class="hidden name"><code>update_labelled.Rd</code></div>
     </div>
@@ -139,6 +139,12 @@ created with <code>labelled</code> version 1.1.0 or before was using
     <pre class="usage"><span class='fu'>update_labelled</span>(<span class='no'>x</span>)
 
 <span class='co'># S3 method for labelled</span>
+<span class='fu'>update_labelled</span>(<span class='no'>x</span>)
+
+<span class='co'># S3 method for haven_labelled_spss</span>
+<span class='fu'>update_labelled</span>(<span class='no'>x</span>)
+
+<span class='co'># S3 method for haven_labelled</span>
 <span class='fu'>update_labelled</span>(<span class='no'>x</span>)
 
 <span class='co'># S3 method for data.frame</span>
@@ -157,8 +163,11 @@ created with <code>labelled</code> version 1.1.0 or before was using
 
     <p>Since version 2.0.0 of these two packages, "haven_labelled" and
 "haven_labelled_spss" are used instead.</p>
+<p>Since haven 2.3.0, "haven_labelled" class has been evolving
+using now <span class="pkg">vctrs</span> package.</p>
 <p><code>update_labelled</code> convert labelled vectors
-from the old to the new classes.</p>
+from the old to the new classes and to reconstruct all
+labelled vectors with the last version of the package.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

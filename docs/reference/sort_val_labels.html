@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">labelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.4.0</span>
       </span>
     </div>
 
@@ -159,36 +159,36 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>v</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>maybe</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>yes</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>no</span> <span class='kw'>=</span> <span class='fl'>3</span>))
-<span class='no'>v</span></div><div class='output co'>#&gt; &lt;Labelled double&gt;
+    <pre class="examples"><div class='input'><span class='no'>v</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>maybe</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>yes</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>no</span> <span class='kw'>=</span> <span class='fl'>3</span>))
+<span class='no'>v</span></div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[3]&gt;
 #&gt; [1] 1 2 3
 #&gt; 
 #&gt; Labels:
 #&gt;  value label
 #&gt;      2 maybe
 #&gt;      1   yes
-#&gt;      3    no</div><div class='input'><span class='fu'>sort_val_labels</span>(<span class='no'>v</span>)</div><div class='output co'>#&gt; &lt;Labelled double&gt;
+#&gt;      3    no</div><div class='input'><span class='fu'>sort_val_labels</span>(<span class='no'>v</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[3]&gt;
 #&gt; [1] 1 2 3
 #&gt; 
 #&gt; Labels:
 #&gt;  value label
 #&gt;      1   yes
 #&gt;      2 maybe
-#&gt;      3    no</div><div class='input'><span class='fu'>sort_val_labels</span>(<span class='no'>v</span>, <span class='kw'>decreasing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; &lt;Labelled double&gt;
+#&gt;      3    no</div><div class='input'><span class='fu'>sort_val_labels</span>(<span class='no'>v</span>, <span class='kw'>decreasing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[3]&gt;
 #&gt; [1] 1 2 3
 #&gt; 
 #&gt; Labels:
 #&gt;  value label
 #&gt;      3    no
 #&gt;      2 maybe
-#&gt;      1   yes</div><div class='input'><span class='fu'>sort_val_labels</span>(<span class='no'>v</span>, <span class='st'>'l'</span>)</div><div class='output co'>#&gt; &lt;Labelled double&gt;
+#&gt;      1   yes</div><div class='input'><span class='fu'>sort_val_labels</span>(<span class='no'>v</span>, <span class='st'>'l'</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[3]&gt;
 #&gt; [1] 1 2 3
 #&gt; 
 #&gt; Labels:
 #&gt;  value label
 #&gt;      2 maybe
 #&gt;      3    no
-#&gt;      1   yes</div><div class='input'><span class='fu'>sort_val_labels</span>(<span class='no'>v</span>, <span class='st'>'l'</span>, <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; &lt;Labelled double&gt;
+#&gt;      1   yes</div><div class='input'><span class='fu'>sort_val_labels</span>(<span class='no'>v</span>, <span class='st'>'l'</span>, <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[3]&gt;
 #&gt; [1] 1 2 3
 #&gt; 
 #&gt; Labels:

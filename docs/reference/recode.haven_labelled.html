@@ -73,7 +73,7 @@ works with labelled vectors." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">labelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.4.0</span>
       </span>
     </div>
 
@@ -179,14 +179,14 @@ replaced by this value. Must be either length 1 or the same length as
     <div class='dont-index'><p><code><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></code> (<span class="pkg">dplyr</span>)</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='labelled.html'>labelled</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>yes</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>no</span> <span class='kw'>=</span> <span class='fl'>2</span>))
-<span class='no'>x</span></div><div class='output co'>#&gt; &lt;Labelled integer&gt;
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>yes</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>no</span> <span class='kw'>=</span> <span class='fl'>2</span>))
+<span class='no'>x</span></div><div class='output co'>#&gt; &lt;labelled&lt;integer&gt;[3]&gt;
 #&gt; [1] 1 2 3
 #&gt; 
 #&gt; Labels:
 #&gt;  value label
 #&gt;      1   yes
-#&gt;      2    no</div><div class='input'><span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='no'>x</span>, <span class='kw'>`3`</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</div><div class='output co'>#&gt; &lt;Labelled integer&gt;
+#&gt;      2    no</div><div class='input'><span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='no'>x</span>, <span class='kw'>`3`</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;integer&gt;[3]&gt;
 #&gt; [1] 1 2 2
 #&gt; 
 #&gt; Labels:
