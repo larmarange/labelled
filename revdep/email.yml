@@ -1,5 +1,5 @@
-release_date: May 26
+release_date: May 25
 rel_release_date: today
 my_news_url: https://github.com/larmarange/labelled/blob/master/NEWS.md
-release_version: 2.2.1
-release_details: bug fix for na_values() and na_range()
+release_version: 2.4.0
+release_details: fixes for compatibility with the release of haven 2.3.0 on CRAN
