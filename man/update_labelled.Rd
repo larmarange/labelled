@@ -3,12 +3,18 @@
 \name{update_labelled}
 \alias{update_labelled}
 \alias{update_labelled.labelled}
+\alias{update_labelled.haven_labelled_spss}
+\alias{update_labelled.haven_labelled}
 \alias{update_labelled.data.frame}
-\title{Update labelled data to version 2.0.0}
+\title{Update labelled data to last version}
 \usage{
 update_labelled(x)
 
 \method{update_labelled}{labelled}(x)
+
+\method{update_labelled}{haven_labelled_spss}(x)
+
+\method{update_labelled}{haven_labelled}(x)
 
 \method{update_labelled}{data.frame}(x)
 }
@@ -24,6 +30,10 @@ created with \code{labelled} version 1.1.0 or before was using
 Since version 2.0.0 of these two packages, "haven_labelled" and
 "haven_labelled_spss" are used instead.
 
+Since haven 2.3.0, "haven_labelled" class has been evolving
+using now \pkg{vctrs} package.
+
 \code{update_labelled} convert labelled vectors
-from the old to the new classes.
+from the old to the new classes and to reconstruct all
+labelled vectors with the last version of the package.
 }
