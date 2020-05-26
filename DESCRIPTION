@@ -18,8 +18,7 @@ License: GPL-3
 Encoding: UTF-8
 Imports:
     haven (>= 2.1.0),
-    dplyr,
-    stats
+    dplyr
 Suggests:
     testthat,
     knitr,
