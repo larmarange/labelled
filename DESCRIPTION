@@ -17,7 +17,7 @@ Description: Work with labelled data imported from 'SPSS'
 License: GPL-3
 Encoding: UTF-8
 Imports:
-    haven (>= 2.1.0),
+    haven (>= 2.3.1),
     dplyr
 Suggests:
     testthat,
