@@ -359,3 +359,32 @@ test_that("remove_label works correctly", {
     var_label(x)
   )
 })
+
+# recode --------------------------------------------------------------
+
+test_that("dplyr::recode works properly with labelled vectors", {
+  x <- labelled(1:3, c(yes = 1, no = 2))
+
+  r <- dplyr::recode(x, `3` = 2L)
+  expect_equal(r, labelled(c(1L, 2L, 2L), val_labels(x)))
+
+  r <- dplyr::recode(x, `3` = 2L, .keep_value_labels = FALSE)
+  expect_equal(r, c(1L, 2L, 2L))
+
+  expect_warning(dplyr::recode(x, `3` = "a", .default = "b"))
+
+  x <- labelled(1:4, c(a = 1, b = 2, c = 3, d = 4))
+
+  r <- dplyr::recode(x, `1` = 1L, `2` = 1L, `3` = 2L, `4` = 2L, .combine_value_labels = TRUE)
+  expect_equal(val_labels(r), c("a / b" = 1L, "c / d" = 2L))
+
+  r <- dplyr::recode(x, `2` = 1L, `4` = 3L, .combine_value_labels = TRUE)
+  expect_equal(val_labels(r), c("a / b" = 1L, "c / d" = 3L))
+
+  r <- dplyr::recode(x, `2` = 1L, `4` = 3L, .combine_value_labels = TRUE, .sep = " or ")
+  expect_equal(val_labels(r), c("a or b" = 1L, "c or d" = 3L))
+
+  y <- labelled(1:4, c(a = 1))
+  r <- dplyr::recode(y, `2` = 1L, `4` = 3L, .combine_value_labels = TRUE)
+  expect_equal(val_labels(r), c(a = 1L))
+})
