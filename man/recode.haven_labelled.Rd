@@ -4,7 +4,7 @@
 \alias{recode.haven_labelled}
 \title{Recode values}
 \usage{
-\method{recode}{haven_labelled}(.x, ..., .default = NULL, .missing = NULL)
+\method{recode}{haven_labelled}(.x, ..., .default = NULL, .missing = NULL, .keep_value_labels = TRUE)
 }
 \arguments{
 \item{.x}{A vector to modify}
@@ -32,6 +32,8 @@ are not compatible, unmatched values are replaced with \code{NA}.
 \item{.missing}{If supplied, any missing values in \code{.x} will be
 replaced by this value. Must be either length 1 or the same length as
 \code{.x}.}
+
+\item{.keep_value_labels}{If TRUE, keep original value labels. If FALSE, remove value labels.}
 }
 \description{
 Extend \code{\link[dplyr]{recode}} method from \pkg{haven} to
@@ -41,6 +43,22 @@ works with labelled vectors.
 x <- labelled(1:3, c(yes = 1, no = 2))
 x
 dplyr::recode(x, `3` = 2L)
+
+# do not keep value labels
+dplyr::recode(x, `3` = 2L, .keep_value_labels = FALSE)
+
+# be careful, changes are not of the same type (here integers), NA are created
+dplyr::recode(x, `3` = 2)
+
+# except if you provide .default or new values for all old values
+dplyr::recode(x, `1` = 1, `2` = 1,`3` = 2)
+
+# if you change the type of the vector (here transformed into character)
+# value labels are lost
+dplyr::recode(x, `3` = "b", .default = "a")
+
+# use .keep_value_labels = FALSE to avoid a warning
+dplyr::recode(x, `3` = "b", .default = "a", .keep_value_labels = FALSE)
 }
 \seealso{
 \code{\link[dplyr]{recode}} (\pkg{dplyr})

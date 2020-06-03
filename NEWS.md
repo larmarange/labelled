@@ -1,5 +1,7 @@
 # labelled (development version)
 
+* new `.keep_value_labels` argument for `recode.haven_labelled()`.
+
 # labelled 2.4.0
 
 * fixes for haven 2.3.0 (#59 by @hadley)
