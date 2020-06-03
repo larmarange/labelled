@@ -4,7 +4,15 @@
 \alias{recode.haven_labelled}
 \title{Recode values}
 \usage{
-\method{recode}{haven_labelled}(.x, ..., .default = NULL, .missing = NULL, .keep_value_labels = TRUE)
+\method{recode}{haven_labelled}(
+  .x,
+  ...,
+  .default = NULL,
+  .missing = NULL,
+  .keep_value_labels = TRUE,
+  .combine_value_labels = FALSE,
+  .sep = " / "
+)
 }
 \arguments{
 \item{.x}{A vector to modify}
@@ -33,7 +41,14 @@ are not compatible, unmatched values are replaced with \code{NA}.
 replaced by this value. Must be either length 1 or the same length as
 \code{.x}.}
 
-\item{.keep_value_labels}{If TRUE, keep original value labels. If FALSE, remove value labels.}
+\item{.keep_value_labels}{If TRUE, keep original value labels.
+If FALSE, remove value labels.}
+
+\item{.combine_value_labels}{If TRUE, will combine original value labels
+to generate new value labels. Note that unexpected results could be obtained
+if a same old value is recoded into several different new values.}
+
+\item{.sep}{Separator to be used when combining value labels.}
 }
 \description{
 Extend \code{\link[dplyr]{recode}} method from \pkg{haven} to
@@ -59,6 +74,17 @@ dplyr::recode(x, `3` = "b", .default = "a")
 
 # use .keep_value_labels = FALSE to avoid a warning
 dplyr::recode(x, `3` = "b", .default = "a", .keep_value_labels = FALSE)
+
+# combine value labels
+x <- labelled(1:4, c("strongly agree" = 1, "agree" = 2, "disagree" = 3, "strongly disagree" = 4))
+dplyr::recode(x, `1` = 1L, `2` = 1L, `3` = 2L, `4` = 2L, .combine_value_labels = TRUE)
+dplyr::recode(x, `2` = 1L, `4` = 3L, .combine_value_labels = TRUE)
+dplyr::recode(x, `2` = 1L, `4` = 3L, .combine_value_labels = TRUE, .sep = " or ")
+dplyr::recode(x, `2` = 1L, .default = 2L, .combine_value_labels = TRUE)
+
+# example when combining some values without a label
+y <- labelled(1:4, c("strongly agree" = 1))
+dplyr::recode(y, `2` = 1L, `4` = 3L, .combine_value_labels = TRUE)
 }
 \seealso{
 \code{\link[dplyr]{recode}} (\pkg{dplyr})
