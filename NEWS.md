@@ -3,7 +3,7 @@
 * new `.keep_value_labels` argument for `recode.haven_labelled()`
 * new `.combine_value_labels` argument for `recode.haven_labelled()` (#61)
 * new `drop_unused_value_labels()` method
-- an additional `.labels` argument for `set_value_labels()`
+* an additional `.labels` argument for `set_value_labels()`
 
 # labelled 2.4.0
 
