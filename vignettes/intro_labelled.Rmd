@@ -18,26 +18,26 @@ missing values) to vectors.
 
 It should be noted that **value labels** doesn't 
 imply that your vectors should be considered as categorical or continuous.
-Therefore, value labels are not intended to be use for data analyis.
-For example, before performing modelling, you should convert vectors
+Therefore, value labels are not intended to be use for data analysis.
+For example, before performing modeling, you should convert vectors
 with value labels into factors or into classic numeric/character vectors.
 
 Therefore, two main approaches could be considered.
 
 ![Two main approaches](approaches.png){width=100%}
 
-In **aproach A**, `haven_labelled` vectors are converted into factors or
+In **approach A**, `haven_labelled` vectors are converted into factors or
 into numeric/character vectors just after data import, using `unlabelled()`,
 `to_factor()` or `unclass()`. Then, data cleaning, recoding and analysis
 are performed using classic **R** vector types.
 
-In **aproach B**, `haven_labelled` vectors are kept for data cleaning and
-recoding, allowing to preserved original recoding, in particular if data
-should be rexported after that step. Functions provided by `labelled` will
+In **approach B**, `haven_labelled` vectors are kept for data cleaning and
+coding, allowing to preserved original recoding, in particular if data
+should be reexported after that step. Functions provided by `labelled` will
 be useful for managing value labels. However, as in approach A, `haven_labelled`
 vectors will have to be converted into classic factors or numeric vectors
-before data analysis (in particular modelling) as this is the way categorical
-and continous variables should be coded for analysis functions.
+before data analysis (in particular modeling) as this is the way categorical
+and continuous variables should be coded for analysis functions.
 
 
 ## Variable labels
