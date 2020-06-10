@@ -3,9 +3,9 @@
 #' @param x A vector.
 #' @param prefixed Should labels be prefixed with values?
 #' @param v A single value.
-#' @param value A named vector for \code{val_labels} (see \code{\link{labelled}}) or a character string
+#' @param value A named vector for \code{val_labels} (see \code{\link[haven]{labelled}}) or a character string
 #'   for \code{\link{val_labels}}. \code{NULL} to remove the labels.
-#'   For data frames, it could also be a named list.
+#'   For data frames, it could also be a named list with a vector of value labels per variable.
 #' @return
 #'   \code{val_labels} will return a named vector.
 #'   \code{val_label} will return a single character string.
@@ -241,6 +241,8 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
 #' @rdname val_labels
 #' @param .data a data frame
 #' @param ... name-value pairs of value labels (see examples)
+#' @param .labels value labels to be applied to the data.frame,
+#'   using the same syntax as \code{value} in `val_labels(df) <- value`.
 #' @note
 #'   \code{set_value_labels}, \code{add_value_labels} and \code{remove_value_labels} could be used with \code{dplyr}.
 #'   While \code{set_value_labels} will replace the list of value labels, \code{add_value_labels} and
@@ -268,7 +270,10 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
 #'   df$s2
 #' }
 #' @export
-set_value_labels <- function(.data, ...) {
+set_value_labels <- function(.data, ..., .labels = NA) {
+  if (!identical(.labels, NA)) {
+    val_labels(.data) <- .labels
+  }
   values <- list(...)
   if (!all(names(values) %in% names(.data)))
     stop("some variables not found in .data")

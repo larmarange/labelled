@@ -60,7 +60,7 @@ val_label(x, v) <- value
 
 \method{val_label}{data.frame}(x, v) <- value
 
-set_value_labels(.data, ...)
+set_value_labels(.data, ..., .labels = NA)
 
 add_value_labels(.data, ...)
 
@@ -71,15 +71,18 @@ remove_value_labels(.data, ...)
 
 \item{prefixed}{Should labels be prefixed with values?}
 
-\item{value}{A named vector for \code{val_labels} (see \code{\link{labelled}}) or a character string
+\item{value}{A named vector for \code{val_labels} (see \code{\link[haven]{labelled}}) or a character string
 for \code{\link{val_labels}}. \code{NULL} to remove the labels.
-For data frames, it could also be a named list.}
+For data frames, it could also be a named list with a vector of value labels per variable.}
 
 \item{v}{A single value.}
 
 \item{.data}{a data frame}
 
 \item{...}{name-value pairs of value labels (see examples)}
+
+\item{.labels}{value labels to be applied to the data.frame,
+using the same syntax as \code{value} in `val_labels(df) <- value`.}
 }
 \value{
 \code{val_labels} will return a named vector.
