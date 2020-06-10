@@ -4,6 +4,7 @@
 * new `.combine_value_labels` argument for `recode.haven_labelled()` (#61)
 * new `drop_unused_value_labels()` method
 * an additional `.labels` argument for `set_value_labels()`
+* `user_na_to_na` argument has been to `to_character.haven_labelled()`
 
 # labelled 2.4.0
 
