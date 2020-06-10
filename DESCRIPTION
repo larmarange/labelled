@@ -24,7 +24,8 @@ Suggests:
     knitr,
     rmarkdown,
     questionr,
-    snakecase
+    snakecase,
+    utf8
 Enhances: memisc
 LazyData: true
 URL: http://larmarange.github.io/labelled/
