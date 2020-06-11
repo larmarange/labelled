@@ -26,8 +26,6 @@ introduced by `haven` package to handle labelled variables imported from SPSS, S
 The `labelled` package propose several functions to manipulate such vectors and their metadata:
 variable labels, value labels and user-defined missing values.
 
-
-
 ## Installation
 
 From CRAN:
@@ -36,34 +34,25 @@ From CRAN:
 install.packages("labelled")
 ```
 
-Latest version from GitHub:
+Development version from GitHub:
 
 ```r
 devtools::install_github("larmarange/labelled")
 ```
 
 
-## Introduction to labelled
+## Introduction
 
 Read the vignette at <http://larmarange.github.io/labelled/articles/intro_labelled.html>
 
+## Cheatsheet
 
+[![labelled cheatsheet](cheatsheet/labelled_cheatsheet.png)](https://github.com/larmarange/labelled/raw/master/cheatsheet/labelled_cheatsheet.pdf)
 
-## Breaking changes introduced in version 2.0.0
+## Some general guidelines
 
-Following version 2.0.0 of `haven`, `labelled()` and `labelled_spss()` now
-produce objects with class "haven_labelled" and "haven_labelled_spss", due
-to conflict between the previous "labelled" class and the "labelled" class
-used by `Hmisc`.
-
-A new function `update_labelled()` could be used to convert data imported
-with an older version of `haven` to the new classes.
-
-
-## Some general principles
-
-1. Functions are intented to support `labelled` metadata structures only.
-   However, `to_labelled` method allows to convert metadata 
+1. Functions are intended to support `labelled` metadata structures only.
+   However, `to_labelled()` method allows to convert metadata 
    from **foreign** and **memisc** packages.
 2. Functions should, by default, modify metadata only (i.e. classes and attributes), except if
    explicitly expressed by the user.
