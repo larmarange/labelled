@@ -1,4 +1,4 @@
-# labelled (development version)
+# labelled 2.5.0
 
 * new `.keep_value_labels` argument for `recode.haven_labelled()`
 * new `.combine_value_labels` argument for `recode.haven_labelled()` (#61)
