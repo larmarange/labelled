@@ -41,7 +41,7 @@ Read the vignette at
 ## Cheatsheet
 
 [![labelled
-cheatsheet](cheatsheet/labelled_cheatsheet.png)](https://github.com/larmarange/labelled/raw/master/cheatsheet/labelled_cheatsheet.pdf)
+cheatsheet](https://github.com/larmarange/labelled/raw/master/cheatsheet/labelled_cheatsheet.png)](https://github.com/larmarange/labelled/raw/master/cheatsheet/labelled_cheatsheet.pdf)
 
 ## Some general guidelines
 

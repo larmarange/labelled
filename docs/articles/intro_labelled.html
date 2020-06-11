@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">labelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.5.0</span>
       </span>
     </div>
 
@@ -95,13 +95,13 @@
     
 <p>The purpose of the <strong>labelled</strong> package is to provide functions to manipulate metadata as variable labels, value labels and defined missing values using the <code>haven_labelled</code> and <code>haven_labelled_spss</code> classes introduced in <code>haven</code> package.</p>
 <p>These classes allow to add metadata (variable, value labels and SPSS-style missing values) to vectors.</p>
-<p>It should be noted that <strong>value labels</strong> doesn’t imply that your vectors should be considered as categorical or continuous. Therefore, value labels are not intended to be use for data analyis. For example, before performing modelling, you should convert vectors with value labels into factors or into classic numeric/character vectors.</p>
+<p>It should be noted that <strong>value labels</strong> doesn’t imply that your vectors should be considered as categorical or continuous. Therefore, value labels are not intended to be use for data analysis. For example, before performing modeling, you should convert vectors with value labels into factors or into classic numeric/character vectors.</p>
 <p>Therefore, two main approaches could be considered.</p>
 <div class="figure">
-<img src="approaches.png" alt="Two main approaches" style="width:100.0%"><p class="caption">Two main approaches</p>
+<img src="approaches.png" style="width:100.0%" alt=""><p class="caption">Two main approaches</p>
 </div>
-<p>In <strong>aproach A</strong>, <code>haven_labelled</code> vectors are converted into factors or into numeric/character vectors just after data import, using <code><a href="../reference/to_factor.html">unlabelled()</a></code>, <code><a href="../reference/to_factor.html">to_factor()</a></code> or <code><a href="https://rdrr.io/r/base/class.html">unclass()</a></code>. Then, data cleaning, recoding and analysis are performed using classic <strong>R</strong> vector types.</p>
-<p>In <strong>aproach B</strong>, <code>haven_labelled</code> vectors are kept for data cleaning and recoding, allowing to preserved original recoding, in particular if data should be rexported after that step. Functions provided by <code>labelled</code> will be useful for managing value labels. However, as in approach A, <code>haven_labelled</code> vectors will have to be converted into classic factors or numeric vectors before data analysis (in particular modelling) as this is the way categorical and continous variables should be coded for analysis functions.</p>
+<p>In <strong>approach A</strong>, <code>haven_labelled</code> vectors are converted into factors or into numeric/character vectors just after data import, using <code><a href="../reference/to_factor.html">unlabelled()</a></code>, <code><a href="../reference/to_factor.html">to_factor()</a></code> or <code><a href="https://rdrr.io/r/base/class.html">unclass()</a></code>. Then, data cleaning, recoding and analysis are performed using classic <strong>R</strong> vector types.</p>
+<p>In <strong>approach B</strong>, <code>haven_labelled</code> vectors are kept for data cleaning and coding, allowing to preserved original recoding, in particular if data should be reexported after that step. Functions provided by <code>labelled</code> will be useful for managing value labels. However, as in approach A, <code>haven_labelled</code> vectors will have to be converted into classic factors or numeric vectors before data analysis (in particular modeling) as this is the way categorical and continuous variables should be coded for analysis functions.</p>
 <div id="variable-labels" class="section level2">
 <h2 class="hasAnchor">
 <a href="#variable-labels" class="anchor"></a>Variable labels</h2>
@@ -768,7 +768,7 @@
 <div id="using-labelled-with-dplyrmagrittr" class="section level2">
 <h2 class="hasAnchor">
 <a href="#using-labelled-with-dplyrmagrittr" class="anchor"></a>Using labelled with dplyr/magrittr</h2>
-<p>If you are using the <code><a href="https://dplyr.tidyverse.org/reference/reexports.html">%&gt;%</a></code> operator, you can use the functions <code>set_variable_labels</code>, <code>set_value_labels</code>, <code>add_value_labels</code> and <code>remove_value_labels</code>.</p>
+<p>If you are using the <code><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></code> operator, you can use the functions <code>set_variable_labels</code>, <code>set_value_labels</code>, <code>add_value_labels</code> and <code>remove_value_labels</code>.</p>
 <div class="sourceCode" id="cb152"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)</pre></body></html></div>
 <pre><code>## 
 ## Attachement du package : 'dplyr'</code></pre>
@@ -856,7 +856,7 @@
 ## Attachement du package : 'questionr'</code></pre>
 <pre><code>## The following object is masked from 'package:labelled':
 ## 
-##     lookfor</code></pre>
+##     look_for</code></pre>
 <div class="sourceCode" id="cb173"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">fertility</span>)
 <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="no">women</span>)</pre></body></html></div>
 <pre><code>## Rows: 2,000

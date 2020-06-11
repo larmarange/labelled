@@ -47,7 +47,7 @@ Read the vignette at <http://larmarange.github.io/labelled/articles/intro_labell
 
 ## Cheatsheet
 
-[![labelled cheatsheet](cheatsheet/labelled_cheatsheet.png)](https://github.com/larmarange/labelled/raw/master/cheatsheet/labelled_cheatsheet.pdf)
+[![labelled cheatsheet](https://github.com/larmarange/labelled/raw/master/cheatsheet/labelled_cheatsheet.png)](https://github.com/larmarange/labelled/raw/master/cheatsheet/labelled_cheatsheet.pdf)
 
 ## Some general guidelines
 

@@ -16,6 +16,7 @@ reference:
   - sort_val_labels
   - val_labels_to_na
   - nolabel_to_na
+  - drop_unused_value_labels
   - copy_labels
 - title: Manipulating SPSS style missing values
   desc:  Functions to set, manipulate and remove SPSS style missing values

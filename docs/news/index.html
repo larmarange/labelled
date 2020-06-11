@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">labelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.5.0</span>
       </span>
     </div>
 
@@ -126,9 +126,29 @@
       <small>Source: <a href='https://github.com/larmarange/labelled/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="labelled-250" class="section level1">
+<h1 class="page-header" data-toc-text="2.5.0">
+<a href="#labelled-250" class="anchor"></a>labelled 2.5.0<small> Unreleased </small>
+</h1>
+<ul>
+<li>new <code>.keep_value_labels</code> argument for <code><a href="../reference/recode.haven_labelled.html">recode.haven_labelled()</a></code>
+</li>
+<li>new <code>.combine_value_labels</code> argument for <code><a href="../reference/recode.haven_labelled.html">recode.haven_labelled()</a></code> (<a href='https://github.com/larmarange/labelled/issues/61'>#61</a>)</li>
+<li>new <code><a href="../reference/drop_unused_value_labels.html">drop_unused_value_labels()</a></code> method</li>
+<li>an additional <code>.labels</code> argument for <code><a href="../reference/val_labels.html">set_value_labels()</a></code>
+</li>
+<li>
+<code>user_na_to_na</code> argument has been added to <code><a href="../reference/to_character.html">to_character.haven_labelled()</a></code>
+</li>
+<li>
+<code><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></code> is now imported from <code>dplyr</code>
+</li>
+<li>a cheatsheet has been added (<a href='https://github.com/larmarange/labelled/issues/47'>#47</a>)</li>
+</ul>
+</div>
     <div id="labelled-240" class="section level1">
 <h1 class="page-header" data-toc-text="2.4.0">
-<a href="#labelled-240" class="anchor"></a>labelled 2.4.0<small> Unreleased </small>
+<a href="#labelled-240" class="anchor"></a>labelled 2.4.0<small> 2020-05-25 </small>
 </h1>
 <ul>
 <li>fixes for haven 2.3.0 (<a href='https://github.com/larmarange/labelled/issues/59'>#59</a> by <a href='https://github.com/hadley'>@hadley</a>)</li>
@@ -290,7 +310,7 @@
 <a href="#labelled-023" class="anchor"></a>labelled 0.2.3<small> 2016-06-21 </small>
 </h1>
 <ul>
-<li>new functions <code><a href="../reference/var_label.html">set_variable_labels()</a></code>, <code><a href="../reference/val_labels.html">set_value_labels()</a></code>, <code><a href="../reference/val_labels.html">add_value_labels()</a></code> and <code><a href="../reference/val_labels.html">remove_value_labels()</a></code> compatible with <code>%&gt;%</code>.</li>
+<li>new functions <code><a href="../reference/var_label.html">set_variable_labels()</a></code>, <code><a href="../reference/val_labels.html">set_value_labels()</a></code>, <code><a href="../reference/val_labels.html">add_value_labels()</a></code> and <code><a href="../reference/val_labels.html">remove_value_labels()</a></code> compatible with <code><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></code>.</li>
 <li>new functions <code>remove_val_labels</code> and <code><a href="../reference/remove_labels.html">remove_var_label()</a></code>.</li>
 <li>bug fix in <code>to_character.labelled()</code> when applied to data frames.</li>
 </ul>
