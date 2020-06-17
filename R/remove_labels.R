@@ -1,20 +1,20 @@
 #' Remove variable label, value labels and user defined missing values
 #'
-#' Use \code{remove_var_label} to remove variable label, \code{remove_val_labels}
-#' to remove value labels, \code{remove_user_na} to remove user defined missing values (na_values and na_range)
-#' and \code{remove_labels} to remove all.
+#' Use `remove_var_label()` to remove variable label, `remove_val_labels()`
+#' to remove value labels, `remove_user_na()` to remove user defined missing values (*na_values* and *na_range*)
+#' and `remove_labels()` to remove all.
 #'
 #' @param x A vector or a data frame.
-#' @param user_na_to_na Convert user defined missing values into \code{NA}?
+#' @param user_na_to_na Convert user defined missing values into `NA`?
 #' @param keep_var_label Keep variable label?
 #' @details
-#' Be careful with \code{remove_user_na} and \code{remove_labels}, user defined missing values
-#' will not be automatically converted to \code{NA}, except if you specify
-#' \code{user_na_to_na = TRUE}.
-#' \code{user_na_to_na(x)} is an equivalent of \code{remove_user_na(x, user_na_to_na = TRUE)}.
+#' Be careful with `remove_user_na()` and `remove_labels()`, user defined missing values
+#' will not be automatically converted to `NA`, except if you specify
+#' `user_na_to_na = TRUE`.
+#' `user_na_to_na(x)` is an equivalent of `remove_user_na(x, user_na_to_na = TRUE)`.
 #'
-#' If you prefer to convert variables with value labels into factors, use \code{\link{to_factor}}
-#' or use \code{\link{unlabelled}}.
+#' If you prefer to convert variables with value labels into factors, use [to_factor()]
+#' or use [unlabelled()].
 #' @examples
 #' x1 <- labelled_spss(1:10, c(Good = 1, Bad = 8), na_values = c(9, 10))
 #' var_label(x1) <- "A variable"

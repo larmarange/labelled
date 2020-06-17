@@ -2,18 +2,18 @@
 #'
 #' @param x A vector.
 #' @param value A vector of values that should also be considered as missing
-#' (for \code{na_values}) or a numeric vector of length two giving the (inclusive)
-#' extents of the range (for \code{na_values}, use \code{-Inf} and \code{Inf} if you
+#' (for `na_values`) or a numeric vector of length two giving the (inclusive)
+#' extents of the range (for `na_values`, use `-Inf` and `Inf` if you
 #' want the range to be open ended).
 #' @details
-#' See \code{\link{labelled_spss}} for a presentation of SPSS's user defined missing values.
-#' Note that \code{is.na} will return \code{TRUE} for user defined misssing values.
-#' You can use \code{\link{user_na_to_na}} to convert user defined missing values to \code{NA}.
+#' See [haven::labelled_spss()] for a presentation of SPSS's user defined missing values.
+#' Note that [base::is.na()] will return `TRUE` for user defined misssing values.
+#' You can use [user_na_to_na()] to convert user defined missing values to `NA`.
 #' @return
-#'   \code{na_values} will return a vector of values that should also be considered as missing.
-#'   \code{na_range} will return a numeric vector of length two giving the (inclusive)
+#'   `na_values()` will return a vector of values that should also be considered as missing.
+#'   `na_range()` will return a numeric vector of length two giving the (inclusive)
 #'     extents of the range.
-#' @seealso \code{\link{labelled_spss}}, \code{\link{user_na_to_na}}
+#' @seealso [haven::labelled_spss()], [user_na_to_na()]
 #' @examples
 #' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
 #' v
@@ -130,10 +130,10 @@ na_range.data.frame <- function(x) {
 #' @param .data a data frame
 #' @param ... name-value pairs of missing values (see examples)
 #' @note
-#'   \code{set_na_values} and \code{set_na_range} could be used with \code{dplyr}.
+#'   `set_na_values()` and `set_na_range()` could be used with \pkg{dplyr} syntax.
 #' @return
-#'  \code{set_na_values} and \code{set_na_range} will return an updated
-#'  copy of \code{.data}.
+#'  `set_na_values()` and `set_na_range()` will return an updated
+#'  copy of `.data`.
 #' @examples
 #' if (require(dplyr)) {
 #'   # setting value labels

@@ -1,24 +1,26 @@
 #' Look for keywords variable names and descriptions
 #'
-#' \code{look_for} emulates the \code{lookfor} Stata command in R. It supports
-#' searching into the variable names of regular R data frames as well as into
+#' `look_for` emulates the `lookfor` Stata command in \R. It supports
+#' searching into the variable names of regular \R data frames as well as into
 #' variable labels descriptions.
 #' The command is meant to help users finding variables in large datasets.
 #'
 #' @param data a data frame
-#' @param ... list of keywords, a character string (or several character strings), which can be formatted as a regular expression suitable for a \code{grep} pattern, or a vector of keywords; displays all variables if not specified
-#' @param labels whether or not to search variable labels (descriptions); \code{TRUE} by default
+#' @param ... list of keywords, a character string (or several character strings), which can be
+#' formatted as a regular expression suitable for a [base::grep()] pattern, or a vector of keywords;
+#' displays all variables if not specified
+#' @param labels whether or not to search variable labels (descriptions); `TRUE` by default
 #' @param ignore.case whether or not to make the keywords case sensitive;
-#' \code{TRUE} by default (case is ignored during matching)
+#' `TRUE` by default (case is ignored during matching)
 #' @param details add details about each variable (see examples)
 #' @return a data frame featuring the variable position, name and description
 #' (if it exists) in the original data frame
 #' @details The function looks into the variable names for matches to the keywords. If available,
 #' variable labels are included in the search scope.
 #' Variable labels of data.frame imported with \pkg{foreign} or
-#' \pkg{memisc} packages will also be taken into account (see \code{\link{to_labelled}}).
+#' \pkg{memisc} packages will also be taken into account (see [to_labelled()]).
 #'
-#' \code{look_for} and \code{lookfor} are equivalent.
+#' `look_for()` and `lookfor()` are equivalent.
 #' @author François Briatte <f.briatte@@gmail.com>
 #' @examples
 #' look_for(iris)
@@ -39,7 +41,7 @@
 #' # Display details
 #' look_for(women, details = TRUE)
 #' }
-#' @source Based on the behaviour of the \code{lookfor} command in Stata.
+#' @source Based on the behaviour of the `lookfor` command in Stata.
 #' @export
 
 look_for <- function(data,

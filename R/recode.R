@@ -1,6 +1,6 @@
 #' Recode values
 #'
-#' Extend \code{\link[dplyr]{recode}} method from \pkg{haven} to
+#' Extend [dplyr::recode()] method from \pkg{dplyr} to
 #' works with labelled vectors.
 #'
 #' @importFrom dplyr recode
@@ -11,7 +11,7 @@
 #'   to generate new value labels. Note that unexpected results could be obtained
 #'   if a same old value is recoded into several different new values.
 #' @param .sep Separator to be used when combining value labels.
-#' @seealso \code{\link[dplyr]{recode}} (\pkg{dplyr})
+#' @seealso [dplyr::recode()] (\pkg{dplyr})
 #' @examples
 #' x <- labelled(1:3, c(yes = 1, no = 2))
 #' x

@@ -1,6 +1,6 @@
 #' Convert input to a character vector
 #'
-#' By default, \code{to_character} is a wrapper for \code{\link[base:character]{base::as.character()}}.
+#' By default, `to_character()` is a wrapper for [base::as.character()].
 #' For labelled vector, to_character allows to specify if value, labels or labels prefixed
 #' with values should be used for conversion.
 #'
@@ -25,7 +25,7 @@ to_character.default <- function(x, ...) {
 #' @param user_na_to_na user defined missing values into NA?
 #' @details
 #'   If some values doesn't have a label, automatic labels will be created, except if
-#'   \code{nolabel_to_na} is \code{TRUE}.
+#'   `nolabel_to_na` is `TRUE`.
 #' @examples
 #' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
 #' to_character(v)

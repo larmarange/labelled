@@ -3,12 +3,12 @@
 #' @param x A vector.
 #' @param prefixed Should labels be prefixed with values?
 #' @param v A single value.
-#' @param value A named vector for \code{val_labels} (see \code{\link[haven]{labelled}}) or a character string
-#'   for \code{\link{val_labels}}. \code{NULL} to remove the labels.
+#' @param value A named vector for `val_labels()` (see [haven::labelled()]) or a character string
+#'   for `val_labels()`. `NULL` to remove the labels.
 #'   For data frames, it could also be a named list with a vector of value labels per variable.
 #' @return
-#'   \code{val_labels} will return a named vector.
-#'   \code{val_label} will return a single character string.
+#'   `val_labels()` will return a named vector.
+#'   `val_label()` will return a single character string.
 #' @examples
 #' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
 #' val_labels(v)
@@ -242,14 +242,15 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
 #' @param .data a data frame
 #' @param ... name-value pairs of value labels (see examples)
 #' @param .labels value labels to be applied to the data.frame,
-#'   using the same syntax as \code{value} in `val_labels(df) <- value`.
+#'   using the same syntax as `value` in `val_labels(df) <- value`.
 #' @note
-#'   \code{set_value_labels}, \code{add_value_labels} and \code{remove_value_labels} could be used with \code{dplyr}.
-#'   While \code{set_value_labels} will replace the list of value labels, \code{add_value_labels} and
-#'   \code{remove_value_labels} will update that list (see examples).
+#' `set_value_labels()`, `add_value_labels()` and `remove_value_labels()`
+#' could be used with \pkg{dplyr} syntax.
+#' While `set_value_labels()` will replace the list of value labels,
+#' `add_value_labels()` and `remove_value_labels()` will update that list (see examples).
 #' @return
-#'  \code{set_value_labels}, \code{add_value_labels} and \code{remove_value_labels} will return an updated
-#'  copy of \code{.data}.
+#'  `set_value_labels()`, `add_value_labels()` and `remove_value_labels()` will return an updated
+#'  copy of `.data`.
 #' @examples
 #' if (require(dplyr)) {
 #'   # setting value labels

@@ -1,9 +1,9 @@
 #' Convert input to a factor.
 #'
-#' The base function \code{\link[base:factor]{base::as.factor()}} is not a generic, but this variant
-#' is. By default, \code{to_factor} is a wrapper for \code{\link[base:factor]{base::as.factor()}}.
-#' Please note that \code{to_factor} differs slightly from \code{\link[haven]{as_factor}}
-#' method provided by \code{haven} package.
+#' The base function [base::as.factor()] is not a generic, but this variant
+#' is. By default, `to_factor()` is a wrapper for [base::as.factor()].
+#' Please note that `to_factor()` differs slightly from [haven::as_factor()]
+#' method provided by \pkg{haven} package.
 #'
 #' @param x Object to coerce to a factor.
 #' @param ... Other arguments passed down to method.
@@ -27,26 +27,26 @@ to_factor.default <- function(x, ...) {
 
 #' @rdname to_factor
 #' @param levels What should be used for the factor levels: the labels, the values or labels prefixed with values?
-#' @param ordered \code{TRUE} for ordinal factors, \code{FALSE} (default) for nominal factors.
+#' @param ordered `TRUE` for ordinal factors, `FALSE` (default) for nominal factors.
 #' @param nolabel_to_na Should values with no label be converted to `NA`?
 #' @param sort_levels How the factor levels should be sorted? (see Details)
 #' @param decreasing Should levels be sorted in decreasing order?
 #' @param drop_unused_labels Should unused value labels be dropped?
-#'   (applied only if \code{strict = FALSE})
-#' @param user_na_to_na Convert user defined missing values into \code{NA}?
+#'   (applied only if `strict = FALSE`)
+#' @param user_na_to_na Convert user defined missing values into `NA`?
 #' @param strict Convert to factor only if all values have a defined label?
-#' @param unclass If not converted to a factor (when \code{strict = TRUE}),
-#'   convert to a character or a numeric factor?
+#' @param unclass If not converted to a factor (when `strict = TRUE`),
+#'   convert to a character or a numeric factor by applying [base::unclass()]?
 #' @details
 #'   If some values doesn't have a label, automatic labels will be created, except if
-#'   \code{nolabel_to_na} is \code{TRUE}.
+#'   `nolabel_to_na` is `TRUE`.
 #'
-#'   If \code{sort_levels == 'values'}, the levels will be sorted according to the values of \code{x}.
-#'   If \code{sort_levels == 'labels'}, the levels will be sorted according to labels' names.
-#'   If \code{sort_levels == 'none'}, the levels will be in the order the value labels are defined
-#'   in \code{x}. If some labels are automatically created, they will be added at the end.
-#'   If \code{sort_levels == 'auto'}, \code{sort_levels == 'none'} will be used, except if some
-#'   values doesn't have a defined label. In such case,  \code{sort_levels == 'values'} will
+#'   If `sort_levels == 'values'`, the levels will be sorted according to the values of `x`.
+#'   If `sort_levels == 'labels'`, the levels will be sorted according to labels' names.
+#'   If `sort_levels == 'none'`, the levels will be in the order the value labels are defined
+#'   in `x`. If some labels are automatically created, they will be added at the end.
+#'   If `sort_levels == 'auto'`, `sort_levels == 'none'` will be used, except if some
+#'   values doesn't have a defined label. In such case, `sort_levels == 'values'` will
 #'   be applied.
 #' @examples
 #' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
@@ -128,7 +128,7 @@ to_factor.haven_labelled <- function(x, levels = c("labels", "values",
 #' @param labelled_only for a data.frame, convert only labelled variables to factors?
 #' @details
 #'   When applied to a data.frame, only labelled vectors are converted by default to a
-#'   factor. Use \code{labelled_only = FALSE} to convert all variables to factors.
+#'   factor. Use `labelled_only = FALSE` to convert all variables to factors.
 #' @export
 to_factor.data.frame <- function(x, levels = c("labels", "values", "prefixed"),
                                  ordered = FALSE, nolabel_to_na = FALSE,
@@ -164,13 +164,12 @@ to_factor.data.frame <- function(x, levels = c("labels", "values", "prefixed"),
 
 #' @rdname to_factor
 #' @description
-#' \code{unlabelled(x)} is a shortcut for
-#' \code{to_factor(x, strict = TRUE, unclass = TRUE, labelled_only = TRUE)}.
+#' `unlabelled(x)` is a shortcut for `to_factor(x, strict = TRUE, unclass = TRUE, labelled_only = TRUE)`.
 #' @details
-#' \code{unlabelled()} is a shortcut for quickly removing value labels of a vector
+#' `unlabelled()` is a shortcut for quickly removing value labels of a vector
 #' or of a data.frame. If all observed values have a value label, then the vector
 #' will be converted into a factor. Otherwise, the vector will be unclassed.
-#' If you want to remove value labels in all cases, use \code{\link{remove_val_labels}}.
+#' If you want to remove value labels in all cases, use [remove_val_labels()].
 #' @examples
 #'
 #' df <- data.frame(

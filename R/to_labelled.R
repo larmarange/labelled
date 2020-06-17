@@ -5,30 +5,30 @@
 #' @param x Factor or dataset to convert to labelled data frame
 #' @param ... Not used
 #' @details
-#' \code{to_labelled} is a general wrapper calling the appropriate sub-functions.
+#' `to_labelled()` is a general wrapper calling the appropriate sub-functions.
 #'
-#' \code{memisc_to_labelled} converts a \code{\link[memisc]{data.set}} object created with
+#' `memisc_to_labelled()` converts a [memisc::data.set()] object created with
 #' \pkg{memisc} package to a labelled data frame.
 #'
-#' \code{foreign_to_labelled} converts data imported with \code{\link[foreign]{read.spss}}
-#' or \code{\link[foreign]{read.dta}} from \pkg{foreign} package to a labelled data frame,
-#' i.e. using \code{\link{labelled}} class.
-#' Factors will not be converted. Therefore, you should use \code{use.value.labels = FALSE}
-#' when importing with \code{\link[foreign]{read.spss}} or \code{convert.factors = FALSE} when
-#' importing with \code{\link[foreign]{read.dta}}.
+#' `foreign_to_labelled()` converts data imported with [foreign::read.spss()]
+#' or [foreign::read.dta()] from \pkg{foreign} package to a labelled data frame,
+#' i.e. using [haven::labelled()].
+#' Factors will not be converted. Therefore, you should use `use.value.labels = FALSE`
+#' when importing with [foreign::read.spss()] or `convert.factors = FALSE` when
+#' importing with [foreign::read.dta()].
 #'
-#' To convert correctly defined missing values imported with \code{\link[foreign]{read.spss}}, you should
-#' have used \code{to.data.frame = FALSE} and \code{use.missings = FALSE}. If you used the option
-#' \code{to.data.frame = TRUE}, meta data describing missing values will not be attached to the import.
-#' If you used \code{use.missings = TRUE}, missing values would have been converted to \code{NA}.
+#' To convert correctly defined missing values imported with [foreign::read.spss()], you should
+#' have used `to.data.frame = FALSE` and `use.missings = FALSE`. If you used the option
+#' `to.data.frame = TRUE`, meta data describing missing values will not be attached to the import.
+#' If you used `use.missings = TRUE`, missing values would have been converted to `NA`.
 #'
-#' So far, missing values defined in Stata are always imported as \code{NA} by
-#' \code{\link[foreign]{read.dta}} and could not be retrieved by \code{foreign_to_labelled}.
+#' So far, missing values defined in **Stata** are always imported as `NA` by
+#' [foreign::read.dta()] and could not be retrieved by `foreign_to_labelled()`.
 #'
 #' @return A tbl data frame or a labelled vector.
-#' @seealso \code{\link{labelled}} (\pkg{foreign}), \code{\link[foreign]{read.spss}} (\pkg{foreign}),
-#'   \code{\link[foreign]{read.dta}} (\pkg{foreign}), \code{\link[memisc]{data.set}} (\pkg{memisc}),
-#'   \code{\link[memisc]{importer}} (\pkg{memisc}), \code{\link{to_factor}}.
+#' @seealso [haven::labelled()] (\pkg{haven}), [foreign::read.spss()] (\pkg{foreign}),
+#'   [foreign::read.dta()] (\pkg{foreign}), [memisc::data.set()] (\pkg{memisc}),
+#'   [memisc::importer] (\pkg{memisc}), [to_factor()].
 #'
 #' @examples
 #' \dontrun{
@@ -187,7 +187,7 @@ memisc_to_labelled <- function(x) {
 #' @rdname to_labelled
 #' @param labels When converting a factor only:
 #'   an optional named vector indicating how factor levels should be coded.
-#'   If a factor level is not found in \code{labels}, it will be converted to \code{NA}.
+#'   If a factor level is not found in `labels`, it will be converted to `NA`.
 #' @export
 #' @examples
 #' # Converting factors to labelled vectors

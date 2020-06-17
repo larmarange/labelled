@@ -31,4 +31,5 @@ LazyData: true
 URL: http://larmarange.github.io/labelled/
 BugReports: https://github.com/larmarange/labelled/issues
 VignetteBuilder: knitr
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.0.9000
+Roxygen: list(markdown = TRUE)
