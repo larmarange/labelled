@@ -17,5 +17,5 @@ v <- labelled(c(1, 2, 9, 1, 9), c(dk = 9))
 val_labels_to_na(v)
 }
 \seealso{
-\code{\link[haven]{zap_labels}}
+\code{\link[haven:zap_labels]{haven::zap_labels()}}
 }

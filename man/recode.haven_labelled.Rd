@@ -51,7 +51,7 @@ if a same old value is recoded into several different new values.}
 \item{.sep}{Separator to be used when combining value labels.}
 }
 \description{
-Extend \code{\link[dplyr]{recode}} method from \pkg{haven} to
+Extend \code{\link[dplyr:recode]{dplyr::recode()}} method from \pkg{dplyr} to
 works with labelled vectors.
 }
 \examples{
@@ -87,5 +87,5 @@ y <- labelled(1:4, c("strongly agree" = 1))
 dplyr::recode(y, `2` = 1L, `4` = 3L, .combine_value_labels = TRUE)
 }
 \seealso{
-\code{\link[dplyr]{recode}} (\pkg{dplyr})
+\code{\link[dplyr:recode]{dplyr::recode()}} (\pkg{dplyr})
 }

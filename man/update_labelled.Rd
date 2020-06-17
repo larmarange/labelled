@@ -22,8 +22,8 @@ update_labelled(x)
 \item{x}{An object (vector or data.frame) to convert.}
 }
 \description{
-Labelled data imported with \code{haven} version 1.1.2 or before or
-created with \code{labelled} version 1.1.0 or before was using
+Labelled data imported with \pkg{haven} version 1.1.2 or before or
+created with \code{\link[haven:labelled]{haven::labelled()}} version 1.1.0 or before was using
 "labelled" and "labelled_spss" classes.
 }
 \details{
@@ -33,7 +33,10 @@ Since version 2.0.0 of these two packages, "haven_labelled" and
 Since haven 2.3.0, "haven_labelled" class has been evolving
 using now \pkg{vctrs} package.
 
-\code{update_labelled} convert labelled vectors
+\code{update_labelled()} convert labelled vectors
 from the old to the new classes and to reconstruct all
 labelled vectors with the last version of the package.
+}
+\seealso{
+\code{\link[haven:labelled]{haven::labelled()}}, \code{\link[haven:labelled_spss]{haven::labelled_spss()}}
 }

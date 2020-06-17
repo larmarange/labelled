@@ -71,8 +71,8 @@ remove_value_labels(.data, ...)
 
 \item{prefixed}{Should labels be prefixed with values?}
 
-\item{value}{A named vector for \code{val_labels} (see \code{\link[haven]{labelled}}) or a character string
-for \code{\link{val_labels}}. \code{NULL} to remove the labels.
+\item{value}{A named vector for \code{val_labels()} (see \code{\link[haven:labelled]{haven::labelled()}}) or a character string
+for \code{val_labels()}. \code{NULL} to remove the labels.
 For data frames, it could also be a named list with a vector of value labels per variable.}
 
 \item{v}{A single value.}
@@ -82,22 +82,23 @@ For data frames, it could also be a named list with a vector of value labels per
 \item{...}{name-value pairs of value labels (see examples)}
 
 \item{.labels}{value labels to be applied to the data.frame,
-using the same syntax as \code{value} in `val_labels(df) <- value`.}
+using the same syntax as \code{value} in \code{val_labels(df) <- value}.}
 }
 \value{
-\code{val_labels} will return a named vector.
-  \code{val_label} will return a single character string.
+\code{val_labels()} will return a named vector.
+\code{val_label()} will return a single character string.
 
-\code{set_value_labels}, \code{add_value_labels} and \code{remove_value_labels} will return an updated
- copy of \code{.data}.
+\code{set_value_labels()}, \code{add_value_labels()} and \code{remove_value_labels()} will return an updated
+copy of \code{.data}.
 }
 \description{
 Get / Set value labels
 }
 \note{
-\code{set_value_labels}, \code{add_value_labels} and \code{remove_value_labels} could be used with \code{dplyr}.
-  While \code{set_value_labels} will replace the list of value labels, \code{add_value_labels} and
-  \code{remove_value_labels} will update that list (see examples).
+\code{set_value_labels()}, \code{add_value_labels()} and \code{remove_value_labels()}
+could be used with \pkg{dplyr} syntax.
+While \code{set_value_labels()} will replace the list of value labels,
+\code{add_value_labels()} and \code{remove_value_labels()} will update that list (see examples).
 }
 \examples{
 v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))

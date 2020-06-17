@@ -22,18 +22,18 @@ to_character(x, ...)
 
 \item{levels}{What should be used for the factor levels: the labels, the values or labels prefixed with values?}
 
-\item{nolabel_to_na}{Should values with no label be converted to `NA`?}
+\item{nolabel_to_na}{Should values with no label be converted to \code{NA}?}
 
 \item{user_na_to_na}{user defined missing values into NA?}
 }
 \description{
-By default, \code{to_character} is a wrapper for \code{\link[base:character]{base::as.character()}}.
+By default, \code{to_character()} is a wrapper for \code{\link[base:character]{base::as.character()}}.
 For labelled vector, to_character allows to specify if value, labels or labels prefixed
 with values should be used for conversion.
 }
 \details{
 If some values doesn't have a label, automatic labels will be created, except if
-  \code{nolabel_to_na} is \code{TRUE}.
+\code{nolabel_to_na} is \code{TRUE}.
 }
 \examples{
 v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))

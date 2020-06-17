@@ -43,25 +43,25 @@ A tbl data frame or a labelled vector.
 Convert a factor or data imported with \pkg{foreign} or \pkg{memisc} to labelled data.
 }
 \details{
-\code{to_labelled} is a general wrapper calling the appropriate sub-functions.
+\code{to_labelled()} is a general wrapper calling the appropriate sub-functions.
 
-\code{memisc_to_labelled} converts a \code{\link[memisc]{data.set}} object created with
+\code{memisc_to_labelled()} converts a \code{\link[memisc:dataSets]{memisc::data.set()}} object created with
 \pkg{memisc} package to a labelled data frame.
 
-\code{foreign_to_labelled} converts data imported with \code{\link[foreign]{read.spss}}
-or \code{\link[foreign]{read.dta}} from \pkg{foreign} package to a labelled data frame,
-i.e. using \code{\link{labelled}} class.
+\code{foreign_to_labelled()} converts data imported with \code{\link[foreign:read.spss]{foreign::read.spss()}}
+or \code{\link[foreign:read.dta]{foreign::read.dta()}} from \pkg{foreign} package to a labelled data frame,
+i.e. using \code{\link[haven:labelled]{haven::labelled()}}.
 Factors will not be converted. Therefore, you should use \code{use.value.labels = FALSE}
-when importing with \code{\link[foreign]{read.spss}} or \code{convert.factors = FALSE} when
-importing with \code{\link[foreign]{read.dta}}.
+when importing with \code{\link[foreign:read.spss]{foreign::read.spss()}} or \code{convert.factors = FALSE} when
+importing with \code{\link[foreign:read.dta]{foreign::read.dta()}}.
 
-To convert correctly defined missing values imported with \code{\link[foreign]{read.spss}}, you should
+To convert correctly defined missing values imported with \code{\link[foreign:read.spss]{foreign::read.spss()}}, you should
 have used \code{to.data.frame = FALSE} and \code{use.missings = FALSE}. If you used the option
 \code{to.data.frame = TRUE}, meta data describing missing values will not be attached to the import.
 If you used \code{use.missings = TRUE}, missing values would have been converted to \code{NA}.
 
-So far, missing values defined in Stata are always imported as \code{NA} by
-\code{\link[foreign]{read.dta}} and could not be retrieved by \code{foreign_to_labelled}.
+So far, missing values defined in \strong{Stata} are always imported as \code{NA} by
+\code{\link[foreign:read.dta]{foreign::read.dta()}} and could not be retrieved by \code{foreign_to_labelled()}.
 }
 \examples{
 \dontrun{
@@ -102,7 +102,7 @@ to_labelled(f1, labels)
 identical(s1, to_labelled(f1, labels))
 }
 \seealso{
-\code{\link{labelled}} (\pkg{foreign}), \code{\link[foreign]{read.spss}} (\pkg{foreign}),
-  \code{\link[foreign]{read.dta}} (\pkg{foreign}), \code{\link[memisc]{data.set}} (\pkg{memisc}),
-  \code{\link[memisc]{importer}} (\pkg{memisc}), \code{\link{to_factor}}.
+\code{\link[haven:labelled]{haven::labelled()}} (\pkg{haven}), \code{\link[foreign:read.spss]{foreign::read.spss()}} (\pkg{foreign}),
+\code{\link[foreign:read.dta]{foreign::read.dta()}} (\pkg{foreign}), \code{\link[memisc:dataSets]{memisc::data.set()}} (\pkg{memisc}),
+\link[memisc:importers]{memisc::importer} (\pkg{memisc}), \code{\link[=to_factor]{to_factor()}}.
 }

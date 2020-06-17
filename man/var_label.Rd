@@ -26,22 +26,22 @@ of same length as the number of columns in \code{x}.}
 \item{...}{name-value pairs of variable labels (see examples)}
 
 \item{.labels}{variable labels to be applied to the data.frame,
-using the same syntax as \code{value} in `var_label(df) <- value`.}
+using the same syntax as \code{value} in \code{var_label(df) <- value}.}
 }
 \value{
-\code{set_variable_labels} will return an updated copy of \code{.data}.
+\code{set_variable_labels()} will return an updated copy of \code{.data}.
 }
 \description{
 Get / Set a variable label
 }
 \details{
 For data frames, if \code{value} is a named list, only elements whose name will
-  match a column of the data frame will be taken into account. If \code{value}
-  is a character vector, labels should in the same order as the columns of the
-  data.frame.
+match a column of the data frame will be taken into account. If \code{value}
+is a character vector, labels should in the same order as the columns of the
+data.frame.
 }
 \note{
-\code{set_variable_labels} could be used with \code{dplyr}.
+\code{set_variable_labels()} could be used with \pkg{dplyr} syntax.
 }
 \examples{
 var_label(iris$Sepal.Length)

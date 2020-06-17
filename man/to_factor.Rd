@@ -48,7 +48,7 @@ unlabelled(x, ...)
 
 \item{ordered}{\code{TRUE} for ordinal factors, \code{FALSE} (default) for nominal factors.}
 
-\item{nolabel_to_na}{Should values with no label be converted to `NA`?}
+\item{nolabel_to_na}{Should values with no label be converted to \code{NA}?}
 
 \item{sort_levels}{How the factor levels should be sorted? (see Details)}
 
@@ -62,38 +62,37 @@ unlabelled(x, ...)
 \item{strict}{Convert to factor only if all values have a defined label?}
 
 \item{unclass}{If not converted to a factor (when \code{strict = TRUE}),
-convert to a character or a numeric factor?}
+convert to a character or a numeric factor by applying \code{\link[base:class]{base::unclass()}}?}
 
 \item{labelled_only}{for a data.frame, convert only labelled variables to factors?}
 }
 \description{
 The base function \code{\link[base:factor]{base::as.factor()}} is not a generic, but this variant
-is. By default, \code{to_factor} is a wrapper for \code{\link[base:factor]{base::as.factor()}}.
-Please note that \code{to_factor} differs slightly from \code{\link[haven]{as_factor}}
-method provided by \code{haven} package.
+is. By default, \code{to_factor()} is a wrapper for \code{\link[base:factor]{base::as.factor()}}.
+Please note that \code{to_factor()} differs slightly from \code{\link[haven:as_factor]{haven::as_factor()}}
+method provided by \pkg{haven} package.
 
-\code{unlabelled(x)} is a shortcut for
-\code{to_factor(x, strict = TRUE, unclass = TRUE, labelled_only = TRUE)}.
+\code{unlabelled(x)} is a shortcut for \code{to_factor(x, strict = TRUE, unclass = TRUE, labelled_only = TRUE)}.
 }
 \details{
 If some values doesn't have a label, automatic labels will be created, except if
-  \code{nolabel_to_na} is \code{TRUE}.
+\code{nolabel_to_na} is \code{TRUE}.
 
-  If \code{sort_levels == 'values'}, the levels will be sorted according to the values of \code{x}.
-  If \code{sort_levels == 'labels'}, the levels will be sorted according to labels' names.
-  If \code{sort_levels == 'none'}, the levels will be in the order the value labels are defined
-  in \code{x}. If some labels are automatically created, they will be added at the end.
-  If \code{sort_levels == 'auto'}, \code{sort_levels == 'none'} will be used, except if some
-  values doesn't have a defined label. In such case,  \code{sort_levels == 'values'} will
-  be applied.
+If \code{sort_levels == 'values'}, the levels will be sorted according to the values of \code{x}.
+If \code{sort_levels == 'labels'}, the levels will be sorted according to labels' names.
+If \code{sort_levels == 'none'}, the levels will be in the order the value labels are defined
+in \code{x}. If some labels are automatically created, they will be added at the end.
+If \code{sort_levels == 'auto'}, \code{sort_levels == 'none'} will be used, except if some
+values doesn't have a defined label. In such case, \code{sort_levels == 'values'} will
+be applied.
 
 When applied to a data.frame, only labelled vectors are converted by default to a
-  factor. Use \code{labelled_only = FALSE} to convert all variables to factors.
+factor. Use \code{labelled_only = FALSE} to convert all variables to factors.
 
 \code{unlabelled()} is a shortcut for quickly removing value labels of a vector
 or of a data.frame. If all observed values have a value label, then the vector
 will be converted into a factor. Otherwise, the vector will be unclassed.
-If you want to remove value labels in all cases, use \code{\link{remove_val_labels}}.
+If you want to remove value labels in all cases, use \code{\link[=remove_val_labels]{remove_val_labels()}}.
 }
 \examples{
 v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))

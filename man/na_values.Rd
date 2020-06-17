@@ -37,23 +37,23 @@ want the range to be open ended).}
 \item{...}{name-value pairs of missing values (see examples)}
 }
 \value{
-\code{na_values} will return a vector of values that should also be considered as missing.
-  \code{na_range} will return a numeric vector of length two giving the (inclusive)
-    extents of the range.
+\code{na_values()} will return a vector of values that should also be considered as missing.
+\code{na_range()} will return a numeric vector of length two giving the (inclusive)
+extents of the range.
 
-\code{set_na_values} and \code{set_na_range} will return an updated
- copy of \code{.data}.
+\code{set_na_values()} and \code{set_na_range()} will return an updated
+copy of \code{.data}.
 }
 \description{
 Get / Set SPSS missing values
 }
 \details{
-See \code{\link{labelled_spss}} for a presentation of SPSS's user defined missing values.
-Note that \code{is.na} will return \code{TRUE} for user defined misssing values.
-You can use \code{\link{user_na_to_na}} to convert user defined missing values to \code{NA}.
+See \code{\link[haven:labelled_spss]{haven::labelled_spss()}} for a presentation of SPSS's user defined missing values.
+Note that \code{\link[base:NA]{base::is.na()}} will return \code{TRUE} for user defined misssing values.
+You can use \code{\link[=user_na_to_na]{user_na_to_na()}} to convert user defined missing values to \code{NA}.
 }
 \note{
-\code{set_na_values} and \code{set_na_range} could be used with \code{dplyr}.
+\code{set_na_values()} and \code{set_na_range()} could be used with \pkg{dplyr} syntax.
 }
 \examples{
 v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
@@ -82,5 +82,5 @@ if (require(dplyr)) {
 }
 }
 \seealso{
-\code{\link{labelled_spss}}, \code{\link{user_na_to_na}}
+\code{\link[haven:labelled_spss]{haven::labelled_spss()}}, \code{\link[=user_na_to_na]{user_na_to_na()}}
 }

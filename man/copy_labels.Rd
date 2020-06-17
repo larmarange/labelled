@@ -21,11 +21,11 @@ For data frame, labels are copied according to variable names, and only
 if variables are the same type in both data frames.
 }
 \details{
-Some base \R functions like \code{\link[base]{subset}} drop variable and
+Some base \R functions like \code{\link[base:subset]{base::subset()}} drop variable and
 value labels attached to a variable. \code{copy_labels} coud be used
 to restore these attributes.
 
-\code{copy_labels_from} is intended to be used with \code{dplyr} syntax,
+\code{copy_labels_from} is intended to be used with \pkg{dplyr} syntax,
 see examples.
 }
 \examples{
