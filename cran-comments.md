@@ -4,6 +4,11 @@
 * ubuntu (on travis-ci)
 * win-builder (devel and release)
 
+## Note
+
+All documentation links have been updated using roxygen2 markdown support and 
+this PR https://github.com/r-lib/roxygen2/pull/1109 to link to files, not topicsvers
+
 ## R CMD check results
 
 0 errors | 0 warnings | 0 notes
