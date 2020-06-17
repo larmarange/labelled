@@ -172,22 +172,22 @@ want the range to be open ended).</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>na_values</code> will return a vector of values that should also be considered as missing.
-  <code>na_range</code> will return a numeric vector of length two giving the (inclusive)
-    extents of the range.</p>
-<p><code>set_na_values</code> and <code>set_na_range</code> will return an updated
- copy of <code>.data</code>.</p>
+    <p><code>na_values()</code> will return a vector of values that should also be considered as missing.
+<code>na_range()</code> will return a numeric vector of length two giving the (inclusive)
+extents of the range.</p>
+<p><code>set_na_values()</code> and <code>set_na_range()</code> will return an updated
+copy of <code>.data</code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>See <code><a href='https://haven.tidyverse.org/reference/labelled_spss.html'>labelled_spss</a></code> for a presentation of SPSS's user defined missing values.
-Note that <code>is.na</code> will return <code>TRUE</code> for user defined misssing values.
-You can use <code>user_na_to_na</code> to convert user defined missing values to <code>NA</code>.</p>
+    <p>See <code><a href='https://haven.tidyverse.org/reference/labelled_spss.html'>haven::labelled_spss()</a></code> for a presentation of SPSS's user defined missing values.
+Note that <code><a href='https://rdrr.io/r/base/NA.html'>base::is.na()</a></code> will return <code>TRUE</code> for user defined misssing values.
+You can use <code>user_na_to_na()</code> to convert user defined missing values to <code>NA</code>.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p><code>set_na_values</code> and <code>set_na_range</code> could be used with <code>dplyr</code>.</p>
+    <p><code>set_na_values()</code> and <code>set_na_range()</code> could be used with <span class="pkg">dplyr</span> syntax.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://haven.tidyverse.org/reference/labelled_spss.html'>labelled_spss</a></code>, <code>user_na_to_na</code></p></div>
+    <div class='dont-index'><p><code><a href='https://haven.tidyverse.org/reference/labelled_spss.html'>haven::labelled_spss()</a></code>, <code>user_na_to_na()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>v</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>2</span>,<span class='fl'>2</span>,<span class='fl'>3</span>,<span class='fl'>9</span>,<span class='fl'>1</span>,<span class='fl'>3</span>,<span class='fl'>2</span>,<span class='fl'>NA</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>yes</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>no</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='st'>"don't know"</span> <span class='kw'>=</span> <span class='fl'>9</span>))

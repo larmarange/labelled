@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Convert input to a character vector — to_character" />
-<meta property="og:description" content="By default, to_character is a wrapper for base::as.character().
+<meta property="og:description" content="By default, to_character() is a wrapper for base::as.character().
 For labelled vector, to_character allows to specify if value, labels or labels prefixed
 with values should be used for conversion." />
 
@@ -131,7 +131,7 @@ with values should be used for conversion." />
     </div>
 
     <div class="ref-description">
-    <p>By default, <code>to_character</code> is a wrapper for <code><a href='https://rdrr.io/r/base/character.html'>base::as.character()</a></code>.
+    <p>By default, <code>to_character()</code> is a wrapper for <code><a href='https://rdrr.io/r/base/character.html'>base::as.character()</a></code>.
 For labelled vector, to_character allows to specify if value, labels or labels prefixed
 with values should be used for conversion.</p>
     </div>
@@ -164,7 +164,7 @@ with values should be used for conversion.</p>
     </tr>
     <tr>
       <th>nolabel_to_na</th>
-      <td><p>Should values with no label be converted to `NA`?</p></td>
+      <td><p>Should values with no label be converted to <code>NA</code>?</p></td>
     </tr>
     <tr>
       <th>user_na_to_na</th>
@@ -175,7 +175,7 @@ with values should be used for conversion.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>If some values doesn't have a label, automatic labels will be created, except if
-  <code>nolabel_to_na</code> is <code>TRUE</code>.</p>
+<code>nolabel_to_na</code> is <code>TRUE</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>v</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>2</span>,<span class='fl'>2</span>,<span class='fl'>3</span>,<span class='fl'>9</span>,<span class='fl'>1</span>,<span class='fl'>3</span>,<span class='fl'>2</span>,<span class='fl'>NA</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>yes</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>no</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='st'>"don't know"</span> <span class='kw'>=</span> <span class='fl'>9</span>))

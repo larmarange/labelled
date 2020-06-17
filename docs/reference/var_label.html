@@ -166,22 +166,22 @@ of same length as the number of columns in <code>x</code>.</p></td>
     <tr>
       <th>.labels</th>
       <td><p>variable labels to be applied to the data.frame,
-using the same syntax as <code>value</code> in `var_label(df) &lt;- value`.</p></td>
+using the same syntax as <code>value</code> in <code>var_label(df) &lt;- value</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>set_variable_labels</code> will return an updated copy of <code>.data</code>.</p>
+    <p><code>set_variable_labels()</code> will return an updated copy of <code>.data</code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>For data frames, if <code>value</code> is a named list, only elements whose name will
-  match a column of the data frame will be taken into account. If <code>value</code>
-  is a character vector, labels should in the same order as the columns of the
-  data.frame.</p>
+match a column of the data frame will be taken into account. If <code>value</code>
+is a character vector, labels should in the same order as the columns of the
+data.frame.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p><code>set_variable_labels</code> could be used with <code>dplyr</code>.</p>
+    <p><code>set_variable_labels()</code> could be used with <span class="pkg">dplyr</span> syntax.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>var_label</span>(<span class='no'>iris</span>$<span class='no'>Sepal.Length</span>)</div><div class='output co'>#&gt; NULL</div><div class='input'><span class='fu'>var_label</span>(<span class='no'>iris</span>$<span class='no'>Sepal.Length</span>) <span class='kw'>&lt;-</span> <span class='st'>'Length of the sepal'</span>

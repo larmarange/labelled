@@ -40,9 +40,9 @@
 
 
 <meta property="og:title" content="Remove variable label, value labels and user defined missing values — remove_labels" />
-<meta property="og:description" content="Use remove_var_label to remove variable label, remove_val_labels
-to remove value labels, remove_user_na to remove user defined missing values (na_values and na_range)
-and remove_labels to remove all." />
+<meta property="og:description" content="Use remove_var_label() to remove variable label, remove_val_labels()
+to remove value labels, remove_user_na() to remove user defined missing values (na_values and na_range)
+and remove_labels() to remove all." />
 
 
 
@@ -131,9 +131,9 @@ and remove_labels to remove all." />
     </div>
 
     <div class="ref-description">
-    <p>Use <code>remove_var_label</code> to remove variable label, <code>remove_val_labels</code>
-to remove value labels, <code>remove_user_na</code> to remove user defined missing values (na_values and na_range)
-and <code>remove_labels</code> to remove all.</p>
+    <p>Use <code>remove_var_label()</code> to remove variable label, <code>remove_val_labels()</code>
+to remove value labels, <code>remove_user_na()</code> to remove user defined missing values (<em>na_values</em> and <em>na_range</em>)
+and <code>remove_labels()</code> to remove all.</p>
     </div>
 
     <pre class="usage"><span class='fu'>remove_labels</span>(<span class='no'>x</span>, <span class='kw'>user_na_to_na</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>keep_var_label</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
@@ -163,12 +163,12 @@ and <code>remove_labels</code> to remove all.</p>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Be careful with <code>remove_user_na</code> and <code>remove_labels</code>, user defined missing values
+    <p>Be careful with <code>remove_user_na()</code> and <code>remove_labels()</code>, user defined missing values
 will not be automatically converted to <code>NA</code>, except if you specify
 <code>user_na_to_na = TRUE</code>.
 <code><a href='na_values.html'>user_na_to_na(x)</a></code> is an equivalent of <code>remove_user_na(x, user_na_to_na = TRUE)</code>.</p>
-<p>If you prefer to convert variables with value labels into factors, use <code><a href='to_factor.html'>to_factor</a></code>
-or use <code><a href='to_factor.html'>unlabelled</a></code>.</p>
+<p>If you prefer to convert variables with value labels into factors, use <code><a href='to_factor.html'>to_factor()</a></code>
+or use <code><a href='to_factor.html'>unlabelled()</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>x1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled_spss.html'>labelled_spss</a></span>(<span class='fl'>1</span>:<span class='fl'>10</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>Good</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>Bad</span> <span class='kw'>=</span> <span class='fl'>8</span>), <span class='kw'>na_values</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>9</span>, <span class='fl'>10</span>))

@@ -177,26 +177,26 @@ If a factor level is not found in <code>labels</code>, it will be converted to <
     <p>A tbl data frame or a labelled vector.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>to_labelled</code> is a general wrapper calling the appropriate sub-functions.</p>
-<p><code>memisc_to_labelled</code> converts a <code><a href='https://rdrr.io/pkg/memisc/man/dataSets.html'>data.set</a></code> object created with
+    <p><code>to_labelled()</code> is a general wrapper calling the appropriate sub-functions.</p>
+<p><code>memisc_to_labelled()</code> converts a <code><a href='https://rdrr.io/pkg/memisc/man/dataSets.html'>memisc::data.set()</a></code> object created with
 <span class="pkg">memisc</span> package to a labelled data frame.</p>
-<p><code>foreign_to_labelled</code> converts data imported with <code><a href='https://rdrr.io/pkg/foreign/man/read.spss.html'>read.spss</a></code>
-or <code><a href='https://rdrr.io/pkg/foreign/man/read.dta.html'>read.dta</a></code> from <span class="pkg">foreign</span> package to a labelled data frame,
-i.e. using <code><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></code> class.
+<p><code>foreign_to_labelled()</code> converts data imported with <code><a href='https://rdrr.io/pkg/foreign/man/read.spss.html'>foreign::read.spss()</a></code>
+or <code><a href='https://rdrr.io/pkg/foreign/man/read.dta.html'>foreign::read.dta()</a></code> from <span class="pkg">foreign</span> package to a labelled data frame,
+i.e. using <code><a href='https://haven.tidyverse.org/reference/labelled.html'>haven::labelled()</a></code>.
 Factors will not be converted. Therefore, you should use <code>use.value.labels = FALSE</code>
-when importing with <code><a href='https://rdrr.io/pkg/foreign/man/read.spss.html'>read.spss</a></code> or <code>convert.factors = FALSE</code> when
-importing with <code><a href='https://rdrr.io/pkg/foreign/man/read.dta.html'>read.dta</a></code>.</p>
-<p>To convert correctly defined missing values imported with <code><a href='https://rdrr.io/pkg/foreign/man/read.spss.html'>read.spss</a></code>, you should
+when importing with <code><a href='https://rdrr.io/pkg/foreign/man/read.spss.html'>foreign::read.spss()</a></code> or <code>convert.factors = FALSE</code> when
+importing with <code><a href='https://rdrr.io/pkg/foreign/man/read.dta.html'>foreign::read.dta()</a></code>.</p>
+<p>To convert correctly defined missing values imported with <code><a href='https://rdrr.io/pkg/foreign/man/read.spss.html'>foreign::read.spss()</a></code>, you should
 have used <code>to.data.frame = FALSE</code> and <code>use.missings = FALSE</code>. If you used the option
 <code>to.data.frame = TRUE</code>, meta data describing missing values will not be attached to the import.
 If you used <code>use.missings = TRUE</code>, missing values would have been converted to <code>NA</code>.</p>
-<p>So far, missing values defined in Stata are always imported as <code>NA</code> by
-<code><a href='https://rdrr.io/pkg/foreign/man/read.dta.html'>read.dta</a></code> and could not be retrieved by <code>foreign_to_labelled</code>.</p>
+<p>So far, missing values defined in <strong>Stata</strong> are always imported as <code>NA</code> by
+<code><a href='https://rdrr.io/pkg/foreign/man/read.dta.html'>foreign::read.dta()</a></code> and could not be retrieved by <code>foreign_to_labelled()</code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></code> (<span class="pkg">foreign</span>), <code><a href='https://rdrr.io/pkg/foreign/man/read.spss.html'>read.spss</a></code> (<span class="pkg">foreign</span>),
-  <code><a href='https://rdrr.io/pkg/foreign/man/read.dta.html'>read.dta</a></code> (<span class="pkg">foreign</span>), <code><a href='https://rdrr.io/pkg/memisc/man/dataSets.html'>data.set</a></code> (<span class="pkg">memisc</span>),
-  <code><a href='https://rdrr.io/pkg/memisc/man/importers.html'>importer</a></code> (<span class="pkg">memisc</span>), <code><a href='to_factor.html'>to_factor</a></code>.</p></div>
+    <div class='dont-index'><p><code><a href='https://haven.tidyverse.org/reference/labelled.html'>haven::labelled()</a></code>, <code><a href='https://rdrr.io/pkg/foreign/man/read.spss.html'>foreign::read.spss()</a></code>,
+<code><a href='https://rdrr.io/pkg/foreign/man/read.dta.html'>foreign::read.dta()</a></code>, <code><a href='https://rdrr.io/pkg/memisc/man/dataSets.html'>memisc::data.set()</a></code>,
+memisc::importer, <code><a href='to_factor.html'>to_factor()</a></code>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {

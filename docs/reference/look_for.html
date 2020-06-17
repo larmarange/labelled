@@ -132,8 +132,8 @@ The command is meant to help users finding variables in large datasets." />
     </div>
 
     <div class="ref-description">
-    <p><code>look_for</code> emulates the <code>lookfor</code> Stata command in R. It supports
-searching into the variable names of regular R data frames as well as into
+    <p><code>look_for</code> emulates the <code>lookfor</code> Stata command in <span style="R">R</span>. It supports
+searching into the variable names of regular <span style="R">R</span> data frames as well as into
 variable labels descriptions.
 The command is meant to help users finding variables in large datasets.</p>
     </div>
@@ -151,7 +151,9 @@ The command is meant to help users finding variables in large datasets.</p>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>list of keywords, a character string (or several character strings), which can be formatted as a regular expression suitable for a <code>grep</code> pattern, or a vector of keywords; displays all variables if not specified</p></td>
+      <td><p>list of keywords, a character string (or several character strings), which can be
+formatted as a regular expression suitable for a <code><a href='https://rdrr.io/r/base/grep.html'>base::grep()</a></code> pattern, or a vector of keywords;
+displays all variables if not specified</p></td>
     </tr>
     <tr>
       <th>labels</th>
@@ -180,8 +182,8 @@ The command is meant to help users finding variables in large datasets.</p>
     <p>The function looks into the variable names for matches to the keywords. If available,
 variable labels are included in the search scope.
 Variable labels of data.frame imported with <span class="pkg">foreign</span> or
-<span class="pkg">memisc</span> packages will also be taken into account (see <code><a href='to_labelled.html'>to_labelled</a></code>).</p>
-<p><code>look_for</code> and <code>lookfor</code> are equivalent.</p>
+<span class="pkg">memisc</span> packages will also be taken into account (see <code><a href='to_labelled.html'>to_labelled()</a></code>).</p>
+<p><code>look_for()</code> and <code>lookfor()</code> are equivalent.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>look_for</span>(<span class='no'>iris</span>)</div><div class='output co'>#&gt;       variable

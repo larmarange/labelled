@@ -41,11 +41,10 @@
 
 <meta property="og:title" content="Convert input to a factor. — to_factor" />
 <meta property="og:description" content="The base function base::as.factor() is not a generic, but this variant
-is. By default, to_factor is a wrapper for base::as.factor().
-Please note that to_factor differs slightly from as_factor
+is. By default, to_factor() is a wrapper for base::as.factor().
+Please note that to_factor() differs slightly from haven::as_factor()
 method provided by haven package.
-unlabelled(x) is a shortcut for
-to_factor(x, strict = TRUE, unclass = TRUE, labelled_only = TRUE)." />
+unlabelled(x) is a shortcut for to_factor(x, strict = TRUE, unclass = TRUE, labelled_only = TRUE)." />
 
 
 
@@ -135,11 +134,10 @@ to_factor(x, strict = TRUE, unclass = TRUE, labelled_only = TRUE)." />
 
     <div class="ref-description">
     <p>The base function <code><a href='https://rdrr.io/r/base/factor.html'>base::as.factor()</a></code> is not a generic, but this variant
-is. By default, <code>to_factor</code> is a wrapper for <code><a href='https://rdrr.io/r/base/factor.html'>base::as.factor()</a></code>.
-Please note that <code>to_factor</code> differs slightly from <code><a href='https://haven.tidyverse.org/reference/as_factor.html'>as_factor</a></code>
-method provided by <code>haven</code> package.</p>
-<p><code>unlabelled(x)</code> is a shortcut for
-<code>to_factor(x, strict = TRUE, unclass = TRUE, labelled_only = TRUE)</code>.</p>
+is. By default, <code>to_factor()</code> is a wrapper for <code><a href='https://rdrr.io/r/base/factor.html'>base::as.factor()</a></code>.
+Please note that <code>to_factor()</code> differs slightly from <code><a href='https://haven.tidyverse.org/reference/as_factor.html'>haven::as_factor()</a></code>
+method provided by <span class="pkg">haven</span> package.</p>
+<p><code>unlabelled(x)</code> is a shortcut for <code>to_factor(x, strict = TRUE, unclass = TRUE, labelled_only = TRUE)</code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>to_factor</span>(<span class='no'>x</span>, <span class='no'>...</span>)
@@ -197,7 +195,7 @@ method provided by <code>haven</code> package.</p>
     </tr>
     <tr>
       <th>nolabel_to_na</th>
-      <td><p>Should values with no label be converted to `NA`?</p></td>
+      <td><p>Should values with no label be converted to <code>NA</code>?</p></td>
     </tr>
     <tr>
       <th>sort_levels</th>
@@ -223,7 +221,7 @@ method provided by <code>haven</code> package.</p>
     <tr>
       <th>unclass</th>
       <td><p>If not converted to a factor (when <code>strict = TRUE</code>),
-convert to a character or a numeric factor?</p></td>
+convert to a character or a numeric factor by applying <code><a href='https://rdrr.io/r/base/class.html'>base::unclass()</a></code>?</p></td>
     </tr>
     <tr>
       <th>labelled_only</th>
@@ -234,20 +232,20 @@ convert to a character or a numeric factor?</p></td>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>If some values doesn't have a label, automatic labels will be created, except if
-  <code>nolabel_to_na</code> is <code>TRUE</code>.</p>
+<code>nolabel_to_na</code> is <code>TRUE</code>.</p>
 <p>If <code>sort_levels == 'values'</code>, the levels will be sorted according to the values of <code>x</code>.
-  If <code>sort_levels == 'labels'</code>, the levels will be sorted according to labels' names.
-  If <code>sort_levels == 'none'</code>, the levels will be in the order the value labels are defined
-  in <code>x</code>. If some labels are automatically created, they will be added at the end.
-  If <code>sort_levels == 'auto'</code>, <code>sort_levels == 'none'</code> will be used, except if some
-  values doesn't have a defined label. In such case,  <code>sort_levels == 'values'</code> will
-  be applied.</p>
+If <code>sort_levels == 'labels'</code>, the levels will be sorted according to labels' names.
+If <code>sort_levels == 'none'</code>, the levels will be in the order the value labels are defined
+in <code>x</code>. If some labels are automatically created, they will be added at the end.
+If <code>sort_levels == 'auto'</code>, <code>sort_levels == 'none'</code> will be used, except if some
+values doesn't have a defined label. In such case, <code>sort_levels == 'values'</code> will
+be applied.</p>
 <p>When applied to a data.frame, only labelled vectors are converted by default to a
-  factor. Use <code>labelled_only = FALSE</code> to convert all variables to factors.</p>
+factor. Use <code>labelled_only = FALSE</code> to convert all variables to factors.</p>
 <p><code>unlabelled()</code> is a shortcut for quickly removing value labels of a vector
 or of a data.frame. If all observed values have a value label, then the vector
 will be converted into a factor. Otherwise, the vector will be unclassed.
-If you want to remove value labels in all cases, use <code><a href='remove_labels.html'>remove_val_labels</a></code>.</p>
+If you want to remove value labels in all cases, use <code><a href='remove_labels.html'>remove_val_labels()</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>v</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>2</span>,<span class='fl'>2</span>,<span class='fl'>3</span>,<span class='fl'>9</span>,<span class='fl'>1</span>,<span class='fl'>3</span>,<span class='fl'>2</span>,<span class='fl'>NA</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>yes</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>no</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='st'>"don't know"</span> <span class='kw'>=</span> <span class='fl'>9</span>))
