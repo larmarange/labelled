@@ -102,7 +102,7 @@ to_labelled(f1, labels)
 identical(s1, to_labelled(f1, labels))
 }
 \seealso{
-\code{\link[haven:labelled]{haven::labelled()}} (\pkg{haven}), \code{\link[foreign:read.spss]{foreign::read.spss()}} (\pkg{foreign}),
-\code{\link[foreign:read.dta]{foreign::read.dta()}} (\pkg{foreign}), \code{\link[memisc:dataSets]{memisc::data.set()}} (\pkg{memisc}),
-\link[memisc:importers]{memisc::importer} (\pkg{memisc}), \code{\link[=to_factor]{to_factor()}}.
+\code{\link[haven:labelled]{haven::labelled()}}, \code{\link[foreign:read.spss]{foreign::read.spss()}},
+\code{\link[foreign:read.dta]{foreign::read.dta()}}, \code{\link[memisc:dataSets]{memisc::data.set()}},
+\link[memisc:importers]{memisc::importer}, \code{\link[=to_factor]{to_factor()}}.
 }

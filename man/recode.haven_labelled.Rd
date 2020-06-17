@@ -87,5 +87,5 @@ y <- labelled(1:4, c("strongly agree" = 1))
 dplyr::recode(y, `2` = 1L, `4` = 3L, .combine_value_labels = TRUE)
 }
 \seealso{
-\code{\link[dplyr:recode]{dplyr::recode()}} (\pkg{dplyr})
+\code{\link[dplyr:recode]{dplyr::recode()}}
 }

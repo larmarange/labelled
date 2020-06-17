@@ -26,9 +26,9 @@
 #' [foreign::read.dta()] and could not be retrieved by `foreign_to_labelled()`.
 #'
 #' @return A tbl data frame or a labelled vector.
-#' @seealso [haven::labelled()] (\pkg{haven}), [foreign::read.spss()] (\pkg{foreign}),
-#'   [foreign::read.dta()] (\pkg{foreign}), [memisc::data.set()] (\pkg{memisc}),
-#'   [memisc::importer] (\pkg{memisc}), [to_factor()].
+#' @seealso [haven::labelled()], [foreign::read.spss()],
+#'   [foreign::read.dta()], [memisc::data.set()],
+#'   [memisc::importer], [to_factor()].
 #'
 #' @examples
 #' \dontrun{

@@ -11,7 +11,7 @@
 #'   to generate new value labels. Note that unexpected results could be obtained
 #'   if a same old value is recoded into several different new values.
 #' @param .sep Separator to be used when combining value labels.
-#' @seealso [dplyr::recode()] (\pkg{dplyr})
+#' @seealso [dplyr::recode()]
 #' @examples
 #' x <- labelled(1:3, c(yes = 1, no = 2))
 #' x
