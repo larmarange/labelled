@@ -7,6 +7,7 @@
 * `user_na_to_na` argument has been added to `to_character.haven_labelled()`
 * `%>%` is now imported from `dplyr`
 * a cheatsheet has been added (#47)
+* internal documentation is now using **roxygen2** markdown support
 
 # labelled 2.4.0
 
