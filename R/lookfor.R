@@ -23,6 +23,7 @@
 #' `look_for()` and `lookfor()` are equivalent.
 #' @author François Briatte <f.briatte@@gmail.com>, Joseph Larmarange <joseph@@larmarange.net>
 #' @importFrom dplyr tibble
+#' @importFrom vctrs vec_ptype_abbr
 #' @examples
 #' look_for(iris)
 #' # Look for a single keyword.
@@ -35,8 +36,8 @@
 #' look_for(iris, "pet", "sp")
 #' look_for(iris, "pet", "sp", "width")
 #' # Labelled data
-#' \dontrun{require(questionr)
-#' data(fertility)
+#' \dontrun{
+#' data(fertility, package = "questionr")
 #' look_for(women)
 #' look_for(women, "date")
 #' # Display details
@@ -69,15 +70,18 @@ look_for <- function(data,
     y <- look(l)
     variable <- unique(c(variable, names(l[y])))
   }
+  # get col_types
+  col_types <- unlist(lapply(data, vctrs::vec_ptype_abbr))
+
   # output
   if(length(variable)) {
     pos <- which(n %in% variable)
     # reordering according to pos
     # not forgetting that some variables don't have a label
     if (length(l)) {
-      res <- dplyr::tibble(pos = (1:length(n))[pos], variable = n[pos], label = l[n[pos]], row.names = pos)
+      res <- dplyr::tibble(pos = pos, variable = n[pos], label = l[n[pos]], col_type = col_types[pos])
     } else {
-      res <- dplyr::tibble(pos = (1:length(n))[pos], variable = n[pos], label = NA_character_, row.names = pos)
+      res <- dplyr::tibble(pos = pos, variable = n[pos], label = NA_character_, col_type = col_types[pos])
     }
 
     if (details) {

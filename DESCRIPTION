@@ -20,7 +20,8 @@ Imports:
     haven (>= 2.3.1),
     dplyr,
     lifecycle,
-    rlang
+    rlang,
+    vctrs
 Suggests:
     testthat,
     knitr,
