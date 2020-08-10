@@ -108,12 +108,13 @@ look_for <- function(data,
         res$n_na[i] <- sum(is.na(data[[v]]))
       }
     }
-
-    return(res)
   } else {
-    message("Nothing found. Sorry.")
-    invisible(dplyr::tibble())
+    res <- dplyr::tibble()
   }
+  # add a look_for class
+  class(res) <- c("look_for", class(res))
+  attr(res, "details") <- details
+  res
 }
 
 
