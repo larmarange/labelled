@@ -3,6 +3,7 @@
 \name{look_for}
 \alias{look_for}
 \alias{lookfor}
+\alias{print.look_for}
 \title{Look for keywords variable names and descriptions}
 \source{
 Based on the behaviour of the \code{lookfor} command in Stata.
@@ -11,6 +12,8 @@ Based on the behaviour of the \code{lookfor} command in Stata.
 look_for(data, ..., labels = TRUE, ignore.case = TRUE, details = FALSE)
 
 lookfor(data, ..., labels = TRUE, ignore.case = TRUE, details = FALSE)
+
+\method{print}{look_for}(x, ...)
 }
 \arguments{
 \item{data}{a data frame}
@@ -56,8 +59,8 @@ look_for(iris, "s$")
 look_for(iris, "pet", "sp")
 look_for(iris, "pet", "sp", "width")
 # Labelled data
-\dontrun{require(questionr)
-data(fertility)
+\dontrun{
+data(fertility, package = "questionr")
 look_for(women)
 look_for(women, "date")
 # Display details

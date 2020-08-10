@@ -21,7 +21,8 @@ Imports:
     dplyr,
     lifecycle,
     rlang,
-    vctrs
+    vctrs,
+    pillar
 Suggests:
     testthat,
     knitr,

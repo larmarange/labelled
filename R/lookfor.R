@@ -128,3 +128,16 @@ lookfor <- function(data,
                      details = FALSE) {
   look_for(data = data, ..., labels = labels, ignore.case = ignore.case, details = details)
 }
+
+#' @rdname look_for
+#' @importFrom pillar colonnade
+#' @export
+print.look_for <- function(x, ...) {
+  if (nrow(x) > 0) {
+    r <- x
+    r$label[is.na(r$label)] <- "\u2014" # display -- when empty
+    print(pillar::colonnade(r, has_row_id = FALSE))
+  } else {
+    message("Nothing found. Sorry.")
+  }
+}
