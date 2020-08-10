@@ -112,6 +112,7 @@ look_for <- function(data,
     return(res)
   } else {
     message("Nothing found. Sorry.")
+    invisible(dplyr::tibble())
   }
 }
 
