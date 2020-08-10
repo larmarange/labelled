@@ -80,14 +80,14 @@ look_for <- function(data,
     }
 
     if (details) {
-      res$class <- ""
-      res$type <- ""
-      res$levels <- ""
-      res$value_labels <- ""
-      res$unique_values <- NA
-      res$n_na <- NA
-      res$na_values <- ""
-      res$na_range <- ""
+      res$class <- NA_character_
+      res$type <- NA_character_
+      res$levels <- NA_character_
+      res$value_labels <- NA_character_
+      res$unique_values <- NA_integer_
+      res$n_na <- NA_integer_
+      res$na_values <- NA_character_
+      res$na_range <- NA_character_
       for (i in 1:nrow(res)) {
         v <- res$variable[i]
         res$class[i] <- paste(class(data[[v]]), collapse = ", ")
