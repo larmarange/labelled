@@ -27,7 +27,7 @@ displays all variables if not specified}
 \item{details}{add details about each variable (see examples)}
 }
 \value{
-a data frame featuring the variable position, name and description
+a tibble data frame featuring the variable position, name and description
 (if it exists) in the original data frame
 }
 \description{
@@ -65,5 +65,5 @@ look_for(women, details = TRUE)
 }
 }
 \author{
-François Briatte \href{mailto:f.briatte@gmail.com}{f.briatte@gmail.com}
+François Briatte \href{mailto:f.briatte@gmail.com}{f.briatte@gmail.com}, Joseph Larmarange \href{mailto:joseph@larmarange.net}{joseph@larmarange.net}
 }

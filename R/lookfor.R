@@ -13,7 +13,7 @@
 #' @param ignore.case whether or not to make the keywords case sensitive;
 #' `TRUE` by default (case is ignored during matching)
 #' @param details add details about each variable (see examples)
-#' @return a data frame featuring the variable position, name and description
+#' @return a tibble data frame featuring the variable position, name and description
 #' (if it exists) in the original data frame
 #' @details The function looks into the variable names for matches to the keywords. If available,
 #' variable labels are included in the search scope.
@@ -21,7 +21,8 @@
 #' \pkg{memisc} packages will also be taken into account (see [to_labelled()]).
 #'
 #' `look_for()` and `lookfor()` are equivalent.
-#' @author François Briatte <f.briatte@@gmail.com>
+#' @author François Briatte <f.briatte@@gmail.com>, Joseph Larmarange <joseph@@larmarange.net>
+#' @importFrom dplyr tibble
 #' @examples
 #' look_for(iris)
 #' # Look for a single keyword.
@@ -74,9 +75,9 @@ look_for <- function(data,
     # reordering according to pos
     # not forgetting that some variables don't have a label
     if (length(l)) {
-      res <- data.frame(variable = n[pos], label = l[n[pos]], row.names = pos, stringsAsFactors = FALSE)
+      res <- dplyr::tibble(variable = n[pos], label = l[n[pos]], row.names = pos)
     } else {
-      res <- data.frame(variable = n[pos], label = NA_character_, row.names = pos, stringsAsFactors = FALSE)
+      res <- dplyr::tibble(variable = n[pos], label = NA_character_, row.names = pos)
     }
 
     if (details) {
