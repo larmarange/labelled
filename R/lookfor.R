@@ -75,9 +75,9 @@ look_for <- function(data,
     # reordering according to pos
     # not forgetting that some variables don't have a label
     if (length(l)) {
-      res <- dplyr::tibble(variable = n[pos], label = l[n[pos]], row.names = pos)
+      res <- dplyr::tibble(pos = (1:length(n))[pos], variable = n[pos], label = l[n[pos]], row.names = pos)
     } else {
-      res <- dplyr::tibble(variable = n[pos], label = NA_character_, row.names = pos)
+      res <- dplyr::tibble(pos = (1:length(n))[pos], variable = n[pos], label = NA_character_, row.names = pos)
     }
 
     if (details) {
