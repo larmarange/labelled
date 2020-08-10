@@ -76,7 +76,7 @@ look_for <- function(data,
     if (length(l)) {
       res <- data.frame(variable = n[pos], label = l[n[pos]], row.names = pos, stringsAsFactors = FALSE)
     } else {
-      res <- data.frame(variable = n[pos], row.names = pos, stringsAsFactors = FALSE)
+      res <- data.frame(variable = n[pos], label = NA_character_, row.names = pos, stringsAsFactors = FALSE)
     }
 
     if (details) {
