@@ -114,7 +114,7 @@ to_factor.haven_labelled <- function(x, levels = c("labels", "values",
   if (levels == "values")
     labs <- unname(levs)
   if (levels == "prefixed")
-    labs <- paste0("[", levs, "] ", names(levs))
+    labs <- names_prefixed_by_values(levs)
   levs <- unname(levs)
   x <- factor(x, levels = levs, labels = labs, ordered = ordered,
     ...)

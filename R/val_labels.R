@@ -368,3 +368,31 @@ sort_val_labels.data.frame <- function(x, according_to = c("values",
     decreasing = decreasing)
   x
 }
+
+#' Turn a named vector into a vector of names prefixed by values
+#' @param x vector to be prefixed
+#' @examples
+#' df <- dplyr::tibble(
+#'   c1 = labelled(c("M", "M", "F"), c(Male = "M", Female = "F")),
+#'   c2 = labelled(c(1, 1, 2), c(Yes = 1, No = 2))
+#' )
+#' val_labels(df$c1)
+#' val_labels(df$c1) %>% names_prefixed_by_values()
+#' val_labels(df)
+#' val_labels(df) %>% names_prefixed_by_values()
+#' @export
+names_prefixed_by_values <- function(x) {
+  UseMethod("names_prefixed_by_values")
+}
+
+#' @rdname names_prefixed_by_values
+#' @export
+names_prefixed_by_values.default <- function(x) {
+  paste0("[", x, "] ", names(x))
+}
+
+#' @rdname names_prefixed_by_values
+#' @export
+names_prefixed_by_values.list <- function(x) {
+  lapply(x, names_prefixed_by_values)
+}
