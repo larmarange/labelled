@@ -124,7 +124,6 @@ look_for <- function(data,
       generic_range <- function(x){
         if (all(unlist(lapply(x, is.null)))) return(NULL)
         if (all(is.na(x))) return(NULL)
-        all(unlist(lapply(toto$levels, is.null)))
 
         r <- suppressWarnings(try(range(x, na.rm = TRUE), silent = TRUE))
         if (inherits(r, "try-error")) return(NULL)
