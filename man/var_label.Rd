@@ -65,7 +65,7 @@ var_label(iris)
 var_label(iris, unlist = TRUE)
 if (require(dplyr)) {
   # adding some variable labels
-  df <- data_frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2)) \%>\%
+  df <- tibble(s1 = c("M", "M", "F"), s2 = c(1, 1, 2)) \%>\%
     set_variable_labels(s1 = "Sex", s2 = "Yes or No?")
   var_label(df)
 
