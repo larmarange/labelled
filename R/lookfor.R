@@ -12,7 +12,8 @@
 #' @param labels whether or not to search variable labels (descriptions); `TRUE` by default
 #' @param ignore.case whether or not to make the keywords case sensitive;
 #' `TRUE` by default (case is ignored during matching)
-#' @param details add details about each variable (see examples)
+#' @param details add details about each variable (turn off for a quicker search)
+#' @param x a tibble returned by `look_for()`
 #' @return a tibble data frame featuring the variable position, name and description
 #' (if it exists) in the original data frame
 #' @details The function looks into the variable names for matches to the keywords. If available,
@@ -21,27 +22,58 @@
 #' \pkg{memisc} packages will also be taken into account (see [to_labelled()]).
 #'
 #' `look_for()` and `lookfor()` are equivalent.
+#'
+#' By default, results will be summrized when printing. To deactivate default printing,
+#' use `dplyr::as_tibble()`.
+#'
+#' `lookfor_to_long_format()` could be used to transform results with one row per factor level
+#' and per value label.
+#'
+#' Use `convert_list_columns_to_character()` to convert named list columns into character vectors
+#' (see examples).
+#'
 #' @author François Briatte <f.briatte@@gmail.com>, Joseph Larmarange <joseph@@larmarange.net>
-#' @importFrom dplyr tibble
-#' @importFrom vctrs vec_ptype_abbr
 #' @examples
 #' look_for(iris)
+#'
 #' # Look for a single keyword.
 #' look_for(iris, "petal")
 #' look_for(iris, "s")
+#'
 #' # Look for with a regular expression
 #' look_for(iris, "petal|species")
 #' look_for(iris, "s$")
+#'
 #' # Look for with several keywords
 #' look_for(iris, "pet", "sp")
 #' look_for(iris, "pet", "sp", "width")
+#' look_for(iris, "Pet", "sp", "width", ignore.case = FALSE)
+#'
+#' # Quicker search without variable details
+#' look_for(iris, details = TRUE)
+#'
+#' # To deactivate default printing, convert to tibble
+#' look_for(iris) %>% dplyr::as_tibble()
+#'
+#' # To convert named list into character vectors
+#' look_for(iris) %>% convert_list_columns_to_character()
+#'
+#' # Long format with one row per factor and per value label
+#' look_for(iris) %>% lookfor_to_long_format()
+#'
+#' # Both functions can be combined
+#' look_for(iris) %>%
+#'   lookfor_to_long_format() %>%
+#'   convert_list_columns_to_character()
+#'
 #' # Labelled data
 #' \dontrun{
-#' data(fertility, package = "questionr")
-#' look_for(women)
-#' look_for(women, "date")
-#' # Display details
-#' look_for(women, details = TRUE)
+#'   data(fertility, package = "questionr")
+#'   look_for(children)
+#'   look_for(children, "id")
+#'   look_for(children) %>%
+#'     lookfor_to_long_format() %>%
+#'     convert_list_columns_to_character()
 #' }
 #' @source Based on the behaviour of the `lookfor` command in Stata.
 #' @export
@@ -136,14 +168,71 @@ lookfor <- function(data,
 }
 
 #' @rdname look_for
-#' @importFrom pillar colonnade
+#' @param all Print all columns? If `FALSE`, print a summary.
 #' @export
 print.look_for <- function(x, ...) {
   if (nrow(x) > 0) {
-    r <- x
-    r$label[is.na(r$label)] <- "\u2014" # display -- when empty
-    print(pillar::colonnade(r, has_row_id = FALSE))
+    x <- x %>%
+      lookfor_to_long_format() %>%
+      convert_list_columns_to_character() %>%
+      dplyr::mutate(
+        label = dplyr::if_else(is.na(label), "\u2014", label) # display -- when empty
+      )
+
+    if (all(c("value_labels", "levels", "range", "col_type") %in% names(x))) {
+      x <- x %>%
+        dplyr::mutate(
+          values = dplyr::case_when(
+            !is.na(value_labels) ~ value_labels,
+            !is.na(levels) ~ levels,
+            !is.na(range) ~ paste("range:", range),
+            TRUE ~ "\u200b" # zero-width space
+          ),
+          variable = dplyr::if_else(duplicated(pos), "\u200b", variable),
+          label = dplyr::if_else(duplicated(pos), "\u200b", label),
+          col_type = dplyr::if_else(duplicated(pos), "\u200b", col_type),
+          pos = dplyr::if_else(duplicated(pos), "\u200b", as.character(pos))
+        ) %>%
+        dplyr::select(any_of(c("pos", "variable", "label", "col_type", "values")))
+    }
+    print(pillar::colonnade(x, has_row_id = FALSE))
   } else {
     message("Nothing found. Sorry.")
   }
+}
+
+#' @rdname look_for
+#' @export
+convert_list_columns_to_character <- function(x) {
+  if ("range" %in% names(x))
+    x <- x %>%
+      dplyr::mutate(range = unlist(lapply(range, paste, collapse = " - ")))
+
+  x %>%
+    dplyr::as_tibble() %>% # remove look_for class
+    dplyr::mutate(
+      dplyr::across(where(is.list), ~ unlist(lapply(.x, paste, collapse = "; ")))
+    )
+}
+
+#' @rdname look_for
+#' @export
+lookfor_to_long_format <- function(x) {
+  # only if details are provided
+  if (!"levels" %in% names(x) | !"value_labels" %in% names(x))
+    return(x)
+
+  x <- x %>%
+    dplyr::as_tibble() %>% # remove look_for class
+    dplyr::mutate(value_labels = names_prefixed_by_values(value_labels))
+
+  # tidyr::unnest() fails if all elements are NULL
+  if (all(unlist(lapply(x$levels, is.null))))
+    x$levels <- NA_character_
+  if (all(unlist(lapply(x$value_labels, is.null))))
+    x$value_labels <- NA_character_
+
+  x %>%
+    tidyr::unnest("levels", keep_empty = TRUE) %>%
+    tidyr::unnest("value_labels", keep_empty = TRUE)
 }

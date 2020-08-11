@@ -22,7 +22,8 @@ Imports:
     lifecycle,
     rlang,
     vctrs,
-    pillar
+    pillar,
+    tidyr
 Suggests:
     testthat,
     knitr,
