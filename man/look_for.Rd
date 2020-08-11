@@ -3,10 +3,11 @@
 \name{look_for}
 \alias{look_for}
 \alias{lookfor}
+\alias{generate_dictionary}
 \alias{print.look_for}
 \alias{convert_list_columns_to_character}
 \alias{lookfor_to_long_format}
-\title{Look for keywords variable names and descriptions}
+\title{Look for keywords variable names and descriptions / Create a data dictionary}
 \source{
 Based on the behaviour of the \code{lookfor} command in Stata.
 }
@@ -14,6 +15,14 @@ Based on the behaviour of the \code{lookfor} command in Stata.
 look_for(data, ..., labels = TRUE, ignore.case = TRUE, details = TRUE)
 
 lookfor(data, ..., labels = TRUE, ignore.case = TRUE, details = TRUE)
+
+generate_dictionary(
+  data,
+  ...,
+  labels = TRUE,
+  ignore.case = TRUE,
+  details = TRUE
+)
 
 \method{print}{look_for}(x, ...)
 
@@ -24,7 +33,7 @@ lookfor_to_long_format(x)
 \arguments{
 \item{data}{a data frame}
 
-\item{...}{list of keywords, a character string (or several character strings), which can be
+\item{...}{optional list of keywords, a character string (or several character strings), which can be
 formatted as a regular expression suitable for a \code{\link[base:grep]{base::grep()}} pattern, or a vector of keywords;
 displays all variables if not specified}
 
@@ -48,12 +57,16 @@ variable labels descriptions.
 The command is meant to help users finding variables in large datasets.
 }
 \details{
+When no keyword is provided, it will produce a data dictionary of the overall
+data frame.
+
 The function looks into the variable names for matches to the keywords. If available,
 variable labels are included in the search scope.
 Variable labels of data.frame imported with \pkg{foreign} or
-\pkg{memisc} packages will also be taken into account (see \code{\link[=to_labelled]{to_labelled()}}).
+\pkg{memisc} packages will also be taken into account (see \code{\link[=to_labelled]{to_labelled()}}). If no keyword is
+provided, it will return all variables of \code{data}.
 
-\code{look_for()} and \code{lookfor()} are equivalent.
+\code{look_for()}, \code{lookfor()} and \code{generate_dictionary()} are equivalent.
 
 By default, results will be summrized when printing. To deactivate default printing,
 use \code{dplyr::as_tibble()}.

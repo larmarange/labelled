@@ -8,6 +8,7 @@
       and per value label
     - use `convert_list_columns_to_character()` to convert list columns to 
       simpler character vectors
+    - `generate_dictionary()` is an equivalent of `look_for()`
 * `set_variable_labels`, `set_value_labels`, `add_value_labels`,
   and `remove_value_labels` now accept "tidy dots"
 * new function `names_prefixed_by_values()` to get the names of a vector

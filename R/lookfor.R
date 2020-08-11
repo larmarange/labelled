@@ -1,12 +1,15 @@
-#' Look for keywords variable names and descriptions
+#' Look for keywords variable names and descriptions / Create a data dictionary
 #'
 #' `look_for` emulates the `lookfor` Stata command in \R. It supports
 #' searching into the variable names of regular \R data frames as well as into
 #' variable labels descriptions.
 #' The command is meant to help users finding variables in large datasets.
 #'
+#' When no keyword is provided, it will produce a data dictionary of the overall
+#' data frame.
+#'
 #' @param data a data frame
-#' @param ... list of keywords, a character string (or several character strings), which can be
+#' @param ... optional list of keywords, a character string (or several character strings), which can be
 #' formatted as a regular expression suitable for a [base::grep()] pattern, or a vector of keywords;
 #' displays all variables if not specified
 #' @param labels whether or not to search variable labels (descriptions); `TRUE` by default
@@ -19,9 +22,10 @@
 #' @details The function looks into the variable names for matches to the keywords. If available,
 #' variable labels are included in the search scope.
 #' Variable labels of data.frame imported with \pkg{foreign} or
-#' \pkg{memisc} packages will also be taken into account (see [to_labelled()]).
+#' \pkg{memisc} packages will also be taken into account (see [to_labelled()]). If no keyword is
+#' provided, it will return all variables of `data`.
 #'
-#' `look_for()` and `lookfor()` are equivalent.
+#' `look_for()`, `lookfor()` and `generate_dictionary()` are equivalent.
 #'
 #' By default, results will be summrized when printing. To deactivate default printing,
 #' use `dplyr::as_tibble()`.
@@ -157,14 +161,12 @@ look_for <- function(data,
 
 #' @rdname look_for
 #' @export
+lookfor <- look_for
 
-lookfor <- function(data,
-                     ...,
-                     labels = TRUE,
-                     ignore.case = TRUE,
-                     details = TRUE) {
-  look_for(data = data, ..., labels = labels, ignore.case = ignore.case, details = details)
-}
+#' @rdname look_for
+#' @export
+generate_dictionary <- look_for
+
 
 #' @rdname look_for
 #' @export
@@ -234,3 +236,5 @@ lookfor_to_long_format <- function(x) {
     tidyr::unnest("levels", keep_empty = TRUE) %>%
     tidyr::unnest("value_labels", keep_empty = TRUE)
 }
+
+
