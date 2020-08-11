@@ -50,7 +50,7 @@ look_for <- function(data,
                     ...,
                     labels = TRUE,
                     ignore.case = TRUE,
-                    details = FALSE) {
+                    details = TRUE) {
   # applying to_labelled
   data <- to_labelled(data)
   # search scope
@@ -70,8 +70,6 @@ look_for <- function(data,
     y <- look(l)
     variable <- unique(c(variable, names(l[y])))
   }
-  # get col_types
-  col_types <- unlist(lapply(data, vctrs::vec_ptype_abbr))
 
   # output
   if(length(variable)) {
@@ -79,41 +77,49 @@ look_for <- function(data,
     # reordering according to pos
     # not forgetting that some variables don't have a label
     if (length(l)) {
-      res <- dplyr::tibble(pos = pos, variable = n[pos], label = l[n[pos]], col_type = col_types[pos])
+      res <- dplyr::tibble(pos = pos, variable = n[pos], label = l[n[pos]])
     } else {
-      res <- dplyr::tibble(pos = pos, variable = n[pos], label = NA_character_, col_type = col_types[pos])
+      res <- dplyr::tibble(pos = pos, variable = n[pos], label = NA_character_)
     }
 
     if (details) {
-      res$class <- NA_character_
-      res$type <- NA_character_
-      res$levels <- NA_character_
-      res$value_labels <- NA_character_
-      res$unique_values <- NA_integer_
-      res$n_na <- NA_integer_
-      res$na_values <- NA_character_
-      res$na_range <- NA_character_
-      for (i in 1:nrow(res)) {
-        v <- res$variable[i]
-        res$class[i] <- paste(class(data[[v]]), collapse = ", ")
-        res$type[i] <- paste(typeof(data[[v]]), collapse = ", ")
-        if (is.factor(data[[v]]))
-          res$levels[i] <- paste(levels(data[[v]]), collapse = "; ")
-        if (inherits(data[[v]], "haven_labelled")) {
-          res$value_labels[i] <- paste(names(val_labels(data[[v]], prefixed=TRUE)), collapse = "; ")
-          res$na_values[i] <- paste(na_values(data[[v]]), collapse = ", ")
-          res$na_range[i] <- paste(na_range(data[[v]]), collapse = "-")
-        }
-        res$unique_values[i] <- length(unique(data[[v]]))
-        res$n_na[i] <- sum(is.na(data[[v]]))
+      data <- data %>%
+        dplyr::select(res$variable)
+
+      unique_values <- function(x) {length(unique(x))}
+      n_na <- function(x) {sum(is.na(x))}
+
+      generic_range <- function(x){
+        if (all(unlist(lapply(x, is.null)))) return(NULL)
+        if (all(is.na(x))) return(NULL)
+        all(unlist(lapply(toto$levels, is.null)))
+
+        r <- suppressWarnings(try(range(x, na.rm = TRUE), silent = TRUE))
+        if (inherits(r, "try-error")) return(NULL)
+
+        r
       }
+
+      res <- res %>%
+        dplyr::mutate(
+          col_type = unlist(lapply(data, vctrs::vec_ptype_abbr)),
+          class = lapply(data, class),
+          type = unlist(lapply(data, typeof)),
+          levels = lapply(data, levels),
+          value_labels = lapply(data, val_labels),
+          na_values = lapply(data, na_values),
+          na_range = lapply(data, na_range),
+          unique_values = unlist(lapply(data, unique_values)),
+          n_na = unlist(lapply(data, n_na)),
+          range = lapply(data, generic_range)
+        )
+
     }
   } else {
     res <- dplyr::tibble()
   }
   # add a look_for class
   class(res) <- c("look_for", class(res))
-  attr(res, "details") <- details
   res
 }
 
@@ -125,7 +131,7 @@ lookfor <- function(data,
                      ...,
                      labels = TRUE,
                      ignore.case = TRUE,
-                     details = FALSE) {
+                     details = TRUE) {
   look_for(data = data, ..., labels = labels, ignore.case = ignore.case, details = details)
 }
 
