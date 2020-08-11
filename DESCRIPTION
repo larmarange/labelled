@@ -18,7 +18,8 @@ License: GPL-3
 Encoding: UTF-8
 Imports:
     haven (>= 2.3.1),
-    dplyr
+    dplyr,
+    lifecycle
 Suggests:
     testthat,
     knitr,
@@ -33,3 +34,4 @@ BugReports: https://github.com/larmarange/labelled/issues
 VignetteBuilder: knitr
 RoxygenNote: 7.1.0.9000
 Roxygen: list(markdown = TRUE)
+RdMacros: lifecycle
