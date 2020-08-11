@@ -174,7 +174,7 @@ to_labelled(to_factor(v))
 #     "file.dta",
 #     convert.factors = FALSE
 #   ))
-#  
+#
 #   # from memisc
 #   library(memisc)
 #   nes1948.por <- UnZip("anes/NES1948.ZIP", "NES1948.POR", package="memisc")
@@ -186,7 +186,7 @@ to_labelled(to_factor(v))
 ## ------------------------------------------------------------------------
 library(dplyr)
 
-df <- data_frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2)) %>% 
+df <- tibble(s1 = c("M", "M", "F"), s2 = c(1, 1, 2)) %>%
   set_variable_labels(s1 = "Sex", s2 = "Question") %>%
   set_value_labels(s1 = c(Male = "M", Female = "F"), s2 = c(Yes = 1, No = 2))
 df$s2

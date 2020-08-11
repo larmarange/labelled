@@ -137,7 +137,7 @@ na_range.data.frame <- function(x) {
 #' @examples
 #' if (require(dplyr)) {
 #'   # setting value labels
-#'   df <- data_frame(s1 = c("M", "M", "F", "F"), s2 = c(1, 1, 2, 9)) %>%
+#'   df <- tibble(s1 = c("M", "M", "F", "F"), s2 = c(1, 1, 2, 9)) %>%
 #'     set_value_labels(s2 = c(yes = 1, no = 2)) %>%
 #'     set_na_values(s2 = 9)
 #'   na_values(df)
