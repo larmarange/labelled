@@ -388,6 +388,7 @@ names_prefixed_by_values <- function(x) {
 #' @rdname names_prefixed_by_values
 #' @export
 names_prefixed_by_values.default <- function(x) {
+  if (is.null(x)) return(NULL)
   paste0("[", x, "] ", names(x))
 }
 
