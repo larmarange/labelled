@@ -167,7 +167,6 @@ lookfor <- function(data,
 }
 
 #' @rdname look_for
-#' @param all Print all columns? If `FALSE`, print a summary.
 #' @export
 print.look_for <- function(x, ...) {
   if (nrow(x) > 0) {
@@ -175,24 +174,24 @@ print.look_for <- function(x, ...) {
       lookfor_to_long_format() %>%
       convert_list_columns_to_character() %>%
       dplyr::mutate(
-        label = dplyr::if_else(is.na(label), "\u2014", label) # display -- when empty
+        label = dplyr::if_else(is.na(.data$label), "\u2014", .data$label) # display -- when empty
       )
 
     if (all(c("value_labels", "levels", "range", "col_type") %in% names(x))) {
       x <- x %>%
         dplyr::mutate(
           values = dplyr::case_when(
-            !is.na(value_labels) ~ value_labels,
-            !is.na(levels) ~ levels,
-            !is.na(range) ~ paste("range:", range),
+            !is.na(.data$value_labels) ~ .data$value_labels,
+            !is.na(.data$levels) ~ .data$levels,
+            !is.na(.data$range) ~ paste("range:", .data$range),
             TRUE ~ "\u200b" # zero-width space
           ),
-          variable = dplyr::if_else(duplicated(pos), "\u200b", variable),
-          label = dplyr::if_else(duplicated(pos), "\u200b", label),
-          col_type = dplyr::if_else(duplicated(pos), "\u200b", col_type),
-          pos = dplyr::if_else(duplicated(pos), "\u200b", as.character(pos))
+          variable = dplyr::if_else(duplicated(.data$pos), "\u200b", .data$variable),
+          label = dplyr::if_else(duplicated(.data$pos), "\u200b", .data$label),
+          col_type = dplyr::if_else(duplicated(.data$pos), "\u200b", .data$col_type),
+          pos = dplyr::if_else(duplicated(.data$pos), "\u200b", as.character(.data$pos))
         ) %>%
-        dplyr::select(any_of(c("pos", "variable", "label", "col_type", "values")))
+        dplyr::select(dplyr::any_of(c("pos", "variable", "label", "col_type", "values")))
     }
     print(pillar::colonnade(x, has_row_id = FALSE))
   } else {
@@ -223,7 +222,7 @@ lookfor_to_long_format <- function(x) {
 
   x <- x %>%
     dplyr::as_tibble() %>% # remove look_for class
-    dplyr::mutate(value_labels = names_prefixed_by_values(value_labels))
+    dplyr::mutate(value_labels = names_prefixed_by_values(.data$value_labels))
 
   # tidyr::unnest() fails if all elements are NULL
   if (all(unlist(lapply(x$levels, is.null))))

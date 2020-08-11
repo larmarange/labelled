@@ -36,8 +36,6 @@ displays all variables if not specified}
 \item{details}{add details about each variable (turn off for a quicker search)}
 
 \item{x}{a tibble returned by \code{look_for()}}
-
-\item{all}{Print all columns? If \code{FALSE}, print a summary.}
 }
 \value{
 a tibble data frame featuring the variable position, name and description
