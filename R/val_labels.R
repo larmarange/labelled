@@ -275,7 +275,7 @@ set_value_labels <- function(.data, ..., .labels = NA) {
   if (!identical(.labels, NA)) {
     val_labels(.data) <- .labels
   }
-  values <- list(...)
+  values <- rlang::dots_list(...)
   if (!all(names(values) %in% names(.data)))
     stop("some variables not found in .data")
 
@@ -288,7 +288,7 @@ set_value_labels <- function(.data, ..., .labels = NA) {
 #' @rdname val_labels
 #' @export
 add_value_labels <- function(.data, ...) {
-  values <- list(...)
+  values <- rlang::dots_list(...)
   if (!all(names(values) %in% names(.data)))
     stop("some variables not found in .data")
 
@@ -306,7 +306,7 @@ add_value_labels <- function(.data, ...) {
 #' @rdname val_labels
 #' @export
 remove_value_labels <- function(.data, ...) {
-  values <- list(...)
+  values <- rlang::dots_list(...)
   if (!all(names(values) %in% names(.data)))
     stop("some variables not found in .data")
 

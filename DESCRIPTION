@@ -19,7 +19,8 @@ Encoding: UTF-8
 Imports:
     haven (>= 2.3.1),
     dplyr,
-    lifecycle
+    lifecycle,
+    rlang
 Suggests:
     testthat,
     knitr,
@@ -32,6 +33,6 @@ LazyData: true
 URL: http://larmarange.github.io/labelled/
 BugReports: https://github.com/larmarange/labelled/issues
 VignetteBuilder: knitr
-RoxygenNote: 7.1.0.9000
+RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
 RdMacros: lifecycle

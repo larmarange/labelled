@@ -1,5 +1,8 @@
 # labelled (development version)
 
+* `set_variable_labels`, `set_value_labels`, `add_value_labels`,
+  and `remove_value_labels` now accept "tidy dots"
+
 # labelled 2.5.0
 
 * new `.keep_value_labels` argument for `recode.haven_labelled()`

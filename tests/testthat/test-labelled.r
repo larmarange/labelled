@@ -388,3 +388,27 @@ test_that("dplyr::recode works properly with labelled vectors", {
   r <- dplyr::recode(y, `2` = 1L, `4` = 3L, .combine_value_labels = TRUE)
   expect_equal(val_labels(r), c(a = 1L))
 })
+
+# tidy dots --------------------------------------------------------------
+test_that("functions with dots accept tidy evaluation (`!!!` operator)", {
+  df <- data.frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2), stringsAsFactors = FALSE)
+  variable_list <- list(s1 = "Sex", s2 = "Question")
+  df <- set_variable_labels(df, !!!variable_list)
+  expect_equal(var_label(df$s1), "Sex")
+  expect_equal(var_label(df$s2), "Question")
+
+  df <- data.frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2), stringsAsFactors = FALSE)
+  labels_list <- list(s1 = c(Male = "M", Female = "F"), s2 = c(Yes = 1, No = 2))
+  df <- set_value_labels(df, !!!labels_list)
+  expect_equal(val_labels(df$s1), c(Male = "M", Female = "F"))
+  expect_equal(val_labels(df$s2), c(Yes = 1, No = 2))
+
+  df <- data.frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2), stringsAsFactors = FALSE)
+  df <- set_value_labels(df, s1 = c(Male = "M", Female = "F"), s2 = c(Yesss = 1, No = 2))
+  added_values_list <- list(s2 = c(Yes = 1, Unknown = 9))
+  df <- add_value_labels(df, !!!added_values_list)
+  expect_equal(val_labels(df$s2), c(Yes = 1, No = 2, Unknown = 9))
+  removed_values_list <- list(s2 = 9)
+  df <- remove_value_labels(df, !!!removed_values_list)
+  expect_equal(val_labels(df$s2), c(Yes = 1, No = 2))
+})
