@@ -129,7 +129,7 @@ set_variable_labels <- function(.data, ..., .labels = NA) {
   if (!identical(.labels, NA)) {
     var_label(.data) <- .labels
   }
-  values <- list(...)
+  values <- rlang::dots_list(...)
   if (length(values) > 0) {
     if (!all(names(values) %in% names(.data)))
       stop("some variables not found in .data")

@@ -19,7 +19,8 @@ Encoding: UTF-8
 Imports:
     haven (>= 2.3.1),
     dplyr,
-    lifecycle
+    lifecycle,
+    rlang
 Suggests:
     testthat,
     knitr,
