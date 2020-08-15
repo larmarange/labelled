@@ -3,19 +3,37 @@
 \name{look_for}
 \alias{look_for}
 \alias{lookfor}
-\title{Look for keywords variable names and descriptions}
+\alias{generate_dictionary}
+\alias{print.look_for}
+\alias{convert_list_columns_to_character}
+\alias{lookfor_to_long_format}
+\title{Look for keywords variable names and descriptions / Create a data dictionary}
 \source{
 Based on the behaviour of the \code{lookfor} command in Stata.
 }
 \usage{
-look_for(data, ..., labels = TRUE, ignore.case = TRUE, details = FALSE)
+look_for(data, ..., labels = TRUE, ignore.case = TRUE, details = TRUE)
 
-lookfor(data, ..., labels = TRUE, ignore.case = TRUE, details = FALSE)
+lookfor(data, ..., labels = TRUE, ignore.case = TRUE, details = TRUE)
+
+generate_dictionary(
+  data,
+  ...,
+  labels = TRUE,
+  ignore.case = TRUE,
+  details = TRUE
+)
+
+\method{print}{look_for}(x, ...)
+
+convert_list_columns_to_character(x)
+
+lookfor_to_long_format(x)
 }
 \arguments{
 \item{data}{a data frame}
 
-\item{...}{list of keywords, a character string (or several character strings), which can be
+\item{...}{optional list of keywords, a character string (or several character strings), which can be
 formatted as a regular expression suitable for a \code{\link[base:grep]{base::grep()}} pattern, or a vector of keywords;
 displays all variables if not specified}
 
@@ -24,10 +42,12 @@ displays all variables if not specified}
 \item{ignore.case}{whether or not to make the keywords case sensitive;
 \code{TRUE} by default (case is ignored during matching)}
 
-\item{details}{add details about each variable (see examples)}
+\item{details}{add details about each variable (turn off for a quicker search)}
+
+\item{x}{a tibble returned by \code{look_for()}}
 }
 \value{
-a data frame featuring the variable position, name and description
+a tibble data frame featuring the variable position, name and description
 (if it exists) in the original data frame
 }
 \description{
@@ -37,33 +57,69 @@ variable labels descriptions.
 The command is meant to help users finding variables in large datasets.
 }
 \details{
+When no keyword is provided, it will produce a data dictionary of the overall
+data frame.
+
 The function looks into the variable names for matches to the keywords. If available,
 variable labels are included in the search scope.
 Variable labels of data.frame imported with \pkg{foreign} or
-\pkg{memisc} packages will also be taken into account (see \code{\link[=to_labelled]{to_labelled()}}).
+\pkg{memisc} packages will also be taken into account (see \code{\link[=to_labelled]{to_labelled()}}). If no keyword is
+provided, it will return all variables of \code{data}.
 
-\code{look_for()} and \code{lookfor()} are equivalent.
+\code{look_for()}, \code{lookfor()} and \code{generate_dictionary()} are equivalent.
+
+By default, results will be summrized when printing. To deactivate default printing,
+use \code{dplyr::as_tibble()}.
+
+\code{lookfor_to_long_format()} could be used to transform results with one row per factor level
+and per value label.
+
+Use \code{convert_list_columns_to_character()} to convert named list columns into character vectors
+(see examples).
 }
 \examples{
 look_for(iris)
+
 # Look for a single keyword.
 look_for(iris, "petal")
 look_for(iris, "s")
+
 # Look for with a regular expression
 look_for(iris, "petal|species")
 look_for(iris, "s$")
+
 # Look for with several keywords
 look_for(iris, "pet", "sp")
 look_for(iris, "pet", "sp", "width")
+look_for(iris, "Pet", "sp", "width", ignore.case = FALSE)
+
+# Quicker search without variable details
+look_for(iris, details = TRUE)
+
+# To deactivate default printing, convert to tibble
+look_for(iris) \%>\% dplyr::as_tibble()
+
+# To convert named list into character vectors
+look_for(iris) \%>\% convert_list_columns_to_character()
+
+# Long format with one row per factor and per value label
+look_for(iris) \%>\% lookfor_to_long_format()
+
+# Both functions can be combined
+look_for(iris) \%>\%
+  lookfor_to_long_format() \%>\%
+  convert_list_columns_to_character()
+
 # Labelled data
-\dontrun{require(questionr)
-data(fertility)
-look_for(women)
-look_for(women, "date")
-# Display details
-look_for(women, details = TRUE)
+\dontrun{
+  data(fertility, package = "questionr")
+  look_for(children)
+  look_for(children, "id")
+  look_for(children) \%>\%
+    lookfor_to_long_format() \%>\%
+    convert_list_columns_to_character()
 }
 }
 \author{
-François Briatte \href{mailto:f.briatte@gmail.com}{f.briatte@gmail.com}
+François Briatte \href{mailto:f.briatte@gmail.com}{f.briatte@gmail.com}, Joseph Larmarange \href{mailto:joseph@larmarange.net}{joseph@larmarange.net}
 }

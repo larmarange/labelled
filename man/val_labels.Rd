@@ -110,7 +110,7 @@ val_label(v, 9) <- NULL
 val_labels(v) <- NULL
 if (require(dplyr)) {
   # setting value labels
-  df <- data_frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2)) \%>\%
+  df <- tibble(s1 = c("M", "M", "F"), s2 = c(1, 1, 2)) \%>\%
     set_value_labels(s1 = c(Male = "M", Female = "F"), s2 = c(Yes = 1, No = 2))
   val_labels(df)
 
