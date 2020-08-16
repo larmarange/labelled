@@ -1,0 +1,61 @@
+---
+author: "Joseph Larmarange"
+title: "Generate a data dictionnary and search for variables with `look_for()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Generate a data dictionnary and search for variables with `look_for()`}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+## Showing a summary of a data frame
+
+### Default printing of tibbles
+
+It is a common need to easily get a description of all variables in a data frame.
+
+When a data frame is converted into a tibble (e.g. with `dplyr::as_tibble()`), it as a nice printing showing the first rows of the data frame as well as the type of column.
+
+```{r message=FALSE}
+library(dplyr)
+```
+
+
+```{r}
+iris %>% as_tibble()
+```
+
+However, when you have too many variables, all of them cannot be printed and their are just listed.
+
+```{r}
+data(fertility, package = "questionr")
+women
+```
+
+Note: in **R** console, value labels (if defined) are usually printed but they do not appear in a R markdown document like this vignette.
+
+### `dplyr::glimpse()`
+ 
+ The function `dplyr::glimpse()` allows you to have a quick look at all the variables in a data frame.
+ 
+```{r}
+glimpse(iris)
+glimpse(women)
+```
+ 
+It will show you the first values of each variable as well as the type of each variable. However, some important informations are not displayed:
+
+- variable labels, when defined;
+- value labels for labelled vectors;
+- the list of levels for factors;
+- the range of values for numerical variables.
+
+### `labelled::look_for()`
+
+```{r}
+library(labelled)
+look_for(iris)
+look_for(women)
+```
+
+
