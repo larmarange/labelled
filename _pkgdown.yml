@@ -35,6 +35,7 @@ reference:
   - update_labelled
 - title: Other functions and methods
   contents:
+  - look_for
   - recode.haven_labelled
   - remove_attributes
 
