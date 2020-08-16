@@ -59,7 +59,7 @@
 #' # To deactivate default printing, convert to tibble
 #' look_for(iris) %>% dplyr::as_tibble()
 #'
-#' # To convert named list into character vectors
+#' # To convert named lists into character vectors
 #' look_for(iris) %>% convert_list_columns_to_character()
 #'
 #' # Long format with one row per factor and per value label
