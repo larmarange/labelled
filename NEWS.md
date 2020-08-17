@@ -1,4 +1,4 @@
-# labelled (development version)
+# labelled 2.6.0
 
 * `look_for()` has been redesigned:
     - `look_for()` now returns a tibble
