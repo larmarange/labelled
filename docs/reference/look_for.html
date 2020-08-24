@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Look for keywords variable names and descriptions — look_for • labelled</title>
+<title>Look for keywords variable names and descriptions / Create a data dictionary — look_for • labelled</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Look for keywords variable names and descriptions — look_for" />
+<meta property="og:title" content="Look for keywords variable names and descriptions / Create a data dictionary — look_for" />
 <meta property="og:description" content="look_for emulates the lookfor Stata command in R. It supports
 searching into the variable names of regular R data frames as well as into
 variable labels descriptions.
@@ -75,7 +75,7 @@ The command is meant to help users finding variables in large datasets." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">labelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.6.0</span>
       </span>
     </div>
 
@@ -99,6 +99,9 @@ The command is meant to help users finding variables in large datasets." />
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="../articles/intro_labelled.html">Introduction to labelled</a>
+    </li>
+    <li>
+      <a href="../articles/look_for.html">Generate a data dictionnary and search for variables with `look_for()`</a>
     </li>
   </ul>
 </li>
@@ -126,7 +129,7 @@ The command is meant to help users finding variables in large datasets." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Look for keywords variable names and descriptions</h1>
+    <h1>Look for keywords variable names and descriptions / Create a data dictionary</h1>
     <small class="dont-index">Source: <a href='https://github.com/larmarange/labelled/blob/master/R/lookfor.R'><code>R/lookfor.R</code></a></small>
     <div class="hidden name"><code>look_for.Rd</code></div>
     </div>
@@ -138,9 +141,24 @@ variable labels descriptions.
 The command is meant to help users finding variables in large datasets.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>look_for</span>(<span class='no'>data</span>, <span class='no'>...</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>details</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>look_for</span>(<span class='no'>data</span>, <span class='no'>...</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>details</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='fu'>lookfor</span>(<span class='no'>data</span>, <span class='no'>...</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>details</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>lookfor</span>(<span class='no'>data</span>, <span class='no'>...</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>details</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+<span class='fu'>generate_dictionary</span>(
+  <span class='no'>data</span>,
+  <span class='no'>...</span>,
+  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>details</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)
+
+<span class='co'># S3 method for look_for</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+
+<span class='fu'>convert_list_columns_to_character</span>(<span class='no'>x</span>)
+
+<span class='fu'>lookfor_to_long_format</span>(<span class='no'>x</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -151,7 +169,7 @@ The command is meant to help users finding variables in large datasets.</p>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>list of keywords, a character string (or several character strings), which can be
+      <td><p>optional list of keywords, a character string (or several character strings), which can be
 formatted as a regular expression suitable for a <code><a href='https://rdrr.io/r/base/grep.html'>base::grep()</a></code> pattern, or a vector of keywords;
 displays all variables if not specified</p></td>
     </tr>
@@ -166,7 +184,11 @@ displays all variables if not specified</p></td>
     </tr>
     <tr>
       <th>details</th>
-      <td><p>add details about each variable (see examples)</p></td>
+      <td><p>add details about each variable (turn off for a quicker search)</p></td>
+    </tr>
+    <tr>
+      <th>x</th>
+      <td><p>a tibble returned by <code>look_for()</code></p></td>
     </tr>
     </table>
 
@@ -175,53 +197,145 @@ displays all variables if not specified</p></td>
     <p>Based on the behaviour of the <code>lookfor</code> command in Stata.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a data frame featuring the variable position, name and description
+    <p>a tibble data frame featuring the variable position, name and description
 (if it exists) in the original data frame</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The function looks into the variable names for matches to the keywords. If available,
+    <p>When no keyword is provided, it will produce a data dictionary of the overall
+data frame.</p>
+<p>The function looks into the variable names for matches to the keywords. If available,
 variable labels are included in the search scope.
 Variable labels of data.frame imported with <span class="pkg">foreign</span> or
-<span class="pkg">memisc</span> packages will also be taken into account (see <code><a href='to_labelled.html'>to_labelled()</a></code>).</p>
-<p><code>look_for()</code> and <code>lookfor()</code> are equivalent.</p>
+<span class="pkg">memisc</span> packages will also be taken into account (see <code><a href='to_labelled.html'>to_labelled()</a></code>). If no keyword is
+provided, it will return all variables of <code>data</code>.</p>
+<p><code>look_for()</code>, <code>lookfor()</code> and <code>generate_dictionary()</code> are equivalent.</p>
+<p>By default, results will be summrized when printing. To deactivate default printing,
+use <code><a href='https://dplyr.tidyverse.org/reference/reexports.html'>dplyr::as_tibble()</a></code>.</p>
+<p><code>lookfor_to_long_format()</code> could be used to transform results with one row per factor level
+and per value label.</p>
+<p>Use <code>convert_list_columns_to_character()</code> to convert named list columns into character vectors
+(see examples).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>look_for</span>(<span class='no'>iris</span>)</div><div class='output co'>#&gt;       variable
-#&gt; 1 Sepal.Length
-#&gt; 2  Sepal.Width
-#&gt; 3 Petal.Length
-#&gt; 4  Petal.Width
-#&gt; 5      Species</div><div class='input'><span class='co'># Look for a single keyword.</span>
-<span class='fu'>look_for</span>(<span class='no'>iris</span>, <span class='st'>"petal"</span>)</div><div class='output co'>#&gt;       variable
-#&gt; 3 Petal.Length
-#&gt; 4  Petal.Width</div><div class='input'><span class='fu'>look_for</span>(<span class='no'>iris</span>, <span class='st'>"s"</span>)</div><div class='output co'>#&gt;       variable
-#&gt; 1 Sepal.Length
-#&gt; 2  Sepal.Width
-#&gt; 5      Species</div><div class='input'><span class='co'># Look for with a regular expression</span>
-<span class='fu'>look_for</span>(<span class='no'>iris</span>, <span class='st'>"petal|species"</span>)</div><div class='output co'>#&gt;       variable
-#&gt; 3 Petal.Length
-#&gt; 4  Petal.Width
-#&gt; 5      Species</div><div class='input'><span class='fu'>look_for</span>(<span class='no'>iris</span>, <span class='st'>"s$"</span>)</div><div class='output co'>#&gt;   variable
-#&gt; 5  Species</div><div class='input'><span class='co'># Look for with several keywords</span>
-<span class='fu'>look_for</span>(<span class='no'>iris</span>, <span class='st'>"pet"</span>, <span class='st'>"sp"</span>)</div><div class='output co'>#&gt;       variable
-#&gt; 3 Petal.Length
-#&gt; 4  Petal.Width
-#&gt; 5      Species</div><div class='input'><span class='fu'>look_for</span>(<span class='no'>iris</span>, <span class='st'>"pet"</span>, <span class='st'>"sp"</span>, <span class='st'>"width"</span>)</div><div class='output co'>#&gt;       variable
-#&gt; 2  Sepal.Width
-#&gt; 3 Petal.Length
-#&gt; 4  Petal.Width
-#&gt; 5      Species</div><div class='input'><span class='co'># Labelled data</span>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='no'>questionr</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>fertility</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: data set 'fertility' not found</span></div><div class='input'><span class='fu'>look_for</span>(<span class='no'>women</span>)</div><div class='output co'>#&gt;   variable
-#&gt; 1   height
-#&gt; 2   weight</div><div class='input'><span class='fu'>look_for</span>(<span class='no'>women</span>, <span class='st'>"date"</span>)</div><div class='output co'>#&gt; <span class='message'>Nothing found. Sorry.</span></div><div class='input'><span class='co'># Display details</span>
-<span class='fu'>look_for</span>(<span class='no'>women</span>, <span class='kw'>details</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;   variable   class   type levels value_labels unique_values n_na na_values
-#&gt; 1   height numeric double                                15    0          
-#&gt; 2   weight numeric double                                15    0          
-#&gt;   na_range
-#&gt; 1         
-#&gt; 2         </div><div class='input'>
-</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>look_for</span>(<span class='no'>iris</span>)</div><div class='output co'>#&gt; pos   variable     label col_type values          
+#&gt; <span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           
+#&gt; 1     Sepal.Length —     dbl      range: 4.3 - 7.9
+#&gt; 2     Sepal.Width  —     dbl      range: 2 - 4.4  
+#&gt; 3     Petal.Length —     dbl      range: 1 - 6.9  
+#&gt; 4     Petal.Width  —     dbl      range: 0.1 - 2.5
+#&gt; 5     Species      —     fct      setosa          
+#&gt; ​      ​             ​      ​         versicolor      
+#&gt; ​      ​             ​      ​         virginica       </div><div class='input'>
+<span class='co'># Look for a single keyword.</span>
+<span class='fu'>look_for</span>(<span class='no'>iris</span>, <span class='st'>"petal"</span>)</div><div class='output co'>#&gt; pos   variable     label col_type values          
+#&gt; </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           
+#&gt; 3     Petal.Length —     dbl      range: 1 - 6.9  
+#&gt; 4     Petal.Width  —     dbl      range: 0.1 - 2.5</div><div class='input'><span class='fu'>look_for</span>(<span class='no'>iris</span>, <span class='st'>"s"</span>)</div><div class='output co'>#&gt; pos   variable     label col_type values          
+#&gt; </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           
+#&gt; 1     Sepal.Length —     dbl      range: 4.3 - 7.9
+#&gt; 2     Sepal.Width  —     dbl      range: 2 - 4.4  
+#&gt; 5     Species      —     fct      setosa          
+#&gt; ​      ​             ​      ​         versicolor      
+#&gt; ​      ​             ​      ​         virginica       </div><div class='input'>
+<span class='co'># Look for with a regular expression</span>
+<span class='fu'>look_for</span>(<span class='no'>iris</span>, <span class='st'>"petal|species"</span>)</div><div class='output co'>#&gt; pos   variable     label col_type values          
+#&gt; </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           
+#&gt; 3     Petal.Length —     dbl      range: 1 - 6.9  
+#&gt; 4     Petal.Width  —     dbl      range: 0.1 - 2.5
+#&gt; 5     Species      —     fct      setosa          
+#&gt; ​      ​             ​      ​         versicolor      
+#&gt; ​      ​             ​      ​         virginica       </div><div class='input'><span class='fu'>look_for</span>(<span class='no'>iris</span>, <span class='st'>"s$"</span>)</div><div class='output co'>#&gt; pos   variable label col_type values    
+#&gt; </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
+#&gt; 5     Species  —     fct      setosa    
+#&gt; ​      ​         ​      ​         versicolor
+#&gt; ​      ​         ​      ​         virginica </div><div class='input'>
+<span class='co'># Look for with several keywords</span>
+<span class='fu'>look_for</span>(<span class='no'>iris</span>, <span class='st'>"pet"</span>, <span class='st'>"sp"</span>)</div><div class='output co'>#&gt; pos   variable     label col_type values          
+#&gt; </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           
+#&gt; 3     Petal.Length —     dbl      range: 1 - 6.9  
+#&gt; 4     Petal.Width  —     dbl      range: 0.1 - 2.5
+#&gt; 5     Species      —     fct      setosa          
+#&gt; ​      ​             ​      ​         versicolor      
+#&gt; ​      ​             ​      ​         virginica       </div><div class='input'><span class='fu'>look_for</span>(<span class='no'>iris</span>, <span class='st'>"pet"</span>, <span class='st'>"sp"</span>, <span class='st'>"width"</span>)</div><div class='output co'>#&gt; pos   variable     label col_type values          
+#&gt; </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           
+#&gt; 2     Sepal.Width  —     dbl      range: 2 - 4.4  
+#&gt; 3     Petal.Length —     dbl      range: 1 - 6.9  
+#&gt; 4     Petal.Width  —     dbl      range: 0.1 - 2.5
+#&gt; 5     Species      —     fct      setosa          
+#&gt; ​      ​             ​      ​         versicolor      
+#&gt; ​      ​             ​      ​         virginica       </div><div class='input'><span class='fu'>look_for</span>(<span class='no'>iris</span>, <span class='st'>"Pet"</span>, <span class='st'>"sp"</span>, <span class='st'>"width"</span>, <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; pos   variable     label col_type values          
+#&gt; </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           
+#&gt; 3     Petal.Length —     dbl      range: 1 - 6.9  
+#&gt; 4     Petal.Width  —     dbl      range: 0.1 - 2.5</div><div class='input'>
+<span class='co'># Quicker search without variable details</span>
+<span class='fu'>look_for</span>(<span class='no'>iris</span>, <span class='kw'>details</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; pos   variable     label col_type values          
+#&gt; </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           
+#&gt; 1     Sepal.Length —     dbl      range: 4.3 - 7.9
+#&gt; 2     Sepal.Width  —     dbl      range: 2 - 4.4  
+#&gt; 3     Petal.Length —     dbl      range: 1 - 6.9  
+#&gt; 4     Petal.Width  —     dbl      range: 0.1 - 2.5
+#&gt; 5     Species      —     fct      setosa          
+#&gt; ​      ​             ​      ​         versicolor      
+#&gt; ​      ​             ​      ​         virginica       </div><div class='input'>
+<span class='co'># To deactivate default printing, convert to tibble</span>
+<span class='fu'>look_for</span>(<span class='no'>iris</span>) <span class='kw'>%&gt;%</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>as_tibble</a></span>()</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 5 x 13</span><span>
+#&gt;     pos variable label col_type class type  levels value_labels na_values
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;nam&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;name&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;named list&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;named l&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>     1 Sepal.L… </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #949494;'>&lt;chr</span><span>… doub… </span><span style='color: #949494;'>&lt;NULL&gt;</span><span> </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>       </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>     2 Sepal.W… </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #949494;'>&lt;chr</span><span>… doub… </span><span style='color: #949494;'>&lt;NULL&gt;</span><span> </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>       </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span>     3 Petal.L… </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #949494;'>&lt;chr</span><span>… doub… </span><span style='color: #949494;'>&lt;NULL&gt;</span><span> </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>       </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span>     4 Petal.W… </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #949494;'>&lt;chr</span><span>… doub… </span><span style='color: #949494;'>&lt;NULL&gt;</span><span> </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>       </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span>     5 Species  </span><span style='color: #BB0000;'>NA</span><span>    fct      </span><span style='color: #949494;'>&lt;chr</span><span>… inte… </span><span style='color: #949494;'>&lt;chr </span><span>… </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>       </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>   
+#&gt; </span><span style='color: #949494;'># … with 4 more variables: na_range </span><span style='color: #949494;font-style: italic;'>&lt;named list&gt;</span><span style='color: #949494;'>, unique_values </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   n_na </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, range </span><span style='color: #949494;font-style: italic;'>&lt;named list&gt;</span><span></div><div class='input'>
+<span class='co'># To convert named lists into character vectors</span>
+<span class='fu'>look_for</span>(<span class='no'>iris</span>) <span class='kw'>%&gt;%</span> <span class='fu'>convert_list_columns_to_character</span>()</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 5 x 13</span><span>
+#&gt;     pos variable label col_type class type  levels value_labels na_values
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>     1 Sepal.L… </span><span style='color: #BB0000;'>NA</span><span>    dbl      nume… doub… </span><span style='color: #949494;'>""</span><span>     </span><span style='color: #949494;'>""</span><span>           </span><span style='color: #949494;'>""</span><span>       
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>     2 Sepal.W… </span><span style='color: #BB0000;'>NA</span><span>    dbl      nume… doub… </span><span style='color: #949494;'>""</span><span>     </span><span style='color: #949494;'>""</span><span>           </span><span style='color: #949494;'>""</span><span>       
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span>     3 Petal.L… </span><span style='color: #BB0000;'>NA</span><span>    dbl      nume… doub… </span><span style='color: #949494;'>""</span><span>     </span><span style='color: #949494;'>""</span><span>           </span><span style='color: #949494;'>""</span><span>       
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span>     4 Petal.W… </span><span style='color: #BB0000;'>NA</span><span>    dbl      nume… doub… </span><span style='color: #949494;'>""</span><span>     </span><span style='color: #949494;'>""</span><span>           </span><span style='color: #949494;'>""</span><span>       
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span>     5 Species  </span><span style='color: #BB0000;'>NA</span><span>    fct      fact… inte… </span><span style='color: #949494;'>"</span><span>seto… </span><span style='color: #949494;'>""</span><span>           </span><span style='color: #949494;'>""</span><span>       
+#&gt; </span><span style='color: #949494;'># … with 4 more variables: na_range </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, unique_values </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, n_na </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   range </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
+<span class='co'># Long format with one row per factor and per value label</span>
+<span class='fu'>look_for</span>(<span class='no'>iris</span>) <span class='kw'>%&gt;%</span> <span class='fu'>lookfor_to_long_format</span>()</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 7 x 13</span><span>
+#&gt;     pos variable label col_type class type  levels value_labels na_values
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;nam&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;named l&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>     1 Sepal.L… </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #949494;'>&lt;chr</span><span>… doub… </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>           </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>     2 Sepal.W… </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #949494;'>&lt;chr</span><span>… doub… </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>           </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span>     3 Petal.L… </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #949494;'>&lt;chr</span><span>… doub… </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>           </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span>     4 Petal.W… </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #949494;'>&lt;chr</span><span>… doub… </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>           </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span>     5 Species  </span><span style='color: #BB0000;'>NA</span><span>    fct      </span><span style='color: #949494;'>&lt;chr</span><span>… inte… setosa </span><span style='color: #BB0000;'>NA</span><span>           </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span>     5 Species  </span><span style='color: #BB0000;'>NA</span><span>    fct      </span><span style='color: #949494;'>&lt;chr</span><span>… inte… versi… </span><span style='color: #BB0000;'>NA</span><span>           </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'>7</span><span>     5 Species  </span><span style='color: #BB0000;'>NA</span><span>    fct      </span><span style='color: #949494;'>&lt;chr</span><span>… inte… virgi… </span><span style='color: #BB0000;'>NA</span><span>           </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>   
+#&gt; </span><span style='color: #949494;'># … with 4 more variables: na_range </span><span style='color: #949494;font-style: italic;'>&lt;named list&gt;</span><span style='color: #949494;'>, unique_values </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   n_na </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, range </span><span style='color: #949494;font-style: italic;'>&lt;named list&gt;</span><span></div><div class='input'>
+<span class='co'># Both functions can be combined</span>
+<span class='fu'>look_for</span>(<span class='no'>iris</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>lookfor_to_long_format</span>() <span class='kw'>%&gt;%</span>
+  <span class='fu'>convert_list_columns_to_character</span>()</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 7 x 13</span><span>
+#&gt;     pos variable label col_type class type  levels value_labels na_values
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>     1 Sepal.L… </span><span style='color: #BB0000;'>NA</span><span>    dbl      nume… doub… </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>           </span><span style='color: #949494;'>""</span><span>       
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>     2 Sepal.W… </span><span style='color: #BB0000;'>NA</span><span>    dbl      nume… doub… </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>           </span><span style='color: #949494;'>""</span><span>       
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span>     3 Petal.L… </span><span style='color: #BB0000;'>NA</span><span>    dbl      nume… doub… </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>           </span><span style='color: #949494;'>""</span><span>       
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span>     4 Petal.W… </span><span style='color: #BB0000;'>NA</span><span>    dbl      nume… doub… </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>           </span><span style='color: #949494;'>""</span><span>       
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span>     5 Species  </span><span style='color: #BB0000;'>NA</span><span>    fct      fact… inte… setosa </span><span style='color: #BB0000;'>NA</span><span>           </span><span style='color: #949494;'>""</span><span>       
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span>     5 Species  </span><span style='color: #BB0000;'>NA</span><span>    fct      fact… inte… versi… </span><span style='color: #BB0000;'>NA</span><span>           </span><span style='color: #949494;'>""</span><span>       
+#&gt; </span><span style='color: #BCBCBC;'>7</span><span>     5 Species  </span><span style='color: #BB0000;'>NA</span><span>    fct      fact… inte… virgi… </span><span style='color: #BB0000;'>NA</span><span>           </span><span style='color: #949494;'>""</span><span>       
+#&gt; </span><span style='color: #949494;'># … with 4 more variables: na_range </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, unique_values </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, n_na </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   range </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
+<span class='co'># Labelled data</span>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+  <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>fertility</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"questionr"</span>)
+  <span class='fu'>look_for</span>(<span class='no'>children</span>)
+  <span class='fu'>look_for</span>(<span class='no'>children</span>, <span class='st'>"id"</span>)
+  <span class='fu'>look_for</span>(<span class='no'>children</span>) <span class='kw'>%&gt;%</span>
+    <span class='fu'>lookfor_to_long_format</span>() <span class='kw'>%&gt;%</span>
+    <span class='fu'>convert_list_columns_to_character</span>()
+}</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

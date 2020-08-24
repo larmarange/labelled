@@ -38,5 +38,6 @@ reference:
   - look_for
   - recode.haven_labelled
   - remove_attributes
+  - names_prefixed_by_values
 
 

@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">labelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.6.0</span>
       </span>
     </div>
 
@@ -95,6 +95,9 @@
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="../articles/intro_labelled.html">Introduction to labelled</a>
+    </li>
+    <li>
+      <a href="../articles/look_for.html">Generate a data dictionnary and search for variables with `look_for()`</a>
     </li>
   </ul>
 </li>
@@ -126,9 +129,33 @@
       <small>Source: <a href='https://github.com/larmarange/labelled/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="labelled-260" class="section level1">
+<h1 class="page-header" data-toc-text="2.6.0">
+<a href="#labelled-260" class="anchor"></a>labelled 2.6.0<small> Unreleased </small>
+</h1>
+<ul>
+<li>
+<code><a href="../reference/look_for.html">look_for()</a></code> has been redesigned:
+<ul>
+<li>
+<code><a href="../reference/look_for.html">look_for()</a></code> now returns a tibble</li>
+<li>columns with multiple values for each variable are now stored as named lists</li>
+<li>a print method has been added for a clearer presentation of results in the console</li>
+<li>use <code><a href="../reference/look_for.html">lookfor_to_long_format()</a></code> to convert results with one row per factor level and per value label</li>
+<li>use <code><a href="../reference/look_for.html">convert_list_columns_to_character()</a></code> to convert list columns to simpler character vectors</li>
+<li>
+<code><a href="../reference/look_for.html">generate_dictionary()</a></code> is an equivalent of <code><a href="../reference/look_for.html">look_for()</a></code>
+</li>
+</ul>
+</li>
+<li>
+<code>set_variable_labels</code>, <code>set_value_labels</code>, <code>add_value_labels</code>, and <code>remove_value_labels</code> now accept “tidy dots” (<a href='https://github.com/larmarange/labelled/issues/67'>#67</a> <a href='https://github.com/psanker'>@psanker</a>)</li>
+<li>new function <code><a href="../reference/names_prefixed_by_values.html">names_prefixed_by_values()</a></code> to get the names of a vector prefixed by their corresponding value</li>
+</ul>
+</div>
     <div id="labelled-250" class="section level1">
 <h1 class="page-header" data-toc-text="2.5.0">
-<a href="#labelled-250" class="anchor"></a>labelled 2.5.0<small> Unreleased </small>
+<a href="#labelled-250" class="anchor"></a>labelled 2.5.0<small> 2020-06-17 </small>
 </h1>
 <ul>
 <li>new <code>.keep_value_labels</code> argument for <code><a href="../reference/recode.haven_labelled.html">recode.haven_labelled()</a></code>

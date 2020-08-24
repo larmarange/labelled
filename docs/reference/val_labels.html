@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">labelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.6.0</span>
       </span>
     </div>
 
@@ -96,6 +96,9 @@
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="../articles/intro_labelled.html">Introduction to labelled</a>
+    </li>
+    <li>
+      <a href="../articles/look_for.html">Generate a data dictionnary and search for variables with `look_for()`</a>
     </li>
   </ul>
 </li>
@@ -246,7 +249,7 @@ While <code>set_value_labels()</code> will replace the list of value labels,
 <span class='fu'>val_labels</span>(<span class='no'>v</span>) <span class='kw'>&lt;-</span> <span class='kw'>NULL</span>
 <span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='no'>dplyr</span>)) {
   <span class='co'># setting value labels</span>
-  <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>data_frame</a></span>(<span class='kw'>s1</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"M"</span>, <span class='st'>"M"</span>, <span class='st'>"F"</span>), <span class='kw'>s2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>)) <span class='kw'>%&gt;%</span>
+  <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>tibble</a></span>(<span class='kw'>s1</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"M"</span>, <span class='st'>"M"</span>, <span class='st'>"F"</span>), <span class='kw'>s2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>)) <span class='kw'>%&gt;%</span>
     <span class='fu'>set_value_labels</span>(<span class='kw'>s1</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>Male</span> <span class='kw'>=</span> <span class='st'>"M"</span>, <span class='kw'>Female</span> <span class='kw'>=</span> <span class='st'>"F"</span>), <span class='kw'>s2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>Yes</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>No</span> <span class='kw'>=</span> <span class='fl'>2</span>))
   <span class='fu'>val_labels</span>(<span class='no'>df</span>)
 

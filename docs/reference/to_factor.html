@@ -76,7 +76,7 @@ unlabelled(x) is a shortcut for to_factor(x, strict = TRUE, unclass = TRUE, labe
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">labelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.6.0</span>
       </span>
     </div>
 
@@ -100,6 +100,9 @@ unlabelled(x) is a shortcut for to_factor(x, strict = TRUE, unclass = TRUE, labe
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="../articles/intro_labelled.html">Introduction to labelled</a>
+    </li>
+    <li>
+      <a href="../articles/look_for.html">Generate a data dictionnary and search for variables with `look_for()`</a>
     </li>
   </ul>
 </li>
@@ -291,20 +294,20 @@ If you want to remove value labels in all cases, use <code><a href='remove_label
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>glimpse</a></span>(<span class='fu'>unlabelled</span>(<span class='no'>df</span>))
 }</div><div class='output co'>#&gt; Rows: 4
 #&gt; Columns: 6
-#&gt; $ a <span style='color: #555555;font-style: italic;'>&lt;dbl+lbl&gt;</span><span> 1, 1, 2, 3
-#&gt; $ b </span><span style='color: #555555;font-style: italic;'>&lt;dbl+lbl&gt;</span><span> 1, 1, 2, 3
-#&gt; $ c </span><span style='color: #555555;font-style: italic;'>&lt;chr+lbl&gt;</span><span> "a", "a", "b", "c"
-#&gt; $ d </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> 1, 2, 3, 4
-#&gt; $ e </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> item1, item2, item1, item2
-#&gt; $ f </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "itemA", "itemA", "itemB", "itemB"
+#&gt; $ a <span style='color: #949494;font-style: italic;'>&lt;dbl+lbl&gt;</span><span> 1, 1, 2, 3
+#&gt; $ b </span><span style='color: #949494;font-style: italic;'>&lt;dbl+lbl&gt;</span><span> 1, 1, 2, 3
+#&gt; $ c </span><span style='color: #949494;font-style: italic;'>&lt;chr+lbl&gt;</span><span> "a", "a", "b", "c"
+#&gt; $ d </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> 1, 2, 3, 4
+#&gt; $ e </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span> item1, item2, item1, item2
+#&gt; $ f </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "itemA", "itemA", "itemB", "itemB"
 #&gt; Rows: 4
 #&gt; Columns: 6
-#&gt; $ a </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 1, 1, 2, 3
-#&gt; $ b </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> No, No, Yes, DK
-#&gt; $ c </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> No, No, Maybe, Yes
-#&gt; $ d </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> 1, 2, 3, 4
-#&gt; $ e </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> item1, item2, item1, item2
-#&gt; $ f </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "itemA", "itemA", "itemB", "itemB"</div></span></pre>
+#&gt; $ a </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> 1, 1, 2, 3
+#&gt; $ b </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span> No, No, Yes, DK
+#&gt; $ c </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span> No, No, Maybe, Yes
+#&gt; $ d </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> 1, 2, 3, 4
+#&gt; $ e </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span> item1, item2, item1, item2
+#&gt; $ f </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "itemA", "itemA", "itemB", "itemB"</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
