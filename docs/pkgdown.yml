@@ -1,8 +1,0 @@
-pandoc: 2.7.3
-pkgdown: 1.5.1
-pkgdown_sha: ~
-articles:
-  intro_labelled: intro_labelled.html
-  look_for: look_for.html
-last_built: 2020-08-25T10:41Z
-
