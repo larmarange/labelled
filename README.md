@@ -12,8 +12,8 @@ developed.](https://www.repostatus.org/badges/0.1.0/active.svg)](https://www.rep
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![Travis-CI Build
 Status](https://travis-ci.org/larmarange/labelled.svg?branch=master)](https://travis-ci.org/larmarange/labelled)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/labelled)](https://cran.r-project.org/package=labelled)
-[![Rdoc](http://www.rdocumentation.org/badges/version/labelled)](http://www.rdocumentation.org/packages/labelled)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/labelled)](https://cran.r-project.org/package=labelled)
+[![Rdoc](https://www.rdocumentation.org/badges/version/labelled)](https://www.rdocumentation.org/packages/labelled)
 [![Downloads](https://cranlogs.r-pkg.org/badges/labelled)](https://cran.r-project.org/package=labelled)
 [![DOI](https://www.zenodo.org/badge/38772078.svg)](https://www.zenodo.org/badge/latestdoi/38772078)
 <!-- badges: end -->
@@ -41,7 +41,7 @@ devtools::install_github("larmarange/labelled")
 ## Introduction
 
 Read the vignette at
-<http://larmarange.github.io/labelled/articles/intro_labelled.html>
+<https://larmarange.github.io/labelled/articles/intro_labelled.html>
 
 ## Cheatsheet
 
