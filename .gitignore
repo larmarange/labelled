@@ -6,3 +6,4 @@ vignettes/*.md
 vignettes/*.html
 vignettes/*.R
 .httr-oauth
+docs
