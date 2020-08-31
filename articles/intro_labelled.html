@@ -855,13 +855,8 @@
 ## attr(,"label")
 ## [1] "Question"</code></pre>
 <p>To convert variables, the easiest is to use <code><a href="../reference/to_factor.html">unlabelled()</a></code>.</p>
-<div class="sourceCode" id="cb170"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">questionr</span>)</pre></body></html></div>
-<pre><code>## 
-## Attaching package: 'questionr'</code></pre>
-<pre><code>## The following objects are masked from 'package:labelled':
-## 
-##     look_for, lookfor</code></pre>
-<div class="sourceCode" id="cb173"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">fertility</span>)
+<div class="sourceCode" id="cb170"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">questionr</span>)
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">fertility</span>)
 <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="no">women</span>)</pre></body></html></div>
 <pre><code>## Rows: 2,000
 ## Columns: 17
@@ -882,7 +877,7 @@
 ## $ tv                &lt;dbl+lbl&gt; 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,…
 ## $ ideal_nb_children &lt;dbl+lbl&gt;  4,  4,  4,  4,  4,  5, 10,  5,  4,  5,  6, 10,…
 ## $ test              &lt;dbl+lbl&gt; 0, 9, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0,…</code></pre>
-<div class="sourceCode" id="cb175"><html><body><pre class="r"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="no">women</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span>())</pre></body></html></div>
+<div class="sourceCode" id="cb172"><html><body><pre class="r"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="no">women</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span>())</pre></body></html></div>
 <pre><code>## Rows: 2,000
 ## Columns: 17
 ## $ id_woman          &lt;dbl&gt; 391, 1643, 85, 881, 1981, 1072, 1978, 1607, 738, 16…
@@ -903,7 +898,7 @@
 ## $ ideal_nb_children &lt;dbl&gt; 4, 4, 4, 4, 4, 5, 10, 5, 4, 5, 6, 10, 2, 6, 6, 6, 4…
 ## $ test              &lt;fct&gt; no, missing, no, no, yes, no, no, no, no, yes, yes,…</code></pre>
 <p>Alternatively, you can use functions as <code>mutate_if</code> or <code>mutate_at</code>. See the example below.</p>
-<div class="sourceCode" id="cb177"><html><body><pre class="r"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="fu"><a href="../reference/to_factor.html">to_factor</a></span>(<span class="no">women</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb174"><html><body><pre class="r"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="fu"><a href="../reference/to_factor.html">to_factor</a></span>(<span class="no">women</span>))</pre></body></html></div>
 <pre><code>## Rows: 2,000
 ## Columns: 17
 ## $ id_woman          &lt;dbl&gt; 391, 1643, 85, 881, 1981, 1072, 1978, 1607, 738, 16…
@@ -923,7 +918,7 @@
 ## $ tv                &lt;fct&gt; no, no, no, no, no, yes, no, no, no, no, yes, yes, …
 ## $ ideal_nb_children &lt;fct&gt; 4, 4, 4, 4, 4, 5, 10, 5, 4, 5, 6, 10, 2, 6, 6, 6, 4…
 ## $ test              &lt;fct&gt; no, missing, no, no, yes, no, no, no, no, yes, yes,…</code></pre>
-<div class="sourceCode" id="cb179"><html><body><pre class="r"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="no">women</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_if</a></span>(<span class="no">is.labelled</span>, <span class="no">to_factor</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb176"><html><body><pre class="r"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="no">women</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_if</a></span>(<span class="no">is.labelled</span>, <span class="no">to_factor</span>))</pre></body></html></div>
 <pre><code>## Rows: 2,000
 ## Columns: 17
 ## $ id_woman          &lt;dbl&gt; 391, 1643, 85, 881, 1981, 1072, 1978, 1607, 738, 16…
@@ -943,7 +938,7 @@
 ## $ tv                &lt;fct&gt; no, no, no, no, no, yes, no, no, no, no, yes, yes, …
 ## $ ideal_nb_children &lt;fct&gt; 4, 4, 4, 4, 4, 5, 10, 5, 4, 5, 6, 10, 2, 6, 6, 6, 4…
 ## $ test              &lt;fct&gt; no, missing, no, no, yes, no, no, no, no, yes, yes,…</code></pre>
-<div class="sourceCode" id="cb181"><html><body><pre class="r"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="no">women</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span>(<span class="no">employed</span>:<span class="no">religion</span>), <span class="no">to_factor</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb178"><html><body><pre class="r"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="no">women</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span>(<span class="no">employed</span>:<span class="no">religion</span>), <span class="no">to_factor</span>))</pre></body></html></div>
 <pre><code>## Rows: 2,000
 ## Columns: 17
 ## $ id_woman          &lt;dbl&gt; 391, 1643, 85, 881, 1981, 1072, 1978, 1607, 738, 16…
