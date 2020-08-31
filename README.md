@@ -1,5 +1,4 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # labelled <img src="man/figures/labelled.png" align="right" width="120" />
 
