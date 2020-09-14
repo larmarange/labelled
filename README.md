@@ -1,5 +1,3 @@
-
-
 # labelled <img src="man/figures/labelled.png" align="right" width="120" />
 
 <!-- badges: start -->
