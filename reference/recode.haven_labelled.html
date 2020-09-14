@@ -138,14 +138,14 @@ works with labelled vectors.</p>
     </div>
 
     <pre class="usage"><span class='co'># S3 method for haven_labelled</span>
-<span class='fu'>recode</span>(
-  <span class='no'>.x</span>,
-  <span class='no'>...</span>,
-  <span class='kw'>.default</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>.missing</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>.keep_value_labels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>.combine_value_labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>.sep</span> <span class='kw'>=</span> <span class='st'>" / "</span>
+<span class='fu'><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(
+  <span class='kw'>.x</span>,
+  <span class='kw'>...</span>,
+  .default = <span class='kw'>NULL</span>,
+  .missing = <span class='kw'>NULL</span>,
+  .keep_value_labels = <span class='fl'>TRUE</span>,
+  .combine_value_labels = <span class='fl'>FALSE</span>,
+  .sep = <span class='st'>" / "</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -204,14 +204,16 @@ if a same old value is recoded into several different new values.</p></td>
     <div class='dont-index'><p><code><a href='https://dplyr.tidyverse.org/reference/recode.html'>dplyr::recode()</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>yes</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>no</span> <span class='kw'>=</span> <span class='fl'>2</span>))
-<span class='no'>x</span></div><div class='output co'>#&gt; &lt;labelled&lt;integer&gt;[3]&gt;
+    <pre class="examples"><div class='input'><span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(yes = <span class='fl'>1</span>, no = <span class='fl'>2</span>))
+<span class='kw'>x</span>
+</div><div class='output co'>#&gt; &lt;labelled&lt;integer&gt;[3]&gt;
 #&gt; [1] 1 2 3
 #&gt; 
 #&gt; Labels:
 #&gt;  value label
 #&gt;      1   yes
-#&gt;      2    no</div><div class='input'><span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='no'>x</span>, <span class='kw'>`3`</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;integer&gt;[3]&gt;
+#&gt;      2    no</div><div class='input'><span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='kw'>x</span>, `3` = <span class='fl'>2L</span>)
+</div><div class='output co'>#&gt; &lt;labelled&lt;integer&gt;[3]&gt;
 #&gt; [1] 1 2 2
 #&gt; 
 #&gt; Labels:
@@ -219,9 +221,11 @@ if a same old value is recoded into several different new values.</p></td>
 #&gt;      1   yes
 #&gt;      2    no</div><div class='input'>
 <span class='co'># do not keep value labels</span>
-<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='no'>x</span>, <span class='kw'>`3`</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>.keep_value_labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] 1 2 2</div><div class='input'>
+<span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='kw'>x</span>, `3` = <span class='fl'>2L</span>, .keep_value_labels = <span class='fl'>FALSE</span>)
+</div><div class='output co'>#&gt; [1] 1 2 2</div><div class='input'>
 <span class='co'># be careful, changes are not of the same type (here integers), NA are created</span>
-<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='no'>x</span>, <span class='kw'>`3`</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Unreplaced values treated as NA as .x is not compatible. Please specify replacements exhaustively or supply .default</span></div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[3]&gt;
+<span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='kw'>x</span>, `3` = <span class='fl'>2</span>)
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Unreplaced values treated as NA as .x is not compatible. Please specify replacements exhaustively or supply .default</span></div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[3]&gt;
 #&gt; [1] NA NA  2
 #&gt; 
 #&gt; Labels:
@@ -229,7 +233,8 @@ if a same old value is recoded into several different new values.</p></td>
 #&gt;      1   yes
 #&gt;      2    no</div><div class='input'>
 <span class='co'># except if you provide .default or new values for all old values</span>
-<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='no'>x</span>, <span class='kw'>`1`</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>`2`</span> <span class='kw'>=</span> <span class='fl'>1</span>,<span class='kw'>`3`</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[3]&gt;
+<span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='kw'>x</span>, `1` = <span class='fl'>1</span>, `2` = <span class='fl'>1</span>,`3` = <span class='fl'>2</span>)
+</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[3]&gt;
 #&gt; [1] 1 1 2
 #&gt; 
 #&gt; Labels:
@@ -238,30 +243,36 @@ if a same old value is recoded into several different new values.</p></td>
 #&gt;      2    no</div><div class='input'>
 <span class='co'># if you change the type of the vector (here transformed into character)</span>
 <span class='co'># value labels are lost</span>
-<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='no'>x</span>, <span class='kw'>`3`</span> <span class='kw'>=</span> <span class='st'>"b"</span>, <span class='kw'>.default</span> <span class='kw'>=</span> <span class='st'>"a"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: The type of .x has been changed and value labels attributes have been lost.</span></div><div class='output co'>#&gt; [1] "a" "a" "b"</div><div class='input'>
+<span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='kw'>x</span>, `3` = <span class='st'>"b"</span>, .default = <span class='st'>"a"</span>)
+</div><div class='output co'>#&gt; <span class='warning'>Warning: The type of .x has been changed and value labels attributes have been lost.</span></div><div class='output co'>#&gt; [1] "a" "a" "b"</div><div class='input'>
 <span class='co'># use .keep_value_labels = FALSE to avoid a warning</span>
-<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='no'>x</span>, <span class='kw'>`3`</span> <span class='kw'>=</span> <span class='st'>"b"</span>, <span class='kw'>.default</span> <span class='kw'>=</span> <span class='st'>"a"</span>, <span class='kw'>.keep_value_labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] "a" "a" "b"</div><div class='input'>
+<span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='kw'>x</span>, `3` = <span class='st'>"b"</span>, .default = <span class='st'>"a"</span>, .keep_value_labels = <span class='fl'>FALSE</span>)
+</div><div class='output co'>#&gt; [1] "a" "a" "b"</div><div class='input'>
 <span class='co'># combine value labels</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fl'>1</span>:<span class='fl'>4</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"strongly agree"</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='st'>"agree"</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='st'>"disagree"</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='st'>"strongly disagree"</span> <span class='kw'>=</span> <span class='fl'>4</span>))
-<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='no'>x</span>, <span class='kw'>`1`</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>`2`</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>`3`</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>`4`</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>.combine_value_labels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;integer&gt;[4]&gt;
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"strongly agree"</span> = <span class='fl'>1</span>, <span class='st'>"agree"</span> = <span class='fl'>2</span>, <span class='st'>"disagree"</span> = <span class='fl'>3</span>, <span class='st'>"strongly disagree"</span> = <span class='fl'>4</span>))
+<span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='kw'>x</span>, `1` = <span class='fl'>1L</span>, `2` = <span class='fl'>1L</span>, `3` = <span class='fl'>2L</span>, `4` = <span class='fl'>2L</span>, .combine_value_labels = <span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt; &lt;labelled&lt;integer&gt;[4]&gt;
 #&gt; [1] 1 1 2 2
 #&gt; 
 #&gt; Labels:
 #&gt;  value                        label
 #&gt;      1       strongly agree / agree
-#&gt;      2 disagree / strongly disagree</div><div class='input'><span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='no'>x</span>, <span class='kw'>`2`</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>`4`</span> <span class='kw'>=</span> <span class='fl'>3L</span>, <span class='kw'>.combine_value_labels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;integer&gt;[4]&gt;
+#&gt;      2 disagree / strongly disagree</div><div class='input'><span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='kw'>x</span>, `2` = <span class='fl'>1L</span>, `4` = <span class='fl'>3L</span>, .combine_value_labels = <span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt; &lt;labelled&lt;integer&gt;[4]&gt;
 #&gt; [1] 1 1 3 3
 #&gt; 
 #&gt; Labels:
 #&gt;  value                        label
 #&gt;      1       strongly agree / agree
-#&gt;      3 disagree / strongly disagree</div><div class='input'><span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='no'>x</span>, <span class='kw'>`2`</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>`4`</span> <span class='kw'>=</span> <span class='fl'>3L</span>, <span class='kw'>.combine_value_labels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>.sep</span> <span class='kw'>=</span> <span class='st'>" or "</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;integer&gt;[4]&gt;
+#&gt;      3 disagree / strongly disagree</div><div class='input'><span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='kw'>x</span>, `2` = <span class='fl'>1L</span>, `4` = <span class='fl'>3L</span>, .combine_value_labels = <span class='fl'>TRUE</span>, .sep = <span class='st'>" or "</span>)
+</div><div class='output co'>#&gt; &lt;labelled&lt;integer&gt;[4]&gt;
 #&gt; [1] 1 1 3 3
 #&gt; 
 #&gt; Labels:
 #&gt;  value                         label
 #&gt;      1       strongly agree or agree
-#&gt;      3 disagree or strongly disagree</div><div class='input'><span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='no'>x</span>, <span class='kw'>`2`</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>.default</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>.combine_value_labels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;integer&gt;[4]&gt;
+#&gt;      3 disagree or strongly disagree</div><div class='input'><span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='kw'>x</span>, `2` = <span class='fl'>1L</span>, .default = <span class='fl'>2L</span>, .combine_value_labels = <span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt; &lt;labelled&lt;integer&gt;[4]&gt;
 #&gt; [1] 2 1 2 2
 #&gt; 
 #&gt; Labels:
@@ -269,8 +280,9 @@ if a same old value is recoded into several different new values.</p></td>
 #&gt;      1                                         agree
 #&gt;      2 strongly agree / disagree / strongly disagree</div><div class='input'>
 <span class='co'># example when combining some values without a label</span>
-<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fl'>1</span>:<span class='fl'>4</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"strongly agree"</span> <span class='kw'>=</span> <span class='fl'>1</span>))
-<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='no'>y</span>, <span class='kw'>`2`</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>`4`</span> <span class='kw'>=</span> <span class='fl'>3L</span>, <span class='kw'>.combine_value_labels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;integer&gt;[4]&gt;
+<span class='kw'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"strongly agree"</span> = <span class='fl'>1</span>))
+<span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='kw'>y</span>, `2` = <span class='fl'>1L</span>, `4` = <span class='fl'>3L</span>, .combine_value_labels = <span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt; &lt;labelled&lt;integer&gt;[4]&gt;
 #&gt; [1] 1 1 3 3
 #&gt; 
 #&gt; Labels:
@@ -291,7 +303,7 @@ if a same old value is recoded into several different new values.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

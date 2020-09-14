@@ -133,6 +133,10 @@
 <h1 class="page-header" data-toc-text="development version">
 <a href="#labelled-development-version" class="anchor"></a>labelled (development version)<small> Unreleased </small>
 </h1>
+<ul>
+<li>a <code>.values</code> argument has been added to <code><a href="../reference/na_values.html">set_na_values()</a></code> and <code><a href="../reference/na_values.html">set_na_range()</a></code>, allowing to pass a list of values.</li>
+<li>a <code>.strict</code> option has been added to <code><a href="../reference/var_label.html">set_variable_labels()</a></code>, <code><a href="../reference/val_labels.html">set_value_labels()</a></code>, <code><a href="../reference/val_labels.html">add_value_labels()</a></code>, <code><a href="../reference/val_labels.html">remove_value_labels()</a></code>, <code><a href="../reference/na_values.html">set_na_values()</a></code> and <code><a href="../reference/na_values.html">set_na_range()</a></code>, allowing to pass values for columns not observed in the data (it could be useful for using a same list of labels for several data.frame sharing some variables).</li>
+</ul>
 </div>
     <div id="labelled-260" class="section level1">
 <h1 class="page-header" data-toc-text="2.6.0">
@@ -369,7 +373,7 @@
 <code><a href="../reference/to_factor.html">to_factor()</a></code> could now be applied to a data.frame (cf. <a href="https://github.com/larmarange/labelled/commit/ce1d750681fe0c9bcd767cb83a8d72ed4c5fc5fb" class="uri">https://github.com/larmarange/labelled/commit/ce1d750681fe0c9bcd767cb83a8d72ed4c5fc5fb</a>)</li>
 <li>If <code>data.table</code> is available, labelled attribute are now changed by <em>reference</em> (cf. <a href="https://github.com/larmarange/labelled/commit/c8b163f706122844d798e6625779e8a65e5bbf41" class="uri">https://github.com/larmarange/labelled/commit/c8b163f706122844d798e6625779e8a65e5bbf41</a>)</li>
 <li>
-<code>zap_labels()</code> added as a synonym of <code><a href="../reference/remove_labels.html">remove_labels()</a></code>
+<code><a href="https://haven.tidyverse.org/reference/zap_labels.html">zap_labels()</a></code> added as a synonym of <code><a href="../reference/remove_labels.html">remove_labels()</a></code>
 </li>
 </ul>
 </div>
@@ -390,7 +394,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

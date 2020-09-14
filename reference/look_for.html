@@ -141,24 +141,24 @@ variable labels descriptions.
 The command is meant to help users finding variables in large datasets.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>look_for</span>(<span class='no'>data</span>, <span class='no'>...</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>details</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>look_for</span>(<span class='kw'>data</span>, <span class='kw'>...</span>, labels = <span class='fl'>TRUE</span>, ignore.case = <span class='fl'>TRUE</span>, details = <span class='fl'>TRUE</span>)
 
-<span class='fu'>lookfor</span>(<span class='no'>data</span>, <span class='no'>...</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>details</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>lookfor</span>(<span class='kw'>data</span>, <span class='kw'>...</span>, labels = <span class='fl'>TRUE</span>, ignore.case = <span class='fl'>TRUE</span>, details = <span class='fl'>TRUE</span>)
 
 <span class='fu'>generate_dictionary</span>(
-  <span class='no'>data</span>,
-  <span class='no'>...</span>,
-  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>details</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+  <span class='kw'>data</span>,
+  <span class='kw'>...</span>,
+  labels = <span class='fl'>TRUE</span>,
+  ignore.case = <span class='fl'>TRUE</span>,
+  details = <span class='fl'>TRUE</span>
 )
 
 <span class='co'># S3 method for look_for</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
 
-<span class='fu'>convert_list_columns_to_character</span>(<span class='no'>x</span>)
+<span class='fu'>convert_list_columns_to_character</span>(<span class='kw'>x</span>)
 
-<span class='fu'>lookfor_to_long_format</span>(<span class='no'>x</span>)</pre>
+<span class='fu'>lookfor_to_long_format</span>(<span class='kw'>x</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -210,14 +210,18 @@ Variable labels of data.frame imported with <span class="pkg">foreign</span> or
 provided, it will return all variables of <code>data</code>.</p>
 <p><code>look_for()</code>, <code>lookfor()</code> and <code>generate_dictionary()</code> are equivalent.</p>
 <p>By default, results will be summrized when printing. To deactivate default printing,
-use <code><a href='https://dplyr.tidyverse.org/reference/reexports.html'>dplyr::as_tibble()</a></code>.</p>
+use <code><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>dplyr::as_tibble()</a></code>.</p>
 <p><code>lookfor_to_long_format()</code> could be used to transform results with one row per factor level
 and per value label.</p>
 <p>Use <code>convert_list_columns_to_character()</code> to convert named list columns into character vectors
 (see examples).</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>François Briatte <a href='mailto:f.briatte@gmail.com'>f.briatte@gmail.com</a>, Joseph Larmarange <a href='mailto:joseph@larmarange.net'>joseph@larmarange.net</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>look_for</span>(<span class='no'>iris</span>)</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values       
+    <pre class="examples"><div class='input'><span class='fu'>look_for</span>(<span class='kw'>iris</span>)
+</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values       
 #&gt; <span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
 #&gt; 1      Sepal.Length —        dbl         range: 4.3 - 7.9
 #&gt; 2      Sepal.Width  —        dbl         range: 2 - 4.4  
@@ -227,10 +231,12 @@ and per value label.</p>
 #&gt; ​       ​             ​         ​            versicolor      
 #&gt; ​       ​             ​         ​            virginica       </div><div class='input'>
 <span class='co'># Look for a single keyword.</span>
-<span class='fu'>look_for</span>(<span class='no'>iris</span>, <span class='st'>"petal"</span>)</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values       
+<span class='fu'>look_for</span>(<span class='kw'>iris</span>, <span class='st'>"petal"</span>)
+</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values       
 #&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
 #&gt; 3      Petal.Length —        dbl         range: 1 - 6.9  
-#&gt; 4      Petal.Width  —        dbl         range: 0.1 - 2.5</div><div class='input'><span class='fu'>look_for</span>(<span class='no'>iris</span>, <span class='st'>"s"</span>)</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values       
+#&gt; 4      Petal.Width  —        dbl         range: 0.1 - 2.5</div><div class='input'><span class='fu'>look_for</span>(<span class='kw'>iris</span>, <span class='st'>"s"</span>)
+</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values       
 #&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
 #&gt; 1      Sepal.Length —        dbl         range: 4.3 - 7.9
 #&gt; 2      Sepal.Width  —        dbl         range: 2 - 4.4  
@@ -238,37 +244,43 @@ and per value label.</p>
 #&gt; ​       ​             ​         ​            versicolor      
 #&gt; ​       ​             ​         ​            virginica       </div><div class='input'>
 <span class='co'># Look for with a regular expression</span>
-<span class='fu'>look_for</span>(<span class='no'>iris</span>, <span class='st'>"petal|species"</span>)</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values       
+<span class='fu'>look_for</span>(<span class='kw'>iris</span>, <span class='st'>"petal|species"</span>)
+</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values       
 #&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
 #&gt; 3      Petal.Length —        dbl         range: 1 - 6.9  
 #&gt; 4      Petal.Width  —        dbl         range: 0.1 - 2.5
 #&gt; 5      Species      —        fct         setosa          
 #&gt; ​       ​             ​         ​            versicolor      
-#&gt; ​       ​             ​         ​            virginica       </div><div class='input'><span class='fu'>look_for</span>(<span class='no'>iris</span>, <span class='st'>"s$"</span>)</div><div class='output co'>#&gt; NA.pos NA.variable NA.label NA.col_type NA.values 
+#&gt; ​       ​             ​         ​            virginica       </div><div class='input'><span class='fu'>look_for</span>(<span class='kw'>iris</span>, <span class='st'>"s$"</span>)
+</div><div class='output co'>#&gt; NA.pos NA.variable NA.label NA.col_type NA.values 
 #&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     
 #&gt; 5      Species     —        fct         setosa    
 #&gt; ​       ​            ​         ​            versicolor
 #&gt; ​       ​            ​         ​            virginica </div><div class='input'>
 <span class='co'># Look for with several keywords</span>
-<span class='fu'>look_for</span>(<span class='no'>iris</span>, <span class='st'>"pet"</span>, <span class='st'>"sp"</span>)</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values       
+<span class='fu'>look_for</span>(<span class='kw'>iris</span>, <span class='st'>"pet"</span>, <span class='st'>"sp"</span>)
+</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values       
 #&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
 #&gt; 3      Petal.Length —        dbl         range: 1 - 6.9  
 #&gt; 4      Petal.Width  —        dbl         range: 0.1 - 2.5
 #&gt; 5      Species      —        fct         setosa          
 #&gt; ​       ​             ​         ​            versicolor      
-#&gt; ​       ​             ​         ​            virginica       </div><div class='input'><span class='fu'>look_for</span>(<span class='no'>iris</span>, <span class='st'>"pet"</span>, <span class='st'>"sp"</span>, <span class='st'>"width"</span>)</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values       
+#&gt; ​       ​             ​         ​            virginica       </div><div class='input'><span class='fu'>look_for</span>(<span class='kw'>iris</span>, <span class='st'>"pet"</span>, <span class='st'>"sp"</span>, <span class='st'>"width"</span>)
+</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values       
 #&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
 #&gt; 2      Sepal.Width  —        dbl         range: 2 - 4.4  
 #&gt; 3      Petal.Length —        dbl         range: 1 - 6.9  
 #&gt; 4      Petal.Width  —        dbl         range: 0.1 - 2.5
 #&gt; 5      Species      —        fct         setosa          
 #&gt; ​       ​             ​         ​            versicolor      
-#&gt; ​       ​             ​         ​            virginica       </div><div class='input'><span class='fu'>look_for</span>(<span class='no'>iris</span>, <span class='st'>"Pet"</span>, <span class='st'>"sp"</span>, <span class='st'>"width"</span>, <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values       
+#&gt; ​       ​             ​         ​            virginica       </div><div class='input'><span class='fu'>look_for</span>(<span class='kw'>iris</span>, <span class='st'>"Pet"</span>, <span class='st'>"sp"</span>, <span class='st'>"width"</span>, ignore.case = <span class='fl'>FALSE</span>)
+</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values       
 #&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
 #&gt; 3      Petal.Length —        dbl         range: 1 - 6.9  
 #&gt; 4      Petal.Width  —        dbl         range: 0.1 - 2.5</div><div class='input'>
 <span class='co'># Quicker search without variable details</span>
-<span class='fu'>look_for</span>(<span class='no'>iris</span>, <span class='kw'>details</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values       
+<span class='fu'>look_for</span>(<span class='kw'>iris</span>, details = <span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values       
 #&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
 #&gt; 1      Sepal.Length —        dbl         range: 4.3 - 7.9
 #&gt; 2      Sepal.Width  —        dbl         range: 2 - 4.4  
@@ -278,7 +290,8 @@ and per value label.</p>
 #&gt; ​       ​             ​         ​            versicolor      
 #&gt; ​       ​             ​         ​            virginica       </div><div class='input'>
 <span class='co'># To deactivate default printing, convert to tibble</span>
-<span class='fu'>look_for</span>(<span class='no'>iris</span>) <span class='kw'>%&gt;%</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>as_tibble</a></span>()</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 5 x 13</span><span>
+<span class='fu'>look_for</span>(<span class='kw'>iris</span>) <span class='op'>%&gt;%</span> <span class='kw'>dplyr</span>::<span class='fu'><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>as_tibble</a></span>()
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 5 x 13</span><span>
 #&gt;     pos variable label col_type class type  levels value_labels na_values
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;nam&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;name&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;named list&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;named l&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span>     1 Sepal.L… </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #555555;'>&lt;chr</span><span>… doub… </span><span style='color: #555555;'>&lt;NULL&gt;</span><span> </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>       </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>   
@@ -289,7 +302,8 @@ and per value label.</p>
 #&gt; </span><span style='color: #555555;'># … with 4 more variables: na_range </span><span style='color: #555555;font-style: italic;'>&lt;named list&gt;</span><span style='color: #555555;'>, unique_values </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>,</span><span>
 #&gt; </span><span style='color: #555555;'>#   n_na </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>, range </span><span style='color: #555555;font-style: italic;'>&lt;named list&gt;</span><span></div><div class='input'>
 <span class='co'># To convert named lists into character vectors</span>
-<span class='fu'>look_for</span>(<span class='no'>iris</span>) <span class='kw'>%&gt;%</span> <span class='fu'>convert_list_columns_to_character</span>()</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 5 x 13</span><span>
+<span class='fu'>look_for</span>(<span class='kw'>iris</span>) <span class='op'>%&gt;%</span> <span class='fu'>convert_list_columns_to_character</span>()
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 5 x 13</span><span>
 #&gt;     pos variable label col_type class type  levels value_labels na_values
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    
 #&gt; </span><span style='color: #555555;'>1</span><span>     1 Sepal.L… </span><span style='color: #BB0000;'>NA</span><span>    dbl      nume… doub… </span><span style='color: #555555;'>""</span><span>     </span><span style='color: #555555;'>""</span><span>           </span><span style='color: #555555;'>""</span><span>       
@@ -300,7 +314,8 @@ and per value label.</p>
 #&gt; </span><span style='color: #555555;'># … with 4 more variables: na_range </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, unique_values </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>, n_na </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>,</span><span>
 #&gt; </span><span style='color: #555555;'>#   range </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
 <span class='co'># Long format with one row per factor and per value label</span>
-<span class='fu'>look_for</span>(<span class='no'>iris</span>) <span class='kw'>%&gt;%</span> <span class='fu'>lookfor_to_long_format</span>()</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 7 x 13</span><span>
+<span class='fu'>look_for</span>(<span class='kw'>iris</span>) <span class='op'>%&gt;%</span> <span class='fu'>lookfor_to_long_format</span>()
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 7 x 13</span><span>
 #&gt;     pos variable label col_type class type  levels value_labels na_values
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;nam&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;named l&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span>     1 Sepal.L… </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #555555;'>&lt;chr</span><span>… doub… </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>           </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>   
@@ -313,9 +328,10 @@ and per value label.</p>
 #&gt; </span><span style='color: #555555;'># … with 4 more variables: na_range </span><span style='color: #555555;font-style: italic;'>&lt;named list&gt;</span><span style='color: #555555;'>, unique_values </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>,</span><span>
 #&gt; </span><span style='color: #555555;'>#   n_na </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>, range </span><span style='color: #555555;font-style: italic;'>&lt;named list&gt;</span><span></div><div class='input'>
 <span class='co'># Both functions can be combined</span>
-<span class='fu'>look_for</span>(<span class='no'>iris</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>lookfor_to_long_format</span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'>convert_list_columns_to_character</span>()</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 7 x 13</span><span>
+<span class='fu'>look_for</span>(<span class='kw'>iris</span>) <span class='op'>%&gt;%</span>
+  <span class='fu'>lookfor_to_long_format</span>() <span class='op'>%&gt;%</span>
+  <span class='fu'>convert_list_columns_to_character</span>()
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 7 x 13</span><span>
 #&gt;     pos variable label col_type class type  levels value_labels na_values
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    
 #&gt; </span><span style='color: #555555;'>1</span><span>     1 Sepal.L… </span><span style='color: #BB0000;'>NA</span><span>    dbl      nume… doub… </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>           </span><span style='color: #555555;'>""</span><span>       
@@ -328,14 +344,15 @@ and per value label.</p>
 #&gt; </span><span style='color: #555555;'># … with 4 more variables: na_range </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, unique_values </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>, n_na </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>,</span><span>
 #&gt; </span><span style='color: #555555;'>#   range </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
 <span class='co'># Labelled data</span>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-  <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>fertility</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"questionr"</span>)
-  <span class='fu'>look_for</span>(<span class='no'>children</span>)
-  <span class='fu'>look_for</span>(<span class='no'>children</span>, <span class='st'>"id"</span>)
-  <span class='fu'>look_for</span>(<span class='no'>children</span>) <span class='kw'>%&gt;%</span>
-    <span class='fu'>lookfor_to_long_format</span>() <span class='kw'>%&gt;%</span>
+<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+  <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>fertility</span>, package = <span class='st'>"questionr"</span>)
+  <span class='fu'>look_for</span>(<span class='kw'>children</span>)
+  <span class='fu'>look_for</span>(<span class='kw'>children</span>, <span class='st'>"id"</span>)
+  <span class='fu'>look_for</span>(<span class='kw'>children</span>) <span class='op'>%&gt;%</span>
+    <span class='fu'>lookfor_to_long_format</span>() <span class='op'>%&gt;%</span>
     <span class='fu'>convert_list_columns_to_character</span>()
-}</div></span></pre>
+}
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -351,7 +368,7 @@ and per value label.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

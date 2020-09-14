@@ -135,7 +135,7 @@
     <p>Drop value labels associated to a value not present in the data.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>drop_unused_value_labels</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>drop_unused_value_labels</span>(<span class='kw'>x</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -148,15 +148,17 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>1</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>yes</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>no</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>maybe</span> <span class='kw'>=</span> <span class='fl'>3</span>))
-<span class='no'>x</span></div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[4]&gt;
+    <pre class="examples"><div class='input'><span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>1</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(yes = <span class='fl'>1</span>, no = <span class='fl'>2</span>, maybe = <span class='fl'>3</span>))
+<span class='kw'>x</span>
+</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[4]&gt;
 #&gt; [1] 1 2 2 1
 #&gt; 
 #&gt; Labels:
 #&gt;  value label
 #&gt;      1   yes
 #&gt;      2    no
-#&gt;      3 maybe</div><div class='input'><span class='fu'>drop_unused_value_labels</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[4]&gt;
+#&gt;      3 maybe</div><div class='input'><span class='fu'>drop_unused_value_labels</span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[4]&gt;
 #&gt; [1] 1 2 2 1
 #&gt; 
 #&gt; Labels:
@@ -178,7 +180,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -135,13 +135,13 @@
     <p>Sort value labels according to values or to labels</p>
     </div>
 
-    <pre class="usage"><span class='fu'>sort_val_labels</span>(<span class='no'>x</span>, <span class='kw'>according_to</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"values"</span>, <span class='st'>"labels"</span>), <span class='kw'>decreasing</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>sort_val_labels</span>(<span class='kw'>x</span>, according_to = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"values"</span>, <span class='st'>"labels"</span>), decreasing = <span class='fl'>FALSE</span>)
 
 <span class='co'># S3 method for haven_labelled</span>
-<span class='fu'>sort_val_labels</span>(<span class='no'>x</span>, <span class='kw'>according_to</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"values"</span>, <span class='st'>"labels"</span>), <span class='kw'>decreasing</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>sort_val_labels</span>(<span class='kw'>x</span>, according_to = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"values"</span>, <span class='st'>"labels"</span>), decreasing = <span class='fl'>FALSE</span>)
 
 <span class='co'># S3 method for data.frame</span>
-<span class='fu'>sort_val_labels</span>(<span class='no'>x</span>, <span class='kw'>according_to</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"values"</span>, <span class='st'>"labels"</span>), <span class='kw'>decreasing</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>sort_val_labels</span>(<span class='kw'>x</span>, according_to = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"values"</span>, <span class='st'>"labels"</span>), decreasing = <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -162,36 +162,41 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>v</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>maybe</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>yes</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>no</span> <span class='kw'>=</span> <span class='fl'>3</span>))
-<span class='no'>v</span></div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[3]&gt;
+    <pre class="examples"><div class='input'><span class='kw'>v</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(maybe = <span class='fl'>2</span>, yes = <span class='fl'>1</span>, no = <span class='fl'>3</span>))
+<span class='kw'>v</span>
+</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[3]&gt;
 #&gt; [1] 1 2 3
 #&gt; 
 #&gt; Labels:
 #&gt;  value label
 #&gt;      2 maybe
 #&gt;      1   yes
-#&gt;      3    no</div><div class='input'><span class='fu'>sort_val_labels</span>(<span class='no'>v</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[3]&gt;
+#&gt;      3    no</div><div class='input'><span class='fu'>sort_val_labels</span>(<span class='kw'>v</span>)
+</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[3]&gt;
 #&gt; [1] 1 2 3
 #&gt; 
 #&gt; Labels:
 #&gt;  value label
 #&gt;      1   yes
 #&gt;      2 maybe
-#&gt;      3    no</div><div class='input'><span class='fu'>sort_val_labels</span>(<span class='no'>v</span>, <span class='kw'>decreasing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[3]&gt;
+#&gt;      3    no</div><div class='input'><span class='fu'>sort_val_labels</span>(<span class='kw'>v</span>, decreasing = <span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[3]&gt;
 #&gt; [1] 1 2 3
 #&gt; 
 #&gt; Labels:
 #&gt;  value label
 #&gt;      3    no
 #&gt;      2 maybe
-#&gt;      1   yes</div><div class='input'><span class='fu'>sort_val_labels</span>(<span class='no'>v</span>, <span class='st'>'l'</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[3]&gt;
+#&gt;      1   yes</div><div class='input'><span class='fu'>sort_val_labels</span>(<span class='kw'>v</span>, <span class='st'>'l'</span>)
+</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[3]&gt;
 #&gt; [1] 1 2 3
 #&gt; 
 #&gt; Labels:
 #&gt;  value label
 #&gt;      2 maybe
 #&gt;      3    no
-#&gt;      1   yes</div><div class='input'><span class='fu'>sort_val_labels</span>(<span class='no'>v</span>, <span class='st'>'l'</span>, <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[3]&gt;
+#&gt;      1   yes</div><div class='input'><span class='fu'>sort_val_labels</span>(<span class='kw'>v</span>, <span class='st'>'l'</span>, <span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[3]&gt;
 #&gt; [1] 1 2 3
 #&gt; 
 #&gt; Labels:
@@ -214,7 +219,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -135,7 +135,7 @@
     <p>For labelled variables, values with no label will be recoded to <code>NA</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>nolabel_to_na</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>nolabel_to_na</span>(<span class='kw'>x</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -148,8 +148,9 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>v</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>9</span>, <span class='fl'>1</span>, <span class='fl'>9</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>yes</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>no</span> <span class='kw'>=</span> <span class='fl'>2</span>))
-<span class='fu'>nolabel_to_na</span>(<span class='no'>v</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[5]&gt;
+    <pre class="examples"><div class='input'><span class='kw'>v</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>9</span>, <span class='fl'>1</span>, <span class='fl'>9</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(yes = <span class='fl'>1</span>, no = <span class='fl'>2</span>))
+<span class='fu'>nolabel_to_na</span>(<span class='kw'>v</span>)
+</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[5]&gt;
 #&gt; [1]  1  2 NA  1 NA
 #&gt; 
 #&gt; Labels:
@@ -171,7 +172,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

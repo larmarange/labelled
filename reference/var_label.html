@@ -135,11 +135,11 @@
     <p>Get / Set a variable label</p>
     </div>
 
-    <pre class="usage"><span class='fu'>var_label</span>(<span class='no'>x</span>, <span class='kw'>unlist</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>var_label</span>(<span class='kw'>x</span>, unlist = <span class='fl'>FALSE</span>)
 
-<span class='fu'>var_label</span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
+<span class='fu'>var_label</span>(<span class='kw'>x</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
 
-<span class='fu'>set_variable_labels</span>(<span class='no'>.data</span>, <span class='no'>...</span>, <span class='kw'>.labels</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>
+<span class='fu'>set_variable_labels</span>(<span class='kw'>.data</span>, <span class='kw'>...</span>, .labels = <span class='fl'>NA</span>, .strict = <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -171,6 +171,11 @@ of same length as the number of columns in <code>x</code>.</p></td>
       <td><p>variable labels to be applied to the data.frame,
 using the same syntax as <code>value</code> in <code>var_label(df) &lt;- value</code>.</p></td>
     </tr>
+    <tr>
+      <th>.strict</th>
+      <td><p>should an error be returned if some labels
+doesn't correspond to a column of <code>x</code>?</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -187,18 +192,20 @@ data.frame.</p>
     <p><code>set_variable_labels()</code> could be used with <span class="pkg">dplyr</span> syntax.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>var_label</span>(<span class='no'>iris</span>$<span class='no'>Sepal.Length</span>)</div><div class='output co'>#&gt; NULL</div><div class='input'><span class='fu'>var_label</span>(<span class='no'>iris</span>$<span class='no'>Sepal.Length</span>) <span class='kw'>&lt;-</span> <span class='st'>'Length of the sepal'</span>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
- <span class='fu'><a href='https://rdrr.io/r/utils/View.html'>View</a></span>(<span class='no'>iris</span>)
+    <pre class="examples"><div class='input'><span class='fu'>var_label</span>(<span class='kw'>iris</span><span class='op'>$</span><span class='kw'>Sepal.Length</span>)
+</div><div class='output co'>#&gt; NULL</div><div class='input'><span class='fu'>var_label</span>(<span class='kw'>iris</span><span class='op'>$</span><span class='kw'>Sepal.Length</span>) <span class='op'>&lt;-</span> <span class='st'>'Length of the sepal'</span>
+<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+ <span class='fu'><a href='https://rdrr.io/r/utils/View.html'>View</a></span>(<span class='kw'>iris</span>)
 }
 <span class='co'># To remove a variable label</span>
-<span class='fu'>var_label</span>(<span class='no'>iris</span>$<span class='no'>Sepal.Length</span>) <span class='kw'>&lt;-</span> <span class='kw'>NULL</span>
+<span class='fu'>var_label</span>(<span class='kw'>iris</span><span class='op'>$</span><span class='kw'>Sepal.Length</span>) <span class='op'>&lt;-</span> <span class='kw'>NULL</span>
 <span class='co'># To change several variable labels at once</span>
-<span class='fu'>var_label</span>(<span class='no'>iris</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
+<span class='fu'>var_label</span>(<span class='kw'>iris</span>) <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
   <span class='st'>"sepal length"</span>, <span class='st'>"sepal width"</span>, <span class='st'>"petal length"</span>,
   <span class='st'>"petal width"</span>, <span class='st'>"species"</span>
 )
-<span class='fu'>var_label</span>(<span class='no'>iris</span>)</div><div class='output co'>#&gt; $Sepal.Length
+<span class='fu'>var_label</span>(<span class='kw'>iris</span>)
+</div><div class='output co'>#&gt; $Sepal.Length
 #&gt; [1] "sepal length"
 #&gt; 
 #&gt; $Sepal.Width
@@ -212,11 +219,12 @@ data.frame.</p>
 #&gt; 
 #&gt; $Species
 #&gt; [1] "species"
-#&gt; </div><div class='input'><span class='fu'>var_label</span>(<span class='no'>iris</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-  <span class='kw'>Petal.Width</span> <span class='kw'>=</span> <span class='st'>"width of the petal"</span>,
-  <span class='kw'>Petal.Length</span> <span class='kw'>=</span> <span class='st'>"length of the petal"</span>
+#&gt; </div><div class='input'><span class='fu'>var_label</span>(<span class='kw'>iris</span>) <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+  Petal.Width = <span class='st'>"width of the petal"</span>,
+  Petal.Length = <span class='st'>"length of the petal"</span>
 )
-<span class='fu'>var_label</span>(<span class='no'>iris</span>)</div><div class='output co'>#&gt; $Sepal.Length
+<span class='fu'>var_label</span>(<span class='kw'>iris</span>)
+</div><div class='output co'>#&gt; $Sepal.Length
 #&gt; [1] "sepal length"
 #&gt; 
 #&gt; $Sepal.Width
@@ -230,26 +238,28 @@ data.frame.</p>
 #&gt; 
 #&gt; $Species
 #&gt; [1] "species"
-#&gt; </div><div class='input'><span class='fu'>var_label</span>(<span class='no'>iris</span>, <span class='kw'>unlist</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;          Sepal.Length           Sepal.Width          Petal.Length 
+#&gt; </div><div class='input'><span class='fu'>var_label</span>(<span class='kw'>iris</span>, unlist = <span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt;          Sepal.Length           Sepal.Width          Petal.Length 
 #&gt;        "sepal length"         "sepal width" "length of the petal" 
 #&gt;           Petal.Width               Species 
-#&gt;  "width of the petal"             "species" </div><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='no'>dplyr</span>)) {
+#&gt;  "width of the petal"             "species" </div><div class='input'><span class='co'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='kw'><a href='https://dplyr.tidyverse.org'>dplyr</a></span>)) {
   <span class='co'># adding some variable labels</span>
-  <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>tibble</a></span>(<span class='kw'>s1</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"M"</span>, <span class='st'>"M"</span>, <span class='st'>"F"</span>), <span class='kw'>s2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>)) <span class='kw'>%&gt;%</span>
-    <span class='fu'>set_variable_labels</span>(<span class='kw'>s1</span> <span class='kw'>=</span> <span class='st'>"Sex"</span>, <span class='kw'>s2</span> <span class='kw'>=</span> <span class='st'>"Yes or No?"</span>)
-  <span class='fu'>var_label</span>(<span class='no'>df</span>)
+  <span class='kw'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span>(s1 = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"M"</span>, <span class='st'>"M"</span>, <span class='st'>"F"</span>), s2 = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>)) <span class='op'>%&gt;%</span>
+    <span class='fu'>set_variable_labels</span>(s1 = <span class='st'>"Sex"</span>, s2 = <span class='st'>"Yes or No?"</span>)
+  <span class='fu'>var_label</span>(<span class='kw'>df</span>)
 
   <span class='co'># removing a variable label</span>
-  <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='no'>df</span> <span class='kw'>%&gt;%</span> <span class='fu'>set_variable_labels</span>(<span class='kw'>s2</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
-  <span class='fu'>var_label</span>(<span class='no'>df</span>$<span class='no'>s2</span>)
+  <span class='kw'>df</span> <span class='op'>&lt;-</span> <span class='kw'>df</span> <span class='op'>%&gt;%</span> <span class='fu'>set_variable_labels</span>(s2 = <span class='kw'>NULL</span>)
+  <span class='fu'>var_label</span>(<span class='kw'>df</span><span class='op'>$</span><span class='kw'>s2</span>)
 
   <span class='co'># defining variable labels derived from variable names</span>
-  <span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='no'>snakecase</span>)) {
-    <span class='no'>iris</span> <span class='kw'>&lt;-</span> <span class='no'>iris</span> <span class='kw'>%&gt;%</span>
-      <span class='fu'>set_variable_labels</span>(<span class='kw'>.labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/snakecase/man/caseconverter.html'>to_sentence_case</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>iris</span>)))
-    <span class='fu'>var_label</span>(<span class='no'>iris</span>)
+  <span class='co'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='kw'><a href='https://github.com/Tazinho/snakecase'>snakecase</a></span>)) {
+    <span class='kw'>iris</span> <span class='op'>&lt;-</span> <span class='kw'>iris</span> <span class='op'>%&gt;%</span>
+      <span class='fu'>set_variable_labels</span>(.labels = <span class='fu'><a href='https://rdrr.io/pkg/snakecase/man/caseconverter.html'>to_sentence_case</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='kw'>iris</span>)))
+    <span class='fu'>var_label</span>(<span class='kw'>iris</span>)
   }
-}</div><div class='output co'>#&gt; <span class='message'>Loading required package: snakecase</span></div><div class='output co'>#&gt; $Sepal.Length
+}
+</div><div class='output co'>#&gt; <span class='message'>Loading required package: snakecase</span></div><div class='output co'>#&gt; $Sepal.Length
 #&gt; [1] "Sepal length"
 #&gt; 
 #&gt; $Sepal.Width
@@ -279,7 +289,7 @@ data.frame.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
