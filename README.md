@@ -9,6 +9,8 @@ state and is being actively
 developed.](https://www.repostatus.org/badges/0.1.0/active.svg)](https://www.repostatus.org/#active)
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+[![Travis build
+status](https://travis-ci.com/larmarange/labelled.svg?branch=master)](https://travis-ci.com/larmarange/labelled)
 [![R build status](https://github.com/larmarange/labelled/workflows/R-CMD-check/badge.svg)](https://github.com/larmarange/labelled/actions)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/labelled)](https://cran.r-project.org/package=labelled)
 [![Rdoc](https://www.rdocumentation.org/badges/version/labelled)](https://www.rdocumentation.org/packages/labelled)
