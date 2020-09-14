@@ -1,7 +1,8 @@
 # labelled (development version)
 
-* a `.strict` option has been added to `set_variable_labels()` allowing
-  to pass values for columns not observed in the data (it could be useful
+* a `.strict` option has been added to `set_variable_labels()`,
+  `set_value_labels()`, `add_value_labels()` and  `remove_value_labels()`,
+  allowing to pass values for columns not observed in the data (it could be useful
   for using a same list of labels for several data.frame sharing some 
   variables).
 

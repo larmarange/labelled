@@ -60,11 +60,11 @@ val_label(x, v) <- value
 
 \method{val_label}{data.frame}(x, v) <- value
 
-set_value_labels(.data, ..., .labels = NA)
+set_value_labels(.data, ..., .labels = NA, .strict = TRUE)
 
-add_value_labels(.data, ...)
+add_value_labels(.data, ..., .strict = TRUE)
 
-remove_value_labels(.data, ...)
+remove_value_labels(.data, ..., .strict = TRUE)
 }
 \arguments{
 \item{x}{A vector.}
@@ -83,6 +83,9 @@ For data frames, it could also be a named list with a vector of value labels per
 
 \item{.labels}{value labels to be applied to the data.frame,
 using the same syntax as \code{value} in \code{val_labels(df) <- value}.}
+
+\item{.strict}{should an error be returned if some labels
+doesn't correspond to a column of \code{x}?}
 }
 \value{
 \code{val_labels()} will return a named vector.

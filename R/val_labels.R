@@ -109,7 +109,8 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
     })
   }
 
-  value <- value[names(value) %in% names(x)]
+  if (!all(names(value) %in% names(x)))
+    stop("some variables not found in x")
 
   for (var in names(value)) if (!is.null(value[[var]])) {
     if (mode(x[[var]]) != mode(value[[var]]))
@@ -243,6 +244,8 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
 #' @param ... name-value pairs of value labels (see examples)
 #' @param .labels value labels to be applied to the data.frame,
 #'   using the same syntax as `value` in `val_labels(df) <- value`.
+#' @param .strict should an error be returned if some labels
+#'   doesn't correspond to a column of `x`?
 #' @note
 #' `set_value_labels()`, `add_value_labels()` and `remove_value_labels()`
 #' could be used with \pkg{dplyr} syntax.
@@ -271,15 +274,17 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
 #'   df$s2
 #' }
 #' @export
-set_value_labels <- function(.data, ..., .labels = NA) {
+set_value_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
   if (!identical(.labels, NA)) {
+    if (!.strict)
+      .labels <-.labels[intersect(names(.labels), names(.data))]
     val_labels(.data) <- .labels
   }
   values <- rlang::dots_list(...)
-  if (!all(names(values) %in% names(.data)))
+  if (.strict & !all(names(values) %in% names(.data)))
     stop("some variables not found in .data")
 
-  for (v in names(values))
+  for (v in intersect(names(values), names(.data)))
     val_labels(.data[[v]]) <- values[[v]]
 
   .data
@@ -287,16 +292,16 @@ set_value_labels <- function(.data, ..., .labels = NA) {
 
 #' @rdname val_labels
 #' @export
-add_value_labels <- function(.data, ...) {
+add_value_labels <- function(.data, ..., .strict = TRUE) {
   values <- rlang::dots_list(...)
-  if (!all(names(values) %in% names(.data)))
+  if (.strict & !all(names(values) %in% names(.data)))
     stop("some variables not found in .data")
 
   for(v in values)
     if (is.null(names(v)) | any(names(v) == ""))
       stop("all arguments should be named vectors")
 
-  for (v in names(values))
+  for (v in intersect(names(values), names(.data)))
     for (l in names(values[[v]]))
       val_label(.data[[v]], values[[v]][[l]]) <- l
 
@@ -305,12 +310,12 @@ add_value_labels <- function(.data, ...) {
 
 #' @rdname val_labels
 #' @export
-remove_value_labels <- function(.data, ...) {
+remove_value_labels <- function(.data, ..., .strict = TRUE) {
   values <- rlang::dots_list(...)
-  if (!all(names(values) %in% names(.data)))
+  if (.strict & !all(names(values) %in% names(.data)))
     stop("some variables not found in .data")
 
-  for (v in names(values))
+  for (v in intersect(names(values), names(.data)))
     for (l in values[[v]])
       val_label(.data[[v]], l) <- NULL
 

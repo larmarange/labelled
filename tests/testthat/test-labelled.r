@@ -241,6 +241,48 @@ test_that("set_value_labels replaces all value labels", {
   expect_equal(val_labels(df$s2), c(Yes = 1, Unknown = 9))
 })
 
+test_that("set_value_labels errors", {
+  df <- data.frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2), stringsAsFactors = FALSE)
+  expect_error(
+    df %>%
+      set_value_labels(
+        s1 = c(Male = "M", Female = "F"),
+        s3 = c(Yes = 1, No = 2)
+      )
+  )
+  expect_error(
+    df %>%
+      set_value_labels(
+        .labels = list(
+          s1 = c(Male = "M", Female = "F"),
+          s3 = c(Yes = 1, No = 2)
+        )
+      )
+  )
+  # no error if .strict = FALSE
+  expect_error(
+    df %>%
+      set_value_labels(
+        s1 = c(Male = "M", Female = "F"),
+        s3 = c(Yes = 1, No = 2),
+        .strict = FALSE
+      ),
+    NA
+  )
+  expect_error(
+    df %>%
+      set_value_labels(
+        .labels = list(
+          s1 = c(Male = "M", Female = "F"),
+          s3 = c(Yes = 1, No = 2)
+        ),
+        .strict = FALSE
+      ),
+    NA
+  )
+
+})
+
 test_that("add_value_labels and remove_value_labels updates the list of value labels", {
   df <- data.frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2), stringsAsFactors = FALSE)
   df <- set_value_labels(df, s1 = c(Male = "M", Female = "F"), s2 = c(Yesss = 1, No = 2))
