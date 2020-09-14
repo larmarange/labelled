@@ -102,6 +102,8 @@ var_label.data.frame <- function(x, unlist = FALSE) {
 #' @param ... name-value pairs of variable labels (see examples)
 #' @param .labels variable labels to be applied to the data.frame,
 #'   using the same syntax as `value` in `var_label(df) <- value`.
+#' @param .strict should an error be returned if some labels
+#'   doesn't correspond to a column of `x`?
 #' @note
 #'   `set_variable_labels()` could be used with \pkg{dplyr} syntax.
 #' @return
@@ -125,16 +127,18 @@ var_label.data.frame <- function(x, unlist = FALSE) {
 #'   }
 #' }
 #' @export
-set_variable_labels <- function(.data, ..., .labels = NA) {
+set_variable_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
   if (!identical(.labels, NA)) {
+    if (!.strict)
+      .labels <-.labels[intersect(names(.labels), names(.data))]
     var_label(.data) <- .labels
   }
   values <- rlang::dots_list(...)
   if (length(values) > 0) {
-    if (!all(names(values) %in% names(.data)))
+    if (.strict & !all(names(values) %in% names(.data)))
       stop("some variables not found in .data")
 
-    for (v in names(values))
+    for (v in intersect(names(values), names(.data)))
       var_label(.data[[v]]) <- values[[v]]
   }
 

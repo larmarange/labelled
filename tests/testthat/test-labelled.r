@@ -34,6 +34,25 @@ test_that("var_label produce appropriate errors", {
   df <- data.frame(x = 1:3, y = c("a", "b", "c"))
   expect_error(var_label(df) <- c("var1", "var2", "var3"))
   expect_error(var_label(df) <- list(x = "xx", z = "zz"))
+  expect_error(
+    df %>%
+      set_variable_labels(.labels = list(x = "xx", z = "zz"))
+  )
+  expect_error(
+    df %>%
+      set_variable_labels(x = "ghj", z = "ggg")
+  )
+  # no error if .strict = FALSE
+  expect_error(
+    df %>%
+      set_variable_labels(.labels = list(x = "xx", z = "zz"), .strict = FALSE),
+    NA
+  )
+  expect_error(
+    df %>%
+      set_variable_labels(x = "ghj", z = "ggg", .strict = FALSE),
+    NA
+  )
 })
 
 test_that("var_label preserved data.frame type", {
