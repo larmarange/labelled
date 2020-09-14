@@ -11,3 +11,4 @@
 ^\.httr-oauth$
 ^cheatsheet$
 ^\.github$
+^codecov\.yml$

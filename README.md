@@ -14,6 +14,7 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 [![Rdoc](https://www.rdocumentation.org/badges/version/labelled)](https://www.rdocumentation.org/packages/labelled)
 [![Downloads](https://cranlogs.r-pkg.org/badges/labelled)](https://cran.r-project.org/package=labelled)
 [![DOI](https://www.zenodo.org/badge/38772078.svg)](https://www.zenodo.org/badge/latestdoi/38772078)
+<!-- [![Codecov test coverage](https://codecov.io/gh/larmarange/labelled/branch/master/graph/badge.svg)](https://codecov.io/gh/larmarange/labelled?branch=master) -->
 <!-- badges: end -->
 
 This package is built on the new classes `haven_labelled` and

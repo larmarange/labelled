@@ -30,7 +30,8 @@ Suggests:
     rmarkdown,
     questionr,
     snakecase,
-    utf8
+    utf8,
+    covr
 Enhances: memisc
 LazyData: true
 URL: http://larmarange.github.io/labelled/

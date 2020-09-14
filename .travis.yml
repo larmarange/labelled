@@ -3,3 +3,5 @@
 language: R
 sudo: false
 r_packages: memisc
+after_success:
+    - Rscript -e 'covr::codecov()'
