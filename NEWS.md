@@ -1,12 +1,12 @@
 # labelled (development version)
 
-* a `.values` argument has been added to `set_na_values()` and `set_na_range()`, allowing to pass a list of values.
+* a `.values` argument has been added to `set_na_values()` and `set_na_range()`, allowing to pass a list of values
 * a `.strict` option has been added to `set_variable_labels()`,
   `set_value_labels()`, `add_value_labels()`,  `remove_value_labels()`,
   `set_na_values()` and `set_na_range()`,
   allowing to pass values for columns not observed in the data (it could be useful
   for using a same list of labels for several data.frame sharing some 
-  variables).
+  variables) (#70)
 
 # labelled 2.6.0
 
