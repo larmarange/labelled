@@ -129,6 +129,11 @@ na_range.data.frame <- function(x) {
 #' @rdname na_values
 #' @param .data a data frame
 #' @param ... name-value pairs of missing values (see examples)
+#' @param .values missing values to be applied to the data.frame,
+#'   using the same syntax as `value` in `na_values(df) <- value` or
+#'   `na_range(df) <- value`.
+#' @param .strict should an error be returned if some labels
+#'   doesn't correspond to a column of `x`?
 #' @note
 #'   `set_na_values()` and `set_na_range()` could be used with \pkg{dplyr} syntax.
 #' @return
@@ -147,12 +152,17 @@ na_range.data.frame <- function(x) {
 #'   df$s2
 #' }
 #' @export
-set_na_values <- function(.data, ...) {
-  values <- list(...)
-  if (!all(names(values) %in% names(.data)))
+set_na_values <- function(.data, ..., .values = NA, .strict = TRUE) {
+  if (!identical(.values, NA)) {
+    if (!.strict)
+      .values <- .values[intersect(names(.values), names(.data))]
+    na_values(.data) <- .values
+  }
+  values <- rlang::dots_list(...)
+  if (.strict & !all(names(values) %in% names(.data)))
     stop("some variables not found in .data")
 
-  for (v in names(values))
+  for (v in intersect(names(values), names(.data)))
     na_values(.data[[v]]) <- values[[v]]
 
   .data
@@ -160,12 +170,17 @@ set_na_values <- function(.data, ...) {
 
 #' @rdname na_values
 #' @export
-set_na_range <- function(.data, ...) {
-  values <- list(...)
-  if (!all(names(values) %in% names(.data)))
+set_na_range <- function(.data, ..., .values = NA, .strict = TRUE) {
+  if (!identical(.values, NA)) {
+    if (!.strict)
+      .values <- .values[intersect(names(.values), names(.data))]
+    na_range(.data) <- .values
+  }
+  values <- rlang::dots_list(...)
+  if (.strict & !all(names(values) %in% names(.data)))
     stop("some variables not found in .data")
 
-  for (v in names(values))
+  for (v in intersect(names(values), names(.data)))
     na_range(.data[[v]]) <- values[[v]]
 
   .data

@@ -18,9 +18,9 @@ na_range(x)
 
 na_range(x) <- value
 
-set_na_values(.data, ...)
+set_na_values(.data, ..., .values = NA, .strict = TRUE)
 
-set_na_range(.data, ...)
+set_na_range(.data, ..., .values = NA, .strict = TRUE)
 
 user_na_to_na(x)
 }
@@ -35,6 +35,13 @@ want the range to be open ended).}
 \item{.data}{a data frame}
 
 \item{...}{name-value pairs of missing values (see examples)}
+
+\item{.values}{missing values to be applied to the data.frame,
+using the same syntax as \code{value} in \code{na_values(df) <- value} or
+\code{na_range(df) <- value}.}
+
+\item{.strict}{should an error be returned if some labels
+doesn't correspond to a column of \code{x}?}
 }
 \value{
 \code{na_values()} will return a vector of values that should also be considered as missing.
