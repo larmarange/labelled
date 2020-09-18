@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Copy variable and value labels and SPSS style missing value — copy_labels • labelled</title>
+<title>Copy variable and value labels and SPSS-style missing value — copy_labels • labelled</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Copy variable and value labels and SPSS style missing value — copy_labels" />
+<meta property="og:title" content="Copy variable and value labels and SPSS-style missing value — copy_labels" />
 <meta property="og:description" content="This function copies variable and value labels (including missing values)
 from one vector to another or from one data frame to another data frame.
 For data frame, labels are copied according to variable names, and only
@@ -129,7 +129,7 @@ if variables are the same type in both data frames." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Copy variable and value labels and SPSS style missing value</h1>
+    <h1>Copy variable and value labels and SPSS-style missing value</h1>
     <small class="dont-index">Source: <a href='https://github.com/larmarange/labelled/blob/master/R/copy_labels.R'><code>R/copy_labels.R</code></a></small>
     <div class="hidden name"><code>copy_labels.Rd</code></div>
     </div>
@@ -141,9 +141,9 @@ For data frame, labels are copied according to variable names, and only
 if variables are the same type in both data frames.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>copy_labels</span>(<span class='kw'>from</span>, <span class='kw'>to</span>)
+    <pre class="usage"><span class='fu'>copy_labels</span>(<span class='kw'>from</span>, <span class='kw'>to</span>, .strict = <span class='fl'>TRUE</span>)
 
-<span class='fu'>copy_labels_from</span>(<span class='kw'>to</span>, <span class='kw'>from</span>)</pre>
+<span class='fu'>copy_labels_from</span>(<span class='kw'>to</span>, <span class='kw'>from</span>, .strict = <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -155,6 +155,14 @@ if variables are the same type in both data frames.</p>
     <tr>
       <th>to</th>
       <td><p>A vector or data.frame (or tibble) to copy labels to.</p></td>
+    </tr>
+    <tr>
+      <th>.strict</th>
+      <td><p>When <code>from</code> is a labelled vector, <code>to</code> have to be of the same
+type (numeric or character) in order to copy value labels and SPSS-style
+missing values. If this is not the case and <code>.strict = TRUE</code>, an error
+will be produced. If <code>.strict = FALSE</code>, only variable label will be
+copied.</p></td>
     </tr>
     </table>
 
