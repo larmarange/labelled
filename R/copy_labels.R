@@ -40,21 +40,28 @@ copy_labels <- function(from, to) {
   UseMethod("copy_labels")
 }
 
-
 #' @export
 copy_labels.default <- function(from, to) {
-  if (!is.atomic(from) | !is.atomic(to))
-    stop("`from` and `to` should be vectors", call. = FALSE,
-      domain = "R-labelled")
+  if (!is.atomic(from))
+    stop("`from` should be a vector or a data.frame", call. = FALSE,
+         domain = "R-labelled")
+  if (!is.atomic(to))
+    stop("`to` should be a vector", call. = FALSE,
+         domain = "R-labelled")
+  var_label(to) <- var_label(from)
+  to
+}
+
+
+#' @export
+copy_labels.haven_labelled <- function(from, to) {
   if (mode(from) != mode(to))
     stop("`from` and `to` should be of same type", call. = FALSE,
       domain = "R-labelled")
   var_label(to) <- var_label(from)
-  if (!is.factor(to)) {
-    val_labels(to) <- val_labels(from)
-    na_range(to) <- na_range(from)
-    na_values(to) <- na_values(from)
-  }
+  val_labels(to) <- val_labels(from)
+  na_range(to) <- na_range(from)
+  na_values(to) <- na_values(from)
   to
 }
 
