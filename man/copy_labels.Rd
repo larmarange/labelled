@@ -3,16 +3,22 @@
 \name{copy_labels}
 \alias{copy_labels}
 \alias{copy_labels_from}
-\title{Copy variable and value labels and SPSS style missing value}
+\title{Copy variable and value labels and SPSS-style missing value}
 \usage{
-copy_labels(from, to)
+copy_labels(from, to, .strict = TRUE)
 
-copy_labels_from(to, from)
+copy_labels_from(to, from, .strict = TRUE)
 }
 \arguments{
 \item{from}{A vector or a data.frame (or tibble) to copy labels from.}
 
 \item{to}{A vector or data.frame (or tibble) to copy labels to.}
+
+\item{.strict}{When \code{from} is a labelled vector, \code{to} have to be of the same
+type (numeric or character) in order to copy value labels and SPSS-style
+missing values. If this is not the case and \code{.strict = TRUE}, an error
+will be produced. If \code{.strict = FALSE}, only variable label will be
+copied.}
 }
 \description{
 This function copies variable and value labels (including missing values)

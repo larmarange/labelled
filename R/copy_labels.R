@@ -1,4 +1,4 @@
-#' Copy variable and value labels and SPSS style missing value
+#' Copy variable and value labels and SPSS-style missing value
 #'
 #' This function copies variable and value labels (including missing values)
 #' from one vector to another or from one data frame to another data frame.
@@ -14,6 +14,11 @@
 #'
 #' @param from A vector or a data.frame (or tibble) to copy labels from.
 #' @param to A vector or data.frame (or tibble) to copy labels to.
+#' @param .strict When `from` is a labelled vector, `to` have to be of the same
+#' type (numeric or character) in order to copy value labels and SPSS-style
+#' missing values. If this is not the case and `.strict = TRUE`, an error
+#' will be produced. If `.strict = FALSE`, only variable label will be
+#' copied.
 #' @export
 #' @examples
 #' library(dplyr)
@@ -36,12 +41,12 @@
 #' # Alternative syntax
 #' fdf <- subset(df, id < 3)
 #' fdf <- copy_labels(from = df, to = fdf)
-copy_labels <- function(from, to) {
+copy_labels <- function(from, to, .strict = TRUE) {
   UseMethod("copy_labels")
 }
 
 #' @export
-copy_labels.default <- function(from, to) {
+copy_labels.default <- function(from, to, .strict = TRUE) {
   if (!is.atomic(from))
     stop("`from` should be a vector or a data.frame", call. = FALSE,
          domain = "R-labelled")
@@ -54,28 +59,31 @@ copy_labels.default <- function(from, to) {
 
 
 #' @export
-copy_labels.haven_labelled <- function(from, to) {
-  if (mode(from) != mode(to))
+copy_labels.haven_labelled <- function(from, to, .strict = TRUE) {
+  if (mode(from) != mode(to) & .strict)
     stop("`from` and `to` should be of same type", call. = FALSE,
       domain = "R-labelled")
   var_label(to) <- var_label(from)
-  val_labels(to) <- val_labels(from)
-  na_range(to) <- na_range(from)
-  na_values(to) <- na_values(from)
+
+  if (mode(from) == mode(to)) {
+    val_labels(to) <- val_labels(from)
+    na_range(to) <- na_range(from)
+    na_values(to) <- na_values(from)
+  }
   to
 }
 
 #' @export
-copy_labels.data.frame <- function(from, to) {
+copy_labels.data.frame <- function(from, to, .strict = TRUE) {
   if (!is.data.frame(to))
     stop("`to` should be a data frame", call. = FALSE, domain = "R-labelled")
   for (var in names(to)) if (var %in% names(from))
-    to[[var]] <- copy_labels(from[[var]], to[[var]])
+    to[[var]] <- copy_labels(from[[var]], to[[var]], .strict = .strict)
   to
 }
 
 #' @rdname copy_labels
 #' @export
-copy_labels_from <- function(to, from) {
-  copy_labels(from, to)
+copy_labels_from <- function(to, from, .strict = TRUE) {
+  copy_labels(from, to, .strict = .strict)
 }

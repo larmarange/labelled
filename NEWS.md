@@ -7,6 +7,9 @@
   allowing to pass values for columns not observed in the data (it could be useful
   for using a same list of labels for several data.frame sharing some 
   variables) (#70)
+* `copy_labels()` is less restrictive for non labelled vectors, copying variable label
+  even if the two vectors are not of the same type (#71)
+* a `.strict` option has been added to `copy_labels()` (#71)
 
 # labelled 2.6.0
 
