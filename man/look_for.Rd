@@ -94,7 +94,7 @@ look_for(iris, "pet", "sp", "width")
 look_for(iris, "Pet", "sp", "width", ignore.case = FALSE)
 
 # Quicker search without variable details
-look_for(iris, details = TRUE)
+look_for(iris, details = FALSE)
 
 # To deactivate default printing, convert to tibble
 look_for(iris) \%>\% dplyr::as_tibble()
