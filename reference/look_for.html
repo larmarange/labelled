@@ -279,16 +279,14 @@ and per value label.</p>
 #&gt; 3      Petal.Length —        dbl         range: 1 - 6.9  
 #&gt; 4      Petal.Width  —        dbl         range: 0.1 - 2.5</div><div class='input'>
 <span class='co'># Quicker search without variable details</span>
-<span class='fu'>look_for</span>(<span class='kw'>iris</span>, details = <span class='fl'>TRUE</span>)
-</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values       
-#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
-#&gt; 1      Sepal.Length —        dbl         range: 4.3 - 7.9
-#&gt; 2      Sepal.Width  —        dbl         range: 2 - 4.4  
-#&gt; 3      Petal.Length —        dbl         range: 1 - 6.9  
-#&gt; 4      Petal.Width  —        dbl         range: 0.1 - 2.5
-#&gt; 5      Species      —        fct         setosa          
-#&gt; ​       ​             ​         ​            versicolor      
-#&gt; ​       ​             ​         ​            virginica       </div><div class='input'>
+<span class='fu'>look_for</span>(<span class='kw'>iris</span>, details = <span class='fl'>FALSE</span>)
+</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label
+#&gt;  </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   
+#&gt;      1 Sepal.Length —       
+#&gt;      2 Sepal.Width  —       
+#&gt;      3 Petal.Length —       
+#&gt;      4 Petal.Width  —       
+#&gt;      5 Species      —       </div><div class='input'>
 <span class='co'># To deactivate default printing, convert to tibble</span>
 <span class='fu'>look_for</span>(<span class='kw'>iris</span>) <span class='op'>%&gt;%</span> <span class='kw'>dplyr</span>::<span class='fu'><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>as_tibble</a></span>()
 </div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 5 x 13</span><span>
