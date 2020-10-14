@@ -106,11 +106,9 @@
 <p>It is a common need to easily get a description of all variables in a data frame.</p>
 <p>When a data frame is converted into a tibble (e.g. with <code><a href="https://tibble.tidyverse.org/reference/as_tibble.html">dplyr::as_tibble()</a></code>), it as a nice printing showing the first rows of the data frame as well as the type of column.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org">dplyr</a></span>)
-</pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw">iris</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span>()
-</pre></div>
+<span class="va">iris</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>## # A tibble: 150 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
@@ -127,9 +125,8 @@
 ## # … with 140 more rows</code></pre>
 <p>However, when you have too many variables, all of them cannot be printed and their are just listed.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="kw">fertility</span>, package = <span class="st">"questionr"</span>)
-<span class="kw">women</span>
-</pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">fertility</span>, package <span class="op">=</span> <span class="st">"questionr"</span><span class="op">)</span>
+<span class="va">women</span></pre></div>
 <pre><code>## # A tibble: 2,000 x 17
 ##    id_woman id_household weight interview_date date_of_birth   age residency
 ##       &lt;dbl&gt;        &lt;dbl&gt;  &lt;dbl&gt; &lt;date&gt;         &lt;date&gt;        &lt;dbl&gt; &lt;hvn_lbl&gt;
@@ -155,8 +152,7 @@
 </h3>
 <p>The function <code><a href="https://tibble.tidyverse.org/reference/glimpse.html">dplyr::glimpse()</a></code> allows you to have a quick look at all the variables in a data frame.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(<span class="kw">iris</span>)
-</pre></div>
+<span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></pre></div>
 <pre><code>## Rows: 150
 ## Columns: 5
 ## $ Sepal.Length &lt;dbl&gt; 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.0, 4.4, 4.9, 5.4, 4…
@@ -165,8 +161,7 @@
 ## $ Petal.Width  &lt;dbl&gt; 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0…
 ## $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setosa, …</code></pre>
 <div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(<span class="kw">women</span>)
-</pre></div>
+<span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span></pre></div>
 <pre><code>## Rows: 2,000
 ## Columns: 17
 ## $ id_woman          &lt;dbl&gt; 391, 1643, 85, 881, 1981, 1072, 1978, 1607, 738, 16…
@@ -205,9 +200,8 @@
 <li>the range of observed values in the vector otherwise.</li>
 </ul>
 <div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://larmarange.github.io/labelled">labelled</a></span>)
-<span class="fu"><a href="../reference/look_for.html">look_for</a></span>(<span class="kw">iris</span>)
-</pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://larmarange.github.io/labelled/">labelled</a></span><span class="op">)</span>
+<span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></pre></div>
 <pre><code>## NA.pos NA.variable  NA.label NA.col_type NA.values       
 ## &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;           
 ## 1      Sepal.Length —        dbl         range: 4.3 - 7.9
@@ -218,8 +212,7 @@
 ## ​       ​             ​         ​            versicolor      
 ## ​       ​             ​         ​            virginica</code></pre>
 <div class="sourceCode" id="cb12"><pre class="downlit">
-<span class="fu"><a href="../reference/look_for.html">look_for</a></span>(<span class="kw">women</span>)
-</pre></div>
+<span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span></pre></div>
 <pre><code>## NA.pos NA.variable     NA.label                NA.col_type NA.values            
 ## &lt;chr&gt;  &lt;chr&gt;           &lt;chr&gt;                   &lt;chr&gt;       &lt;chr&gt;                
 ## 1      id_woman        Woman Id                dbl         range: 1 - 2000      
@@ -272,15 +265,13 @@
 <p>When a data frame has dozens or even hundreds of variables, it could become difficult to find a specific variable. In such case, you can provide an optional list of keywords, which can be simple character strings or regular expression, to search for specific variables.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit">
 <span class="co"># Look for a single keyword.</span>
-<span class="fu"><a href="../reference/look_for.html">look_for</a></span>(<span class="kw">iris</span>, <span class="st">"petal"</span>)
-</pre></div>
+<span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, <span class="st">"petal"</span><span class="op">)</span></pre></div>
 <pre><code>## NA.pos NA.variable  NA.label NA.col_type NA.values       
 ## &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;           
 ## 3      Petal.Length —        dbl         range: 1 - 6.9  
 ## 4      Petal.Width  —        dbl         range: 0.1 - 2.5</code></pre>
 <div class="sourceCode" id="cb16"><pre class="downlit">
-<span class="fu"><a href="../reference/look_for.html">look_for</a></span>(<span class="kw">iris</span>, <span class="st">"s"</span>)
-</pre></div>
+<span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, <span class="st">"s"</span><span class="op">)</span></pre></div>
 <pre><code>## NA.pos NA.variable  NA.label NA.col_type NA.values       
 ## &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;           
 ## 1      Sepal.Length —        dbl         range: 4.3 - 7.9
@@ -290,8 +281,7 @@
 ## ​       ​             ​         ​            virginica</code></pre>
 <div class="sourceCode" id="cb18"><pre class="downlit">
 <span class="co"># Look for with a regular expression</span>
-<span class="fu"><a href="../reference/look_for.html">look_for</a></span>(<span class="kw">iris</span>, <span class="st">"petal|species"</span>)
-</pre></div>
+<span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, <span class="st">"petal|species"</span><span class="op">)</span></pre></div>
 <pre><code>## NA.pos NA.variable  NA.label NA.col_type NA.values       
 ## &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;           
 ## 3      Petal.Length —        dbl         range: 1 - 6.9  
@@ -300,8 +290,7 @@
 ## ​       ​             ​         ​            versicolor      
 ## ​       ​             ​         ​            virginica</code></pre>
 <div class="sourceCode" id="cb20"><pre class="downlit">
-<span class="fu"><a href="../reference/look_for.html">look_for</a></span>(<span class="kw">iris</span>, <span class="st">"s$"</span>)
-</pre></div>
+<span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, <span class="st">"s$"</span><span class="op">)</span></pre></div>
 <pre><code>## NA.pos NA.variable NA.label NA.col_type NA.values 
 ## &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;     
 ## 5      Species     —        fct         setosa    
@@ -309,8 +298,7 @@
 ## ​       ​            ​         ​            virginica</code></pre>
 <div class="sourceCode" id="cb22"><pre class="downlit">
 <span class="co"># Look for with several keywords</span>
-<span class="fu"><a href="../reference/look_for.html">look_for</a></span>(<span class="kw">iris</span>, <span class="st">"pet"</span>, <span class="st">"sp"</span>)
-</pre></div>
+<span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, <span class="st">"pet"</span>, <span class="st">"sp"</span><span class="op">)</span></pre></div>
 <pre><code>## NA.pos NA.variable  NA.label NA.col_type NA.values       
 ## &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;           
 ## 3      Petal.Length —        dbl         range: 1 - 6.9  
@@ -320,8 +308,7 @@
 ## ​       ​             ​         ​            virginica</code></pre>
 <div class="sourceCode" id="cb24"><pre class="downlit">
 <span class="co"># Look_for will take variable labels into account</span>
-<span class="fu"><a href="../reference/look_for.html">look_for</a></span>(<span class="kw">women</span>, <span class="st">"read"</span>, <span class="st">"level"</span>)
-</pre></div>
+<span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span>, <span class="st">"read"</span>, <span class="st">"level"</span><span class="op">)</span></pre></div>
 <pre><code>## NA.pos NA.variable NA.label             NA.col_type NA.values    
 ## &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;                &lt;chr&gt;       &lt;chr&gt;        
 ## 9      instruction Level of instruction dbl+lbl     [0] none     
@@ -332,27 +319,23 @@
 ## ​       ​            ​                     ​            [1] yes</code></pre>
 <p>By default, <code><a href="../reference/look_for.html">look_for()</a></code> will look through both variable names and variables labels. Use <code>labels = FALSE</code> to look only through variable names.</p>
 <div class="sourceCode" id="cb26"><pre class="downlit">
-<span class="fu"><a href="../reference/look_for.html">look_for</a></span>(<span class="kw">women</span>, <span class="st">"read"</span>)
-</pre></div>
+<span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span>, <span class="st">"read"</span><span class="op">)</span></pre></div>
 <pre><code>## NA.pos NA.variable NA.label        NA.col_type NA.values
 ## &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;           &lt;chr&gt;       &lt;chr&gt;    
 ## 13     newspaper   Read newspaper? dbl+lbl     [0] no   
 ## ​       ​            ​                ​            [1] yes</code></pre>
 <div class="sourceCode" id="cb28"><pre class="downlit">
-<span class="fu"><a href="../reference/look_for.html">look_for</a></span>(<span class="kw">women</span>, <span class="st">"read"</span>, labels = <span class="fl">FALSE</span>)
-</pre></div>
+<span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span>, <span class="st">"read"</span>, labels <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></pre></div>
 <pre><code>## Nothing found. Sorry.</code></pre>
 <p>Similarly, the search is by default case insensitive. To make the search case sensitive, use <code>ignore.case = FALSE</code>.</p>
 <div class="sourceCode" id="cb30"><pre class="downlit">
-<span class="fu"><a href="../reference/look_for.html">look_for</a></span>(<span class="kw">iris</span>, <span class="st">"sepal"</span>)
-</pre></div>
+<span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, <span class="st">"sepal"</span><span class="op">)</span></pre></div>
 <pre><code>## NA.pos NA.variable  NA.label NA.col_type NA.values       
 ## &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;           
 ## 1      Sepal.Length —        dbl         range: 4.3 - 7.9
 ## 2      Sepal.Width  —        dbl         range: 2 - 4.4</code></pre>
 <div class="sourceCode" id="cb32"><pre class="downlit">
-<span class="fu"><a href="../reference/look_for.html">look_for</a></span>(<span class="kw">iris</span>, <span class="st">"sepal"</span>, ignore.case = <span class="fl">FALSE</span>)
-</pre></div>
+<span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, <span class="st">"sepal"</span>, ignore.case <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></pre></div>
 <pre><code>## Nothing found. Sorry.</code></pre>
 </div>
 <div id="advanced-usages-of-look_for" class="section level2">
@@ -361,8 +344,7 @@
 </h2>
 <p><code><a href="../reference/look_for.html">look_for()</a></code> returns a detailed tibble which is summarized before printing. To deactivate default printing and see full results, simply use <code><a href="https://tibble.tidyverse.org/reference/as_tibble.html">dplyr::as_tibble()</a></code>, <code><a href="https://tibble.tidyverse.org/reference/glimpse.html">dplyr::glimpse()</a></code> or even <code><a href="https://rdrr.io/r/utils/View.html">utils::View()</a></code>.</p>
 <div class="sourceCode" id="cb34"><pre class="downlit">
-<span class="fu"><a href="../reference/look_for.html">look_for</a></span>(<span class="kw">iris</span>) <span class="op">%&gt;%</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span>()
-</pre></div>
+<span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>## # A tibble: 5 x 13
 ##     pos variable label col_type class type  levels value_labels na_values
 ##   &lt;int&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;nam&gt; &lt;chr&gt; &lt;name&gt; &lt;named list&gt; &lt;named l&gt;
@@ -374,8 +356,7 @@
 ## # … with 4 more variables: na_range &lt;named list&gt;, unique_values &lt;int&gt;,
 ## #   n_na &lt;int&gt;, range &lt;named list&gt;</code></pre>
 <div class="sourceCode" id="cb36"><pre class="downlit">
-<span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(<span class="fu"><a href="../reference/look_for.html">look_for</a></span>(<span class="kw">iris</span>))
-</pre></div>
+<span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span><span class="op">)</span></pre></div>
 <pre><code>## Rows: 5
 ## Columns: 13
 ## $ pos           &lt;int&gt; 1, 2, 3, 4, 5
@@ -394,8 +375,7 @@
 <p>The tibble returned by <code><a href="../reference/look_for.html">look_for()</a></code> could be easily manipulated for advanced programming.</p>
 <p>When a column has several values for one variable (e.g. <code>levels</code> or <code>value_labels</code>), results as stored with nested named list. You can convert named lists into simpler character vectors, you can use <code><a href="../reference/look_for.html">convert_list_columns_to_character()</a></code>.</p>
 <div class="sourceCode" id="cb38"><pre class="downlit">
-<span class="fu"><a href="../reference/look_for.html">look_for</a></span>(<span class="kw">iris</span>) <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/look_for.html">convert_list_columns_to_character</a></span>()
-</pre></div>
+<span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/look_for.html">convert_list_columns_to_character</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>## # A tibble: 5 x 13
 ##     pos variable label col_type class type  levels value_labels na_values
 ##   &lt;int&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;    
@@ -408,8 +388,7 @@
 ## #   range &lt;chr&gt;</code></pre>
 <p>Alternatively, you can use <code><a href="../reference/look_for.html">lookfor_to_long_format()</a></code> to transform results into a long format with one row per factor level and per value label.</p>
 <div class="sourceCode" id="cb40"><pre class="downlit">
-<span class="fu"><a href="../reference/look_for.html">look_for</a></span>(<span class="kw">iris</span>) <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/look_for.html">lookfor_to_long_format</a></span>()
-</pre></div>
+<span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/look_for.html">lookfor_to_long_format</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>## # A tibble: 7 x 13
 ##     pos variable label col_type class type  levels value_labels na_values
 ##   &lt;int&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;nam&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;named l&gt;
@@ -424,10 +403,9 @@
 ## #   n_na &lt;int&gt;, range &lt;named list&gt;</code></pre>
 <p>Both can be combined:</p>
 <div class="sourceCode" id="cb42"><pre class="downlit">
-<span class="fu"><a href="../reference/look_for.html">look_for</a></span>(<span class="kw">women</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/look_for.html">lookfor_to_long_format</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/look_for.html">convert_list_columns_to_character</a></span>()
-</pre></div>
+<span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/look_for.html">lookfor_to_long_format</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/look_for.html">convert_list_columns_to_character</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>## # A tibble: 41 x 13
 ##      pos variable label col_type class type  levels value_labels na_values
 ##    &lt;int&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;    
@@ -445,8 +423,7 @@
 ## #   unique_values &lt;int&gt;, n_na &lt;int&gt;, range &lt;chr&gt;</code></pre>
 <p>If you just want to use the search feature of <code><a href="../reference/look_for.html">look_for()</a></code> without computing the details of each variable, simply indicate <code>details = FALSE</code>.</p>
 <div class="sourceCode" id="cb44"><pre class="downlit">
-<span class="fu"><a href="../reference/look_for.html">look_for</a></span>(<span class="kw">women</span>, <span class="st">"id"</span>, details = <span class="fl">FALSE</span>)
-</pre></div>
+<span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span>, <span class="st">"id"</span>, details <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></pre></div>
 <pre><code>## NA.pos NA.variable       NA.label                
 ##  &lt;int&gt; &lt;chr&gt;             &lt;chr&gt;                   
 ##      1 id_woman          Woman Id                

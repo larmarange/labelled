@@ -135,7 +135,7 @@
     <p>For labelled variables, values with no label will be recoded to <code>NA</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>nolabel_to_na</span>(<span class='kw'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>nolabel_to_na</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -148,8 +148,8 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>v</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>9</span>, <span class='fl'>1</span>, <span class='fl'>9</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(yes = <span class='fl'>1</span>, no = <span class='fl'>2</span>))
-<span class='fu'>nolabel_to_na</span>(<span class='kw'>v</span>)
+    <pre class="examples"><div class='input'><span class='va'>v</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>9</span>, <span class='fl'>1</span>, <span class='fl'>9</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>yes <span class='op'>=</span> <span class='fl'>1</span>, no <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>nolabel_to_na</span><span class='op'>(</span><span class='va'>v</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[5]&gt;
 #&gt; [1]  1  2 NA  1 NA
 #&gt; 
