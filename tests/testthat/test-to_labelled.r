@@ -36,3 +36,29 @@ test_that("to_labelled.factor accepts non continuous labels", {
     labelled(c(1, 1, 2, 2, 9, 2, 1, 9), c("yes" = 1, "no" = 2, "don't know" = 9))
   )
 })
+
+test_that("to_labelled.factor works with '[code] label' factors", {
+  l <- labelled(c(1, 1, 2, 2, 9, 2, 1, 9), c("yes" = 1, "no" = 2, "don't know" = 9))
+  expect_equal(
+    to_factor(l, levels = "p") %>% to_labelled(),
+    l
+  )
+
+  l <- labelled(
+    c("M", "M", "F", "X", "N/A"),
+    c(Male = "M", Female = "F", Refused = "X", "Not applicable" = "N/A")
+  )
+  expect_equal(
+    to_factor(l, levels = "p") %>% to_labelled(),
+    l
+  )
+
+  # if labels is provided apply normal rule
+  l <- labelled(c(1, 1, 2, 2, 9, 2, 1, 9), c("yes" = 1, "no" = 2, "don't know" = 9))
+  f <- to_factor(l, levels = "p")
+  x <- f %>% to_labelled(labels = c("[1] yes" = 123, "[2] no" = 456))
+  expect_equivalent(
+    unclass(x),
+    c(123, 123, 456, 456, NA, 456, 123, NA)
+  )
+})

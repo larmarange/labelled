@@ -19,6 +19,7 @@ Encoding: UTF-8
 Imports:
     haven (>= 2.3.1),
     dplyr,
+    forcats,
     lifecycle,
     rlang,
     vctrs,

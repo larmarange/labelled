@@ -207,20 +207,42 @@ memisc_to_labelled <- function(x) {
 #' to_labelled(f1, labels)
 #' identical(s1, to_labelled(f1, labels))
 to_labelled.factor <- function(x, labels = NULL, ...) {
+  vl <- var_label(x)
   if (is.null(labels)) {
-    vl <- var_label(x)
-    labs <- 1:length(levels(x))
-    names(labs) <- levels(x)
-    x <- labelled(as.numeric(x), labs)
-    var_label(x) <- vl
+    # check if levels are formatted as "[code] label"
+    l <- dplyr::tibble(levels = levels(x)) %>%
+      tidyr::extract(
+        "levels",
+        c("code", "label"),
+        "^\\[(.+)\\]\\s(.+)$",
+        remove = FALSE
+      )
+    if (any(is.na(l$code)) | any(is.na(l$code))) {
+      # normal case
+      labs <- 1:length(levels(x))
+      names(labs) <- levels(x)
+      x <- labelled(as.numeric(x), labs)
+    } else {
+      # "[code] label" case
+      if (all(!is.na(suppressWarnings(as.numeric(l$code)))))
+        l$code <- as.numeric(l$code)
+        r <- l$levels
+        names(r) <- l$code
+        x <- forcats::fct_recode(x, !!!r) %>%
+          as.character()
+        if (is.numeric(l$code))
+          x <- as.numeric(x)
+        names(l$code) <- l$label
+        x <- labelled(x, l$code)
+    }
   } else {
-    vl <- var_label(x)
+    # labels is not NULL
     r <- rep_len(NA, length(x))
     mode(r) <- mode(labels)
     for (i in 1:length(labels))
       r[x == names(labels)[i]] <- labels[i]
     x <- labelled(r, labels)
-    var_label(x) <- vl
   }
+  var_label(x) <- vl
   x
 }
