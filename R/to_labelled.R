@@ -188,6 +188,10 @@ memisc_to_labelled <- function(x) {
 #' @param labels When converting a factor only:
 #'   an optional named vector indicating how factor levels should be coded.
 #'   If a factor level is not found in `labels`, it will be converted to `NA`.
+#' @details
+#' If you convert a labelled vector into a factor with prefix, i.e. by using
+#' [to_factor(levels = "prefixed")][to_factor()], `to_labelled.factor()` is able to reconvert
+#' it to a labelled vector with same values and labels.
 #' @export
 #' @examples
 #' # Converting factors to labelled vectors
@@ -206,6 +210,12 @@ memisc_to_labelled <- function(x) {
 #' identical(s1, to_labelled(f1))
 #' to_labelled(f1, labels)
 #' identical(s1, to_labelled(f1, labels))
+#'
+#' l <- labelled(c(1, 1, 2, 2, 9, 2, 1, 9), c("yes" = 1, "no" = 2, "don't know" = 9))
+#' f <- to_factor(l, levels = "p")
+#' f
+#' to_labelled(f)
+#' identical(to_labelled(f), l)
 to_labelled.factor <- function(x, labels = NULL, ...) {
   vl <- var_label(x)
   if (is.null(labels)) {
