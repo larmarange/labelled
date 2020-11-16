@@ -18,6 +18,9 @@ reference:
   - nolabel_to_na
   - drop_unused_value_labels
   - copy_labels
+- title: Data dictionnary
+  desc:
+  - look_for
 - title: Manipulating SPSS style missing values
   desc:  Functions to set, manipulate and remove SPSS style missing values
   contents:
@@ -35,7 +38,7 @@ reference:
   - update_labelled
 - title: Other functions and methods
   contents:
-  - look_for
+  - is_prefixed
   - recode.haven_labelled
   - remove_attributes
   - names_prefixed_by_values

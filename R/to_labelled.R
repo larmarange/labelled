@@ -220,13 +220,7 @@ to_labelled.factor <- function(x, labels = NULL, ...) {
   vl <- var_label(x)
   if (is.null(labels)) {
     # check if levels are formatted as "[code] label"
-    l <- dplyr::tibble(levels = levels(x)) %>%
-      tidyr::extract(
-        "levels",
-        c("code", "label"),
-        "^\\[(.+)\\]\\s(.+)$",
-        remove = FALSE
-      )
+    l <- .get_prefixes.factor(x)
     if (any(is.na(l$code)) | any(is.na(l$code))) {
       # normal case
       labs <- 1:length(levels(x))

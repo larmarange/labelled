@@ -1,7 +1,8 @@
 # labelled (development version)
 
-* `to_labelled` can properly manage factors whose levels are coded as "[code] level",
+* `to_labelled()` can properly manage factors whose levels are coded as "[code] level",
   as produced by `to_factor(levels = "prefixed")` (#74)
+* new function `is_prefixed()` to check if a factor is prefixed
 
 # labelled 2.7.0
 
