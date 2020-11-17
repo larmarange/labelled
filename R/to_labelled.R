@@ -188,6 +188,11 @@ memisc_to_labelled <- function(x) {
 #' @param labels When converting a factor only:
 #'   an optional named vector indicating how factor levels should be coded.
 #'   If a factor level is not found in `labels`, it will be converted to `NA`.
+#' @param .quiet do not display warnings for prefixed factors with duplicated codes
+#' @details
+#' If you convert a labelled vector into a factor with prefix, i.e. by using
+#' [to_factor(levels = "prefixed")][to_factor()], `to_labelled.factor()` is able to reconvert
+#' it to a labelled vector with same values and labels.
 #' @export
 #' @examples
 #' # Converting factors to labelled vectors
@@ -206,21 +211,48 @@ memisc_to_labelled <- function(x) {
 #' identical(s1, to_labelled(f1))
 #' to_labelled(f1, labels)
 #' identical(s1, to_labelled(f1, labels))
-to_labelled.factor <- function(x, labels = NULL, ...) {
+#'
+#' l <- labelled(c(1, 1, 2, 2, 9, 2, 1, 9), c("yes" = 1, "no" = 2, "don't know" = 9))
+#' f <- to_factor(l, levels = "p")
+#' f
+#' to_labelled(f)
+#' identical(to_labelled(f), l)
+to_labelled.factor <- function(x, labels = NULL, .quiet = FALSE, ...) {
+  vl <- var_label(x)
   if (is.null(labels)) {
-    vl <- var_label(x)
-    labs <- 1:length(levels(x))
-    names(labs) <- levels(x)
-    x <- labelled(as.numeric(x), labs)
-    var_label(x) <- vl
+    # check if levels are formatted as "[code] label"
+    l <- .get_prefixes.factor(x)
+    if (any(is.na(l$code)) | any(is.na(l$code)) | any(duplicated(l$code))) {
+      if (!.quiet && any(duplicated(l$code)) && all(!is.na(l$code)) && all(!is.na(l$code)))
+        warning("'x' looks prefixed, but duplicated codes found.")
+      # normal case
+      labs <- 1:length(levels(x))
+      names(labs) <- levels(x)
+      x <- labelled(as.numeric(x), labs)
+    } else {
+      # "[code] label" case
+      num_l <- suppressWarnings(as.numeric(l$code))
+      if (!.quiet && all(!is.na(num_l)) && any(duplicated(num_l)))
+        warning("All codes seem numeric but some duplicates found.")
+      if (all(!is.na(num_l)) && !any(duplicated(num_l)))
+        l$code <- as.numeric(l$code)
+        r <- l$levels
+        names(r) <- l$code
+        levels(x) <- l$code
+        x <- as.character(x)
+        if (is.numeric(l$code))
+          x <- as.numeric(x)
+        names(l$code) <- l$label
+        x <- labelled(x, l$code)
+    }
   } else {
-    vl <- var_label(x)
+    # labels is not NULL
     r <- rep_len(NA, length(x))
     mode(r) <- mode(labels)
     for (i in 1:length(labels))
       r[x == names(labels)[i]] <- labels[i]
     x <- labelled(r, labels)
-    var_label(x) <- vl
   }
+  var_label(x) <- vl
   x
 }

@@ -25,7 +25,7 @@ foreign_to_labelled(x)
 
 memisc_to_labelled(x)
 
-\method{to_labelled}{factor}(x, labels = NULL, ...)
+\method{to_labelled}{factor}(x, labels = NULL, .quiet = FALSE, ...)
 }
 \arguments{
 \item{x}{Factor or dataset to convert to labelled data frame}
@@ -35,6 +35,8 @@ memisc_to_labelled(x)
 \item{labels}{When converting a factor only:
 an optional named vector indicating how factor levels should be coded.
 If a factor level is not found in \code{labels}, it will be converted to \code{NA}.}
+
+\item{.quiet}{do not display warnings for prefixed factors with duplicated codes}
 }
 \value{
 A tbl data frame or a labelled vector.
@@ -62,6 +64,10 @@ If you used \code{use.missings = TRUE}, missing values would have been converted
 
 So far, missing values defined in \strong{Stata} are always imported as \code{NA} by
 \code{\link[foreign:read.dta]{foreign::read.dta()}} and could not be retrieved by \code{foreign_to_labelled()}.
+
+If you convert a labelled vector into a factor with prefix, i.e. by using
+\link[=to_factor]{to_factor(levels = "prefixed")}, \code{to_labelled.factor()} is able to reconvert
+it to a labelled vector with same values and labels.
 }
 \examples{
 \dontrun{
@@ -100,6 +106,12 @@ to_labelled(f1)
 identical(s1, to_labelled(f1))
 to_labelled(f1, labels)
 identical(s1, to_labelled(f1, labels))
+
+l <- labelled(c(1, 1, 2, 2, 9, 2, 1, 9), c("yes" = 1, "no" = 2, "don't know" = 9))
+f <- to_factor(l, levels = "p")
+f
+to_labelled(f)
+identical(to_labelled(f), l)
 }
 \seealso{
 \code{\link[haven:labelled]{haven::labelled()}}, \code{\link[foreign:read.spss]{foreign::read.spss()}},

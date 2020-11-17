@@ -1,8 +1,13 @@
 # labelled (development version)
 
+* `to_labelled()` can properly manage factors whose levels are coded as "[code] level",
+  as produced by `to_factor(levels = "prefixed")` (#74)
+* new function `is_prefixed()` to check if a factor is prefixed
+
 # labelled 2.7.0
 
-* a `.values` argument has been added to `set_na_values()` and `set_na_range()`, allowing to pass a list of values
+* a `.values` argument has been added to `set_na_values()` and `set_na_range()`, 
+  allowing to pass a list of values
 * a `.strict` option has been added to `set_variable_labels()`,
   `set_value_labels()`, `add_value_labels()`,  `remove_value_labels()`,
   `set_na_values()` and `set_na_range()`,
