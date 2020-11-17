@@ -61,4 +61,13 @@ test_that("to_labelled.factor works with '[code] label' factors", {
     unclass(x),
     c(123, 123, 456, 456, NA, 456, 123, NA)
   )
+
+  # should not be applied if duplicates in code
+  f <- factor(c("[1] yes", "[2] no", "[1] don't know"))
+  expect_warning(l <- to_labelled(f))
+  expect_warning(l <- to_labelled(f, .quiet = TRUE), NA)
+  expect_identical(
+    names(val_labels(l)),
+    levels(f)
+  )
 })

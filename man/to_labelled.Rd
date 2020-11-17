@@ -25,7 +25,7 @@ foreign_to_labelled(x)
 
 memisc_to_labelled(x)
 
-\method{to_labelled}{factor}(x, labels = NULL, ...)
+\method{to_labelled}{factor}(x, labels = NULL, .quiet = FALSE, ...)
 }
 \arguments{
 \item{x}{Factor or dataset to convert to labelled data frame}
@@ -35,6 +35,8 @@ memisc_to_labelled(x)
 \item{labels}{When converting a factor only:
 an optional named vector indicating how factor levels should be coded.
 If a factor level is not found in \code{labels}, it will be converted to \code{NA}.}
+
+\item{.quiet}{do not display warnings for prefixed factors with duplicated codes}
 }
 \value{
 A tbl data frame or a labelled vector.

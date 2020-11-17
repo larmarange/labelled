@@ -188,6 +188,7 @@ memisc_to_labelled <- function(x) {
 #' @param labels When converting a factor only:
 #'   an optional named vector indicating how factor levels should be coded.
 #'   If a factor level is not found in `labels`, it will be converted to `NA`.
+#' @param .quiet do not display warnings for prefixed factors with duplicated codes
 #' @details
 #' If you convert a labelled vector into a factor with prefix, i.e. by using
 #' [to_factor(levels = "prefixed")][to_factor()], `to_labelled.factor()` is able to reconvert
@@ -216,12 +217,14 @@ memisc_to_labelled <- function(x) {
 #' f
 #' to_labelled(f)
 #' identical(to_labelled(f), l)
-to_labelled.factor <- function(x, labels = NULL, ...) {
+to_labelled.factor <- function(x, labels = NULL, .quiet = FALSE, ...) {
   vl <- var_label(x)
   if (is.null(labels)) {
     # check if levels are formatted as "[code] label"
     l <- .get_prefixes.factor(x)
-    if (any(is.na(l$code)) | any(is.na(l$code))) {
+    if (any(is.na(l$code)) | any(is.na(l$code)) | any(duplicated(l$code))) {
+      if (!.quiet && any(duplicated(l$code)) && all(!is.na(l$code)) && all(!is.na(l$code)))
+        warning("'x' looks prefixed, but duplicated codes found.")
       # normal case
       labs <- 1:length(levels(x))
       names(labs) <- levels(x)
