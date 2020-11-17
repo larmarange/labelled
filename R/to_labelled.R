@@ -231,7 +231,10 @@ to_labelled.factor <- function(x, labels = NULL, .quiet = FALSE, ...) {
       x <- labelled(as.numeric(x), labs)
     } else {
       # "[code] label" case
-      if (all(!is.na(suppressWarnings(as.numeric(l$code)))))
+      num_l <- suppressWarnings(as.numeric(l$code))
+      if (!.quiet && all(!is.na(num_l)) && any(duplicated(num_l)))
+        warning("All codes seem numeric but some duplicates found.")
+      if (all(!is.na(num_l)) && !any(duplicated(num_l)))
         l$code <- as.numeric(l$code)
         r <- l$levels
         names(r) <- l$code

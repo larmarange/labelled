@@ -70,4 +70,10 @@ test_that("to_labelled.factor works with '[code] label' factors", {
     names(val_labels(l)),
     levels(f)
   )
+
+  # check potential duplicates in numerical codes
+  f <- factor(c("[1] yes", "[1.0] no", "[01] don't know"))
+  expect_warning(to_labelled(f))
+  expect_warning(to_labelled(f, .quiet = TRUE), NA)
+  expect_true(is.character(to_labelled(f, .quiet = TRUE)))
 })
