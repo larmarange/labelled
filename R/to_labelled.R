@@ -232,8 +232,8 @@ to_labelled.factor <- function(x, labels = NULL, ...) {
         l$code <- as.numeric(l$code)
         r <- l$levels
         names(r) <- l$code
-        x <- forcats::fct_recode(x, !!!r) %>%
-          as.character()
+        levels(x) <- l$code
+        x <- as.character(x)
         if (is.numeric(l$code))
           x <- as.numeric(x)
         names(l$code) <- l$label
