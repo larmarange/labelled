@@ -381,7 +381,7 @@
 <div id="user-defined-missing-values-spsss-style" class="section level2">
 <h2 class="hasAnchor">
 <a href="#user-defined-missing-values-spsss-style" class="anchor"></a>User defined missing values (SPSS’s style)</h2>
-<p><code>haven</code> (&gt;= 2.0.0) introduced an additional <code>haven_labelled_spss</code> class to deal with user defined missing values. In such case, additional atributes will be used to indicate with values should be considered as missing, but such values will not be stored as internal <code>NA</code> values. You should note that most R function will not take this information into account. Therefore, you will have to convert missing values into <code>NA</code> if required before analysis. These defined missing values could co-exist with internal <code>NA</code> values.</p>
+<p><code>haven</code> (&gt;= 2.0.0) introduced an additional <code>haven_labelled_spss</code> class to deal with user defined missing values. In such case, additional attributes will be used to indicate with values should be considered as missing, but such values will not be stored as internal <code>NA</code> values. You should note that most R function will not take this information into account. Therefore, you will have to convert missing values into <code>NA</code> if required before analysis. These defined missing values could co-exist with internal <code>NA</code> values.</p>
 <p>It is possible to manipulate this missing values with <code><a href="../reference/na_values.html">na_values()</a></code> and <code><a href="../reference/na_values.html">na_range()</a></code>. Note that <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> will return <code>TRUE</code> as well for user-defined missing values.</p>
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled.html">labelled</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">9</span>,<span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">2</span>,<span class="cn">NA</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>yes <span class="op">=</span> <span class="fl">1</span>, no <span class="op">=</span> <span class="fl">3</span>, <span class="st">"don't know"</span> <span class="op">=</span> <span class="fl">9</span><span class="op">)</span><span class="op">)</span>
@@ -759,12 +759,12 @@
 <div id="conditionnal-conversion-to-factors" class="section level2">
 <h2 class="hasAnchor">
 <a href="#conditionnal-conversion-to-factors" class="anchor"></a>Conditionnal conversion to factors</h2>
-<p>For anay analysis, tt is the responsability of user to identify which variables should be considered as categorical (and therefore converted into factors) and which variables should be treated as continuous (and therefore unclassed into numeric).</p>
+<p>For any analysis, it is the responsibility of user to identify which variables should be considered as categorical (and therefore converted into factors) and which variables should be treated as continuous (and therefore unclassed into numeric).</p>
 <p>In most of cases, if data documentation was properly done, categorical variables corresponds to vectors where all observed values have a value label while vectors where only few values have a value label should be considered as continuous.</p>
 <p>In that situation, you could apply the <code><a href="../reference/to_factor.html">unlabelled()</a></code> method to an overall data frame. By default, <code><a href="../reference/to_factor.html">unlabelled()</a></code> works as follow:</p>
 <ul>
 <li>if a column doesn’t inherit the <code>haven_labelled</code> class, it will be not affected;</li>
-<li>if all observed values have a corresponding value label, the column will be converted into a facter;</li>
+<li>if all observed values have a corresponding value label, the column will be converted into a factor;</li>
 <li>otherwise, the column will be unclassed (and converted back to a numeric or character vector).</li>
 </ul>
 <div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
