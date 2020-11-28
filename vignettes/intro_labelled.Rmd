@@ -80,7 +80,7 @@ You can display and search through variable names and labels with `look_for()`:
 ```{r}
 look_for(iris)
 look_for(iris, "pet")
-look_for(iris, details = TRUE)
+look_for(iris, details = FALSE)
 ```
 
 
@@ -415,10 +415,10 @@ df <- data.frame(
     na_values = 9
     )
 )
-dplyr::glimpse(df)
-dplyr::glimpse(unlabelled(df))
-dplyr::glimpse(unlabelled(df, user_na_to_na = TRUE))
-dplyr::glimpse(unlabelled(df, drop_unused_labels = TRUE))
+df %>% look_for()
+unlabelled(df)%>% look_for()
+unlabelled(df, user_na_to_na = TRUE) %>% look_for()
+unlabelled(df, drop_unused_labels = TRUE) %>% look_for()
 ```
 
 
