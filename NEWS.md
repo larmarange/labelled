@@ -1,7 +1,11 @@
 # labelled (development version)
 
-* `to_labelled()` can properly manage factors whose levels are coded as "[code] level",
-  as produced by `to_factor(levels = "prefixed")` (#74 @courtiol)
+* `look_for()` could be time consuming for big data frames. Now, by default,
+  only basic details of each variable are computed. You can copute all details
+  with `details = "full"` (#77)
+* `to_labelled()` can properly manage factors whose levels are coded as 
+  "[code] level", as produced by `to_factor(levels = "prefixed")` 
+  (#74 @courtiol)
 * new function `is_prefixed()` to check if a factor is prefixed
 
 # labelled 2.7.0

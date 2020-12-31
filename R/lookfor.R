@@ -15,7 +15,7 @@
 #' @param labels whether or not to search variable labels (descriptions); `TRUE` by default
 #' @param ignore.case whether or not to make the keywords case sensitive;
 #' `TRUE` by default (case is ignored during matching)
-#' @param details add details about each variable (turn off for a quicker search)
+#' @param details add details about each variable (full details could be time consuming for big data frames, `FALSE` is equivalent to `"none"` and `TRUE` to `"full"`)
 #' @param x a tibble returned by `look_for()`
 #' @return a tibble data frame featuring the variable position, name and description
 #' (if it exists) in the original data frame
@@ -86,7 +86,12 @@ look_for <- function(data,
                     ...,
                     labels = TRUE,
                     ignore.case = TRUE,
-                    details = TRUE) {
+                    details = c("basic", "none", "full")) {
+  if (is.logical(details)) {
+    details <- ifelse(details, "full", "none")
+  } else {
+    details <- match.arg(details)
+  }
   # applying to_labelled
   data <- to_labelled(data)
   # search scope
@@ -118,13 +123,25 @@ look_for <- function(data,
       res <- dplyr::tibble(pos = pos, variable = n[pos], label = NA_character_)
     }
 
-    if (details) {
+    if (details != "none") {
+      data <- data %>%
+        dplyr::select(res$variable)
+
+      res <- res %>%
+        dplyr::mutate(
+          col_type = unlist(lapply(data, vctrs::vec_ptype_abbr)),
+          levels = lapply(data, levels),
+          value_labels = lapply(data, val_labels)
+        )
+
+    }
+
+    if (details == "full") {
       data <- data %>%
         dplyr::select(res$variable)
 
       unique_values <- function(x) {length(unique(x))}
       n_na <- function(x) {sum(is.na(x))}
-
       generic_range <- function(x){
         if (all(unlist(lapply(x, is.null)))) return(NULL)
         if (all(is.na(x))) return(NULL)
@@ -137,11 +154,8 @@ look_for <- function(data,
 
       res <- res %>%
         dplyr::mutate(
-          col_type = unlist(lapply(data, vctrs::vec_ptype_abbr)),
           class = lapply(data, class),
           type = unlist(lapply(data, typeof)),
-          levels = lapply(data, levels),
-          value_labels = lapply(data, val_labels),
           na_values = lapply(data, na_values),
           na_range = lapply(data, na_range),
           unique_values = unlist(lapply(data, unique_values)),
@@ -186,6 +200,21 @@ print.look_for <- function(x, ...) {
             !is.na(.data$value_labels) ~ .data$value_labels,
             !is.na(.data$levels) ~ .data$levels,
             !is.na(.data$range) ~ paste("range:", .data$range),
+            TRUE ~ "\u200b" # zero-width space
+          ),
+          variable = dplyr::if_else(duplicated(.data$pos), "\u200b", .data$variable),
+          label = dplyr::if_else(duplicated(.data$pos), "\u200b", .data$label),
+          col_type = dplyr::if_else(duplicated(.data$pos), "\u200b", .data$col_type),
+          pos = dplyr::if_else(duplicated(.data$pos), "\u200b", as.character(.data$pos))
+        ) %>%
+        dplyr::select(dplyr::any_of(c("pos", "variable", "label", "col_type", "values")))
+    }
+    if (all(c("value_labels", "levels", "col_type") %in% names(x))) {
+      x <- x %>%
+        dplyr::mutate(
+          values = dplyr::case_when(
+            !is.na(.data$value_labels) ~ .data$value_labels,
+            !is.na(.data$levels) ~ .data$levels,
             TRUE ~ "\u200b" # zero-width space
           ),
           variable = dplyr::if_else(duplicated(.data$pos), "\u200b", .data$variable),

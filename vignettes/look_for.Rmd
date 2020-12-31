@@ -131,10 +131,17 @@ look_for(women) %>%
   convert_list_columns_to_character()
 ```
 
-If you just want to use the search feature of `look_for()` without computing the details of each variable, simply indicate `details = FALSE`.
+If you just want to use the search feature of `look_for()` without computing the details of each variable, simply indicate `details = "none"` or `details = FALSE`.
 
 ```{r}
-look_for(women, "id", details = FALSE)
+look_for(women, "id", details = "none")
 ```
 
+If you want more details (but can be time consuming for big data frames), indicate `details = "full"` or `details = TRUE`.
 
+
+```{r}
+look_for(women, details = "full")
+look_for(women, details = "full") %>%
+  dplyr::glimpse()
+```
