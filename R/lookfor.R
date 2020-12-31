@@ -54,10 +54,14 @@
 #' look_for(iris, "Pet", "sp", "width", ignore.case = FALSE)
 #'
 #' # Quicker search without variable details
-#' look_for(iris, details = FALSE)
+#' look_for(iris, details = "none")
+#'
+#' # To obtain more details about each variable
+#' look_for(iris, details = "full")
 #'
 #' # To deactivate default printing, convert to tibble
-#' look_for(iris) %>% dplyr::as_tibble()
+#' look_for(iris, details = "full") %>%
+#'   dplyr::as_tibble()
 #'
 #' # To convert named lists into character vectors
 #' look_for(iris) %>% convert_list_columns_to_character()
