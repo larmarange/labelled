@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -68,7 +68,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/larmarange/labelled/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -82,8 +82,7 @@
 
       
 
-      </header><script src="intro_labelled_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="intro_labelled_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="intro_labelled_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><script src="intro_labelled_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to labelled</h1>
@@ -146,21 +145,21 @@
 <p>You can display and search through variable names and labels with <code><a href="../reference/look_for.html">look_for()</a></code>:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></code></pre></div>
-<pre><code>## NA.pos NA.variable  NA.label        NA.col_type NA.values       
-## &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;           &lt;chr&gt;       &lt;chr&gt;           
-## 1      Sepal.Length —               dbl         range: 4.3 - 7.9
-## 2      Sepal.Width  —               dbl         range: 2 - 4.4  
-## 3      Petal.Length Length of petal dbl         range: 1 - 6.9  
-## 4      Petal.Width  Width of Petal  dbl         range: 0.1 - 2.5
-## 5      Species      —               fct         setosa          
-## ​       ​             ​                ​            versicolor      
+<pre><code>## NA.pos NA.variable  NA.label        NA.col_type NA.values 
+## &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;           &lt;chr&gt;       &lt;chr&gt;     
+## 1      Sepal.Length —               dbl         ​          
+## 2      Sepal.Width  —               dbl         ​          
+## 3      Petal.Length Length of petal dbl         ​          
+## 4      Petal.Width  Width of Petal  dbl         ​          
+## 5      Species      —               fct         setosa    
+## ​       ​             ​                ​            versicolor
 ## ​       ​             ​                ​            virginica</code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, <span class="st">"pet"</span><span class="op">)</span></code></pre></div>
-<pre><code>## NA.pos NA.variable  NA.label        NA.col_type NA.values       
-## &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;           &lt;chr&gt;       &lt;chr&gt;           
-## 3      Petal.Length Length of petal dbl         range: 1 - 6.9  
-## 4      Petal.Width  Width of Petal  dbl         range: 0.1 - 2.5</code></pre>
+<pre><code>## NA.pos NA.variable  NA.label        NA.col_type NA.values
+## &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;           &lt;chr&gt;       &lt;chr&gt;    
+## 3      Petal.Length Length of petal dbl         ​         
+## 4      Petal.Width  Width of Petal  dbl         ​</code></pre>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, details <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <pre><code>## NA.pos NA.variable  NA.label       
@@ -794,44 +793,44 @@
 ## ​       ​            ​         ​            [2] Yes</code></pre>
 <div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span><span class="op">%&gt;%</span> <span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## NA.pos NA.variable NA.label NA.col_type NA.values   
-## &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;       
-## 1      a           —        dbl         range: 1 - 3
-## 2      b           —        fct         No          
-## ​       ​            ​         ​            Yes         
-## ​       ​            ​         ​            DK          
-## 3      c           —        fct         No          
-## ​       ​            ​         ​            Yes         
-## ​       ​            ​         ​            DK          
-## 4      d           —        chr         range: a - c
-## 5      e           —        fct         No          
+<pre><code>## NA.pos NA.variable NA.label NA.col_type NA.values
+## &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;    
+## 1      a           —        dbl         ​         
+## 2      b           —        fct         No       
+## ​       ​            ​         ​            Yes      
+## ​       ​            ​         ​            DK       
+## 3      c           —        fct         No       
+## ​       ​            ​         ​            Yes      
+## ​       ​            ​         ​            DK       
+## 4      d           —        chr         ​         
+## 5      e           —        fct         No       
 ## ​       ​            ​         ​            Yes</code></pre>
 <div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span><span class="op">(</span><span class="va">df</span>, user_na_to_na <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## NA.pos NA.variable NA.label NA.col_type NA.values   
-## &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;       
-## 1      a           —        dbl         range: 1 - 3
-## 2      b           —        fct         No          
-## ​       ​            ​         ​            Yes         
-## ​       ​            ​         ​            DK          
-## 3      c           —        fct         No          
-## ​       ​            ​         ​            Yes         
-## ​       ​            ​         ​            DK          
-## 4      d           —        chr         range: a - c
-## 5      e           —        fct         No          
+<pre><code>## NA.pos NA.variable NA.label NA.col_type NA.values
+## &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;    
+## 1      a           —        dbl         ​         
+## 2      b           —        fct         No       
+## ​       ​            ​         ​            Yes      
+## ​       ​            ​         ​            DK       
+## 3      c           —        fct         No       
+## ​       ​            ​         ​            Yes      
+## ​       ​            ​         ​            DK       
+## 4      d           —        chr         ​         
+## 5      e           —        fct         No       
 ## ​       ​            ​         ​            Yes</code></pre>
 <div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span><span class="op">(</span><span class="va">df</span>, drop_unused_labels <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## NA.pos NA.variable NA.label NA.col_type NA.values   
-## &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;       
-## 1      a           —        dbl         range: 1 - 3
-## 2      b           —        fct         No          
-## ​       ​            ​         ​            Yes         
-## ​       ​            ​         ​            DK          
-## 3      c           —        fct         No          
-## ​       ​            ​         ​            Yes         
-## 4      d           —        chr         range: a - c
-## 5      e           —        fct         No          
+<pre><code>## NA.pos NA.variable NA.label NA.col_type NA.values
+## &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;    
+## 1      a           —        dbl         ​         
+## 2      b           —        fct         No       
+## ​       ​            ​         ​            Yes      
+## ​       ​            ​         ​            DK       
+## 3      c           —        fct         No       
+## ​       ​            ​         ​            Yes      
+## 4      d           —        chr         ​         
+## 5      e           —        fct         No       
 ## ​       ​            ​         ​            Yes</code></pre>
 </div>
 <div id="importing-labelled-data" class="section level2">
