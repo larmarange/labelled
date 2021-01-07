@@ -12,16 +12,28 @@
 Based on the behaviour of the \code{lookfor} command in Stata.
 }
 \usage{
-look_for(data, ..., labels = TRUE, ignore.case = TRUE, details = TRUE)
+look_for(
+  data,
+  ...,
+  labels = TRUE,
+  ignore.case = TRUE,
+  details = c("basic", "none", "full")
+)
 
-lookfor(data, ..., labels = TRUE, ignore.case = TRUE, details = TRUE)
+lookfor(
+  data,
+  ...,
+  labels = TRUE,
+  ignore.case = TRUE,
+  details = c("basic", "none", "full")
+)
 
 generate_dictionary(
   data,
   ...,
   labels = TRUE,
   ignore.case = TRUE,
-  details = TRUE
+  details = c("basic", "none", "full")
 )
 
 \method{print}{look_for}(x, ...)
@@ -42,7 +54,7 @@ displays all variables if not specified}
 \item{ignore.case}{whether or not to make the keywords case sensitive;
 \code{TRUE} by default (case is ignored during matching)}
 
-\item{details}{add details about each variable (turn off for a quicker search)}
+\item{details}{add details about each variable (full details could be time consuming for big data frames, \code{FALSE} is equivalent to \code{"none"} and \code{TRUE} to \code{"full"})}
 
 \item{x}{a tibble returned by \code{look_for()}}
 }
@@ -94,10 +106,14 @@ look_for(iris, "pet", "sp", "width")
 look_for(iris, "Pet", "sp", "width", ignore.case = FALSE)
 
 # Quicker search without variable details
-look_for(iris, details = FALSE)
+look_for(iris, details = "none")
+
+# To obtain more details about each variable
+look_for(iris, details = "full")
 
 # To deactivate default printing, convert to tibble
-look_for(iris) \%>\% dplyr::as_tibble()
+look_for(iris, details = "full") \%>\%
+  dplyr::as_tibble()
 
 # To convert named lists into character vectors
 look_for(iris) \%>\% convert_list_columns_to_character()
