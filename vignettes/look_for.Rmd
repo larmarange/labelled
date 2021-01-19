@@ -105,8 +105,8 @@ look_for(iris, "sepal", ignore.case = FALSE)
 `look_for()` returns a detailed tibble which is summarized before printing. To deactivate default printing and see full results, simply use `dplyr::as_tibble()`, `dplyr::glimpse()` or even `utils::View()`.
 
 ```{r}
-look_for(iris) %>% as_tibble()
-glimpse(look_for(iris))
+look_for(women) %>% as_tibble()
+glimpse(look_for(women))
 ```
 
 The tibble returned by `look_for()` could be easily manipulated for advanced programming.
@@ -114,13 +114,13 @@ The tibble returned by `look_for()` could be easily manipulated for advanced pro
 When a column has several values for one variable (e.g. `levels` or `value_labels`), results as stored with nested named list. You can convert named lists into simpler character vectors, you can use `convert_list_columns_to_character()`.
 
 ```{r}
-look_for(iris) %>% convert_list_columns_to_character()
+look_for(women) %>% convert_list_columns_to_character()
 ```
 
 Alternatively, you can use `lookfor_to_long_format()` to transform results into a long format with one row per factor level and per value label.
 
 ```{r}
-look_for(iris) %>% lookfor_to_long_format()
+look_for(women) %>% lookfor_to_long_format()
 ```
 
 Both can be combined:
