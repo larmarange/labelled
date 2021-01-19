@@ -229,6 +229,10 @@ convert_list_columns_to_character <- function(x) {
     x <- x %>%
       dplyr::mutate(range = unlist(lapply(range, paste, collapse = " - ")))
 
+  if ("value_labels" %in% names(x) & is.list(x$value_labels))
+    x <- x %>%
+      dplyr::mutate(value_labels = names_prefixed_by_values(.data$value_labels))
+
   x %>%
     dplyr::as_tibble() %>% # remove look_for class
     dplyr::mutate(
