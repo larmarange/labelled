@@ -410,6 +410,7 @@
 <p>If you just want to use the search feature of <code><a href="../reference/look_for.html">look_for()</a></code> without computing the details of each variable, simply indicate <code>details = "none"</code> or <code>details = FALSE</code>.</p>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span>, <span class="st">"id"</span>, details <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></code></pre></div>
+<pre><code>## Warning: Unknown or uninitialised column: `value_labels`.</code></pre>
 <pre><code>## NA.pos NA.variable       NA.label                
 ##  &lt;int&gt; &lt;chr&gt;             &lt;chr&gt;                   
 ##      1 id_woman          Woman Id                
@@ -417,7 +418,7 @@
 ##      7 residency         Urban / rural residency 
 ##     16 ideal_nb_children Ideal number of children</code></pre>
 <p>If you want more details (but can be time consuming for big data frames), indicate <code>details = "full"</code> or <code>details = TRUE</code>.</p>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span>, details <span class="op">=</span> <span class="st">"full"</span><span class="op">)</span></code></pre></div>
 <pre><code>## NA.pos NA.variable     NA.label                NA.col_type NA.values            
 ## &lt;chr&gt;  &lt;chr&gt;           &lt;chr&gt;                   &lt;chr&gt;       &lt;chr&gt;                
@@ -462,7 +463,7 @@
 ## 17     test            Ever tested for HIV?    dbl+lbl     [0] no               
 ## ​       ​                ​                        ​            [1] yes              
 ## ​       ​                ​                        ​            [9] missing</code></pre>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span>, details <span class="op">=</span> <span class="st">"full"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## Rows: 17
