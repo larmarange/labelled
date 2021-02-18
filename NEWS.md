@@ -7,6 +7,7 @@
   "[code] level", as produced by `to_factor(levels = "prefixed")` 
   (#74 @courtiol)
 * new function `is_prefixed()` to check if a factor is prefixed
+* bug fix for `na_range<-` and `na_values<-` when applied to a data.frame (#80)
 
 # labelled 2.7.0
 
