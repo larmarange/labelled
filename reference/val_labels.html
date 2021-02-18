@@ -137,52 +137,10 @@
 
     <pre class="usage"><span class='fu'>val_labels</span><span class='op'>(</span><span class='va'>x</span>, prefixed <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='co'># S3 method for default</span>
-<span class='fu'>val_labels</span><span class='op'>(</span><span class='va'>x</span>, prefixed <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-
-<span class='co'># S3 method for haven_labelled</span>
-<span class='fu'>val_labels</span><span class='op'>(</span><span class='va'>x</span>, prefixed <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-
-<span class='co'># S3 method for data.frame</span>
-<span class='fu'>val_labels</span><span class='op'>(</span><span class='va'>x</span>, prefixed <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-
-<span class='fu'>val_labels</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
-
-<span class='co'># S3 method for numeric</span>
-<span class='fu'>val_labels</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
-
-<span class='co'># S3 method for character</span>
-<span class='fu'>val_labels</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
-
-<span class='co'># S3 method for haven_labelled</span>
-<span class='fu'>val_labels</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
-
-<span class='co'># S3 method for haven_labelled_spss</span>
-<span class='fu'>val_labels</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
-
-<span class='co'># S3 method for data.frame</span>
 <span class='fu'>val_labels</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
 <span class='fu'>val_label</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>v</span>, prefixed <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='co'># S3 method for haven_labelled</span>
-<span class='fu'>val_label</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>v</span>, prefixed <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-
-<span class='co'># S3 method for data.frame</span>
-<span class='fu'>val_label</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>v</span>, prefixed <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-
-<span class='fu'>val_label</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>v</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
-
-<span class='co'># S3 method for haven_labelled</span>
-<span class='fu'>val_label</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>v</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
-
-<span class='co'># S3 method for numeric</span>
-<span class='fu'>val_label</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>v</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
-
-<span class='co'># S3 method for character</span>
-<span class='fu'>val_label</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>v</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
-
-<span class='co'># S3 method for data.frame</span>
 <span class='fu'>val_label</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>v</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
 <span class='fu'>set_value_labels</span><span class='op'>(</span><span class='va'>.data</span>, <span class='va'>...</span>, .labels <span class='op'>=</span> <span class='cn'>NA</span>, .strict <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
@@ -196,7 +154,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A vector.</p></td>
+      <td><p>A vector or a data.frame</p></td>
     </tr>
     <tr>
       <th>prefixed</th>
