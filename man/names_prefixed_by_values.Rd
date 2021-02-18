@@ -2,15 +2,9 @@
 % Please edit documentation in R/val_labels.R
 \name{names_prefixed_by_values}
 \alias{names_prefixed_by_values}
-\alias{names_prefixed_by_values.default}
-\alias{names_prefixed_by_values.list}
 \title{Turn a named vector into a vector of names prefixed by values}
 \usage{
 names_prefixed_by_values(x)
-
-\method{names_prefixed_by_values}{default}(x)
-
-\method{names_prefixed_by_values}{list}(x)
 }
 \arguments{
 \item{x}{vector to be prefixed}

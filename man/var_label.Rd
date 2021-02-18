@@ -13,7 +13,7 @@ var_label(x) <- value
 set_variable_labels(.data, ..., .labels = NA, .strict = TRUE)
 }
 \arguments{
-\item{x}{an object}
+\item{x}{a vector or a data.frame}
 
 \item{unlist}{for data frames, return a named vector instead of a list}
 

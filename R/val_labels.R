@@ -1,6 +1,6 @@
 #' Get / Set value labels
 #'
-#' @param x A vector.
+#' @param x A vector or a data.frame
 #' @param prefixed Should labels be prefixed with values?
 #' @param v A single value.
 #' @param value A named vector for `val_labels()` (see [haven::labelled()]) or a character string
@@ -22,14 +22,12 @@ val_labels <- function(x, prefixed = FALSE) {
   UseMethod("val_labels")
 }
 
-#' @rdname val_labels
 #' @export
 val_labels.default <- function(x, prefixed = FALSE) {
   # return nothing
   NULL
 }
 
-#' @rdname val_labels
 #' @export
 val_labels.haven_labelled <- function(x, prefixed = FALSE) {
   labels <- attr(x, "labels", exact = TRUE)
@@ -38,7 +36,6 @@ val_labels.haven_labelled <- function(x, prefixed = FALSE) {
   labels
 }
 
-#' @rdname val_labels
 #' @export
 val_labels.data.frame <- function(x, prefixed = FALSE) {
   lapply(x, val_labels, prefixed = prefixed)
@@ -56,7 +53,6 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
   x
 }
 
-#' @rdname val_labels
 #' @export
 `val_labels<-.numeric` <- function(x, value) {
   if (!is.null(value)) {
@@ -65,7 +61,6 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
   x
 }
 
-#' @rdname val_labels
 #' @export
 `val_labels<-.character` <- function(x, value) {
   if (!is.null(value)) {
@@ -74,7 +69,6 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
   x
 }
 
-#' @rdname val_labels
 #' @export
 `val_labels<-.haven_labelled` <- function(x, value) {
   if (is.null(value)) {
@@ -86,7 +80,6 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
   x
 }
 
-#' @rdname val_labels
 #' @export
 `val_labels<-.haven_labelled_spss` <- function(x, value) {
   if (is.null(value) & is.null(attr(x, "na_values")) & is.null(attr(x, "na_range"))) {
@@ -98,7 +91,6 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
   x
 }
 
-#' @rdname val_labels
 #' @export
 `val_labels<-.data.frame` <- function(x, value) {
   if (!is.list(value)) {
@@ -140,7 +132,6 @@ val_label.default <- function(x, v, prefixed = FALSE) {
   NULL
 }
 
-#' @rdname val_labels
 #' @export
 val_label.haven_labelled <- function(x, v, prefixed = FALSE) {
   if (length(v) != 1)
@@ -157,7 +148,6 @@ val_label.haven_labelled <- function(x, v, prefixed = FALSE) {
   }
 }
 
-#' @rdname val_labels
 #' @export
 val_label.data.frame <- function(x, v, prefixed = FALSE) {
   lapply(x, val_label, v = v, prefixed = prefixed)
@@ -169,7 +159,6 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
   UseMethod("val_label<-")
 }
 
-#' @rdname val_labels
 #' @export
 `val_label<-.haven_labelled` <- function(x, v, value) {
   if (length(v) != 1)
@@ -199,19 +188,16 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
   x
 }
 
-#' @rdname val_labels
 #' @export
 `val_label<-.numeric` <- function(x, v, value) {
   `val_label<-.haven_labelled`(x = x, v = v, value = value)
 }
 
-#' @rdname val_labels
 #' @export
 `val_label<-.character` <- function(x, v, value) {
   `val_label<-.haven_labelled`(x = x, v = v, value = value)
 }
 
-#' @rdname val_labels
 #' @export
 `val_label<-.data.frame` <- function(x, v, value) {
   if (!is.list(value)) {
@@ -326,7 +312,7 @@ remove_value_labels <- function(.data, ..., .strict = TRUE) {
 #'
 #' Sort value labels according to values or to labels
 #'
-#' @param x A labelled vector.
+#' @param x A labelled vector or a data.frame
 #' @param according_to According to values or to labels?
 #' @param decreasing In decreasing order?
 #' @examples
@@ -349,7 +335,6 @@ sort_val_labels.default <- function(x, according_to = c("values",
   x
 }
 
-#' @rdname sort_val_labels
 #' @export
 sort_val_labels.haven_labelled <- function(x, according_to = c("values",
   "labels"), decreasing = FALSE) {
@@ -365,7 +350,6 @@ sort_val_labels.haven_labelled <- function(x, according_to = c("values",
   x
 }
 
-#' @rdname sort_val_labels
 #' @export
 sort_val_labels.data.frame <- function(x, according_to = c("values",
   "labels"), decreasing = FALSE) {
@@ -390,14 +374,12 @@ names_prefixed_by_values <- function(x) {
   UseMethod("names_prefixed_by_values")
 }
 
-#' @rdname names_prefixed_by_values
 #' @export
 names_prefixed_by_values.default <- function(x) {
   if (is.null(x)) return(NULL)
   paste0("[", x, "] ", names(x))
 }
 
-#' @rdname names_prefixed_by_values
 #' @export
 names_prefixed_by_values.list <- function(x) {
   lapply(x, names_prefixed_by_values)

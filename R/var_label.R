@@ -1,6 +1,6 @@
 #' Get / Set a variable label
 #'
-#' @param x an object
+#' @param x a vector or a data.frame
 #' @param value a character string or `NULL` to remove the label
 #'  For data frames, it could also be a named list or a character vector
 #'  of same length as the number of columns in `x`.
