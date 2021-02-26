@@ -133,7 +133,7 @@ var_label.data.frame <- function(x, unlist = FALSE) {
 #'   )
 #'   var_labels <- setNames(as.list(description$label), description$name)
 #'   iris_labelled <- iris %>%
-#'     set_variable_labels(.labels= var_labels, .strict=FALSE)
+#'     set_variable_labels(.labels = var_labels, .strict = FALSE)
 #'   var_label(iris_labelled)
 #'
 #'   # defining variable labels derived from variable names
