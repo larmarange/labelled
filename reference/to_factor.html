@@ -300,25 +300,25 @@ If you want to remove value labels in all cases, use <code><a href='remove_label
   f <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"itemA"</span>, <span class='st'>"itemA"</span>, <span class='st'>"itemB"</span>, <span class='st'>"itemB"</span><span class='op'>)</span>
 <span class='op'>)</span>
 <span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span>
-  <span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='fu'>unlabelled</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span>
+  <span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='fu'>unlabelled</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span><span class='op'>)</span>
 <span class='op'>}</span>
 </div><div class='output co'>#&gt; Rows: 4
 #&gt; Columns: 6
-#&gt; $ a <span style='color: #555555;font-style: italic;'>&lt;dbl+lbl&gt;</span><span> 1, 1, 2, 3
-#&gt; $ b </span><span style='color: #555555;font-style: italic;'>&lt;dbl+lbl&gt;</span><span> 1, 1, 2, 3
-#&gt; $ c </span><span style='color: #555555;font-style: italic;'>&lt;chr+lbl&gt;</span><span> "a", "a", "b", "c"
-#&gt; $ d </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> 1, 2, 3, 4
-#&gt; $ e </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> item1, item2, item1, item2
-#&gt; $ f </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "itemA", "itemA", "itemB", "itemB"
+#&gt; $ a <span style='color: #949494;font-style: italic;'>&lt;dbl+lbl&gt;</span><span> 1, 1, 2, 3
+#&gt; $ b </span><span style='color: #949494;font-style: italic;'>&lt;dbl+lbl&gt;</span><span> 1, 1, 2, 3
+#&gt; $ c </span><span style='color: #949494;font-style: italic;'>&lt;chr+lbl&gt;</span><span> "a", "a", "b", "c"
+#&gt; $ d </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> 1, 2, 3, 4
+#&gt; $ e </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span> item1, item2, item1, item2
+#&gt; $ f </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "itemA", "itemA", "itemB", "itemB"
 #&gt; Rows: 4
 #&gt; Columns: 6
-#&gt; $ a </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> 1, 1, 2, 3
-#&gt; $ b </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> No, No, Yes, DK
-#&gt; $ c </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> No, No, Maybe, Yes
-#&gt; $ d </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> 1, 2, 3, 4
-#&gt; $ e </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> item1, item2, item1, item2
-#&gt; $ f </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> "itemA", "itemA", "itemB", "itemB"</div></span></pre>
+#&gt; $ a </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> 1, 1, 2, 3
+#&gt; $ b </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span> No, No, Yes, DK
+#&gt; $ c </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span> No, No, Maybe, Yes
+#&gt; $ d </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> 1, 2, 3, 4
+#&gt; $ e </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span> item1, item2, item1, item2
+#&gt; $ f </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> "itemA", "itemA", "itemB", "itemB"</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

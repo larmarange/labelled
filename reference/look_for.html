@@ -233,132 +233,132 @@ and per value label.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values 
-#&gt; <span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     
-#&gt; 1      Sepal.Length —        dbl         ​          
-#&gt; 2      Sepal.Width  —        dbl         ​          
-#&gt; 3      Petal.Length —        dbl         ​          
-#&gt; 4      Petal.Width  —        dbl         ​          
-#&gt; 5      Species      —        fct         setosa    
-#&gt; ​       ​             ​         ​            versicolor
-#&gt; ​       ​             ​         ​            virginica </div><div class='input'>
+</div><div class='output co'>#&gt; pos   variable     label col_type values    
+#&gt; <span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
+#&gt; 1     Sepal.Length —     dbl      ​          
+#&gt; 2     Sepal.Width  —     dbl      ​          
+#&gt; 3     Petal.Length —     dbl      ​          
+#&gt; 4     Petal.Width  —     dbl      ​          
+#&gt; 5     Species      —     fct      setosa    
+#&gt; ​      ​             ​      ​         versicolor
+#&gt; ​      ​             ​      ​         virginica </div><div class='input'>
 <span class='co'># Look for a single keyword.</span>
 <span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span>, <span class='st'>"petal"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values
-#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    
-#&gt; 3      Petal.Length —        dbl         ​         
-#&gt; 4      Petal.Width  —        dbl         ​         </div><div class='input'><span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span>, <span class='st'>"s"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values 
-#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     
-#&gt; 1      Sepal.Length —        dbl         ​          
-#&gt; 2      Sepal.Width  —        dbl         ​          
-#&gt; 5      Species      —        fct         setosa    
-#&gt; ​       ​             ​         ​            versicolor
-#&gt; ​       ​             ​         ​            virginica </div><div class='input'>
+</div><div class='output co'>#&gt; pos   variable     label col_type values
+#&gt; </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> 
+#&gt; 3     Petal.Length —     dbl      ​      
+#&gt; 4     Petal.Width  —     dbl      ​      </div><div class='input'><span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span>, <span class='st'>"s"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; pos   variable     label col_type values    
+#&gt; </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
+#&gt; 1     Sepal.Length —     dbl      ​          
+#&gt; 2     Sepal.Width  —     dbl      ​          
+#&gt; 5     Species      —     fct      setosa    
+#&gt; ​      ​             ​      ​         versicolor
+#&gt; ​      ​             ​      ​         virginica </div><div class='input'>
 <span class='co'># Look for with a regular expression</span>
 <span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span>, <span class='st'>"petal|species"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values 
-#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     
-#&gt; 3      Petal.Length —        dbl         ​          
-#&gt; 4      Petal.Width  —        dbl         ​          
-#&gt; 5      Species      —        fct         setosa    
-#&gt; ​       ​             ​         ​            versicolor
-#&gt; ​       ​             ​         ​            virginica </div><div class='input'><span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span>, <span class='st'>"s$"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; NA.pos NA.variable NA.label NA.col_type NA.values 
-#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     
-#&gt; 5      Species     —        fct         setosa    
-#&gt; ​       ​            ​         ​            versicolor
-#&gt; ​       ​            ​         ​            virginica </div><div class='input'>
+</div><div class='output co'>#&gt; pos   variable     label col_type values    
+#&gt; </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
+#&gt; 3     Petal.Length —     dbl      ​          
+#&gt; 4     Petal.Width  —     dbl      ​          
+#&gt; 5     Species      —     fct      setosa    
+#&gt; ​      ​             ​      ​         versicolor
+#&gt; ​      ​             ​      ​         virginica </div><div class='input'><span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span>, <span class='st'>"s$"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; pos   variable label col_type values    
+#&gt; </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
+#&gt; 5     Species  —     fct      setosa    
+#&gt; ​      ​         ​      ​         versicolor
+#&gt; ​      ​         ​      ​         virginica </div><div class='input'>
 <span class='co'># Look for with several keywords</span>
 <span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span>, <span class='st'>"pet"</span>, <span class='st'>"sp"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values 
-#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     
-#&gt; 3      Petal.Length —        dbl         ​          
-#&gt; 4      Petal.Width  —        dbl         ​          
-#&gt; 5      Species      —        fct         setosa    
-#&gt; ​       ​             ​         ​            versicolor
-#&gt; ​       ​             ​         ​            virginica </div><div class='input'><span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span>, <span class='st'>"pet"</span>, <span class='st'>"sp"</span>, <span class='st'>"width"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values 
-#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     
-#&gt; 2      Sepal.Width  —        dbl         ​          
-#&gt; 3      Petal.Length —        dbl         ​          
-#&gt; 4      Petal.Width  —        dbl         ​          
-#&gt; 5      Species      —        fct         setosa    
-#&gt; ​       ​             ​         ​            versicolor
-#&gt; ​       ​             ​         ​            virginica </div><div class='input'><span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span>, <span class='st'>"Pet"</span>, <span class='st'>"sp"</span>, <span class='st'>"width"</span>, ignore.case <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values
-#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    
-#&gt; 3      Petal.Length —        dbl         ​         
-#&gt; 4      Petal.Width  —        dbl         ​         </div><div class='input'>
+</div><div class='output co'>#&gt; pos   variable     label col_type values    
+#&gt; </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
+#&gt; 3     Petal.Length —     dbl      ​          
+#&gt; 4     Petal.Width  —     dbl      ​          
+#&gt; 5     Species      —     fct      setosa    
+#&gt; ​      ​             ​      ​         versicolor
+#&gt; ​      ​             ​      ​         virginica </div><div class='input'><span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span>, <span class='st'>"pet"</span>, <span class='st'>"sp"</span>, <span class='st'>"width"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; pos   variable     label col_type values    
+#&gt; </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
+#&gt; 2     Sepal.Width  —     dbl      ​          
+#&gt; 3     Petal.Length —     dbl      ​          
+#&gt; 4     Petal.Width  —     dbl      ​          
+#&gt; 5     Species      —     fct      setosa    
+#&gt; ​      ​             ​      ​         versicolor
+#&gt; ​      ​             ​      ​         virginica </div><div class='input'><span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span>, <span class='st'>"Pet"</span>, <span class='st'>"sp"</span>, <span class='st'>"width"</span>, ignore.case <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; pos   variable     label col_type values
+#&gt; </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> 
+#&gt; 3     Petal.Length —     dbl      ​      
+#&gt; 4     Petal.Width  —     dbl      ​      </div><div class='input'>
 <span class='co'># Quicker search without variable details</span>
 <span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span>, details <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Unknown or uninitialised column: `value_labels`.</span></div><div class='output co'>#&gt; NA.pos NA.variable  NA.label
-#&gt;  </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   
-#&gt;      1 Sepal.Length —       
-#&gt;      2 Sepal.Width  —       
-#&gt;      3 Petal.Length —       
-#&gt;      4 Petal.Width  —       
-#&gt;      5 Species      —       </div><div class='input'>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Unknown or uninitialised column: `value_labels`.</span></div><div class='output co'>#&gt;   pos variable     label
+#&gt; </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>
+#&gt;     1 Sepal.Length —    
+#&gt;     2 Sepal.Width  —    
+#&gt;     3 Petal.Length —    
+#&gt;     4 Petal.Width  —    
+#&gt;     5 Species      —    </div><div class='input'>
 <span class='co'># To obtain more details about each variable</span>
 <span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span>, details <span class='op'>=</span> <span class='st'>"full"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values       
-#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
-#&gt; 1      Sepal.Length —        dbl         range: 4.3 - 7.9
-#&gt; 2      Sepal.Width  —        dbl         range: 2 - 4.4  
-#&gt; 3      Petal.Length —        dbl         range: 1 - 6.9  
-#&gt; 4      Petal.Width  —        dbl         range: 0.1 - 2.5
-#&gt; 5      Species      —        fct         setosa          
-#&gt; ​       ​             ​         ​            versicolor      
-#&gt; ​       ​             ​         ​            virginica       </div><div class='input'>
+</div><div class='output co'>#&gt; pos   variable     label col_type values          
+#&gt; </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           
+#&gt; 1     Sepal.Length —     dbl      range: 4.3 - 7.9
+#&gt; 2     Sepal.Width  —     dbl      range: 2 - 4.4  
+#&gt; 3     Petal.Length —     dbl      range: 1 - 6.9  
+#&gt; 4     Petal.Width  —     dbl      range: 0.1 - 2.5
+#&gt; 5     Species      —     fct      setosa          
+#&gt; ​      ​             ​      ​         versicolor      
+#&gt; ​      ​             ​      ​         virginica       </div><div class='input'>
 <span class='co'># To deactivate default printing, convert to tibble</span>
 <span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span>, details <span class='op'>=</span> <span class='st'>"full"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>as_tibble</a></span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 5 x 13</span><span>
-#&gt;     pos variable label col_type levels value_labels class type  na_values
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;name&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;named list&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;nam&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;named l&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>     1 Sepal.L… </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #555555;'>&lt;NULL&gt;</span><span> </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>       </span><span style='color: #555555;'>&lt;chr</span><span>… doub… </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>   
-#&gt; </span><span style='color: #555555;'>2</span><span>     2 Sepal.W… </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #555555;'>&lt;NULL&gt;</span><span> </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>       </span><span style='color: #555555;'>&lt;chr</span><span>… doub… </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>   
-#&gt; </span><span style='color: #555555;'>3</span><span>     3 Petal.L… </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #555555;'>&lt;NULL&gt;</span><span> </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>       </span><span style='color: #555555;'>&lt;chr</span><span>… doub… </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>   
-#&gt; </span><span style='color: #555555;'>4</span><span>     4 Petal.W… </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #555555;'>&lt;NULL&gt;</span><span> </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>       </span><span style='color: #555555;'>&lt;chr</span><span>… doub… </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>   
-#&gt; </span><span style='color: #555555;'>5</span><span>     5 Species  </span><span style='color: #BB0000;'>NA</span><span>    fct      </span><span style='color: #555555;'>&lt;chr </span><span>… </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>       </span><span style='color: #555555;'>&lt;chr</span><span>… inte… </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>   
-#&gt; </span><span style='color: #555555;'># … with 4 more variables: na_range </span><span style='color: #555555;font-style: italic;'>&lt;named list&gt;</span><span style='color: #555555;'>, unique_values </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   n_na </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>, range </span><span style='color: #555555;font-style: italic;'>&lt;named list&gt;</span><span></div><div class='input'>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 5 x 13</span><span>
+#&gt;     pos variable   label col_type levels   value_labels class    type  na_values
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;named &gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;named list&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;named &gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;named l&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>     1 Sepal.Len… </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>   </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>       </span><span style='color: #949494;'>&lt;chr [1</span><span>… doub… </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>     2 Sepal.Wid… </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>   </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>       </span><span style='color: #949494;'>&lt;chr [1</span><span>… doub… </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span>     3 Petal.Len… </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>   </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>       </span><span style='color: #949494;'>&lt;chr [1</span><span>… doub… </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span>     4 Petal.Wid… </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>   </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>       </span><span style='color: #949494;'>&lt;chr [1</span><span>… doub… </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span>     5 Species    </span><span style='color: #BB0000;'>NA</span><span>    fct      </span><span style='color: #949494;'>&lt;chr [3</span><span>… </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>       </span><span style='color: #949494;'>&lt;chr [1</span><span>… inte… </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>   
+#&gt; </span><span style='color: #949494;'># … with 4 more variables: na_range &lt;named list&gt;, unique_values &lt;int&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   n_na &lt;int&gt;, range &lt;named list&gt;</span><span></div><div class='input'>
 <span class='co'># To convert named lists into character vectors</span>
 <span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>convert_list_columns_to_character</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 5 x 6</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 5 x 6</span><span>
 #&gt;     pos variable     label col_type levels                          value_labels
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       
-#&gt; </span><span style='color: #555555;'>1</span><span>     1 Sepal.Length </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #555555;'>""</span><span>                              </span><span style='color: #555555;'>""</span><span>          
-#&gt; </span><span style='color: #555555;'>2</span><span>     2 Sepal.Width  </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #555555;'>""</span><span>                              </span><span style='color: #555555;'>""</span><span>          
-#&gt; </span><span style='color: #555555;'>3</span><span>     3 Petal.Length </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #555555;'>""</span><span>                              </span><span style='color: #555555;'>""</span><span>          
-#&gt; </span><span style='color: #555555;'>4</span><span>     4 Petal.Width  </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #555555;'>""</span><span>                              </span><span style='color: #555555;'>""</span><span>          
-#&gt; </span><span style='color: #555555;'>5</span><span>     5 Species      </span><span style='color: #BB0000;'>NA</span><span>    fct      </span><span style='color: #555555;'>"</span><span>setosa; versicolor; virginica</span><span style='color: #555555;'>"</span><span> </span><span style='color: #555555;'>""</span><span>          </div><div class='input'>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                           </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>     1 Sepal.Length </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #949494;'>""</span><span>                              </span><span style='color: #949494;'>""</span><span>          
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>     2 Sepal.Width  </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #949494;'>""</span><span>                              </span><span style='color: #949494;'>""</span><span>          
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span>     3 Petal.Length </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #949494;'>""</span><span>                              </span><span style='color: #949494;'>""</span><span>          
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span>     4 Petal.Width  </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #949494;'>""</span><span>                              </span><span style='color: #949494;'>""</span><span>          
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span>     5 Species      </span><span style='color: #BB0000;'>NA</span><span>    fct      </span><span style='color: #949494;'>"</span><span>setosa; versicolor; virginica</span><span style='color: #949494;'>"</span><span> </span><span style='color: #949494;'>""</span><span>          </div><div class='input'>
 <span class='co'># Long format with one row per factor and per value label</span>
 <span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>lookfor_to_long_format</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 7 x 6</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 7 x 6</span><span>
 #&gt;     pos variable     label col_type levels     value_labels
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       
-#&gt; </span><span style='color: #555555;'>1</span><span>     1 Sepal.Length </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>          
-#&gt; </span><span style='color: #555555;'>2</span><span>     2 Sepal.Width  </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>          
-#&gt; </span><span style='color: #555555;'>3</span><span>     3 Petal.Length </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>          
-#&gt; </span><span style='color: #555555;'>4</span><span>     4 Petal.Width  </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>          
-#&gt; </span><span style='color: #555555;'>5</span><span>     5 Species      </span><span style='color: #BB0000;'>NA</span><span>    fct      setosa     </span><span style='color: #BB0000;'>NA</span><span>          
-#&gt; </span><span style='color: #555555;'>6</span><span>     5 Species      </span><span style='color: #BB0000;'>NA</span><span>    fct      versicolor </span><span style='color: #BB0000;'>NA</span><span>          
-#&gt; </span><span style='color: #555555;'>7</span><span>     5 Species      </span><span style='color: #BB0000;'>NA</span><span>    fct      virginica  </span><span style='color: #BB0000;'>NA</span><span>          </div><div class='input'>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>     1 Sepal.Length </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>          
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>     2 Sepal.Width  </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>          
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span>     3 Petal.Length </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>          
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span>     4 Petal.Width  </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>          
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span>     5 Species      </span><span style='color: #BB0000;'>NA</span><span>    fct      setosa     </span><span style='color: #BB0000;'>NA</span><span>          
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span>     5 Species      </span><span style='color: #BB0000;'>NA</span><span>    fct      versicolor </span><span style='color: #BB0000;'>NA</span><span>          
+#&gt; </span><span style='color: #BCBCBC;'>7</span><span>     5 Species      </span><span style='color: #BB0000;'>NA</span><span>    fct      virginica  </span><span style='color: #BB0000;'>NA</span><span>          </div><div class='input'>
 <span class='co'># Both functions can be combined</span>
 <span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'>lookfor_to_long_format</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'>convert_list_columns_to_character</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 7 x 6</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 7 x 6</span><span>
 #&gt;     pos variable     label col_type levels     value_labels
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       
-#&gt; </span><span style='color: #555555;'>1</span><span>     1 Sepal.Length </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>          
-#&gt; </span><span style='color: #555555;'>2</span><span>     2 Sepal.Width  </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>          
-#&gt; </span><span style='color: #555555;'>3</span><span>     3 Petal.Length </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>          
-#&gt; </span><span style='color: #555555;'>4</span><span>     4 Petal.Width  </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>          
-#&gt; </span><span style='color: #555555;'>5</span><span>     5 Species      </span><span style='color: #BB0000;'>NA</span><span>    fct      setosa     </span><span style='color: #BB0000;'>NA</span><span>          
-#&gt; </span><span style='color: #555555;'>6</span><span>     5 Species      </span><span style='color: #BB0000;'>NA</span><span>    fct      versicolor </span><span style='color: #BB0000;'>NA</span><span>          
-#&gt; </span><span style='color: #555555;'>7</span><span>     5 Species      </span><span style='color: #BB0000;'>NA</span><span>    fct      virginica  </span><span style='color: #BB0000;'>NA</span><span>          </div><div class='input'>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>     1 Sepal.Length </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>          
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>     2 Sepal.Width  </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>          
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span>     3 Petal.Length </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>          
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span>     4 Petal.Width  </span><span style='color: #BB0000;'>NA</span><span>    dbl      </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>          
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span>     5 Species      </span><span style='color: #BB0000;'>NA</span><span>    fct      setosa     </span><span style='color: #BB0000;'>NA</span><span>          
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span>     5 Species      </span><span style='color: #BB0000;'>NA</span><span>    fct      versicolor </span><span style='color: #BB0000;'>NA</span><span>          
+#&gt; </span><span style='color: #BCBCBC;'>7</span><span>     5 Species      </span><span style='color: #BB0000;'>NA</span><span>    fct      virginica  </span><span style='color: #BB0000;'>NA</span><span>          </div><div class='input'>
 <span class='co'># Labelled data</span>
 <span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
   <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>fertility</span>, package <span class='op'>=</span> <span class='st'>"questionr"</span><span class='op'>)</span>
