@@ -31,19 +31,6 @@
 #' var_label(iris)
 #' var_label(iris, unlist = TRUE)
 #'
-#' # Set labels from dictionary, e.g. as read from external file
-#' # One description is missing, one has no match
-#' description = data.frame(
-#'   name = c(
-#'     "Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width",
-#'     "Something"),
-#'   label = c(
-#'     "Sepal length", "Sepal width",  "Petal length", "Petal width",
-#'     "something")
-#' )
-#' var_labels = setNames(as.list(description$label), description$name)
-#' iris_labelled = set_variable_labels(iris, .labels= var_labels, .strict=FALSE)
-#' var_label(iris_labelled)
 #
 #' @export
 var_label <- function(x, unlist = FALSE) {
@@ -133,6 +120,21 @@ var_label.data.frame <- function(x, unlist = FALSE) {
 #'   # removing a variable label
 #'   df <- df %>% set_variable_labels(s2 = NULL)
 #'   var_label(df$s2)
+#'
+#'   # Set labels from dictionary, e.g. as read from external file
+#'   # One description is missing, one has no match
+#'   description = tibble(
+#'     name = c(
+#'       "Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width",
+#'       "Something"),
+#'     label = c(
+#'       "Sepal length", "Sepal width",  "Petal length", "Petal width",
+#'       "something")
+#'   )
+#'   var_labels <- setNames(as.list(description$label), description$name)
+#'   iris_labelled <- iris %>%
+#'     set_variable_labels(.labels= var_labels, .strict=FALSE)
+#'   var_label(iris_labelled)
 #'
 #'   # defining variable labels derived from variable names
 #'   if (require(snakecase)) {
