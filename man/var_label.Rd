@@ -66,6 +66,20 @@ var_label(iris) <- list(
 )
 var_label(iris)
 var_label(iris, unlist = TRUE)
+
+# Set labels from dictionary, e.g. as read from external file
+# One description is missing, one has no match
+description = data.frame(
+  name = c(
+    "Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width",
+    "Something"),
+  label = c(
+    "Sepal length", "Sepal width",  "Petal length", "Petal width",
+    "something")
+)
+var_labels = setNames(as.list(description$label), description$name)
+iris_labelled = set_variable_labels(iris, .labels= var_labels, .strict=FALSE)
+var_label(iris_labelled)
 if (require(dplyr)) {
   # adding some variable labels
   df <- tibble(s1 = c("M", "M", "F"), s2 = c(1, 1, 2)) \%>\%
