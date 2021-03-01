@@ -384,11 +384,16 @@ remove_labels(x, user_na_to_na = TRUE)
 remove_labels(x, user_na_to_na = TRUE, keep_var_label = TRUE)
 ```
 
-## Conditionnal conversion to factors
+## Conditionnal conversion to factors{#unlabelled}
 
-For any analysis, it is the responsibility of user to identify which variables
-should be considered as categorical (and therefore converted into factors) and
-which variables should be treated as continuous (and therefore unclassed into numeric).
+For any analysis, it is the responsibility of user to identify which labelled
+numeric vectors should be considered as **categorical** (and therefore converted
+into factors using `to_factor()`) and which variables should be treated as
+**continuous** (and therefore unclassed into numeric using `base::unclass()`).
+
+It should be noted that most functions expect categorical variables to be coded
+as factors. It includes most modeling functions (such as `stats::lm()` or
+`stats::glm()`) or ploting functions from `ggplot2`.
 
 In most of cases, if data documentation was properly done, categorical variables
 corresponds to vectors where all observed values have a value label while vectors
@@ -398,10 +403,10 @@ In that situation, you could apply the `unlabelled()` method to an overall data 
 By default, `unlabelled()` works as follow:
 
 - if a column doesn't inherit the `haven_labelled` class, it will be not affected;
-- if all observed values have a corresponding value label, the column will be converted
-  into a factor;
-- otherwise, the column will be unclassed (and converted back to a numeric or character
-  vector).
+- if all observed values have a corresponding value label, the column will 
+  be converted into a factor (using `to_factor()`);
+- otherwise, the column will be unclassed (and converted back to a numeric or
+  character vector by applying `base::unclass()`).
   
 ```{r}
 df <- data.frame(
