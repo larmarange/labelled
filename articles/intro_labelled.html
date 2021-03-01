@@ -754,16 +754,17 @@
 ## attr(,"label")
 ## [1] "A test variable"</code></pre>
 </div>
-<div id="conditionnal-conversion-to-factors" class="section level2">
+<div id="unlabelled" class="section level2">
 <h2 class="hasAnchor">
-<a href="#conditionnal-conversion-to-factors" class="anchor"></a>Conditionnal conversion to factors</h2>
-<p>For any analysis, it is the responsibility of user to identify which variables should be considered as categorical (and therefore converted into factors) and which variables should be treated as continuous (and therefore unclassed into numeric).</p>
+<a href="#unlabelled" class="anchor"></a>Conditionnal conversion to factors</h2>
+<p>For any analysis, it is the responsibility of user to identify which labelled numeric vectors should be considered as <strong>categorical</strong> (and therefore converted into factors using <code><a href="../reference/to_factor.html">to_factor()</a></code>) and which variables should be treated as <strong>continuous</strong> (and therefore unclassed into numeric using <code><a href="https://rdrr.io/r/base/class.html">base::unclass()</a></code>).</p>
+<p>It should be noted that most functions expect categorical variables to be coded as factors. It includes most modeling functions (such as <code><a href="https://rdrr.io/r/stats/lm.html">stats::lm()</a></code> or <code><a href="https://rdrr.io/r/stats/glm.html">stats::glm()</a></code>) or ploting functions from <code>ggplot2</code>.</p>
 <p>In most of cases, if data documentation was properly done, categorical variables corresponds to vectors where all observed values have a value label while vectors where only few values have a value label should be considered as continuous.</p>
 <p>In that situation, you could apply the <code><a href="../reference/to_factor.html">unlabelled()</a></code> method to an overall data frame. By default, <code><a href="../reference/to_factor.html">unlabelled()</a></code> works as follow:</p>
 <ul>
 <li>if a column doesn’t inherit the <code>haven_labelled</code> class, it will be not affected;</li>
-<li>if all observed values have a corresponding value label, the column will be converted into a factor;</li>
-<li>otherwise, the column will be unclassed (and converted back to a numeric or character vector).</li>
+<li>if all observed values have a corresponding value label, the column will be converted into a factor (using <code><a href="../reference/to_factor.html">to_factor()</a></code>);</li>
+<li>otherwise, the column will be unclassed (and converted back to a numeric or character vector by applying <code><a href="https://rdrr.io/r/base/class.html">base::unclass()</a></code>).</li>
 </ul>
 <div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
