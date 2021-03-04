@@ -265,7 +265,7 @@ data.frame.</p>
   <span class='op'>)</span>
   <span class='va'>var_labels</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/setNames.html'>setNames</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>as.list</a></span><span class='op'>(</span><span class='va'>description</span><span class='op'>$</span><span class='va'>label</span><span class='op'>)</span>, <span class='va'>description</span><span class='op'>$</span><span class='va'>name</span><span class='op'>)</span>
   <span class='va'>iris_labelled</span> <span class='op'>&lt;-</span> <span class='va'>iris</span> <span class='op'>%&gt;%</span>
-    <span class='fu'>set_variable_labels</span><span class='op'>(</span>.labels<span class='op'>=</span> <span class='va'>var_labels</span>, .strict<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+    <span class='fu'>set_variable_labels</span><span class='op'>(</span>.labels <span class='op'>=</span> <span class='va'>var_labels</span>, .strict <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
   <span class='fu'>var_label</span><span class='op'>(</span><span class='va'>iris_labelled</span><span class='op'>)</span>
 
   <span class='co'># defining variable labels derived from variable names</span>
