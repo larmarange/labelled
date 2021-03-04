@@ -32,6 +32,8 @@ recode_if <- function(x, condition, true) {
   if (length(true) > 1 & length(true) != length(x))
     stop("'true' should be unique or of same length as 'x'.")
 
+  original_class <- class(x)
+
   condition[is.na(condition)] <- FALSE
 
   if (length(true) == 1) {
@@ -39,6 +41,15 @@ recode_if <- function(x, condition, true) {
   } else {
     x[condition] <- true[condition]
   }
+
+  if (!identical(class(x), original_class))
+    warning(
+      "Class of 'x' has changed and is now equal to \"",
+      paste(class(x), collapse = ", "),
+      "\".\n",
+      "This is usually the case when class of 'value' is different from `x`\n.",
+      "and forced R to coerce 'x' to the class of 'value'."
+    )
 
   x
 }
