@@ -39,6 +39,7 @@ reference:
 - title: Other functions and methods
   contents:
   - is_prefixed
+  - recode_if
   - recode.haven_labelled
   - remove_attributes
   - names_prefixed_by_values

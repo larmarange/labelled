@@ -1,5 +1,7 @@
 # labelled (development version)
 
+* new helper `recode_if()` for recoding values based on condition, vaariable
+  and value labels being preserved (#82)
 * `look_for()` could be time consuming for big data frames. Now, by default,
   only basic details of each variable are computed. You can copute all details
   with `details = "full"` (#77)
