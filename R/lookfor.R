@@ -231,7 +231,7 @@ print.look_for <- function(x, ...) {
       lw <- w - 2 -
         max(stringr::str_length(x$pos)) -
         max(stringr::str_length(x$variable))
-      x$label <- str_trim(x$label, lw)
+      x$label <- stringr::str_trunc(x$label, lw)
     }
 
 
