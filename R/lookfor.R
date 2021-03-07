@@ -207,16 +207,26 @@ print.look_for <- function(x, ...) {
             !is.na(.data$value_labels) ~ .data$value_labels,
             !is.na(.data$levels) ~ .data$levels,
             !is.na(.data$range) ~ paste("range:", .data$range),
-            TRUE ~ "\u200b" # zero-width space
+            TRUE ~ "" # zero-width space
           ),
-          variable = dplyr::if_else(duplicated(.data$pos), "\u200b", .data$variable),
-          label = dplyr::if_else(duplicated(.data$pos), "\u200b", .data$label),
-          col_type = dplyr::if_else(duplicated(.data$pos), "\u200b", .data$col_type),
-          pos = dplyr::if_else(duplicated(.data$pos), "\u200b", as.character(.data$pos))
+          variable = dplyr::if_else(duplicated(.data$pos), "", .data$variable),
+          label = dplyr::if_else(duplicated(.data$pos), "", .data$label),
+          col_type = dplyr::if_else(duplicated(.data$pos), "", .data$col_type),
+          pos = dplyr::if_else(duplicated(.data$pos), "", as.character(.data$pos))
         ) %>%
         dplyr::select(dplyr::any_of(c("pos", "variable", "label", "col_type", "values")))
     }
-    print(pillar::colonnade(x, has_row_id = FALSE))
+    # trick for using default pillar_shaft method
+    class(x$pos) <- "character2"
+    class(x$variable) <- "character2"
+    class(x$label) <- "character2"
+    class(x$col_type) <- "character2"
+    class(x$values) <- "character2"
+    s <- pillar::tbl_format_setup(x, n = nrow(x))
+    b <- s$body
+    b <- b[-2]
+    class(b) <- class(s$body)
+    print(b)
   } else {
     message("Nothing found. Sorry.")
   }
