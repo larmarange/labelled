@@ -215,13 +215,13 @@ print.look_for <- function(x, ...) {
           pos = dplyr::if_else(duplicated(.data$pos), "", as.character(.data$pos))
         ) %>%
         dplyr::select(dplyr::any_of(c("pos", "variable", "label", "col_type", "values")))
+      class(x$col_type) <- "character2"
+      class(x$values) <- "character2"
     }
     # trick for using default pillar_shaft method
     class(x$pos) <- "character2"
     class(x$variable) <- "character2"
     class(x$label) <- "character2"
-    class(x$col_type) <- "character2"
-    class(x$values) <- "character2"
     s <- pillar::tbl_format_setup(x, n = nrow(x))
     b <- s$body
     b <- b[-2]
@@ -239,7 +239,7 @@ convert_list_columns_to_character <- function(x) {
     x <- x %>%
       dplyr::mutate(range = unlist(lapply(range, paste, collapse = " - ")))
 
-  if ("value_labels" %in% names(x) & is.list(x$value_labels))
+  if ("value_labels" %in% names(x) && is.list(x$value_labels))
     x <- x %>%
       dplyr::mutate(value_labels = names_prefixed_by_values(.data$value_labels))
 
