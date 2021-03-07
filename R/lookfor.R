@@ -215,18 +215,27 @@ print.look_for <- function(x, ...) {
           pos = dplyr::if_else(duplicated(.data$pos), "", as.character(.data$pos))
         ) %>%
         dplyr::select(dplyr::any_of(c("pos", "variable", "label", "col_type", "values")))
-      class(x$col_type) <- "character2"
-      class(x$values) <- "character2"
     }
-    # trick for using default pillar_shaft method
-    class(x$pos) <- "character2"
-    class(x$variable) <- "character2"
-    class(x$label) <- "character2"
-    s <- pillar::tbl_format_setup(x, n = nrow(x))
-    b <- s$body
-    b <- b[-2]
-    class(b) <- class(s$body)
-    print(b)
+    w <- getOption("width") # available width for printing
+    if ("values" %in% names(x)) {
+      # width for labels
+      lw <- w -
+        4 - max(stringr::str_length(x$pos)) -
+        max(stringr::str_length(x$variable)) -
+        max(stringr::str_length(x$col_type))
+      lw <- trunc(lw / 2)
+      x$label <- stringr::str_trunc(x$label, lw)
+      x$values <- stringr::str_trunc(x$values, lw)
+    } else {
+      # width for labels
+      lw <- w - 2 -
+        max(stringr::str_length(x$pos)) -
+        max(stringr::str_length(x$variable))
+      x$label <- str_trim(x$label, lw)
+    }
+
+
+    print.data.frame(x, row.names = FALSE, quote = FALSE, right = FALSE)
   } else {
     message("Nothing found. Sorry.")
   }

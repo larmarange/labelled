@@ -22,7 +22,7 @@ Imports:
     lifecycle,
     rlang,
     vctrs,
-    pillar,
+    stringr,
     tidyr
 Suggests:
     testthat,
