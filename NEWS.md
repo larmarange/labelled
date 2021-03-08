@@ -5,6 +5,8 @@
 * `look_for()` could be time consuming for big data frames. Now, by default,
   only basic details of each variable are computed. You can copute all details
   with `details = "full"` (#77)
+* printing of `look_for()` results has been updated and do not rely anymore
+  on `pillar` (#85)
 * `to_labelled()` can properly manage factors whose levels are coded as 
   "[code] level", as produced by `to_factor(levels = "prefixed")` 
   (#74 @courtiol)
