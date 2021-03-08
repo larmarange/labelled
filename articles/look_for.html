@@ -202,60 +202,58 @@
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://larmarange.github.io/labelled/">labelled</a></span><span class="op">)</span>
 <span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></code></pre></div>
-<pre><code>## pos   variable     label col_type values    
-## &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;     
-## 1     Sepal.Length —     dbl      ​          
-## 2     Sepal.Width  —     dbl      ​          
-## 3     Petal.Length —     dbl      ​          
-## 4     Petal.Width  —     dbl      ​          
-## 5     Species      —     fct      setosa    
-## ​      ​             ​      ​         versicolor
-## ​      ​             ​      ​         virginica</code></pre>
+<pre><code>##  pos variable     label col_type values    
+##  1   Sepal.Length —     dbl                
+##  2   Sepal.Width  —     dbl                
+##  3   Petal.Length —     dbl                
+##  4   Petal.Width  —     dbl                
+##  5   Species      —     fct      setosa    
+##                                  versicolor
+##                                  virginica</code></pre>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span></code></pre></div>
-<pre><code>## pos   variable         label                          col_type values           
-## &lt;chr&gt; &lt;chr&gt;            &lt;chr&gt;                          &lt;chr&gt;    &lt;chr&gt;            
-## 1     id_woman         Woman Id                       dbl      ​                 
-## 2     id_household     Household Id                   dbl      ​                 
-## 3     weight           Sample weight                  dbl      ​                 
-## 4     interview_date   Interview date                 date     ​                 
-## 5     date_of_birth    Date of birth                  date     ​                 
-## 6     age              Age at last anniversary (in y… dbl      ​                 
-## 7     residency        Urban / rural residency        dbl+lbl  [1] urban        
-## ​      ​                 ​                               ​         [2] rural        
-## 8     region           Region                         dbl+lbl  [1] North        
-## ​      ​                 ​                               ​         [2] East         
-## ​      ​                 ​                               ​         [3] South        
-## ​      ​                 ​                               ​         [4] West         
-## 9     instruction      Level of instruction           dbl+lbl  [0] none         
-## ​      ​                 ​                               ​         [1] primary      
-## ​      ​                 ​                               ​         [2] secondary    
-## ​      ​                 ​                               ​         [3] higher       
-## 10    employed         Employed?                      dbl+lbl  [0] no           
-## ​      ​                 ​                               ​         [1] yes          
-## ​      ​                 ​                               ​         [9] missing      
-## 11    matri            Matrimonial status             dbl+lbl  [0] single       
-## ​      ​                 ​                               ​         [1] married      
-## ​      ​                 ​                               ​         [2] living toget…
-## ​      ​                 ​                               ​         [3] windowed     
-## ​      ​                 ​                               ​         [4] divorced     
-## ​      ​                 ​                               ​         [5] separated    
-## 12    religion         Religion                       dbl+lbl  [1] Muslim       
-## ​      ​                 ​                               ​         [2] Christian    
-## ​      ​                 ​                               ​         [3] Protestant   
-## ​      ​                 ​                               ​         [4] no religion  
-## ​      ​                 ​                               ​         [5] other        
-## 13    newspaper        Read newspaper?                dbl+lbl  [0] no           
-## ​      ​                 ​                               ​         [1] yes          
-## 14    radio            Listen to radio?               dbl+lbl  [0] no           
-## ​      ​                 ​                               ​         [1] yes          
-## 15    tv               Watch TV?                      dbl+lbl  [0] no           
-## ​      ​                 ​                               ​         [1] yes          
-## 16    ideal_nb_childr… Ideal number of children       dbl+lbl  [96] don't know  
-## ​      ​                 ​                               ​         [99] missing     
-## 17    test             Ever tested for HIV?           dbl+lbl  [0] no           
-## ​      ​                 ​                               ​         [1] yes          
-## ​      ​                 ​                               ​         [9] missing</code></pre>
+<pre><code>##  pos variable          label                     col_type values             
+##  1   id_woman          Woman Id                  dbl                         
+##  2   id_household      Household Id              dbl                         
+##  3   weight            Sample weight             dbl                         
+##  4   interview_date    Interview date            date                        
+##  5   date_of_birth     Date of birth             date                        
+##  6   age               Age at last anniversar... dbl                         
+##  7   residency         Urban / rural residency   dbl+lbl  [1] urban          
+##                                                           [2] rural          
+##  8   region            Region                    dbl+lbl  [1] North          
+##                                                           [2] East           
+##                                                           [3] South          
+##                                                           [4] West           
+##  9   instruction       Level of instruction      dbl+lbl  [0] none           
+##                                                           [1] primary        
+##                                                           [2] secondary      
+##                                                           [3] higher         
+##  10  employed          Employed?                 dbl+lbl  [0] no             
+##                                                           [1] yes            
+##                                                           [9] missing        
+##  11  matri             Matrimonial status        dbl+lbl  [0] single         
+##                                                           [1] married        
+##                                                           [2] living together
+##                                                           [3] windowed       
+##                                                           [4] divorced       
+##                                                           [5] separated      
+##  12  religion          Religion                  dbl+lbl  [1] Muslim         
+##                                                           [2] Christian      
+##                                                           [3] Protestant     
+##                                                           [4] no religion    
+##                                                           [5] other          
+##  13  newspaper         Read newspaper?           dbl+lbl  [0] no             
+##                                                           [1] yes            
+##  14  radio             Listen to radio?          dbl+lbl  [0] no             
+##                                                           [1] yes            
+##  15  tv                Watch TV?                 dbl+lbl  [0] no             
+##                                                           [1] yes            
+##  16  ideal_nb_children Ideal number of children  dbl+lbl  [96] don't know    
+##                                                           [99] missing       
+##  17  test              Ever tested for HIV?      dbl+lbl  [0] no             
+##                                                           [1] yes            
+##                                                           [9] missing</code></pre>
 <p>Note that <code><a href="../reference/look_for.html">lookfor()</a></code> and <code><a href="../reference/look_for.html">generate_dictionary()</a></code> are synonyms of <code><a href="../reference/look_for.html">look_for()</a></code> and works exactly in the same way.</p>
 </div>
 </div>
@@ -266,74 +264,66 @@
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Look for a single keyword.</span>
 <span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, <span class="st">"petal"</span><span class="op">)</span></code></pre></div>
-<pre><code>## pos   variable     label col_type values
-## &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; 
-## 3     Petal.Length —     dbl      ​      
-## 4     Petal.Width  —     dbl      ​</code></pre>
+<pre><code>##  pos variable     label col_type values
+##  3   Petal.Length —     dbl            
+##  4   Petal.Width  —     dbl</code></pre>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, <span class="st">"s"</span><span class="op">)</span></code></pre></div>
-<pre><code>## pos   variable     label col_type values    
-## &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;     
-## 1     Sepal.Length —     dbl      ​          
-## 2     Sepal.Width  —     dbl      ​          
-## 5     Species      —     fct      setosa    
-## ​      ​             ​      ​         versicolor
-## ​      ​             ​      ​         virginica</code></pre>
+<pre><code>##  pos variable     label col_type values    
+##  1   Sepal.Length —     dbl                
+##  2   Sepal.Width  —     dbl                
+##  5   Species      —     fct      setosa    
+##                                  versicolor
+##                                  virginica</code></pre>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Look for with a regular expression</span>
 <span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, <span class="st">"petal|species"</span><span class="op">)</span></code></pre></div>
-<pre><code>## pos   variable     label col_type values    
-## &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;     
-## 3     Petal.Length —     dbl      ​          
-## 4     Petal.Width  —     dbl      ​          
-## 5     Species      —     fct      setosa    
-## ​      ​             ​      ​         versicolor
-## ​      ​             ​      ​         virginica</code></pre>
+<pre><code>##  pos variable     label col_type values    
+##  3   Petal.Length —     dbl                
+##  4   Petal.Width  —     dbl                
+##  5   Species      —     fct      setosa    
+##                                  versicolor
+##                                  virginica</code></pre>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, <span class="st">"s$"</span><span class="op">)</span></code></pre></div>
-<pre><code>## pos   variable label col_type values    
-## &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;     
-## 5     Species  —     fct      setosa    
-## ​      ​         ​      ​         versicolor
-## ​      ​         ​      ​         virginica</code></pre>
+<pre><code>##  pos variable label col_type values    
+##  5   Species  —     fct      setosa    
+##                              versicolor
+##                              virginica</code></pre>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Look for with several keywords</span>
 <span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, <span class="st">"pet"</span>, <span class="st">"sp"</span><span class="op">)</span></code></pre></div>
-<pre><code>## pos   variable     label col_type values    
-## &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;     
-## 3     Petal.Length —     dbl      ​          
-## 4     Petal.Width  —     dbl      ​          
-## 5     Species      —     fct      setosa    
-## ​      ​             ​      ​         versicolor
-## ​      ​             ​      ​         virginica</code></pre>
+<pre><code>##  pos variable     label col_type values    
+##  3   Petal.Length —     dbl                
+##  4   Petal.Width  —     dbl                
+##  5   Species      —     fct      setosa    
+##                                  versicolor
+##                                  virginica</code></pre>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Look_for will take variable labels into account</span>
 <span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span>, <span class="st">"read"</span>, <span class="st">"level"</span><span class="op">)</span></code></pre></div>
-<pre><code>## pos   variable    label                col_type values       
-## &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;                &lt;chr&gt;    &lt;chr&gt;        
-## 9     instruction Level of instruction dbl+lbl  [0] none     
-## ​      ​            ​                     ​         [1] primary  
-## ​      ​            ​                     ​         [2] secondary
-## ​      ​            ​                     ​         [3] higher   
-## 13    newspaper   Read newspaper?      dbl+lbl  [0] no       
-## ​      ​            ​                     ​         [1] yes</code></pre>
+<pre><code>##  pos variable    label                col_type values       
+##  9   instruction Level of instruction dbl+lbl  [0] none     
+##                                                [1] primary  
+##                                                [2] secondary
+##                                                [3] higher   
+##  13  newspaper   Read newspaper?      dbl+lbl  [0] no       
+##                                                [1] yes</code></pre>
 <p>By default, <code><a href="../reference/look_for.html">look_for()</a></code> will look through both variable names and variables labels. Use <code>labels = FALSE</code> to look only through variable names.</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span>, <span class="st">"read"</span><span class="op">)</span></code></pre></div>
-<pre><code>## pos   variable  label           col_type values 
-## &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt;  
-## 13    newspaper Read newspaper? dbl+lbl  [0] no 
-## ​      ​          ​                ​         [1] yes</code></pre>
+<pre><code>##  pos variable  label           col_type values 
+##  13  newspaper Read newspaper? dbl+lbl  [0] no 
+##                                         [1] yes</code></pre>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span>, <span class="st">"read"</span>, labels <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <pre><code>## Nothing found. Sorry.</code></pre>
 <p>Similarly, the search is by default case insensitive. To make the search case sensitive, use <code>ignore.case = FALSE</code>.</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, <span class="st">"sepal"</span><span class="op">)</span></code></pre></div>
-<pre><code>## pos   variable     label col_type values
-## &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; 
-## 1     Sepal.Length —     dbl      ​      
-## 2     Sepal.Width  —     dbl      ​</code></pre>
+<pre><code>##  pos variable     label col_type values
+##  1   Sepal.Length —     dbl            
+##  2   Sepal.Width  —     dbl</code></pre>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, <span class="st">"sepal"</span>, ignore.case <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <pre><code>## Nothing found. Sorry.</code></pre>
@@ -373,8 +363,8 @@
 ## $ variable     &lt;chr&gt; "id_woman", "id_household", "weight", "interview_date", "…
 ## $ label        &lt;chr&gt; "Woman Id", "Household Id", "Sample weight", "Interview d…
 ## $ col_type     &lt;chr&gt; "dbl", "dbl", "dbl", "date", "date", "dbl", "dbl+lbl", "d…
-## $ levels       &lt;named list&gt; [NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NU…
-## $ value_labels &lt;named list&gt; [NULL, NULL, NULL, NULL, NULL, NULL, &lt;1, 2&gt;, &lt;1, 2…</code></pre>
+## $ levels       &lt;named list&gt; &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;…
+## $ value_labels &lt;named list&gt; &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;1…</code></pre>
 <p>The tibble returned by <code><a href="../reference/look_for.html">look_for()</a></code> could be easily manipulated for advanced programming.</p>
 <p>When a column has several values for one variable (e.g. <code>levels</code> or <code>value_labels</code>), results as stored with nested named list. You can convert named lists into simpler character vectors, you can use <code><a href="../reference/look_for.html">convert_list_columns_to_character()</a></code>.</p>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
@@ -438,60 +428,99 @@
 <p>If you just want to use the search feature of <code><a href="../reference/look_for.html">look_for()</a></code> without computing the details of each variable, simply indicate <code>details = "none"</code> or <code>details = FALSE</code>.</p>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span>, <span class="st">"id"</span>, details <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></code></pre></div>
-<pre><code>## Warning: Unknown or uninitialised column: `value_labels`.</code></pre>
-<pre><code>##   pos variable          label                   
-## &lt;int&gt; &lt;chr&gt;             &lt;chr&gt;                   
-##     1 id_woman          Woman Id                
-##     2 id_household      Household Id            
-##     7 residency         Urban / rural residency 
-##    16 ideal_nb_children Ideal number of children</code></pre>
+<pre><code>##  pos variable          label                   
+##   1  id_woman          Woman Id                
+##   2  id_household      Household Id            
+##   7  residency         Urban / rural residency 
+##  16  ideal_nb_children Ideal number of children</code></pre>
 <p>If you want more details (but can be time consuming for big data frames), indicate <code>details = "full"</code> or <code>details = TRUE</code>.</p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span>, details <span class="op">=</span> <span class="st">"full"</span><span class="op">)</span></code></pre></div>
-<pre><code>## pos   variable        label                     col_type values                 
-## &lt;chr&gt; &lt;chr&gt;           &lt;chr&gt;                     &lt;chr&gt;    &lt;chr&gt;                  
-## 1     id_woman        Woman Id                  dbl      range: 1 - 2000        
-## 2     id_household    Household Id              dbl      range: 1 - 1814        
-## 3     weight          Sample weight             dbl      range: 0.044629 - 4.39…
-## 4     interview_date  Interview date            date     range: 2011-12-01 - 20…
-## 5     date_of_birth   Date of birth             date     range: 1962-02-07 - 19…
-## 6     age             Age at last anniversary … dbl      range: 14 - 49         
-## 7     residency       Urban / rural residency   dbl+lbl  [1] urban              
-## ​      ​                ​                          ​         [2] rural              
-## 8     region          Region                    dbl+lbl  [1] North              
-## ​      ​                ​                          ​         [2] East               
-## ​      ​                ​                          ​         [3] South              
-## ​      ​                ​                          ​         [4] West               
-## 9     instruction     Level of instruction      dbl+lbl  [0] none               
-## ​      ​                ​                          ​         [1] primary            
-## ​      ​                ​                          ​         [2] secondary          
-## ​      ​                ​                          ​         [3] higher             
-## 10    employed        Employed?                 dbl+lbl  [0] no                 
-## ​      ​                ​                          ​         [1] yes                
-## ​      ​                ​                          ​         [9] missing            
-## 11    matri           Matrimonial status        dbl+lbl  [0] single             
-## ​      ​                ​                          ​         [1] married            
-## ​      ​                ​                          ​         [2] living together    
-## ​      ​                ​                          ​         [3] windowed           
-## ​      ​                ​                          ​         [4] divorced           
-## ​      ​                ​                          ​         [5] separated          
-## 12    religion        Religion                  dbl+lbl  [1] Muslim             
-## ​      ​                ​                          ​         [2] Christian          
-## ​      ​                ​                          ​         [3] Protestant         
-## ​      ​                ​                          ​         [4] no religion        
-## ​      ​                ​                          ​         [5] other              
-## 13    newspaper       Read newspaper?           dbl+lbl  [0] no                 
-## ​      ​                ​                          ​         [1] yes                
-## 14    radio           Listen to radio?          dbl+lbl  [0] no                 
-## ​      ​                ​                          ​         [1] yes                
-## 15    tv              Watch TV?                 dbl+lbl  [0] no                 
-## ​      ​                ​                          ​         [1] yes                
-## 16    ideal_nb_child… Ideal number of children  dbl+lbl  [96] don't know        
-## ​      ​                ​                          ​         [99] missing           
-## 17    test            Ever tested for HIV?      dbl+lbl  [0] no                 
-## ​      ​                ​                          ​         [1] yes                
-## ​      ​                ​                          ​         [9] missing</code></pre>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<pre><code>##  pos variable          label                     col_type
+##  1   id_woman          Woman Id                  dbl     
+##  2   id_household      Household Id              dbl     
+##  3   weight            Sample weight             dbl     
+##  4   interview_date    Interview date            date    
+##  5   date_of_birth     Date of birth             date    
+##  6   age               Age at last anniversar... dbl     
+##  7   residency         Urban / rural residency   dbl+lbl 
+##                                                          
+##  8   region            Region                    dbl+lbl 
+##                                                          
+##                                                          
+##                                                          
+##  9   instruction       Level of instruction      dbl+lbl 
+##                                                          
+##                                                          
+##                                                          
+##  10  employed          Employed?                 dbl+lbl 
+##                                                          
+##                                                          
+##  11  matri             Matrimonial status        dbl+lbl 
+##                                                          
+##                                                          
+##                                                          
+##                                                          
+##                                                          
+##  12  religion          Religion                  dbl+lbl 
+##                                                          
+##                                                          
+##                                                          
+##                                                          
+##  13  newspaper         Read newspaper?           dbl+lbl 
+##                                                          
+##  14  radio             Listen to radio?          dbl+lbl 
+##                                                          
+##  15  tv                Watch TV?                 dbl+lbl 
+##                                                          
+##  16  ideal_nb_children Ideal number of children  dbl+lbl 
+##                                                          
+##  17  test              Ever tested for HIV?      dbl+lbl 
+##                                                          
+##                                                          
+##  values                   
+##  range: 1 - 2000          
+##  range: 1 - 1814          
+##  range: 0.044629 - 4.39...
+##  range: 2011-12-01 - 20...
+##  range: 1962-02-07 - 19...
+##  range: 14 - 49           
+##  [1] urban                
+##  [2] rural                
+##  [1] North                
+##  [2] East                 
+##  [3] South                
+##  [4] West                 
+##  [0] none                 
+##  [1] primary              
+##  [2] secondary            
+##  [3] higher               
+##  [0] no                   
+##  [1] yes                  
+##  [9] missing              
+##  [0] single               
+##  [1] married              
+##  [2] living together      
+##  [3] windowed             
+##  [4] divorced             
+##  [5] separated            
+##  [1] Muslim               
+##  [2] Christian            
+##  [3] Protestant           
+##  [4] no religion          
+##  [5] other                
+##  [0] no                   
+##  [1] yes                  
+##  [0] no                   
+##  [1] yes                  
+##  [0] no                   
+##  [1] yes                  
+##  [96] don't know          
+##  [99] missing             
+##  [0] no                   
+##  [1] yes                  
+##  [9] missing</code></pre>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span>, details <span class="op">=</span> <span class="st">"full"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## Rows: 17
@@ -500,15 +529,15 @@
 ## $ variable      &lt;chr&gt; "id_woman", "id_household", "weight", "interview_date", …
 ## $ label         &lt;chr&gt; "Woman Id", "Household Id", "Sample weight", "Interview …
 ## $ col_type      &lt;chr&gt; "dbl", "dbl", "dbl", "date", "date", "dbl", "dbl+lbl", "…
-## $ levels        &lt;named list&gt; [NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, N…
-## $ value_labels  &lt;named list&gt; [NULL, NULL, NULL, NULL, NULL, NULL, &lt;1, 2&gt;, &lt;1, …
-## $ class         &lt;named list&gt; ["numeric", "numeric", "numeric", "Date", "Date",…
+## $ levels        &lt;named list&gt; &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, …
+## $ value_labels  &lt;named list&gt; &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;…
+## $ class         &lt;named list&gt; "numeric", "numeric", "numeric", "Date", "Date", …
 ## $ type          &lt;chr&gt; "double", "double", "double", "double", "double",…
-## $ na_values     &lt;named list&gt; [NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 9…
-## $ na_range      &lt;named list&gt; [NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, …
+## $ na_values     &lt;named list&gt; &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, …
+## $ na_range      &lt;named list&gt; &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;…
 ## $ unique_values &lt;int&gt; 2000, 1814, 351, 165, 1740, 36, 2, 4, 4, 3, 6, 6,…
 ## $ n_na          &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 4, 0, 0, 0, 0, 29
-## $ range         &lt;named list&gt; [&lt;1, 2000&gt;, &lt;1, 1814&gt;, &lt;0.044629, 4.396831&gt;, &lt;2011-12-01…</code></pre>
+## $ range         &lt;named list&gt; &lt;1, 2000&gt;, &lt;1, 1814&gt;, &lt;0.044629, 4.396831&gt;, &lt;2011-12-01,…</code></pre>
 </div>
   </div>
 
