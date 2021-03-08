@@ -56,7 +56,7 @@ It will show you the first values of each variable as well as the type of each v
  
 - levels for factors;
 - value labels for labelled vectors;
-- the range of observed values in the vector otherwise.
+- the range of observed values in the vector otherwise (if `details = "full"`).
 
 
 ```{r}
@@ -100,6 +100,25 @@ look_for(iris, "sepal")
 look_for(iris, "sepal", ignore.case = FALSE)
 ```
 
+## Level of details
+
+
+If you just want to use the search feature of `look_for()` without computing the details of each variable, simply indicate `details = "none"` or `details = FALSE`.
+
+```{r}
+look_for(women, "id", details = "none")
+```
+
+If you want more details (but can be time consuming for big data frames), indicate `details = "full"` or `details = TRUE`.
+
+
+```{r}
+look_for(women, details = "full")
+look_for(women, details = "full") %>%
+  dplyr::glimpse()
+```
+
+
 ## Advanced usages of `look_for()`
 
 `look_for()` returns a detailed tibble which is summarized before printing. To deactivate default printing and see full results, simply use `dplyr::as_tibble()`, `dplyr::glimpse()` or even `utils::View()`.
@@ -131,17 +150,3 @@ look_for(women) %>%
   convert_list_columns_to_character()
 ```
 
-If you just want to use the search feature of `look_for()` without computing the details of each variable, simply indicate `details = "none"` or `details = FALSE`.
-
-```{r}
-look_for(women, "id", details = "none")
-```
-
-If you want more details (but can be time consuming for big data frames), indicate `details = "full"` or `details = TRUE`.
-
-
-```{r}
-look_for(women, details = "full")
-look_for(women, details = "full") %>%
-  dplyr::glimpse()
-```

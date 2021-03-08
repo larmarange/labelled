@@ -217,23 +217,27 @@ print.look_for <- function(x, ...) {
         dplyr::select(dplyr::any_of(c("pos", "variable", "label", "col_type", "values")))
     }
     w <- getOption("width") # available width for printing
+    w_pos <- max(3, stringr::str_length(x$pos))
+    w_variable <- max(5, stringr::str_length(x$variable))
+    w_label <- max(5, stringr::str_length(x$label))
+
     if ("values" %in% names(x)) {
+      w_col_type <- max(8, stringr::str_length(x$col_type))
+      w_values <- max(5, stringr::str_length(x$values))
       # width for labels
-      lw <- w -
-        4 - max(stringr::str_length(x$pos)) -
-        max(stringr::str_length(x$variable)) -
-        max(stringr::str_length(x$col_type))
-      lw <- trunc(lw / 2)
-      x$label <- stringr::str_trunc(x$label, lw)
-      x$values <- stringr::str_trunc(x$values, lw)
+      lw <- w - 6 - w_pos - w_variable - w_col_type
+      lw <- dplyr::case_when(
+        w_values < lw / 2 ~ lw - w_values,
+        w_label < lw / 2 ~ lw - w_label,
+        TRUE ~ trunc(lw / 2)
+      )
+      x$label <- stringr::str_trunc(x$label, lw, ellipsis = "~")
+      x$values <- stringr::str_trunc(x$values, lw, ellipsis = "~")
     } else {
       # width for labels
-      lw <- w - 2 -
-        max(stringr::str_length(x$pos)) -
-        max(stringr::str_length(x$variable))
-      x$label <- stringr::str_trunc(x$label, lw)
+      lw <- w - 4 - w_pos - w_variable
+      x$label <- stringr::str_trunc(x$label, lw, ellipsis = "~")
     }
-
 
     print.data.frame(x, row.names = FALSE, quote = FALSE, right = FALSE)
   } else {
