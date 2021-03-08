@@ -193,7 +193,7 @@
 <h3 class="hasAnchor">
 <a href="#labelledlook_for" class="anchor"></a><code>labelled::look_for()</code>
 </h3>
-<p><code><a href="../reference/look_for.html">look_for()</a></code> provided by the <code>labelled</code> package will print in the console a data dictionnary of all variables, showing variable labels when available, the type of variable and a list of values corresponding to:</p>
+<p><code><a href="../reference/look_for.html">look_for()</a></code> provided by the <code>labelled</code> package will print in the console a data dictionary of all variables, showing variable labels when available, the type of variable and a list of values corresponding to:</p>
 <ul>
 <li>levels for factors;</li>
 <li>value labels for labelled vectors;</li>
@@ -255,6 +255,7 @@
 ##                                                             [1] yes            
 ##                                                             [9] missing</code></pre>
 <p>Note that <code><a href="../reference/look_for.html">lookfor()</a></code> and <code><a href="../reference/look_for.html">generate_dictionary()</a></code> are synonyms of <code><a href="../reference/look_for.html">look_for()</a></code> and works exactly in the same way.</p>
+<p>If there is not enough space to print full labels in the console, they will be truncated (truncation is indicated by a <code><a href="https://rdrr.io/r/base/tilde.html">~</a></code>).</p>
 </div>
 </div>
 <div id="searching-variables-by-key" class="section level2">
@@ -409,6 +410,8 @@
 </h2>
 <p><code><a href="../reference/look_for.html">look_for()</a></code> returns a detailed tibble which is summarized before printing. To deactivate default printing and see full results, simply use <code><a href="https://tibble.tidyverse.org/reference/as_tibble.html">dplyr::as_tibble()</a></code>, <code><a href="https://pillar.r-lib.org/reference/glimpse.html">dplyr::glimpse()</a></code> or even <code><a href="https://rdrr.io/r/utils/View.html">utils::View()</a></code>.</p>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 17 x 6
 ##      pos variable       label                    col_type levels    value_labels
@@ -430,7 +433,7 @@
 ## 15    15 tv             Watch TV?                dbl+lbl  &lt;NULL&gt;    &lt;dbl [2]&gt;   
 ## 16    16 ideal_nb_chil… Ideal number of children dbl+lbl  &lt;NULL&gt;    &lt;dbl [2]&gt;   
 ## 17    17 test           Ever tested for HIV?     dbl+lbl  &lt;NULL&gt;    &lt;dbl [3]&gt;</code></pre>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## Rows: 17
 ## Columns: 6
@@ -442,7 +445,7 @@
 ## $ value_labels &lt;named list&gt; &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;1…</code></pre>
 <p>The tibble returned by <code><a href="../reference/look_for.html">look_for()</a></code> could be easily manipulated for advanced programming.</p>
 <p>When a column has several values for one variable (e.g. <code>levels</code> or <code>value_labels</code>), results as stored with nested named list. You can convert named lists into simpler character vectors, you can use <code><a href="../reference/look_for.html">convert_list_columns_to_character()</a></code>.</p>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/look_for.html">convert_list_columns_to_character</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 17 x 6
 ##      pos variable    label         col_type levels value_labels                 
@@ -465,7 +468,7 @@
 ## 16    16 ideal_nb_c… Ideal number… dbl+lbl  ""     "[96] don't know; [99] missi…
 ## 17    17 test        Ever tested … dbl+lbl  ""     "[0] no; [1] yes; [9] missin…</code></pre>
 <p>Alternatively, you can use <code><a href="../reference/look_for.html">lookfor_to_long_format()</a></code> to transform results into a long format with one row per factor level and per value label.</p>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/look_for.html">lookfor_to_long_format</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 41 x 6
 ##      pos variable      label                        col_type levels value_labels
@@ -482,7 +485,7 @@
 ## 10     8 region        Region                       dbl+lbl  &lt;NA&gt;   [2] East    
 ## # … with 31 more rows</code></pre>
 <p>Both can be combined:</p>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/look_for.html">lookfor_to_long_format</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/look_for.html">convert_list_columns_to_character</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
