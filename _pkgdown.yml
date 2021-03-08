@@ -6,7 +6,6 @@ reference:
   - var_label
   - remove_var_label
   - copy_labels
-  - look_for
 - title: Manipulating value labels
   desc:  Functions to set, manipulate and remove value labels
   contents:
@@ -19,7 +18,8 @@ reference:
   - drop_unused_value_labels
   - copy_labels
 - title: Data dictionnary
-  desc:
+  desc:  Functions to look for keywords variable names / labels and create a data dictionary
+  contents:
   - look_for
 - title: Manipulating SPSS style missing values
   desc:  Functions to set, manipulate and remove SPSS style missing values
