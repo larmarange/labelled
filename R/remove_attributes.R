@@ -4,7 +4,7 @@
 #' remove recursively the specified attributes to each column of the data.frame.
 #'
 #' @param x an object
-#' @param attributes a character vector indicating attributes to remve
+#' @param attributes a character vector indicating attributes to remove
 #' @export
 #' @examples
 #' \dontrun{

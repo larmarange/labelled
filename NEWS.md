@@ -1,9 +1,9 @@
 # labelled (development version)
 
-* new helper `recode_if()` for recoding values based on condition, vaariable
+* new helper `recode_if()` for recoding values based on condition, variable
   and value labels being preserved (#82)
 * `look_for()` could be time consuming for big data frames. Now, by default,
-  only basic details of each variable are computed. You can copute all details
+  only basic details of each variable are computed. You can compute all details
   with `details = "full"` (#77)
 * printing of `look_for()` results has been updated and do not rely anymore
   on `pillar` (#85)
@@ -59,7 +59,7 @@
 * fixes for haven 2.3.0 (#59 by @hadley)
 * correct re-export of functions from `haven`
 * `update_labelled()` has been improved to allow to reconstruct
-  all labelled vectors created with a previous versiob of `haven`
+  all labelled vectors created with a previous version of `haven`
 
 # labelled 2.3.1
 

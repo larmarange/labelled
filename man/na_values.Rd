@@ -56,7 +56,7 @@ Get / Set SPSS missing values
 }
 \details{
 See \code{\link[haven:labelled_spss]{haven::labelled_spss()}} for a presentation of SPSS's user defined missing values.
-Note that \code{\link[base:NA]{base::is.na()}} will return \code{TRUE} for user defined misssing values.
+Note that \code{\link[base:NA]{base::is.na()}} will return \code{TRUE} for user defined missing values.
 You can use \code{\link[=user_na_to_na]{user_na_to_na()}} to convert user defined missing values to \code{NA}.
 }
 \note{

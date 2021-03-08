@@ -7,7 +7,7 @@
 #' want the range to be open ended).
 #' @details
 #' See [haven::labelled_spss()] for a presentation of SPSS's user defined missing values.
-#' Note that [base::is.na()] will return `TRUE` for user defined misssing values.
+#' Note that [base::is.na()] will return `TRUE` for user defined missing values.
 #' You can use [user_na_to_na()] to convert user defined missing values to `NA`.
 #' @return
 #'   `na_values()` will return a vector of values that should also be considered as missing.

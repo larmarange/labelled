@@ -384,7 +384,7 @@ remove_labels(x, user_na_to_na = TRUE)
 remove_labels(x, user_na_to_na = TRUE, keep_var_label = TRUE)
 ```
 
-## Conditionnal conversion to factors{#unlabelled}
+## Conditional conversion to factors{#unlabelled}
 
 For any analysis, it is the responsibility of user to identify which labelled
 numeric vectors should be considered as **categorical** (and therefore converted
@@ -393,7 +393,7 @@ into factors using `to_factor()`) and which variables should be treated as
 
 It should be noted that most functions expect categorical variables to be coded
 as factors. It includes most modeling functions (such as `stats::lm()` or
-`stats::glm()`) or ploting functions from `ggplot2`.
+`stats::glm()`) or plotting functions from `ggplot2`.
 
 In most of cases, if data documentation was properly done, categorical variables
 corresponds to vectors where all observed values have a value label while vectors

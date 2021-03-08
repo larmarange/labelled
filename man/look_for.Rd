@@ -9,7 +9,7 @@
 \alias{lookfor_to_long_format}
 \title{Look for keywords variable names and descriptions / Create a data dictionary}
 \source{
-Based on the behaviour of the \code{lookfor} command in Stata.
+Based on the behavior of the \code{lookfor} command in Stata.
 }
 \usage{
 look_for(
@@ -80,7 +80,7 @@ provided, it will return all variables of \code{data}.
 
 \code{look_for()}, \code{lookfor()} and \code{generate_dictionary()} are equivalent.
 
-By default, results will be summrized when printing. To deactivate default printing,
+By default, results will be summarized when printing. To deactivate default printing,
 use \code{dplyr::as_tibble()}.
 
 \code{lookfor_to_long_format()} could be used to transform results with one row per factor level

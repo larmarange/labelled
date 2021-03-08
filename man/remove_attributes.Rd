@@ -9,7 +9,7 @@ remove_attributes(x, attributes)
 \arguments{
 \item{x}{an object}
 
-\item{attributes}{a character vector indicating attributes to remve}
+\item{attributes}{a character vector indicating attributes to remove}
 }
 \description{
 This function removes specified attributes. When applied to a data.frame, it will also

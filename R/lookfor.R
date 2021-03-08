@@ -27,7 +27,7 @@
 #'
 #' `look_for()`, `lookfor()` and `generate_dictionary()` are equivalent.
 #'
-#' By default, results will be summrized when printing. To deactivate default printing,
+#' By default, results will be summarized when printing. To deactivate default printing,
 #' use `dplyr::as_tibble()`.
 #'
 #' `lookfor_to_long_format()` could be used to transform results with one row per factor level
@@ -83,7 +83,7 @@
 #'     lookfor_to_long_format() %>%
 #'     convert_list_columns_to_character()
 #' }
-#' @source Based on the behaviour of the `lookfor` command in Stata.
+#' @source Based on the behavior of the `lookfor` command in Stata.
 #' @export
 
 look_for <- function(data,

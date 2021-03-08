@@ -6,7 +6,7 @@
 #' if variables are the same type in both data frames.
 #'
 #' Some base \R functions like [base::subset()] drop variable and
-#' value labels attached to a variable. `copy_labels` coud be used
+#' value labels attached to a variable. `copy_labels` could be used
 #' to restore these attributes.
 #'
 #' `copy_labels_from` is intended to be used with \pkg{dplyr} syntax,
