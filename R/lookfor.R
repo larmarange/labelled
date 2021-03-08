@@ -225,7 +225,7 @@ print.look_for <- function(x, ...) {
       w_col_type <- max(8, stringr::str_length(x$col_type))
       w_values <- max(5, stringr::str_length(x$values))
       # width for labels
-      lw <- w - 6 - w_pos - w_variable - w_col_type
+      lw <- w - 8 - w_pos - w_variable - w_col_type
       lw <- dplyr::case_when(
         w_values < lw / 2 ~ lw - w_values,
         w_label < lw / 2 ~ lw - w_label,
