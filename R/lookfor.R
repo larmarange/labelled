@@ -207,16 +207,35 @@ print.look_for <- function(x, ...) {
             !is.na(.data$value_labels) ~ .data$value_labels,
             !is.na(.data$levels) ~ .data$levels,
             !is.na(.data$range) ~ paste("range:", .data$range),
-            TRUE ~ "\u200b" # zero-width space
+            TRUE ~ "" # zero-width space
           ),
-          variable = dplyr::if_else(duplicated(.data$pos), "\u200b", .data$variable),
-          label = dplyr::if_else(duplicated(.data$pos), "\u200b", .data$label),
-          col_type = dplyr::if_else(duplicated(.data$pos), "\u200b", .data$col_type),
-          pos = dplyr::if_else(duplicated(.data$pos), "\u200b", as.character(.data$pos))
+          variable = dplyr::if_else(duplicated(.data$pos), "", .data$variable),
+          label = dplyr::if_else(duplicated(.data$pos), "", .data$label),
+          col_type = dplyr::if_else(duplicated(.data$pos), "", .data$col_type),
+          pos = dplyr::if_else(duplicated(.data$pos), "", as.character(.data$pos))
         ) %>%
         dplyr::select(dplyr::any_of(c("pos", "variable", "label", "col_type", "values")))
     }
-    print(pillar::colonnade(x, has_row_id = FALSE))
+    w <- getOption("width") # available width for printing
+    if ("values" %in% names(x)) {
+      # width for labels
+      lw <- w -
+        4 - max(stringr::str_length(x$pos)) -
+        max(stringr::str_length(x$variable)) -
+        max(stringr::str_length(x$col_type))
+      lw <- trunc(lw / 2)
+      x$label <- stringr::str_trunc(x$label, lw)
+      x$values <- stringr::str_trunc(x$values, lw)
+    } else {
+      # width for labels
+      lw <- w - 2 -
+        max(stringr::str_length(x$pos)) -
+        max(stringr::str_length(x$variable))
+      x$label <- stringr::str_trunc(x$label, lw)
+    }
+
+
+    print.data.frame(x, row.names = FALSE, quote = FALSE, right = FALSE)
   } else {
     message("Nothing found. Sorry.")
   }
@@ -229,7 +248,7 @@ convert_list_columns_to_character <- function(x) {
     x <- x %>%
       dplyr::mutate(range = unlist(lapply(range, paste, collapse = " - ")))
 
-  if ("value_labels" %in% names(x) & is.list(x$value_labels))
+  if ("value_labels" %in% names(x) && is.list(x$value_labels))
     x <- x %>%
       dplyr::mutate(value_labels = names_prefixed_by_values(.data$value_labels))
 
