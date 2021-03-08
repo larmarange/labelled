@@ -52,7 +52,7 @@ It will show you the first values of each variable as well as the type of each v
 
 ### `labelled::look_for()`
 
-`look_for()` provided by the `labelled` package will print in the console a data dictionnary of all variables, showing variable labels when available, the type of variable and a list of values corresponding to:
+`look_for()` provided by the `labelled` package will print in the console a data dictionary of all variables, showing variable labels when available, the type of variable and a list of values corresponding to:
  
 - levels for factors;
 - value labels for labelled vectors;
@@ -66,6 +66,8 @@ look_for(women)
 ```
 
 Note that `lookfor()` and `generate_dictionary()` are synonyms of `look_for()` and works exactly in the same way.
+
+If there is not enough space to print full labels in the console, they will be truncated (truncation is indicated by a `~`).
 
 ## Searching variables by key
 
@@ -122,6 +124,11 @@ look_for(women, details = "full") %>%
 ## Advanced usages of `look_for()`
 
 `look_for()` returns a detailed tibble which is summarized before printing. To deactivate default printing and see full results, simply use `dplyr::as_tibble()`, `dplyr::glimpse()` or even `utils::View()`.
+
+```{r, eval=FALSE}
+look_for(women) %>% View()
+```
+
 
 ```{r}
 look_for(women) %>% as_tibble()
