@@ -5,6 +5,7 @@
 \alias{lookfor}
 \alias{generate_dictionary}
 \alias{print.look_for}
+\alias{look_for_and_select}
 \alias{convert_list_columns_to_character}
 \alias{lookfor_to_long_format}
 \title{Look for keywords variable names and descriptions / Create a data dictionary}
@@ -37,6 +38,8 @@ generate_dictionary(
 )
 
 \method{print}{look_for}(x, ...)
+
+look_for_and_select(data, ..., labels = TRUE, ignore.case = TRUE)
 
 convert_list_columns_to_character(x)
 
@@ -88,6 +91,10 @@ and per value label.
 
 Use \code{convert_list_columns_to_character()} to convert named list columns into character vectors
 (see examples).
+
+\code{look_for_and_select()} is a shortcut for selecting some variables and
+applying \code{dplyr::select()} to return a data frame with only the selected
+variables.
 }
 \examples{
 look_for(iris)
@@ -95,6 +102,7 @@ look_for(iris)
 # Look for a single keyword.
 look_for(iris, "petal")
 look_for(iris, "s")
+iris \%>\% look_for_and_select("s") \%>\% head()
 
 # Look for with a regular expression
 look_for(iris, "petal|species")
@@ -131,6 +139,7 @@ look_for(iris) \%>\%
   data(fertility, package = "questionr")
   look_for(children)
   look_for(children, "id")
+  children \%>\% look_for_and_select("id")
   look_for(children) \%>\%
     lookfor_to_long_format() \%>\%
     convert_list_columns_to_character()

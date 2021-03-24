@@ -1,5 +1,7 @@
 # labelled (development version)
 
+* new function `look_for_and_select()` (#87)
+
 # labelled 2.8.0
 
 * new helper `recode_if()` for recoding values based on condition, variable

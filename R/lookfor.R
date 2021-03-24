@@ -36,6 +36,10 @@
 #' Use `convert_list_columns_to_character()` to convert named list columns into character vectors
 #' (see examples).
 #'
+#' `look_for_and_select()` is a shortcut for selecting some variables and
+#' applying `dplyr::select()` to return a data frame with only the selected
+#' variables.
+#'
 #' @author François Briatte <f.briatte@@gmail.com>, Joseph Larmarange <joseph@@larmarange.net>
 #' @examples
 #' look_for(iris)
@@ -43,6 +47,7 @@
 #' # Look for a single keyword.
 #' look_for(iris, "petal")
 #' look_for(iris, "s")
+#' iris %>% look_for_and_select("s") %>% head()
 #'
 #' # Look for with a regular expression
 #' look_for(iris, "petal|species")
@@ -79,6 +84,7 @@
 #'   data(fertility, package = "questionr")
 #'   look_for(children)
 #'   look_for(children, "id")
+#'   children %>% look_for_and_select("id")
 #'   look_for(children) %>%
 #'     lookfor_to_long_format() %>%
 #'     convert_list_columns_to_character()
@@ -243,6 +249,14 @@ print.look_for <- function(x, ...) {
   } else {
     message("Nothing found. Sorry.")
   }
+}
+
+#' @rdname look_for
+#' @export
+look_for_and_select <- function(data, ..., labels = TRUE, ignore.case = TRUE) {
+  lf <- data %>%
+    look_for(..., labels = labels, ignore.case = ignore.case, details = "none")
+  data %>% dplyr::select(lf$pos)
 }
 
 #' @rdname look_for
