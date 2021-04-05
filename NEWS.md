@@ -1,6 +1,7 @@
 # labelled (development version)
 
 * new function `look_for_and_select()` (#87)
+* better printing of value labels (#89)
 
 # labelled 2.8.0
 
