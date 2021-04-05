@@ -5,6 +5,7 @@
 * new set of unit tests (#99)
 * new function `look_for_and_select()` (#87)
 * `look_for()` can now search within factor levels and value labels (#104)
+* better printing of value labels (#89)
 * bug fix in `foreign_to_labelled()` for Stata files (#100)
 
 # labelled 2.8.0
