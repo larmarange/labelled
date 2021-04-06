@@ -18,7 +18,22 @@ haven::format_tagged_na
 #' @export
 haven::print_tagged_na
 
+#' Unique elements, duplicated, ordering and sorting with tagged NAs
+#'
+#' These adapations of [base::unique()], [base::duplicated()],
+#' [base::order()] and [base::sort()] treats tagged NAs as distinct
+#' values.
+#'
+#' @param x a vector
+#' @param fromLast logical indicating if duplication should be
+#' considered from the last
 #' @export
+unique_tagged_na <- function(x, fromLast = FALSE) {
+  x[!duplicated_tagged_na(x, fromLast = fromLast)]
+}
+
+#' @export
+#' @rdname unique_tagged_na
 duplicated_tagged_na <- function(x, fromLast = FALSE) {
   if (!is.double(x))
     return(duplicated(x, fromLast = fromLast))
@@ -34,11 +49,13 @@ duplicated_tagged_na <- function(x, fromLast = FALSE) {
   res
 }
 
-#' @export
-unique_tagged_na <- function(x, fromLast = FALSE) {
-  x[!duplicated_tagged_na(x, fromLast = fromLast)]
-}
-
+#' @rdname unique_tagged_na
+#' @param na.last if `TRUE`, missing values in the data are put last;
+#' if `FALSE`, they are put first
+#' @param decreasing should the sort order be increasing or decreasing?
+#' @param method the method to be used, see [base::order()]
+#' @param na_decreasing should the sort order for tagged NAs value be
+#' increasing or decreasing?
 #' @export
 order_tagged_na <- function(x, na.last = TRUE, decreasing = FALSE,
                             method = c("auto", "shell", "radix"),
@@ -70,6 +87,7 @@ order_tagged_na <- function(x, na.last = TRUE, decreasing = FALSE,
   res
 }
 
+#' @rdname unique_tagged_na
 #' @export
 sort_tagged_na <- function(x, decreasing = FALSE, na.last = TRUE,
                            na_decreasing = decreasing) {
