@@ -33,7 +33,6 @@ val_labels.haven_labelled <- function(x, prefixed = FALSE) {
   labels <- attr(x, "labels", exact = TRUE)
   if (prefixed)
     names(labels) <- names_prefixed_by_values(labels)
-  class(labels) <- c("val_labels", class(labels))
   labels
 }
 
@@ -41,15 +40,6 @@ val_labels.haven_labelled <- function(x, prefixed = FALSE) {
 val_labels.data.frame <- function(x, prefixed = FALSE) {
   lapply(x, val_labels, prefixed = prefixed)
 }
-
-#' @export
-print.val_labels <- function(x, ...) {
-  if (is.double(x))
-    print_tagged_na(x, ...)
-  else
-    print(unclass(x), ...)
-}
-
 
 #' @rdname val_labels
 #' @export

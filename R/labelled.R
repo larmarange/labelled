@@ -10,6 +10,9 @@ haven::is.labelled
 #' @export
 haven::labelled_spss
 
+#' @importFrom haven print_labels
+#' @export
+haven::print_labels
 
 #' @importFrom dplyr `%>%`
 #' @export
