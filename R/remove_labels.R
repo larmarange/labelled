@@ -115,8 +115,6 @@ remove_user_na.default <- function(x, user_na_to_na = FALSE) {
 remove_user_na.haven_labelled_spss <- function(x, user_na_to_na = FALSE) {
   if (user_na_to_na)
     x[is.na(x)] <- NA
-  else if (!is.null(na_values(x)) | !is.null(na_range(x)))
-    message("Some user defined missing values have been removed but not converted to NA.")
   na_values(x) <- NULL
   na_range(x) <- NULL
   x
