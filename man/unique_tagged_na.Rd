@@ -16,14 +16,16 @@ order_tagged_na(
   na.last = TRUE,
   decreasing = FALSE,
   method = c("auto", "shell", "radix"),
-  na_decreasing = decreasing
+  na_decreasing = decreasing,
+  untagged_na_last = TRUE
 )
 
 sort_tagged_na(
   x,
   decreasing = FALSE,
   na.last = TRUE,
-  na_decreasing = decreasing
+  na_decreasing = decreasing,
+  untagged_na_last = TRUE
 )
 }
 \arguments{
@@ -39,7 +41,9 @@ if \code{FALSE}, they are put first}
 
 \item{method}{the method to be used, see \code{\link[base:order]{base::order()}}}
 
-\item{na_decreasing}{should the sort order for tagged NAs value be
+\item{na_decreasing}{should the sort order for tagged NAs value be}
+
+\item{untagged_na_last}{should untagged \code{NA}s be sorted after tagged \code{NA}s?
 increasing or decreasing?}
 }
 \description{

@@ -55,11 +55,13 @@ duplicated_tagged_na <- function(x, fromLast = FALSE) {
 #' @param decreasing should the sort order be increasing or decreasing?
 #' @param method the method to be used, see [base::order()]
 #' @param na_decreasing should the sort order for tagged NAs value be
+#' @param untagged_na_last should untagged `NA`s be sorted after tagged `NA`s?
 #' increasing or decreasing?
 #' @export
 order_tagged_na <- function(x, na.last = TRUE, decreasing = FALSE,
                             method = c("auto", "shell", "radix"),
-                            na_decreasing = decreasing) {
+                            na_decreasing = decreasing,
+                            untagged_na_last = TRUE) {
   if (!is.double(x))
     return(
       order(x, na.last = na.last, decreasing = decreasing, method = method)
@@ -75,6 +77,8 @@ order_tagged_na <- function(x, na.last = TRUE, decreasing = FALSE,
 
     t_na <- format_tagged_na(x)
     t_na[!is.na(x)] <- NA
+    if (xor(untagged_na_last, na_decreasing))
+      t_na[is.na(x) & !is_tagged_na(x)] <- "ZZZ"
     na_order <- order(
       t_na, na.last = TRUE, decreasing = na_decreasing, method = method
     )
@@ -90,11 +94,13 @@ order_tagged_na <- function(x, na.last = TRUE, decreasing = FALSE,
 #' @rdname unique_tagged_na
 #' @export
 sort_tagged_na <- function(x, decreasing = FALSE, na.last = TRUE,
-                           na_decreasing = decreasing) {
+                           na_decreasing = decreasing,
+                           untagged_na_last = TRUE) {
   x[order_tagged_na(
     x,
     decreasing = decreasing,
     na.last = na.last,
-    na_decreasing = na_decreasing
+    na_decreasing = na_decreasing,
+    untagged_na_last = untagged_na_last
   )]
 }
