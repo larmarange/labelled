@@ -265,3 +265,26 @@ user_na_to_na.data.frame <- function(x) {
 }
 
 
+
+#' @rdname na_values
+#' @export
+user_na_to_tagged_na <- function(x) {
+  UseMethod("user_na_to_tagged_na")
+}
+
+#' @export
+user_na_to_tagged_na.default <- function(x) {
+  # do nothing
+  x
+}
+
+#' @export
+user_na_to_tagged_na.haven_labelled_spss <- function(x) {
+  remove_user_na(x, user_na_to_tagged_na = TRUE)
+}
+
+#' @export
+user_na_to_tagged_na.data.frame <- function(x) {
+  x[] <- lapply(x, user_na_to_tagged_na)
+  x
+}

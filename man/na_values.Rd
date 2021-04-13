@@ -8,6 +8,7 @@
 \alias{set_na_values}
 \alias{set_na_range}
 \alias{user_na_to_na}
+\alias{user_na_to_tagged_na}
 \title{Get / Set SPSS missing values}
 \usage{
 na_values(x)
@@ -23,6 +24,8 @@ set_na_values(.data, ..., .values = NA, .strict = TRUE)
 set_na_range(.data, ..., .values = NA, .strict = TRUE)
 
 user_na_to_na(x)
+
+user_na_to_tagged_na(x)
 }
 \arguments{
 \item{x}{A vector.}
