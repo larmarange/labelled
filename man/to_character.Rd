@@ -25,6 +25,8 @@ to_character(x, ...)
 \item{nolabel_to_na}{Should values with no label be converted to \code{NA}?}
 
 \item{user_na_to_na}{user defined missing values into NA?}
+
+\item{explicit_tagged_na}{should tagged NA be kept?}
 }
 \description{
 By default, \code{to_character()} is a wrapper for \code{\link[base:character]{base::as.character()}}.
