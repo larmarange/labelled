@@ -7,6 +7,7 @@
 \alias{na_range<-}
 \alias{set_na_values}
 \alias{set_na_range}
+\alias{is_user_na}
 \alias{user_na_to_na}
 \alias{user_na_to_tagged_na}
 \title{Get / Set SPSS missing values}
@@ -22,6 +23,8 @@ na_range(x) <- value
 set_na_values(.data, ..., .values = NA, .strict = TRUE)
 
 set_na_range(.data, ..., .values = NA, .strict = TRUE)
+
+is_user_na(x)
 
 user_na_to_na(x)
 
@@ -60,7 +63,16 @@ Get / Set SPSS missing values
 \details{
 See \code{\link[haven:labelled_spss]{haven::labelled_spss()}} for a presentation of SPSS's user defined missing values.
 Note that \code{\link[base:NA]{base::is.na()}} will return \code{TRUE} for user defined missing values.
-You can use \code{\link[=user_na_to_na]{user_na_to_na()}} to convert user defined missing values to \code{NA}.
+
+You can use \code{\link[=user_na_to_na]{user_na_to_na()}} to convert user defined missing values to regular \code{NA}.
+Note that any value label attached to a user defined missing value will be lost.
+
+The method \code{\link[=user_na_to_tagged_na]{user_na_to_tagged_na()}} will convert user defined missing values
+into \code{\link[haven:tagged_na]{haven::tagged_na()}}, preserving value labels. Please note that \code{\link[haven:tagged_na]{haven::tagged_na()}}
+are defined only for double vectors. Therefore, integer \code{haven_labelled_spss}
+vectors will be converted into double \code{haven_labelled} vectors; and
+\code{\link[=user_na_to_tagged_na]{user_na_to_tagged_na()}} cannot be applied to a character \code{haven_labelled_spss}
+vector.
 }
 \note{
 \code{set_na_values()} and \code{set_na_range()} could be used with \pkg{dplyr} syntax.
