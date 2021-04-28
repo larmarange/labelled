@@ -37,6 +37,8 @@ to_factor.default <- function(x, ...) {
 #' @param strict Convert to factor only if all values have a defined label?
 #' @param unclass If not converted to a factor (when `strict = TRUE`),
 #'   convert to a character or a numeric factor by applying [base::unclass()]?
+#' @param explicit_tagged_na Should tagged NA (cf. [haven::tagged_na()]) be
+#'   kept as explicit factor levels?
 #' @details
 #'   If some values doesn't have a label, automatic labels will be created, except if
 #'   `nolabel_to_na` is `TRUE`.
@@ -70,13 +72,18 @@ to_factor.haven_labelled <- function(x, levels = c("labels", "values",
   "prefixed"), ordered = FALSE, nolabel_to_na = FALSE,
   sort_levels = c("auto", "none", "labels", "values"), decreasing = FALSE,
   drop_unused_labels = FALSE, user_na_to_na = FALSE, strict = FALSE,
-  unclass = FALSE,
+  unclass = FALSE, explicit_tagged_na = FALSE,
   ...) {
   vl <- var_label(x)
   levels <- match.arg(levels)
   sort_levels <- match.arg(sort_levels)
   if (user_na_to_na)
     x <- user_na_to_na(x)
+  if (explicit_tagged_na & is.double(x)) {
+    new_labels <- to_character(val_labels(x), explicit_tagged_na = TRUE)
+    x <- to_character(unclass(x), explicit_tagged_na = TRUE)
+    val_labels(x) <- new_labels
+  }
   if (strict) {
     allval <- unique(x)
     allval <- allval[!is.na(allval)]
@@ -135,13 +142,13 @@ to_factor.data.frame <- function(x, levels = c("labels", "values", "prefixed"),
                                  sort_levels = c("auto", "none", "labels", "values"),
                                  decreasing = FALSE, labelled_only = TRUE,
                                  drop_unused_labels = FALSE, strict = FALSE,
-                                 unclass = FALSE,
+                                 unclass = FALSE, explicit_tagged_na = FALSE,
                                  ...) {
   cl <- class(x)
   x <- dplyr::as_tibble(lapply(x, .to_factor_col_data_frame, levels = levels, ordered = ordered,
          nolabel_to_na = nolabel_to_na, sort_levels = sort_levels, decreasing = decreasing,
          labelled_only = labelled_only, drop_unused_labels = drop_unused_labels, strict = strict,
-         unclass = unclass, ...))
+         unclass = unclass, explicit_tagged_na = explicit_tagged_na, ...))
   class(x) <- cl
   x
 }
@@ -151,12 +158,13 @@ to_factor.data.frame <- function(x, levels = c("labels", "values", "prefixed"),
                                       sort_levels = c("auto", "none", "labels", "values"),
                                       decreasing = FALSE, labelled_only = TRUE,
                                       drop_unused_labels = FALSE, strict = FALSE,
-                                      unclass = FALSE,
+                                      unclass = FALSE, explicit_tagged_na = FALSE,
                                       ...) {
   if (inherits(x, "haven_labelled"))
     x <- to_factor(x, levels = levels, ordered = ordered,
                    nolabel_to_na = nolabel_to_na, sort_levels = sort_levels, decreasing = decreasing,
-                   drop_unused_labels = drop_unused_labels, strict = strict, unclass = unclass, ...)
+                   drop_unused_labels = drop_unused_labels, strict = strict, unclass = unclass,
+                   explicit_tagged_na = explicit_tagged_na, ...)
   else if (!labelled_only)
     x <- to_factor(x)
   x
