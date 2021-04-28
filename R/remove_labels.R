@@ -181,6 +181,9 @@ remove_user_na.haven_labelled_spss <- function(x,
   }
 
   if (user_na_to_na) {
+    # removing value labels attached to user_na
+    for (val in val_labels(x)[test_if_user_na(val_labels(x), na_values(x), na_range(x))])
+      val_label(x, val) <- NULL
     x[is.na(x)] <- NA
   }
   na_values(x) <- NULL
