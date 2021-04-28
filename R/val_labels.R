@@ -373,7 +373,11 @@ names_prefixed_by_values <- function(x) {
 #' @export
 names_prefixed_by_values.default <- function(x) {
   if (is.null(x)) return(NULL)
-  res <- paste0("[", x, "] ", names(x))
+  res <- as.character(x)
+  if (is.double(x)) {
+    res[is_tagged_na(x)] <- format_tagged_na(x[is_tagged_na(x)])
+  }
+  res <- paste0("[", res, "] ", names(x))
   names(res) <- names(x)
   res
 }
