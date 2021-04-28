@@ -17,7 +17,7 @@ Description: Work with labelled data imported from 'SPSS'
 License: GPL-3
 Encoding: UTF-8
 Imports:
-    haven (>= 2.3.1),
+    haven (>= 2.4.1),
     dplyr (>= 1.0.0),
     lifecycle,
     rlang,
