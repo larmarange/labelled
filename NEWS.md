@@ -1,5 +1,6 @@
 # labelled (development version)
 
+* new functions `user_na_to_tagged_na()` and `tagged_na_to_user_na()`
 * new option `explicit_tagged_na` in `to_factor()` and `to_character()`
 * new function `is_user_na()`
 * new function `look_for_and_select()` (#87)

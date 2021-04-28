@@ -73,7 +73,11 @@ order_tagged_na <- function(x, na.last = TRUE, decreasing = FALSE,
 
   if (anyNA(x)) {
     n_na <- sum(is.na(x))
-    res <- res[1:(length(x) - n_na)]
+    if (n_na < length(x)) {
+      res <- res[1:(length(x) - n_na)]
+    } else {
+      res <- NULL
+    }
 
     t_na <- format_tagged_na(x)
     t_na[!is.na(x)] <- NA
