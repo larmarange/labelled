@@ -21,7 +21,7 @@ to_character.default <- function(x, ...) {
 }
 
 #' @export
-to_character.double <- function(x, explicit_tagged_na = FALSE) {
+to_character.double <- function(x, explicit_tagged_na = FALSE, ...) {
   res <- as.character(x)
   if (explicit_tagged_na)
     res[is_tagged_na(x)] <- format_tagged_na(x[is_tagged_na(x)])
