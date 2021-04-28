@@ -10,6 +10,7 @@
 \alias{is_user_na}
 \alias{user_na_to_na}
 \alias{user_na_to_tagged_na}
+\alias{tagged_na_to_user_na}
 \title{Get / Set SPSS missing values}
 \usage{
 na_values(x)
@@ -29,6 +30,8 @@ is_user_na(x)
 user_na_to_na(x)
 
 user_na_to_tagged_na(x)
+
+tagged_na_to_user_na(x, user_na_start = NULL)
 }
 \arguments{
 \item{x}{A vector.}
@@ -48,6 +51,9 @@ using the same syntax as \code{value} in \code{na_values(df) <- value} or
 
 \item{.strict}{should an error be returned if some labels
 doesn't correspond to a column of \code{x}?}
+
+\item{user_na_start}{minimum value of the new user na, if \code{NULL},
+computed automatically (maximum of observed values + 1)}
 }
 \value{
 \code{na_values()} will return a vector of values that should also be considered as missing.
@@ -73,6 +79,9 @@ are defined only for double vectors. Therefore, integer \code{haven_labelled_sps
 vectors will be converted into double \code{haven_labelled} vectors; and
 \code{\link[=user_na_to_tagged_na]{user_na_to_tagged_na()}} cannot be applied to a character \code{haven_labelled_spss}
 vector.
+
+\code{\link[=tagged_na_to_user_na]{tagged_na_to_user_na()}} is the opposite of \code{\link[=user_na_to_tagged_na]{user_na_to_tagged_na()}} and convert
+tagged \code{NA} into user defined missing values.
 }
 \note{
 \code{set_na_values()} and \code{set_na_range()} could be used with \pkg{dplyr} syntax.

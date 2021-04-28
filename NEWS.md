@@ -3,6 +3,7 @@
 * trying to apply a value label, `na_range()` or `na_values()` to a factor 
   will now produce an error
 * new set of unit tests (#99)
+* new functions `user_na_to_tagged_na()` and `tagged_na_to_user_na()`
 * new option `explicit_tagged_na` in `to_factor()` and `to_character()`
 * new function `is_user_na()`
 * new function `look_for_and_select()` (#87)
