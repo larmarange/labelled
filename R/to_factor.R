@@ -178,7 +178,8 @@ to_factor.data.frame <- function(x, levels = c("labels", "values", "prefixed"),
 #'   c = labelled(c("a", "a", "b", "c"), labels = c(No = "a", Maybe = "b", Yes = "c")),
 #'   d = 1:4,
 #'   e = factor(c("item1", "item2", "item1", "item2")),
-#'   f = c("itemA", "itemA", "itemB", "itemB")
+#'   f = c("itemA", "itemA", "itemB", "itemB"),
+#'   stringsAsFactors = FALSE
 #' )
 #' if (require(dplyr)) {
 #'   glimpse(df)

@@ -54,6 +54,13 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
 }
 
 #' @export
+`val_labels<-.default` <- function(x, value) {
+  if (!is.null(value))
+    stop("Value labels cannot be applied to factors.")
+  x
+}
+
+#' @export
 `val_labels<-.numeric` <- function(x, value) {
   if (!is.null(value)) {
     x <- labelled(x, value, label = var_label(x))
