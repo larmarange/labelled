@@ -1,5 +1,6 @@
 # labelled (development version)
 
+* new set of unit tests (#99)
 * new function `look_for_and_select()` (#87)
 
 # labelled 2.8.0
