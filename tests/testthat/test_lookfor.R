@@ -1,0 +1,139 @@
+context("Test look_for()")
+
+test_that("look_for works correctly", {
+
+  df <- data.frame(1:3, letters[1:3], fix.empty.names = FALSE)
+  expect_error(look_for(df))
+  expect_error(look_for(unname(df)))
+
+  df <- data.frame(num = 1:3, ch = letters[1:3])
+  res <- look_for(df, "e")
+  capture.output(print(res))
+  expect_true(nrow(res) == 0)
+})
+
+test_that("look_for works with a single keyword.", {
+  expect_equal(
+    look_for(iris, "sep")$variable,
+    c("Sepal.Length", "Sepal.Width")
+  )
+
+  lfi  <-  look_for(iris, "s")
+  expect_equal(
+    lfi$variable,
+    c("Sepal.Length", "Sepal.Width", "Species")
+  )
+  expect_equal(
+    lfi$levels,
+    list("Sepal.Length"= NULL, "Sepal.Width" = NULL, "Species" = levels(iris$Species))
+  )
+
+  expect_equal(lfi$variable, names(iris)[lfi$pos])
+
+})
+
+test_that("look_for works with a regular expression", {
+  lfi  <-  look_for(iris, "s")
+  expect_identical(look_for(iris, "sepal|species"), lfi)
+
+  lfi  <-  look_for(iris, "s$")
+  expect_identical(
+    lfi$levels[[lfi$variable]],
+    levels(iris$Species)
+  )
+})
+
+
+test_that("look_for works with several keywords", {
+
+  expect_equal(
+    look_for(iris, details = "none", "s", "w")$variable,
+    c("Sepal.Length", "Sepal.Width", "Petal.Width", "Species")
+  )
+  expect_equal(
+    look_for(iris, "Pet", "sp", "width", ignore.case = FALSE)$variable,
+    c("Petal.Length", "Petal.Width")
+  )
+})
+
+
+test_that(" look_for with different details parameter values", {
+
+  expect_false("levels" %in% names(look_for(iris, details = "none")))
+  expect_false("range" %in% names(look_for(iris, "Sep")))
+  expect_equal(
+    look_for(iris, details = TRUE, "sep")$range,
+    list(Sepal.Length = range(iris$Sepal.Length), Sepal.Width = range(iris$Sepal.Width))
+  )
+
+})
+
+
+test_that(" convert_list_columns_to_character works correctly", {
+  lfi_conv <- look_for(iris, "spe", details = TRUE) %>% convert_list_columns_to_character()
+  expect_equal(
+    unname(lfi_conv$levels),
+    paste(levels(iris$Species), collapse = "; ")
+  )
+
+  lfi_conv <- look_for(iris, "al", details = TRUE) %>% convert_list_columns_to_character()
+  expect_identical(
+    lfi_conv$range,
+    sapply(lapply(iris[, lfi_conv$variable], range), function(x) paste(x, collapse = " - "))
+  )
+
+  lfi_conv <- look_for(iris, "sep") %>% convert_list_columns_to_character()
+  expect_true(all(lfi_conv$levels == c("", "")))
+  expect_true(all(lfi_conv$value_labels == c("", "")))
+})
+
+test_that(" look_for_and_select works correctly", {
+  expect_equal(
+    names(look_for_and_select(iris, "sep")),
+    c("Sepal.Length", "Sepal.Width")
+  )
+})
+
+test_that(" print.look_for works correctly", {
+  pp = print(look_for(iris))
+  expect_equal(
+    pp$variable[nchar(pp$variable) !=0],
+    names(iris)
+  )
+  expect_equal(
+    pp$values[nchar(pp$values) !=0],
+    levels(iris$Species)
+  )
+})
+
+test_that(" lookfor_to_long_format works correctly", {
+  lf2lf <- look_for(iris) %>% lookfor_to_long_format()
+  expect_equal(
+    lf2lf$levels[lf2lf$variable == "Species"],
+    levels(iris$Species)
+  )
+
+  expect_equal(
+    iris,
+    lookfor_to_long_format(iris)
+  )
+
+  expect_true(all(is.na(lf2lf$levels[lf2lf$variable != "Species"])))
+})
+
+test_that("look_for get var_label", {
+  df <- data.frame(col1 = 1:2, col2 = 3:4)
+  expect_equal(nrow(look_for(df, "lb")), 0)
+  var_label(df) <- c("lb1", "lb2")
+  lfd  <- look_for(df, "lb")
+
+  expect_equal(
+    lfd$variable,
+    names(df)
+  )
+  expect_equal(
+    unname(lfd$label),
+    c("lb1", "lb2")
+  )
+
+})
