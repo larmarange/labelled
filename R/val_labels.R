@@ -54,10 +54,10 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
 }
 
 #' @export
-`val_labels<-.default` <- function(x, value) {
+`val_labels<-.factor` <- function(x, value) {
   if (!is.null(value))
     stop("Value labels cannot be applied to factors.")
-  x
+  x %>% remove_attributes("labels")
 }
 
 #' @export
@@ -169,6 +169,13 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
 #' @export
 `val_label<-.default` <- function(x, v, value) {
   # do nothing
+  x
+}
+
+#' @export
+`val_label<-.factor` <- function(x, v, value) {
+  if (!is.null(value))
+    stop("Value labels cannot be applied to factors.")
   x
 }
 

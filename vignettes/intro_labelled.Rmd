@@ -135,14 +135,22 @@ val_label(v, 1) <- "yes"
 v
 ```
 
-Note that applying `val_labels` to a factor will have no effect!
+Note that applying `val_labels` to a factor will generate an error!
 
 ```{r}
 f <- factor(1:3)
 f
-val_labels(f) <- c(yes = 1, no = 3)
-f
 ```
+
+```{r echo=TRUE, eval=FALSE}
+val_labels(f) <- c(yes = 1, no = 3)
+```
+
+```
+Error in `val_labels<-.factor`(`*tmp*`, value = c(yes = 1, no = 3)) : 
+  Value labels cannot be applied to factors.
+```
+
 
 You could also apply value labels to several columns of a data frame.
 
