@@ -9,13 +9,11 @@ test_that("error with non factor argument", {
 
 })
 
-test_that("is_prefixed works properly", {
-
-  x <- haven::labelled(c(c(1,2,3,5,4), NA, 99), c(t1 = 1, t2 = 2, t5 = 5, Missing = 99))
-
+test_that("is_prefixed() works properly", {
+  x <- labelled(c(1, 2, 2, 2, 9, 1, 2, NA), c(yes = 1, no = 2, "don't know" = 9))
   tfx <- to_factor(x, levels = "prefixed")
   expect_true(is_prefixed(tfx))
-  levels(tfx)[1] <- "t1"
+  levels(tfx)[1] <- "not prefixed"
   expect_false(is_prefixed(tfx))
 })
 
