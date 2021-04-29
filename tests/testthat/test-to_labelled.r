@@ -98,7 +98,7 @@ test_that("foreign_to_labelled works correctly", {
   expect_true(all(which(sapply(tl_spss_list, function(x) any(is.na(x))))==c(4,5,7,10)))
 
 
-  tl_spss_df   <- to_labelled(as.data.frame(spss_file))
+  tl_spss_df   <- to_labelled(as.data.frame(spss_file, stringsAsFactors = FALSE))
   expect_equal(val_labels(tl_spss_df), sapply(spss_file, function(x) attr(x, "value.labels", exact = TRUE)))
   expect_true(all(sapply(var_label(tl_spss_df), is.null)))
   expect_true(all(sapply(sapply(tl_spss_df, na_values), is.null)))
