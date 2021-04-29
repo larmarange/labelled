@@ -77,3 +77,98 @@ test_that("to_labelled.factor works with '[code] label' factors", {
   expect_warning(to_labelled(f, .quiet = TRUE), NA)
   expect_true(is.character(to_labelled(f, .quiet = TRUE)))
 })
+
+# foreign_to_labelled -----------------------------------------------------
+
+#  datasets : spss_file / dta_file
+#  to_labelled.data.frame
+#  to_labelled.list
+
+test_that("foreign_to_labelled works correctly", {
+
+  utils::data("spss_file", package = "labelled")
+  utils::data("dta_file", package = "labelled")
+
+  tl_spss_list <- to_labelled(spss_file)
+  expect_equal(val_labels(tl_spss_list), sapply(spss_file, function(x) attr(x, "value.labels", exact = TRUE)))
+  expect_equal(var_label(tl_spss_list), as.list(attr(spss_file, "variable.labels", exact = TRUE)))
+  miss_attr <- attr(spss_file, "missings", exact = TRUE)
+  miss_list <- lapply(miss_attr, function(x) if(x$type == "none") return(NULL) else return(x$value))
+  expect_equal(sapply(tl_spss_list, na_values), miss_list)
+  expect_true(all(which(sapply(tl_spss_list, function(x) any(is.na(x))))==c(4,5,7,10)))
+
+
+  tl_spss_df   <- to_labelled(as.data.frame(spss_file, stringsAsFactors = FALSE))
+  expect_equal(val_labels(tl_spss_df), sapply(spss_file, function(x) attr(x, "value.labels", exact = TRUE)))
+  expect_true(all(sapply(var_label(tl_spss_df), is.null)))
+  expect_true(all(sapply(sapply(tl_spss_df, na_values), is.null)))
+  expect_true(all(sapply(sapply(tl_spss_df, na_range), is.null)))
+
+  tl_dta_df    <- to_labelled(dta_file)
+  expect_equal(val_labels(tl_dta_df), sapply(dta_file, function(x) attr(x, "value.labels", exact = TRUE)))
+  expect_equal(unname(unlist(var_label(tl_dta_df))), attr(dta_file, "var.labels", exact = TRUE))
+  expect_true(all(sapply(sapply(tl_dta_df, na_values), is.null)))
+  expect_true(all(sapply(sapply(tl_dta_df, na_range), is.null)))
+
+
+
+
+
+
+})
+
+# memisc_to_labelled -----------------------------------------------------
+
+test_that("memisc_to_labelled works correctly", {
+  skip_if_not_installed("memisc")
+
+  ds <- memisc::data.set(
+    vote = sample(c(1,2,3,8,9,97,99),size=300,replace=TRUE),
+    region = sample(c(rep(1,3),rep(2,2),3,99),size=300,replace=TRUE),
+    income = exp(rnorm(300,sd=.7))*2000
+  )
+
+  memisc::description(ds$vote) <- "Vote intention"
+  memisc::description(ds$region) <- "Region of residence"
+  memisc::description(ds$income) <- "Household income"
+  memisc::missing.values(ds$vote) <- c(97,99)
+  memisc::missing.values(ds$region) <- list(range=c(90, Inf))
+  memisc::labels(ds$region) <- c(
+    England               =  1,
+    Scotland              =  2,
+    Wales                 =  3,
+    "Not applicable"      = 97,
+    "Not asked in survey" = 99)
+  memisc::labels(ds$vote) <- c(
+    Conservatives         =  1,
+    Labour                =  2,
+    "Liberal Democrats"   =  3,
+    "Don't know"          =  8,
+    "Answer refused"      =  9,
+    "Not applicable"      = 97,
+    "Not asked in survey" = 99)
+
+  tl_ds <- to_labelled(ds)
+
+  desc                <- data.frame(memisc::description(ds))
+  var_label_ds        <- desc[,2]
+  names(var_label_ds) <- desc[,1]
+  expect_identical(unlist(var_label(tl_ds)), var_label_ds)
+
+  if(any(sapply(val_labels(tl_ds), function(x) !is.null(x)))) {
+
+    val_labels_ds <- lapply(ds, function(x) memisc::labels(x))
+    val_labels_ds <- lapply(ds, function(x) {
+      vlabs <- memisc::labels(x)
+      if(is.null(vlabs)) return(NULL)
+      vals <- vlabs@values
+      names(vals) <- vlabs@.Data
+      return(vals)
+    })
+    expect_identical(val_labels(tl_ds),val_labels_ds )
+
+  }
+
+
+})
+

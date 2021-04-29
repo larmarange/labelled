@@ -85,8 +85,7 @@ it to a labelled vector with same values and labels.
  library(memisc)
  nes1948.por <- UnZip('anes/NES1948.ZIP', 'NES1948.POR', package='memisc')
  nes1948 <- spss.portable.file(nes1948.por)
- df <- to_labelled(nes1948)
- ds <- as.data.set(nes19480)
+ ds <- as.data.set(nes1948)
  df <- to_labelled(ds)
 }
 

@@ -46,8 +46,7 @@
 #'  library(memisc)
 #'  nes1948.por <- UnZip('anes/NES1948.ZIP', 'NES1948.POR', package='memisc')
 #'  nes1948 <- spss.portable.file(nes1948.por)
-#'  df <- to_labelled(nes1948)
-#'  ds <- as.data.set(nes19480)
+#'  ds <- as.data.set(nes1948)
 #'  df <- to_labelled(ds)
 #' }
 #'
@@ -162,26 +161,29 @@ foreign_to_labelled <- function(x) {
 memisc_to_labelled <- function(x) {
   if (!inherits(x, "data.set"))
     return(x)
+
   if (!requireNamespace("memisc"))
     stop("memisc package is required to convert a data.set",
-      call. = FALSE, domain = "R-labelled")
+         call. = FALSE, domain = "R-labelled")
 
   df <- as.data.frame(x)
   for (var in names(x)) {
-    df[[var]] <- x[[var]]@.Data
-    var_label(df[[var]]) <- as.character(memisc::annotation(x[[var]]))
-    if (!is.null(memisc::labels(x[[var]]))) {
+    if (length(memisc::description(x[[var]])) > 0)
+      var_label(df[[var]]) <- as.character(memisc::description(x[[var]]))
+    if (length(memisc::labels(x[[var]])) > 0) {
       labs <- memisc::labels(x[[var]])@values
       names(labs) <- memisc::labels(x[[var]])@.Data
       val_labels(df[[var]]) <- labs
     }
-    #missing_val(df[[var]]) <- unique(df[memisc::is.missing(x[[var]]), var])
+    if (!is.null(memisc::missing.values(x[[var]])) &&
+        length(memisc::missing.values(x[[var]])@filter) > 0)
+      na_values(df[[var]]) <- memisc::missing.values(x[[var]])@filter
+    if (!is.null(memisc::missing.values(x[[var]])) &&
+        length(memisc::missing.values(x[[var]])@range) > 0)
+      na_range(df[[var]]) <- memisc::missing.values(x[[var]])@range
   }
 
-  unloadNamespace("memisc")
-
-  class(df) <- c("tbl_df", "tbl", "data.frame")
-  df
+  dplyr::as_tibble(df)
 }
 
 #' @rdname to_labelled
