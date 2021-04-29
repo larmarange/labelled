@@ -160,6 +160,12 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
 }
 
 #' @export
+`val_label<-.default` <- function(x, v, value) {
+  # do nothing
+  x
+}
+
+#' @export
 `val_label<-.haven_labelled` <- function(x, v, value) {
   if (length(v) != 1)
     stop("`v` should be a single value", call. = FALSE, domain = "R-labelled")
