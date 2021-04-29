@@ -1,5 +1,7 @@
 # labelled (development version)
 
+* trying to apply a value label, `na_range()` or `na_values()` to a factor 
+  will now produce an error
 * new set of unit tests (#99)
 * new function `look_for_and_select()` (#87)
 

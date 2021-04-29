@@ -64,6 +64,13 @@ na_values.data.frame <- function(x) {
 }
 
 #' @export
+`na_values<-.factor` <- function(x, value) {
+  if (!is.null(value))
+    stop("`na_values()` cannot be applied to factors.")
+  x %>% remove_attributes("na_values")
+}
+
+#' @export
 `na_values<-.haven_labelled` <- function(x, value) {
   if (is.null(value)) {
     attr(x, "na_values") <- NULL
@@ -137,6 +144,13 @@ na_range.data.frame <- function(x) {
     x <- labelled_spss(x, val_labels(x), na_values = attr(x, "na_values"), na_range = value, label = var_label(x))
   # else do nothing
   x
+}
+
+#' @export
+`na_range<-.factor` <- function(x, value) {
+  if (!is.null(value))
+    stop("`na_range()` cannot be applied to factors.")
+  x %>% remove_attributes("na_range")
 }
 
 #' @export
