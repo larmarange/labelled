@@ -284,17 +284,6 @@ is_user_na <- function(x) {
   test_if_user_na(x, na_values(x), na_range(x))
 }
 
-#' @export
-is_user_na.default <- function(x) {
-  # FALSE
-  rep.int(FALSE, length(x))
-}
-
-#' @export
-is_user_na.haven_labelled_spss <- function(x) {
-  is.na(x) & !is.na(unclass(x))
-}
-
 #' @rdname na_values
 #' @export
 user_na_to_na <- function(x) {
