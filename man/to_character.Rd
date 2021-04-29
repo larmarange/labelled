@@ -12,6 +12,7 @@ to_character(x, ...)
   levels = c("labels", "values", "prefixed"),
   nolabel_to_na = FALSE,
   user_na_to_na = FALSE,
+  explicit_tagged_na = FALSE,
   ...
 )
 }
