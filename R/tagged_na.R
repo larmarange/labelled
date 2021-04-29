@@ -20,7 +20,7 @@ haven::print_tagged_na
 
 #' Unique elements, duplicated, ordering and sorting with tagged NAs
 #'
-#' These adapations of [base::unique()], [base::duplicated()],
+#' These adaptations of [base::unique()], [base::duplicated()],
 #' [base::order()] and [base::sort()] treats tagged NAs as distinct
 #' values.
 #'

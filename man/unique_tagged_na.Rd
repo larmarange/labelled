@@ -47,7 +47,7 @@ if \code{FALSE}, they are put first}
 increasing or decreasing?}
 }
 \description{
-These adapations of \code{\link[base:unique]{base::unique()}}, \code{\link[base:duplicated]{base::duplicated()}},
+These adaptations of \code{\link[base:unique]{base::unique()}}, \code{\link[base:duplicated]{base::duplicated()}},
 \code{\link[base:order]{base::order()}} and \code{\link[base:sort]{base::sort()}} treats tagged NAs as distinct
 values.
 }
