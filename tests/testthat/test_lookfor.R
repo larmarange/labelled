@@ -2,11 +2,11 @@ context("Test look_for()")
 
 test_that("look_for works correctly", {
 
-  df <- data.frame(1:3, letters[1:3], fix.empty.names = FALSE)
+  df <- data.frame(1:3, letters[1:3], fix.empty.names = FALSE, stringsAsFactors = FALSE)
   expect_error(look_for(df))
   expect_error(look_for(unname(df)))
 
-  df <- data.frame(num = 1:3, ch = letters[1:3])
+  df <- data.frame(num = 1:3, ch = letters[1:3], stringsAsFactors = FALSE)
   res <- look_for(df, "e")
   capture.output(print(res))
   expect_true(nrow(res) == 0)
@@ -122,7 +122,7 @@ test_that(" lookfor_to_long_format works correctly", {
 })
 
 test_that("look_for get var_label", {
-  df <- data.frame(col1 = 1:2, col2 = 3:4)
+  df <- data.frame(col1 = 1:2, col2 = 3:4, stringsAsFactors = FALSE)
   expect_equal(nrow(look_for(df, "lb")), 0)
   var_label(df) <- c("lb1", "lb2")
   lfd  <- look_for(df, "lb")

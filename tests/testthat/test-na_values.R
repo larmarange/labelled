@@ -6,7 +6,7 @@ test_that("na_values works with data.frame", {
   xhs <- haven::labelled_spss(c(c(1,2,3), NA, 99), c(t1 = 1, t2 = 2, Missing = 99),
                               na_value = 99, label = "variable label")
   y   <- c(1:4, NA)
-  df  <- data.frame(xhs = xhs, y = y)
+  df  <- data.frame(xhs = xhs, y = y, stringsAsFactors = FALSE)
   res <- list(xhs = 99, y = NULL)
   expect_equal(na_values(df), res)
 })
@@ -17,7 +17,7 @@ test_that("na_range works with data.frame", {
   xhs <- haven::labelled_spss(c(c(1,2,3), NA, 99), c(t1 = 1, t2 = 2, Missing = 99),
                               na_value = 99, na_range = c(99, Inf), label = "variable label")
   y   <- c(1:4, NA)
-  df  <- data.frame(xhs = xhs, y = y)
+  df  <- data.frame(xhs = xhs, y = y, stringsAsFactors = FALSE)
   res <- list(xhs = c(99, Inf), y = NULL)
   expect_equal(na_range(df), res)
 })
@@ -28,7 +28,7 @@ test_that("user_na_to_na works with data.frame", {
   xhs    <- haven::labelled_spss(c(c(1,2,3), NA, 99), c(t1 = 1, t2 = 2, Missing = 99),
                                  na_value = 99, na_range = c(99, Inf), label = "variable label")
   y      <- c(1:4, NA)
-  df     <- data.frame(xhs = xhs, y = y)
+  df     <- data.frame(xhs = xhs, y = y, stringsAsFactors = FALSE)
 
   una_df <- user_na_to_na(df)
   expect_equal(df$y, y)
