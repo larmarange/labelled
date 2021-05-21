@@ -120,8 +120,11 @@ foreign_to_labelled <- function(x) {
   }
 
   # value labels (read.dta)
-  if (!is.null(label.table))
-    val_labels(x) <- label.table
+  if (!is.null(label.table)) {
+    # taking into account only variables existing in x
+    val_labels(x) <- label.table[intersect(names(label.table), names(x))]
+  }
+
 
   # missing values (read.spss)
   for (var in names(missings)) {
