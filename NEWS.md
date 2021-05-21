@@ -4,6 +4,7 @@
   will now produce an error
 * new set of unit tests (#99)
 * new function `look_for_and_select()` (#87)
+* bug fix in `foreign_to_labelled()` for Stata files (#100)
 
 # labelled 2.8.0
 
