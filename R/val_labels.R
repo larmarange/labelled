@@ -4,7 +4,7 @@
 #' @param prefixed Should labels be prefixed with values?
 #' @param v A single value.
 #' @param value A named vector for `val_labels()` (see [haven::labelled()]) or a character string
-#'   for `val_labels()`. `NULL` to remove the labels.
+#'   for `val_label()`. `NULL` to remove the labels.
 #'   For data frames, it could also be a named list with a vector of value labels per variable.
 #' @return
 #'   `val_labels()` will return a named vector.
