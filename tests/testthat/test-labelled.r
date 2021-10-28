@@ -481,6 +481,28 @@ test_that("to_factor parameters : sort_levels + levels", {
   tfx <- to_factor(x1, levels = "prefixed")
   expect_equal(levels(tfx), c("[1] t1", "[2] t2", "[3] 3", "[4] 4", "[5] t5", "[99] Missing"))
 })
+
+test_that("to_factor() and tagged NAs", {
+  x <- c(1, 2, tagged_na("a"), 1, tagged_na("z"), 2, tagged_na("a"), NA)
+  val_labels(x) <- c(
+    yes = 1, no = 2,
+    missing = tagged_na("a"),
+    toto = NA
+  )
+
+  expect_equal(
+    to_factor(x),
+    structure(c(1L, 2L, NA, 1L, NA, 2L, NA, NA),
+              .Label = c("yes", "no"), class = "factor")
+  )
+  expect_equal(
+    to_factor(x, explicit_tagged_na = TRUE),
+    structure(c(1L, 2L, 4L, 1L, 5L, 2L, 4L, 3L),
+              .Label = c("yes", "no", "toto", "missing", "NA(z)"),
+              class = "factor")
+  )
+})
+
 # to_character --------------------------------------------------------------------
 
 test_that("to_character produce an appropriate character vector", {
