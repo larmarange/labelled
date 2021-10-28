@@ -31,6 +31,8 @@ reference:
 - title: Tagged missing values
   contents:
   - tagged_na
+  - unique_tagged_na
+  - tagged_na_to_user_na
 - title: Converting
   desc: Functions to convert from and to labelled classes
   contents:
@@ -43,5 +45,7 @@ reference:
   - recode.haven_labelled
   - remove_attributes
   - names_prefixed_by_values
+- title: Internal datasets for testing
+  - spss_file
 
 
