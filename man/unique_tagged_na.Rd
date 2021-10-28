@@ -51,3 +51,19 @@ These adaptations of \code{\link[base:unique]{base::unique()}}, \code{\link[base
 \code{\link[base:order]{base::order()}} and \code{\link[base:sort]{base::sort()}} treats tagged NAs as distinct
 values.
 }
+\examples{
+x <- c(1, 2, tagged_na("a"), 1, tagged_na("z"), 2, tagged_na("a"), NA)
+x \%>\% print_tagged_na()
+
+unique(x) \%>\% print_tagged_na()
+unique_tagged_na(x) \%>\% print_tagged_na()
+
+duplicated(x)
+duplicated_tagged_na(x)
+
+order(x)
+order_tagged_na(x)
+
+sort(x, na.last = TRUE) \%>\% print_tagged_na()
+sort_tagged_na(x) \%>\% print_tagged_na()
+}

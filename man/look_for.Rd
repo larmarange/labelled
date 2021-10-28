@@ -107,6 +107,58 @@ Use \code{convert_list_columns_to_character()} to convert named list columns int
 applying \code{dplyr::select()} to return a data frame with only the selected
 variables.
 }
+\examples{
+look_for(iris)
+
+# Look for a single keyword.
+look_for(iris, "petal")
+look_for(iris, "s")
+iris \%>\% look_for_and_select("s") \%>\% head()
+
+# Look for with a regular expression
+look_for(iris, "petal|species")
+look_for(iris, "s$")
+
+# Look for with several keywords
+look_for(iris, "pet", "sp")
+look_for(iris, "pet", "sp", "width")
+look_for(iris, "Pet", "sp", "width", ignore.case = FALSE)
+
+# Look_for can search within factor levels or value labels
+look_for(iris, "vers")
+
+# Quicker search without variable details
+look_for(iris, details = "none")
+
+# To obtain more details about each variable
+look_for(iris, details = "full")
+
+# To deactivate default printing, convert to tibble
+look_for(iris, details = "full") \%>\%
+  dplyr::as_tibble()
+
+# To convert named lists into character vectors
+look_for(iris) \%>\% convert_list_columns_to_character()
+
+# Long format with one row per factor and per value label
+look_for(iris) \%>\% lookfor_to_long_format()
+
+# Both functions can be combined
+look_for(iris) \%>\%
+  lookfor_to_long_format() \%>\%
+  convert_list_columns_to_character()
+
+# Labelled data
+\dontrun{
+  data(fertility, package = "questionr")
+  look_for(children)
+  look_for(children, "id")
+  children \%>\% look_for_and_select("id")
+  look_for(children) \%>\%
+    lookfor_to_long_format() \%>\%
+    convert_list_columns_to_character()
+}
+}
 \author{
 François Briatte \href{mailto:f.briatte@gmail.com}{f.briatte@gmail.com}, Joseph Larmarange \href{mailto:joseph@larmarange.net}{joseph@larmarange.net}
 }

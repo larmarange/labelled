@@ -10,7 +10,6 @@
 \alias{is_user_na}
 \alias{user_na_to_na}
 \alias{user_na_to_tagged_na}
-\alias{tagged_na_to_user_na}
 \title{Get / Set SPSS missing values}
 \usage{
 na_values(x)
@@ -30,11 +29,9 @@ is_user_na(x)
 user_na_to_na(x)
 
 user_na_to_tagged_na(x)
-
-tagged_na_to_user_na(x, user_na_start = NULL)
 }
 \arguments{
-\item{x}{A vector.}
+\item{x}{A vector (or a data frame).}
 
 \item{value}{A vector of values that should also be considered as missing
 (for \code{na_values}) or a numeric vector of length two giving the (inclusive)
@@ -51,9 +48,6 @@ using the same syntax as \code{value} in \code{na_values(df) <- value} or
 
 \item{.strict}{should an error be returned if some labels
 doesn't correspond to a column of \code{x}?}
-
-\item{user_na_start}{minimum value of the new user na, if \code{NULL},
-computed automatically (maximum of observed values + 1)}
 }
 \value{
 \code{na_values()} will return a vector of values that should also be considered as missing.
@@ -68,7 +62,10 @@ Get / Set SPSS missing values
 }
 \details{
 See \code{\link[haven:labelled_spss]{haven::labelled_spss()}} for a presentation of SPSS's user defined missing values.
-Note that \code{\link[base:NA]{base::is.na()}} will return \code{TRUE} for user defined missing values.
+
+Note that \code{\link[base:NA]{base::is.na()}} will return \code{TRUE} for user defined missing values. It will
+also return \code{TRUE} for regular \code{NA} values. If you want to test if a specific
+value is a user NA but not a regular \code{NA}, use \code{is_user_na()}.
 
 You can use \code{\link[=user_na_to_na]{user_na_to_na()}} to convert user defined missing values to regular \code{NA}.
 Note that any value label attached to a user defined missing value will be lost.
@@ -92,7 +89,10 @@ v
 na_values(v) <- 9
 na_values(v)
 v
-is.na(v)
+
+is.na(v) # TRUE for the 6th and 10th values
+is_user_na(v) # TRUE only for the 6th value
+
 user_na_to_na(v)
 na_values(v) <- NULL
 v
@@ -100,6 +100,7 @@ na_range(v) <- c(5, Inf)
 na_range(v)
 v
 user_na_to_na(v)
+user_na_to_tagged_na(v)
 if (require(dplyr)) {
   # setting value labels
   df <- tibble(s1 = c("M", "M", "F", "F"), s2 = c(1, 1, 2, 9)) \%>\%
