@@ -10,12 +10,12 @@
 * better printing of value labels (#89)
 * new functions `user_na_to_tagged_na()` and `tagged_na_to_user_na()`
 * new option `explicit_tagged_na` in `to_factor()` and `to_character()`
-* new function `is_user_na()`
 * new functions `unique_tagged_na()`, `duplicated_tagged_na()`, 
   `order_tagged_na()`, `sort_tagged_na()` (#90, #91)
 
 **other improvements:**
 
+* new function `is_user_na()`
 * new set of unit tests (#99)
 * trying to apply a value label, `na_range()` or `na_values()` to a factor 
   will now produce an error
