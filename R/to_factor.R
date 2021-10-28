@@ -83,6 +83,9 @@ to_factor.haven_labelled <- function(x, levels = c("labels", "values",
     new_labels <- to_character(val_labels(x), explicit_tagged_na = TRUE)
     x <- to_character(unclass(x), explicit_tagged_na = TRUE)
     val_labels(x) <- new_labels
+  } else {
+    l <- val_labels(x)
+    val_labels(x) <- l[!is.na(l)] # keeping not NA values
   }
   if (strict) {
     allval <- unique(x)
