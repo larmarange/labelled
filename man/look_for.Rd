@@ -17,6 +17,7 @@ look_for(
   data,
   ...,
   labels = TRUE,
+  values = TRUE,
   ignore.case = TRUE,
   details = c("basic", "none", "full")
 )
@@ -25,6 +26,7 @@ lookfor(
   data,
   ...,
   labels = TRUE,
+  values = TRUE,
   ignore.case = TRUE,
   details = c("basic", "none", "full")
 )
@@ -33,13 +35,20 @@ generate_dictionary(
   data,
   ...,
   labels = TRUE,
+  values = TRUE,
   ignore.case = TRUE,
   details = c("basic", "none", "full")
 )
 
 \method{print}{look_for}(x, ...)
 
-look_for_and_select(data, ..., labels = TRUE, ignore.case = TRUE)
+look_for_and_select(
+  data,
+  ...,
+  labels = TRUE,
+  values = TRUE,
+  ignore.case = TRUE
+)
 
 convert_list_columns_to_character(x)
 
@@ -53,6 +62,8 @@ formatted as a regular expression suitable for a \code{\link[base:grep]{base::gr
 displays all variables if not specified}
 
 \item{labels}{whether or not to search variable labels (descriptions); \code{TRUE} by default}
+
+\item{values}{whether or not to search within values (factor levels or value lables); \code{TRUE} by default}
 
 \item{ignore.case}{whether or not to make the keywords case sensitive;
 \code{TRUE} by default (case is ignored during matching)}
@@ -68,7 +79,7 @@ a tibble data frame featuring the variable position, name and description
 \description{
 \code{look_for} emulates the \code{lookfor} Stata command in \R. It supports
 searching into the variable names of regular \R data frames as well as into
-variable labels descriptions.
+variable labels descriptions, factor levels and value labels.
 The command is meant to help users finding variables in large datasets.
 }
 \details{
@@ -95,55 +106,6 @@ Use \code{convert_list_columns_to_character()} to convert named list columns int
 \code{look_for_and_select()} is a shortcut for selecting some variables and
 applying \code{dplyr::select()} to return a data frame with only the selected
 variables.
-}
-\examples{
-look_for(iris)
-
-# Look for a single keyword.
-look_for(iris, "petal")
-look_for(iris, "s")
-iris \%>\% look_for_and_select("s") \%>\% head()
-
-# Look for with a regular expression
-look_for(iris, "petal|species")
-look_for(iris, "s$")
-
-# Look for with several keywords
-look_for(iris, "pet", "sp")
-look_for(iris, "pet", "sp", "width")
-look_for(iris, "Pet", "sp", "width", ignore.case = FALSE)
-
-# Quicker search without variable details
-look_for(iris, details = "none")
-
-# To obtain more details about each variable
-look_for(iris, details = "full")
-
-# To deactivate default printing, convert to tibble
-look_for(iris, details = "full") \%>\%
-  dplyr::as_tibble()
-
-# To convert named lists into character vectors
-look_for(iris) \%>\% convert_list_columns_to_character()
-
-# Long format with one row per factor and per value label
-look_for(iris) \%>\% lookfor_to_long_format()
-
-# Both functions can be combined
-look_for(iris) \%>\%
-  lookfor_to_long_format() \%>\%
-  convert_list_columns_to_character()
-
-# Labelled data
-\dontrun{
-  data(fertility, package = "questionr")
-  look_for(children)
-  look_for(children, "id")
-  children \%>\% look_for_and_select("id")
-  look_for(children) \%>\%
-    lookfor_to_long_format() \%>\%
-    convert_list_columns_to_character()
-}
 }
 \author{
 François Briatte \href{mailto:f.briatte@gmail.com}{f.briatte@gmail.com}, Joseph Larmarange \href{mailto:joseph@larmarange.net}{joseph@larmarange.net}
