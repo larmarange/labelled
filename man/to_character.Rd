@@ -2,10 +2,13 @@
 % Please edit documentation in R/to_character.R
 \name{to_character}
 \alias{to_character}
+\alias{to_character.double}
 \alias{to_character.haven_labelled}
 \title{Convert input to a character vector}
 \usage{
 to_character(x, ...)
+
+\method{to_character}{double}(x, explicit_tagged_na = FALSE, ...)
 
 \method{to_character}{haven_labelled}(
   x,
@@ -21,13 +24,13 @@ to_character(x, ...)
 
 \item{...}{Other arguments passed down to method.}
 
+\item{explicit_tagged_na}{should tagged NA be kept?}
+
 \item{levels}{What should be used for the factor levels: the labels, the values or labels prefixed with values?}
 
 \item{nolabel_to_na}{Should values with no label be converted to \code{NA}?}
 
 \item{user_na_to_na}{user defined missing values into NA?}
-
-\item{explicit_tagged_na}{should tagged NA be kept?}
 }
 \description{
 By default, \code{to_character()} is a wrapper for \code{\link[base:character]{base::as.character()}}.

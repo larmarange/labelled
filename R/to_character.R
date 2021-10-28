@@ -20,6 +20,7 @@ to_character.default <- function(x, ...) {
   x
 }
 
+#' @rdname to_character
 #' @export
 to_character.double <- function(x, explicit_tagged_na = FALSE, ...) {
   res <- as.character(x)
