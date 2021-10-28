@@ -6,6 +6,7 @@
 #'
 #' @param x Object to coerce to a character vector.
 #' @param ... Other arguments passed down to method.
+#' @param explicit_tagged_na should tagged NA be kept?
 #' @export
 to_character <- function(x, ...) {
   UseMethod("to_character")
@@ -17,6 +18,16 @@ to_character.default <- function(x, ...) {
   x <- as.character(x)
   var_label(x) <- vl
   x
+}
+
+#' @export
+to_character.double <- function(x, explicit_tagged_na = FALSE, ...) {
+  res <- as.character(x)
+  if (explicit_tagged_na)
+    res[is_tagged_na(x)] <- format_tagged_na(x[is_tagged_na(x)])
+  var_label(res) <- var_label(x)
+  names(res) <- names(x)
+  res
 }
 
 #' @rdname to_character
@@ -34,10 +45,13 @@ to_character.default <- function(x, ...) {
 #' to_character(v, "p")
 #' @export
 to_character.haven_labelled <- function(x, levels = c("labels", "values",
-  "prefixed"), nolabel_to_na = FALSE, user_na_to_na = FALSE, ...) {
+  "prefixed"), nolabel_to_na = FALSE, user_na_to_na = FALSE, explicit_tagged_na = FALSE, ...) {
   vl <- var_label(x)
   levels <- match.arg(levels)
-  x <- as.character(to_factor(x, levels = levels, nolabel_to_na = nolabel_to_na, user_na_to_na = user_na_to_na))
+  x <- as.character(to_factor(
+    x, levels = levels, nolabel_to_na = nolabel_to_na,
+    user_na_to_na = user_na_to_na, explicit_tagged_na = explicit_tagged_na
+  ))
   var_label(x) <- vl
   x
 }

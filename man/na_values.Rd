@@ -7,7 +7,9 @@
 \alias{na_range<-}
 \alias{set_na_values}
 \alias{set_na_range}
+\alias{is_user_na}
 \alias{user_na_to_na}
+\alias{user_na_to_tagged_na}
 \title{Get / Set SPSS missing values}
 \usage{
 na_values(x)
@@ -22,10 +24,14 @@ set_na_values(.data, ..., .values = NA, .strict = TRUE)
 
 set_na_range(.data, ..., .values = NA, .strict = TRUE)
 
+is_user_na(x)
+
 user_na_to_na(x)
+
+user_na_to_tagged_na(x)
 }
 \arguments{
-\item{x}{A vector.}
+\item{x}{A vector (or a data frame).}
 
 \item{value}{A vector of values that should also be considered as missing
 (for \code{na_values}) or a numeric vector of length two giving the (inclusive)
@@ -56,8 +62,23 @@ Get / Set SPSS missing values
 }
 \details{
 See \code{\link[haven:labelled_spss]{haven::labelled_spss()}} for a presentation of SPSS's user defined missing values.
-Note that \code{\link[base:NA]{base::is.na()}} will return \code{TRUE} for user defined missing values.
-You can use \code{\link[=user_na_to_na]{user_na_to_na()}} to convert user defined missing values to \code{NA}.
+
+Note that \code{\link[base:NA]{base::is.na()}} will return \code{TRUE} for user defined missing values. It will
+also return \code{TRUE} for regular \code{NA} values. If you want to test if a specific
+value is a user NA but not a regular \code{NA}, use \code{is_user_na()}.
+
+You can use \code{\link[=user_na_to_na]{user_na_to_na()}} to convert user defined missing values to regular \code{NA}.
+Note that any value label attached to a user defined missing value will be lost.
+
+The method \code{\link[=user_na_to_tagged_na]{user_na_to_tagged_na()}} will convert user defined missing values
+into \code{\link[haven:tagged_na]{haven::tagged_na()}}, preserving value labels. Please note that \code{\link[haven:tagged_na]{haven::tagged_na()}}
+are defined only for double vectors. Therefore, integer \code{haven_labelled_spss}
+vectors will be converted into double \code{haven_labelled} vectors; and
+\code{\link[=user_na_to_tagged_na]{user_na_to_tagged_na()}} cannot be applied to a character \code{haven_labelled_spss}
+vector.
+
+\code{\link[=tagged_na_to_user_na]{tagged_na_to_user_na()}} is the opposite of \code{\link[=user_na_to_tagged_na]{user_na_to_tagged_na()}} and convert
+tagged \code{NA} into user defined missing values.
 }
 \note{
 \code{set_na_values()} and \code{set_na_range()} could be used with \pkg{dplyr} syntax.
@@ -68,7 +89,10 @@ v
 na_values(v) <- 9
 na_values(v)
 v
-is.na(v)
+
+is.na(v) # TRUE for the 6th and 10th values
+is_user_na(v) # TRUE only for the 6th value
+
 user_na_to_na(v)
 na_values(v) <- NULL
 v
@@ -76,6 +100,7 @@ na_range(v) <- c(5, Inf)
 na_range(v)
 v
 user_na_to_na(v)
+user_na_to_tagged_na(v)
 if (require(dplyr)) {
   # setting value labels
   df <- tibble(s1 = c("M", "M", "F", "F"), s2 = c(1, 1, 2, 9)) \%>\%

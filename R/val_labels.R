@@ -32,7 +32,7 @@ val_labels.default <- function(x, prefixed = FALSE) {
 val_labels.haven_labelled <- function(x, prefixed = FALSE) {
   labels <- attr(x, "labels", exact = TRUE)
   if (prefixed)
-    names(labels) <- paste0("[", labels, "] ", names(labels))
+    names(labels) <- names_prefixed_by_values(labels)
   labels
 }
 
@@ -143,13 +143,9 @@ val_label.default <- function(x, v, prefixed = FALSE) {
 val_label.haven_labelled <- function(x, v, prefixed = FALSE) {
   if (length(v) != 1)
     stop("`v` should be a single value", call. = FALSE, domain = "R-labelled")
-  labels <- val_labels(x)
+  labels <- val_labels(x, prefixed = prefixed)
   if (v %in% labels) {
-    if (prefixed) {
-      paste0("[", v, "] ", names(labels)[labels == v])
-    } else {
-      names(labels)[labels == v]
-    }
+    names(labels)[labels == v]
   } else {
     NULL
   }
@@ -397,7 +393,13 @@ names_prefixed_by_values <- function(x) {
 #' @export
 names_prefixed_by_values.default <- function(x) {
   if (is.null(x)) return(NULL)
-  paste0("[", x, "] ", names(x))
+  res <- as.character(x)
+  if (is.double(x)) {
+    res[is_tagged_na(x)] <- format_tagged_na(x[is_tagged_na(x)])
+  }
+  res <- paste0("[", res, "] ", names(x))
+  names(res) <- names(x)
+  res
 }
 
 #' @export

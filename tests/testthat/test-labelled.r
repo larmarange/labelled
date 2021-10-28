@@ -434,7 +434,7 @@ test_that("to_factor boolean parameters", {
 
   tfx <- to_factor(x1, user_na_to_na = T)
   expect_equal(which(is.na(tfx)), 6:7)
-  expect_equal(levels(tfx), c("t1", "t2", "3", "4", "t5", "Missing"))
+  expect_equal(levels(tfx), c("t1", "t2", "3", "4", "t5"))
 
 
   tfx <- to_factor(x1, nolabel_to_na = T)
@@ -860,7 +860,7 @@ test_that("names_prefixed_by_values works properly", {
   )
 
   res_names_prefixed <- list(c1 = c("[M] Male", "[F] Female"), c2 = c("[1] Yes", "[2] No"))
-  expect_equal(names_prefixed_by_values(val_labels(df)), res_names_prefixed)
+  expect_equivalent(names_prefixed_by_values(val_labels(df)), res_names_prefixed)
 
   expect_true(is.null(names_prefixed_by_values(NULL)))
 })

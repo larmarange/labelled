@@ -20,6 +20,7 @@ to_factor(x, ...)
   user_na_to_na = FALSE,
   strict = FALSE,
   unclass = FALSE,
+  explicit_tagged_na = FALSE,
   ...
 )
 
@@ -34,6 +35,7 @@ to_factor(x, ...)
   drop_unused_labels = FALSE,
   strict = FALSE,
   unclass = FALSE,
+  explicit_tagged_na = FALSE,
   ...
 )
 
@@ -63,6 +65,9 @@ unlabelled(x, ...)
 
 \item{unclass}{If not converted to a factor (when \code{strict = TRUE}),
 convert to a character or a numeric factor by applying \code{\link[base:class]{base::unclass()}}?}
+
+\item{explicit_tagged_na}{Should tagged NA (cf. \code{\link[haven:tagged_na]{haven::tagged_na()}}) be
+kept as explicit factor levels?}
 
 \item{labelled_only}{for a data.frame, convert only labelled variables to factors?}
 }

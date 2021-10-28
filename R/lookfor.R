@@ -60,7 +60,7 @@
 #' look_for(iris, "Pet", "sp", "width", ignore.case = FALSE)
 #'
 #' # Look_for can search within factor levels or value labels
-#' look_for(iris, "vers)
+#' look_for(iris, "vers")
 #'
 #' # Quicker search without variable details
 #' look_for(iris, details = "none")
