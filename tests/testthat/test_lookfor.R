@@ -137,3 +137,20 @@ test_that("look_for get var_label", {
   )
 
 })
+
+test_that("look_for works with factor levels and value labels", {
+  res <- iris %>% look_for("vers", details = "none")
+  expect_equal(res$variable, "Species")
+
+  res <- iris %>% look_for("vers", details = "none", values = FALSE)
+  expect_equal(nrow(res), 0)
+
+  df <- iris
+  df$Species <- to_labelled(df$Species)
+
+  res <- df %>% look_for("vers", details = "none")
+  expect_equal(res$variable, "Species")
+
+  res <- df %>% look_for("vers", details = "none", values = FALSE)
+  expect_equal(nrow(res), 0)
+})
