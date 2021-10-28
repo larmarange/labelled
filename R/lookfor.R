@@ -2,7 +2,7 @@
 #'
 #' `look_for` emulates the `lookfor` Stata command in \R. It supports
 #' searching into the variable names of regular \R data frames as well as into
-#' variable labels descriptions.
+#' variable labels descriptions, factor levels and value labels.
 #' The command is meant to help users finding variables in large datasets.
 #'
 #' When no keyword is provided, it will produce a data dictionary of the overall
@@ -13,6 +13,7 @@
 #' formatted as a regular expression suitable for a [base::grep()] pattern, or a vector of keywords;
 #' displays all variables if not specified
 #' @param labels whether or not to search variable labels (descriptions); `TRUE` by default
+#' @param values whether or not to search within values (factor levels or value lables); `TRUE` by default
 #' @param ignore.case whether or not to make the keywords case sensitive;
 #' `TRUE` by default (case is ignored during matching)
 #' @param details add details about each variable (full details could be time consuming for big data frames, `FALSE` is equivalent to `"none"` and `TRUE` to `"full"`)
@@ -58,6 +59,9 @@
 #' look_for(iris, "pet", "sp", "width")
 #' look_for(iris, "Pet", "sp", "width", ignore.case = FALSE)
 #'
+#' # Look_for can search within factor levels or value labels
+#' look_for(iris, "vers)
+#'
 #' # Quicker search without variable details
 #' look_for(iris, details = "none")
 #'
@@ -95,6 +99,7 @@
 look_for <- function(data,
                     ...,
                     labels = TRUE,
+                    values = TRUE,
                     ignore.case = TRUE,
                     details = c("basic", "none", "full")) {
   if (is.logical(details)) {
@@ -120,6 +125,17 @@ look_for <- function(data,
     # search labels
     y <- look(l)
     variable <- unique(c(variable, names(l[y])))
+  }
+  if (values) {
+    # search factor levels
+    fl <- lapply(data, levels)
+    y <- look(fl)
+    variable <- unique(c(variable, names(fl[y])))
+
+    # search value levels
+    vl <- lapply(data, val_labels)
+    y <- look(vl)
+    variable <- unique(c(variable, names(vl[y])))
   }
 
   # output
@@ -253,9 +269,9 @@ print.look_for <- function(x, ...) {
 
 #' @rdname look_for
 #' @export
-look_for_and_select <- function(data, ..., labels = TRUE, ignore.case = TRUE) {
+look_for_and_select <- function(data, ..., labels = TRUE, values = TRUE, ignore.case = TRUE) {
   lf <- data %>%
-    look_for(..., labels = labels, ignore.case = ignore.case, details = "none")
+    look_for(..., labels = labels, values = values, ignore.case = ignore.case, details = "none")
   data %>% dplyr::select(lf$pos)
 }
 

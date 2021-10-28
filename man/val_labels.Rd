@@ -30,7 +30,7 @@ remove_value_labels(.data, ..., .strict = TRUE)
 \item{prefixed}{Should labels be prefixed with values?}
 
 \item{value}{A named vector for \code{val_labels()} (see \code{\link[haven:labelled]{haven::labelled()}}) or a character string
-for \code{val_labels()}. \code{NULL} to remove the labels.
+for \code{val_label()}. \code{NULL} to remove the labels.
 For data frames, it could also be a named list with a vector of value labels per variable.}
 
 \item{v}{A single value.}
