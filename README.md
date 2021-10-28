@@ -11,7 +11,7 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/labelled)](https://cran.r-project.org/package=labelled)
 [![Downloads](https://cranlogs.r-pkg.org/badges/labelled)](https://cran.r-project.org/package=labelled)
 [![DOI](https://www.zenodo.org/badge/38772078.svg)](https://www.zenodo.org/badge/latestdoi/38772078)
-[![Codecov test coverage](https://codecov.io/gh/larmarange/labelled/branch/master/graph/badge.svg)](https://codecov.io/gh/larmarange/labelled?branch=master)
+[![Codecov test coverage](https://codecov.io/gh/larmarange/labelled/branch/main/graph/badge.svg)](https://codecov.io/gh/larmarange/labelled?branch=main)
 <!-- [![Rdoc](https://www.rdocumentation.org/badges/version/labelled)](https://www.rdocumentation.org/packages/labelled) -->
 <!-- badges: end -->
 
@@ -43,7 +43,7 @@ Read the vignette at
 ## Cheatsheet
 
 [![labelled
-cheatsheet](https://github.com/larmarange/labelled/raw/master/cheatsheet/labelled_cheatsheet.png)](https://github.com/larmarange/labelled/raw/master/cheatsheet/labelled_cheatsheet.pdf)
+cheatsheet](https://github.com/larmarange/labelled/raw/main/cheatsheet/labelled_cheatsheet.png)](https://github.com/larmarange/labelled/raw/main/cheatsheet/labelled_cheatsheet.pdf)
 
 ## Some general guidelines
 
