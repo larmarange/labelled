@@ -373,14 +373,23 @@ test_that("remove_user_na works properly", {
   exp <- c(1L, 2L, NA, 98L, 99L)
   xhs <- haven::labelled_spss(c(c(1, 2, NA), 98, 99), c(t1 = 1, t2 = 2, Missing = 99), na_value = 99, na_range = c(99, Inf), label = "A test variable")
   df <- data.frame(var = var, exp = exp, xhs = xhs, stringsAsFactors = FALSE)
-  rmtdf <- remove_user_na(df, user_na_to_na = T)
+  rmtdf <- remove_user_na(df, user_na_to_na = TRUE)
   expect_equal(rmtdf$var, var)
   expect_equal(rmtdf$exp, exp)
   expect_null(na_values(rmtdf$xhs))
   expect_equal(rmtdf$exp, exp)
 
-  rmfdf <- remove_user_na(df, user_na_to_na = F)
+  rmfdf <- remove_user_na(df, user_na_to_na = FALSE)
   expect_false(is.null(var_label(rmfdf$var)))
+
+  rmfdf <- remove_user_na(df, user_na_to_tagged_na = TRUE)
+  expect_equal(
+    na_tag(rmfdf$xhs),
+    c(NA, NA, NA, NA, "a")
+  )
+
+  x <- labelled_spss(1:100, na_range = c(50,100))
+  expect_warning(remove_user_na(x, user_na_to_tagged_na = T))
 })
 
 # to_factor --------------------------------------------------------------------
