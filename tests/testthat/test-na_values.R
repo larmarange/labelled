@@ -93,5 +93,31 @@ test_that("set_na_range works correctly", {
   sna_svdf <- set_na_range(svdf, .values = c(9L, 100L))
   expect_equal(na_range(sna_svdf), list(s1 = c(9, 100), s2 = c(9, 100)))
 
+  x <- factor(1:5)
+  expect_error(na_values(x) <- 1)
+  expect_error(na_range(x) <- 4:5)
 })
 
+test_that("about user NAs", {
+  v <- labelled_spss(
+    c(1, 2, 9, 3, 9, 1, NA),
+    labels = c(yes = 1, no = 3, "don't know" = 9),
+    na_values = 9
+  )
+  expect_equal(
+    is.na(v),
+    c(FALSE, FALSE, TRUE, FALSE, TRUE, FALSE, TRUE)
+  )
+  expect_equal(
+    is_user_na(v),
+    c(FALSE, FALSE, TRUE, FALSE, TRUE, FALSE, FALSE)
+  )
+  expect_equal(
+    user_na_to_tagged_na(v) %>% format_tagged_na() %>% trimws(),
+    c("1", "2", "NA(a)", "3", "NA(a)", "1", "NA")
+  )
+  expect_equal(
+    user_na_to_na(letters),
+    letters
+  )
+})
