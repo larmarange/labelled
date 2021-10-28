@@ -19,16 +19,14 @@
 #' If you prefer to convert variables with value labels into factors, use [to_factor()]
 #' or use [unlabelled()].
 #' @examples
-#' x1 <- labelled_spss(1:10, c(Good = 1, Bad = 8), na_values = c(9, 10))
-#' var_label(x1) <- "A variable"
-#' x1
+#' x <- labelled_spss(1:10, c(Good = 1, Bad = 8), na_values = c(9, 10))
+#' var_label(x) <- "A variable"
+#' x
 #'
-#' x2 <- remove_labels(x1)
-#' x2
-#' x3 <- remove_labels(x1, user_na_to_na = TRUE)
-#' x3
-#' x4 <- remove_user_na(x1, user_na_to_na = TRUE)
-#' x4
+#' remove_labels(x)
+#' remove_labels(x, user_na_to_na = TRUE)
+#' remove_user_na(x, user_na_to_na = TRUE)
+#' remove_user_na(x, user_na_to_tagged_na = TRUE)
 #' @export
 remove_labels <- function(x,
                           user_na_to_na = FALSE,
