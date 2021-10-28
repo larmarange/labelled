@@ -141,6 +141,9 @@ with values should be used for conversion.</p>
 
     <pre class="usage"><span class='fu'>to_character</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
+<span class='co'># S3 method for double</span>
+<span class='fu'>to_character</span><span class='op'>(</span><span class='va'>x</span>, explicit_tagged_na <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span>
+
 <span class='co'># S3 method for haven_labelled</span>
 <span class='fu'>to_character</span><span class='op'>(</span>
   <span class='va'>x</span>,
@@ -163,6 +166,10 @@ with values should be used for conversion.</p>
       <td><p>Other arguments passed down to method.</p></td>
     </tr>
     <tr>
+      <th>explicit_tagged_na</th>
+      <td><p>should tagged NA be kept?</p></td>
+    </tr>
+    <tr>
       <th>levels</th>
       <td><p>What should be used for the factor levels: the labels, the values or labels prefixed with values?</p></td>
     </tr>
@@ -173,10 +180,6 @@ with values should be used for conversion.</p>
     <tr>
       <th>user_na_to_na</th>
       <td><p>user defined missing values into NA?</p></td>
-    </tr>
-    <tr>
-      <th>explicit_tagged_na</th>
-      <td><p>should tagged NA be kept?</p></td>
     </tr>
     </table>
 
