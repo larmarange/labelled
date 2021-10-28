@@ -508,6 +508,18 @@ test_that("to_character default (100%)", {
   expect_equal(to_character(x), as.character(x))
 })
 
+test_that("to_character.double and explicit_tagged_na", {
+  x <- c(1:3, tagged_na("a"), tagged_na("z"))
+  expect_equal(
+    to_character(x),
+    c("1", "2", "3", NA, NA)
+  )
+  expect_equal(
+    to_character(x, explicit_tagged_na = TRUE),
+    c("1", "2", "3", "NA(a)", "NA(z)")
+  )
+})
+
 # set_value_labels and add_value_labels ----------------------------------------------
 
 test_that("set_value_labels replaces all value labels", {
