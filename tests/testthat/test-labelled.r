@@ -363,6 +363,17 @@ test_that("sort_val_labels works properly", {
   expect_equal(val_labels(sdf), list(lab = c(maybe = 2, no = 3, yes = 1), num = NULL))
   sdf <- sort_val_labels(df, "l", TRUE)
   expect_equal(val_labels(sdf), list(lab = c(yes = 1, no = 3, maybe = 2), num = NULL))
+
+  x <- c(2, tagged_na("z"), 1, tagged_na("a"))
+  val_labels(x) <- c(no = 2, refused = tagged_na("z"), yes = 1, dk = tagged_na("a"))
+  expect_equivalent(
+    sort_val_labels(x, according_to = "v") %>% val_labels() %>% format_tagged_na() %>% trimws(),
+    c("1", "2", "NA(a)", "NA(z)")
+  )
+  expect_equivalent(
+    sort_val_labels(x, according_to = "l") %>% val_labels() %>% names(),
+    c("dk", "no", "refused", "yes")
+  )
 })
 
 # remove_user_na --------------------------------------------------------------
