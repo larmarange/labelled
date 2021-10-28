@@ -185,9 +185,9 @@ will not be automatically converted to <code>NA</code>, except if you specify
 or use <code><a href='to_factor.html'>unlabelled()</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>x1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled_spss.html'>labelled_spss</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>Good <span class='op'>=</span> <span class='fl'>1</span>, Bad <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span>, na_values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>9</span>, <span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='var_label.html'>var_label</a></span><span class='op'>(</span><span class='va'>x1</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='st'>"A variable"</span>
-<span class='va'>x1</span>
+    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled_spss.html'>labelled_spss</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>Good <span class='op'>=</span> <span class='fl'>1</span>, Bad <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span>, na_values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>9</span>, <span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='var_label.html'>var_label</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='st'>"A variable"</span>
+<span class='va'>x</span>
 </div><div class='output co'>#&gt; &lt;labelled_spss&lt;integer&gt;[10]&gt;: A variable
 #&gt;  [1]  1  2  3  4  5  6  7  8  9 10
 #&gt; Missing values: 9, 10
@@ -196,14 +196,18 @@ or use <code><a href='to_factor.html'>unlabelled()</a></code>.</p>
 #&gt;  value label
 #&gt;      1  Good
 #&gt;      8   Bad</div><div class='input'>
-<span class='va'>x2</span> <span class='op'>&lt;-</span> <span class='fu'>remove_labels</span><span class='op'>(</span><span class='va'>x1</span><span class='op'>)</span>
-<span class='va'>x2</span>
-</div><div class='output co'>#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</div><div class='input'><span class='va'>x3</span> <span class='op'>&lt;-</span> <span class='fu'>remove_labels</span><span class='op'>(</span><span class='va'>x1</span>, user_na_to_na <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='va'>x3</span>
-</div><div class='output co'>#&gt;  [1]  1  2  3  4  5  6  7  8 NA NA</div><div class='input'><span class='va'>x4</span> <span class='op'>&lt;-</span> <span class='fu'>remove_user_na</span><span class='op'>(</span><span class='va'>x1</span>, user_na_to_na <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='va'>x4</span>
+<span class='fu'>remove_labels</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</div><div class='input'><span class='fu'>remove_labels</span><span class='op'>(</span><span class='va'>x</span>, user_na_to_na <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1]  1  2  3  4  5  6  7  8 NA NA</div><div class='input'><span class='fu'>remove_user_na</span><span class='op'>(</span><span class='va'>x</span>, user_na_to_na <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; &lt;labelled&lt;integer&gt;[10]&gt;: A variable
 #&gt;  [1]  1  2  3  4  5  6  7  8 NA NA
+#&gt; 
+#&gt; Labels:
+#&gt;  value label
+#&gt;      1  Good
+#&gt;      8   Bad</div><div class='input'><span class='fu'>remove_user_na</span><span class='op'>(</span><span class='va'>x</span>, user_na_to_tagged_na <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>'x' has been converted into a double vector.</span></div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[10]&gt;: A variable
+#&gt;  [1]     1     2     3     4     5     6     7     8 NA(a) NA(b)
 #&gt; 
 #&gt; Labels:
 #&gt;  value label
