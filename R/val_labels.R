@@ -358,7 +358,7 @@ sort_val_labels.haven_labelled <- function(x, according_to = c("values",
   labels <- val_labels(x)
   if (!is.null(labels)) {
     if (according_to == "values")
-      labels <- sort(labels, decreasing = decreasing)
+      labels <- sort_tagged_na(labels, decreasing = decreasing)
     if (according_to == "labels")
       labels <- labels[order(names(labels), decreasing = decreasing)]
     val_labels(x) <- labels
