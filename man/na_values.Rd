@@ -8,6 +8,7 @@
 \alias{set_na_values}
 \alias{set_na_range}
 \alias{is_user_na}
+\alias{is_regular_na}
 \alias{user_na_to_na}
 \alias{user_na_to_tagged_na}
 \title{Get / Set SPSS missing values}
@@ -25,6 +26,8 @@ set_na_values(.data, ..., .values = NA, .strict = TRUE)
 set_na_range(.data, ..., .values = NA, .strict = TRUE)
 
 is_user_na(x)
+
+is_regular_na(x)
 
 user_na_to_na(x)
 
@@ -65,7 +68,9 @@ See \code{\link[haven:labelled_spss]{haven::labelled_spss()}} for a presentation
 
 Note that \code{\link[base:NA]{base::is.na()}} will return \code{TRUE} for user defined missing values. It will
 also return \code{TRUE} for regular \code{NA} values. If you want to test if a specific
-value is a user NA but not a regular \code{NA}, use \code{is_user_na()}.
+value is a user NA but not a regular \code{NA}, use \code{is_user_na()}. If you want to
+test if a value is a regular \code{NA} but not a user NA, not a tagged NA, use
+\code{is_regular_na()}.
 
 You can use \code{\link[=user_na_to_na]{user_na_to_na()}} to convert user defined missing values to regular \code{NA}.
 Note that any value label attached to a user defined missing value will be lost.
@@ -101,6 +106,16 @@ na_range(v)
 v
 user_na_to_na(v)
 user_na_to_tagged_na(v)
+
+# it is not recommended to mix user NAs and tagged NAs
+x <- c(NA, 9, tagged_na("a"))
+na_values(x) <- 9
+x
+is.na(x)
+is_user_na(x)
+is_tagged_na(x)
+is_regular_na(x)
+
 if (require(dplyr)) {
   # setting value labels
   df <- tibble(s1 = c("M", "M", "F", "F"), s2 = c(1, 1, 2, 9)) \%>\%

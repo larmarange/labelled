@@ -10,7 +10,9 @@
 #'
 #' Note that [base::is.na()] will return `TRUE` for user defined missing values. It will
 #' also return `TRUE` for regular `NA` values. If you want to test if a specific
-#' value is a user NA but not a regular `NA`, use `is_user_na()`.
+#' value is a user NA but not a regular `NA`, use `is_user_na()`. If you want to
+#' test if a value is a regular `NA` but not a user NA, not a tagged NA, use
+#' `is_regular_na()`.
 #'
 #' You can use [user_na_to_na()] to convert user defined missing values to regular `NA`.
 #' Note that any value label attached to a user defined missing value will be lost.
@@ -48,6 +50,16 @@
 #' v
 #' user_na_to_na(v)
 #' user_na_to_tagged_na(v)
+#'
+#' # it is not recommended to mix user NAs and tagged NAs
+#' x <- c(NA, 9, tagged_na("a"))
+#' na_values(x) <- 9
+#' x
+#' is.na(x)
+#' is_user_na(x)
+#' is_tagged_na(x)
+#' is_regular_na(x)
+#'
 #' @export
 na_values <- function(x) {
   UseMethod("na_values")
@@ -289,6 +301,12 @@ test_if_user_na <- function(val, na_values = NULL, na_range = NULL) {
 #' @export
 is_user_na <- function(x) {
   test_if_user_na(x, na_values(x), na_range(x))
+}
+
+#' @rdname na_values
+#' @export
+is_regular_na <- function(x) {
+  is.na(x) & !is_user_na(x) & !is_tagged_na(x)
 }
 
 #' @rdname na_values

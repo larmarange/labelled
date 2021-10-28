@@ -120,4 +120,11 @@ test_that("about user NAs", {
     user_na_to_na(letters),
     letters
   )
+
+  x <- c(NA, 9, tagged_na("a"))
+  na_values(x) <- 9
+  expect_equal(is.na(x), c(T, T, T))
+  expect_equal(is_regular_na(x), c(T, F, F))
+  expect_equal(is_user_na(x), c(F, T, F))
+  expect_equal(is_tagged_na(x), c(F, F, T))
 })

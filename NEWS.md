@@ -15,7 +15,7 @@
 
 **other improvements:**
 
-* new function `is_user_na()`
+* new functions `is_user_na()` and `is_regular_na()`
 * new set of unit tests (#99)
 * trying to apply a value label, `na_range()` or `na_values()` to a factor 
   will now produce an error
