@@ -25,7 +25,7 @@ test_that("recode_if() works as expected", {
   )
 })
 
-test_that("expect_if() preserve value and variable labels", {
+test_that("recode_if() preserve value and variable labels", {
   x <- labelled_spss(c(1,2,2,8,9), c(yes = 1, no = 2), na_values = 9)
   var_label(x) <- "variable label"
   y <- x %>% recode_if(unclass(x) == 8, NA)
@@ -35,7 +35,7 @@ test_that("expect_if() preserve value and variable labels", {
   expect_equal(na_range(x), na_range(y))
 })
 
-test_that("expect_if checks", {
+test_that("recode_if() checks", {
   expect_error(
     1:3 %>% recode_if(c(TRUE, FALSE, NA), 9L),
     NA
