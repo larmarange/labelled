@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Turn a named vector into a vector of names prefixed by values — names_prefixed_by_values • labelled</title>
+<title>Convert tagged NAs into user NAs — tagged_na_to_user_na • labelled</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Turn a named vector into a vector of names prefixed by values — names_prefixed_by_values" />
-<meta property="og:description" content="Turn a named vector into a vector of names prefixed by values" />
+<meta property="og:title" content="Convert tagged NAs into user NAs — tagged_na_to_user_na" />
+<meta property="og:description" content="tagged_na_to_user_na() is the opposite of user_na_to_tagged_na() and convert
+tagged NA into user defined missing values (see labelled_spss())." />
 
 
 
@@ -126,53 +127,80 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Turn a named vector into a vector of names prefixed by values</h1>
-    <small class="dont-index">Source: <a href='https://github.com/larmarange/labelled/blob/master/R/val_labels.R'><code>R/val_labels.R</code></a></small>
-    <div class="hidden name"><code>names_prefixed_by_values.Rd</code></div>
+    <h1>Convert tagged NAs into user NAs</h1>
+    <small class="dont-index">Source: <a href='https://github.com/larmarange/labelled/blob/master/R/tagged_na.R'><code>R/tagged_na.R</code></a></small>
+    <div class="hidden name"><code>tagged_na_to_user_na.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Turn a named vector into a vector of names prefixed by values</p>
+    <p><code>tagged_na_to_user_na()</code> is the opposite of <code><a href='na_values.html'>user_na_to_tagged_na()</a></code> and convert
+tagged <code>NA</code> into user defined missing values (see <code><a href='https://haven.tidyverse.org/reference/labelled_spss.html'>labelled_spss()</a></code>).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>names_prefixed_by_values</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>tagged_na_to_user_na</span><span class='op'>(</span><span class='va'>x</span>, user_na_start <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>vector to be prefixed</p></td>
+      <td><p>a vector or a data frame</p></td>
+    </tr>
+    <tr>
+      <th>user_na_start</th>
+      <td><p>minimum value of the new user na, if <code>NULL</code>,
+computed automatically (maximum of observed values + 1)</p></td>
     </tr>
     </table>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
-  c1 <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"M"</span>, <span class='st'>"M"</span>, <span class='st'>"F"</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>Male <span class='op'>=</span> <span class='st'>"M"</span>, Female <span class='op'>=</span> <span class='st'>"F"</span><span class='op'>)</span><span class='op'>)</span>,
-  c2 <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>Yes <span class='op'>=</span> <span class='fl'>1</span>, No <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"a"</span><span class='op'>)</span>, <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"z"</span><span class='op'>)</span>, <span class='cn'>NA</span><span class='op'>)</span>
+<span class='va'>x</span>
+</div><div class='output co'>#&gt; [1]  1  2  3  4  5 NA NA NA</div><div class='input'><span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>print_tagged_na</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1]     1     2     3     4     5 NA(a) NA(z)    NA</div><div class='input'><span class='fu'>tagged_na_to_user_na</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; &lt;labelled_spss&lt;double&gt;[8]&gt;
+#&gt; [1]  1  2  3  4  5  6  7 NA
+#&gt; Missing range:  [6, 7]
+#&gt; 
+#&gt; Labels:
+#&gt;  value label
+#&gt;      6 NA(a)
+#&gt;      7 NA(z)</div><div class='input'><span class='fu'>tagged_na_to_user_na</span><span class='op'>(</span><span class='va'>x</span>, user_na_start <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; &lt;labelled_spss&lt;double&gt;[8]&gt;
+#&gt; [1]  1  2  3  4  5 10 11 NA
+#&gt; Missing range:  [10, 11]
+#&gt; 
+#&gt; Labels:
+#&gt;  value label
+#&gt;     10 NA(a)
+#&gt;     11 NA(z)</div><div class='input'>
+<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"r"</span><span class='op'>)</span>, <span class='fl'>0</span>, <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"d"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='val_labels.html'>val_labels</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
+  no <span class='op'>=</span> <span class='fl'>0</span>, yes <span class='op'>=</span> <span class='fl'>1</span>,
+  <span class='st'>"don't know"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"d"</span><span class='op'>)</span>,
+  refusal <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"r"</span><span class='op'>)</span>
 <span class='op'>)</span>
-<span class='fu'><a href='val_labels.html'>val_labels</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>$</span><span class='va'>c1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   Male Female 
-#&gt;    "M"    "F" </div><div class='input'><span class='fu'><a href='val_labels.html'>val_labels</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>$</span><span class='va'>c1</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>names_prefixed_by_values</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;         Male       Female 
-#&gt;   "[M] Male" "[F] Female" </div><div class='input'><span class='fu'><a href='val_labels.html'>val_labels</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $c1
-#&gt;   Male Female 
-#&gt;    "M"    "F" 
+<span class='va'>y</span>
+</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[6]&gt;
+#&gt; [1]     1     0     1 NA(r)     0 NA(d)
 #&gt; 
-#&gt; $c2
-#&gt; Yes  No 
-#&gt;   1   2 
-#&gt; </div><div class='input'><span class='fu'><a href='val_labels.html'>val_labels</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>names_prefixed_by_values</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $c1
-#&gt;         Male       Female 
-#&gt;   "[M] Male" "[F] Female" 
+#&gt; Labels:
+#&gt;  value      label
+#&gt;      0         no
+#&gt;      1        yes
+#&gt;  NA(d) don't know
+#&gt;  NA(r)    refusal</div><div class='input'><span class='fu'>tagged_na_to_user_na</span><span class='op'>(</span><span class='va'>y</span>, user_na_start <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; &lt;labelled_spss&lt;double&gt;[6]&gt;
+#&gt; [1] 1 0 1 9 0 8
+#&gt; Missing range:  [8, 9]
 #&gt; 
-#&gt; $c2
-#&gt;       Yes        No 
-#&gt; "[1] Yes"  "[2] No" 
-#&gt; </div></pre>
+#&gt; Labels:
+#&gt;  value      label
+#&gt;      0         no
+#&gt;      1        yes
+#&gt;      8 don't know
+#&gt;      9    refusal</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -249,6 +249,148 @@ variables.</p>
 
     <p>François Briatte <a href='mailto:f.briatte@gmail.com'>f.briatte@gmail.com</a>, Joseph Larmarange <a href='mailto:joseph@larmarange.net'>joseph@larmarange.net</a></p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  pos variable     label col_type values    
+#&gt;  1   Sepal.Length —     dbl                
+#&gt;  2   Sepal.Width  —     dbl                
+#&gt;  3   Petal.Length —     dbl                
+#&gt;  4   Petal.Width  —     dbl                
+#&gt;  5   Species      —     fct      setosa    
+#&gt;                                  versicolor
+#&gt;                                  virginica </div><div class='input'>
+<span class='co'># Look for a single keyword.</span>
+<span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span>, <span class='st'>"petal"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  pos variable     label col_type values
+#&gt;  3   Petal.Length —     dbl            
+#&gt;  4   Petal.Width  —     dbl            </div><div class='input'><span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span>, <span class='st'>"s"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  pos variable     label col_type values    
+#&gt;  1   Sepal.Length —     dbl                
+#&gt;  2   Sepal.Width  —     dbl                
+#&gt;  5   Species      —     fct      setosa    
+#&gt;                                  versicolor
+#&gt;                                  virginica </div><div class='input'><span class='va'>iris</span> <span class='op'>%&gt;%</span> <span class='fu'>look_for_and_select</span><span class='op'>(</span><span class='st'>"s"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   Sepal.Length Sepal.Width Species
+#&gt; 1          5.1         3.5  setosa
+#&gt; 2          4.9         3.0  setosa
+#&gt; 3          4.7         3.2  setosa
+#&gt; 4          4.6         3.1  setosa
+#&gt; 5          5.0         3.6  setosa
+#&gt; 6          5.4         3.9  setosa</div><div class='input'>
+<span class='co'># Look for with a regular expression</span>
+<span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span>, <span class='st'>"petal|species"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  pos variable     label col_type values    
+#&gt;  3   Petal.Length —     dbl                
+#&gt;  4   Petal.Width  —     dbl                
+#&gt;  5   Species      —     fct      setosa    
+#&gt;                                  versicolor
+#&gt;                                  virginica </div><div class='input'><span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span>, <span class='st'>"s$"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  pos variable label col_type values    
+#&gt;  5   Species  —     fct      setosa    
+#&gt;                              versicolor
+#&gt;                              virginica </div><div class='input'>
+<span class='co'># Look for with several keywords</span>
+<span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span>, <span class='st'>"pet"</span>, <span class='st'>"sp"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  pos variable     label col_type values    
+#&gt;  3   Petal.Length —     dbl                
+#&gt;  4   Petal.Width  —     dbl                
+#&gt;  5   Species      —     fct      setosa    
+#&gt;                                  versicolor
+#&gt;                                  virginica </div><div class='input'><span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span>, <span class='st'>"pet"</span>, <span class='st'>"sp"</span>, <span class='st'>"width"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  pos variable     label col_type values    
+#&gt;  2   Sepal.Width  —     dbl                
+#&gt;  3   Petal.Length —     dbl                
+#&gt;  4   Petal.Width  —     dbl                
+#&gt;  5   Species      —     fct      setosa    
+#&gt;                                  versicolor
+#&gt;                                  virginica </div><div class='input'><span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span>, <span class='st'>"Pet"</span>, <span class='st'>"sp"</span>, <span class='st'>"width"</span>, ignore.case <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  pos variable     label col_type values
+#&gt;  3   Petal.Length —     dbl            
+#&gt;  4   Petal.Width  —     dbl            </div><div class='input'>
+<span class='co'># Look_for can search within factor levels or value labels</span>
+<span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span>, <span class='st'>"vers"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  pos variable label col_type values    
+#&gt;  5   Species  —     fct      setosa    
+#&gt;                              versicolor
+#&gt;                              virginica </div><div class='input'>
+<span class='co'># Quicker search without variable details</span>
+<span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span>, details <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  pos variable     label
+#&gt;  1   Sepal.Length —    
+#&gt;  2   Sepal.Width  —    
+#&gt;  3   Petal.Length —    
+#&gt;  4   Petal.Width  —    
+#&gt;  5   Species      —    </div><div class='input'>
+<span class='co'># To obtain more details about each variable</span>
+<span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span>, details <span class='op'>=</span> <span class='st'>"full"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  pos variable     label col_type values          
+#&gt;  1   Sepal.Length —     dbl      range: 4.3 - 7.9
+#&gt;  2   Sepal.Width  —     dbl      range: 2 - 4.4  
+#&gt;  3   Petal.Length —     dbl      range: 1 - 6.9  
+#&gt;  4   Petal.Width  —     dbl      range: 0.1 - 2.5
+#&gt;  5   Species      —     fct      setosa          
+#&gt;                                  versicolor      
+#&gt;                                  virginica       </div><div class='input'>
+<span class='co'># To deactivate default printing, convert to tibble</span>
+<span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span>, details <span class='op'>=</span> <span class='st'>"full"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>as_tibble</a></span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5 × 13</span>
+#&gt;     pos variable     label col_type levels  value_labels class   type  na_values
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;named&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;named list&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;named&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;named l&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span>     1 Sepal.Length <span style='color: #BB0000;'>NA</span>    dbl      <span style='color: #949494;'>&lt;NULL&gt;</span>  <span style='color: #949494;'>&lt;NULL&gt;</span>       <span style='color: #949494;'>&lt;chr [</span>… doub… <span style='color: #949494;'>&lt;NULL&gt;</span>   
+#&gt; <span style='color: #BCBCBC;'>2</span>     2 Sepal.Width  <span style='color: #BB0000;'>NA</span>    dbl      <span style='color: #949494;'>&lt;NULL&gt;</span>  <span style='color: #949494;'>&lt;NULL&gt;</span>       <span style='color: #949494;'>&lt;chr [</span>… doub… <span style='color: #949494;'>&lt;NULL&gt;</span>   
+#&gt; <span style='color: #BCBCBC;'>3</span>     3 Petal.Length <span style='color: #BB0000;'>NA</span>    dbl      <span style='color: #949494;'>&lt;NULL&gt;</span>  <span style='color: #949494;'>&lt;NULL&gt;</span>       <span style='color: #949494;'>&lt;chr [</span>… doub… <span style='color: #949494;'>&lt;NULL&gt;</span>   
+#&gt; <span style='color: #BCBCBC;'>4</span>     4 Petal.Width  <span style='color: #BB0000;'>NA</span>    dbl      <span style='color: #949494;'>&lt;NULL&gt;</span>  <span style='color: #949494;'>&lt;NULL&gt;</span>       <span style='color: #949494;'>&lt;chr [</span>… doub… <span style='color: #949494;'>&lt;NULL&gt;</span>   
+#&gt; <span style='color: #BCBCBC;'>5</span>     5 Species      <span style='color: #BB0000;'>NA</span>    fct      <span style='color: #949494;'>&lt;chr [</span>… <span style='color: #949494;'>&lt;NULL&gt;</span>       <span style='color: #949494;'>&lt;chr [</span>… inte… <span style='color: #949494;'>&lt;NULL&gt;</span>   
+#&gt; <span style='color: #949494;'># … with 4 more variables: na_range &lt;named list&gt;, unique_values &lt;int&gt;,</span>
+#&gt; <span style='color: #949494;'>#   n_na &lt;int&gt;, range &lt;named list&gt;</span></div><div class='input'>
+<span class='co'># To convert named lists into character vectors</span>
+<span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>convert_list_columns_to_character</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5 × 6</span>
+#&gt;     pos variable     label col_type levels                          value_labels
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                           <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       
+#&gt; <span style='color: #BCBCBC;'>1</span>     1 Sepal.Length <span style='color: #BB0000;'>NA</span>    dbl      <span style='color: #949494;'>""</span>                              <span style='color: #949494;'>""</span>          
+#&gt; <span style='color: #BCBCBC;'>2</span>     2 Sepal.Width  <span style='color: #BB0000;'>NA</span>    dbl      <span style='color: #949494;'>""</span>                              <span style='color: #949494;'>""</span>          
+#&gt; <span style='color: #BCBCBC;'>3</span>     3 Petal.Length <span style='color: #BB0000;'>NA</span>    dbl      <span style='color: #949494;'>""</span>                              <span style='color: #949494;'>""</span>          
+#&gt; <span style='color: #BCBCBC;'>4</span>     4 Petal.Width  <span style='color: #BB0000;'>NA</span>    dbl      <span style='color: #949494;'>""</span>                              <span style='color: #949494;'>""</span>          
+#&gt; <span style='color: #BCBCBC;'>5</span>     5 Species      <span style='color: #BB0000;'>NA</span>    fct      <span style='color: #949494;'>"</span>setosa; versicolor; virginica<span style='color: #949494;'>"</span> <span style='color: #949494;'>""</span>          </div><div class='input'>
+<span class='co'># Long format with one row per factor and per value label</span>
+<span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>lookfor_to_long_format</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 7 × 6</span>
+#&gt;     pos variable     label col_type levels     value_labels
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       
+#&gt; <span style='color: #BCBCBC;'>1</span>     1 Sepal.Length <span style='color: #BB0000;'>NA</span>    dbl      <span style='color: #BB0000;'>NA</span>         <span style='color: #BB0000;'>NA</span>          
+#&gt; <span style='color: #BCBCBC;'>2</span>     2 Sepal.Width  <span style='color: #BB0000;'>NA</span>    dbl      <span style='color: #BB0000;'>NA</span>         <span style='color: #BB0000;'>NA</span>          
+#&gt; <span style='color: #BCBCBC;'>3</span>     3 Petal.Length <span style='color: #BB0000;'>NA</span>    dbl      <span style='color: #BB0000;'>NA</span>         <span style='color: #BB0000;'>NA</span>          
+#&gt; <span style='color: #BCBCBC;'>4</span>     4 Petal.Width  <span style='color: #BB0000;'>NA</span>    dbl      <span style='color: #BB0000;'>NA</span>         <span style='color: #BB0000;'>NA</span>          
+#&gt; <span style='color: #BCBCBC;'>5</span>     5 Species      <span style='color: #BB0000;'>NA</span>    fct      setosa     <span style='color: #BB0000;'>NA</span>          
+#&gt; <span style='color: #BCBCBC;'>6</span>     5 Species      <span style='color: #BB0000;'>NA</span>    fct      versicolor <span style='color: #BB0000;'>NA</span>          
+#&gt; <span style='color: #BCBCBC;'>7</span>     5 Species      <span style='color: #BB0000;'>NA</span>    fct      virginica  <span style='color: #BB0000;'>NA</span>          </div><div class='input'>
+<span class='co'># Both functions can be combined</span>
+<span class='fu'>look_for</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>lookfor_to_long_format</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>convert_list_columns_to_character</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 7 × 6</span>
+#&gt;     pos variable     label col_type levels     value_labels
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       
+#&gt; <span style='color: #BCBCBC;'>1</span>     1 Sepal.Length <span style='color: #BB0000;'>NA</span>    dbl      <span style='color: #BB0000;'>NA</span>         <span style='color: #BB0000;'>NA</span>          
+#&gt; <span style='color: #BCBCBC;'>2</span>     2 Sepal.Width  <span style='color: #BB0000;'>NA</span>    dbl      <span style='color: #BB0000;'>NA</span>         <span style='color: #BB0000;'>NA</span>          
+#&gt; <span style='color: #BCBCBC;'>3</span>     3 Petal.Length <span style='color: #BB0000;'>NA</span>    dbl      <span style='color: #BB0000;'>NA</span>         <span style='color: #BB0000;'>NA</span>          
+#&gt; <span style='color: #BCBCBC;'>4</span>     4 Petal.Width  <span style='color: #BB0000;'>NA</span>    dbl      <span style='color: #BB0000;'>NA</span>         <span style='color: #BB0000;'>NA</span>          
+#&gt; <span style='color: #BCBCBC;'>5</span>     5 Species      <span style='color: #BB0000;'>NA</span>    fct      setosa     <span style='color: #BB0000;'>NA</span>          
+#&gt; <span style='color: #BCBCBC;'>6</span>     5 Species      <span style='color: #BB0000;'>NA</span>    fct      versicolor <span style='color: #BB0000;'>NA</span>          
+#&gt; <span style='color: #BCBCBC;'>7</span>     5 Species      <span style='color: #BB0000;'>NA</span>    fct      virginica  <span style='color: #BB0000;'>NA</span>          </div><div class='input'>
+<span class='co'># Labelled data</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>fertility</span>, package <span class='op'>=</span> <span class='st'>"questionr"</span><span class='op'>)</span>
+  <span class='fu'>look_for</span><span class='op'>(</span><span class='va'>children</span><span class='op'>)</span>
+  <span class='fu'>look_for</span><span class='op'>(</span><span class='va'>children</span>, <span class='st'>"id"</span><span class='op'>)</span>
+  <span class='va'>children</span> <span class='op'>%&gt;%</span> <span class='fu'>look_for_and_select</span><span class='op'>(</span><span class='st'>"id"</span><span class='op'>)</span>
+  <span class='fu'>look_for</span><span class='op'>(</span><span class='va'>children</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>lookfor_to_long_format</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>convert_list_columns_to_character</span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

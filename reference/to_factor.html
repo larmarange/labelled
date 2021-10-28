@@ -157,6 +157,7 @@ method provided by <span class="pkg">haven</span> package.</p>
   user_na_to_na <span class='op'>=</span> <span class='cn'>FALSE</span>,
   strict <span class='op'>=</span> <span class='cn'>FALSE</span>,
   unclass <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  explicit_tagged_na <span class='op'>=</span> <span class='cn'>FALSE</span>,
   <span class='va'>...</span>
 <span class='op'>)</span>
 
@@ -172,6 +173,7 @@ method provided by <span class="pkg">haven</span> package.</p>
   drop_unused_labels <span class='op'>=</span> <span class='cn'>FALSE</span>,
   strict <span class='op'>=</span> <span class='cn'>FALSE</span>,
   unclass <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  explicit_tagged_na <span class='op'>=</span> <span class='cn'>FALSE</span>,
   <span class='va'>...</span>
 <span class='op'>)</span>
 
@@ -225,6 +227,11 @@ method provided by <span class="pkg">haven</span> package.</p>
       <th>unclass</th>
       <td><p>If not converted to a factor (when <code>strict = TRUE</code>),
 convert to a character or a numeric factor by applying <code><a href='https://rdrr.io/r/base/class.html'>base::unclass()</a></code>?</p></td>
+    </tr>
+    <tr>
+      <th>explicit_tagged_na</th>
+      <td><p>Should tagged NA (cf. <code><a href='https://haven.tidyverse.org/reference/tagged_na.html'>haven::tagged_na()</a></code>) be
+kept as explicit factor levels?</p></td>
     </tr>
     <tr>
       <th>labelled_only</th>

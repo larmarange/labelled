@@ -139,13 +139,18 @@ to remove value labels, <code>remove_user_na()</code> to remove user defined mis
 and <code>remove_labels()</code> to remove all.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>remove_labels</span><span class='op'>(</span><span class='va'>x</span>, user_na_to_na <span class='op'>=</span> <span class='cn'>FALSE</span>, keep_var_label <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>remove_labels</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  user_na_to_na <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  keep_var_label <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  user_na_to_tagged_na <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
 
 <span class='fu'>remove_var_label</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
 <span class='fu'>remove_val_labels</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
-<span class='fu'>remove_user_na</span><span class='op'>(</span><span class='va'>x</span>, user_na_to_na <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+<span class='fu'>remove_user_na</span><span class='op'>(</span><span class='va'>x</span>, user_na_to_na <span class='op'>=</span> <span class='cn'>FALSE</span>, user_na_to_tagged_na <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -161,6 +166,12 @@ and <code>remove_labels()</code> to remove all.</p>
     <tr>
       <th>keep_var_label</th>
       <td><p>Keep variable label?</p></td>
+    </tr>
+    <tr>
+      <th>user_na_to_tagged_na</th>
+      <td><p>Convert user defined missing values into tagged <code>NA</code>?
+It could be applied only to numeric vectors. Note that integer labelled vectors
+will be converted to double labelled vectors.</p></td>
     </tr>
     </table>
 
@@ -186,7 +197,7 @@ or use <code><a href='to_factor.html'>unlabelled()</a></code>.</p>
 #&gt;      1  Good
 #&gt;      8   Bad</div><div class='input'>
 <span class='va'>x2</span> <span class='op'>&lt;-</span> <span class='fu'>remove_labels</span><span class='op'>(</span><span class='va'>x1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Some user defined missing values have been removed but not converted to NA.</span></div><div class='input'><span class='va'>x2</span>
+<span class='va'>x2</span>
 </div><div class='output co'>#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</div><div class='input'><span class='va'>x3</span> <span class='op'>&lt;-</span> <span class='fu'>remove_labels</span><span class='op'>(</span><span class='va'>x1</span>, user_na_to_na <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 <span class='va'>x3</span>
 </div><div class='output co'>#&gt;  [1]  1  2  3  4  5  6  7  8 NA NA</div><div class='input'><span class='va'>x4</span> <span class='op'>&lt;-</span> <span class='fu'>remove_user_na</span><span class='op'>(</span><span class='va'>x1</span>, user_na_to_na <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
