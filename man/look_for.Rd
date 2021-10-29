@@ -63,7 +63,7 @@ displays all variables if not specified}
 
 \item{labels}{whether or not to search variable labels (descriptions); \code{TRUE} by default}
 
-\item{values}{whether or not to search within values (factor levels or value lables); \code{TRUE} by default}
+\item{values}{whether or not to search within values (factor levels or value labels); \code{TRUE} by default}
 
 \item{ignore.case}{whether or not to make the keywords case sensitive;
 \code{TRUE} by default (case is ignored during matching)}

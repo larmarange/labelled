@@ -8,9 +8,9 @@ vignette: >
   \usepackage[utf8]{inputenc}
 ---
 
-In base **R**, missing values are indicated using the specific value `NA`. **Regular NAs** could be used with any type of fector (double, integer, character, factor, Date, etc.).
+In base **R**, missing values are indicated using the specific value `NA`. **Regular NAs** could be used with any type of vector (double, integer, character, factor, Date, etc.).
 
-Other statistical softwares have implemented ways to differentiate several types of missing values.
+Other statistical software have implemented ways to differentiate several types of missing values.
 
 **Stata** and **SAS** have a system of **tagged NAs**, where NA values are tagged with a letter (from a to z). **SPSS** allows users to indicate that certain non-missing values should be treated in some analysis as missing (**user NAs**). The `haven` package implements **tagged NAs** and **user NAs** in order to keep this information when importing files from **Stata**, **SAS** or **SPSS**.
 

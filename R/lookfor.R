@@ -13,7 +13,7 @@
 #' formatted as a regular expression suitable for a [base::grep()] pattern, or a vector of keywords;
 #' displays all variables if not specified
 #' @param labels whether or not to search variable labels (descriptions); `TRUE` by default
-#' @param values whether or not to search within values (factor levels or value lables); `TRUE` by default
+#' @param values whether or not to search within values (factor levels or value labels); `TRUE` by default
 #' @param ignore.case whether or not to make the keywords case sensitive;
 #' `TRUE` by default (case is ignored during matching)
 #' @param details add details about each variable (full details could be time consuming for big data frames, `FALSE` is equivalent to `"none"` and `TRUE` to `"full"`)
