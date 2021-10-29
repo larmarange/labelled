@@ -130,6 +130,8 @@ sort_tagged_na <- function(x, decreasing = FALSE, na.last = TRUE,
 #' [tagged_na_to_user_na()] is the opposite of [user_na_to_tagged_na()] and convert
 #' tagged `NA` into user defined missing values (see [labelled_spss()]).
 #'
+#' [tagged_na_to_regular_na()] converts tagged NAs into regular NAs.
+#'
 #' @param x a vector or a data frame
 #' @param user_na_start minimum value of the new user na, if `NULL`,
 #' computed automatically (maximum of observed values + 1)
@@ -195,8 +197,6 @@ tagged_na_to_user_na.data.frame <- function(x, user_na_start = NULL) {
 
 #' @rdname tagged_na_to_user_na
 #' @export
-#' @description
-#' `tagged_na_to_regular_na()` converts tagged NAs into regular NAs.
 tagged_na_to_regular_na <- function(x) {
   UseMethod("tagged_na_to_regular_na")
 }
