@@ -63,3 +63,13 @@ test_that("tagged_na_to_user_na() works as expected", {
     )
   )
 })
+
+test_that("tagged_na_to_regular_na() works as expected", {
+  y <- c(1, 0, 1, tagged_na("r"), 0, tagged_na("d"))
+  val_labels(y) <- c(
+    no = 0, yes = 1,
+    "don't know" = tagged_na("d"),
+    refusal = tagged_na("r")
+  )
+  expect_false(any(tagged_na_to_regular_na(y) %>% is_tagged_na()))
+})

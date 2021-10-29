@@ -149,6 +149,8 @@ sort_tagged_na <- function(x, decreasing = FALSE, na.last = TRUE,
 #' )
 #' y
 #' tagged_na_to_user_na(y, user_na_start = 8)
+#' tagged_na_to_regular_na(y)
+#' tagged_na_to_regular_na(y) %>% is_tagged_na()
 tagged_na_to_user_na <- function(x, user_na_start = NULL) {
   UseMethod("tagged_na_to_user_na")
 }
@@ -190,3 +192,30 @@ tagged_na_to_user_na.data.frame <- function(x, user_na_start = NULL) {
   x[] <- lapply(x, tagged_na_to_user_na, user_na_start = user_na_start)
   x
 }
+
+#' @rdname tagged_na_to_user_na
+#' @export
+#' @description
+#' `tagged_na_to_regular_na()` converts tagged NAs into regular NAs.
+tagged_na_to_regular_na <- function(x) {
+  UseMethod("tagged_na_to_regular_na")
+}
+
+#' @export
+tagged_na_to_regular_na.default <- function(x) {
+  # do nothing
+  x
+}
+
+#' @export
+tagged_na_to_regular_na.double <- function(x) {
+  x[is_tagged_na(x)] <- NA
+  x
+}
+
+#' @export
+tagged_na_to_regular_na.data.frame <- function(x) {
+  x[] <- lapply(x, tagged_na_to_regular_na)
+  x
+}
+

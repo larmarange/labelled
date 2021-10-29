@@ -2,9 +2,12 @@
 % Please edit documentation in R/tagged_na.R
 \name{tagged_na_to_user_na}
 \alias{tagged_na_to_user_na}
+\alias{tagged_na_to_regular_na}
 \title{Convert tagged NAs into user NAs}
 \usage{
 tagged_na_to_user_na(x, user_na_start = NULL)
+
+tagged_na_to_regular_na(x)
 }
 \arguments{
 \item{x}{a vector or a data frame}
@@ -15,6 +18,8 @@ computed automatically (maximum of observed values + 1)}
 \description{
 \code{\link[=tagged_na_to_user_na]{tagged_na_to_user_na()}} is the opposite of \code{\link[=user_na_to_tagged_na]{user_na_to_tagged_na()}} and convert
 tagged \code{NA} into user defined missing values (see \code{\link[=labelled_spss]{labelled_spss()}}).
+
+\code{tagged_na_to_regular_na()} converts tagged NAs into regular NAs.
 }
 \examples{
 x <- c(1:5, tagged_na("a"), tagged_na("z"), NA)
@@ -31,4 +36,6 @@ val_labels(y) <- c(
 )
 y
 tagged_na_to_user_na(y, user_na_start = 8)
+tagged_na_to_regular_na(y)
+tagged_na_to_regular_na(y) \%>\% is_tagged_na()
 }
