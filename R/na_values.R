@@ -287,12 +287,14 @@ set_na_range <- function(.data, ..., .values = NA, .strict = TRUE) {
 
 # internal function to test if a value is user_na
 test_if_user_na <- function(val, na_values = NULL, na_range = NULL) {
+  if (inherits(val, "haven_labelled"))
+    val <- unclass(val)
   miss <- rep.int(FALSE, length(val))
   if (!is.null(na_values)) {
     miss <- miss | val %in% na_values
   }
-  if (!is.null(na_range)) {
-    miss <- miss | (val >= na_range[1] & val <= na_range[2])
+  if (!is.null(na_range) & is.numeric(val)) {
+    miss <- miss | (val >= na_range[1] & val <= na_range[2] & !is.na(val))
   }
   miss
 }
