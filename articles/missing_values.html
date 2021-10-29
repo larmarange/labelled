@@ -99,8 +99,8 @@
 
     
     
-<p>In base <strong>R</strong>, missing values are indicated using the specific value <code>NA</code>. <strong>Regular NAs</strong> could be used with any type of fector (double, integer, character, factor, Date, etc.).</p>
-<p>Other statistical softwares have implemented ways to differentiate several types of missing values.</p>
+<p>In base <strong>R</strong>, missing values are indicated using the specific value <code>NA</code>. <strong>Regular NAs</strong> could be used with any type of vector (double, integer, character, factor, Date, etc.).</p>
+<p>Other statistical software have implemented ways to differentiate several types of missing values.</p>
 <p><strong>Stata</strong> and <strong>SAS</strong> have a system of <strong>tagged NAs</strong>, where NA values are tagged with a letter (from a to z). <strong>SPSS</strong> allows users to indicate that certain non-missing values should be treated in some analysis as missing (<strong>user NAs</strong>). The <code>haven</code> package implements <strong>tagged NAs</strong> and <strong>user NAs</strong> in order to keep this information when importing files from <strong>Stata</strong>, <strong>SAS</strong> or <strong>SPSS</strong>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://larmarange.github.io/labelled/">labelled</a></span><span class="op">)</span></code></pre></div>
