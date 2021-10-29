@@ -10,6 +10,7 @@
 \alias{is_user_na}
 \alias{is_regular_na}
 \alias{user_na_to_na}
+\alias{user_na_to_regular_na}
 \alias{user_na_to_tagged_na}
 \title{Get / Set SPSS missing values}
 \usage{
@@ -30,6 +31,8 @@ is_user_na(x)
 is_regular_na(x)
 
 user_na_to_na(x)
+
+user_na_to_regular_na(x)
 
 user_na_to_tagged_na(x)
 }
@@ -74,6 +77,7 @@ test if a value is a regular \code{NA} but not a user NA, not a tagged NA, use
 
 You can use \code{\link[=user_na_to_na]{user_na_to_na()}} to convert user defined missing values to regular \code{NA}.
 Note that any value label attached to a user defined missing value will be lost.
+\code{\link[=user_na_to_regular_na]{user_na_to_regular_na()}} is a synonym of \code{\link[=user_na_to_na]{user_na_to_na()}}.
 
 The method \code{\link[=user_na_to_tagged_na]{user_na_to_tagged_na()}} will convert user defined missing values
 into \code{\link[haven:tagged_na]{haven::tagged_na()}}, preserving value labels. Please note that \code{\link[haven:tagged_na]{haven::tagged_na()}}

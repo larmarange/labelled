@@ -16,6 +16,7 @@
 #'
 #' You can use [user_na_to_na()] to convert user defined missing values to regular `NA`.
 #' Note that any value label attached to a user defined missing value will be lost.
+#' [user_na_to_regular_na()] is a synonym of [user_na_to_na()].
 #'
 #' The method [user_na_to_tagged_na()] will convert user defined missing values
 #' into [haven::tagged_na()], preserving value labels. Please note that [haven::tagged_na()]
@@ -316,6 +317,10 @@ is_regular_na <- function(x) {
 user_na_to_na <- function(x) {
   UseMethod("user_na_to_na")
 }
+
+#' @rdname na_values
+#' @export
+user_na_to_regular_na <- user_na_to_na
 
 #' @export
 user_na_to_na.default <- function(x) {
