@@ -117,7 +117,7 @@ is_tagged_na(x)
 is_regular_na(x)
 
 if (require(dplyr)) {
-  # setting value labels
+  # setting value label and user NAs
   df <- tibble(s1 = c("M", "M", "F", "F"), s2 = c(1, 1, 2, 9)) \%>\%
     set_value_labels(s2 = c(yes = 1, no = 2)) \%>\%
     set_na_values(s2 = 9)
