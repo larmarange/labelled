@@ -135,7 +135,7 @@ tagged_na_to_regular_na(x) %>% is_tagged_na()
 ## User NAs
 
 
-`haven` introduced an `haven_labelled_spss` class to deal with user defined missing values. In such case, additional attributes will be used to indicate with values should be considered as missing, but such values will not be stored as internal `NA` values. You should note that most R function will not take this information into account. Therefore, you will have to convert missing values into `NA` if required before analysis. These defined missing values could co-exist with internal `NA` values.
+`haven` introduced an `haven_labelled_spss` class to deal with user defined missing values in a similar way as **SPSS**. In such case, additional attributes will be used to indicate with values should be considered as missing, but such values will not be stored as internal `NA` values. You should note that most R function will not take this information into account. Therefore, you will have to convert missing values into `NA` if required before analysis. These defined missing values could co-exist with internal `NA` values.
 
 ### Creation
 
