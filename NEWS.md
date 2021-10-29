@@ -1,4 +1,4 @@
-# labelled (development version)
+# labelled 2.9.0
 
 **look_for() improvements:**
 
