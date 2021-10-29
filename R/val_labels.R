@@ -62,7 +62,7 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
 
 #' @export
 `val_labels<-.numeric` <- function(x, value) {
-  if (!is.null(value)) {
+  if (!is.null(value) & length(value) > 0) {
     x <- labelled(x, value, label = var_label(x))
   }
   x
@@ -70,7 +70,7 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
 
 #' @export
 `val_labels<-.character` <- function(x, value) {
-  if (!is.null(value)) {
+  if (!is.null(value) & length(value) > 0) {
     x <- labelled(x, value, label = var_label(x))
   }
   x
@@ -78,6 +78,8 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
 
 #' @export
 `val_labels<-.haven_labelled` <- function(x, value) {
+  if (length(value) == 0)
+    value <- NULL
   if (is.null(value)) {
     x <- unclass(x)
     attr(x, "labels") <- NULL
@@ -89,6 +91,8 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
 
 #' @export
 `val_labels<-.haven_labelled_spss` <- function(x, value) {
+  if (length(value) == 0)
+    value <- NULL
   if (is.null(value) & is.null(attr(x, "na_values")) & is.null(attr(x, "na_range"))) {
     x <- unclass(x)
     attr(x, "labels") <- NULL
