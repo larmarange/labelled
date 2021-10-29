@@ -210,6 +210,10 @@ tagged_na_to_regular_na.default <- function(x) {
 #' @export
 tagged_na_to_regular_na.double <- function(x) {
   x[is_tagged_na(x)] <- NA
+  # removing value labels attached to tagged NAs, if any
+  vl <- val_labels(x)
+  if (any(is_tagged_na(vl)))
+    val_labels(x) <- vl[!is_tagged_na(vl)]
   x
 }
 
