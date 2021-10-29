@@ -153,6 +153,8 @@
 
 <span class='fu'>user_na_to_na</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
+<span class='fu'>user_na_to_regular_na</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
 <span class='fu'>user_na_to_tagged_na</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -206,7 +208,8 @@ value is a user NA but not a regular <code>NA</code>, use <code>is_user_na()</co
 test if a value is a regular <code>NA</code> but not a user NA, not a tagged NA, use
 <code>is_regular_na()</code>.</p>
 <p>You can use <code>user_na_to_na()</code> to convert user defined missing values to regular <code>NA</code>.
-Note that any value label attached to a user defined missing value will be lost.</p>
+Note that any value label attached to a user defined missing value will be lost.
+<code>user_na_to_regular_na()</code> is a synonym of <code>user_na_to_na()</code>.</p>
 <p>The method <code>user_na_to_tagged_na()</code> will convert user defined missing values
 into <code><a href='https://haven.tidyverse.org/reference/tagged_na.html'>haven::tagged_na()</a></code>, preserving value labels. Please note that <code><a href='https://haven.tidyverse.org/reference/tagged_na.html'>haven::tagged_na()</a></code>
 are defined only for double vectors. Therefore, integer <code>haven_labelled_spss</code>
