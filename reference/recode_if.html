@@ -165,36 +165,38 @@ either the same length as <code>x</code>, or length 1.</p></td>
 labels are preserved unchanged.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>v</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>2</span>,<span class='fl'>9</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>yes <span class='op'>=</span> <span class='fl'>1</span>, no <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>v</span> <span class='op'>%&gt;%</span> <span class='fu'>recode_if</span><span class='op'>(</span><span class='va'>v</span> <span class='op'>==</span> <span class='fl'>9</span>, <span class='cn'>NA</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[4]&gt;
-#&gt; [1]  1  2  2 NA
-#&gt; 
-#&gt; Labels:
-#&gt;  value label
-#&gt;      1   yes
-#&gt;      2    no</div><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>s1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"M"</span>, <span class='st'>"M"</span>, <span class='st'>"F"</span><span class='op'>)</span>, s2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-    <span class='fu'><a href='val_labels.html'>set_value_labels</a></span><span class='op'>(</span>s1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>Male <span class='op'>=</span> <span class='st'>"M"</span>, Female <span class='op'>=</span> <span class='st'>"F"</span><span class='op'>)</span>, s2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>A <span class='op'>=</span> <span class='fl'>1</span>, B <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-    <span class='fu'><a href='var_label.html'>set_variable_labels</a></span><span class='op'>(</span>s1 <span class='op'>=</span> <span class='st'>"Gender"</span>, s2 <span class='op'>=</span> <span class='st'>"Group"</span><span class='op'>)</span>
-
-  <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='va'>df</span> <span class='op'>%&gt;%</span>
-    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>
-      s3 <span class='op'>=</span> <span class='va'>s2</span> <span class='op'>%&gt;%</span> <span class='fu'>recode_if</span><span class='op'>(</span><span class='va'>s1</span> <span class='op'>==</span> <span class='st'>"F"</span>, <span class='fl'>2</span><span class='op'>)</span>,
-      s4 <span class='op'>=</span> <span class='va'>s2</span> <span class='op'>%&gt;%</span> <span class='fu'>recode_if</span><span class='op'>(</span><span class='va'>s1</span> <span class='op'>==</span> <span class='st'>"M"</span>, <span class='va'>s2</span> <span class='op'>+</span> <span class='fl'>10</span><span class='op'>)</span>
-    <span class='op'>)</span>
-  <span class='va'>df</span>
-  <span class='va'>df</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='look_for.html'>look_for</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div><div class='output co'>#&gt;  pos variable label  col_type values    
-#&gt;  1   s1       Gender chr+lbl  [M] Male  
-#&gt;                               [F] Female
-#&gt;  2   s2       Group  dbl+lbl  [1] A     
-#&gt;                               [2] B     
-#&gt;  3   s3       Group  dbl+lbl  [1] A     
-#&gt;                               [2] B     
-#&gt;  4   s4       Group  dbl+lbl  [1] A     
-#&gt;                               [2] B     </div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>v</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>2</span>,<span class='fl'>9</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>yes <span class='op'>=</span> <span class='fl'>1</span>, no <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>v</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'>recode_if</span><span class='op'>(</span><span class='va'>v</span> <span class='op'>==</span> <span class='fl'>9</span>, <span class='cn'>NA</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;labelled&lt;double&gt;[4]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1]  1  2  2 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Labels:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  value label</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      1   yes</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      2    no</span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>s1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"M"</span>, <span class='st'>"M"</span>, <span class='st'>"F"</span><span class='op'>)</span>, s2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span class='r-in'>    <span class='fu'><a href='val_labels.html'>set_value_labels</a></span><span class='op'>(</span>s1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>Male <span class='op'>=</span> <span class='st'>"M"</span>, Female <span class='op'>=</span> <span class='st'>"F"</span><span class='op'>)</span>, s2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>A <span class='op'>=</span> <span class='fl'>1</span>, B <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span class='r-in'>    <span class='fu'><a href='var_label.html'>set_variable_labels</a></span><span class='op'>(</span>s1 <span class='op'>=</span> <span class='st'>"Gender"</span>, s2 <span class='op'>=</span> <span class='st'>"Group"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'>  <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='va'>df</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span class='r-in'>    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span></span>
+<span class='r-in'>      s3 <span class='op'>=</span> <span class='va'>s2</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'>recode_if</span><span class='op'>(</span><span class='va'>s1</span> <span class='op'>==</span> <span class='st'>"F"</span>, <span class='fl'>2</span><span class='op'>)</span>,</span>
+<span class='r-in'>      s4 <span class='op'>=</span> <span class='va'>s2</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'>recode_if</span><span class='op'>(</span><span class='va'>s1</span> <span class='op'>==</span> <span class='st'>"M"</span>, <span class='va'>s2</span> <span class='op'>+</span> <span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-in'>    <span class='op'>)</span></span>
+<span class='r-in'>  <span class='va'>df</span></span>
+<span class='r-in'>  <span class='va'>df</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='look_for.html'>look_for</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  pos variable label  col_type values    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  1   s1       Gender chr+lbl  [M] Male  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                               [F] Female</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  2   s2       Group  dbl+lbl  [1] A     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                               [2] B     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  3   s3       Group  dbl+lbl  [1] A     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                               [2] B     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  4   s4       Group  dbl+lbl  [1] A     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                               [2] B     </span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

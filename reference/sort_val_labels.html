@@ -159,48 +159,53 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>v</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>maybe <span class='op'>=</span> <span class='fl'>2</span>, yes <span class='op'>=</span> <span class='fl'>1</span>, no <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>v</span>
-</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[3]&gt;
-#&gt; [1] 1 2 3
-#&gt; 
-#&gt; Labels:
-#&gt;  value label
-#&gt;      2 maybe
-#&gt;      1   yes
-#&gt;      3    no</div><div class='input'><span class='fu'>sort_val_labels</span><span class='op'>(</span><span class='va'>v</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[3]&gt;
-#&gt; [1] 1 2 3
-#&gt; 
-#&gt; Labels:
-#&gt;  value label
-#&gt;      1   yes
-#&gt;      2 maybe
-#&gt;      3    no</div><div class='input'><span class='fu'>sort_val_labels</span><span class='op'>(</span><span class='va'>v</span>, decreasing <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[3]&gt;
-#&gt; [1] 1 2 3
-#&gt; 
-#&gt; Labels:
-#&gt;  value label
-#&gt;      3    no
-#&gt;      2 maybe
-#&gt;      1   yes</div><div class='input'><span class='fu'>sort_val_labels</span><span class='op'>(</span><span class='va'>v</span>, <span class='st'>'l'</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[3]&gt;
-#&gt; [1] 1 2 3
-#&gt; 
-#&gt; Labels:
-#&gt;  value label
-#&gt;      2 maybe
-#&gt;      3    no
-#&gt;      1   yes</div><div class='input'><span class='fu'>sort_val_labels</span><span class='op'>(</span><span class='va'>v</span>, <span class='st'>'l'</span>, <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[3]&gt;
-#&gt; [1] 1 2 3
-#&gt; 
-#&gt; Labels:
-#&gt;  value label
-#&gt;      1   yes
-#&gt;      3    no
-#&gt;      2 maybe</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>v</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>maybe <span class='op'>=</span> <span class='fl'>2</span>, yes <span class='op'>=</span> <span class='fl'>1</span>, no <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>v</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;labelled&lt;double&gt;[3]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 1 2 3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Labels:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  value label</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      2 maybe</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      1   yes</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      3    no</span>
+<span class='r-in'><span class='fu'>sort_val_labels</span><span class='op'>(</span><span class='va'>v</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;labelled&lt;double&gt;[3]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 1 2 3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Labels:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  value label</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      1   yes</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      2 maybe</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      3    no</span>
+<span class='r-in'><span class='fu'>sort_val_labels</span><span class='op'>(</span><span class='va'>v</span>, decreasing <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;labelled&lt;double&gt;[3]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 1 2 3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Labels:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  value label</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      3    no</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      2 maybe</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      1   yes</span>
+<span class='r-in'><span class='fu'>sort_val_labels</span><span class='op'>(</span><span class='va'>v</span>, <span class='st'>'l'</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;labelled&lt;double&gt;[3]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 1 2 3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Labels:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  value label</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      2 maybe</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      3    no</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      1   yes</span>
+<span class='r-in'><span class='fu'>sort_val_labels</span><span class='op'>(</span><span class='va'>v</span>, <span class='st'>'l'</span>, <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;labelled&lt;double&gt;[3]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 1 2 3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Labels:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  value label</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      1   yes</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      3    no</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      2 maybe</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

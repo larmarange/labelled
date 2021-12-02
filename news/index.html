@@ -175,7 +175,7 @@
 <code><a href="../reference/look_for.html">look_for()</a></code> could be time consuming for big data frames. Now, by default, only basic details of each variable are computed. You can compute all details with <code>details = "full"</code> (<a href='https://github.com/larmarange/labelled/issues/77'>#77</a>)</li>
 <li>printing of <code><a href="../reference/look_for.html">look_for()</a></code> results has been updated and do not rely anymore on <code>pillar</code> (<a href='https://github.com/larmarange/labelled/issues/85'>#85</a>)</li>
 <li>
-<code><a href="../reference/to_labelled.html">to_labelled()</a></code> can properly manage factors whose levels are coded as “[code] level”, as produced by <code><a href="../reference/to_factor.html">to_factor(levels = "prefixed")</a></code> (<a href='https://github.com/larmarange/labelled/issues/74'>#74</a> <a href='https://github.com/courtiol'>@courtiol</a>)</li>
+<code><a href="../reference/to_labelled.html">to_labelled()</a></code> can properly manage factors whose levels are coded as “[code] level”, as produced by <code>to_factor(levels = "prefixed")</code> (<a href='https://github.com/larmarange/labelled/issues/74'>#74</a> <a href='https://github.com/courtiol'>@courtiol</a>)</li>
 <li>new function <code><a href="../reference/is_prefixed.html">is_prefixed()</a></code> to check if a factor is prefixed</li>
 <li>bug fix for <code>na_range&lt;-</code> and <code>na_values&lt;-</code> when applied to a data.frame (<a href='https://github.com/larmarange/labelled/issues/80'>#80</a>)</li>
 </ul>
@@ -231,7 +231,7 @@
 <code>user_na_to_na</code> argument has been added to <code><a href="../reference/to_character.html">to_character.haven_labelled()</a></code>
 </li>
 <li>
-<code><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></code> is now imported from <code>dplyr</code>
+<code>%&gt;%</code> is now imported from <code>dplyr</code>
 </li>
 <li>a cheatsheet has been added (<a href='https://github.com/larmarange/labelled/issues/47'>#47</a>)</li>
 <li>internal documentation is now using <strong>roxygen2</strong> markdown support</li>
@@ -401,7 +401,7 @@
 <a href="#labelled-023" class="anchor"></a>labelled 0.2.3<small> 2016-06-21 </small>
 </h1>
 <ul>
-<li>new functions <code><a href="../reference/var_label.html">set_variable_labels()</a></code>, <code><a href="../reference/val_labels.html">set_value_labels()</a></code>, <code><a href="../reference/val_labels.html">add_value_labels()</a></code> and <code><a href="../reference/val_labels.html">remove_value_labels()</a></code> compatible with <code><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></code>.</li>
+<li>new functions <code><a href="../reference/var_label.html">set_variable_labels()</a></code>, <code><a href="../reference/val_labels.html">set_value_labels()</a></code>, <code><a href="../reference/val_labels.html">add_value_labels()</a></code> and <code><a href="../reference/val_labels.html">remove_value_labels()</a></code> compatible with <code>%&gt;%</code>.</li>
 <li>new functions <code>remove_val_labels</code> and <code><a href="../reference/remove_labels.html">remove_var_label()</a></code>.</li>
 <li>bug fix in <code>to_character.labelled()</code> when applied to data frames.</li>
 </ul>

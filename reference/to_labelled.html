@@ -212,97 +212,109 @@ it to a labelled vector with same values and labels.</p>
 memisc::importer, <code><a href='to_factor.html'>to_factor()</a></code>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='co'># from foreign</span>
-  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://svn.r-project.org/R-packages/trunk/foreign/'>foreign</a></span><span class='op'>)</span>
-  <span class='va'>sav</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"files"</span>, <span class='st'>"electric.sav"</span>, package <span class='op'>=</span> <span class='st'>"foreign"</span><span class='op'>)</span>
-  <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'>to_labelled</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/foreign/man/read.spss.html'>read.spss</a></span><span class='op'>(</span>
-    <span class='va'>sav</span>,
-    to.data.frame <span class='op'>=</span> <span class='cn'>FALSE</span>,
-    use.value.labels <span class='op'>=</span> <span class='cn'>FALSE</span>,
-    use.missings <span class='op'>=</span> <span class='cn'>FALSE</span>
- <span class='op'>)</span><span class='op'>)</span>
-
- <span class='co'># from memisc</span>
- <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>memisc</span><span class='op'>)</span>
- <span class='va'>nes1948.por</span> <span class='op'>&lt;-</span> <span class='fu'>UnZip</span><span class='op'>(</span><span class='st'>'anes/NES1948.ZIP'</span>, <span class='st'>'NES1948.POR'</span>, package<span class='op'>=</span><span class='st'>'memisc'</span><span class='op'>)</span>
- <span class='va'>nes1948</span> <span class='op'>&lt;-</span> <span class='fu'>spss.portable.file</span><span class='op'>(</span><span class='va'>nes1948.por</span><span class='op'>)</span>
- <span class='va'>ds</span> <span class='op'>&lt;-</span> <span class='fu'>as.data.set</span><span class='op'>(</span><span class='va'>nes1948</span><span class='op'>)</span>
- <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'>to_labelled</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>)</span>
-<span class='op'>}</span>
-
-<span class='co'># Converting factors to labelled vectors</span>
-<span class='va'>f</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"yes"</span>, <span class='st'>"yes"</span>, <span class='st'>"no"</span>, <span class='st'>"no"</span>, <span class='st'>"don't know"</span>, <span class='st'>"no"</span>, <span class='st'>"yes"</span>, <span class='st'>"don't know"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'>to_labelled</span><span class='op'>(</span><span class='va'>f</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[8]&gt;
-#&gt; [1] 3 3 2 2 1 2 3 1
-#&gt; 
-#&gt; Labels:
-#&gt;  value      label
-#&gt;      1 don't know
-#&gt;      2         no
-#&gt;      3        yes</div><div class='input'><span class='fu'>to_labelled</span><span class='op'>(</span><span class='va'>f</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"yes"</span> <span class='op'>=</span> <span class='fl'>1</span>, <span class='st'>"no"</span> <span class='op'>=</span> <span class='fl'>2</span>, <span class='st'>"don't know"</span> <span class='op'>=</span> <span class='fl'>9</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[8]&gt;
-#&gt; [1] 1 1 2 2 9 2 1 9
-#&gt; 
-#&gt; Labels:
-#&gt;  value      label
-#&gt;      1        yes
-#&gt;      2         no
-#&gt;      9 don't know</div><div class='input'><span class='fu'>to_labelled</span><span class='op'>(</span><span class='va'>f</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"yes"</span> <span class='op'>=</span> <span class='fl'>1</span>, <span class='st'>"no"</span> <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[8]&gt;
-#&gt; [1]  1  1  2  2 NA  2  1 NA
-#&gt; 
-#&gt; Labels:
-#&gt;  value label
-#&gt;      1   yes
-#&gt;      2    no</div><div class='input'><span class='fu'>to_labelled</span><span class='op'>(</span><span class='va'>f</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"yes"</span> <span class='op'>=</span> <span class='st'>"Y"</span>, <span class='st'>"no"</span> <span class='op'>=</span> <span class='st'>"N"</span>, <span class='st'>"don't know"</span> <span class='op'>=</span> <span class='st'>"DK"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;labelled&lt;character&gt;[8]&gt;
-#&gt; [1] Y  Y  N  N  DK N  Y  DK
-#&gt; 
-#&gt; Labels:
-#&gt;  value      label
-#&gt;      Y        yes
-#&gt;      N         no
-#&gt;     DK don't know</div><div class='input'>
-<span class='va'>s1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'M'</span>, <span class='st'>'M'</span>, <span class='st'>'F'</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>Male <span class='op'>=</span> <span class='st'>'M'</span>, Female <span class='op'>=</span> <span class='st'>'F'</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>labels</span> <span class='op'>&lt;-</span> <span class='fu'><a href='val_labels.html'>val_labels</a></span><span class='op'>(</span><span class='va'>s1</span><span class='op'>)</span>
-<span class='va'>f1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='to_factor.html'>to_factor</a></span><span class='op'>(</span><span class='va'>s1</span><span class='op'>)</span>
-<span class='va'>f1</span>
-</div><div class='output co'>#&gt; [1] Male   Male   Female
-#&gt; Levels: Male Female</div><div class='input'>
-<span class='fu'>to_labelled</span><span class='op'>(</span><span class='va'>f1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[3]&gt;
-#&gt; [1] 1 1 2
-#&gt; 
-#&gt; Labels:
-#&gt;  value  label
-#&gt;      1   Male
-#&gt;      2 Female</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span><span class='va'>s1</span>, <span class='fu'>to_labelled</span><span class='op'>(</span><span class='va'>f1</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>to_labelled</span><span class='op'>(</span><span class='va'>f1</span>, <span class='va'>labels</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;labelled&lt;character&gt;[3]&gt;
-#&gt; [1] M M F
-#&gt; 
-#&gt; Labels:
-#&gt;  value  label
-#&gt;      M   Male
-#&gt;      F Female</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span><span class='va'>s1</span>, <span class='fu'>to_labelled</span><span class='op'>(</span><span class='va'>f1</span>, <span class='va'>labels</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
-<span class='va'>l</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>9</span>, <span class='fl'>2</span>, <span class='fl'>1</span>, <span class='fl'>9</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"yes"</span> <span class='op'>=</span> <span class='fl'>1</span>, <span class='st'>"no"</span> <span class='op'>=</span> <span class='fl'>2</span>, <span class='st'>"don't know"</span> <span class='op'>=</span> <span class='fl'>9</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>f</span> <span class='op'>&lt;-</span> <span class='fu'><a href='to_factor.html'>to_factor</a></span><span class='op'>(</span><span class='va'>l</span>, levels <span class='op'>=</span> <span class='st'>"p"</span><span class='op'>)</span>
-<span class='va'>f</span>
-</div><div class='output co'>#&gt; [1] [1] yes        [1] yes        [2] no         [2] no         [9] don't know
-#&gt; [6] [2] no         [1] yes        [9] don't know
-#&gt; Levels: [1] yes [2] no [9] don't know</div><div class='input'><span class='fu'>to_labelled</span><span class='op'>(</span><span class='va'>f</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[8]&gt;
-#&gt; [1] 1 1 2 2 9 2 1 9
-#&gt; 
-#&gt; Labels:
-#&gt;  value      label
-#&gt;      1        yes
-#&gt;      2         no
-#&gt;      9 don't know</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span><span class='fu'>to_labelled</span><span class='op'>(</span><span class='va'>f</span><span class='op'>)</span>, <span class='va'>l</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] TRUE</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='co'># from foreign</span></span>
+<span class='r-in'>  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://svn.r-project.org/R-packages/trunk/foreign/'>foreign</a></span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='va'>sav</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"files"</span>, <span class='st'>"electric.sav"</span>, package <span class='op'>=</span> <span class='st'>"foreign"</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'>to_labelled</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/foreign/man/read.spss.html'>read.spss</a></span><span class='op'>(</span></span>
+<span class='r-in'>    <span class='va'>sav</span>,</span>
+<span class='r-in'>    to.data.frame <span class='op'>=</span> <span class='cn'>FALSE</span>,</span>
+<span class='r-in'>    use.value.labels <span class='op'>=</span> <span class='cn'>FALSE</span>,</span>
+<span class='r-in'>    use.missings <span class='op'>=</span> <span class='cn'>FALSE</span></span>
+<span class='r-in'> <span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'> <span class='co'># from memisc</span></span>
+<span class='r-in'> <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://memisc.elff.eu'>memisc</a></span><span class='op'>)</span></span>
+<span class='r-in'> <span class='va'>nes1948.por</span> <span class='op'>&lt;-</span> <span class='fu'>UnZip</span><span class='op'>(</span><span class='st'>'anes/NES1948.ZIP'</span>, <span class='st'>'NES1948.POR'</span>, package<span class='op'>=</span><span class='st'>'memisc'</span><span class='op'>)</span></span>
+<span class='r-in'> <span class='va'>nes1948</span> <span class='op'>&lt;-</span> <span class='fu'>spss.portable.file</span><span class='op'>(</span><span class='va'>nes1948.por</span><span class='op'>)</span></span>
+<span class='r-in'> <span class='va'>ds</span> <span class='op'>&lt;-</span> <span class='fu'>as.data.set</span><span class='op'>(</span><span class='va'>nes1948</span><span class='op'>)</span></span>
+<span class='r-in'> <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'>to_labelled</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Converting factors to labelled vectors</span></span>
+<span class='r-in'><span class='va'>f</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"yes"</span>, <span class='st'>"yes"</span>, <span class='st'>"no"</span>, <span class='st'>"no"</span>, <span class='st'>"don't know"</span>, <span class='st'>"no"</span>, <span class='st'>"yes"</span>, <span class='st'>"don't know"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>to_labelled</span><span class='op'>(</span><span class='va'>f</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;labelled&lt;double&gt;[8]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 3 3 2 2 1 2 3 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Labels:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  value      label</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      1 don't know</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      2         no</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      3        yes</span>
+<span class='r-in'><span class='fu'>to_labelled</span><span class='op'>(</span><span class='va'>f</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"yes"</span> <span class='op'>=</span> <span class='fl'>1</span>, <span class='st'>"no"</span> <span class='op'>=</span> <span class='fl'>2</span>, <span class='st'>"don't know"</span> <span class='op'>=</span> <span class='fl'>9</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;labelled&lt;double&gt;[8]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 1 1 2 2 9 2 1 9</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Labels:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  value      label</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      1        yes</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      2         no</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      9 don't know</span>
+<span class='r-in'><span class='fu'>to_labelled</span><span class='op'>(</span><span class='va'>f</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"yes"</span> <span class='op'>=</span> <span class='fl'>1</span>, <span class='st'>"no"</span> <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;labelled&lt;double&gt;[8]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1]  1  1  2  2 NA  2  1 NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Labels:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  value label</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      1   yes</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      2    no</span>
+<span class='r-in'><span class='fu'>to_labelled</span><span class='op'>(</span><span class='va'>f</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"yes"</span> <span class='op'>=</span> <span class='st'>"Y"</span>, <span class='st'>"no"</span> <span class='op'>=</span> <span class='st'>"N"</span>, <span class='st'>"don't know"</span> <span class='op'>=</span> <span class='st'>"DK"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;labelled&lt;character&gt;[8]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] Y  Y  N  N  DK N  Y  DK</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Labels:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  value      label</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      Y        yes</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      N         no</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     DK don't know</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>s1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'M'</span>, <span class='st'>'M'</span>, <span class='st'>'F'</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>Male <span class='op'>=</span> <span class='st'>'M'</span>, Female <span class='op'>=</span> <span class='st'>'F'</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>labels</span> <span class='op'>&lt;-</span> <span class='fu'><a href='val_labels.html'>val_labels</a></span><span class='op'>(</span><span class='va'>s1</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>f1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='to_factor.html'>to_factor</a></span><span class='op'>(</span><span class='va'>s1</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>f1</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] Male   Male   Female</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Levels: Male Female</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>to_labelled</span><span class='op'>(</span><span class='va'>f1</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;labelled&lt;double&gt;[3]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 1 1 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Labels:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  value  label</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      1   Male</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      2 Female</span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span><span class='va'>s1</span>, <span class='fu'>to_labelled</span><span class='op'>(</span><span class='va'>f1</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] FALSE</span>
+<span class='r-in'><span class='fu'>to_labelled</span><span class='op'>(</span><span class='va'>f1</span>, <span class='va'>labels</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;labelled&lt;character&gt;[3]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] M M F</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Labels:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  value  label</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      M   Male</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      F Female</span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span><span class='va'>s1</span>, <span class='fu'>to_labelled</span><span class='op'>(</span><span class='va'>f1</span>, <span class='va'>labels</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] TRUE</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>l</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>9</span>, <span class='fl'>2</span>, <span class='fl'>1</span>, <span class='fl'>9</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"yes"</span> <span class='op'>=</span> <span class='fl'>1</span>, <span class='st'>"no"</span> <span class='op'>=</span> <span class='fl'>2</span>, <span class='st'>"don't know"</span> <span class='op'>=</span> <span class='fl'>9</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>f</span> <span class='op'>&lt;-</span> <span class='fu'><a href='to_factor.html'>to_factor</a></span><span class='op'>(</span><span class='va'>l</span>, levels <span class='op'>=</span> <span class='st'>"p"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>f</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] [1] yes        [1] yes        [2] no         [2] no         [9] don't know</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [6] [2] no         [1] yes        [9] don't know</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Levels: [1] yes [2] no [9] don't know</span>
+<span class='r-in'><span class='fu'>to_labelled</span><span class='op'>(</span><span class='va'>f</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;labelled&lt;double&gt;[8]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 1 1 2 2 9 2 1 9</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Labels:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  value      label</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      1        yes</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      2         no</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      9 don't know</span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span><span class='fu'>to_labelled</span><span class='op'>(</span><span class='va'>f</span><span class='op'>)</span>, <span class='va'>l</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] TRUE</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

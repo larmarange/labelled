@@ -625,7 +625,7 @@
 ##      1     a
 ##      2     b
 ##      3     c</code></pre>
-<p>Note that <code><a href="../reference/to_labelled.html">to_labelled(to_factor(v))</a></code> will not be equal to <code>v</code> due to the way factors are stored internally by <strong>R</strong>.</p>
+<p>Note that <code>to_labelled(to_factor(v))</code> will not be equal to <code>v</code> due to the way factors are stored internally by <strong>R</strong>.</p>
 <div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">v</span></code></pre></div>
 <pre><code>## &lt;labelled&lt;double&gt;[10]&gt;
@@ -771,7 +771,7 @@
     na_values <span class="op">=</span> <span class="fl">9</span>
     <span class="op">)</span>
 <span class="op">)</span>
-<span class="va">df</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>##  pos variable label col_type values 
 ##  1   a        —     dbl+lbl  [1] No 
 ##                              [2] Yes
@@ -786,7 +786,7 @@
 ##  5   e        —     dbl+lbl  [1] No 
 ##                              [2] Yes</code></pre>
 <div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span><span class="op">%&gt;%</span> <span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span><span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>##  pos variable label col_type values
 ##  1   a        —     dbl            
 ##  2   b        —     fct      No    
@@ -799,7 +799,7 @@
 ##  5   e        —     fct      No    
 ##                              Yes</code></pre>
 <div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span><span class="op">(</span><span class="va">df</span>, user_na_to_na <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span><span class="op">(</span><span class="va">df</span>, user_na_to_na <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>##  pos variable label col_type values
 ##  1   a        —     dbl            
 ##  2   b        —     fct      No    
@@ -812,7 +812,7 @@
 ##  5   e        —     fct      No    
 ##                              Yes</code></pre>
 <div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span><span class="op">(</span><span class="va">df</span>, drop_unused_labels <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span><span class="op">(</span><span class="va">df</span>, drop_unused_labels <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>##  pos variable label col_type values
 ##  1   a        —     dbl            
 ##  2   b        —     fct      No    
@@ -849,7 +849,7 @@
  <span class="op">)</span><span class="op">)</span>
 
  <span class="co"># from memisc</span>
- <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">memisc</span><span class="op">)</span>
+ <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://memisc.elff.eu">memisc</a></span><span class="op">)</span>
  <span class="va">nes1948.por</span> <span class="op">&lt;-</span> <span class="fu">UnZip</span><span class="op">(</span><span class="st">"anes/NES1948.ZIP"</span>, <span class="st">"NES1948.POR"</span>, package<span class="op">=</span><span class="st">"memisc"</span><span class="op">)</span>
  <span class="va">nes1948</span> <span class="op">&lt;-</span> <span class="fu">spss.portable.file</span><span class="op">(</span><span class="va">nes1948.por</span><span class="op">)</span>
  <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_labelled.html">to_labelled</a></span><span class="op">(</span><span class="va">nes1948</span><span class="op">)</span>
@@ -859,7 +859,7 @@
 <div id="using-labelled-with-dplyrmagrittr" class="section level2">
 <h2 class="hasAnchor">
 <a href="#using-labelled-with-dplyrmagrittr" class="anchor"></a>Using labelled with dplyr/magrittr</h2>
-<p>If you are using the <code><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></code> operator, you can use the functions <code><a href="../reference/var_label.html">set_variable_labels()</a></code>, <code><a href="../reference/val_labels.html">set_value_labels()</a></code>, <code><a href="../reference/val_labels.html">add_value_labels()</a></code> and <code><a href="../reference/val_labels.html">remove_value_labels()</a></code>.</p>
+<p>If you are using the <code>%&gt;%</code> operator, you can use the functions <code><a href="../reference/var_label.html">set_variable_labels()</a></code>, <code><a href="../reference/val_labels.html">set_value_labels()</a></code>, <code><a href="../reference/val_labels.html">add_value_labels()</a></code> and <code><a href="../reference/val_labels.html">remove_value_labels()</a></code>.</p>
 <div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></code></pre></div>
 <pre><code>## 
@@ -871,8 +871,8 @@
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
 <div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/deprecated.html">data_frame</a></span><span class="op">(</span>s1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"M"</span>, <span class="st">"M"</span>, <span class="st">"F"</span><span class="op">)</span>, s2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="../reference/var_label.html">set_variable_labels</a></span><span class="op">(</span>s1 <span class="op">=</span> <span class="st">"Sex"</span>, s2 <span class="op">=</span> <span class="st">"Question"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/deprecated.html">data_frame</a></span><span class="op">(</span>s1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"M"</span>, <span class="st">"M"</span>, <span class="st">"F"</span><span class="op">)</span>, s2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../reference/var_label.html">set_variable_labels</a></span><span class="op">(</span>s1 <span class="op">=</span> <span class="st">"Sex"</span>, s2 <span class="op">=</span> <span class="st">"Question"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/val_labels.html">set_value_labels</a></span><span class="op">(</span>s1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>Male <span class="op">=</span> <span class="st">"M"</span>, Female <span class="op">=</span> <span class="st">"F"</span><span class="op">)</span>, s2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>Yes <span class="op">=</span> <span class="fl">1</span>, No <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## Warning: `data_frame()` was deprecated in tibble 1.1.0.
 ## Please use `tibble()` instead.
@@ -889,7 +889,7 @@
 ##      2    No</code></pre>
 <p><code><a href="../reference/val_labels.html">set_value_labels()</a></code> will replace the list of value labels while <code><a href="../reference/val_labels.html">add_value_labels()</a></code> will update it.</p>
 <div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/val_labels.html">set_value_labels</a></span><span class="op">(</span>s2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>Yes <span class="op">=</span> <span class="fl">1</span>, <span class="st">"Don't know"</span> <span class="op">=</span> <span class="fl">8</span>, Unknown <span class="op">=</span> <span class="fl">9</span><span class="op">)</span><span class="op">)</span>
 <span class="va">df</span><span class="op">$</span><span class="va">s2</span></code></pre></div>
 <pre><code>## &lt;labelled&lt;double&gt;[3]&gt;: Question
@@ -901,7 +901,7 @@
 ##      8 Don't know
 ##      9    Unknown</code></pre>
 <div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/val_labels.html">add_value_labels</a></span><span class="op">(</span>s2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>No <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
 <span class="va">df</span><span class="op">$</span><span class="va">s2</span></code></pre></div>
 <pre><code>## &lt;labelled&lt;double&gt;[3]&gt;: Question
@@ -915,11 +915,11 @@
 ##      2         No</code></pre>
 <p>You can also remove some variable and/or value labels.</p>
 <div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/var_label.html">set_variable_labels</a></span><span class="op">(</span>s1 <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
 
 <span class="co"># removing one value label</span>
-<span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">%&gt;%</span>
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/val_labels.html">remove_value_labels</a></span><span class="op">(</span>s2 <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="va">df</span><span class="op">$</span><span class="va">s2</span></code></pre></div>
 <pre><code>## &lt;labelled&lt;double&gt;[3]&gt;: Question
@@ -932,7 +932,7 @@
 ##      9    Unknown</code></pre>
 <div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># removing several value labels</span>
-<span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">%&gt;%</span>
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/val_labels.html">remove_value_labels</a></span><span class="op">(</span>s2 <span class="op">=</span> <span class="fl">8</span><span class="op">:</span><span class="fl">9</span><span class="op">)</span>
 <span class="va">df</span><span class="op">$</span><span class="va">s2</span></code></pre></div>
 <pre><code>## &lt;labelled&lt;double&gt;[3]&gt;: Question
@@ -943,7 +943,7 @@
 ##      1   Yes</code></pre>
 <div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># removing all value labels</span>
-<span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">%&gt;%</span>
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/val_labels.html">set_value_labels</a></span><span class="op">(</span>s2 <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
 <span class="va">df</span><span class="op">$</span><span class="va">s2</span></code></pre></div>
 <pre><code>## [1] 1 1 2
@@ -974,7 +974,7 @@
 ## $ ideal_nb_children &lt;dbl+lbl&gt;  4,  4,  4,  4,  4,  5, 10,  5,  4,  5,  6, 10, …
 ## $ test              &lt;dbl+lbl&gt; 0, 9, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, …</code></pre>
 <div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">women</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">women</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## Rows: 2,000
 ## Columns: 17
 ## $ id_woman          &lt;dbl&gt; 391, 1643, 85, 881, 1981, 1072, 1978, 1607, 738, 165…
@@ -1017,7 +1017,7 @@
 ## $ ideal_nb_children &lt;fct&gt; 4, 4, 4, 4, 4, 5, 10, 5, 4, 5, 6, 10, 2, 6, 6, 6, 4,…
 ## $ test              &lt;fct&gt; no, missing, no, no, yes, no, no, no, no, yes, yes, …</code></pre>
 <div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">women</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_if</a></span><span class="op">(</span><span class="va">is.labelled</span>, <span class="va">to_factor</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">women</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_if</a></span><span class="op">(</span><span class="va">is.labelled</span>, <span class="va">to_factor</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## Rows: 2,000
 ## Columns: 17
 ## $ id_woman          &lt;dbl&gt; 391, 1643, 85, 881, 1981, 1072, 1978, 1607, 738, 165…
@@ -1038,7 +1038,7 @@
 ## $ ideal_nb_children &lt;fct&gt; 4, 4, 4, 4, 4, 5, 10, 5, 4, 5, 6, 10, 2, 6, 6, 6, 4,…
 ## $ test              &lt;fct&gt; no, missing, no, no, yes, no, no, no, no, yes, yes, …</code></pre>
 <div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">women</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">employed</span><span class="op">:</span><span class="va">religion</span><span class="op">)</span>, <span class="va">to_factor</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">women</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">employed</span><span class="op">:</span><span class="va">religion</span><span class="op">)</span>, <span class="va">to_factor</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## Rows: 2,000
 ## Columns: 17
 ## $ id_woman          &lt;dbl&gt; 391, 1643, 85, 881, 1981, 1072, 1978, 1607, 738, 165…

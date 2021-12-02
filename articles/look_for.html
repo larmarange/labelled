@@ -111,7 +111,7 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">iris</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">iris</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 150 × 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
@@ -258,7 +258,7 @@
 ##                                                           [1] yes            
 ##                                                           [9] missing</code></pre>
 <p>Note that <code><a href="../reference/look_for.html">lookfor()</a></code> and <code><a href="../reference/look_for.html">generate_dictionary()</a></code> are synonyms of <code><a href="../reference/look_for.html">look_for()</a></code> and works exactly in the same way.</p>
-<p>If there is not enough space to print full labels in the console, they will be truncated (truncation is indicated by a <code><a href="https://rdrr.io/r/base/tilde.html">~</a></code>).</p>
+<p>If there is not enough space to print full labels in the console, they will be truncated (truncation is indicated by a <code>~</code>).</p>
 </div>
 </div>
 <div id="searching-variables-by-key" class="section level2">
@@ -389,7 +389,7 @@
 ##                                                        [1] yes               
 ##                                                        [9] missing</code></pre>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span>, details <span class="op">=</span> <span class="st">"full"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span>, details <span class="op">=</span> <span class="st">"full"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## Rows: 17
 ## Columns: 13
@@ -413,9 +413,9 @@
 </h2>
 <p><code><a href="../reference/look_for.html">look_for()</a></code> returns a detailed tibble which is summarized before printing. To deactivate default printing and see full results, simply use <code><a href="https://tibble.tidyverse.org/reference/as_tibble.html">dplyr::as_tibble()</a></code>, <code><a href="https://pillar.r-lib.org/reference/glimpse.html">dplyr::glimpse()</a></code> or even <code><a href="https://rdrr.io/r/utils/View.html">utils::View()</a></code>.</p>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 17 × 6
 ##      pos variable          label                 col_type levels    value_labels
 ##    &lt;int&gt; &lt;chr&gt;             &lt;chr&gt;                 &lt;chr&gt;    &lt;named l&gt; &lt;named list&gt;
@@ -449,7 +449,7 @@
 <p>The tibble returned by <code><a href="../reference/look_for.html">look_for()</a></code> could be easily manipulated for advanced programming.</p>
 <p>When a column has several values for one variable (e.g. <code>levels</code> or <code>value_labels</code>), results as stored with nested named list. You can convert named lists into simpler character vectors, you can use <code><a href="../reference/look_for.html">convert_list_columns_to_character()</a></code>.</p>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/look_for.html">convert_list_columns_to_character</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/look_for.html">convert_list_columns_to_character</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 17 × 6
 ##      pos variable          label       col_type levels value_labels             
 ##    &lt;int&gt; &lt;chr&gt;             &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;                    
@@ -472,7 +472,7 @@
 ## 17    17 test              Ever teste… dbl+lbl  ""     "[0] no; [1] yes; [9] mi…</code></pre>
 <p>Alternatively, you can use <code><a href="../reference/look_for.html">lookfor_to_long_format()</a></code> to transform results into a long format with one row per factor level and per value label.</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/look_for.html">lookfor_to_long_format</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/look_for.html">lookfor_to_long_format</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 41 × 6
 ##      pos variable       label                       col_type levels value_labels
 ##    &lt;int&gt; &lt;chr&gt;          &lt;chr&gt;                       &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;       
@@ -489,8 +489,8 @@
 ## # … with 31 more rows</code></pre>
 <p>Both can be combined:</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/look_for.html">lookfor_to_long_format</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/look_for.html">lookfor_to_long_format</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="../reference/look_for.html">convert_list_columns_to_character</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 41 × 6
 ##      pos variable       label                       col_type levels value_labels

@@ -195,104 +195,110 @@ data.frame.</p>
     <p><code>set_variable_labels()</code> could be used with <span class="pkg">dplyr</span> syntax.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>var_label</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>$</span><span class='va'>Sepal.Length</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; NULL</div><div class='input'><span class='fu'>var_label</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>$</span><span class='va'>Sepal.Length</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='st'>'Length of the sepal'</span>
-<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
- <span class='fu'><a href='https://rdrr.io/r/utils/View.html'>View</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span>
-<span class='op'>}</span>
-<span class='co'># To remove a variable label</span>
-<span class='fu'>var_label</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>$</span><span class='va'>Sepal.Length</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='cn'>NULL</span>
-<span class='co'># To change several variable labels at once</span>
-<span class='fu'>var_label</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
-  <span class='st'>"sepal length"</span>, <span class='st'>"sepal width"</span>, <span class='st'>"petal length"</span>,
-  <span class='st'>"petal width"</span>, <span class='st'>"species"</span>
-<span class='op'>)</span>
-<span class='fu'>var_label</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $Sepal.Length
-#&gt; [1] "sepal length"
-#&gt; 
-#&gt; $Sepal.Width
-#&gt; [1] "sepal width"
-#&gt; 
-#&gt; $Petal.Length
-#&gt; [1] "petal length"
-#&gt; 
-#&gt; $Petal.Width
-#&gt; [1] "petal width"
-#&gt; 
-#&gt; $Species
-#&gt; [1] "species"
-#&gt; </div><div class='input'><span class='fu'>var_label</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-  Petal.Width <span class='op'>=</span> <span class='st'>"width of the petal"</span>,
-  Petal.Length <span class='op'>=</span> <span class='st'>"length of the petal"</span>
-<span class='op'>)</span>
-<span class='fu'>var_label</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $Sepal.Length
-#&gt; [1] "sepal length"
-#&gt; 
-#&gt; $Sepal.Width
-#&gt; [1] "sepal width"
-#&gt; 
-#&gt; $Petal.Length
-#&gt; [1] "length of the petal"
-#&gt; 
-#&gt; $Petal.Width
-#&gt; [1] "width of the petal"
-#&gt; 
-#&gt; $Species
-#&gt; [1] "species"
-#&gt; </div><div class='input'><span class='fu'>var_label</span><span class='op'>(</span><span class='va'>iris</span>, unlist <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;          Sepal.Length           Sepal.Width          Petal.Length 
-#&gt;        "sepal length"         "sepal width" "length of the petal" 
-#&gt;           Petal.Width               Species 
-#&gt;  "width of the petal"             "species" </div><div class='input'>
-<span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='co'># adding some variable labels</span>
-  <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>s1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"M"</span>, <span class='st'>"M"</span>, <span class='st'>"F"</span><span class='op'>)</span>, s2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-    <span class='fu'>set_variable_labels</span><span class='op'>(</span>s1 <span class='op'>=</span> <span class='st'>"Sex"</span>, s2 <span class='op'>=</span> <span class='st'>"Yes or No?"</span><span class='op'>)</span>
-  <span class='fu'>var_label</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span>
-
-  <span class='co'># removing a variable label</span>
-  <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='va'>df</span> <span class='op'>%&gt;%</span> <span class='fu'>set_variable_labels</span><span class='op'>(</span>s2 <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
-  <span class='fu'>var_label</span><span class='op'>(</span><span class='va'>df</span><span class='op'>$</span><span class='va'>s2</span><span class='op'>)</span>
-
-  <span class='co'># Set labels from dictionary, e.g. as read from external file</span>
-  <span class='co'># One description is missing, one has no match</span>
-  <span class='va'>description</span> <span class='op'>=</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
-    name <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
-      <span class='st'>"Sepal.Length"</span>, <span class='st'>"Sepal.Width"</span>, <span class='st'>"Petal.Length"</span>, <span class='st'>"Petal.Width"</span>,
-      <span class='st'>"Something"</span><span class='op'>)</span>,
-    label <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
-      <span class='st'>"Sepal length"</span>, <span class='st'>"Sepal width"</span>,  <span class='st'>"Petal length"</span>, <span class='st'>"Petal width"</span>,
-      <span class='st'>"something"</span><span class='op'>)</span>
-  <span class='op'>)</span>
-  <span class='va'>var_labels</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/setNames.html'>setNames</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>as.list</a></span><span class='op'>(</span><span class='va'>description</span><span class='op'>$</span><span class='va'>label</span><span class='op'>)</span>, <span class='va'>description</span><span class='op'>$</span><span class='va'>name</span><span class='op'>)</span>
-  <span class='va'>iris_labelled</span> <span class='op'>&lt;-</span> <span class='va'>iris</span> <span class='op'>%&gt;%</span>
-    <span class='fu'>set_variable_labels</span><span class='op'>(</span>.labels <span class='op'>=</span> <span class='va'>var_labels</span>, .strict <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-  <span class='fu'>var_label</span><span class='op'>(</span><span class='va'>iris_labelled</span><span class='op'>)</span>
-
-  <span class='co'># defining variable labels derived from variable names</span>
-  <span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/Tazinho/snakecase'>snakecase</a></span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
-    <span class='va'>iris</span> <span class='op'>&lt;-</span> <span class='va'>iris</span> <span class='op'>%&gt;%</span>
-      <span class='fu'>set_variable_labels</span><span class='op'>(</span>.labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/snakecase/man/caseconverter.html'>to_sentence_case</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-    <span class='fu'>var_label</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span>
-  <span class='op'>}</span>
-<span class='op'>}</span>
-</div><div class='output co'>#&gt; <span class='message'>Loading required package: snakecase</span></div><div class='output co'>#&gt; $Sepal.Length
-#&gt; [1] "Sepal length"
-#&gt; 
-#&gt; $Sepal.Width
-#&gt; [1] "Sepal width"
-#&gt; 
-#&gt; $Petal.Length
-#&gt; [1] "Petal length"
-#&gt; 
-#&gt; $Petal.Width
-#&gt; [1] "Petal width"
-#&gt; 
-#&gt; $Species
-#&gt; [1] "Species"
-#&gt; </div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'>var_label</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>$</span><span class='va'>Sepal.Length</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> NULL</span>
+<span class='r-in'><span class='fu'>var_label</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>$</span><span class='va'>Sepal.Length</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='st'>'Length of the sepal'</span></span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'> <span class='fu'><a href='https://rdrr.io/r/utils/View.html'>View</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'><span class='co'># To remove a variable label</span></span>
+<span class='r-in'><span class='fu'>var_label</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>$</span><span class='va'>Sepal.Length</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='cn'>NULL</span></span>
+<span class='r-in'><span class='co'># To change several variable labels at once</span></span>
+<span class='r-in'><span class='fu'>var_label</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span></span>
+<span class='r-in'>  <span class='st'>"sepal length"</span>, <span class='st'>"sepal width"</span>, <span class='st'>"petal length"</span>,</span>
+<span class='r-in'>  <span class='st'>"petal width"</span>, <span class='st'>"species"</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>var_label</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $Sepal.Length</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "sepal length"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $Sepal.Width</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "sepal width"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $Petal.Length</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "petal length"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $Petal.Width</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "petal width"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $Species</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "species"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'><span class='fu'>var_label</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span></span>
+<span class='r-in'>  Petal.Width <span class='op'>=</span> <span class='st'>"width of the petal"</span>,</span>
+<span class='r-in'>  Petal.Length <span class='op'>=</span> <span class='st'>"length of the petal"</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>var_label</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $Sepal.Length</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "sepal length"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $Sepal.Width</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "sepal width"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $Petal.Length</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "length of the petal"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $Petal.Width</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "width of the petal"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $Species</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "species"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'><span class='fu'>var_label</span><span class='op'>(</span><span class='va'>iris</span>, unlist <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>          Sepal.Length           Sepal.Width          Petal.Length </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        "sepal length"         "sepal width" "length of the petal" </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>           Petal.Width               Species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  "width of the petal"             "species" </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='co'># adding some variable labels</span></span>
+<span class='r-in'>  <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>s1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"M"</span>, <span class='st'>"M"</span>, <span class='st'>"F"</span><span class='op'>)</span>, s2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span class='r-in'>    <span class='fu'>set_variable_labels</span><span class='op'>(</span>s1 <span class='op'>=</span> <span class='st'>"Sex"</span>, s2 <span class='op'>=</span> <span class='st'>"Yes or No?"</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'>var_label</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'>  <span class='co'># removing a variable label</span></span>
+<span class='r-in'>  <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='va'>df</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'>set_variable_labels</span><span class='op'>(</span>s2 <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'>var_label</span><span class='op'>(</span><span class='va'>df</span><span class='op'>$</span><span class='va'>s2</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'>  <span class='co'># Set labels from dictionary, e.g. as read from external file</span></span>
+<span class='r-in'>  <span class='co'># One description is missing, one has no match</span></span>
+<span class='r-in'>  <span class='va'>description</span> <span class='op'>=</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span></span>
+<span class='r-in'>    name <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span></span>
+<span class='r-in'>      <span class='st'>"Sepal.Length"</span>, <span class='st'>"Sepal.Width"</span>, <span class='st'>"Petal.Length"</span>, <span class='st'>"Petal.Width"</span>,</span>
+<span class='r-in'>      <span class='st'>"Something"</span><span class='op'>)</span>,</span>
+<span class='r-in'>    label <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span></span>
+<span class='r-in'>      <span class='st'>"Sepal length"</span>, <span class='st'>"Sepal width"</span>,  <span class='st'>"Petal length"</span>, <span class='st'>"Petal width"</span>,</span>
+<span class='r-in'>      <span class='st'>"something"</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='op'>)</span></span>
+<span class='r-in'>  <span class='va'>var_labels</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/setNames.html'>setNames</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>as.list</a></span><span class='op'>(</span><span class='va'>description</span><span class='op'>$</span><span class='va'>label</span><span class='op'>)</span>, <span class='va'>description</span><span class='op'>$</span><span class='va'>name</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='va'>iris_labelled</span> <span class='op'>&lt;-</span> <span class='va'>iris</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span class='r-in'>    <span class='fu'>set_variable_labels</span><span class='op'>(</span>.labels <span class='op'>=</span> <span class='va'>var_labels</span>, .strict <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'>var_label</span><span class='op'>(</span><span class='va'>iris_labelled</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'>  <span class='co'># defining variable labels derived from variable names</span></span>
+<span class='r-in'>  <span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/Tazinho/snakecase'>snakecase</a></span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>    <span class='va'>iris</span> <span class='op'>&lt;-</span> <span class='va'>iris</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span class='r-in'>      <span class='fu'>set_variable_labels</span><span class='op'>(</span>.labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/snakecase/man/caseconverter.html'>to_sentence_case</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'>    <span class='fu'>var_label</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='op'>}</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: snakecase</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $Sepal.Length</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Sepal length"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $Sepal.Width</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Sepal width"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $Petal.Length</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Petal length"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $Petal.Width</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Petal width"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $Species</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Species"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
