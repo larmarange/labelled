@@ -148,7 +148,10 @@ remove_user_na.haven_labelled_spss <- function(x,
     if (typeof(x) == "character")
       stop("'user_na_to_tagged_na' cannot be used with character labelled vectors.")
 
-    val_to_tag <- x[is.na(x) & !is.na(unclass(x))] %>% unclass()
+    val_to_tag <- x[is.na(x) & !is.na(unclass(x))] %>%
+      unclass() %>%
+      unique() %>%
+      sort()
 
     if (length(val_to_tag) > 26) {
       warning(
