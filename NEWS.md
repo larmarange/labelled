@@ -1,5 +1,7 @@
 # labelled (development version)
 
+* bug fix in `user_na_to_tagged_na()` (#114)
+
 # labelled 2.9.0
 
 **look_for() improvements:**

@@ -72,4 +72,11 @@ test_that("tagged_na_to_regular_na() works as expected", {
     refusal = tagged_na("r")
   )
   expect_false(any(tagged_na_to_regular_na(y) %>% is_tagged_na()))
+
+  test <- rep(c(-99, -99, 3, 5, -1), 120)
+  labelled::na_values(test) <- c(-99, -1)
+  expect_warning(
+    user_na_to_tagged_na(test),
+    NA
+  )
 })
