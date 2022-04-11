@@ -32,6 +32,13 @@ test_that("look_for works with a single keyword.", {
 
 })
 
+test_that("look_for works with no single keyword.", {
+  expect_equal(
+    look_for(iris, details = TRUE)$variable,
+    names(iris)
+  )
+})
+
 test_that("look_for works with a regular expression", {
   lfi  <-  look_for(iris, "s")
   expect_identical(look_for(iris, "sepal|species"), lfi)

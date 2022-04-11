@@ -114,28 +114,31 @@ look_for <- function(data,
   if(!length(n)) stop("there are no names to search in that object")
   # search function
   keywords <- c(...)
-  if(is.null(keywords)) keywords <- names(data)
-  look <- function(x) { grep(paste(keywords, collapse="|"), x, ignore.case = ignore.case) }
-  # names search
-  x <- look(n)
-  variable <- n[x]
-  # variable labels
   l <- unlist(var_label(data))
-  if(length(l) > 0 & labels) {
-    # search labels
-    y <- look(l)
-    variable <- unique(c(variable, names(l[y])))
-  }
-  if (values) {
-    # search factor levels
-    fl <- lapply(data, levels)
-    y <- look(fl)
-    variable <- unique(c(variable, names(fl[y])))
+  if(!is.null(keywords)) {
+    look <- function(x) { grep(paste(keywords, collapse="|"), x, ignore.case = ignore.case) }
+    # names search
+    x <- look(n)
+    variable <- n[x]
+    # variable labels
+    if(length(l) > 0 & labels) {
+      # search labels
+      y <- look(l)
+      variable <- unique(c(variable, names(l[y])))
+    }
+    if (values) {
+      # search factor levels
+      fl <- lapply(data, levels)
+      y <- look(fl)
+      variable <- unique(c(variable, names(fl[y])))
 
-    # search value levels
-    vl <- lapply(data, val_labels)
-    y <- look(vl)
-    variable <- unique(c(variable, names(vl[y])))
+      # search value levels
+      vl <- lapply(data, val_labels)
+      y <- look(vl)
+      variable <- unique(c(variable, names(vl[y])))
+    }
+  } else {
+    variable <- n
   }
 
   # output
