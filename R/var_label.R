@@ -90,8 +90,10 @@ var_label.data.frame <- function(x, unlist = FALSE) {
     })
   }
 
-  if (!all(names(value) %in% names(x)))
-    stop("some variables not found in x")
+  if (!all(names(value) %in% names(x))) {
+    missing_names <- stringr::str_c(setdiff(names(value), names(x)), collapse = ", ")
+    stop("some variables not found in x:", missing_names)
+  }
 
   value <- value[names(value) %in% names(x)]
   for (var in names(value)) var_label(x[[var]]) <- value[[var]]
@@ -152,8 +154,10 @@ set_variable_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
   }
   values <- rlang::dots_list(...)
   if (length(values) > 0) {
-    if (.strict & !all(names(values) %in% names(.data)))
-      stop("some variables not found in .data")
+    if (.strict & !all(names(values) %in% names(.data))) {
+      missing_names <- stringr::str_c(setdiff(names(values), names(.data)), collapse = ", ")
+      stop("some variables not found in .data: ", missing_names)
+    }
 
     for (v in intersect(names(values), names(.data)))
       var_label(.data[[v]]) <- values[[v]]

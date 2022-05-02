@@ -112,8 +112,10 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
     })
   }
 
-  if (!all(names(value) %in% names(x)))
-    stop("some variables not found in x")
+  if (!all(names(value) %in% names(x))) {
+    missing_names <- stringr::str_c(setdiff(names(value), names(x)), collapse = ", ")
+    stop("some variables not found in x:", missing_names)
+  }
 
   for (var in names(value)) if (!is.null(value[[var]])) {
     if (mode(x[[var]]) != mode(value[[var]]))
@@ -287,8 +289,10 @@ set_value_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
     val_labels(.data) <- .labels
   }
   values <- rlang::dots_list(...)
-  if (.strict & !all(names(values) %in% names(.data)))
-    stop("some variables not found in .data")
+  if (.strict & !all(names(values) %in% names(.data))) {
+    missing_names <- stringr::str_c(setdiff(names(values), names(.data)), collapse = ", ")
+    stop("some variables not found in .data: ", missing_names)
+  }
 
   for (v in intersect(names(values), names(.data)))
     val_labels(.data[[v]]) <- values[[v]]
@@ -300,8 +304,10 @@ set_value_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
 #' @export
 add_value_labels <- function(.data, ..., .strict = TRUE) {
   values <- rlang::dots_list(...)
-  if (.strict & !all(names(values) %in% names(.data)))
-    stop("some variables not found in .data")
+  if (.strict & !all(names(values) %in% names(.data))) {
+    missing_names <- stringr::str_c(setdiff(names(values), names(.data)), collapse = ", ")
+    stop("some variables not found in .data: ", missing_names)
+  }
 
   for(v in values)
     if (is.null(names(v)) | any(names(v) == ""))
@@ -318,8 +324,10 @@ add_value_labels <- function(.data, ..., .strict = TRUE) {
 #' @export
 remove_value_labels <- function(.data, ..., .strict = TRUE) {
   values <- rlang::dots_list(...)
-  if (.strict & !all(names(values) %in% names(.data)))
-    stop("some variables not found in .data")
+  if (.strict & !all(names(values) %in% names(.data)))  {
+    missing_names <- stringr::str_c(setdiff(names(values), names(.data)), collapse = ", ")
+    stop("some variables not found in .data: ", missing_names)
+  }
 
   for (v in intersect(names(values), names(.data)))
     for (l in values[[v]])

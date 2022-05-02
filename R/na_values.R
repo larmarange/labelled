@@ -126,8 +126,10 @@ na_values.data.frame <- function(x) {
     })
   }
 
-  if (!all(names(value) %in% names(x)))
-    stop("some variables not found in x")
+  if (!all(names(value) %in% names(x))) {
+    missing_names <- stringr::str_c(setdiff(names(value), names(x)), collapse = ", ")
+    stop("some variables not found in x:", missing_names)
+  }
 
   for (var in names(value)) if (!is.null(value[[var]])) {
     if (mode(x[[var]]) != mode(value[[var]]))
@@ -209,8 +211,10 @@ na_range.data.frame <- function(x) {
     })
   }
 
-  if (!all(names(value) %in% names(x)))
-    stop("some variables not found in x")
+  if (!all(names(value) %in% names(x))) {
+    missing_names <- stringr::str_c(setdiff(names(value), names(x)), collapse = ", ")
+    stop("some variables not found in x:", missing_names)
+  }
 
   for (var in names(value)) if (!is.null(value[[var]])) {
     if (mode(x[[var]]) != mode(value[[var]]))
@@ -259,8 +263,10 @@ set_na_values <- function(.data, ..., .values = NA, .strict = TRUE) {
     na_values(.data) <- .values
   }
   values <- rlang::dots_list(...)
-  if (.strict & !all(names(values) %in% names(.data)))
-    stop("some variables not found in .data")
+  if (.strict & !all(names(values) %in% names(.data))) {
+    missing_names <- stringr::str_c(setdiff(names(values), names(.data)), collapse = ", ")
+    stop("some variables not found in .data: ", missing_names)
+  }
 
   for (v in intersect(names(values), names(.data)))
     na_values(.data[[v]]) <- values[[v]]
