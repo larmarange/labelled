@@ -81,7 +81,7 @@
 
       
 
-      </header><script src="intro_labelled_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to labelled</h1>
@@ -847,9 +847,9 @@
  <span class="co"># from memisc</span>
  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://memisc.elff.eu" class="external-link">memisc</a></span><span class="op">)</span>
  <span class="va">nes1948.por</span> <span class="op">&lt;-</span> <span class="fu">UnZip</span><span class="op">(</span><span class="st">"anes/NES1948.ZIP"</span>, <span class="st">"NES1948.POR"</span>, package<span class="op">=</span><span class="st">"memisc"</span><span class="op">)</span>
- <span class="va">nes1948</span> <span class="op">&lt;-</span> <span class="fu">spss.portable.file</span><span class="op">(</span><span class="va">nes1948.por</span><span class="op">)</span>
+ <span class="va">nes1948</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/memisc/man/importers.html" class="external-link">spss.portable.file</a></span><span class="op">(</span><span class="va">nes1948.por</span><span class="op">)</span>
  <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_labelled.html">to_labelled</a></span><span class="op">(</span><span class="va">nes1948</span><span class="op">)</span>
- <span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu">as.data.set</span><span class="op">(</span><span class="va">nes19480</span><span class="op">)</span>
+ <span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/memisc/man/dataSets.html" class="external-link">as.data.set</a></span><span class="op">(</span><span class="va">nes19480</span><span class="op">)</span>
  <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_labelled.html">to_labelled</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level2">

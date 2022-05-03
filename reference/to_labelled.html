@@ -111,7 +111,7 @@ If a factor level is not found in <code>labels</code>, it will be converted to <
     <div id="details">
     <h2>Details</h2>
     <p><code>to_labelled()</code> is a general wrapper calling the appropriate sub-functions.</p>
-<p><code>memisc_to_labelled()</code> converts a <code>memisc::data.set()</code> object created with
+<p><code>memisc_to_labelled()</code> converts a <code><a href="https://rdrr.io/pkg/memisc/man/dataSets.html" class="external-link">memisc::data.set()</a></code> object created with
 <span class="pkg">memisc</span> package to a labelled data frame.</p>
 <p><code>foreign_to_labelled()</code> converts data imported with <code><a href="https://rdrr.io/pkg/foreign/man/read.spss.html" class="external-link">foreign::read.spss()</a></code>
 or <code><a href="https://rdrr.io/pkg/foreign/man/read.dta.html" class="external-link">foreign::read.dta()</a></code> from <span class="pkg">foreign</span> package to a labelled data frame,
@@ -132,7 +132,7 @@ it to a labelled vector with same values and labels.</p>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p><code><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">haven::labelled()</a></code>, <code><a href="https://rdrr.io/pkg/foreign/man/read.spss.html" class="external-link">foreign::read.spss()</a></code>,
-<code><a href="https://rdrr.io/pkg/foreign/man/read.dta.html" class="external-link">foreign::read.dta()</a></code>, <code>memisc::data.set()</code>,
+<code><a href="https://rdrr.io/pkg/foreign/man/read.dta.html" class="external-link">foreign::read.dta()</a></code>, <code><a href="https://rdrr.io/pkg/memisc/man/dataSets.html" class="external-link">memisc::data.set()</a></code>,
 memisc::importer, <code><a href="to_factor.html">to_factor()</a></code>.</p></div>
     </div>
 
@@ -152,8 +152,8 @@ memisc::importer, <code><a href="to_factor.html">to_factor()</a></code>.</p></di
 <span class="r-in"> <span class="co"># from memisc</span></span>
 <span class="r-in"> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://memisc.elff.eu" class="external-link">memisc</a></span><span class="op">)</span></span>
 <span class="r-in"> <span class="va">nes1948.por</span> <span class="op">&lt;-</span> <span class="fu">UnZip</span><span class="op">(</span><span class="st">'anes/NES1948.ZIP'</span>, <span class="st">'NES1948.POR'</span>, package<span class="op">=</span><span class="st">'memisc'</span><span class="op">)</span></span>
-<span class="r-in"> <span class="va">nes1948</span> <span class="op">&lt;-</span> <span class="fu">spss.portable.file</span><span class="op">(</span><span class="va">nes1948.por</span><span class="op">)</span></span>
-<span class="r-in"> <span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu">as.data.set</span><span class="op">(</span><span class="va">nes1948</span><span class="op">)</span></span>
+<span class="r-in"> <span class="va">nes1948</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/memisc/man/importers.html" class="external-link">spss.portable.file</a></span><span class="op">(</span><span class="va">nes1948.por</span><span class="op">)</span></span>
+<span class="r-in"> <span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/memisc/man/dataSets.html" class="external-link">as.data.set</a></span><span class="op">(</span><span class="va">nes1948</span><span class="op">)</span></span>
 <span class="r-in"> <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">to_labelled</span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span></span>
 <span class="r-in"></span>
