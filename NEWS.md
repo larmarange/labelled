@@ -1,5 +1,7 @@
 # labelled (development version)
 
+* `look_for()` now accepts `survey` objects (#121)
+
 # labelled 2.9.1
 
 * improved error messages for missing variable names (#118, @ajb5d)
