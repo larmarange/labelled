@@ -55,7 +55,7 @@ convert_list_columns_to_character(x)
 lookfor_to_long_format(x)
 }
 \arguments{
-\item{data}{a data frame}
+\item{data}{a data frame or a survey object}
 
 \item{...}{optional list of keywords, a character string (or several character strings), which can be
 formatted as a regular expression suitable for a \code{\link[base:grep]{base::grep()}} pattern, or a vector of keywords;

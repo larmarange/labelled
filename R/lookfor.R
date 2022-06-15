@@ -8,7 +8,7 @@
 #' When no keyword is provided, it will produce a data dictionary of the overall
 #' data frame.
 #'
-#' @param data a data frame
+#' @param data a data frame or a survey object
 #' @param ... optional list of keywords, a character string (or several character strings), which can be
 #' formatted as a regular expression suitable for a [base::grep()] pattern, or a vector of keywords;
 #' displays all variables if not specified
@@ -102,6 +102,10 @@ look_for <- function(data,
                     values = TRUE,
                     ignore.case = TRUE,
                     details = c("basic", "none", "full")) {
+  if (inherits(data, c("survey.design", "svyrep.design"))) {
+    data <- data$variables
+  }
+
   if (is.logical(details)) {
     details <- ifelse(details, "full", "none")
   } else {
