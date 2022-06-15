@@ -87,6 +87,8 @@ works with labelled vectors.</p>
     <h2>Arguments</h2>
     <dl><dt>.x</dt>
 <dd><p>A vector to modify</p></dd>
+
+
 <dt>...</dt>
 <dd><p>&lt;<code><a href="https://rlang.r-lib.org/reference/dyn-dots.html" class="external-link">dynamic-dots</a></code>&gt; Replacements. For character and factor <code>.x</code>, these should be named
 and replacement is based only on their name. For numeric <code>.x</code>, these can be
@@ -96,6 +98,8 @@ named or not. If not named, the replacement is done based on position i.e.
 argument values should be the new (replacement) values.</p>
 <p>All replacements must be the same type, and must have either
 length one or the same length as <code>.x</code>.</p></dd>
+
+
 <dt>.default</dt>
 <dd><p>If supplied, all values not otherwise matched will
 be given this value. If not supplied and if the replacements are
@@ -104,19 +108,28 @@ values are not changed. If not supplied and if the replacements
 are not compatible, unmatched values are replaced with <code>NA</code>.</p>
 <p><code>.default</code> must be either length 1 or the same length as
 <code>.x</code>.</p></dd>
+
+
 <dt>.missing</dt>
 <dd><p>If supplied, any missing values in <code>.x</code> will be
 replaced by this value. Must be either length 1 or the same length as
 <code>.x</code>.</p></dd>
+
+
 <dt>.keep_value_labels</dt>
 <dd><p>If TRUE, keep original value labels.
 If FALSE, remove value labels.</p></dd>
+
+
 <dt>.combine_value_labels</dt>
 <dd><p>If TRUE, will combine original value labels
 to generate new value labels. Note that unexpected results could be obtained
 if a same old value is recoded into several different new values.</p></dd>
+
+
 <dt>.sep</dt>
 <dd><p>Separator to be used when combining value labels.</p></dd>
+
 </dl></div>
     <div id="see-also">
     <h2>See also</h2>
@@ -237,7 +250,7 @@ if a same old value is recoded into several different new values.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
       </footer></div>

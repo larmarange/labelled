@@ -88,30 +88,49 @@
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A vector or a data.frame</p></dd>
+
+
 <dt>prefixed</dt>
 <dd><p>Should labels be prefixed with values?</p></dd>
+
+
 <dt>value</dt>
 <dd><p>A named vector for <code>val_labels()</code> (see <code><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">haven::labelled()</a></code>) or a character string
 for <code>val_label()</code>. <code>NULL</code> to remove the labels.
 For data frames, it could also be a named list with a vector of value labels per variable.</p></dd>
+
+
 <dt>v</dt>
 <dd><p>A single value.</p></dd>
+
+
 <dt>.data</dt>
 <dd><p>a data frame</p></dd>
+
+
 <dt>...</dt>
 <dd><p>name-value pairs of value labels (see examples)</p></dd>
+
+
 <dt>.labels</dt>
 <dd><p>value labels to be applied to the data.frame,
 using the same syntax as <code>value</code> in <code>val_labels(df) &lt;- value</code>.</p></dd>
+
+
 <dt>.strict</dt>
 <dd><p>should an error be returned if some labels
 doesn't correspond to a column of <code>x</code>?</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>val_labels()</code> will return a named vector.
-<code>val_label()</code> will return a single character string.
-<code>set_value_labels()</code>, <code>add_value_labels()</code> and <code>remove_value_labels()</code> will return an updated
+    
+
+<p><code>val_labels()</code> will return a named vector.
+<code>val_label()</code> will return a single character string.</p>
+
+
+<p><code>set_value_labels()</code>, <code>add_value_labels()</code> and <code>remove_value_labels()</code> will return an updated
 copy of <code>.data</code>.</p>
     </div>
     <div id="note">
@@ -169,7 +188,7 @@ While <code>set_value_labels()</code> will replace the list of value labels,
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
       </footer></div>

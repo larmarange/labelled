@@ -96,29 +96,44 @@
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A vector (or a data frame).</p></dd>
+
+
 <dt>value</dt>
 <dd><p>A vector of values that should also be considered as missing
 (for <code>na_values</code>) or a numeric vector of length two giving the (inclusive)
 extents of the range (for <code>na_values</code>, use <code>-Inf</code> and <code>Inf</code> if you
 want the range to be open ended).</p></dd>
+
+
 <dt>.data</dt>
 <dd><p>a data frame</p></dd>
+
+
 <dt>...</dt>
 <dd><p>name-value pairs of missing values (see examples)</p></dd>
+
+
 <dt>.values</dt>
 <dd><p>missing values to be applied to the data.frame,
 using the same syntax as <code>value</code> in <code>na_values(df) &lt;- value</code> or
 <code>na_range(df) &lt;- value</code>.</p></dd>
+
+
 <dt>.strict</dt>
 <dd><p>should an error be returned if some labels
 doesn't correspond to a column of <code>x</code>?</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>na_values()</code> will return a vector of values that should also be considered as missing.
+    
+
+<p><code>na_values()</code> will return a vector of values that should also be considered as missing.
 <code>na_range()</code> will return a numeric vector of length two giving the (inclusive)
-extents of the range.
-<code>set_na_values()</code> and <code>set_na_range()</code> will return an updated
+extents of the range.</p>
+
+
+<p><code>set_na_values()</code> and <code>set_na_range()</code> will return an updated
 copy of <code>.data</code>.</p>
     </div>
     <div id="details">
@@ -278,7 +293,7 @@ tagged <code>NA</code> into user defined missing values.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
       </footer></div>
