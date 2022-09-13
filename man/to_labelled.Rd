@@ -47,7 +47,7 @@ Convert a factor or data imported with \pkg{foreign} or \pkg{memisc} to labelled
 \details{
 \code{to_labelled()} is a general wrapper calling the appropriate sub-functions.
 
-\code{memisc_to_labelled()} converts a \code{\link[memisc:dataSets]{memisc::data.set()}} object created with
+\code{memisc_to_labelled()} converts a \code{\link[memisc:data.set]{memisc::data.set()}} object created with
 \pkg{memisc} package to a labelled data frame.
 
 \code{foreign_to_labelled()} converts data imported with \code{\link[foreign:read.spss]{foreign::read.spss()}}
@@ -114,6 +114,6 @@ identical(to_labelled(f), l)
 }
 \seealso{
 \code{\link[haven:labelled]{haven::labelled()}}, \code{\link[foreign:read.spss]{foreign::read.spss()}},
-\code{\link[foreign:read.dta]{foreign::read.dta()}}, \code{\link[memisc:dataSets]{memisc::data.set()}},
-\link[memisc:importers]{memisc::importer}, \code{\link[=to_factor]{to_factor()}}.
+\code{\link[foreign:read.dta]{foreign::read.dta()}}, \code{\link[memisc:data.set]{memisc::data.set()}},
+\link[memisc:importer]{memisc::importer}, \code{\link[=to_factor]{to_factor()}}.
 }
