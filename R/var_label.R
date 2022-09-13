@@ -60,7 +60,7 @@ var_label.data.frame <- function(x, unlist = FALSE) {
 
 #' @export
 `var_label<-.default` <- function(x, value) {
-  if ((!is.character(value) & !is.null(value)) | length(value) >
+  if ((!is.character(value) && !is.null(value)) || length(value) >
     1)
     stop("`value` should be a single character string or NULL",
       call. = FALSE, domain = "R-labelled")
@@ -70,15 +70,15 @@ var_label.data.frame <- function(x, unlist = FALSE) {
 
 #' @export
 `var_label<-.data.frame` <- function(x, value) {
-  if ((!is.character(value) & !is.null(value)) & !is.list(value) |
-    (is.character(value) & length(value) > 1 & length(value) != ncol(x)))
+  if ((!is.character(value) && !is.null(value)) && !is.list(value) |
+    (is.character(value) && length(value) > 1 && length(value) != ncol(x)))
     stop("`value` should be a named list, NULL, a single character string or a character vector of same length than the number of columns in `x`",
       call. = FALSE, domain = "R-labelled")
-  if (is.character(value) & length(value) == 1) {
+  if (is.character(value) && length(value) == 1) {
     value <- as.list(rep(value, ncol(x)))
     names(value) <- names(x)
   }
-  if (is.character(value) & length(value) == ncol(x)) {
+  if (is.character(value) && length(value) == ncol(x)) {
     value <- as.list(value)
     names(value) <- names(x)
   }
@@ -154,7 +154,7 @@ set_variable_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
   }
   values <- rlang::dots_list(...)
   if (length(values) > 0) {
-    if (.strict & !all(names(values) %in% names(.data))) {
+    if (.strict && !all(names(values) %in% names(.data))) {
       missing_names <- stringr::str_c(setdiff(names(values), names(.data)), collapse = ", ")
       stop("some variables not found in .data: ", missing_names)
     }
