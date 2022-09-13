@@ -75,9 +75,9 @@ if variables are the same type in both data frames.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">copy_labels</span><span class="op">(</span><span class="va">from</span>, <span class="va">to</span>, .strict <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-
-<span class="fu">copy_labels_from</span><span class="op">(</span><span class="va">to</span>, <span class="va">from</span>, .strict <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">copy_labels</span><span class="op">(</span><span class="va">from</span>, <span class="va">to</span>, .strict <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">copy_labels_from</span><span class="op">(</span><span class="va">to</span>, <span class="va">from</span>, .strict <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -109,7 +109,7 @@ see examples.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: ‘dplyr’</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from ‘package:stats’:</span>
@@ -118,17 +118,17 @@ see examples.</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from ‘package:base’:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     intersect, setdiff, setequal, union</span>
-<span class="r-in"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
-<span class="r-in">  id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,</span>
-<span class="r-in">  happy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'yes'</span>, <span class="st">'no'</span>, <span class="st">'yes'</span><span class="op">)</span><span class="op">)</span>,</span>
-<span class="r-in">  gender <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">labelled</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>female <span class="op">=</span> <span class="fl">1</span>, male <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in"><span class="fu"><a href="var_label.html">set_variable_labels</a></span><span class="op">(</span></span>
-<span class="r-in">  id <span class="op">=</span> <span class="st">"Individual ID"</span>,</span>
-<span class="r-in">  happy <span class="op">=</span> <span class="st">"Are you happy?"</span>,</span>
-<span class="r-in">  gender <span class="op">=</span> <span class="st">"Gender of respondent"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="var_label.html">var_label</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,</span></span>
+<span class="r-in"><span>  happy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'yes'</span>, <span class="st">'no'</span>, <span class="st">'yes'</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  gender <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">labelled</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>female <span class="op">=</span> <span class="fl">1</span>, male <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="fu"><a href="var_label.html">set_variable_labels</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  id <span class="op">=</span> <span class="st">"Individual ID"</span>,</span></span>
+<span class="r-in"><span>  happy <span class="op">=</span> <span class="st">"Are you happy?"</span>,</span></span>
+<span class="r-in"><span>  gender <span class="op">=</span> <span class="st">"Gender of respondent"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="var_label.html">var_label</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $id</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Individual ID"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -138,8 +138,8 @@ see examples.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $gender</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Gender of respondent"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="va">fdf</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">id</span> <span class="op">&lt;</span> <span class="fl">3</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="var_label.html">var_label</a></span><span class="op">(</span><span class="va">fdf</span><span class="op">)</span> <span class="co"># some variable labels have been lost</span></span>
+<span class="r-in"><span><span class="va">fdf</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">id</span> <span class="op">&lt;</span> <span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="var_label.html">var_label</a></span><span class="op">(</span><span class="va">fdf</span><span class="op">)</span> <span class="co"># some variable labels have been lost</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $id</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Individual ID"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -149,8 +149,8 @@ see examples.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $gender</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Gender of respondent"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="va">fdf</span> <span class="op">&lt;-</span> <span class="va">fdf</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">copy_labels_from</span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="var_label.html">var_label</a></span><span class="op">(</span><span class="va">fdf</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="va">fdf</span> <span class="op">&lt;-</span> <span class="va">fdf</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">copy_labels_from</span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="var_label.html">var_label</a></span><span class="op">(</span><span class="va">fdf</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $id</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Individual ID"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -160,10 +160,10 @@ see examples.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $gender</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Gender of respondent"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Alternative syntax</span></span>
-<span class="r-in"><span class="va">fdf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">id</span> <span class="op">&lt;</span> <span class="fl">3</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">fdf</span> <span class="op">&lt;-</span> <span class="fu">copy_labels</span><span class="op">(</span>from <span class="op">=</span> <span class="va">df</span>, to <span class="op">=</span> <span class="va">fdf</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Alternative syntax</span></span></span>
+<span class="r-in"><span><span class="va">fdf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">id</span> <span class="op">&lt;</span> <span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">fdf</span> <span class="op">&lt;-</span> <span class="fu">copy_labels</span><span class="op">(</span>from <span class="op">=</span> <span class="va">df</span>, to <span class="op">=</span> <span class="va">fdf</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -178,7 +178,7 @@ see examples.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

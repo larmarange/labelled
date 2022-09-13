@@ -75,47 +75,47 @@ The command is meant to help users finding variables in large datasets.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">look_for</span><span class="op">(</span>
-  <span class="va">data</span>,
-  <span class="va">...</span>,
-  labels <span class="op">=</span> <span class="cn">TRUE</span>,
-  values <span class="op">=</span> <span class="cn">TRUE</span>,
-  ignore.case <span class="op">=</span> <span class="cn">TRUE</span>,
-  details <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"basic"</span>, <span class="st">"none"</span>, <span class="st">"full"</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="fu">lookfor</span><span class="op">(</span>
-  <span class="va">data</span>,
-  <span class="va">...</span>,
-  labels <span class="op">=</span> <span class="cn">TRUE</span>,
-  values <span class="op">=</span> <span class="cn">TRUE</span>,
-  ignore.case <span class="op">=</span> <span class="cn">TRUE</span>,
-  details <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"basic"</span>, <span class="st">"none"</span>, <span class="st">"full"</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="fu">generate_dictionary</span><span class="op">(</span>
-  <span class="va">data</span>,
-  <span class="va">...</span>,
-  labels <span class="op">=</span> <span class="cn">TRUE</span>,
-  values <span class="op">=</span> <span class="cn">TRUE</span>,
-  ignore.case <span class="op">=</span> <span class="cn">TRUE</span>,
-  details <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"basic"</span>, <span class="st">"none"</span>, <span class="st">"full"</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="co"># S3 method for look_for</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">look_for_and_select</span><span class="op">(</span>
-  <span class="va">data</span>,
-  <span class="va">...</span>,
-  labels <span class="op">=</span> <span class="cn">TRUE</span>,
-  values <span class="op">=</span> <span class="cn">TRUE</span>,
-  ignore.case <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span>
-
-<span class="fu">convert_list_columns_to_character</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">lookfor_to_long_format</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">look_for</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  labels <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  values <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  ignore.case <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  details <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"basic"</span>, <span class="st">"none"</span>, <span class="st">"full"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">lookfor</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  labels <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  values <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  ignore.case <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  details <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"basic"</span>, <span class="st">"none"</span>, <span class="st">"full"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">generate_dictionary</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  labels <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  values <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  ignore.case <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  details <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"basic"</span>, <span class="st">"none"</span>, <span class="st">"full"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for look_for</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">look_for_and_select</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  labels <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  values <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  ignore.case <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">convert_list_columns_to_character</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">lookfor_to_long_format</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="source">
@@ -189,7 +189,7 @@ variables.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  pos variable     label col_type values    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1   Sepal.Length —     dbl                </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  2   Sepal.Width  —     dbl                </span>
@@ -198,20 +198,20 @@ variables.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  5   Species      —     fct      setosa    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                  versicolor</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                  virginica </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Look for a single keyword.</span></span>
-<span class="r-in"><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span>, <span class="st">"petal"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Look for a single keyword.</span></span></span>
+<span class="r-in"><span><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span>, <span class="st">"petal"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  pos variable     label col_type values</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  3   Petal.Length —     dbl            </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  4   Petal.Width  —     dbl            </span>
-<span class="r-in"><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span>, <span class="st">"s"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span>, <span class="st">"s"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  pos variable     label col_type values    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1   Sepal.Length —     dbl                </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  2   Sepal.Width  —     dbl                </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  5   Species      —     fct      setosa    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                  versicolor</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                  virginica </span>
-<span class="r-in"><span class="va">iris</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">look_for_and_select</span><span class="op">(</span><span class="st">"s"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="va">iris</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">look_for_and_select</span><span class="op">(</span><span class="st">"s"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Sepal.Length Sepal.Width Species</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1          5.1         3.5  setosa</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2          4.9         3.0  setosa</span>
@@ -219,30 +219,30 @@ variables.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4          4.6         3.1  setosa</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5          5.0         3.6  setosa</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6          5.4         3.9  setosa</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Look for with a regular expression</span></span>
-<span class="r-in"><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span>, <span class="st">"petal|species"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Look for with a regular expression</span></span></span>
+<span class="r-in"><span><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span>, <span class="st">"petal|species"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  pos variable     label col_type values    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  3   Petal.Length —     dbl                </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  4   Petal.Width  —     dbl                </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  5   Species      —     fct      setosa    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                  versicolor</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                  virginica </span>
-<span class="r-in"><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span>, <span class="st">"s$"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span>, <span class="st">"s$"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  pos variable label col_type values    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  5   Species  —     fct      setosa    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                              versicolor</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                              virginica </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Look for with several keywords</span></span>
-<span class="r-in"><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span>, <span class="st">"pet"</span>, <span class="st">"sp"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Look for with several keywords</span></span></span>
+<span class="r-in"><span><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span>, <span class="st">"pet"</span>, <span class="st">"sp"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  pos variable     label col_type values    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  3   Petal.Length —     dbl                </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  4   Petal.Width  —     dbl                </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  5   Species      —     fct      setosa    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                  versicolor</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                  virginica </span>
-<span class="r-in"><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span>, <span class="st">"pet"</span>, <span class="st">"sp"</span>, <span class="st">"width"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span>, <span class="st">"pet"</span>, <span class="st">"sp"</span>, <span class="st">"width"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  pos variable     label col_type values    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  2   Sepal.Width  —     dbl                </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  3   Petal.Length —     dbl                </span>
@@ -250,29 +250,29 @@ variables.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  5   Species      —     fct      setosa    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                  versicolor</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                  virginica </span>
-<span class="r-in"><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span>, <span class="st">"Pet"</span>, <span class="st">"sp"</span>, <span class="st">"width"</span>, ignore.case <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span>, <span class="st">"Pet"</span>, <span class="st">"sp"</span>, <span class="st">"width"</span>, ignore.case <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  pos variable     label col_type values</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  3   Petal.Length —     dbl            </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  4   Petal.Width  —     dbl            </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Look_for can search within factor levels or value labels</span></span>
-<span class="r-in"><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span>, <span class="st">"vers"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Look_for can search within factor levels or value labels</span></span></span>
+<span class="r-in"><span><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span>, <span class="st">"vers"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  pos variable label col_type values    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  5   Species  —     fct      setosa    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                              versicolor</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                              virginica </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Quicker search without variable details</span></span>
-<span class="r-in"><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span>, details <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Quicker search without variable details</span></span></span>
+<span class="r-in"><span><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span>, details <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  pos variable     label</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1   Sepal.Length —    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  2   Sepal.Width  —    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  3   Petal.Length —    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  4   Petal.Width  —    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  5   Species      —    </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># To obtain more details about each variable</span></span>
-<span class="r-in"><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span>, details <span class="op">=</span> <span class="st">"full"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># To obtain more details about each variable</span></span></span>
+<span class="r-in"><span><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span>, details <span class="op">=</span> <span class="st">"full"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  pos variable     label col_type values          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1   Sepal.Length —     dbl      range: 4.3 - 7.9</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  2   Sepal.Width  —     dbl      range: 2 - 4.4  </span>
@@ -281,23 +281,24 @@ variables.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  5   Species      —     fct      setosa          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                  versicolor      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                  virginica       </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># To deactivate default printing, convert to tibble</span></span>
-<span class="r-in"><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span>, details <span class="op">=</span> <span class="st">"full"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># To deactivate default printing, convert to tibble</span></span></span>
+<span class="r-in"><span><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span>, details <span class="op">=</span> <span class="st">"full"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 13</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     pos variable     label col_type levels    value_labels class type  na_values</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;named l&gt;</span> <span style="color: #949494; font-style: italic;">&lt;named list&gt;</span> <span style="color: #949494; font-style: italic;">&lt;nam&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;named l&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 Sepal.Length <span style="color: #BB0000;">NA</span>    dbl      <span style="color: #949494;">&lt;NULL&gt;</span>    <span style="color: #949494;">&lt;NULL&gt;</span>       &lt;chr&gt; doub… <span style="color: #949494;">&lt;NULL&gt;</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     2 Sepal.Width  <span style="color: #BB0000;">NA</span>    dbl      <span style="color: #949494;">&lt;NULL&gt;</span>    <span style="color: #949494;">&lt;NULL&gt;</span>       &lt;chr&gt; doub… <span style="color: #949494;">&lt;NULL&gt;</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>     3 Petal.Length <span style="color: #BB0000;">NA</span>    dbl      <span style="color: #949494;">&lt;NULL&gt;</span>    <span style="color: #949494;">&lt;NULL&gt;</span>       &lt;chr&gt; doub… <span style="color: #949494;">&lt;NULL&gt;</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>     4 Petal.Width  <span style="color: #BB0000;">NA</span>    dbl      <span style="color: #949494;">&lt;NULL&gt;</span>    <span style="color: #949494;">&lt;NULL&gt;</span>       &lt;chr&gt; doub… <span style="color: #949494;">&lt;NULL&gt;</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>     5 Species      <span style="color: #BB0000;">NA</span>    fct      <span style="color: #949494;">&lt;chr [3]&gt;</span> <span style="color: #949494;">&lt;NULL&gt;</span>       &lt;chr&gt; inte… <span style="color: #949494;">&lt;NULL&gt;</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 4 more variables: na_range &lt;named list&gt;, unique_values &lt;int&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   n_na &lt;int&gt;, range &lt;named list&gt;</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># To convert named lists into character vectors</span></span>
-<span class="r-in"><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">convert_list_columns_to_character</span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     pos varia…¹ label col_t…² levels value…³ class type  na_va…⁴ na_ra…⁵ uniqu…⁶</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;name&gt;</span> <span style="color: #949494; font-style: italic;">&lt;named&gt;</span> <span style="color: #949494; font-style: italic;">&lt;nam&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;named&gt;</span> <span style="color: #949494; font-style: italic;">&lt;named&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 Sepal.… <span style="color: #BB0000;">NA</span>    dbl     <span style="color: #949494;">&lt;NULL&gt;</span> <span style="color: #949494;">&lt;NULL&gt;</span>  &lt;chr&gt; doub… <span style="color: #949494;">&lt;NULL&gt;</span>  <span style="color: #949494;">&lt;NULL&gt;</span>       35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     2 Sepal.… <span style="color: #BB0000;">NA</span>    dbl     <span style="color: #949494;">&lt;NULL&gt;</span> <span style="color: #949494;">&lt;NULL&gt;</span>  &lt;chr&gt; doub… <span style="color: #949494;">&lt;NULL&gt;</span>  <span style="color: #949494;">&lt;NULL&gt;</span>       23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>     3 Petal.… <span style="color: #BB0000;">NA</span>    dbl     <span style="color: #949494;">&lt;NULL&gt;</span> <span style="color: #949494;">&lt;NULL&gt;</span>  &lt;chr&gt; doub… <span style="color: #949494;">&lt;NULL&gt;</span>  <span style="color: #949494;">&lt;NULL&gt;</span>       43</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>     4 Petal.… <span style="color: #BB0000;">NA</span>    dbl     <span style="color: #949494;">&lt;NULL&gt;</span> <span style="color: #949494;">&lt;NULL&gt;</span>  &lt;chr&gt; doub… <span style="color: #949494;">&lt;NULL&gt;</span>  <span style="color: #949494;">&lt;NULL&gt;</span>       22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>     5 Species <span style="color: #BB0000;">NA</span>    fct     &lt;chr&gt;  <span style="color: #949494;">&lt;NULL&gt;</span>  &lt;chr&gt; inte… <span style="color: #949494;">&lt;NULL&gt;</span>  <span style="color: #949494;">&lt;NULL&gt;</span>        3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 2 more variables: n_na &lt;int&gt;, range &lt;named list&gt;, and abbreviated</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   variable names ¹​variable, ²​col_type, ³​value_labels, ⁴​na_values, ⁵​na_range,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ⁶​unique_values</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># To convert named lists into character vectors</span></span></span>
+<span class="r-in"><span><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">convert_list_columns_to_character</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     pos variable     label col_type levels                          value_labels</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span>
@@ -306,9 +307,9 @@ variables.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>     3 Petal.Length <span style="color: #BB0000;">NA</span>    dbl      <span style="color: #949494;">""</span>                              <span style="color: #949494;">""</span>          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>     4 Petal.Width  <span style="color: #BB0000;">NA</span>    dbl      <span style="color: #949494;">""</span>                              <span style="color: #949494;">""</span>          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>     5 Species      <span style="color: #BB0000;">NA</span>    fct      <span style="color: #949494;">"</span>setosa; versicolor; virginica<span style="color: #949494;">"</span> <span style="color: #949494;">""</span>          </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Long format with one row per factor and per value label</span></span>
-<span class="r-in"><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">lookfor_to_long_format</span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Long format with one row per factor and per value label</span></span></span>
+<span class="r-in"><span><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">lookfor_to_long_format</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     pos variable     label col_type levels     value_labels</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span>
@@ -319,11 +320,11 @@ variables.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>     5 Species      <span style="color: #BB0000;">NA</span>    fct      setosa     <span style="color: #BB0000;">NA</span>          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>     5 Species      <span style="color: #BB0000;">NA</span>    fct      versicolor <span style="color: #BB0000;">NA</span>          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span>     5 Species      <span style="color: #BB0000;">NA</span>    fct      virginica  <span style="color: #BB0000;">NA</span>          </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Both functions can be combined</span></span>
-<span class="r-in"><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">lookfor_to_long_format</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">convert_list_columns_to_character</span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Both functions can be combined</span></span></span>
+<span class="r-in"><span><span class="fu">look_for</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">lookfor_to_long_format</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">convert_list_columns_to_character</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     pos variable     label col_type levels     value_labels</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span>
@@ -334,17 +335,17 @@ variables.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>     5 Species      <span style="color: #BB0000;">NA</span>    fct      setosa     <span style="color: #BB0000;">NA</span>          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>     5 Species      <span style="color: #BB0000;">NA</span>    fct      versicolor <span style="color: #BB0000;">NA</span>          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span>     5 Species      <span style="color: #BB0000;">NA</span>    fct      virginica  <span style="color: #BB0000;">NA</span>          </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Labelled data</span></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">fertility</span>, package <span class="op">=</span> <span class="st">"questionr"</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu">look_for</span><span class="op">(</span><span class="va">children</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu">look_for</span><span class="op">(</span><span class="va">children</span>, <span class="st">"id"</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">children</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">look_for_and_select</span><span class="op">(</span><span class="st">"id"</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu">look_for</span><span class="op">(</span><span class="va">children</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">    <span class="fu">lookfor_to_long_format</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">    <span class="fu">convert_list_columns_to_character</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Labelled data</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">fertility</span>, package <span class="op">=</span> <span class="st">"questionr"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">look_for</span><span class="op">(</span><span class="va">children</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">look_for</span><span class="op">(</span><span class="va">children</span>, <span class="st">"id"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">children</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">look_for_and_select</span><span class="op">(</span><span class="st">"id"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">look_for</span><span class="op">(</span><span class="va">children</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>    <span class="fu">lookfor_to_long_format</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>    <span class="fu">convert_list_columns_to_character</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -359,7 +360,7 @@ variables.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

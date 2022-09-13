@@ -73,26 +73,26 @@ values.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">unique_tagged_na</span><span class="op">(</span><span class="va">x</span>, fromLast <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-
-<span class="fu">duplicated_tagged_na</span><span class="op">(</span><span class="va">x</span>, fromLast <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-
-<span class="fu">order_tagged_na</span><span class="op">(</span>
-  <span class="va">x</span>,
-  na.last <span class="op">=</span> <span class="cn">TRUE</span>,
-  decreasing <span class="op">=</span> <span class="cn">FALSE</span>,
-  method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"auto"</span>, <span class="st">"shell"</span>, <span class="st">"radix"</span><span class="op">)</span>,
-  na_decreasing <span class="op">=</span> <span class="va">decreasing</span>,
-  untagged_na_last <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span>
-
-<span class="fu">sort_tagged_na</span><span class="op">(</span>
-  <span class="va">x</span>,
-  decreasing <span class="op">=</span> <span class="cn">FALSE</span>,
-  na.last <span class="op">=</span> <span class="cn">TRUE</span>,
-  na_decreasing <span class="op">=</span> <span class="va">decreasing</span>,
-  untagged_na_last <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">unique_tagged_na</span><span class="op">(</span><span class="va">x</span>, fromLast <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">duplicated_tagged_na</span><span class="op">(</span><span class="va">x</span>, fromLast <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">order_tagged_na</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  na.last <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  decreasing <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"auto"</span>, <span class="st">"shell"</span>, <span class="st">"radix"</span><span class="op">)</span>,</span>
+<span>  na_decreasing <span class="op">=</span> <span class="va">decreasing</span>,</span>
+<span>  untagged_na_last <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">sort_tagged_na</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  decreasing <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  na.last <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  na_decreasing <span class="op">=</span> <span class="va">decreasing</span>,</span>
+<span>  untagged_na_last <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -131,28 +131,28 @@ increasing or decreasing?</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span>, <span class="fl">1</span>, <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"z"</span><span class="op">)</span>, <span class="fl">2</span>, <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span>, <span class="cn">NA</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">x</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">print_tagged_na</a></span><span class="op">(</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span>, <span class="fl">1</span>, <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"z"</span><span class="op">)</span>, <span class="fl">2</span>, <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span>, <span class="cn">NA</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">print_tagged_na</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1]     1     2 NA(a)     1 NA(z)     2 NA(a)    NA</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">print_tagged_na</a></span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">print_tagged_na</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1]     1     2 NA(a)</span>
-<span class="r-in"><span class="fu">unique_tagged_na</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">print_tagged_na</a></span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">unique_tagged_na</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">print_tagged_na</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1]     1     2 NA(a) NA(z)    NA</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/duplicated.html" class="external-link">duplicated</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/duplicated.html" class="external-link">duplicated</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE</span>
-<span class="r-in"><span class="fu">duplicated_tagged_na</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">duplicated_tagged_na</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/order.html" class="external-link">order</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/order.html" class="external-link">order</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1 4 2 6 3 5 7 8</span>
-<span class="r-in"><span class="fu">order_tagged_na</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">order_tagged_na</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1 4 2 6 3 7 5 8</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/sort.html" class="external-link">sort</a></span><span class="op">(</span><span class="va">x</span>, na.last <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">print_tagged_na</a></span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/sort.html" class="external-link">sort</a></span><span class="op">(</span><span class="va">x</span>, na.last <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">print_tagged_na</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1]     1     1     2     2 NA(a) NA(z) NA(a)    NA</span>
-<span class="r-in"><span class="fu">sort_tagged_na</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">print_tagged_na</a></span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">sort_tagged_na</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">print_tagged_na</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1]     1     1     2     2 NA(a) NA(a) NA(z)    NA</span>
 </code></pre></div>
     </div>
@@ -168,7 +168,7 @@ increasing or decreasing?</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

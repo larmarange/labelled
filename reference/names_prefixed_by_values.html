@@ -69,7 +69,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">names_prefixed_by_values</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">names_prefixed_by_values</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -81,17 +81,17 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
-<span class="r-in">  c1 <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">labelled</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"M"</span>, <span class="st">"M"</span>, <span class="st">"F"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>Male <span class="op">=</span> <span class="st">"M"</span>, Female <span class="op">=</span> <span class="st">"F"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span class="r-in">  c2 <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">labelled</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>Yes <span class="op">=</span> <span class="fl">1</span>, No <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="val_labels.html">val_labels</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">c1</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  c1 <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">labelled</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"M"</span>, <span class="st">"M"</span>, <span class="st">"F"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>Male <span class="op">=</span> <span class="st">"M"</span>, Female <span class="op">=</span> <span class="st">"F"</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  c2 <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">labelled</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>Yes <span class="op">=</span> <span class="fl">1</span>, No <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="val_labels.html">val_labels</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">c1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Male Female </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    "M"    "F" </span>
-<span class="r-in"><span class="fu"><a href="val_labels.html">val_labels</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">c1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">names_prefixed_by_values</span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="val_labels.html">val_labels</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">c1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">names_prefixed_by_values</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         Male       Female </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   "[M] Male" "[F] Female" </span>
-<span class="r-in"><span class="fu"><a href="val_labels.html">val_labels</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="val_labels.html">val_labels</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $c1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Male Female </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    "M"    "F" </span>
@@ -100,7 +100,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Yes  No </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   1   2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="fu"><a href="val_labels.html">val_labels</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">names_prefixed_by_values</span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="val_labels.html">val_labels</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">names_prefixed_by_values</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $c1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         Male       Female </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   "[M] Male" "[F] Female" </span>
@@ -123,7 +123,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
