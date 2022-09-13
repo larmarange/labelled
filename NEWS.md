@@ -1,4 +1,4 @@
-# labelled (development version)
+# labelled 2.10.0
 
 * `look_for()` now accepts `survey` objects (#121)
 
