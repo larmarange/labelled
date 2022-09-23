@@ -96,6 +96,12 @@ test_that("set_na_range works correctly", {
   x <- factor(1:5)
   expect_error(na_values(x) <- 1)
   expect_error(na_range(x) <- 4:5)
+
+  v <- 1:10
+  v <- set_na_range(v, 3, 5)
+  v <- set_na_values(v, 8, 9)
+  expect_equal(na_range(v), c(3, 5))
+  expect_equal(na_values(v), c(8, 9))
 })
 
 test_that("about user NAs", {

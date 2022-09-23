@@ -10,6 +10,14 @@ test_that("var_label works properly", {
   var_label(x) <- NULL
   expect_null(attr(x, "label"))
   expect_null(var_label(x))
+
+  x <- 1:3
+  x <- set_variable_labels(x, "value")
+  expect_equal(attr(x, "label"), "value")
+  x <- set_variable_labels(x, .labels = "other value")
+  expect_equal(attr(x, "label"), "other value")
+  x <- set_variable_labels(x, NULL)
+  expect_null(attr(x, "label"))
 })
 
 test_that("var_label works on data.frame", {
@@ -562,6 +570,15 @@ test_that("set_value_labels replaces all value labels", {
   expect_equal(val_labels(df$s2), c(Yes = 1, No = 2))
   df <- set_value_labels(df, s2 = c(Yes = 1, Unknown = 9))
   expect_equal(val_labels(df$s2), c(Yes = 1, Unknown = 9))
+
+  v <- set_value_labels(1:10, c(low = 1, high = 10))
+  expect_equal(val_labels(v), c(low = 1, high = 10))
+  v <- set_value_labels(1:10, low = 1, high = 10)
+  expect_equal(val_labels(v), c(low = 1, high = 10))
+  v <- set_value_labels(1:10, .labels = c(low = 1, high = 10))
+  expect_equal(val_labels(v), c(low = 1, high = 10))
+  v <- set_value_labels(v, NULL)
+  expect_null(val_labels(v))
 })
 
 test_that("set_value_labels errors", {
@@ -657,6 +674,11 @@ test_that("add_value_labels and remove_value_labels updates the list of value la
   expect_equal(val_labels(df$s2), c(Yes = 1, No = 2))
 
   expect_error(remove_value_labels(df, 9))
+
+  v <- set_value_labels(1:10, low = 1, high = 10)
+  v <- add_value_labels(v, middle = 5)
+  v <- remove_value_labels(v, 10)
+  expect_equal(val_labels(v), c(low = 1, middle = 5))
 })
 
 # set_variable_labels  --------------------------------------------------------------

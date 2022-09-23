@@ -158,10 +158,10 @@ set_variable_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
 
   # vector case
   if (is.atomic(.data)) {
-    if (!identical(.values, NA)) {
+    if (!identical(.labels, NA)) {
       var_label(.data) <- .labels
     } else {
-      var_label(.data) <- unlist(rlang::dots_list(...))
+      var_label(.data) <- unname(unlist(rlang::dots_list(...)))
     }
     return(.data)
   }

@@ -273,7 +273,7 @@ set_na_values <- function(.data, ..., .values = NA, .strict = TRUE) {
     if (!identical(.values, NA)) {
       na_values(.data) <- .values
     } else {
-      na_values(.data) <- unlist(rlang::dots_list(...))
+      na_values(.data) <- unname(unlist(rlang::dots_list(...)))
     }
     return(.data)
   }
@@ -307,7 +307,7 @@ set_na_range <- function(.data, ..., .values = NA, .strict = TRUE) {
     if (!identical(.values, NA)) {
       na_range(.data) <- .values
     } else {
-      na_range(.data) <- unlist(rlang::dots_list(...))
+      na_range(.data) <- unname(unlist(rlang::dots_list(...)))
     }
     return(.data)
   }
