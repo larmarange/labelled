@@ -35,7 +35,7 @@ For data frames, it could also be a named list with a vector of value labels per
 
 \item{v}{A single value.}
 
-\item{.data}{a data frame}
+\item{.data}{a data frame or a vector}
 
 \item{...}{name-value pairs of value labels (see examples)}
 
@@ -60,6 +60,12 @@ Get / Set value labels
 could be used with \pkg{dplyr} syntax.
 While \code{set_value_labels()} will replace the list of value labels,
 \code{add_value_labels()} and \code{remove_value_labels()} will update that list (see examples).
+
+\code{set_value_labels()} could also be applied to a vector / a data.frame column.
+In such case, you can provide a vector of value labels using \code{.labels} or
+several name-value pairs of value labels (see exemple).
+Similarly, \code{add_value_labels()} and \code{remove_value_labels()} could also be applied
+on vectors.
 }
 \examples{
 v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
@@ -86,5 +92,15 @@ if (require(dplyr)) {
   # removing all value labels
   df <- df \%>\% set_value_labels(s2 = NULL)
   df$s2
+
+  # example on a vector
+  v <- 1:4
+  v <- set_value_labels(v, min = 1, max = 4)
+  v
+  set_value_labels(v, middle = 3)
+  set_value_labels(v, NULL)
+  set_value_labels(v, .labels = c(a = 1, b = 2, c= 3, d = 4))
+  add_value_labels(v, between = 2)
+  remove_value_labels(v, 4)
 }
 }
