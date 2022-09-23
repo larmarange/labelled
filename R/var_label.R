@@ -158,10 +158,11 @@ set_variable_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
 
   # vector case
   if (is.atomic(.data)) {
-    values <- rlang::dots_list(...)
-    if (length(values) != 1)
-      stop("only one value should be passed for a vector")
-    var_label(.data) <- values[[1]]
+    if (!identical(.values, NA)) {
+      var_label(.data) <- .labels
+    } else {
+      var_label(.data) <- unlist(rlang::dots_list(...))
+    }
     return(.data)
   }
 

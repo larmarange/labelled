@@ -291,11 +291,11 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
 #'   v <- 1:4
 #'   v <- set_value_labels(v, min = 1, max = 4)
 #'   v
-#'   set_value_labels(v, middle = 3)
-#'   set_value_labels(v, NULL)
-#'   set_value_labels(v, .labels = c(a = 1, b = 2, c= 3, d = 4))
-#'   add_value_labels(v, between = 2)
-#'   remove_value_labels(v, 4)
+#'   v %>% set_value_labels(middle = 3)
+#'   v %>% set_value_labels(NULL)
+#'   v %>% set_value_labels(.labels = c(a = 1, b = 2, c= 3, d = 4))
+#'   v %>% add_value_labels(between = 2)
+#'   v %>% remove_value_labels(4)
 #' }
 #' @export
 set_value_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
