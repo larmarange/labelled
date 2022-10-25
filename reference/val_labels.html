@@ -105,7 +105,7 @@ For data frames, it could also be a named list with a vector of value labels per
 
 
 <dt>.data</dt>
-<dd><p>a data frame</p></dd>
+<dd><p>a data frame or a vector</p></dd>
 
 
 <dt>...</dt>
@@ -139,6 +139,11 @@ copy of <code>.data</code>.</p>
 could be used with <span class="pkg">dplyr</span> syntax.
 While <code>set_value_labels()</code> will replace the list of value labels,
 <code>add_value_labels()</code> and <code>remove_value_labels()</code> will update that list (see examples).</p>
+<p><code>set_value_labels()</code> could also be applied to a vector / a data.frame column.
+In such case, you can provide a vector of value labels using <code>.labels</code> or
+several name-value pairs of value labels (see exemple).
+Similarly, <code>add_value_labels()</code> and <code>remove_value_labels()</code> could also be applied
+on vectors.</p>
     </div>
 
     <div id="ref-examples">
@@ -172,8 +177,23 @@ While <code>set_value_labels()</code> will replace the list of value labels,
 <span class="r-in"><span>  <span class="co"># removing all value labels</span></span></span>
 <span class="r-in"><span>  <span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">set_value_labels</span><span class="op">(</span>s2 <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">df</span><span class="op">$</span><span class="va">s2</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># example on a vector</span></span></span>
+<span class="r-in"><span>  <span class="va">v</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span></span></span>
+<span class="r-in"><span>  <span class="va">v</span> <span class="op">&lt;-</span> <span class="fu">set_value_labels</span><span class="op">(</span><span class="va">v</span>, min <span class="op">=</span> <span class="fl">1</span>, max <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">v</span></span></span>
+<span class="r-in"><span>  <span class="va">v</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">set_value_labels</span><span class="op">(</span>middle <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">v</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">set_value_labels</span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">v</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">set_value_labels</span><span class="op">(</span>.labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span>, b <span class="op">=</span> <span class="fl">2</span>, c<span class="op">=</span> <span class="fl">3</span>, d <span class="op">=</span> <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">v</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">add_value_labels</span><span class="op">(</span>between <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">v</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">remove_value_labels</span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1 1 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;labelled&lt;integer&gt;[4]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1 2 3 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Labels:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  value label</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      1   min</span>
 </code></pre></div>
     </div>
   </div>

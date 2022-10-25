@@ -93,7 +93,7 @@ of same length as the number of columns in <code>x</code>.</p></dd>
 
 
 <dt>.data</dt>
-<dd><p>a data frame</p></dd>
+<dd><p>a data frame or a vector</p></dd>
 
 
 <dt>...</dt>
@@ -216,23 +216,15 @@ data.frame.</p>
 <span class="r-in"><span>      <span class="fu">set_variable_labels</span><span class="op">(</span>.labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/snakecase/man/caseconverter.html" class="external-link">to_sentence_case</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span>    <span class="fu">var_label</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># example with a vector</span></span></span>
+<span class="r-in"><span>  <span class="va">v</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span></span></span>
+<span class="r-in"><span>  <span class="va">v</span> <span class="op">&lt;-</span> <span class="va">v</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">set_variable_labels</span><span class="op">(</span><span class="st">"a variable label"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">v</span></span></span>
+<span class="r-in"><span>  <span class="va">v</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">set_variable_labels</span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: snakecase</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Sepal.Length</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Sepal length"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Sepal.Width</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Sepal width"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Petal.Length</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Petal length"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Petal.Width</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Petal width"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Species</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Species"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1 2 3 4 5</span>
 </code></pre></div>
     </div>
   </div>
