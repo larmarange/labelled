@@ -13,7 +13,10 @@
 #' v %>% recode_if(v == 9, NA)
 #' if (require(dplyr)) {
 #'   df <- tibble(s1 = c("M", "M", "F"), s2 = c(1, 2, 1)) %>%
-#'     set_value_labels(s1 = c(Male = "M", Female = "F"), s2 = c(A = 1, B = 2)) %>%
+#'     set_value_labels(
+#'       s1 = c(Male = "M", Female = "F"),
+#'       s2 = c(A = 1, B = 2)
+#'     ) %>%
 #'     set_variable_labels(s1 = "Gender", s2 = "Group")
 #'
 #'   df <- df %>%
@@ -29,7 +32,7 @@ recode_if <- function(x, condition, true) {
     stop("'condition' should be logical.")
   if (length(x) != length(condition))
     stop("'condition' and 'x' should have the same length.")
-  if (length(true) > 1 & length(true) != length(x))
+  if (length(true) > 1 && length(true) != length(x))
     stop("'true' should be unique or of same length as 'x'.")
 
   original_class <- class(x)

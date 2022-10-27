@@ -1,6 +1,6 @@
 context("Tests related to tagged NAs")
 
-test_that("unique_tagged_na(), duplicated_tagged_na, order_tagged_na and sort_tagged_na work as expected", {
+test_that("unique_tagged_na(), duplicated_tagged_na, order_tagged_na and sort_tagged_na work as expected", { # nolint
   x <- c(1, 2, tagged_na("a"), 1, tagged_na("z"), 2, tagged_na("a"), NA)
 
   expect_equal(
@@ -30,17 +30,25 @@ test_that("unique_tagged_na(), duplicated_tagged_na, order_tagged_na and sort_ta
     c("2", "2", "1", "1", "NA(z)", "NA(a)", "NA(a)", "NA")
   )
   expect_equal(
-    sort_tagged_na(x, na_decreasing = TRUE) %>% format_tagged_na() %>% trimws(),
+    sort_tagged_na(x, na_decreasing = TRUE) %>%
+      format_tagged_na() %>%
+      trimws(),
     c("1", "1", "2", "2", "NA(z)", "NA(a)", "NA(a)", "NA")
   )
   expect_equal(
-    sort_tagged_na(x, untagged_na_last = FALSE) %>% format_tagged_na() %>% trimws(),
+    sort_tagged_na(x, untagged_na_last = FALSE) %>%
+      format_tagged_na() %>%
+      trimws(),
     c("1", "1", "2", "2", "NA", "NA(a)", "NA(a)", "NA(z)")
   )
 })
 
 test_that("tagged_na_to_user_na() works as expected", {
-  x <- c(1, 0, 1, tagged_na("r"), 0, tagged_na("d"), NA, tagged_na("d"), tagged_na("e"))
+  x <- c(
+    1, 0, 1,
+    tagged_na("r"), 0, tagged_na("d"), NA,
+    tagged_na("d"), tagged_na("e")
+  )
   val_labels(x) <- c(
     no = 0, yes = 1,
     "don't know" = tagged_na("d"),

@@ -36,13 +36,15 @@ memisc_to_labelled(x)
 an optional named vector indicating how factor levels should be coded.
 If a factor level is not found in \code{labels}, it will be converted to \code{NA}.}
 
-\item{.quiet}{do not display warnings for prefixed factors with duplicated codes}
+\item{.quiet}{do not display warnings for prefixed factors with duplicated
+codes}
 }
 \value{
 A tbl data frame or a labelled vector.
 }
 \description{
-Convert a factor or data imported with \pkg{foreign} or \pkg{memisc} to labelled data.
+Convert a factor or data imported with \pkg{foreign} or \pkg{memisc} to
+labelled data.
 }
 \details{
 \code{to_labelled()} is a general wrapper calling the appropriate sub-functions.
@@ -53,21 +55,23 @@ Convert a factor or data imported with \pkg{foreign} or \pkg{memisc} to labelled
 \code{foreign_to_labelled()} converts data imported with \code{\link[foreign:read.spss]{foreign::read.spss()}}
 or \code{\link[foreign:read.dta]{foreign::read.dta()}} from \pkg{foreign} package to a labelled data frame,
 i.e. using \code{\link[haven:labelled]{haven::labelled()}}.
-Factors will not be converted. Therefore, you should use \code{use.value.labels = FALSE}
-when importing with \code{\link[foreign:read.spss]{foreign::read.spss()}} or \code{convert.factors = FALSE} when
-importing with \code{\link[foreign:read.dta]{foreign::read.dta()}}.
+Factors will not be converted. Therefore, you should use
+\code{use.value.labels = FALSE} when importing with \code{\link[foreign:read.spss]{foreign::read.spss()}} or
+\code{convert.factors = FALSE} when importing with \code{\link[foreign:read.dta]{foreign::read.dta()}}.
 
-To convert correctly defined missing values imported with \code{\link[foreign:read.spss]{foreign::read.spss()}}, you should
-have used \code{to.data.frame = FALSE} and \code{use.missings = FALSE}. If you used the option
-\code{to.data.frame = TRUE}, meta data describing missing values will not be attached to the import.
-If you used \code{use.missings = TRUE}, missing values would have been converted to \code{NA}.
+To convert correctly defined missing values imported with
+\code{\link[foreign:read.spss]{foreign::read.spss()}}, you should have used \code{to.data.frame = FALSE} and
+\code{use.missings = FALSE}. If you used the option \code{to.data.frame = TRUE},
+meta data describing missing values will not be attached to the import.
+If you used \code{use.missings = TRUE}, missing values would have been converted
+to \code{NA}.
 
 So far, missing values defined in \strong{Stata} are always imported as \code{NA} by
 \code{\link[foreign:read.dta]{foreign::read.dta()}} and could not be retrieved by \code{foreign_to_labelled()}.
 
 If you convert a labelled vector into a factor with prefix, i.e. by using
-\link[=to_factor]{to_factor(levels = "prefixed")}, \code{to_labelled.factor()} is able to reconvert
-it to a labelled vector with same values and labels.
+\link[=to_factor]{to_factor(levels = "prefixed")}, \code{to_labelled.factor()} is able
+to reconvert it to a labelled vector with same values and labels.
 }
 \examples{
 \dontrun{
@@ -90,7 +94,9 @@ it to a labelled vector with same values and labels.
 }
 
 # Converting factors to labelled vectors
-f <- factor(c("yes", "yes", "no", "no", "don't know", "no", "yes", "don't know"))
+f <- factor(
+  c("yes", "yes", "no", "no", "don't know", "no", "yes", "don't know")
+)
 to_labelled(f)
 to_labelled(f, c("yes" = 1, "no" = 2, "don't know" = 9))
 to_labelled(f, c("yes" = 1, "no" = 2))
@@ -106,7 +112,10 @@ identical(s1, to_labelled(f1))
 to_labelled(f1, labels)
 identical(s1, to_labelled(f1, labels))
 
-l <- labelled(c(1, 1, 2, 2, 9, 2, 1, 9), c("yes" = 1, "no" = 2, "don't know" = 9))
+l <- labelled(
+  c(1, 1, 2, 2, 9, 2, 1, 9),
+  c("yes" = 1, "no" = 2, "don't know" = 9)
+)
 f <- to_factor(l, levels = "p")
 f
 to_labelled(f)

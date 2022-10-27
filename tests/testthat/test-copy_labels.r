@@ -4,7 +4,7 @@ test_that("copy_labels() copy variable / value labels and missing values", {
   x <- labelled(
     c(1, 1, 2),
     labels = c(Male = 1, Female = 2),
-    label="Assigned sex at birth"
+    label = "Assigned sex at birth"
   )
   y <- copy_labels(x, 1:3)
   expect_equal(var_label(x), var_label(y))
@@ -87,7 +87,7 @@ test_that("copy_labels checks", {
   x <- labelled(
     c(1, 1, 2),
     labels = c(Male = 1, Female = 2),
-    label="Assigned sex at birth"
+    label = "Assigned sex at birth"
   )
   expect_error(
     copy_labels(x, c("1", "2"))
@@ -107,7 +107,7 @@ test_that("copy_labels checks", {
   x <- labelled(
     c(1, 1, 2),
     labels = c(Male = 1, Female = 2),
-    label="Assigned sex at birth"
+    label = "Assigned sex at birth"
   )
   expect_error(
     copy_labels(x, c("1", "2"), .strict = FALSE),
@@ -125,4 +125,3 @@ test_that("copy_labels checks", {
     NA
   )
 })
-

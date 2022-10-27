@@ -1,6 +1,7 @@
 #' Convert to labelled data
 #'
-#' Convert a factor or data imported with \pkg{foreign} or \pkg{memisc} to labelled data.
+#' Convert a factor or data imported with \pkg{foreign} or \pkg{memisc} to
+#' labelled data.
 #'
 #' @param x Factor or dataset to convert to labelled data frame
 #' @param ... Not used
@@ -13,14 +14,16 @@
 #' `foreign_to_labelled()` converts data imported with [foreign::read.spss()]
 #' or [foreign::read.dta()] from \pkg{foreign} package to a labelled data frame,
 #' i.e. using [haven::labelled()].
-#' Factors will not be converted. Therefore, you should use `use.value.labels = FALSE`
-#' when importing with [foreign::read.spss()] or `convert.factors = FALSE` when
-#' importing with [foreign::read.dta()].
+#' Factors will not be converted. Therefore, you should use
+#' `use.value.labels = FALSE` when importing with [foreign::read.spss()] or
+#' `convert.factors = FALSE` when importing with [foreign::read.dta()].
 #'
-#' To convert correctly defined missing values imported with [foreign::read.spss()], you should
-#' have used `to.data.frame = FALSE` and `use.missings = FALSE`. If you used the option
-#' `to.data.frame = TRUE`, meta data describing missing values will not be attached to the import.
-#' If you used `use.missings = TRUE`, missing values would have been converted to `NA`.
+#' To convert correctly defined missing values imported with
+#' [foreign::read.spss()], you should have used `to.data.frame = FALSE` and
+#' `use.missings = FALSE`. If you used the option `to.data.frame = TRUE`,
+#' meta data describing missing values will not be attached to the import.
+#' If you used `use.missings = TRUE`, missing values would have been converted
+#' to `NA`.
 #'
 #' So far, missing values defined in **Stata** are always imported as `NA` by
 #' [foreign::read.dta()] and could not be retrieved by `foreign_to_labelled()`.
@@ -193,15 +196,18 @@ memisc_to_labelled <- function(x) {
 #' @param labels When converting a factor only:
 #'   an optional named vector indicating how factor levels should be coded.
 #'   If a factor level is not found in `labels`, it will be converted to `NA`.
-#' @param .quiet do not display warnings for prefixed factors with duplicated codes
+#' @param .quiet do not display warnings for prefixed factors with duplicated
+#'   codes
 #' @details
 #' If you convert a labelled vector into a factor with prefix, i.e. by using
-#' [to_factor(levels = "prefixed")][to_factor()], `to_labelled.factor()` is able to reconvert
-#' it to a labelled vector with same values and labels.
+#' [to_factor(levels = "prefixed")][to_factor()], `to_labelled.factor()` is able
+#' to reconvert it to a labelled vector with same values and labels.
 #' @export
 #' @examples
 #' # Converting factors to labelled vectors
-#' f <- factor(c("yes", "yes", "no", "no", "don't know", "no", "yes", "don't know"))
+#' f <- factor(
+#'   c("yes", "yes", "no", "no", "don't know", "no", "yes", "don't know")
+#' )
 #' to_labelled(f)
 #' to_labelled(f, c("yes" = 1, "no" = 2, "don't know" = 9))
 #' to_labelled(f, c("yes" = 1, "no" = 2))
@@ -217,7 +223,10 @@ memisc_to_labelled <- function(x) {
 #' to_labelled(f1, labels)
 #' identical(s1, to_labelled(f1, labels))
 #'
-#' l <- labelled(c(1, 1, 2, 2, 9, 2, 1, 9), c("yes" = 1, "no" = 2, "don't know" = 9))
+#' l <- labelled(
+#'   c(1, 1, 2, 2, 9, 2, 1, 9),
+#'   c("yes" = 1, "no" = 2, "don't know" = 9)
+#' )
 #' f <- to_factor(l, levels = "p")
 #' f
 #' to_labelled(f)
@@ -227,11 +236,14 @@ to_labelled.factor <- function(x, labels = NULL, .quiet = FALSE, ...) {
   if (is.null(labels)) {
     # check if levels are formatted as "[code] label"
     l <- .get_prefixes.factor(x)
-    if (any(is.na(l$code)) | any(is.na(l$code)) | any(duplicated(l$code))) {
-      if (!.quiet && any(duplicated(l$code)) && all(!is.na(l$code)) && all(!is.na(l$code)))
+    if (any(is.na(l$code)) || any(is.na(l$code)) || any(duplicated(l$code))) {
+      if (!.quiet &&
+          any(duplicated(l$code)) &&
+          all(!is.na(l$code)) &&
+          all(!is.na(l$code)))
         warning("'x' looks prefixed, but duplicated codes found.")
       # normal case
-      labs <- 1:length(levels(x))
+      labs <- seq_along(levels(x))
       names(labs) <- levels(x)
       x <- labelled(as.numeric(x), labs)
     } else {
@@ -254,7 +266,7 @@ to_labelled.factor <- function(x, labels = NULL, .quiet = FALSE, ...) {
     # labels is not NULL
     r <- rep_len(NA, length(x))
     mode(r) <- mode(labels)
-    for (i in 1:length(labels))
+    for (i in seq_along(labels))
       r[x == names(labels)[i]] <- labels[i]
     x <- labelled(r, labels)
   }

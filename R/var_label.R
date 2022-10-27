@@ -8,8 +8,8 @@
 #' @details
 #'   For data frames, if `value` is a named list, only elements whose name will
 #'   match a column of the data frame will be taken into account. If `value`
-#'   is a character vector, labels should in the same order as the columns of the
-#'   data.frame.
+#'   is a character vector, labels should in the same order as the columns of
+#'   the data.frame.
 #' @examples
 #' var_label(iris$Sepal.Length)
 #' var_label(iris$Sepal.Length) <- 'Length of the sepal'
@@ -46,10 +46,16 @@ var_label.default <- function(x, unlist = FALSE) {
 var_label.data.frame <- function(x, unlist = FALSE) {
   r <- lapply(x, var_label)
   if (unlist) {
-    r <- lapply(r, function(x){if (is.null(x)) "" else x})
+    r <- lapply(
+      r,
+      function(x) {
+        if (is.null(x)) "" else x
+      }
+    )
     base::unlist(r, use.names = TRUE)
-  } else
+  } else {
     r
+  }
 }
 
 #' @rdname var_label
@@ -70,9 +76,13 @@ var_label.data.frame <- function(x, unlist = FALSE) {
 
 #' @export
 `var_label<-.data.frame` <- function(x, value) {
-  if ((!is.character(value) && !is.null(value)) && !is.list(value) |
+  if ((!is.character(value) && !is.null(value)) && !is.list(value) ||
     (is.character(value) && length(value) > 1 && length(value) != ncol(x)))
-    stop("`value` should be a named list, NULL, a single character string or a character vector of same length than the number of columns in `x`",
+    stop(
+      paste0(
+        "`value` should be a named list, NULL, a single character string or a ",
+        "character vector of same length than the number of columns in `x`"
+      ),
       call. = FALSE, domain = "R-labelled")
   if (is.character(value) && length(value) == 1) {
     value <- as.list(rep(value, ncol(x)))
@@ -91,7 +101,10 @@ var_label.data.frame <- function(x, unlist = FALSE) {
   }
 
   if (!all(names(value) %in% names(x))) {
-    missing_names <- stringr::str_c(setdiff(names(value), names(x)), collapse = ", ")
+    missing_names <- stringr::str_c(
+      setdiff(names(value), names(x)),
+      collapse = ", "
+    )
     stop("some variables not found in x:", missing_names)
   }
 
@@ -153,7 +166,7 @@ var_label.data.frame <- function(x, unlist = FALSE) {
 #' }
 #' @export
 set_variable_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
-  if (!is.data.frame(.data) & !is.atomic(.data))
+  if (!is.data.frame(.data) && !is.atomic(.data))
     stop(".data should be a data.frame or a vector")
 
   # vector case
@@ -169,13 +182,16 @@ set_variable_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
   # data.frame case
   if (!identical(.labels, NA)) {
     if (!.strict)
-      .labels <-.labels[intersect(names(.labels), names(.data))]
+      .labels <- .labels[intersect(names(.labels), names(.data))]
     var_label(.data) <- .labels
   }
   values <- rlang::dots_list(...)
   if (length(values) > 0) {
     if (.strict && !all(names(values) %in% names(.data))) {
-      missing_names <- stringr::str_c(setdiff(names(values), names(.data)), collapse = ", ")
+      missing_names <- stringr::str_c(
+        setdiff(names(values), names(.data)),
+        collapse = ", "
+      )
       stop("some variables not found in .data: ", missing_names)
     }
 
@@ -185,4 +201,3 @@ set_variable_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
 
   .data
 }
-

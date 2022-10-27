@@ -6,32 +6,35 @@
 #' extents of the range (for `na_values`, use `-Inf` and `Inf` if you
 #' want the range to be open ended).
 #' @details
-#' See [haven::labelled_spss()] for a presentation of SPSS's user defined missing values.
+#' See [haven::labelled_spss()] for a presentation of SPSS's user defined
+#' missing values.
 #'
-#' Note that [base::is.na()] will return `TRUE` for user defined missing values. It will
-#' also return `TRUE` for regular `NA` values. If you want to test if a specific
-#' value is a user NA but not a regular `NA`, use `is_user_na()`. If you want to
-#' test if a value is a regular `NA` but not a user NA, not a tagged NA, use
-#' `is_regular_na()`.
+#' Note that [base::is.na()] will return `TRUE` for user defined missing values.
+#' It will also return `TRUE` for regular `NA` values. If you want to test if a
+#' specific value is a user NA but not a regular `NA`, use `is_user_na()`.
+#' If you want to test if a value is a regular `NA` but not a user NA, not a
+#' tagged NA, use `is_regular_na()`.
 #'
-#' You can use [user_na_to_na()] to convert user defined missing values to regular `NA`.
-#' Note that any value label attached to a user defined missing value will be lost.
+#' You can use [user_na_to_na()] to convert user defined missing values to
+#' regular `NA`. Note that any value label attached to a user defined missing
+#' value will be lost.
 #' [user_na_to_regular_na()] is a synonym of [user_na_to_na()].
 #'
 #' The method [user_na_to_tagged_na()] will convert user defined missing values
-#' into [haven::tagged_na()], preserving value labels. Please note that [haven::tagged_na()]
-#' are defined only for double vectors. Therefore, integer `haven_labelled_spss`
-#' vectors will be converted into double `haven_labelled` vectors; and
-#' [user_na_to_tagged_na()] cannot be applied to a character `haven_labelled_spss`
-#' vector.
+#' into [haven::tagged_na()], preserving value labels. Please note that
+#' [haven::tagged_na()] are defined only for double vectors. Therefore, integer
+#' `haven_labelled_spss` vectors will be converted into double `haven_labelled`
+#' vectors; and [user_na_to_tagged_na()] cannot be applied to a character
+#' `haven_labelled_spss` vector.
 #'
-#' [tagged_na_to_user_na()] is the opposite of [user_na_to_tagged_na()] and convert
-#' tagged `NA` into user defined missing values.
+#' [tagged_na_to_user_na()] is the opposite of [user_na_to_tagged_na()] and
+#' convert tagged `NA` into user defined missing values.
 #'
 #' @return
-#'   `na_values()` will return a vector of values that should also be considered as missing.
-#'   `na_range()` will return a numeric vector of length two giving the (inclusive)
-#'     extents of the range.
+#'   `na_values()` will return a vector of values that should also be
+#'   considered as missing.
+#'   `na_range()` will return a numeric vector of length two giving the
+#'   (inclusive) extents of the range.
 #' @seealso [haven::labelled_spss()], [user_na_to_na()]
 #' @examples
 #' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
@@ -91,7 +94,13 @@ na_values.data.frame <- function(x) {
 #' @export
 `na_values<-.default` <- function(x, value) {
   if (!is.null(value))
-    x <- labelled_spss(x, val_labels(x), na_values = value, na_range = attr(x, "na_range"), label = var_label(x))
+    x <- labelled_spss(
+      x,
+      val_labels(x),
+      na_values = value,
+      na_range = attr(x, "na_range"),
+      label = var_label(x)
+    )
   # else do nothing
   x
 }
@@ -111,7 +120,13 @@ na_values.data.frame <- function(x) {
       x <- labelled(x, val_labels(x), label = var_label(x))
     }
   } else {
-    x <- labelled_spss(x, val_labels(x), na_values = value, na_range = attr(x, "na_range"), label = var_label(x))
+    x <- labelled_spss(
+      x,
+      val_labels(x),
+      na_values = value,
+      na_range = attr(x, "na_range"),
+      label = var_label(x)
+    )
   }
   x
 }
@@ -127,7 +142,10 @@ na_values.data.frame <- function(x) {
   }
 
   if (!all(names(value) %in% names(x))) {
-    missing_names <- stringr::str_c(setdiff(names(value), names(x)), collapse = ", ")
+    missing_names <- stringr::str_c(
+      setdiff(names(value), names(x)),
+      collapse = ", "
+    )
     stop("some variables not found in x:", missing_names)
   }
 
@@ -176,7 +194,13 @@ na_range.data.frame <- function(x) {
 #' @export
 `na_range<-.default` <- function(x, value) {
   if (!is.null(value))
-    x <- labelled_spss(x, val_labels(x), na_values = attr(x, "na_values"), na_range = value, label = var_label(x))
+    x <- labelled_spss(
+      x,
+      val_labels(x),
+      na_values = attr(x, "na_values"),
+      na_range = value,
+      label = var_label(x)
+    )
   # else do nothing
   x
 }
@@ -196,7 +220,13 @@ na_range.data.frame <- function(x) {
       x <- labelled(x, val_labels(x), label = var_label(x))
     }
   } else {
-    x <- labelled_spss(x, val_labels(x), na_values = attr(x, "na_values"), na_range = value, label = var_label(x))
+    x <- labelled_spss(
+      x,
+      val_labels(x),
+      na_values = attr(x, "na_values"),
+      na_range = value,
+      label = var_label(x)
+    )
   }
   x
 }
@@ -212,7 +242,10 @@ na_range.data.frame <- function(x) {
   }
 
   if (!all(names(value) %in% names(x))) {
-    missing_names <- stringr::str_c(setdiff(names(value), names(x)), collapse = ", ")
+    missing_names <- stringr::str_c(
+      setdiff(names(value), names(x)),
+      collapse = ", "
+    )
     stop("some variables not found in x:", missing_names)
   }
 
@@ -239,7 +272,8 @@ na_range.data.frame <- function(x) {
 #' @param .strict should an error be returned if some labels
 #'   doesn't correspond to a column of `x`?
 #' @note
-#'   `set_na_values()` and `set_na_range()` could be used with \pkg{dplyr} syntax.
+#'   `set_na_values()` and `set_na_range()` could be used with \pkg{dplyr}
+#'   syntax.
 #' @return
 #'  `set_na_values()` and `set_na_range()` will return an updated
 #'  copy of `.data`.
@@ -265,7 +299,7 @@ na_range.data.frame <- function(x) {
 #' }
 #' @export
 set_na_values <- function(.data, ..., .values = NA, .strict = TRUE) {
-  if (!is.data.frame(.data) & !is.atomic(.data))
+  if (!is.data.frame(.data) && !is.atomic(.data))
     stop(".data should be a data.frame or a vector")
 
   # vector case
@@ -285,8 +319,11 @@ set_na_values <- function(.data, ..., .values = NA, .strict = TRUE) {
     na_values(.data) <- .values
   }
   values <- rlang::dots_list(...)
-  if (.strict & !all(names(values) %in% names(.data))) {
-    missing_names <- stringr::str_c(setdiff(names(values), names(.data)), collapse = ", ")
+  if (.strict && !all(names(values) %in% names(.data))) {
+    missing_names <- stringr::str_c(
+      setdiff(names(values), names(.data)),
+      collapse = ", "
+    )
     stop("some variables not found in .data: ", missing_names)
   }
 
@@ -299,7 +336,7 @@ set_na_values <- function(.data, ..., .values = NA, .strict = TRUE) {
 #' @rdname na_values
 #' @export
 set_na_range <- function(.data, ..., .values = NA, .strict = TRUE) {
-  if (!is.data.frame(.data) & !is.atomic(.data))
+  if (!is.data.frame(.data) && !is.atomic(.data))
     stop(".data should be a data.frame or a vector")
 
   # vector case
@@ -319,7 +356,7 @@ set_na_range <- function(.data, ..., .values = NA, .strict = TRUE) {
     na_range(.data) <- .values
   }
   values <- rlang::dots_list(...)
-  if (.strict & !all(names(values) %in% names(.data)))
+  if (.strict && !all(names(values) %in% names(.data)))
     stop("some variables not found in .data")
 
   for (v in intersect(names(values), names(.data)))
@@ -336,7 +373,7 @@ test_if_user_na <- function(val, na_values = NULL, na_range = NULL) {
   if (!is.null(na_values)) {
     miss <- miss | val %in% na_values
   }
-  if (!is.null(na_range) & is.numeric(val)) {
+  if (!is.null(na_range) && is.numeric(val)) {
     miss <- miss | (val >= na_range[1] & val <= na_range[2] & !is.na(val))
   }
   miss
@@ -405,4 +442,3 @@ user_na_to_tagged_na.data.frame <- function(x) {
   x[] <- lapply(x, user_na_to_tagged_na)
   x
 }
-

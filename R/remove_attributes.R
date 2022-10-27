@@ -1,7 +1,8 @@
 #' Remove attributes
 #'
-#' This function removes specified attributes. When applied to a data.frame, it will also
-#' remove recursively the specified attributes to each column of the data.frame.
+#' This function removes specified attributes. When applied to a data.frame, it
+#' will also remove recursively the specified attributes to each column of the
+#' data.frame.
 #'
 #' @param x an object
 #' @param attributes a character vector indicating attributes to remove

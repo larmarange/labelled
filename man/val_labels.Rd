@@ -29,9 +29,10 @@ remove_value_labels(.data, ..., .strict = TRUE)
 
 \item{prefixed}{Should labels be prefixed with values?}
 
-\item{value}{A named vector for \code{val_labels()} (see \code{\link[haven:labelled]{haven::labelled()}}) or a character string
-for \code{val_label()}. \code{NULL} to remove the labels.
-For data frames, it could also be a named list with a vector of value labels per variable.}
+\item{value}{A named vector for \code{val_labels()} (see \code{\link[haven:labelled]{haven::labelled()}}) or
+a character string for \code{val_label()}. \code{NULL} to remove the labels.
+For data frames, it could also be a named list with a vector of value
+labels per variable.}
 
 \item{v}{A single value.}
 
@@ -49,8 +50,8 @@ doesn't correspond to a column of \code{x}?}
 \code{val_labels()} will return a named vector.
 \code{val_label()} will return a single character string.
 
-\code{set_value_labels()}, \code{add_value_labels()} and \code{remove_value_labels()} will return an updated
-copy of \code{.data}.
+\code{set_value_labels()}, \code{add_value_labels()} and \code{remove_value_labels()} will
+return an updated copy of \code{.data}.
 }
 \description{
 Get / Set value labels
@@ -59,13 +60,14 @@ Get / Set value labels
 \code{set_value_labels()}, \code{add_value_labels()} and \code{remove_value_labels()}
 could be used with \pkg{dplyr} syntax.
 While \code{set_value_labels()} will replace the list of value labels,
-\code{add_value_labels()} and \code{remove_value_labels()} will update that list (see examples).
+\code{add_value_labels()} and \code{remove_value_labels()} will update that list
+(see examples).
 
 \code{set_value_labels()} could also be applied to a vector / a data.frame column.
 In such case, you can provide a vector of value labels using \code{.labels} or
 several name-value pairs of value labels (see exemple).
-Similarly, \code{add_value_labels()} and \code{remove_value_labels()} could also be applied
-on vectors.
+Similarly, \code{add_value_labels()} and \code{remove_value_labels()} could also be
+applied on vectors.
 }
 \examples{
 v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
@@ -78,7 +80,10 @@ val_labels(v) <- NULL
 if (require(dplyr)) {
   # setting value labels
   df <- tibble(s1 = c("M", "M", "F"), s2 = c(1, 1, 2)) \%>\%
-    set_value_labels(s1 = c(Male = "M", Female = "F"), s2 = c(Yes = 1, No = 2))
+    set_value_labels(
+      s1 = c(Male = "M", Female = "F"),
+      s2 = c(Yes = 1, No = 2)
+    )
   val_labels(df)
 
   # updating value labels

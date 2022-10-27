@@ -26,8 +26,10 @@ to_factor.default <- function(x, ...) {
 }
 
 #' @rdname to_factor
-#' @param levels What should be used for the factor levels: the labels, the values or labels prefixed with values?
-#' @param ordered `TRUE` for ordinal factors, `FALSE` (default) for nominal factors.
+#' @param levels What should be used for the factor levels: the labels, the
+#' values or labels prefixed with values?
+#' @param ordered `TRUE` for ordinal factors, `FALSE` (default) for nominal
+#' factors.
 #' @param nolabel_to_na Should values with no label be converted to `NA`?
 #' @param sort_levels How the factor levels should be sorted? (see Details)
 #' @param decreasing Should levels be sorted in decreasing order?
@@ -40,16 +42,19 @@ to_factor.default <- function(x, ...) {
 #' @param explicit_tagged_na Should tagged NA (cf. [haven::tagged_na()]) be
 #'   kept as explicit factor levels?
 #' @details
-#'   If some values doesn't have a label, automatic labels will be created, except if
-#'   `nolabel_to_na` is `TRUE`.
+#'   If some values doesn't have a label, automatic labels will be created,
+#'   except if `nolabel_to_na` is `TRUE`.
 #'
-#'   If `sort_levels == 'values'`, the levels will be sorted according to the values of `x`.
-#'   If `sort_levels == 'labels'`, the levels will be sorted according to labels' names.
-#'   If `sort_levels == 'none'`, the levels will be in the order the value labels are defined
-#'   in `x`. If some labels are automatically created, they will be added at the end.
-#'   If `sort_levels == 'auto'`, `sort_levels == 'none'` will be used, except if some
-#'   values doesn't have a defined label. In such case, `sort_levels == 'values'` will
-#'   be applied.
+#'   If `sort_levels == 'values'`, the levels will be sorted according to the
+#'   values of `x`.
+#'   If `sort_levels == 'labels'`, the levels will be sorted according to
+#'   labels' names.
+#'   If `sort_levels == 'none'`, the levels will be in the order the value
+#'   labels are defined in `x`. If some labels are automatically created, they
+#'   will be added at the end.
+#'   If `sort_levels == 'auto'`, `sort_levels == 'none'` will be used, except
+#'   if some values doesn't have a defined label. In such case,
+#'   `sort_levels == 'values'` will be applied.
 #' @examples
 #' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
 #' to_factor(v)
@@ -79,7 +84,7 @@ to_factor.haven_labelled <- function(x, levels = c("labels", "values",
   sort_levels <- match.arg(sort_levels)
   if (user_na_to_na)
     x <- user_na_to_na(x)
-  if (explicit_tagged_na & is.double(x)) {
+  if (explicit_tagged_na && is.double(x)) {
     new_labels <- to_character(val_labels(x), explicit_tagged_na = TRUE)
     x <- to_character(unclass(x), explicit_tagged_na = TRUE)
     if (any(is.na(new_labels))) { # regular NA with a label
@@ -116,7 +121,7 @@ to_factor.haven_labelled <- function(x, levels = c("labels", "values",
     levs <- labels
   }
 
-  if (sort_levels == "auto" & length(nolabel) > 0)
+  if (sort_levels == "auto" && length(nolabel) > 0)
     sort_levels <- "values"
   if (sort_levels == "labels")
     levs <- levs[order(names(levs), decreasing = decreasing)]
@@ -139,39 +144,75 @@ to_factor.haven_labelled <- function(x, levels = c("labels", "values",
 }
 
 #' @rdname to_factor
-#' @param labelled_only for a data.frame, convert only labelled variables to factors?
+#' @param labelled_only for a data.frame, convert only labelled variables to
+#' factors?
 #' @details
-#'   When applied to a data.frame, only labelled vectors are converted by default to a
-#'   factor. Use `labelled_only = FALSE` to convert all variables to factors.
+#'   When applied to a data.frame, only labelled vectors are converted by
+#'   default to a factor. Use `labelled_only = FALSE` to convert all variables
+#'   to factors.
 #' @export
-to_factor.data.frame <- function(x, levels = c("labels", "values", "prefixed"),
-                                 ordered = FALSE, nolabel_to_na = FALSE,
-                                 sort_levels = c("auto", "none", "labels", "values"),
-                                 decreasing = FALSE, labelled_only = TRUE,
-                                 drop_unused_labels = FALSE, strict = FALSE,
-                                 unclass = FALSE, explicit_tagged_na = FALSE,
-                                 ...) {
+to_factor.data.frame <- function(
+  x,
+  levels = c("labels", "values", "prefixed"),
+  ordered = FALSE,
+  nolabel_to_na = FALSE,
+  sort_levels = c("auto", "none", "labels", "values"),
+  decreasing = FALSE,
+  labelled_only = TRUE,
+  drop_unused_labels = FALSE,
+  strict = FALSE,
+  unclass = FALSE,
+  explicit_tagged_na = FALSE,
+  ...
+) {
   cl <- class(x)
-  x <- dplyr::as_tibble(lapply(x, .to_factor_col_data_frame, levels = levels, ordered = ordered,
-         nolabel_to_na = nolabel_to_na, sort_levels = sort_levels, decreasing = decreasing,
-         labelled_only = labelled_only, drop_unused_labels = drop_unused_labels, strict = strict,
-         unclass = unclass, explicit_tagged_na = explicit_tagged_na, ...))
+  x <- dplyr::as_tibble(
+    lapply(
+      x,
+      .to_factor_col_data_frame,
+      levels = levels,
+      ordered = ordered,
+      nolabel_to_na = nolabel_to_na,
+      sort_levels = sort_levels,
+      decreasing = decreasing,
+      labelled_only = labelled_only,
+      drop_unused_labels = drop_unused_labels,
+      strict = strict,
+      unclass = unclass,
+      explicit_tagged_na = explicit_tagged_na,
+      ...
+    )
+  )
   class(x) <- cl
   x
 }
 
-.to_factor_col_data_frame <- function(x, levels = c("labels", "values", "prefixed"),
-                                      ordered = FALSE, nolabel_to_na = FALSE,
-                                      sort_levels = c("auto", "none", "labels", "values"),
-                                      decreasing = FALSE, labelled_only = TRUE,
-                                      drop_unused_labels = FALSE, strict = FALSE,
-                                      unclass = FALSE, explicit_tagged_na = FALSE,
-                                      ...) {
+.to_factor_col_data_frame <- function(
+  x,
+  levels = c("labels", "values", "prefixed"),
+  ordered = FALSE,
+  nolabel_to_na = FALSE,
+  sort_levels = c("auto", "none", "labels", "values"),
+  decreasing = FALSE,
+  labelled_only = TRUE,
+  drop_unused_labels = FALSE,
+  strict = FALSE,
+  unclass = FALSE,
+  explicit_tagged_na = FALSE,
+  ...
+) {
   if (inherits(x, "haven_labelled"))
-    x <- to_factor(x, levels = levels, ordered = ordered,
-                   nolabel_to_na = nolabel_to_na, sort_levels = sort_levels, decreasing = decreasing,
-                   drop_unused_labels = drop_unused_labels, strict = strict, unclass = unclass,
-                   explicit_tagged_na = explicit_tagged_na, ...)
+    x <- to_factor(x,
+                   levels = levels,
+                   ordered = ordered,
+                   nolabel_to_na = nolabel_to_na,
+                   sort_levels = sort_levels,
+                   decreasing = decreasing,
+                   drop_unused_labels = drop_unused_labels,
+                   strict = strict,
+                   unclass = unclass,
+                   explicit_tagged_na = explicit_tagged_na,
+                   ...)
   else if (!labelled_only)
     x <- to_factor(x)
   x
@@ -179,18 +220,23 @@ to_factor.data.frame <- function(x, levels = c("labels", "values", "prefixed"),
 
 #' @rdname to_factor
 #' @description
-#' `unlabelled(x)` is a shortcut for `to_factor(x, strict = TRUE, unclass = TRUE, labelled_only = TRUE)`.
+#' `unlabelled(x)` is a shortcut for
+#' `to_factor(x, strict = TRUE, unclass = TRUE, labelled_only = TRUE)`.
 #' @details
 #' `unlabelled()` is a shortcut for quickly removing value labels of a vector
-#' or of a data.frame. If all observed values have a value label, then the vector
-#' will be converted into a factor. Otherwise, the vector will be unclassed.
+#' or of a data.frame. If all observed values have a value label, then the
+#' vector will be converted into a factor. Otherwise, the vector will be
+#' unclassed.
 #' If you want to remove value labels in all cases, use [remove_val_labels()].
 #' @examples
 #'
 #' df <- data.frame(
 #'   a = labelled(c(1, 1, 2, 3), labels = c(No = 1, Yes = 2)),
 #'   b = labelled(c(1, 1, 2, 3), labels = c(No = 1, Yes = 2, DK = 3)),
-#'   c = labelled(c("a", "a", "b", "c"), labels = c(No = "a", Maybe = "b", Yes = "c")),
+#'   c = labelled(
+#'     c("a", "a", "b", "c"),
+#'     labels = c(No = "a", Maybe = "b", Yes = "c")
+#'   ),
 #'   d = 1:4,
 #'   e = factor(c("item1", "item2", "item1", "item2")),
 #'   f = c("itemA", "itemA", "itemB", "itemB"),
@@ -207,4 +253,3 @@ unlabelled <- function(x, ...) {
   else
     to_factor(x, strict = TRUE, unclass = TRUE, ...)
 }
-

@@ -56,9 +56,10 @@ using the same syntax as \code{value} in \code{na_values(df) <- value} or
 doesn't correspond to a column of \code{x}?}
 }
 \value{
-\code{na_values()} will return a vector of values that should also be considered as missing.
-\code{na_range()} will return a numeric vector of length two giving the (inclusive)
-extents of the range.
+\code{na_values()} will return a vector of values that should also be
+considered as missing.
+\code{na_range()} will return a numeric vector of length two giving the
+(inclusive) extents of the range.
 
 \code{set_na_values()} and \code{set_na_range()} will return an updated
 copy of \code{.data}.
@@ -67,30 +68,33 @@ copy of \code{.data}.
 Get / Set SPSS missing values
 }
 \details{
-See \code{\link[haven:labelled_spss]{haven::labelled_spss()}} for a presentation of SPSS's user defined missing values.
+See \code{\link[haven:labelled_spss]{haven::labelled_spss()}} for a presentation of SPSS's user defined
+missing values.
 
-Note that \code{\link[base:NA]{base::is.na()}} will return \code{TRUE} for user defined missing values. It will
-also return \code{TRUE} for regular \code{NA} values. If you want to test if a specific
-value is a user NA but not a regular \code{NA}, use \code{is_user_na()}. If you want to
-test if a value is a regular \code{NA} but not a user NA, not a tagged NA, use
-\code{is_regular_na()}.
+Note that \code{\link[base:NA]{base::is.na()}} will return \code{TRUE} for user defined missing values.
+It will also return \code{TRUE} for regular \code{NA} values. If you want to test if a
+specific value is a user NA but not a regular \code{NA}, use \code{is_user_na()}.
+If you want to test if a value is a regular \code{NA} but not a user NA, not a
+tagged NA, use \code{is_regular_na()}.
 
-You can use \code{\link[=user_na_to_na]{user_na_to_na()}} to convert user defined missing values to regular \code{NA}.
-Note that any value label attached to a user defined missing value will be lost.
+You can use \code{\link[=user_na_to_na]{user_na_to_na()}} to convert user defined missing values to
+regular \code{NA}. Note that any value label attached to a user defined missing
+value will be lost.
 \code{\link[=user_na_to_regular_na]{user_na_to_regular_na()}} is a synonym of \code{\link[=user_na_to_na]{user_na_to_na()}}.
 
 The method \code{\link[=user_na_to_tagged_na]{user_na_to_tagged_na()}} will convert user defined missing values
-into \code{\link[haven:tagged_na]{haven::tagged_na()}}, preserving value labels. Please note that \code{\link[haven:tagged_na]{haven::tagged_na()}}
-are defined only for double vectors. Therefore, integer \code{haven_labelled_spss}
-vectors will be converted into double \code{haven_labelled} vectors; and
-\code{\link[=user_na_to_tagged_na]{user_na_to_tagged_na()}} cannot be applied to a character \code{haven_labelled_spss}
-vector.
+into \code{\link[haven:tagged_na]{haven::tagged_na()}}, preserving value labels. Please note that
+\code{\link[haven:tagged_na]{haven::tagged_na()}} are defined only for double vectors. Therefore, integer
+\code{haven_labelled_spss} vectors will be converted into double \code{haven_labelled}
+vectors; and \code{\link[=user_na_to_tagged_na]{user_na_to_tagged_na()}} cannot be applied to a character
+\code{haven_labelled_spss} vector.
 
-\code{\link[=tagged_na_to_user_na]{tagged_na_to_user_na()}} is the opposite of \code{\link[=user_na_to_tagged_na]{user_na_to_tagged_na()}} and convert
-tagged \code{NA} into user defined missing values.
+\code{\link[=tagged_na_to_user_na]{tagged_na_to_user_na()}} is the opposite of \code{\link[=user_na_to_tagged_na]{user_na_to_tagged_na()}} and
+convert tagged \code{NA} into user defined missing values.
 }
 \note{
-\code{set_na_values()} and \code{set_na_range()} could be used with \pkg{dplyr} syntax.
+\code{set_na_values()} and \code{set_na_range()} could be used with \pkg{dplyr}
+syntax.
 }
 \examples{
 v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))

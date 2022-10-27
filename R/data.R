@@ -13,5 +13,3 @@
 
 #' @rdname test_datasets
 "dta_file"
-
-
