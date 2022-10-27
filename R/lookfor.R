@@ -90,16 +90,25 @@
 #'   convert_list_columns_to_character()
 #'
 #' # Labelled data
-#' \dontrun{
-#'   data(fertility, package = "questionr")
-#'   look_for(children)
-#'   look_for(children, "id")
-#'   children %>% look_for_and_select("id")
-#'   look_for(children) %>%
-#'     lookfor_to_long_format() %>%
-#'     convert_list_columns_to_character()
-#' }
-#' @source Based on the behavior of the `lookfor` command in Stata.
+#' d <- dplyr::tibble(
+#'   region = labelled_spss(
+#'     c(1, 2, 1, 9, 2, 3),
+#'     c(north = 1, south = 2, center = 3, missing = 9),
+#'     na_values = 9,
+#'     label = "Region of the respondent"
+#'   ),
+#'   sex = labelled(
+#'     c("f", "f", "m", "m", "m", "f"),
+#'     c(female = "f", male = "m"),
+#'     label = "Sex of the respondent"
+#'   )
+#' )
+#' look_for(d)
+#' d %>%
+#'   look_for() %>%
+#'   lookfor_to_long_format() %>%
+#'   convert_list_columns_to_character()
+#' @source Inspired by the `lookfor` command in Stata.
 #' @export
 
 look_for <- function(data,

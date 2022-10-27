@@ -10,7 +10,7 @@
 \alias{lookfor_to_long_format}
 \title{Look for keywords variable names and descriptions / Create a data dictionary}
 \source{
-Based on the behavior of the \code{lookfor} command in Stata.
+Inspired by the \code{lookfor} command in Stata.
 }
 \usage{
 look_for(
@@ -154,15 +154,24 @@ look_for(iris) \%>\%
   convert_list_columns_to_character()
 
 # Labelled data
-\dontrun{
-  data(fertility, package = "questionr")
-  look_for(children)
-  look_for(children, "id")
-  children \%>\% look_for_and_select("id")
-  look_for(children) \%>\%
-    lookfor_to_long_format() \%>\%
-    convert_list_columns_to_character()
-}
+d <- dplyr::tibble(
+  region = labelled_spss(
+    c(1, 2, 1, 9, 2, 3),
+    c(north = 1, south = 2, center = 3, missing = 9),
+    na_values = 9,
+    label = "Region of the respondent"
+  ),
+  sex = labelled(
+    c("f", "f", "m", "m", "m", "f"),
+    c(female = "f", male = "m"),
+    label = "Sex of the respondent"
+  )
+)
+look_for(d)
+d \%>\%
+  look_for() \%>\%
+  lookfor_to_long_format() \%>\%
+  convert_list_columns_to_character()
 }
 \author{
 François Briatte \href{mailto:f.briatte@gmail.com}{f.briatte@gmail.com},
