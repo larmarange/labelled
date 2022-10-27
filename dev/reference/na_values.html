@@ -128,9 +128,10 @@ doesn't correspond to a column of <code>x</code>?</p></dd>
     <h2>Value</h2>
     
 
-<p><code>na_values()</code> will return a vector of values that should also be considered as missing.
-<code>na_range()</code> will return a numeric vector of length two giving the (inclusive)
-extents of the range.</p>
+<p><code>na_values()</code> will return a vector of values that should also be
+considered as missing.
+<code>na_range()</code> will return a numeric vector of length two giving the
+(inclusive) extents of the range.</p>
 
 
 <p><code>set_na_values()</code> and <code>set_na_range()</code> will return an updated
@@ -138,27 +139,30 @@ copy of <code>.data</code>.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>See <code><a href="https://haven.tidyverse.org/reference/labelled_spss.html" class="external-link">haven::labelled_spss()</a></code> for a presentation of SPSS's user defined missing values.</p>
-<p>Note that <code><a href="https://rdrr.io/r/base/NA.html" class="external-link">base::is.na()</a></code> will return <code>TRUE</code> for user defined missing values. It will
-also return <code>TRUE</code> for regular <code>NA</code> values. If you want to test if a specific
-value is a user NA but not a regular <code>NA</code>, use <code>is_user_na()</code>. If you want to
-test if a value is a regular <code>NA</code> but not a user NA, not a tagged NA, use
-<code>is_regular_na()</code>.</p>
-<p>You can use <code>user_na_to_na()</code> to convert user defined missing values to regular <code>NA</code>.
-Note that any value label attached to a user defined missing value will be lost.
+    <p>See <code><a href="https://haven.tidyverse.org/reference/labelled_spss.html" class="external-link">haven::labelled_spss()</a></code> for a presentation of SPSS's user defined
+missing values.</p>
+<p>Note that <code><a href="https://rdrr.io/r/base/NA.html" class="external-link">base::is.na()</a></code> will return <code>TRUE</code> for user defined missing values.
+It will also return <code>TRUE</code> for regular <code>NA</code> values. If you want to test if a
+specific value is a user NA but not a regular <code>NA</code>, use <code>is_user_na()</code>.
+If you want to test if a value is a regular <code>NA</code> but not a user NA, not a
+tagged NA, use <code>is_regular_na()</code>.</p>
+<p>You can use <code>user_na_to_na()</code> to convert user defined missing values to
+regular <code>NA</code>. Note that any value label attached to a user defined missing
+value will be lost.
 <code>user_na_to_regular_na()</code> is a synonym of <code>user_na_to_na()</code>.</p>
 <p>The method <code>user_na_to_tagged_na()</code> will convert user defined missing values
-into <code><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">haven::tagged_na()</a></code>, preserving value labels. Please note that <code><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">haven::tagged_na()</a></code>
-are defined only for double vectors. Therefore, integer <code>haven_labelled_spss</code>
-vectors will be converted into double <code>haven_labelled</code> vectors; and
-<code>user_na_to_tagged_na()</code> cannot be applied to a character <code>haven_labelled_spss</code>
-vector.</p>
-<p><code><a href="tagged_na_to_user_na.html">tagged_na_to_user_na()</a></code> is the opposite of <code>user_na_to_tagged_na()</code> and convert
-tagged <code>NA</code> into user defined missing values.</p>
+into <code><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">haven::tagged_na()</a></code>, preserving value labels. Please note that
+<code><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">haven::tagged_na()</a></code> are defined only for double vectors. Therefore, integer
+<code>haven_labelled_spss</code> vectors will be converted into double <code>haven_labelled</code>
+vectors; and <code>user_na_to_tagged_na()</code> cannot be applied to a character
+<code>haven_labelled_spss</code> vector.</p>
+<p><code><a href="tagged_na_to_user_na.html">tagged_na_to_user_na()</a></code> is the opposite of <code>user_na_to_tagged_na()</code> and
+convert tagged <code>NA</code> into user defined missing values.</p>
     </div>
     <div id="note">
     <h2>Note</h2>
-    <p><code>set_na_values()</code> and <code>set_na_range()</code> could be used with <span class="pkg">dplyr</span> syntax.</p>
+    <p><code>set_na_values()</code> and <code>set_na_range()</code> could be used with <span class="pkg">dplyr</span>
+syntax.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
