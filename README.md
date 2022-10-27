@@ -25,7 +25,7 @@ variable labels, value labels and user-defined missing values.
 
 To install **stable version**:
 
-```{r eval=FALSE}
+```
 install.packages("labelled")
 ```
 
@@ -33,7 +33,7 @@ Documentation of stable version: <https://larmarange.github.io/labelled/>
 
 To install **development version**:
 
-```{r eval=FALSE}
+```
 remotes::install_github("larmarange/labelled")
 ```
 
