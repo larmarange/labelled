@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">labelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.10.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.10.0</span>
       </span>
     </div>
 
@@ -779,7 +779,7 @@
 <span><span class="co">##                              [3] DK </span></span>
 <span><span class="co">##  4   d        —     chr+lbl  [a] No </span></span>
 <span><span class="co">##                              [b] Yes</span></span>
-<span><span class="co">##  5   e        —     hvn_lbl_ [1] No </span></span>
+<span><span class="co">##  5   e        —     dbl+lbl  [1] No </span></span>
 <span><span class="co">##                              [2] Yes</span></span></code></pre>
 <div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span><span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -871,7 +871,7 @@
 <span>  <span class="fu"><a href="../reference/var_label.html">set_variable_labels</a></span><span class="op">(</span>s1 <span class="op">=</span> <span class="st">"Sex"</span>, s2 <span class="op">=</span> <span class="st">"Question"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/val_labels.html">set_value_labels</a></span><span class="op">(</span>s1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>Male <span class="op">=</span> <span class="st">"M"</span>, Female <span class="op">=</span> <span class="st">"F"</span><span class="op">)</span>, s2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>Yes <span class="op">=</span> <span class="fl">1</span>, No <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Warning: `data_frame()` was deprecated in tibble 1.1.0.</span></span>
-<span><span class="co">## <span style="color: #00BBBB;">ℹ</span> Please use `tibble()` instead.</span></span></code></pre>
+<span><span class="co">## Please use `tibble()` instead.</span></span></code></pre>
 <div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span><span class="op">$</span><span class="va">s2</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled&lt;double&gt;[3]&gt;: Question</span></span>
@@ -959,14 +959,14 @@
 <span><span class="co">## $ residency         <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, …</span></span>
 <span><span class="co">## $ region            <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, …</span></span>
 <span><span class="co">## $ instruction       <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 2, 1, 0, …</span></span>
-<span><span class="co">## $ employed          <span style="color: #949494; font-style: italic;">&lt;hvn_lbl_&gt;</span> 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1,…</span></span>
+<span><span class="co">## $ employed          <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, …</span></span>
 <span><span class="co">## $ matri             <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> 0, 2, 2, 2, 1, 0, 1, 1, 2, 5, 2, 3, 0, 2, 1, 2, …</span></span>
 <span><span class="co">## $ religion          <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> 1, 3, 2, 3, 2, 2, 3, 1, 3, 3, 2, 3, 2, 2, 2, 2, …</span></span>
 <span><span class="co">## $ newspaper         <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, …</span></span>
 <span><span class="co">## $ radio             <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, …</span></span>
 <span><span class="co">## $ tv                <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, …</span></span>
-<span><span class="co">## $ ideal_nb_children <span style="color: #949494; font-style: italic;">&lt;hvn_lbl_&gt;</span>  4,  4,  4,  4,  4,  5, 10,  5,  4,  5,  6, 10,…</span></span>
-<span><span class="co">## $ test              <span style="color: #949494; font-style: italic;">&lt;hvn_lbl_&gt;</span> 0, 9, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0,…</span></span></code></pre>
+<span><span class="co">## $ ideal_nb_children <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span>  4,  4,  4,  4,  4,  5, 10,  5,  4,  5,  6, 10, …</span></span>
+<span><span class="co">## $ test              <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> 0, 9, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, …</span></span></code></pre>
 <div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">women</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Rows: 2,000</span></span>
@@ -1050,8 +1050,8 @@
 <span><span class="co">## $ newspaper         <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, …</span></span>
 <span><span class="co">## $ radio             <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, …</span></span>
 <span><span class="co">## $ tv                <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, …</span></span>
-<span><span class="co">## $ ideal_nb_children <span style="color: #949494; font-style: italic;">&lt;hvn_lbl_&gt;</span>  4,  4,  4,  4,  4,  5, 10,  5,  4,  5,  6, 10,…</span></span>
-<span><span class="co">## $ test              <span style="color: #949494; font-style: italic;">&lt;hvn_lbl_&gt;</span> 0, 9, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0,…</span></span></code></pre>
+<span><span class="co">## $ ideal_nb_children <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span>  4,  4,  4,  4,  4,  5, 10,  5,  4,  5,  6, 10, …</span></span>
+<span><span class="co">## $ test              <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> 0, 9, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, …</span></span></code></pre>
 </div>
   </div>
 
