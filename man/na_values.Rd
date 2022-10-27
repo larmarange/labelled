@@ -44,7 +44,7 @@ user_na_to_tagged_na(x)
 extents of the range (for \code{na_values}, use \code{-Inf} and \code{Inf} if you
 want the range to be open ended).}
 
-\item{.data}{a data frame}
+\item{.data}{a data frame or a vector}
 
 \item{...}{name-value pairs of missing values (see examples)}
 
@@ -130,6 +130,14 @@ if (require(dplyr)) {
   # removing missing values
   df <- df \%>\% set_na_values(s2 = NULL)
   df$s2
+
+  # example with a vector
+  v <- 1:10
+  v <- v \%>\% set_na_values(5, 6, 7)
+  v
+  v \%>\% set_na_range(8, 10)
+  v \%>\% set_na_range(.values = c(9, 10))
+  v \%>\% set_na_values(NULL)
 }
 }
 \seealso{

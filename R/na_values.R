@@ -231,7 +231,7 @@ na_range.data.frame <- function(x) {
 
 
 #' @rdname na_values
-#' @param .data a data frame
+#' @param .data a data frame or a vector
 #' @param ... name-value pairs of missing values (see examples)
 #' @param .values missing values to be applied to the data.frame,
 #'   using the same syntax as `value` in `na_values(df) <- value` or
@@ -254,9 +254,31 @@ na_range.data.frame <- function(x) {
 #'   # removing missing values
 #'   df <- df %>% set_na_values(s2 = NULL)
 #'   df$s2
+#'
+#'   # example with a vector
+#'   v <- 1:10
+#'   v <- v %>% set_na_values(5, 6, 7)
+#'   v
+#'   v %>% set_na_range(8, 10)
+#'   v %>% set_na_range(.values = c(9, 10))
+#'   v %>% set_na_values(NULL)
 #' }
 #' @export
 set_na_values <- function(.data, ..., .values = NA, .strict = TRUE) {
+  if (!is.data.frame(.data) & !is.atomic(.data))
+    stop(".data should be a data.frame or a vector")
+
+  # vector case
+  if (is.atomic(.data)) {
+    if (!identical(.values, NA)) {
+      na_values(.data) <- .values
+    } else {
+      na_values(.data) <- unname(unlist(rlang::dots_list(...)))
+    }
+    return(.data)
+  }
+
+  # data.frame case
   if (!identical(.values, NA)) {
     if (!.strict)
       .values <- .values[intersect(names(.values), names(.data))]
@@ -277,6 +299,20 @@ set_na_values <- function(.data, ..., .values = NA, .strict = TRUE) {
 #' @rdname na_values
 #' @export
 set_na_range <- function(.data, ..., .values = NA, .strict = TRUE) {
+  if (!is.data.frame(.data) & !is.atomic(.data))
+    stop(".data should be a data.frame or a vector")
+
+  # vector case
+  if (is.atomic(.data)) {
+    if (!identical(.values, NA)) {
+      na_range(.data) <- .values
+    } else {
+      na_range(.data) <- unname(unlist(rlang::dots_list(...)))
+    }
+    return(.data)
+  }
+
+  # data.frame case
   if (!identical(.values, NA)) {
     if (!.strict)
       .values <- .values[intersect(names(.values), names(.data))]

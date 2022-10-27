@@ -21,7 +21,7 @@ set_variable_labels(.data, ..., .labels = NA, .strict = TRUE)
 For data frames, it could also be a named list or a character vector
 of same length as the number of columns in \code{x}.}
 
-\item{.data}{a data frame}
+\item{.data}{a data frame or a vector}
 
 \item{...}{name-value pairs of variable labels (see examples)}
 
@@ -98,5 +98,11 @@ if (require(dplyr)) {
       set_variable_labels(.labels = to_sentence_case(names(iris)))
     var_label(iris)
   }
+
+  # example with a vector
+  v <- 1:5
+  v <- v \%>\% set_variable_labels("a variable label")
+  v
+  v \%>\% set_variable_labels(NULL)
 }
 }

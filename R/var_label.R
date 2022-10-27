@@ -102,7 +102,7 @@ var_label.data.frame <- function(x, unlist = FALSE) {
 
 
 #' @rdname var_label
-#' @param .data a data frame
+#' @param .data a data frame or a vector
 #' @param ... name-value pairs of variable labels (see examples)
 #' @param .labels variable labels to be applied to the data.frame,
 #'   using the same syntax as `value` in `var_label(df) <- value`.
@@ -144,9 +144,29 @@ var_label.data.frame <- function(x, unlist = FALSE) {
 #'       set_variable_labels(.labels = to_sentence_case(names(iris)))
 #'     var_label(iris)
 #'   }
+#'
+#'   # example with a vector
+#'   v <- 1:5
+#'   v <- v %>% set_variable_labels("a variable label")
+#'   v
+#'   v %>% set_variable_labels(NULL)
 #' }
 #' @export
 set_variable_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
+  if (!is.data.frame(.data) & !is.atomic(.data))
+    stop(".data should be a data.frame or a vector")
+
+  # vector case
+  if (is.atomic(.data)) {
+    if (!identical(.labels, NA)) {
+      var_label(.data) <- .labels
+    } else {
+      var_label(.data) <- unname(unlist(rlang::dots_list(...)))
+    }
+    return(.data)
+  }
+
+  # data.frame case
   if (!identical(.labels, NA)) {
     if (!.strict)
       .labels <-.labels[intersect(names(.labels), names(.data))]

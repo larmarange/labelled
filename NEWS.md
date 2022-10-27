@@ -1,5 +1,9 @@
 # labelled (development version)
 
+* `set_value_labels()`, `add_value_labels()`, `remove_value_labels()`,
+  `set_variable_labels()`, `set_na_range()` and `set_na_values()` can now be 
+  applied on a vector (#126)
+
 # labelled 2.10.0
 
 * `look_for()` now accepts `survey` objects (#121)
