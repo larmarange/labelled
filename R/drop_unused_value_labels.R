@@ -32,5 +32,3 @@ drop_unused_value_labels.data.frame <- function(x) {
   x[] <- lapply(x, drop_unused_value_labels)
   x
 }
-
-

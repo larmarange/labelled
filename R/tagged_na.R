@@ -127,8 +127,8 @@ sort_tagged_na <- function(x, decreasing = FALSE, na.last = TRUE,
 
 #' Convert tagged NAs into user NAs
 #'
-#' [tagged_na_to_user_na()] is the opposite of [user_na_to_tagged_na()] and convert
-#' tagged `NA` into user defined missing values (see [labelled_spss()]).
+#' [tagged_na_to_user_na()] is the opposite of [user_na_to_tagged_na()] and
+#' convert tagged `NA` into user defined missing values (see [labelled_spss()]).
 #'
 #' [tagged_na_to_regular_na()] converts tagged NAs into regular NAs.
 #'
@@ -171,10 +171,14 @@ tagged_na_to_user_na.double <- function(x, user_na_start = NULL) {
   if (length(tn) == 0)
     return(x)
   labels <- val_labels(x)
-  for (i in 1:length(tn)) {
+  for (i in seq_along(tn)) {
     new_val <- user_na_start + i - 1
     if (any(x == new_val, na.rm = TRUE))
-      stop("Value ", new_val, " is already used in 'x'. Please change 'user_na_start'.")
+      stop(
+        "Value ",
+        new_val,
+        " is already used in 'x'. Please change 'user_na_start'."
+      )
     x[is_tagged_na(x, na_tag(tn[i]))] <- new_val
     if (any(is_tagged_na(labels, na_tag(tn[i])), na.rm = TRUE)) {
       labels[is_tagged_na(labels, na_tag(tn[i]))] <- new_val
@@ -222,4 +226,3 @@ tagged_na_to_regular_na.data.frame <- function(x) {
   x[] <- lapply(x, tagged_na_to_regular_na)
   x
 }
-

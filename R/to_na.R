@@ -65,5 +65,3 @@ val_labels_to_na.data.frame <- function(x) {
   x[] <- lapply(x, val_labels_to_na)
   x
 }
-
-

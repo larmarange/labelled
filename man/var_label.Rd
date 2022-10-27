@@ -40,8 +40,8 @@ Get / Set a variable label
 \details{
 For data frames, if \code{value} is a named list, only elements whose name will
 match a column of the data frame will be taken into account. If \code{value}
-is a character vector, labels should in the same order as the columns of the
-data.frame.
+is a character vector, labels should in the same order as the columns of
+the data.frame.
 }
 \note{
 \code{set_variable_labels()} could be used with \pkg{dplyr} syntax.

@@ -27,7 +27,10 @@ v <- labelled(c(1,2,2,9), c(yes = 1, no = 2))
 v \%>\% recode_if(v == 9, NA)
 if (require(dplyr)) {
   df <- tibble(s1 = c("M", "M", "F"), s2 = c(1, 2, 1)) \%>\%
-    set_value_labels(s1 = c(Male = "M", Female = "F"), s2 = c(A = 1, B = 2)) \%>\%
+    set_value_labels(
+      s1 = c(Male = "M", Female = "F"),
+      s2 = c(A = 1, B = 2)
+    ) \%>\%
     set_variable_labels(s1 = "Gender", s2 = "Group")
 
   df <- df \%>\%

@@ -45,8 +45,8 @@ replaced by this value. Must be either length 1 or the same length as
 If FALSE, remove value labels.}
 
 \item{.combine_value_labels}{If TRUE, will combine original value labels
-to generate new value labels. Note that unexpected results could be obtained
-if a same old value is recoded into several different new values.}
+to generate new value labels. Note that unexpected results could be
+obtained if a same old value is recoded into several different new values.}
 
 \item{.sep}{Separator to be used when combining value labels.}
 }
@@ -62,7 +62,8 @@ dplyr::recode(x, `3` = 2L)
 # do not keep value labels
 dplyr::recode(x, `3` = 2L, .keep_value_labels = FALSE)
 
-# be careful, changes are not of the same type (here integers), NA are created
+# be careful, changes are not of the same type (here integers),
+# NA arecreated
 dplyr::recode(x, `3` = 2)
 
 # except if you provide .default or new values for all old values
@@ -76,11 +77,41 @@ dplyr::recode(x, `3` = "b", .default = "a")
 dplyr::recode(x, `3` = "b", .default = "a", .keep_value_labels = FALSE)
 
 # combine value labels
-x <- labelled(1:4, c("strongly agree" = 1, "agree" = 2, "disagree" = 3, "strongly disagree" = 4))
-dplyr::recode(x, `1` = 1L, `2` = 1L, `3` = 2L, `4` = 2L, .combine_value_labels = TRUE)
-dplyr::recode(x, `2` = 1L, `4` = 3L, .combine_value_labels = TRUE)
-dplyr::recode(x, `2` = 1L, `4` = 3L, .combine_value_labels = TRUE, .sep = " or ")
-dplyr::recode(x, `2` = 1L, .default = 2L, .combine_value_labels = TRUE)
+x <- labelled(
+  1:4,
+  c(
+    "strongly agree" = 1,
+    "agree" = 2,
+    "disagree" = 3,
+    "strongly disagree" = 4)
+  )
+dplyr::recode(
+  x,
+  `1` = 1L,
+  `2` = 1L,
+  `3` = 2L,
+  `4` = 2L,
+  .combine_value_labels = TRUE
+)
+dplyr::recode(
+  x,
+  `2` = 1L,
+  `4` = 3L,
+  .combine_value_labels = TRUE
+)
+dplyr::recode(
+  x,
+  `2` = 1L,
+  `4` = 3L,
+  .combine_value_labels = TRUE,
+  .sep = " or "
+)
+dplyr::recode(
+  x,
+  `2` = 1L,
+  .default = 2L,
+ .combine_value_labels = TRUE
+)
 
 # example when combining some values without a label
 y <- labelled(1:4, c("strongly agree" = 1))

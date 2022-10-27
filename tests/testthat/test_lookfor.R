@@ -2,7 +2,12 @@ context("Test look_for()")
 
 test_that("look_for works correctly", {
 
-  df <- data.frame(1:3, letters[1:3], fix.empty.names = FALSE, stringsAsFactors = FALSE)
+  df <- data.frame(
+    1:3,
+    letters[1:3],
+    fix.empty.names = FALSE,
+    stringsAsFactors = FALSE
+  )
   expect_error(look_for(df))
   expect_error(look_for(unname(df)))
 
@@ -25,7 +30,11 @@ test_that("look_for works with a single keyword.", {
   )
   expect_equal(
     lfi$levels,
-    list("Sepal.Length"= NULL, "Sepal.Width" = NULL, "Species" = levels(iris$Species))
+    list(
+      "Sepal.Length" = NULL,
+      "Sepal.Width" = NULL,
+      "Species" = levels(iris$Species)
+    )
   )
 
   expect_equal(lfi$variable, names(iris)[lfi$pos])
@@ -70,23 +79,31 @@ test_that(" look_for with different details parameter values", {
   expect_false("range" %in% names(look_for(iris, "Sep")))
   expect_equal(
     look_for(iris, details = TRUE, "sep")$range,
-    list(Sepal.Length = range(iris$Sepal.Length), Sepal.Width = range(iris$Sepal.Width))
+    list(
+      Sepal.Length = range(iris$Sepal.Length),
+      Sepal.Width = range(iris$Sepal.Width)
+    )
   )
 
 })
 
 
 test_that(" convert_list_columns_to_character works correctly", {
-  lfi_conv <- look_for(iris, "spe", details = TRUE) %>% convert_list_columns_to_character()
+  lfi_conv <- look_for(iris, "spe", details = TRUE) %>%
+    convert_list_columns_to_character()
   expect_equal(
     unname(lfi_conv$levels),
     paste(levels(iris$Species), collapse = "; ")
   )
 
-  lfi_conv <- look_for(iris, "al", details = TRUE) %>% convert_list_columns_to_character()
+  lfi_conv <- look_for(iris, "al", details = TRUE) %>%
+    convert_list_columns_to_character()
   expect_identical(
     lfi_conv$range,
-    sapply(lapply(iris[, lfi_conv$variable], range), function(x) paste(x, collapse = " - "))
+    sapply(
+      lapply(iris[, lfi_conv$variable], range),
+      function(x) paste(x, collapse = " - ")
+    )
   )
 
   lfi_conv <- look_for(iris, "sep") %>% convert_list_columns_to_character()
@@ -102,13 +119,13 @@ test_that(" look_for_and_select works correctly", {
 })
 
 test_that(" print.look_for works correctly", {
-  pp = print(look_for(iris))
+  pp <- print(look_for(iris))
   expect_equal(
-    pp$variable[nchar(pp$variable) !=0],
+    pp$variable[nchar(pp$variable) != 0],
     names(iris)
   )
   expect_equal(
-    pp$values[nchar(pp$values) !=0],
+    pp$values[nchar(pp$values) != 0],
     levels(iris$Species)
   )
 })

@@ -60,7 +60,7 @@ copy_labels.default <- function(from, to, .strict = TRUE) {
 
 #' @export
 copy_labels.haven_labelled <- function(from, to, .strict = TRUE) {
-  if (mode(from) != mode(to) & .strict)
+  if (mode(from) != mode(to) && .strict)
     stop("`from` and `to` should be of same type", call. = FALSE,
       domain = "R-labelled")
   var_label(to) <- var_label(from)

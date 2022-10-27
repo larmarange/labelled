@@ -57,24 +57,29 @@ lookfor_to_long_format(x)
 \arguments{
 \item{data}{a data frame or a survey object}
 
-\item{...}{optional list of keywords, a character string (or several character strings), which can be
-formatted as a regular expression suitable for a \code{\link[base:grep]{base::grep()}} pattern, or a vector of keywords;
+\item{...}{optional list of keywords, a character string (or several
+character strings), which can be formatted as a regular expression suitable
+for a \code{\link[base:grep]{base::grep()}} pattern, or a vector of keywords;
 displays all variables if not specified}
 
-\item{labels}{whether or not to search variable labels (descriptions); \code{TRUE} by default}
+\item{labels}{whether or not to search variable labels (descriptions);
+\code{TRUE} by default}
 
-\item{values}{whether or not to search within values (factor levels or value labels); \code{TRUE} by default}
+\item{values}{whether or not to search within values (factor levels or value
+labels); \code{TRUE} by default}
 
 \item{ignore.case}{whether or not to make the keywords case sensitive;
 \code{TRUE} by default (case is ignored during matching)}
 
-\item{details}{add details about each variable (full details could be time consuming for big data frames, \code{FALSE} is equivalent to \code{"none"} and \code{TRUE} to \code{"full"})}
+\item{details}{add details about each variable (full details could be time
+consuming for big data frames, \code{FALSE} is equivalent to \code{"none"}
+and \code{TRUE} to \code{"full"})}
 
 \item{x}{a tibble returned by \code{look_for()}}
 }
 \value{
-a tibble data frame featuring the variable position, name and description
-(if it exists) in the original data frame
+a tibble data frame featuring the variable position, name and
+description (if it exists) in the original data frame
 }
 \description{
 \code{look_for} emulates the \code{lookfor} Stata command in \R. It supports
@@ -86,22 +91,22 @@ The command is meant to help users finding variables in large datasets.
 When no keyword is provided, it will produce a data dictionary of the overall
 data frame.
 
-The function looks into the variable names for matches to the keywords. If available,
-variable labels are included in the search scope.
+The function looks into the variable names for matches to the
+keywords. If available, variable labels are included in the search scope.
 Variable labels of data.frame imported with \pkg{foreign} or
-\pkg{memisc} packages will also be taken into account (see \code{\link[=to_labelled]{to_labelled()}}). If no keyword is
-provided, it will return all variables of \code{data}.
+\pkg{memisc} packages will also be taken into account (see \code{\link[=to_labelled]{to_labelled()}}).
+If no keyword is provided, it will return all variables of \code{data}.
 
 \code{look_for()}, \code{lookfor()} and \code{generate_dictionary()} are equivalent.
 
-By default, results will be summarized when printing. To deactivate default printing,
-use \code{dplyr::as_tibble()}.
+By default, results will be summarized when printing. To deactivate default
+printing, use \code{dplyr::as_tibble()}.
 
-\code{lookfor_to_long_format()} could be used to transform results with one row per factor level
-and per value label.
+\code{lookfor_to_long_format()} could be used to transform results with one row
+per factor level and per value label.
 
-Use \code{convert_list_columns_to_character()} to convert named list columns into character vectors
-(see examples).
+Use \code{convert_list_columns_to_character()} to convert named list columns into
+character vectors (see examples).
 
 \code{look_for_and_select()} is a shortcut for selecting some variables and
 applying \code{dplyr::select()} to return a data frame with only the selected
@@ -160,5 +165,6 @@ look_for(iris) \%>\%
 }
 }
 \author{
-François Briatte \href{mailto:f.briatte@gmail.com}{f.briatte@gmail.com}, Joseph Larmarange \href{mailto:joseph@larmarange.net}{joseph@larmarange.net}
+François Briatte \href{mailto:f.briatte@gmail.com}{f.briatte@gmail.com},
+Joseph Larmarange \href{mailto:joseph@larmarange.net}{joseph@larmarange.net}
 }

@@ -118,7 +118,12 @@ test_that("val_label preserves variable label", {
 })
 
 test_that("val_labels and val_label preserves spss missing values", {
-  x <- labelled_spss(1:10, c(Good = 1, Bad = 8), na_values = c(9, 10), na_range = c(11, Inf))
+  x <- labelled_spss(
+    1:10,
+    c(Good = 1, Bad = 8),
+    na_values = c(9, 10),
+    na_range = c(11, Inf)
+  )
   val_labels(x) <- c(yes = 1, no = 3)
   val_label(x, 2) <- "maybe"
   expect_true(inherits(x, "haven_labelled"))
@@ -145,7 +150,7 @@ test_that("value labels can be removed if missing values are defined", {
   expect_null(val_labels(x))
 })
 
-test_that("value labels to NULL remove class if na_Values et na_range are NULL", {
+test_that("value labels to NULL remove class if na_Values et na_range are NULL", { # nolint
   x <- labelled_spss(1:10, c(Good = 1, Bad = 8))
   val_labels(x) <- NULL
   expect_null(val_labels(x))
@@ -164,17 +169,20 @@ test_that("error with mutilple character argument", {
 
 test_that("test if unlist argument works properly", {
   df <- data.frame(col1 = 1:2, col2 = 3:4, stringsAsFactors = FALSE)
-  expect_equal(var_label(df, unlist = T), c(col1 = "", col2 = ""))
+  expect_equal(var_label(df, unlist = TRUE), c(col1 = "", col2 = ""))
 
   var_label(df) <- c("lb1", "lb2")
-  expect_equal(var_label(df, unlist = T), c(col1 = "lb1", col2 = "lb2"))
+  expect_equal(var_label(df, unlist = TRUE), c(col1 = "lb1", col2 = "lb2"))
 })
 
 
 test_that("val_labels prefixed argument 100%", {
-  v <- labelled(c(1, 2, 2, 2, 3, 9, 1, 3, 2, NA), c(yes = 1, no = 3, "don't know" = 9))
+  v <- labelled(
+    c(1, 2, 2, 2, 3, 9, 1, 3, 2, NA),
+    c(yes = 1, no = 3, "don't know" = 9)
+  )
   vlv <- val_labels(v)
-  vlvp <- val_labels(v, prefixed = T)
+  vlvp <- val_labels(v, prefixed = TRUE)
 
   noms_vlvp <- names(vlvp)
   pos <- regexpr("] ", noms_vlvp)
@@ -184,7 +192,10 @@ test_that("val_labels prefixed argument 100%", {
 })
 
 test_that("val_labels works for dataframe", {
-  v <- labelled(c(1, 2, 2, 2, 3, 9, 1, 3, 2, NA), c(yes = 1, no = 3, "don't know" = 9))
+  v <- labelled(
+    c(1, 2, 2, 2, 3, 9, 1, 3, 2, NA),
+    c(yes = 1, no = 3, "don't know" = 9)
+  )
   y <- 1:10
   df <- data.frame(v = v, y = y, stringsAsFactors = FALSE)
   res <- list(v = val_labels(v), y = NULL)
@@ -192,19 +203,36 @@ test_that("val_labels works for dataframe", {
 })
 
 test_that(" 'val_labels <-'  works for dataframe", {
-  xhs <- labelled_spss(c(1:3, NA, 5:10), c(Good = 1, Bad = 8), na_values = c(9, 10), na_range = c(11, Inf))
+  xhs <- labelled_spss(
+    c(1:3, NA, 5:10),
+    c(Good = 1, Bad = 8),
+    na_values = c(9, 10),
+    na_range = c(11, Inf)
+  )
   num <- 1:10
   ch <- letters[1:10]
   fac <- factor(paste0("f", 1:10))
-  df <- data.frame(xhs = xhs, num = num, ch = ch, fac = fac, stringsAsFactors = FALSE)
+  df <- data.frame(
+    xhs = xhs, num = num, ch = ch, fac = fac,
+    stringsAsFactors = FALSE
+  )
 
   expect_error(val_labels(df) <- c(one = 1))
 
-  valeurs <- list(xhs = c(two = 2, five = 5), ch = c(leter_a = "a"), num = c(two = 2), fac = c(three = factor(2)))
+  valeurs <- list(
+    xhs = c(two = 2, five = 5),
+    ch = c(leter_a = "a"),
+    num = c(two = 2),
+    fac = c(three = factor(2))
+  )
   vldf <- df
   expect_error(val_labels(vldf) <- valeurs)
 
-  valeurs <- list(xhs = c(two = 2, five = 5), ch = c(leter_a = "a"), num = c(two = 2))
+  valeurs <- list(
+    xhs = c(two = 2, five = 5),
+    ch = c(leter_a = "a"),
+    num = c(two = 2)
+  )
   vldf <- df
   expect_error(val_labels(vldf) <- valeurs, NA)
 
@@ -218,10 +246,13 @@ test_that(" 'val_labels <-'  works for dataframe", {
 })
 
 test_that("val_label works for haven_labelled", {
-  v <- labelled(c(1, 2, 2, 2, 3, 9, 1, 3, 2, NA), c(yes = 1, no = 3, "don't know" = 9))
+  v <- labelled(
+    c(1, 2, 2, 2, 3, 9, 1, 3, 2, NA),
+    c(yes = 1, no = 3, "don't know" = 9)
+  )
   expect_equal(val_label(v, 2), NULL)
   expect_equal(val_label(v, 1), "yes")
-  expect_equal(val_label(v, 1, prefixed = T), "[1] yes")
+  expect_equal(val_label(v, 1, prefixed = TRUE), "[1] yes")
   expect_error(val_label(v, 1:2))
 })
 
@@ -230,26 +261,48 @@ test_that("val_label works for default", {
   ch <- letters[1:3]
   expect_equal(val_label(num, 2), NULL)
   expect_error(val_lable(num, 1:2))
-  expect_equal(val_label(ch, 1, prefixed = T), NULL)
+  expect_equal(val_label(ch, 1, prefixed = TRUE), NULL)
   expect_error(val_label(ch, 1:2))
 })
 
 test_that("val_label works for for dataframe", {
-  xhs <- labelled_spss(c(1:3, NA, 5:10), c(Good = 1, Bad = 8), na_values = c(9, 10), na_range = c(11, Inf))
-  xh <- labelled(c(1, 2, 2, 2, 3, 9, 1, 3, 2, NA), c(yes = 1, no = 3, "don't know" = 9))
+  xhs <- labelled_spss(
+    c(1:3, NA, 5:10),
+    c(Good = 1, Bad = 8),
+    na_values = c(9, 10),
+    na_range = c(11, Inf)
+  )
+  xh <- labelled(
+    c(1, 2, 2, 2, 3, 9, 1, 3, 2, NA),
+    c(yes = 1, no = 3, "don't know" = 9)
+  )
   num <- 1:10
   df <- data.frame(xhs = xhs, num = num, xh = xh, stringsAsFactors = FALSE)
 
 
   expect_true(all(sapply(val_label(df, 2), is.null)))
-  expect_equal(val_label(df, 1), list(xhs = "Good", num = NULL, xh = "yes"))
-  expect_equal(val_label(df, 3, prefixed = T), list(xhs = NULL, num = NULL, xh = "[3] no"))
+  expect_equal(
+    val_label(df, 1),
+    list(xhs = "Good", num = NULL, xh = "yes")
+  )
+  expect_equal(
+    val_label(df, 3, prefixed = TRUE),
+    list(xhs = NULL, num = NULL, xh = "[3] no")
+  )
   expect_error(val_lable(df, 1:2))
 })
 
 test_that(" 'val_label<-' works properly", {
-  xhs <- labelled_spss(c(1:3, NA, 5:10), c(Good = 1, Bad = 8), na_values = c(9, 10), na_range = c(11, Inf))
-  xh <- labelled(c(1, 2, 2, 2, 3, 9, 1, 3, 2, NA), c(yes = 1, no = 3, "don't know" = 9))
+  xhs <- labelled_spss(
+    c(1:3, NA, 5:10),
+    c(Good = 1, Bad = 8),
+    na_values = c(9, 10),
+    na_range = c(11, Inf)
+  )
+  xh <- labelled(
+    c(1, 2, 2, 2, 3, 9, 1, 3, 2, NA),
+    c(yes = 1, no = 3, "don't know" = 9)
+  )
   num <- 1:10
   ch <- letters[1:10]
 
@@ -258,7 +311,13 @@ test_that(" 'val_label<-' works properly", {
   expect_error(val_label(xh, 12) <- c("one", "two"))
   expect_error(val_label(xhs, c(12, 13)) <- "twenty_two")
 
-  df <- data.frame(xhs = xhs, num = num, xh = xh, ch = ch, stringsAsFactors = FALSE)
+  df <- data.frame(
+    xhs = xhs,
+    num = num,
+    xh = xh,
+    ch = ch,
+    stringsAsFactors = FALSE
+  )
   expect_error(val_label(df, 2) <- 2)
   expect_error(val_label(df, 2) <- two)
   expect_error(val_label(df, 2) <- c("a", "b"))
@@ -268,7 +327,12 @@ test_that(" 'val_label<-' works properly", {
 })
 
 test_that(" 'val_label<-.data.frame' works properly", {
-  xhs <- labelled_spss(c(1:3, NA, 5:10), c(Good = 1, Bad = 8), na_values = c(9, 10), na_range = c(11, Inf))
+  xhs <- labelled_spss(
+    c(1:3, NA, 5:10),
+    c(Good = 1, Bad = 8),
+    na_values = c(9, 10),
+    na_range = c(11, Inf)
+  )
   num <- 1:10
   ch <- letters[1:10]
   df <- data.frame(xhs = xhs, num = num, ch = ch, stringsAsFactors = FALSE)
@@ -282,7 +346,11 @@ test_that(" 'val_label<-.data.frame' works properly", {
 
   val_label(df_c, 2) <- valeurs[-2]
   val_label(df_c, "a") <- valeurs[2]
-  res_labels <- list(xhs = c(Good = 1, Bad = 8, "2" = 2), num = c(two = 2), ch = c(letter_a = "a"))
+  res_labels <- list(
+    xhs = c(Good = 1, Bad = 8, "2" = 2),
+    num = c(two = 2),
+    ch = c(letter_a = "a")
+  )
   expect_equal(val_labels(df_c), res_labels)
 })
 
@@ -309,7 +377,7 @@ test_that("remove_labels strips labelled attributes", {
   expect_equal(remove_labels(var), exp)
 })
 
-test_that("remove_labels returns variables not of class('labelled') unmodified", {
+test_that("remove_labels returns variables not of class('labelled') unmodified", { #nolint
   var <- c(1L, 98L, 99L)
   expect_equal(remove_labels(var), var)
 })
@@ -325,17 +393,27 @@ test_that("remove_labels works with data.frame", {
 
 
 test_that("remove_labels works with labelled_spss", {
-  xhs <- haven::labelled_spss(c(c(1, 2, 3), NA, 99), c(t1 = 1, t2 = 2, Missing = 99), na_value = 99, na_range = c(99, Inf), label = "A test variable")
+  xhs <- haven::labelled_spss(
+    c(1, 2, 3, NA, 99),
+    c(t1 = 1, t2 = 2, Missing = 99),
+    na_value = 99,
+    na_range = c(99, Inf),
+    label = "A test variable"
+  )
   expect_null(var_label(remove_labels(xhs)))
   expect_false(identical(var_label(remove_labels(xhs)), var_label(xhs)))
   expect_null(val_labels(remove_labels(xhs)))
 })
 
-# remove_val_labels --------------------------------------------------------------
+# remove_val_labels ------------------------------------------------------------
 
 
 test_that("remove_labels works properly", {
-  var <- labelled(c(1L, 98L, 99L), c(not_answered = 98L, not_applicable = 99L), label = "A variable label")
+  var <- labelled(
+    c(1L, 98L, 99L),
+    c(not_answered = 98L, not_applicable = 99L),
+    label = "A variable label"
+  )
   exp <- c(1L, 98L, 99L)
   df <- data.frame(var = var, exp = exp, stringsAsFactors = FALSE)
   rmdf <- remove_val_labels(df)
@@ -344,11 +422,15 @@ test_that("remove_labels works properly", {
   expect_equal(rmdf$exp, exp)
 })
 
-# remove_var_label --------------------------------------------------------------
+# remove_var_label ------------------------------------------------------------
 
 
 test_that("remove_labels works properly", {
-  var <- labelled(c(1L, 98L, 99L), c(not_answered = 98L, not_applicable = 99L), label = "A variable label")
+  var <- labelled(
+    c(1L, 98L, 99L),
+    c(not_answered = 98L, not_applicable = 99L),
+    label = "A variable label"
+  )
   exp <- c(1L, 98L, 99L)
   df <- data.frame(var = var, exp = exp, stringsAsFactors = FALSE)
   rmdf <- remove_var_label(df)
@@ -362,20 +444,39 @@ test_that("remove_labels works properly", {
 # sort_val_labels ---------------------------------------------------------
 
 test_that("sort_val_labels works properly", {
-  df <- data.frame(lab = labelled(c(1, 2, 3), c(maybe = 2, yes = 1, no = 3)), num = c(3, 1, 2), stringsAsFactors = FALSE)
+  df <- data.frame(
+    lab = labelled(c(1, 2, 3), c(maybe = 2, yes = 1, no = 3)), num = c(3, 1, 2),
+    stringsAsFactors = FALSE
+  )
   sdf <- sort_val_labels(df)
-  expect_equal(val_labels(sdf), list(lab = c(yes = 1, maybe = 2, no = 3), num = NULL))
+  expect_equal(
+    val_labels(sdf),
+    list(lab = c(yes = 1, maybe = 2, no = 3), num = NULL)
+  )
   sdf <- sort_val_labels(df, decreasing = TRUE)
-  expect_equal(val_labels(sdf), list(lab = c(no = 3, maybe = 2, yes = 1), num = NULL))
+  expect_equal(
+    val_labels(sdf),
+    list(lab = c(no = 3, maybe = 2, yes = 1), num = NULL)
+  )
   sdf <- sort_val_labels(df, "l")
-  expect_equal(val_labels(sdf), list(lab = c(maybe = 2, no = 3, yes = 1), num = NULL))
+  expect_equal(
+    val_labels(sdf),
+    list(lab = c(maybe = 2, no = 3, yes = 1), num = NULL)
+  )
   sdf <- sort_val_labels(df, "l", TRUE)
-  expect_equal(val_labels(sdf), list(lab = c(yes = 1, no = 3, maybe = 2), num = NULL))
+  expect_equal(
+    val_labels(sdf),
+    list(lab = c(yes = 1, no = 3, maybe = 2), num = NULL)
+  )
 
   x <- c(2, tagged_na("z"), 1, tagged_na("a"))
-  val_labels(x) <- c(no = 2, refused = tagged_na("z"), yes = 1, dk = tagged_na("a"))
+  val_labels(x) <-
+    c(no = 2, refused = tagged_na("z"), yes = 1, dk = tagged_na("a"))
   expect_equivalent(
-    sort_val_labels(x, according_to = "v") %>% val_labels() %>% format_tagged_na() %>% trimws(),
+    sort_val_labels(x, according_to = "v") %>%
+      val_labels() %>%
+      format_tagged_na() %>%
+      trimws(),
     c("1", "2", "NA(a)", "NA(z)")
   )
   expect_equivalent(
@@ -388,9 +489,19 @@ test_that("sort_val_labels works properly", {
 
 
 test_that("remove_user_na works properly", {
-  var <- labelled(c(1L, 2L, NA, 98L, 99L), c(not_answered = 98L, not_applicable = 99L), label = "A variable label")
+  var <- labelled(
+    c(1L, 2L, NA, 98L, 99L),
+    c(not_answered = 98L, not_applicable = 99L),
+    label = "A variable label"
+  )
   exp <- c(1L, 2L, NA, 98L, 99L)
-  xhs <- haven::labelled_spss(c(c(1, 2, NA), 98, 99), c(t1 = 1, t2 = 2, Missing = 99), na_value = 99, na_range = c(99, Inf), label = "A test variable")
+  xhs <- haven::labelled_spss(
+    c(1, 2, NA, 98, 99),
+    c(t1 = 1, t2 = 2, Missing = 99),
+    na_value = 99,
+    na_range = c(99, Inf),
+    label = "A test variable"
+  )
   df <- data.frame(var = var, exp = exp, xhs = xhs, stringsAsFactors = FALSE)
   rmtdf <- remove_user_na(df, user_na_to_na = TRUE)
   expect_equal(rmtdf$var, var)
@@ -407,8 +518,8 @@ test_that("remove_user_na works properly", {
     c(NA, NA, NA, NA, "a")
   )
 
-  x <- labelled_spss(1:100, na_range = c(50,100))
-  expect_warning(remove_user_na(x, user_na_to_tagged_na = T))
+  x <- labelled_spss(1:100, na_range = c(50, 100))
+  expect_warning(remove_user_na(x, user_na_to_tagged_na = TRUE))
 })
 
 # to_factor --------------------------------------------------------------------
@@ -440,7 +551,7 @@ test_that("to_factor works on data.frame", {
   expect_equal(class(df2$y), class(df$y))
   expect_equal(class(df2$z), class(df$z))
 
-  df3 <- to_factor(df, labelled_only = F)
+  df3 <- to_factor(df, labelled_only = FALSE)
   expect_true(is.factor(df3$y))
   expect_true(is.factor(df3$z))
 })
@@ -458,26 +569,34 @@ test_that("to_factor keeps labels", {
 })
 
 test_that("to_factor boolean parameters", {
-  x1 <- haven::labelled_spss(c(c(1, 2, 3, 5, 4), NA, 99), c(t1 = 1, t2 = 2, t5 = 5, Missing = 99), na_value = 99)
+  x1 <- haven::labelled_spss(
+    c(1, 2, 3, 5, 4, NA, 99),
+    c(t1 = 1, t2 = 2, t5 = 5, Missing = 99),
+    na_value = 99
+  )
 
-  tfx <- to_factor(x1, user_na_to_na = T)
+  tfx <- to_factor(x1, user_na_to_na = TRUE)
   expect_equal(which(is.na(tfx)), 6:7)
   expect_equal(levels(tfx), c("t1", "t2", "3", "4", "t5"))
 
 
-  tfx <- to_factor(x1, nolabel_to_na = T)
+  tfx <- to_factor(x1, nolabel_to_na = TRUE)
   expect_equal(which(is.na(tfx)), c(3, 5, 6))
   expect_equal(levels(tfx), c("t1", "t2", "t5", "Missing"))
 
-  tfx <- to_factor(x1[1:3], drop_unused_labels = F)
+  tfx <- to_factor(x1[1:3], drop_unused_labels = FALSE)
   expect_equal(levels(tfx), c("t1", "t2", "3", "t5", "Missing"))
 
-  tfx <- to_factor(x1[1:3], drop_unused_labels = T)
+  tfx <- to_factor(x1[1:3], drop_unused_labels = TRUE)
   expect_equal(levels(tfx), c("t1", "t2", "3"))
 })
 
 test_that("to_factor parameters : sort_levels + levels", {
-  x1 <- haven::labelled_spss(c(c(1, 2, 3, 5, 4), NA, 99), c(t1 = 1, t2 = 2, t5 = 5, Missing = 99), na_value = 99)
+  x1 <- haven::labelled_spss(
+    c(1, 2, 3, 5, 4, NA, 99),
+    c(t1 = 1, t2 = 2, t5 = 5, Missing = 99),
+    na_value = 99
+  )
 
   tfx <- to_factor(x1, sort_levels = "auto")
   expect_equal(levels(tfx), c("t1", "t2", "3", "4", "t5", "Missing"))
@@ -498,7 +617,10 @@ test_that("to_factor parameters : sort_levels + levels", {
   expect_equal(levels(tfx), c("1", "2", "3", "4", "5", "99"))
 
   tfx <- to_factor(x1, levels = "prefixed")
-  expect_equal(levels(tfx), c("[1] t1", "[2] t2", "[3] 3", "[4] 4", "[5] t5", "[99] Missing"))
+  expect_equal(
+    levels(tfx),
+    c("[1] t1", "[2] t2", "[3] 3", "[4] 4", "[5] t5", "[99] Missing")
+  )
 })
 
 test_that("to_factor() and tagged NAs", {
@@ -522,7 +644,7 @@ test_that("to_factor() and tagged NAs", {
   )
 })
 
-# to_character --------------------------------------------------------------------
+# to_character -----------------------------------------------------------------
 
 test_that("to_character produce an appropriate character vector", {
   x <- labelled(c(1, 1, 2), c(yes = 1, no = 2))
@@ -561,11 +683,19 @@ test_that("to_character.double and explicit_tagged_na", {
   )
 })
 
-# set_value_labels and add_value_labels ----------------------------------------------
+# set_value_labels and add_value_labels ---------------------------------------
 
 test_that("set_value_labels replaces all value labels", {
-  df <- data.frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2), stringsAsFactors = FALSE)
-  df <- set_value_labels(df, s1 = c(Male = "M", Female = "F"), s2 = c(Yes = 1, No = 2))
+  df <- data.frame(
+    s1 = c("M", "M", "F"),
+    s2 = c(1, 1, 2),
+    stringsAsFactors = FALSE
+  )
+  df <- set_value_labels(
+    df,
+    s1 = c(Male = "M", Female = "F"),
+    s2 = c(Yes = 1, No = 2)
+  )
   expect_equal(val_labels(df$s1), c(Male = "M", Female = "F"))
   expect_equal(val_labels(df$s2), c(Yes = 1, No = 2))
   df <- set_value_labels(df, s2 = c(Yes = 1, Unknown = 9))
@@ -582,7 +712,11 @@ test_that("set_value_labels replaces all value labels", {
 })
 
 test_that("set_value_labels errors", {
-  df <- data.frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2), stringsAsFactors = FALSE)
+  df <- data.frame(
+    s1 = c("M", "M", "F"),
+    s2 = c(1, 1, 2),
+    stringsAsFactors = FALSE
+  )
   expect_error(
     df %>%
       set_value_labels(
@@ -623,7 +757,11 @@ test_that("set_value_labels errors", {
 })
 
 test_that("add_value_labels errors", {
-  df <- data.frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2), stringsAsFactors = FALSE)
+  df <- data.frame(
+    s1 = c("M", "M", "F"),
+    s2 = c(1, 1, 2),
+    stringsAsFactors = FALSE
+  )
   expect_error(
     df %>%
       add_value_labels(
@@ -665,9 +803,17 @@ test_that("add_value_labels errors", {
   expect_error(add_value_labels(df, s1 = c("F", Male = "M")))
 })
 
-test_that("add_value_labels and remove_value_labels updates the list of value labels", {
-  df <- data.frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2), stringsAsFactors = FALSE)
-  df <- set_value_labels(df, s1 = c(Male = "M", Female = "F"), s2 = c(Yesss = 1, No = 2))
+test_that("add_value_labels and remove_value_labels updates the list of value labels", { # nolint
+  df <- data.frame(
+    s1 = c("M", "M", "F"),
+    s2 = c(1, 1, 2),
+    stringsAsFactors = FALSE
+  )
+  df <- set_value_labels(
+    df,
+    s1 = c(Male = "M", Female = "F"),
+    s2 = c(Yesss = 1, No = 2)
+  )
   df <- add_value_labels(df, s2 = c(Yes = 1, Unknown = 9))
   expect_equal(val_labels(df$s2), c(Yes = 1, No = 2, Unknown = 9))
   df <- remove_value_labels(df, s2 = 9)
@@ -681,19 +827,23 @@ test_that("add_value_labels and remove_value_labels updates the list of value la
   expect_equal(val_labels(v), c(low = 1, middle = 5))
 })
 
-# set_variable_labels  --------------------------------------------------------------
+# set_variable_labels  --------------------------------------------------------
 
 test_that("set_variable_labels updates variable labels", {
-  df <- data.frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2), stringsAsFactors = FALSE)
+  df <- data.frame(
+    s1 = c("M", "M", "F"),
+    s2 = c(1, 1, 2),
+    stringsAsFactors = FALSE
+  )
   df <- set_variable_labels(df, s1 = "Sex", s2 = "Question")
   expect_equal(var_label(df$s1), "Sex")
   df <- set_variable_labels(df, s2 = NULL)
   expect_null(var_label(df$s2))
 })
 
-# missing values -------------------------------------------------------------------
+# missing values --------------------------------------------------------------
 
-test_that("it is possible to define missing values if no value labels were defined", {
+test_that("it is possible to define missing values if no value labels were defined", {# nolint
   x <- c(1, 2, 2, 9)
   na_values(x) <- 9
   expect_equal(na_values(x), 9)
@@ -712,21 +862,29 @@ test_that("na_values and na_range keep variable label", {
   expect_equal(var_label(x), vl)
 })
 
-# recode (dplyr) -------------------------------------------------------------------
+# recode (dplyr) ---------------------------------------------------------------
 test_that("dplyr::recode could be applied to numeric labelled vector", {
   x <- dplyr::recode(labelled(1:3, c(yes = 1, no = 2)), `3` = 2L)
   expect_equal(x, labelled(c(1L, 2L, 2L), c(yes = 1, no = 2)))
 })
 
 test_that("dplyr::recode could be applied to character labelled vector", {
-  x <- dplyr::recode(labelled(c("a", "b", "c"), c(yes = "a", no = "b")), c = "b")
+  x <- dplyr::recode(
+    labelled(c("a", "b", "c"), c(yes = "a", no = "b")),
+    c = "b"
+  )
   expect_equal(x, labelled(c("a", "b", "b"), c(yes = "a", no = "b")))
 })
 
 # update_labelled ----------------------------------------
 
-test_that("update_labelled update previous haven's labelled objects but not Hmisc's labelled objects", {
-  vhaven <- structure(1:4, label = "label", labels = c(No = 1, Yes = 2), class = "labelled")
+test_that("update_labelled update previous haven's labelled objects but not Hmisc's labelled objects", { # nolint
+  vhaven <- structure(
+    1:4,
+    label = "label",
+    labels = c(No = 1, Yes = 2),
+    class = "labelled"
+  )
   vHmisc <- structure(1:4, label = "label", class = "labelled")
 
   expect_s3_class(update_labelled(vhaven), "haven_labelled")
@@ -737,7 +895,7 @@ test_that("update_labelled update previous haven's labelled objects but not Hmis
   expect_s3_class(update_labelled(df)$vHmisc, "labelled")
 })
 
-test_that("update_labelled update to haven_labelled_spss if there are na values", {
+test_that("update_labelled update to haven_labelled_spss if there are na values", { #nolint
   v1 <- structure(1:4,
     label = "label", labels = c(No = 1, Yes = 2),
     na_values = c(8, 9), class = c("labelled_spss", "labelled")
@@ -752,7 +910,12 @@ test_that("update_labelled update to haven_labelled_spss if there are na values"
 })
 
 test_that("update_labelled preserve variable and value labels", {
-  v <- structure(1:4, label = "variable label", labels = c(No = 1, Yes = 2), class = "labelled")
+  v <- structure(
+    1:4,
+    label = "variable label",
+    labels = c(No = 1, Yes = 2),
+    class = "labelled"
+  )
 
   expect_equal(var_label(update_labelled(v)), "variable label")
   expect_equal(val_labels(update_labelled(v)), c(No = 1, Yes = 2))
@@ -771,7 +934,10 @@ test_that("update_labelled works with labelled from haven 2.0", {
   expect_equal(x, up_x_haven_2.0)
 
   data(x_spss_haven_2.0)
-  x2 <- labelled_spss(1:10, c(Good = 1, Bad = 8), na_range = c(9, Inf), label = "Quality rating")
+  x2 <- labelled_spss(
+    1:10, c(Good = 1, Bad = 8),
+    na_range = c(9, Inf), label = "Quality rating"
+  )
   expect_false(identical(x2, x_spss_haven_2.0))
   up_x_spss_haven_2.0 <- update_labelled(x_spss_haven_2.0)
   expect_equal(x2, up_x_spss_haven_2.0)
@@ -779,7 +945,7 @@ test_that("update_labelled works with labelled from haven 2.0", {
 
 
 
-# remove_attributes --------------------------------------------------------------
+# remove_attributes ------------------------------------------------------------
 
 test_that("remove_attributes does not transform characters into factors", {
   d <- data.frame(
@@ -792,7 +958,7 @@ test_that("remove_attributes does not transform characters into factors", {
 
 
 
-# unlabelled --------------------------------------------------------------------
+# unlabelled ------------------------------------------------------------------
 
 test_that("unlabelled works correctly", {
   df <- data.frame(
@@ -846,13 +1012,20 @@ test_that("dplyr::recode works properly with labelled vectors", {
 
   x <- labelled(1:4, c(a = 1, b = 2, c = 3, d = 4))
 
-  r <- dplyr::recode(x, `1` = 1L, `2` = 1L, `3` = 2L, `4` = 2L, .combine_value_labels = TRUE)
+  r <- dplyr::recode(
+    x, `1` = 1L, `2` = 1L, `3` = 2L, `4` = 2L,
+    .combine_value_labels = TRUE
+  )
   expect_equal(val_labels(r), c("a / b" = 1L, "c / d" = 2L))
 
   r <- dplyr::recode(x, `2` = 1L, `4` = 3L, .combine_value_labels = TRUE)
   expect_equal(val_labels(r), c("a / b" = 1L, "c / d" = 3L))
 
-  r <- dplyr::recode(x, `2` = 1L, `4` = 3L, .combine_value_labels = TRUE, .sep = " or ")
+  r <- dplyr::recode(
+    x, `2` = 1L, `4` = 3L,
+    .combine_value_labels = TRUE,
+    .sep = " or "
+  )
   expect_equal(val_labels(r), c("a or b" = 1L, "c or d" = 3L))
 
   y <- labelled(1:4, c(a = 1))
@@ -863,20 +1036,39 @@ test_that("dplyr::recode works properly with labelled vectors", {
 # tidy dots --------------------------------------------------------------
 
 test_that("functions with dots accept tidy evaluation (`!!!` operator)", {
-  df <- data.frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2), stringsAsFactors = FALSE)
+  df <- data.frame(
+    s1 = c("M", "M", "F"),
+    s2 = c(1, 1, 2),
+    stringsAsFactors = FALSE
+  )
   variable_list <- list(s1 = "Sex", s2 = "Question")
   df <- set_variable_labels(df, !!!variable_list)
   expect_equal(var_label(df$s1), "Sex")
   expect_equal(var_label(df$s2), "Question")
 
-  df <- data.frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2), stringsAsFactors = FALSE)
-  labels_list <- list(s1 = c(Male = "M", Female = "F"), s2 = c(Yes = 1, No = 2))
+  df <- data.frame(
+    s1 = c("M", "M", "F"),
+    s2 = c(1, 1, 2),
+    stringsAsFactors = FALSE
+  )
+  labels_list <- list(
+    s1 = c(Male = "M", Female = "F"),
+    s2 = c(Yes = 1, No = 2)
+  )
   df <- set_value_labels(df, !!!labels_list)
   expect_equal(val_labels(df$s1), c(Male = "M", Female = "F"))
   expect_equal(val_labels(df$s2), c(Yes = 1, No = 2))
 
-  df <- data.frame(s1 = c("M", "M", "F"), s2 = c(1, 1, 2), stringsAsFactors = FALSE)
-  df <- set_value_labels(df, s1 = c(Male = "M", Female = "F"), s2 = c(Yesss = 1, No = 2))
+  df <- data.frame(
+    s1 = c("M", "M", "F"),
+    s2 = c(1, 1, 2),
+    stringsAsFactors = FALSE
+  )
+  df <- set_value_labels(
+    df,
+    s1 = c(Male = "M", Female = "F"),
+    s2 = c(Yesss = 1, No = 2)
+  )
   added_values_list <- list(s2 = c(Yes = 1, Unknown = 9))
   df <- add_value_labels(df, !!!added_values_list)
   expect_equal(val_labels(df$s2), c(Yes = 1, No = 2, Unknown = 9))
@@ -935,8 +1127,14 @@ test_that("names_prefixed_by_values works properly", {
     c2 = labelled(c(1, 1, 2), c(Yes = 1, No = 2)),
   )
 
-  res_names_prefixed <- list(c1 = c("[M] Male", "[F] Female"), c2 = c("[1] Yes", "[2] No"))
-  expect_equivalent(names_prefixed_by_values(val_labels(df)), res_names_prefixed)
+  res_names_prefixed <- list(
+    c1 = c("[M] Male", "[F] Female"),
+    c2 = c("[1] Yes", "[2] No")
+  )
+  expect_equivalent(
+    names_prefixed_by_values(val_labels(df)),
+    res_names_prefixed
+  )
 
   expect_true(is.null(names_prefixed_by_values(NULL)))
 })

@@ -1,23 +1,24 @@
 #' Remove variable label, value labels and user defined missing values
 #'
 #' Use `remove_var_label()` to remove variable label, `remove_val_labels()`
-#' to remove value labels, `remove_user_na()` to remove user defined missing values (*na_values* and *na_range*)
-#' and `remove_labels()` to remove all.
+#' to remove value labels, `remove_user_na()` to remove user defined missing
+#' values (*na_values* and *na_range*) and `remove_labels()` to remove all.
 #'
 #' @param x A vector or a data frame.
 #' @param user_na_to_na Convert user defined missing values into `NA`?
-#' @param user_na_to_tagged_na Convert user defined missing values into tagged `NA`?
-#' It could be applied only to numeric vectors. Note that integer labelled vectors
-#' will be converted to double labelled vectors.
+#' @param user_na_to_tagged_na Convert user defined missing values into
+#' tagged `NA`? It could be applied only to numeric vectors. Note that integer
+#' labelled vectors will be converted to double labelled vectors.
 #' @param keep_var_label Keep variable label?
 #' @details
-#' Be careful with `remove_user_na()` and `remove_labels()`, user defined missing values
-#' will not be automatically converted to `NA`, except if you specify
-#' `user_na_to_na = TRUE`.
-#' `user_na_to_na(x)` is an equivalent of `remove_user_na(x, user_na_to_na = TRUE)`.
+#' Be careful with `remove_user_na()` and `remove_labels()`, user defined
+#' missing values will not be automatically converted to `NA`, except if you
+#' specify `user_na_to_na = TRUE`.
+#' `user_na_to_na(x)` is an equivalent of
+#' `remove_user_na(x, user_na_to_na = TRUE)`.
 #'
-#' If you prefer to convert variables with value labels into factors, use [to_factor()]
-#' or use [unlabelled()].
+#' If you prefer to convert variables with value labels into factors, use
+#' [to_factor()] or use [unlabelled()].
 #' @examples
 #' x <- labelled_spss(1:10, c(Good = 1, Bad = 8), na_values = c(9, 10))
 #' var_label(x) <- "A variable"
@@ -146,7 +147,9 @@ remove_user_na.haven_labelled_spss <- function(x,
                                                ) {
   if (user_na_to_tagged_na) {
     if (typeof(x) == "character")
-      stop("'user_na_to_tagged_na' cannot be used with character labelled vectors.")
+      stop(
+        "'user_na_to_tagged_na' cannot be used with character labelled vectors."
+      )
 
     val_to_tag <- x[is.na(x) & !is.na(unclass(x))] %>%
       unclass() %>%
@@ -155,7 +158,8 @@ remove_user_na.haven_labelled_spss <- function(x,
 
     if (length(val_to_tag) > 26) {
       warning(
-        length(val_to_tag), " different user-defined missing values found in 'x'.\n",
+        length(val_to_tag),
+        " different user-defined missing values found in 'x'.\n",
         "A maximum of 26 could be tagged.\n",
         "'user_na_to_tagged_na' has been ignored.\n",
         "'user_na_to_na = TRUE' has been used instead."
@@ -171,7 +175,7 @@ remove_user_na.haven_labelled_spss <- function(x,
       user_na_to_na <- FALSE
       vl <- val_labels(x)
       x <- remove_user_na(x) # to avoid error when combining labelled_spss
-      for (i in 1:length(val_to_tag)) {
+      for (i in seq_along(val_to_tag)) {
         x[x == val_to_tag[i]] <- tagged_na(letters[i])
         if (val_to_tag[i] %in% vl) {
           vl[vl == val_to_tag[i]] <- tagged_na(letters[i])
@@ -183,7 +187,10 @@ remove_user_na.haven_labelled_spss <- function(x,
 
   if (user_na_to_na) {
     # removing value labels attached to user_na
-    for (val in val_labels(x)[test_if_user_na(val_labels(x), na_values(x), na_range(x))])
+    for (
+      val in
+      val_labels(x)[test_if_user_na(val_labels(x), na_values(x), na_range(x))]
+    )
       val_label(x, val) <- NULL
     x[is.na(x)] <- NA
   }

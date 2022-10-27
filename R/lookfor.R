@@ -9,39 +9,45 @@
 #' data frame.
 #'
 #' @param data a data frame or a survey object
-#' @param ... optional list of keywords, a character string (or several character strings), which can be
-#' formatted as a regular expression suitable for a [base::grep()] pattern, or a vector of keywords;
+#' @param ... optional list of keywords, a character string (or several
+#' character strings), which can be formatted as a regular expression suitable
+#' for a [base::grep()] pattern, or a vector of keywords;
 #' displays all variables if not specified
-#' @param labels whether or not to search variable labels (descriptions); `TRUE` by default
-#' @param values whether or not to search within values (factor levels or value labels); `TRUE` by default
+#' @param labels whether or not to search variable labels (descriptions);
+#' `TRUE` by default
+#' @param values whether or not to search within values (factor levels or value
+#' labels); `TRUE` by default
 #' @param ignore.case whether or not to make the keywords case sensitive;
 #' `TRUE` by default (case is ignored during matching)
-#' @param details add details about each variable (full details could be time consuming for big data frames, `FALSE` is equivalent to `"none"` and `TRUE` to `"full"`)
+#' @param details add details about each variable (full details could be time
+#' consuming for big data frames, `FALSE` is equivalent to `"none"`
+#' and `TRUE` to `"full"`)
 #' @param x a tibble returned by `look_for()`
-#' @return a tibble data frame featuring the variable position, name and description
-#' (if it exists) in the original data frame
-#' @details The function looks into the variable names for matches to the keywords. If available,
-#' variable labels are included in the search scope.
+#' @return a tibble data frame featuring the variable position, name and
+#' description (if it exists) in the original data frame
+#' @details The function looks into the variable names for matches to the
+#' keywords. If available, variable labels are included in the search scope.
 #' Variable labels of data.frame imported with \pkg{foreign} or
-#' \pkg{memisc} packages will also be taken into account (see [to_labelled()]). If no keyword is
-#' provided, it will return all variables of `data`.
+#' \pkg{memisc} packages will also be taken into account (see [to_labelled()]).
+#' If no keyword is provided, it will return all variables of `data`.
 #'
 #' `look_for()`, `lookfor()` and `generate_dictionary()` are equivalent.
 #'
-#' By default, results will be summarized when printing. To deactivate default printing,
-#' use `dplyr::as_tibble()`.
+#' By default, results will be summarized when printing. To deactivate default
+#' printing, use `dplyr::as_tibble()`.
 #'
-#' `lookfor_to_long_format()` could be used to transform results with one row per factor level
-#' and per value label.
+#' `lookfor_to_long_format()` could be used to transform results with one row
+#' per factor level and per value label.
 #'
-#' Use `convert_list_columns_to_character()` to convert named list columns into character vectors
-#' (see examples).
+#' Use `convert_list_columns_to_character()` to convert named list columns into
+#' character vectors (see examples).
 #'
 #' `look_for_and_select()` is a shortcut for selecting some variables and
 #' applying `dplyr::select()` to return a data frame with only the selected
 #' variables.
 #'
-#' @author François Briatte <f.briatte@@gmail.com>, Joseph Larmarange <joseph@@larmarange.net>
+#' @author François Briatte <f.briatte@@gmail.com>,
+#' Joseph Larmarange <joseph@@larmarange.net>
 #' @examples
 #' look_for(iris)
 #'
@@ -115,17 +121,19 @@ look_for <- function(data,
   data <- to_labelled(data)
   # search scope
   n <- names(data)
-  if(!length(n)) stop("there are no names to search in that object")
+  if (!length(n)) stop("there are no names to search in that object")
   # search function
   keywords <- c(...)
   l <- unlist(var_label(data))
-  if(!is.null(keywords)) {
-    look <- function(x) { grep(paste(keywords, collapse="|"), x, ignore.case = ignore.case) }
+  if (!is.null(keywords)) {
+    look <- function(x) {
+      grep(paste(keywords, collapse = "|"), x, ignore.case = ignore.case)
+    }
     # names search
     x <- look(n)
     variable <- n[x]
     # variable labels
-    if(length(l) > 0 & labels) {
+    if (length(l) > 0 && labels) {
       # search labels
       y <- look(l)
       variable <- unique(c(variable, names(l[y])))
@@ -146,7 +154,7 @@ look_for <- function(data,
   }
 
   # output
-  if(length(variable)) {
+  if (length(variable)) {
     pos <- which(n %in% variable)
     # reordering according to pos
     # not forgetting that some variables don't have a label
@@ -173,9 +181,13 @@ look_for <- function(data,
       data <- data %>%
         dplyr::select(res$variable)
 
-      unique_values <- function(x) {length(unique(x))}
-      n_na <- function(x) {sum(is.na(x))}
-      generic_range <- function(x){
+      unique_values <- function(x) {
+        length(unique(x))
+      }
+      n_na <- function(x) {
+        sum(is.na(x))
+      }
+      generic_range <- function(x) {
         if (all(unlist(lapply(x, is.null)))) return(NULL)
         if (all(is.na(x))) return(NULL)
 
@@ -223,7 +235,8 @@ print.look_for <- function(x, ...) {
       lookfor_to_long_format() %>%
       convert_list_columns_to_character() %>%
       dplyr::mutate(
-        label = dplyr::if_else(is.na(.data$label), "\u2014", .data$label) # display -- when empty
+        # display -- when empty
+        label = dplyr::if_else(is.na(.data$label), "\u2014", .data$label)
       )
 
     if (all(c("value_labels", "levels", "col_type") %in% names(x))) {
@@ -238,21 +251,31 @@ print.look_for <- function(x, ...) {
             !is.na(.data$range) ~ paste("range:", .data$range),
             TRUE ~ "" # zero-width space
           ),
-          variable = dplyr::if_else(duplicated(.data$pos), "", .data$variable),
+          variable = dplyr::if_else(
+            duplicated(.data$pos),
+            "",
+            .data$variable
+          ),
           label = dplyr::if_else(duplicated(.data$pos), "", .data$label),
           col_type = dplyr::if_else(duplicated(.data$pos), "", .data$col_type),
-          pos = dplyr::if_else(duplicated(.data$pos), "", as.character(.data$pos))
+          pos = dplyr::if_else(
+            duplicated(.data$pos),
+            "",
+            as.character(.data$pos)
+          )
         ) %>%
-        dplyr::select(dplyr::any_of(c("pos", "variable", "label", "col_type", "values")))
+        dplyr::select(
+          dplyr::any_of(c("pos", "variable", "label", "col_type", "values"))
+        )
     }
     w <- getOption("width") # available width for printing
     w_pos <- max(3, stringr::str_length(x$pos))
     w_variable <- max(5, stringr::str_length(x$variable))
-    w_label <- max(5, stringr::str_length(x$label))
+    w_label <- max(5, stringr::str_length(x$label)) # nolint
 
     if ("values" %in% names(x)) {
       w_col_type <- max(8, stringr::str_length(x$col_type))
-      w_values <- max(5, stringr::str_length(x$values))
+      w_values <- max(5, stringr::str_length(x$values)) # nolint
       # width for labels
       lw <- w - 8 - w_pos - w_variable - w_col_type
       lw <- dplyr::case_when(
@@ -276,9 +299,21 @@ print.look_for <- function(x, ...) {
 
 #' @rdname look_for
 #' @export
-look_for_and_select <- function(data, ..., labels = TRUE, values = TRUE, ignore.case = TRUE) {
+look_for_and_select <- function(
+  data,
+  ...,
+  labels = TRUE,
+  values = TRUE,
+  ignore.case = TRUE
+) {
   lf <- data %>%
-    look_for(..., labels = labels, values = values, ignore.case = ignore.case, details = "none")
+    look_for(
+      ...,
+      labels = labels,
+      values = values,
+      ignore.case = ignore.case,
+      details = "none"
+    )
   data %>% dplyr::select(lf$pos)
 }
 
@@ -296,7 +331,10 @@ convert_list_columns_to_character <- function(x) {
   x %>%
     dplyr::as_tibble() %>% # remove look_for class
     dplyr::mutate(
-      dplyr::across(where(is.list), ~ unlist(lapply(.x, paste, collapse = "; ")))
+      dplyr::across(
+        where(is.list),
+        ~ unlist(lapply(.x, paste, collapse = "; "))
+      )
     )
 }
 
@@ -304,7 +342,7 @@ convert_list_columns_to_character <- function(x) {
 #' @export
 lookfor_to_long_format <- function(x) {
   # only if details are provided
-  if (!"levels" %in% names(x) | !"value_labels" %in% names(x))
+  if (!"levels" %in% names(x) || !"value_labels" %in% names(x))
     return(x)
 
   x <- x %>%
@@ -321,5 +359,3 @@ lookfor_to_long_format <- function(x) {
     tidyr::unnest("levels", keep_empty = TRUE) %>%
     tidyr::unnest("value_labels", keep_empty = TRUE)
 }
-
-

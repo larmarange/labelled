@@ -13,3 +13,4 @@
 ^\.github$
 ^codecov\.yml$
 ^CRAN-SUBMISSION$
+^.lintr$

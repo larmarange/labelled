@@ -7,4 +7,3 @@ NULL
 # because `where` is not exported by tidyselect
 # cf. https://github.com/r-lib/tidyselect/issues/201
 utils::globalVariables("where")
-

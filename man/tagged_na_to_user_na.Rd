@@ -16,8 +16,8 @@ tagged_na_to_regular_na(x)
 computed automatically (maximum of observed values + 1)}
 }
 \description{
-\code{\link[=tagged_na_to_user_na]{tagged_na_to_user_na()}} is the opposite of \code{\link[=user_na_to_tagged_na]{user_na_to_tagged_na()}} and convert
-tagged \code{NA} into user defined missing values (see \code{\link[=labelled_spss]{labelled_spss()}}).
+\code{\link[=tagged_na_to_user_na]{tagged_na_to_user_na()}} is the opposite of \code{\link[=user_na_to_tagged_na]{user_na_to_tagged_na()}} and
+convert tagged \code{NA} into user defined missing values (see \code{\link[=labelled_spss]{labelled_spss()}}).
 }
 \details{
 \code{\link[=tagged_na_to_regular_na]{tagged_na_to_regular_na()}} converts tagged NAs into regular NAs.

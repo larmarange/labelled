@@ -27,23 +27,24 @@ remove_user_na(x, user_na_to_na = FALSE, user_na_to_tagged_na = FALSE)
 
 \item{keep_var_label}{Keep variable label?}
 
-\item{user_na_to_tagged_na}{Convert user defined missing values into tagged \code{NA}?
-It could be applied only to numeric vectors. Note that integer labelled vectors
-will be converted to double labelled vectors.}
+\item{user_na_to_tagged_na}{Convert user defined missing values into
+tagged \code{NA}? It could be applied only to numeric vectors. Note that integer
+labelled vectors will be converted to double labelled vectors.}
 }
 \description{
 Use \code{remove_var_label()} to remove variable label, \code{remove_val_labels()}
-to remove value labels, \code{remove_user_na()} to remove user defined missing values (\emph{na_values} and \emph{na_range})
-and \code{remove_labels()} to remove all.
+to remove value labels, \code{remove_user_na()} to remove user defined missing
+values (\emph{na_values} and \emph{na_range}) and \code{remove_labels()} to remove all.
 }
 \details{
-Be careful with \code{remove_user_na()} and \code{remove_labels()}, user defined missing values
-will not be automatically converted to \code{NA}, except if you specify
-\code{user_na_to_na = TRUE}.
-\code{user_na_to_na(x)} is an equivalent of \code{remove_user_na(x, user_na_to_na = TRUE)}.
+Be careful with \code{remove_user_na()} and \code{remove_labels()}, user defined
+missing values will not be automatically converted to \code{NA}, except if you
+specify \code{user_na_to_na = TRUE}.
+\code{user_na_to_na(x)} is an equivalent of
+\code{remove_user_na(x, user_na_to_na = TRUE)}.
 
-If you prefer to convert variables with value labels into factors, use \code{\link[=to_factor]{to_factor()}}
-or use \code{\link[=unlabelled]{unlabelled()}}.
+If you prefer to convert variables with value labels into factors, use
+\code{\link[=to_factor]{to_factor()}} or use \code{\link[=unlabelled]{unlabelled()}}.
 }
 \examples{
 x <- labelled_spss(1:10, c(Good = 1, Bad = 8), na_values = c(9, 10))

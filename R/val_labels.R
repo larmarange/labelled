@@ -3,9 +3,10 @@
 #' @param x A vector or a data.frame
 #' @param prefixed Should labels be prefixed with values?
 #' @param v A single value.
-#' @param value A named vector for `val_labels()` (see [haven::labelled()]) or a character string
-#'   for `val_label()`. `NULL` to remove the labels.
-#'   For data frames, it could also be a named list with a vector of value labels per variable.
+#' @param value A named vector for `val_labels()` (see [haven::labelled()]) or
+#'   a character string for `val_label()`. `NULL` to remove the labels.
+#'   For data frames, it could also be a named list with a vector of value
+#'   labels per variable.
 #' @return
 #'   `val_labels()` will return a named vector.
 #'   `val_label()` will return a single character string.
@@ -62,7 +63,7 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
 
 #' @export
 `val_labels<-.numeric` <- function(x, value) {
-  if (!is.null(value) & length(value) > 0) {
+  if (!is.null(value) && length(value) > 0) {
     x <- labelled(x, value, label = var_label(x))
   }
   x
@@ -70,7 +71,7 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
 
 #' @export
 `val_labels<-.character` <- function(x, value) {
-  if (!is.null(value) & length(value) > 0) {
+  if (!is.null(value) && length(value) > 0) {
     x <- labelled(x, value, label = var_label(x))
   }
   x
@@ -93,11 +94,19 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
 `val_labels<-.haven_labelled_spss` <- function(x, value) {
   if (length(value) == 0)
     value <- NULL
-  if (is.null(value) & is.null(attr(x, "na_values")) & is.null(attr(x, "na_range"))) {
+  if (is.null(value) &&
+      is.null(attr(x, "na_values")) &&
+      is.null(attr(x, "na_range"))) {
     x <- unclass(x)
     attr(x, "labels") <- NULL
   } else {
-    x <- labelled_spss(x, value, na_values = attr(x, "na_values"), na_range = attr(x, "na_range"), label = var_label(x))
+    x <- labelled_spss(
+      x,
+      value,
+      na_values = attr(x, "na_values"),
+      na_range = attr(x, "na_range"),
+      label = var_label(x)
+    )
   }
   x
 }
@@ -113,7 +122,10 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
   }
 
   if (!all(names(value) %in% names(x))) {
-    missing_names <- stringr::str_c(setdiff(names(value), names(x)), collapse = ", ")
+    missing_names <- stringr::str_c(
+      setdiff(names(value), names(x)),
+      collapse = ", "
+    )
     stop("some variables not found in x:", missing_names)
   }
 
@@ -233,7 +245,7 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
   value <- value[names(value) %in% names(x)]
 
   for (var in names(value)[]) {
-    if (!is.character(value[[var]]) & !is.null(value[[var]]))
+    if (!is.character(value[[var]]) && !is.null(value[[var]]))
       stop("`value` should contain only characters or NULL",
         call. = FALSE, domain = "R-labelled")
     if (length(value[[var]]) > 1)
@@ -258,21 +270,25 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
 #' `set_value_labels()`, `add_value_labels()` and `remove_value_labels()`
 #' could be used with \pkg{dplyr} syntax.
 #' While `set_value_labels()` will replace the list of value labels,
-#' `add_value_labels()` and `remove_value_labels()` will update that list (see examples).
+#' `add_value_labels()` and `remove_value_labels()` will update that list
+#' (see examples).
 #'
 #' `set_value_labels()` could also be applied to a vector / a data.frame column.
 #' In such case, you can provide a vector of value labels using `.labels` or
 #' several name-value pairs of value labels (see exemple).
-#' Similarly, `add_value_labels()` and `remove_value_labels()` could also be applied
-#' on vectors.
+#' Similarly, `add_value_labels()` and `remove_value_labels()` could also be
+#' applied on vectors.
 #' @return
-#'  `set_value_labels()`, `add_value_labels()` and `remove_value_labels()` will return an updated
-#'  copy of `.data`.
+#'  `set_value_labels()`, `add_value_labels()` and `remove_value_labels()` will
+#'  return an updated copy of `.data`.
 #' @examples
 #' if (require(dplyr)) {
 #'   # setting value labels
 #'   df <- tibble(s1 = c("M", "M", "F"), s2 = c(1, 1, 2)) %>%
-#'     set_value_labels(s1 = c(Male = "M", Female = "F"), s2 = c(Yes = 1, No = 2))
+#'     set_value_labels(
+#'       s1 = c(Male = "M", Female = "F"),
+#'       s2 = c(Yes = 1, No = 2)
+#'     )
 #'   val_labels(df)
 #'
 #'   # updating value labels
@@ -299,7 +315,7 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
 #' }
 #' @export
 set_value_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
-  if (!is.data.frame(.data) & !is.atomic(.data))
+  if (!is.data.frame(.data) && !is.atomic(.data))
     stop(".data should be a data.frame or a vector")
 
   # vector case
@@ -315,12 +331,15 @@ set_value_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
   # data.frame case
   if (!identical(.labels, NA)) {
     if (!.strict)
-      .labels <-.labels[intersect(names(.labels), names(.data))]
+      .labels <- .labels[intersect(names(.labels), names(.data))]
     val_labels(.data) <- .labels
   }
   values <- rlang::dots_list(...)
-  if (.strict & !all(names(values) %in% names(.data))) {
-    missing_names <- stringr::str_c(setdiff(names(values), names(.data)), collapse = ", ")
+  if (.strict && !all(names(values) %in% names(.data))) {
+    missing_names <- stringr::str_c(
+      setdiff(names(values), names(.data)),
+      collapse = ", "
+    )
     stop("some variables not found in .data: ", missing_names)
   }
 
@@ -333,13 +352,13 @@ set_value_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
 #' @rdname val_labels
 #' @export
 add_value_labels <- function(.data, ..., .strict = TRUE) {
-  if (!is.data.frame(.data) & !is.atomic(.data))
+  if (!is.data.frame(.data) && !is.atomic(.data))
     stop(".data should be a data.frame or a vector")
 
   # vector case
   if (is.atomic(.data)) {
     values <- unlist(rlang::dots_list(...))
-    if (is.null(names(values)) | any(names(values) == ""))
+    if (is.null(names(values)) || any(names(values) == ""))
       stop("all arguments should be named")
     for (v in names(values))
       val_label(.data, values[[v]]) <- v
@@ -348,13 +367,16 @@ add_value_labels <- function(.data, ..., .strict = TRUE) {
 
   # data.frame case
   values <- rlang::dots_list(...)
-  if (.strict & !all(names(values) %in% names(.data))) {
-    missing_names <- stringr::str_c(setdiff(names(values), names(.data)), collapse = ", ")
+  if (.strict && !all(names(values) %in% names(.data))) {
+    missing_names <- stringr::str_c(
+      setdiff(names(values), names(.data)),
+      collapse = ", "
+    )
     stop("some variables not found in .data: ", missing_names)
   }
 
-  for(v in values)
-    if (is.null(names(v)) | any(names(v) == ""))
+  for (v in values)
+    if (is.null(names(v)) || any(names(v) == ""))
       stop("all arguments should be named vectors")
 
   for (v in intersect(names(values), names(.data)))
@@ -367,7 +389,7 @@ add_value_labels <- function(.data, ..., .strict = TRUE) {
 #' @rdname val_labels
 #' @export
 remove_value_labels <- function(.data, ..., .strict = TRUE) {
-  if (!is.data.frame(.data) & !is.atomic(.data))
+  if (!is.data.frame(.data) && !is.atomic(.data))
     stop(".data should be a data.frame or a vector")
 
   # vector case
@@ -380,8 +402,11 @@ remove_value_labels <- function(.data, ..., .strict = TRUE) {
 
   # data.frame case
   values <- rlang::dots_list(...)
-  if (.strict & !all(names(values) %in% names(.data)))  {
-    missing_names <- stringr::str_c(setdiff(names(values), names(.data)), collapse = ", ")
+  if (.strict && !all(names(values) %in% names(.data)))  {
+    missing_names <- stringr::str_c(
+      setdiff(names(values), names(.data)),
+      collapse = ", "
+    )
     stop("some variables not found in .data: ", missing_names)
   }
 
