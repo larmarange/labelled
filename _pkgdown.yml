@@ -1,4 +1,9 @@
 destination: docs
+
+development:
+  mode: auto
+
+
 reference:
 - title: Manipulating variable labels
   desc:  Functions to set, manipulate and remove variable labels
