@@ -21,19 +21,23 @@ variables imported from SPSS, Stata and SAS. The `labelled` package
 propose several functions to manipulate such vectors and their metadata:
 variable labels, value labels and user-defined missing values.
 
-## Installation
+## Installation & Documentation
 
-From CRAN:
+To install **stable version**:
 
-``` r
+```{r eval=FALSE}
 install.packages("labelled")
 ```
 
-Development version from GitHub:
+Documentation of stable version: <https://larmarange.github.io/labelled/>
 
-``` r
-devtools::install_github("larmarange/labelled")
+To install **development version**:
+
+```{r eval=FALSE}
+remotes::install_github("larmarange/labelled")
 ```
+
+Documentation of development version: <https://larmarange.github.io/labelled/dev/>
 
 ## Introduction
 
