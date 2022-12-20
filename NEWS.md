@@ -3,6 +3,8 @@
 * `set_value_labels()`, `add_value_labels()`, `remove_value_labels()`,
   `set_variable_labels()`, `set_na_range()` and `set_na_values()` can now be 
   applied on a vector (#126)
+* new argument `null_action` for `var_label()` when applied on a data frame
+  (#131)
 
 # labelled 2.10.0
 
