@@ -1140,34 +1140,36 @@ test_that("names_prefixed_by_values works properly", {
 })
 
 test_that("null_action in var_label() works as expected", {
-  df <- iris %>%
+  df <- datasets::iris %>%
     set_variable_labels(
       Petal.Length = "length of petal",
       Petal.Width = "width of petal"
     )
   expect_equal(
-    var_label(iris),
+    var_label(df),
     list(
-      Sepal.Length = NULL, Sepal.Width = NULL,
-      Petal.Length = "length of the petal",
-      Petal.Width = "width of the petal", Species = "species"
+      Sepal.Length = NULL,
+      Sepal.Width = NULL,
+      Petal.Length = "length of petal",
+      Petal.Width = "width of petal",
+      Species = NULL
     )
   )
   expect_equal(
-    var_label(iris, null_action = "fi"),
+    var_label(df, null_action = "fi"),
     list(
-      Sepal.Length = "Sepal.Length", Sepal.Width = "Sepal.Width",
-      Petal.Length = "length of the petal",
-      Petal.Width = "width of the petal",
-      Species = "species"
+      Sepal.Length = "Sepal.Length",
+      Sepal.Width = "Sepal.Width",
+      Petal.Length = "length of petal",
+      Petal.Width = "width of petal",
+      Species = "Species"
     )
   )
   expect_equal(
-    var_label(iris, null_action = "skip"),
+    var_label(df, null_action = "skip"),
     list(
-      Petal.Length = "length of the petal",
-      Petal.Width = "width of the petal",
-      Species = "species"
+      Petal.Length = "length of petal",
+      Petal.Width = "width of petal"
     )
   )
   expect_error(var_label(df$Species, null_action = "skip"))
