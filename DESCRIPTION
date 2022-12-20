@@ -40,7 +40,7 @@ URL: http://larmarange.github.io/labelled/
 BugReports: https://github.com/larmarange/labelled/issues
 VignetteBuilder: knitr
 LazyData: true
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.2
 Roxygen: list(markdown = TRUE)
 RdMacros: lifecycle
 Language: en-US

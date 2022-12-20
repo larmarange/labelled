@@ -1138,3 +1138,37 @@ test_that("names_prefixed_by_values works properly", {
 
   expect_true(is.null(names_prefixed_by_values(NULL)))
 })
+
+test_that("null_action in var_label() works as expected", {
+  df <- iris %>%
+    set_variable_labels(
+      Petal.Length = "length of petal",
+      Petal.Width = "width of petal"
+    )
+  expect_equal(
+    var_label(iris),
+    list(
+      Sepal.Length = NULL, Sepal.Width = NULL,
+      Petal.Length = "length of the petal",
+      Petal.Width = "width of the petal", Species = "species"
+    )
+  )
+  expect_equal(
+    var_label(iris, null_action = "fi"),
+    list(
+      Sepal.Length = "Sepal.Length", Sepal.Width = "Sepal.Width",
+      Petal.Length = "length of the petal",
+      Petal.Width = "width of the petal",
+      Species = "species"
+    )
+  )
+  expect_equal(
+    var_label(iris, null_action = "skip"),
+    list(
+      Petal.Length = "length of the petal",
+      Petal.Width = "width of the petal",
+      Species = "species"
+    )
+  )
+  expect_error(var_label(df$Species, null_action = "skip"))
+})

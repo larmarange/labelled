@@ -5,6 +5,9 @@
 #'  For data frames, it could also be a named list or a character vector
 #'  of same length as the number of columns in `x`.
 #' @param unlist for data frames, return a named vector instead of a list
+#' @param null_action for data frames, by default `NULL` will be returned for
+#' columns with no variable label. Use `"fill"` to populate with the column name
+#' instead, or `"skip"` to remove such values from the returned list.
 #' @details
 #'   For data frames, if `value` is a named list, only elements whose name will
 #'   match a column of the data frame will be taken into account. If `value`
@@ -26,25 +29,50 @@
 #' var_label(iris)
 #' var_label(iris) <- list(
 #'   Petal.Width = "width of the petal",
-#'   Petal.Length = "length of the petal"
+#'   Petal.Length = "length of the petal",
+#'   Sepal.Width = NULL,
+#'   Sepal.Length = NULL
 #' )
 #' var_label(iris)
+#' var_label(iris, null_action = "fill")
+#' var_label(iris, null_action = "skip")
 #' var_label(iris, unlist = TRUE)
 #'
 #
 #' @export
-var_label <- function(x, unlist = FALSE) {
+var_label <- function(x, ...) {
+  rlang::check_dots_used()
   UseMethod("var_label")
 }
 
 #' @export
-var_label.default <- function(x, unlist = FALSE) {
+var_label.default <- function(x, ...) {
   attr(x, "label", exact = TRUE)
 }
 
+#' @rdname var_label
 #' @export
-var_label.data.frame <- function(x, unlist = FALSE) {
+var_label.data.frame <- function(x, unlist = FALSE,
+                                 null_action = c("keep", "fill", "skip"), ...) {
   r <- lapply(x, var_label)
+
+  null_action <- match.arg(null_action)
+
+  if (null_action == "fill") {
+    r <- mapply(
+      function(l, n) {
+        if (is.null(l)) n else l
+      },
+      r,
+      names(r),
+      SIMPLIFY = FALSE
+    )
+  }
+
+  if (null_action == "skip") {
+    r <- r[!sapply(r, is.null)]
+  }
+
   if (unlist) {
     r <- lapply(
       r,
@@ -52,10 +80,10 @@ var_label.data.frame <- function(x, unlist = FALSE) {
         if (is.null(x)) "" else x
       }
     )
-    base::unlist(r, use.names = TRUE)
-  } else {
-    r
+    r <- base::unlist(r, use.names = TRUE)
   }
+
+  r
 }
 
 #' @rdname var_label
