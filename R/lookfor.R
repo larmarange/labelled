@@ -177,11 +177,16 @@ look_for <- function(data,
       data <- data %>%
         dplyr::select(res$variable)
 
+      n_na <- function(x) {
+        sum(is.na(x))
+      }
+
       res <- res %>%
         dplyr::mutate(
           col_type = unlist(lapply(data, vctrs::vec_ptype_abbr)),
+          n_na = unlist(lapply(data, n_na)),
           levels = lapply(data, levels),
-          value_labels = lapply(data, val_labels)
+          value_labels = lapply(data, val_labels),
         )
 
     }
@@ -192,9 +197,6 @@ look_for <- function(data,
 
       unique_values <- function(x) {
         length(unique(x))
-      }
-      n_na <- function(x) {
-        sum(is.na(x))
       }
       generic_range <- function(x) {
         if (all(unlist(lapply(x, is.null)))) return(NULL)
@@ -213,7 +215,6 @@ look_for <- function(data,
           na_values = lapply(data, na_values),
           na_range = lapply(data, na_range),
           unique_values = unlist(lapply(data, unique_values)),
-          n_na = unlist(lapply(data, n_na)),
           range = lapply(data, generic_range)
         )
 
@@ -267,6 +268,30 @@ print.look_for <- function(x, ...) {
           ),
           label = dplyr::if_else(duplicated(.data$pos), "", .data$label),
           col_type = dplyr::if_else(duplicated(.data$pos), "", .data$col_type),
+        )
+
+      if ("n_na" %in% names(x))
+        x <- x %>%
+          dplyr::mutate(
+            n_na = dplyr::if_else(
+              duplicated(.data$pos),
+              "",
+              as.character(.data$n_na)
+            )
+          )
+
+      if ("unique_values" %in% names(x))
+        x <- x %>%
+        dplyr::mutate(
+          unique_values = dplyr::if_else(
+            duplicated(.data$pos),
+            "",
+            as.character(.data$unique_values)
+          )
+        )
+
+      x <- x %>%
+        dplyr::mutate(
           pos = dplyr::if_else(
             duplicated(.data$pos),
             "",
@@ -274,7 +299,7 @@ print.look_for <- function(x, ...) {
           )
         ) %>%
         dplyr::select(
-          dplyr::any_of(c("pos", "variable", "label", "col_type", "values"))
+          dplyr::any_of(c("pos", "variable", "label", "col_type", "n_na", "unique_values", "values"))
         )
     }
     w <- getOption("width") # available width for printing
