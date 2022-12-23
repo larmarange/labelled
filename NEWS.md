@@ -5,7 +5,7 @@
   applied on a vector (#126)
 * new argument `null_action` for `var_label()` when applied on a data frame
   (#131)
-* `look_for()` now returns `"n_na"` by default (#133)
+* `look_for()` now returns `"missing"` by default (#133)
 
 # labelled 2.10.0
 

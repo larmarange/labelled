@@ -177,14 +177,14 @@ look_for <- function(data,
       data <- data %>%
         dplyr::select(res$variable)
 
-      n_na <- function(x) {
+      n_missing <- function(x) {
         sum(is.na(x))
       }
 
       res <- res %>%
         dplyr::mutate(
           col_type = unlist(lapply(data, vctrs::vec_ptype_abbr)),
-          n_na = unlist(lapply(data, n_na)),
+          missing = unlist(lapply(data, n_missing)),
           levels = lapply(data, levels),
           value_labels = lapply(data, val_labels),
         )
@@ -214,6 +214,7 @@ look_for <- function(data,
           type = unlist(lapply(data, typeof)),
           na_values = lapply(data, na_values),
           na_range = lapply(data, na_range),
+          n_na = missing, # retrocompatibility
           unique_values = unlist(lapply(data, unique_values)),
           range = lapply(data, generic_range)
         )
@@ -270,13 +271,13 @@ print.look_for <- function(x, ...) {
           col_type = dplyr::if_else(duplicated(.data$pos), "", .data$col_type),
         )
 
-      if ("n_na" %in% names(x))
+      if ("missing" %in% names(x))
         x <- x %>%
           dplyr::mutate(
-            n_na = dplyr::if_else(
+            missing = dplyr::if_else(
               duplicated(.data$pos),
               "",
-              as.character(.data$n_na)
+              as.character(.data$missing)
             )
           )
 
@@ -290,6 +291,26 @@ print.look_for <- function(x, ...) {
           )
         )
 
+      if ("na_values" %in% names(x))
+        x <- x %>%
+        dplyr::mutate(
+          na_values = dplyr::if_else(
+            duplicated(.data$pos),
+            "",
+            as.character(.data$na_values)
+          )
+        )
+
+      if ("na_range" %in% names(x))
+        x <- x %>%
+        dplyr::mutate(
+          na_range = dplyr::if_else(
+            duplicated(.data$pos),
+            "",
+            as.character(.data$na_range)
+          )
+        )
+
       x <- x %>%
         dplyr::mutate(
           pos = dplyr::if_else(
@@ -299,7 +320,8 @@ print.look_for <- function(x, ...) {
           )
         ) %>%
         dplyr::select(
-          dplyr::any_of(c("pos", "variable", "label", "col_type", "n_na", "unique_values", "values"))
+          dplyr::any_of(c("pos", "variable", "label", "col_type", "missing",
+                          "unique_values", "values", "na_values", "na_range"))
         )
     }
     w <- getOption("width") # available width for printing
