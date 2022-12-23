@@ -218,58 +218,100 @@ values corresponding to:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://larmarange.github.io/labelled/" class="external-link">labelled</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  pos variable     label col_type values    </span></span>
-<span><span class="co">##  1   Sepal.Length —     dbl                </span></span>
-<span><span class="co">##  2   Sepal.Width  —     dbl                </span></span>
-<span><span class="co">##  3   Petal.Length —     dbl                </span></span>
-<span><span class="co">##  4   Petal.Width  —     dbl                </span></span>
-<span><span class="co">##  5   Species      —     fct      setosa    </span></span>
-<span><span class="co">##                                  versicolor</span></span>
-<span><span class="co">##                                  virginica</span></span></code></pre>
+<pre><code><span><span class="co">##  pos variable     label col_type missing values    </span></span>
+<span><span class="co">##  1   Sepal.Length —     dbl      0                 </span></span>
+<span><span class="co">##  2   Sepal.Width  —     dbl      0                 </span></span>
+<span><span class="co">##  3   Petal.Length —     dbl      0                 </span></span>
+<span><span class="co">##  4   Petal.Width  —     dbl      0                 </span></span>
+<span><span class="co">##  5   Species      —     fct      0       setosa    </span></span>
+<span><span class="co">##                                          versicolor</span></span>
+<span><span class="co">##                                          virginica</span></span></code></pre>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  pos variable          label                     col_type values             </span></span>
-<span><span class="co">##  1   id_woman          Woman Id                  dbl                         </span></span>
-<span><span class="co">##  2   id_household      Household Id              dbl                         </span></span>
-<span><span class="co">##  3   weight            Sample weight             dbl                         </span></span>
-<span><span class="co">##  4   interview_date    Interview date            date                        </span></span>
-<span><span class="co">##  5   date_of_birth     Date of birth             date                        </span></span>
-<span><span class="co">##  6   age               Age at last anniversary ~ dbl                         </span></span>
-<span><span class="co">##  7   residency         Urban / rural residency   dbl+lbl  [1] urban          </span></span>
-<span><span class="co">##                                                           [2] rural          </span></span>
-<span><span class="co">##  8   region            Region                    dbl+lbl  [1] North          </span></span>
-<span><span class="co">##                                                           [2] East           </span></span>
-<span><span class="co">##                                                           [3] South          </span></span>
-<span><span class="co">##                                                           [4] West           </span></span>
-<span><span class="co">##  9   instruction       Level of instruction      dbl+lbl  [0] none           </span></span>
-<span><span class="co">##                                                           [1] primary        </span></span>
-<span><span class="co">##                                                           [2] secondary      </span></span>
-<span><span class="co">##                                                           [3] higher         </span></span>
-<span><span class="co">##  10  employed          Employed?                 hvn_lbl_ [0] no             </span></span>
-<span><span class="co">##                                                           [1] yes            </span></span>
-<span><span class="co">##                                                           [9] missing        </span></span>
-<span><span class="co">##  11  matri             Matrimonial status        dbl+lbl  [0] single         </span></span>
-<span><span class="co">##                                                           [1] married        </span></span>
-<span><span class="co">##                                                           [2] living together</span></span>
-<span><span class="co">##                                                           [3] windowed       </span></span>
-<span><span class="co">##                                                           [4] divorced       </span></span>
-<span><span class="co">##                                                           [5] separated      </span></span>
-<span><span class="co">##  12  religion          Religion                  dbl+lbl  [1] Muslim         </span></span>
-<span><span class="co">##                                                           [2] Christian      </span></span>
-<span><span class="co">##                                                           [3] Protestant     </span></span>
-<span><span class="co">##                                                           [4] no religion    </span></span>
-<span><span class="co">##                                                           [5] other          </span></span>
-<span><span class="co">##  13  newspaper         Read newspaper?           dbl+lbl  [0] no             </span></span>
-<span><span class="co">##                                                           [1] yes            </span></span>
-<span><span class="co">##  14  radio             Listen to radio?          dbl+lbl  [0] no             </span></span>
-<span><span class="co">##                                                           [1] yes            </span></span>
-<span><span class="co">##  15  tv                Watch TV?                 dbl+lbl  [0] no             </span></span>
-<span><span class="co">##                                                           [1] yes            </span></span>
-<span><span class="co">##  16  ideal_nb_children Ideal number of children  hvn_lbl_ [96] don't know    </span></span>
-<span><span class="co">##                                                           [99] missing       </span></span>
-<span><span class="co">##  17  test              Ever tested for HIV?      hvn_lbl_ [0] no             </span></span>
-<span><span class="co">##                                                           [1] yes            </span></span>
-<span><span class="co">##                                                           [9] missing</span></span></code></pre>
+<pre><code><span><span class="co">##  pos variable          label                     col_type missing</span></span>
+<span><span class="co">##  1   id_woman          Woman Id                  dbl      0      </span></span>
+<span><span class="co">##  2   id_household      Household Id              dbl      0      </span></span>
+<span><span class="co">##  3   weight            Sample weight             dbl      0      </span></span>
+<span><span class="co">##  4   interview_date    Interview date            date     0      </span></span>
+<span><span class="co">##  5   date_of_birth     Date of birth             date     0      </span></span>
+<span><span class="co">##  6   age               Age at last anniversary ~ dbl      0      </span></span>
+<span><span class="co">##  7   residency         Urban / rural residency   dbl+lbl  0      </span></span>
+<span><span class="co">##                                                                  </span></span>
+<span><span class="co">##  8   region            Region                    dbl+lbl  0      </span></span>
+<span><span class="co">##                                                                  </span></span>
+<span><span class="co">##                                                                  </span></span>
+<span><span class="co">##                                                                  </span></span>
+<span><span class="co">##  9   instruction       Level of instruction      dbl+lbl  0      </span></span>
+<span><span class="co">##                                                                  </span></span>
+<span><span class="co">##                                                                  </span></span>
+<span><span class="co">##                                                                  </span></span>
+<span><span class="co">##  10  employed          Employed?                 hvn_lbl_ 7      </span></span>
+<span><span class="co">##                                                                  </span></span>
+<span><span class="co">##                                                                  </span></span>
+<span><span class="co">##  11  matri             Matrimonial status        dbl+lbl  0      </span></span>
+<span><span class="co">##                                                                  </span></span>
+<span><span class="co">##                                                                  </span></span>
+<span><span class="co">##                                                                  </span></span>
+<span><span class="co">##                                                                  </span></span>
+<span><span class="co">##                                                                  </span></span>
+<span><span class="co">##  12  religion          Religion                  dbl+lbl  4      </span></span>
+<span><span class="co">##                                                                  </span></span>
+<span><span class="co">##                                                                  </span></span>
+<span><span class="co">##                                                                  </span></span>
+<span><span class="co">##                                                                  </span></span>
+<span><span class="co">##  13  newspaper         Read newspaper?           dbl+lbl  0      </span></span>
+<span><span class="co">##                                                                  </span></span>
+<span><span class="co">##  14  radio             Listen to radio?          dbl+lbl  0      </span></span>
+<span><span class="co">##                                                                  </span></span>
+<span><span class="co">##  15  tv                Watch TV?                 dbl+lbl  0      </span></span>
+<span><span class="co">##                                                                  </span></span>
+<span><span class="co">##  16  ideal_nb_children Ideal number of children  hvn_lbl_ 0      </span></span>
+<span><span class="co">##                                                                  </span></span>
+<span><span class="co">##  17  test              Ever tested for HIV?      hvn_lbl_ 29     </span></span>
+<span><span class="co">##                                                                  </span></span>
+<span><span class="co">##                                                                  </span></span>
+<span><span class="co">##  values             </span></span>
+<span><span class="co">##                     </span></span>
+<span><span class="co">##                     </span></span>
+<span><span class="co">##                     </span></span>
+<span><span class="co">##                     </span></span>
+<span><span class="co">##                     </span></span>
+<span><span class="co">##                     </span></span>
+<span><span class="co">##  [1] urban          </span></span>
+<span><span class="co">##  [2] rural          </span></span>
+<span><span class="co">##  [1] North          </span></span>
+<span><span class="co">##  [2] East           </span></span>
+<span><span class="co">##  [3] South          </span></span>
+<span><span class="co">##  [4] West           </span></span>
+<span><span class="co">##  [0] none           </span></span>
+<span><span class="co">##  [1] primary        </span></span>
+<span><span class="co">##  [2] secondary      </span></span>
+<span><span class="co">##  [3] higher         </span></span>
+<span><span class="co">##  [0] no             </span></span>
+<span><span class="co">##  [1] yes            </span></span>
+<span><span class="co">##  [9] missing        </span></span>
+<span><span class="co">##  [0] single         </span></span>
+<span><span class="co">##  [1] married        </span></span>
+<span><span class="co">##  [2] living together</span></span>
+<span><span class="co">##  [3] windowed       </span></span>
+<span><span class="co">##  [4] divorced       </span></span>
+<span><span class="co">##  [5] separated      </span></span>
+<span><span class="co">##  [1] Muslim         </span></span>
+<span><span class="co">##  [2] Christian      </span></span>
+<span><span class="co">##  [3] Protestant     </span></span>
+<span><span class="co">##  [4] no religion    </span></span>
+<span><span class="co">##  [5] other          </span></span>
+<span><span class="co">##  [0] no             </span></span>
+<span><span class="co">##  [1] yes            </span></span>
+<span><span class="co">##  [0] no             </span></span>
+<span><span class="co">##  [1] yes            </span></span>
+<span><span class="co">##  [0] no             </span></span>
+<span><span class="co">##  [1] yes            </span></span>
+<span><span class="co">##  [96] don't know    </span></span>
+<span><span class="co">##  [99] missing       </span></span>
+<span><span class="co">##  [0] no             </span></span>
+<span><span class="co">##  [1] yes            </span></span>
+<span><span class="co">##  [9] missing</span></span></code></pre>
 <p>Note that <code><a href="../reference/look_for.html">lookfor()</a></code> and
 <code><a href="../reference/look_for.html">generate_dictionary()</a></code> are synonyms of
 <code><a href="../reference/look_for.html">look_for()</a></code> and works exactly in the same way.</p>
@@ -288,59 +330,59 @@ strings or regular expression, to search for specific variables.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Look for a single keyword.</span></span>
 <span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, <span class="st">"petal"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  pos variable     label col_type values</span></span>
-<span><span class="co">##  3   Petal.Length —     dbl            </span></span>
-<span><span class="co">##  4   Petal.Width  —     dbl</span></span></code></pre>
+<pre><code><span><span class="co">##  pos variable     label col_type missing values</span></span>
+<span><span class="co">##  3   Petal.Length —     dbl      0             </span></span>
+<span><span class="co">##  4   Petal.Width  —     dbl      0</span></span></code></pre>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, <span class="st">"s"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  pos variable     label col_type values    </span></span>
-<span><span class="co">##  1   Sepal.Length —     dbl                </span></span>
-<span><span class="co">##  2   Sepal.Width  —     dbl                </span></span>
-<span><span class="co">##  5   Species      —     fct      setosa    </span></span>
-<span><span class="co">##                                  versicolor</span></span>
-<span><span class="co">##                                  virginica</span></span></code></pre>
+<pre><code><span><span class="co">##  pos variable     label col_type missing values    </span></span>
+<span><span class="co">##  1   Sepal.Length —     dbl      0                 </span></span>
+<span><span class="co">##  2   Sepal.Width  —     dbl      0                 </span></span>
+<span><span class="co">##  5   Species      —     fct      0       setosa    </span></span>
+<span><span class="co">##                                          versicolor</span></span>
+<span><span class="co">##                                          virginica</span></span></code></pre>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Look for with a regular expression</span></span>
 <span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, <span class="st">"petal|species"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  pos variable     label col_type values    </span></span>
-<span><span class="co">##  3   Petal.Length —     dbl                </span></span>
-<span><span class="co">##  4   Petal.Width  —     dbl                </span></span>
-<span><span class="co">##  5   Species      —     fct      setosa    </span></span>
-<span><span class="co">##                                  versicolor</span></span>
-<span><span class="co">##                                  virginica</span></span></code></pre>
+<pre><code><span><span class="co">##  pos variable     label col_type missing values    </span></span>
+<span><span class="co">##  3   Petal.Length —     dbl      0                 </span></span>
+<span><span class="co">##  4   Petal.Width  —     dbl      0                 </span></span>
+<span><span class="co">##  5   Species      —     fct      0       setosa    </span></span>
+<span><span class="co">##                                          versicolor</span></span>
+<span><span class="co">##                                          virginica</span></span></code></pre>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, <span class="st">"s$"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  pos variable label col_type values    </span></span>
-<span><span class="co">##  5   Species  —     fct      setosa    </span></span>
-<span><span class="co">##                              versicolor</span></span>
-<span><span class="co">##                              virginica</span></span></code></pre>
+<pre><code><span><span class="co">##  pos variable label col_type missing values    </span></span>
+<span><span class="co">##  5   Species  —     fct      0       setosa    </span></span>
+<span><span class="co">##                                      versicolor</span></span>
+<span><span class="co">##                                      virginica</span></span></code></pre>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Look for with several keywords</span></span>
 <span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, <span class="st">"pet"</span>, <span class="st">"sp"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  pos variable     label col_type values    </span></span>
-<span><span class="co">##  3   Petal.Length —     dbl                </span></span>
-<span><span class="co">##  4   Petal.Width  —     dbl                </span></span>
-<span><span class="co">##  5   Species      —     fct      setosa    </span></span>
-<span><span class="co">##                                  versicolor</span></span>
-<span><span class="co">##                                  virginica</span></span></code></pre>
+<pre><code><span><span class="co">##  pos variable     label col_type missing values    </span></span>
+<span><span class="co">##  3   Petal.Length —     dbl      0                 </span></span>
+<span><span class="co">##  4   Petal.Width  —     dbl      0                 </span></span>
+<span><span class="co">##  5   Species      —     fct      0       setosa    </span></span>
+<span><span class="co">##                                          versicolor</span></span>
+<span><span class="co">##                                          virginica</span></span></code></pre>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Look_for will take variable labels into account</span></span>
 <span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span>, <span class="st">"read"</span>, <span class="st">"level"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  pos variable    label                col_type values       </span></span>
-<span><span class="co">##  9   instruction Level of instruction dbl+lbl  [0] none     </span></span>
-<span><span class="co">##                                                [1] primary  </span></span>
-<span><span class="co">##                                                [2] secondary</span></span>
-<span><span class="co">##                                                [3] higher   </span></span>
-<span><span class="co">##  13  newspaper   Read newspaper?      dbl+lbl  [0] no       </span></span>
-<span><span class="co">##                                                [1] yes</span></span></code></pre>
+<pre><code><span><span class="co">##  pos variable    label                col_type missing values       </span></span>
+<span><span class="co">##  9   instruction Level of instruction dbl+lbl  0       [0] none     </span></span>
+<span><span class="co">##                                                        [1] primary  </span></span>
+<span><span class="co">##                                                        [2] secondary</span></span>
+<span><span class="co">##                                                        [3] higher   </span></span>
+<span><span class="co">##  13  newspaper   Read newspaper?      dbl+lbl  0       [0] no       </span></span>
+<span><span class="co">##                                                        [1] yes</span></span></code></pre>
 <p>By default, <code><a href="../reference/look_for.html">look_for()</a></code> will look through both variable
 names and variables labels. Use <code>labels = FALSE</code> to look only
 through variable names.</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span>, <span class="st">"read"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  pos variable  label           col_type values </span></span>
-<span><span class="co">##  13  newspaper Read newspaper? dbl+lbl  [0] no </span></span>
-<span><span class="co">##                                         [1] yes</span></span></code></pre>
+<pre><code><span><span class="co">##  pos variable  label           col_type missing values </span></span>
+<span><span class="co">##  13  newspaper Read newspaper? dbl+lbl  0       [0] no </span></span>
+<span><span class="co">##                                                 [1] yes</span></span></code></pre>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span>, <span class="st">"read"</span>, labels <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Nothing found. Sorry.</span></span></code></pre>
@@ -348,9 +390,9 @@ through variable names.</p>
 search case sensitive, use <code>ignore.case = FALSE</code>.</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, <span class="st">"sepal"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  pos variable     label col_type values</span></span>
-<span><span class="co">##  1   Sepal.Length —     dbl            </span></span>
-<span><span class="co">##  2   Sepal.Width  —     dbl</span></span></code></pre>
+<pre><code><span><span class="co">##  pos variable     label col_type missing values</span></span>
+<span><span class="co">##  1   Sepal.Length —     dbl      0             </span></span>
+<span><span class="co">##  2   Sepal.Width  —     dbl      0</span></span></code></pre>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, <span class="st">"sepal"</span>, ignore.case <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Nothing found. Sorry.</span></span></code></pre>
@@ -373,66 +415,109 @@ frames), indicate <code>details = "full"</code> or
 <code>details = TRUE</code>.</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span>, details <span class="op">=</span> <span class="st">"full"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  pos variable          label                  col_type values                </span></span>
-<span><span class="co">##  1   id_woman          Woman Id               dbl      range: 1 - 2000       </span></span>
-<span><span class="co">##  2   id_household      Household Id           dbl      range: 1 - 1814       </span></span>
-<span><span class="co">##  3   weight            Sample weight          dbl      range: 0.044629 - 4.3~</span></span>
-<span><span class="co">##  4   interview_date    Interview date         date     range: 2011-12-01 - 2~</span></span>
-<span><span class="co">##  5   date_of_birth     Date of birth          date     range: 1962-02-07 - 1~</span></span>
-<span><span class="co">##  6   age               Age at last anniversa~ dbl      range: 14 - 49        </span></span>
-<span><span class="co">##  7   residency         Urban / rural residen~ dbl+lbl  [1] urban             </span></span>
-<span><span class="co">##                                                        [2] rural             </span></span>
-<span><span class="co">##  8   region            Region                 dbl+lbl  [1] North             </span></span>
-<span><span class="co">##                                                        [2] East              </span></span>
-<span><span class="co">##                                                        [3] South             </span></span>
-<span><span class="co">##                                                        [4] West              </span></span>
-<span><span class="co">##  9   instruction       Level of instruction   dbl+lbl  [0] none              </span></span>
-<span><span class="co">##                                                        [1] primary           </span></span>
-<span><span class="co">##                                                        [2] secondary         </span></span>
-<span><span class="co">##                                                        [3] higher            </span></span>
-<span><span class="co">##  10  employed          Employed?              hvn_lbl_ [0] no                </span></span>
-<span><span class="co">##                                                        [1] yes               </span></span>
-<span><span class="co">##                                                        [9] missing           </span></span>
-<span><span class="co">##  11  matri             Matrimonial status     dbl+lbl  [0] single            </span></span>
-<span><span class="co">##                                                        [1] married           </span></span>
-<span><span class="co">##                                                        [2] living together   </span></span>
-<span><span class="co">##                                                        [3] windowed          </span></span>
-<span><span class="co">##                                                        [4] divorced          </span></span>
-<span><span class="co">##                                                        [5] separated         </span></span>
-<span><span class="co">##  12  religion          Religion               dbl+lbl  [1] Muslim            </span></span>
-<span><span class="co">##                                                        [2] Christian         </span></span>
-<span><span class="co">##                                                        [3] Protestant        </span></span>
-<span><span class="co">##                                                        [4] no religion       </span></span>
-<span><span class="co">##                                                        [5] other             </span></span>
-<span><span class="co">##  13  newspaper         Read newspaper?        dbl+lbl  [0] no                </span></span>
-<span><span class="co">##                                                        [1] yes               </span></span>
-<span><span class="co">##  14  radio             Listen to radio?       dbl+lbl  [0] no                </span></span>
-<span><span class="co">##                                                        [1] yes               </span></span>
-<span><span class="co">##  15  tv                Watch TV?              dbl+lbl  [0] no                </span></span>
-<span><span class="co">##                                                        [1] yes               </span></span>
-<span><span class="co">##  16  ideal_nb_children Ideal number of child~ hvn_lbl_ [96] don't know       </span></span>
-<span><span class="co">##                                                        [99] missing          </span></span>
-<span><span class="co">##  17  test              Ever tested for HIV?   hvn_lbl_ [0] no                </span></span>
-<span><span class="co">##                                                        [1] yes               </span></span>
-<span><span class="co">##                                                        [9] missing</span></span></code></pre>
+<pre><code><span><span class="co">##  pos variable          label                  col_type missing unique_values</span></span>
+<span><span class="co">##  1   id_woman          Woman Id               dbl      0       2000         </span></span>
+<span><span class="co">##  2   id_household      Household Id           dbl      0       1814         </span></span>
+<span><span class="co">##  3   weight            Sample weight          dbl      0       351          </span></span>
+<span><span class="co">##  4   interview_date    Interview date         date     0       165          </span></span>
+<span><span class="co">##  5   date_of_birth     Date of birth          date     0       1740         </span></span>
+<span><span class="co">##  6   age               Age at last anniversa~ dbl      0       36           </span></span>
+<span><span class="co">##  7   residency         Urban / rural residen~ dbl+lbl  0       2            </span></span>
+<span><span class="co">##                                                                             </span></span>
+<span><span class="co">##  8   region            Region                 dbl+lbl  0       4            </span></span>
+<span><span class="co">##                                                                             </span></span>
+<span><span class="co">##                                                                             </span></span>
+<span><span class="co">##                                                                             </span></span>
+<span><span class="co">##  9   instruction       Level of instruction   dbl+lbl  0       4            </span></span>
+<span><span class="co">##                                                                             </span></span>
+<span><span class="co">##                                                                             </span></span>
+<span><span class="co">##                                                                             </span></span>
+<span><span class="co">##  10  employed          Employed?              hvn_lbl_ 7       3            </span></span>
+<span><span class="co">##                                                                             </span></span>
+<span><span class="co">##                                                                             </span></span>
+<span><span class="co">##  11  matri             Matrimonial status     dbl+lbl  0       6            </span></span>
+<span><span class="co">##                                                                             </span></span>
+<span><span class="co">##                                                                             </span></span>
+<span><span class="co">##                                                                             </span></span>
+<span><span class="co">##                                                                             </span></span>
+<span><span class="co">##                                                                             </span></span>
+<span><span class="co">##  12  religion          Religion               dbl+lbl  4       6            </span></span>
+<span><span class="co">##                                                                             </span></span>
+<span><span class="co">##                                                                             </span></span>
+<span><span class="co">##                                                                             </span></span>
+<span><span class="co">##                                                                             </span></span>
+<span><span class="co">##  13  newspaper         Read newspaper?        dbl+lbl  0       2            </span></span>
+<span><span class="co">##                                                                             </span></span>
+<span><span class="co">##  14  radio             Listen to radio?       dbl+lbl  0       2            </span></span>
+<span><span class="co">##                                                                             </span></span>
+<span><span class="co">##  15  tv                Watch TV?              dbl+lbl  0       2            </span></span>
+<span><span class="co">##                                                                             </span></span>
+<span><span class="co">##  16  ideal_nb_children Ideal number of child~ hvn_lbl_ 0       18           </span></span>
+<span><span class="co">##                                                                             </span></span>
+<span><span class="co">##  17  test              Ever tested for HIV?   hvn_lbl_ 29      3            </span></span>
+<span><span class="co">##                                                                             </span></span>
+<span><span class="co">##                                                                             </span></span>
+<span><span class="co">##  values                 na_values na_range</span></span>
+<span><span class="co">##  range: 1 - 2000                          </span></span>
+<span><span class="co">##  range: 1 - 1814                          </span></span>
+<span><span class="co">##  range: 0.044629 - 4.3~                   </span></span>
+<span><span class="co">##  range: 2011-12-01 - 2~                   </span></span>
+<span><span class="co">##  range: 1962-02-07 - 1~                   </span></span>
+<span><span class="co">##  range: 14 - 49                           </span></span>
+<span><span class="co">##  [1] urban                                </span></span>
+<span><span class="co">##  [2] rural                                </span></span>
+<span><span class="co">##  [1] North                                </span></span>
+<span><span class="co">##  [2] East                                 </span></span>
+<span><span class="co">##  [3] South                                </span></span>
+<span><span class="co">##  [4] West                                 </span></span>
+<span><span class="co">##  [0] none                                 </span></span>
+<span><span class="co">##  [1] primary                              </span></span>
+<span><span class="co">##  [2] secondary                            </span></span>
+<span><span class="co">##  [3] higher                               </span></span>
+<span><span class="co">##  [0] no                 9                 </span></span>
+<span><span class="co">##  [1] yes                                  </span></span>
+<span><span class="co">##  [9] missing                              </span></span>
+<span><span class="co">##  [0] single                               </span></span>
+<span><span class="co">##  [1] married                              </span></span>
+<span><span class="co">##  [2] living together                      </span></span>
+<span><span class="co">##  [3] windowed                             </span></span>
+<span><span class="co">##  [4] divorced                             </span></span>
+<span><span class="co">##  [5] separated                            </span></span>
+<span><span class="co">##  [1] Muslim                               </span></span>
+<span><span class="co">##  [2] Christian                            </span></span>
+<span><span class="co">##  [3] Protestant                           </span></span>
+<span><span class="co">##  [4] no religion                          </span></span>
+<span><span class="co">##  [5] other                                </span></span>
+<span><span class="co">##  [0] no                                   </span></span>
+<span><span class="co">##  [1] yes                                  </span></span>
+<span><span class="co">##  [0] no                                   </span></span>
+<span><span class="co">##  [1] yes                                  </span></span>
+<span><span class="co">##  [0] no                                   </span></span>
+<span><span class="co">##  [1] yes                                  </span></span>
+<span><span class="co">##  [96] don't know                          </span></span>
+<span><span class="co">##  [99] missing                             </span></span>
+<span><span class="co">##  [0] no                 9                 </span></span>
+<span><span class="co">##  [1] yes                                  </span></span>
+<span><span class="co">##  [9] missing</span></span></code></pre>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span>, details <span class="op">=</span> <span class="st">"full"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Rows: 17</span></span>
-<span><span class="co">## Columns: 13</span></span>
+<span><span class="co">## Columns: 14</span></span>
 <span><span class="co">## $ pos           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17</span></span>
 <span><span class="co">## $ variable      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "id_woman", "id_household", "weight", "interview_date", …</span></span>
 <span><span class="co">## $ label         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Woman Id", "Household Id", "Sample weight", "Interview …</span></span>
 <span><span class="co">## $ col_type      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "dbl", "dbl", "dbl", "date", "date", "dbl", "dbl+lbl", "…</span></span>
+<span><span class="co">## $ missing       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 4, 0, 0, 0, 0, 29</span></span>
 <span><span class="co">## $ levels        <span style="color: #949494; font-style: italic;">&lt;named list&gt;</span> &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, …</span></span>
-<span><span class="co">## $ value_labels  <span style="color: #949494; font-style: italic;">&lt;named list&gt;</span> &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;…</span></span>
+<span><span class="co">## $ value_labels  <span style="color: #949494; font-style: italic;">&lt;named list&gt;</span> &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;1, 2&gt;, …</span></span>
 <span><span class="co">## $ class         <span style="color: #949494; font-style: italic;">&lt;named list&gt;</span> "numeric", "numeric", "numeric", "Date", "Date", …</span></span>
 <span><span class="co">## $ type          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "double", "double", "double", "double", "double",…</span></span>
-<span><span class="co">## $ na_values     <span style="color: #949494; font-style: italic;">&lt;named list&gt;</span> &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, …</span></span>
-<span><span class="co">## $ na_range      <span style="color: #949494; font-style: italic;">&lt;named list&gt;</span> &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;…</span></span>
-<span><span class="co">## $ unique_values <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2000, 1814, 351, 165, 1740, 36, 2, 4, 4, 3, 6, 6,…</span></span>
+<span><span class="co">## $ na_values     <span style="color: #949494; font-style: italic;">&lt;named list&gt;</span> &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;…</span></span>
+<span><span class="co">## $ na_range      <span style="color: #949494; font-style: italic;">&lt;named list&gt;</span> &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, …</span></span>
 <span><span class="co">## $ n_na          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 4, 0, 0, 0, 0, 29</span></span>
-<span><span class="co">## $ range         <span style="color: #949494; font-style: italic;">&lt;named list&gt;</span> &lt;1, 2000&gt;, &lt;1, 1814&gt;, &lt;0.044629, 4.396831&gt;, &lt;2011-12-01,…</span></span></code></pre>
+<span><span class="co">## $ unique_values <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 2000, 1814, 351, 165, 1740, 36, 2, 4, 4, 3, 6, 6,…</span></span>
+<span><span class="co">## $ range         <span style="color: #949494; font-style: italic;">&lt;named list&gt;</span> &lt;1, 2000&gt;, &lt;1, 1814&gt;, &lt;0.044629, 4.396831&gt;, &lt;2011…</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="advanced-usages-of-look_for">Advanced usages of <code>look_for()</code><a class="anchor" aria-label="anchor" href="#advanced-usages-of-look_for"></a>
@@ -445,37 +530,38 @@ simply use <code><a href="https://tibble.tidyverse.org/reference/as_tibble.html"
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/View.html" class="external-link">View</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 17 × 6</span></span></span>
-<span><span class="co">##      pos variable          label                          col_t…¹ levels value…²</span></span>
-<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;name&gt;</span> <span style="color: #949494; font-style: italic;">&lt;named&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>     1 id_woman          Woman Id                       dbl     <span style="color: #949494;">&lt;NULL&gt;</span> <span style="color: #949494;">&lt;NULL&gt;</span> </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>     2 id_household      Household Id                   dbl     <span style="color: #949494;">&lt;NULL&gt;</span> <span style="color: #949494;">&lt;NULL&gt;</span> </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>     3 weight            Sample weight                  dbl     <span style="color: #949494;">&lt;NULL&gt;</span> <span style="color: #949494;">&lt;NULL&gt;</span> </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>     4 interview_date    Interview date                 date    <span style="color: #949494;">&lt;NULL&gt;</span> <span style="color: #949494;">&lt;NULL&gt;</span> </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>     5 date_of_birth     Date of birth                  date    <span style="color: #949494;">&lt;NULL&gt;</span> <span style="color: #949494;">&lt;NULL&gt;</span> </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>     6 age               Age at last anniversary (in y… dbl     <span style="color: #949494;">&lt;NULL&gt;</span> <span style="color: #949494;">&lt;NULL&gt;</span> </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>     7 residency         Urban / rural residency        dbl+lbl <span style="color: #949494;">&lt;NULL&gt;</span> &lt;dbl&gt;  </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>     8 region            Region                         dbl+lbl <span style="color: #949494;">&lt;NULL&gt;</span> &lt;dbl&gt;  </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>     9 instruction       Level of instruction           dbl+lbl <span style="color: #949494;">&lt;NULL&gt;</span> &lt;dbl&gt;  </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span>    10 employed          Employed?                      hvn_lb… <span style="color: #949494;">&lt;NULL&gt;</span> &lt;dbl&gt;  </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">11</span>    11 matri             Matrimonial status             dbl+lbl <span style="color: #949494;">&lt;NULL&gt;</span> &lt;dbl&gt;  </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">12</span>    12 religion          Religion                       dbl+lbl <span style="color: #949494;">&lt;NULL&gt;</span> &lt;dbl&gt;  </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">13</span>    13 newspaper         Read newspaper?                dbl+lbl <span style="color: #949494;">&lt;NULL&gt;</span> &lt;dbl&gt;  </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">14</span>    14 radio             Listen to radio?               dbl+lbl <span style="color: #949494;">&lt;NULL&gt;</span> &lt;dbl&gt;  </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">15</span>    15 tv                Watch TV?                      dbl+lbl <span style="color: #949494;">&lt;NULL&gt;</span> &lt;dbl&gt;  </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">16</span>    16 ideal_nb_children Ideal number of children       hvn_lb… <span style="color: #949494;">&lt;NULL&gt;</span> &lt;dbl&gt;  </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">17</span>    17 test              Ever tested for HIV?           hvn_lb… <span style="color: #949494;">&lt;NULL&gt;</span> &lt;dbl&gt;  </span></span>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 17 × 7</span></span></span>
+<span><span class="co">##      pos variable          label                  col_t…¹ missing levels value…²</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;name&gt;</span> <span style="color: #949494; font-style: italic;">&lt;named&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>     1 id_woman          Woman Id               dbl           0 <span style="color: #949494;">&lt;NULL&gt;</span> <span style="color: #949494;">&lt;NULL&gt;</span> </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>     2 id_household      Household Id           dbl           0 <span style="color: #949494;">&lt;NULL&gt;</span> <span style="color: #949494;">&lt;NULL&gt;</span> </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>     3 weight            Sample weight          dbl           0 <span style="color: #949494;">&lt;NULL&gt;</span> <span style="color: #949494;">&lt;NULL&gt;</span> </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>     4 interview_date    Interview date         date          0 <span style="color: #949494;">&lt;NULL&gt;</span> <span style="color: #949494;">&lt;NULL&gt;</span> </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>     5 date_of_birth     Date of birth          date          0 <span style="color: #949494;">&lt;NULL&gt;</span> <span style="color: #949494;">&lt;NULL&gt;</span> </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>     6 age               Age at last anniversa… dbl           0 <span style="color: #949494;">&lt;NULL&gt;</span> <span style="color: #949494;">&lt;NULL&gt;</span> </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>     7 residency         Urban / rural residen… dbl+lbl       0 <span style="color: #949494;">&lt;NULL&gt;</span> &lt;dbl&gt;  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>     8 region            Region                 dbl+lbl       0 <span style="color: #949494;">&lt;NULL&gt;</span> &lt;dbl&gt;  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>     9 instruction       Level of instruction   dbl+lbl       0 <span style="color: #949494;">&lt;NULL&gt;</span> &lt;dbl&gt;  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span>    10 employed          Employed?              hvn_lb…       7 <span style="color: #949494;">&lt;NULL&gt;</span> &lt;dbl&gt;  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">11</span>    11 matri             Matrimonial status     dbl+lbl       0 <span style="color: #949494;">&lt;NULL&gt;</span> &lt;dbl&gt;  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">12</span>    12 religion          Religion               dbl+lbl       4 <span style="color: #949494;">&lt;NULL&gt;</span> &lt;dbl&gt;  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">13</span>    13 newspaper         Read newspaper?        dbl+lbl       0 <span style="color: #949494;">&lt;NULL&gt;</span> &lt;dbl&gt;  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">14</span>    14 radio             Listen to radio?       dbl+lbl       0 <span style="color: #949494;">&lt;NULL&gt;</span> &lt;dbl&gt;  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">15</span>    15 tv                Watch TV?              dbl+lbl       0 <span style="color: #949494;">&lt;NULL&gt;</span> &lt;dbl&gt;  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">16</span>    16 ideal_nb_children Ideal number of child… hvn_lb…       0 <span style="color: #949494;">&lt;NULL&gt;</span> &lt;dbl&gt;  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">17</span>    17 test              Ever tested for HIV?   hvn_lb…      29 <span style="color: #949494;">&lt;NULL&gt;</span> &lt;dbl&gt;  </span></span>
 <span><span class="co">## <span style="color: #949494;"># … with abbreviated variable names ¹​col_type, ²​value_labels</span></span></span></code></pre>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Rows: 17</span></span>
-<span><span class="co">## Columns: 6</span></span>
+<span><span class="co">## Columns: 7</span></span>
 <span><span class="co">## $ pos          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17</span></span>
 <span><span class="co">## $ variable     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "id_woman", "id_household", "weight", "interview_date", "…</span></span>
 <span><span class="co">## $ label        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Woman Id", "Household Id", "Sample weight", "Interview d…</span></span>
 <span><span class="co">## $ col_type     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "dbl", "dbl", "dbl", "date", "date", "dbl", "dbl+lbl", "d…</span></span>
+<span><span class="co">## $ missing      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 4, 0, 0, 0, 0, 29</span></span>
 <span><span class="co">## $ levels       <span style="color: #949494; font-style: italic;">&lt;named list&gt;</span> &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;…</span></span>
-<span><span class="co">## $ value_labels <span style="color: #949494; font-style: italic;">&lt;named list&gt;</span> &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;1…</span></span></code></pre>
+<span><span class="co">## $ value_labels <span style="color: #949494; font-style: italic;">&lt;named list&gt;</span> &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;NULL&gt;, &lt;1, 2&gt;, &lt;…</span></span></code></pre>
 <p>The tibble returned by <code><a href="../reference/look_for.html">look_for()</a></code> could be easily
 manipulated for advanced programming.</p>
 <p>When a column has several values for one variable
@@ -485,64 +571,64 @@ character vectors, you can use
 <code><a href="../reference/look_for.html">convert_list_columns_to_character()</a></code>.</p>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/look_for.html">convert_list_columns_to_character</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 17 × 6</span></span></span>
-<span><span class="co">##      pos variable          label                          col_t…¹ levels value…²</span></span>
-<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>     1 id_woman          Woman Id                       dbl     <span style="color: #949494;">""</span>     <span style="color: #949494;">""</span>     </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>     2 id_household      Household Id                   dbl     <span style="color: #949494;">""</span>     <span style="color: #949494;">""</span>     </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>     3 weight            Sample weight                  dbl     <span style="color: #949494;">""</span>     <span style="color: #949494;">""</span>     </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>     4 interview_date    Interview date                 date    <span style="color: #949494;">""</span>     <span style="color: #949494;">""</span>     </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>     5 date_of_birth     Date of birth                  date    <span style="color: #949494;">""</span>     <span style="color: #949494;">""</span>     </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>     6 age               Age at last anniversary (in y… dbl     <span style="color: #949494;">""</span>     <span style="color: #949494;">""</span>     </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>     7 residency         Urban / rural residency        dbl+lbl <span style="color: #949494;">""</span>     <span style="color: #949494;">"</span>[1] u…</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>     8 region            Region                         dbl+lbl <span style="color: #949494;">""</span>     <span style="color: #949494;">"</span>[1] N…</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>     9 instruction       Level of instruction           dbl+lbl <span style="color: #949494;">""</span>     <span style="color: #949494;">"</span>[0] n…</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span>    10 employed          Employed?                      hvn_lb… <span style="color: #949494;">""</span>     <span style="color: #949494;">"</span>[0] n…</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">11</span>    11 matri             Matrimonial status             dbl+lbl <span style="color: #949494;">""</span>     <span style="color: #949494;">"</span>[0] s…</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">12</span>    12 religion          Religion                       dbl+lbl <span style="color: #949494;">""</span>     <span style="color: #949494;">"</span>[1] M…</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">13</span>    13 newspaper         Read newspaper?                dbl+lbl <span style="color: #949494;">""</span>     <span style="color: #949494;">"</span>[0] n…</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">14</span>    14 radio             Listen to radio?               dbl+lbl <span style="color: #949494;">""</span>     <span style="color: #949494;">"</span>[0] n…</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">15</span>    15 tv                Watch TV?                      dbl+lbl <span style="color: #949494;">""</span>     <span style="color: #949494;">"</span>[0] n…</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">16</span>    16 ideal_nb_children Ideal number of children       hvn_lb… <span style="color: #949494;">""</span>     <span style="color: #949494;">"</span>[96] …</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">17</span>    17 test              Ever tested for HIV?           hvn_lb… <span style="color: #949494;">""</span>     <span style="color: #949494;">"</span>[0] n…</span></span>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 17 × 7</span></span></span>
+<span><span class="co">##      pos variable          label                  col_t…¹ missing levels value…²</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>     1 id_woman          Woman Id               dbl           0 <span style="color: #949494;">""</span>     <span style="color: #949494;">""</span>     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>     2 id_household      Household Id           dbl           0 <span style="color: #949494;">""</span>     <span style="color: #949494;">""</span>     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>     3 weight            Sample weight          dbl           0 <span style="color: #949494;">""</span>     <span style="color: #949494;">""</span>     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>     4 interview_date    Interview date         date          0 <span style="color: #949494;">""</span>     <span style="color: #949494;">""</span>     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>     5 date_of_birth     Date of birth          date          0 <span style="color: #949494;">""</span>     <span style="color: #949494;">""</span>     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>     6 age               Age at last anniversa… dbl           0 <span style="color: #949494;">""</span>     <span style="color: #949494;">""</span>     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>     7 residency         Urban / rural residen… dbl+lbl       0 <span style="color: #949494;">""</span>     <span style="color: #949494;">"</span>[1] u…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>     8 region            Region                 dbl+lbl       0 <span style="color: #949494;">""</span>     <span style="color: #949494;">"</span>[1] N…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>     9 instruction       Level of instruction   dbl+lbl       0 <span style="color: #949494;">""</span>     <span style="color: #949494;">"</span>[0] n…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span>    10 employed          Employed?              hvn_lb…       7 <span style="color: #949494;">""</span>     <span style="color: #949494;">"</span>[0] n…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">11</span>    11 matri             Matrimonial status     dbl+lbl       0 <span style="color: #949494;">""</span>     <span style="color: #949494;">"</span>[0] s…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">12</span>    12 religion          Religion               dbl+lbl       4 <span style="color: #949494;">""</span>     <span style="color: #949494;">"</span>[1] M…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">13</span>    13 newspaper         Read newspaper?        dbl+lbl       0 <span style="color: #949494;">""</span>     <span style="color: #949494;">"</span>[0] n…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">14</span>    14 radio             Listen to radio?       dbl+lbl       0 <span style="color: #949494;">""</span>     <span style="color: #949494;">"</span>[0] n…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">15</span>    15 tv                Watch TV?              dbl+lbl       0 <span style="color: #949494;">""</span>     <span style="color: #949494;">"</span>[0] n…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">16</span>    16 ideal_nb_children Ideal number of child… hvn_lb…       0 <span style="color: #949494;">""</span>     <span style="color: #949494;">"</span>[96] …</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">17</span>    17 test              Ever tested for HIV?   hvn_lb…      29 <span style="color: #949494;">""</span>     <span style="color: #949494;">"</span>[0] n…</span></span>
 <span><span class="co">## <span style="color: #949494;"># … with abbreviated variable names ¹​col_type, ²​value_labels</span></span></span></code></pre>
 <p>Alternatively, you can use <code><a href="../reference/look_for.html">lookfor_to_long_format()</a></code> to
 transform results into a long format with one row per factor level and
 per value label.</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/look_for.html">lookfor_to_long_format</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 41 × 6</span></span></span>
-<span><span class="co">##      pos variable       label                             col_t…¹ levels value…²</span></span>
-<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>     1 id_woman       Woman Id                          dbl     <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>     2 id_household   Household Id                      dbl     <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>     3 weight         Sample weight                     dbl     <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>     4 interview_date Interview date                    date    <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>     5 date_of_birth  Date of birth                     date    <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>     6 age            Age at last anniversary (in year… dbl     <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>     7 residency      Urban / rural residency           dbl+lbl <span style="color: #BB0000;">NA</span>     [1] ur…</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>     7 residency      Urban / rural residency           dbl+lbl <span style="color: #BB0000;">NA</span>     [2] ru…</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>     8 region         Region                            dbl+lbl <span style="color: #BB0000;">NA</span>     [1] No…</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span>     8 region         Region                            dbl+lbl <span style="color: #BB0000;">NA</span>     [2] Ea…</span></span>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 41 × 7</span></span></span>
+<span><span class="co">##      pos variable       label                     col_t…¹ missing levels value…²</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>     1 id_woman       Woman Id                  dbl           0 <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>     2 id_household   Household Id              dbl           0 <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>     3 weight         Sample weight             dbl           0 <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>     4 interview_date Interview date            date          0 <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>     5 date_of_birth  Date of birth             date          0 <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>     6 age            Age at last anniversary … dbl           0 <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>     7 residency      Urban / rural residency   dbl+lbl       0 <span style="color: #BB0000;">NA</span>     [1] ur…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>     7 residency      Urban / rural residency   dbl+lbl       0 <span style="color: #BB0000;">NA</span>     [2] ru…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>     8 region         Region                    dbl+lbl       0 <span style="color: #BB0000;">NA</span>     [1] No…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span>     8 region         Region                    dbl+lbl       0 <span style="color: #BB0000;">NA</span>     [2] Ea…</span></span>
 <span><span class="co">## <span style="color: #949494;"># … with 31 more rows, and abbreviated variable names ¹​col_type, ²​value_labels</span></span></span></code></pre>
 <p>Both can be combined:</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/look_for.html">lookfor_to_long_format</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/look_for.html">convert_list_columns_to_character</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 41 × 6</span></span></span>
-<span><span class="co">##      pos variable       label                             col_t…¹ levels value…²</span></span>
-<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>     1 id_woman       Woman Id                          dbl     <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>     2 id_household   Household Id                      dbl     <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>     3 weight         Sample weight                     dbl     <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>     4 interview_date Interview date                    date    <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>     5 date_of_birth  Date of birth                     date    <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>     6 age            Age at last anniversary (in year… dbl     <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>     7 residency      Urban / rural residency           dbl+lbl <span style="color: #BB0000;">NA</span>     [1] ur…</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>     7 residency      Urban / rural residency           dbl+lbl <span style="color: #BB0000;">NA</span>     [2] ru…</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>     8 region         Region                            dbl+lbl <span style="color: #BB0000;">NA</span>     [1] No…</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span>     8 region         Region                            dbl+lbl <span style="color: #BB0000;">NA</span>     [2] Ea…</span></span>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 41 × 7</span></span></span>
+<span><span class="co">##      pos variable       label                     col_t…¹ missing levels value…²</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>     1 id_woman       Woman Id                  dbl           0 <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>     2 id_household   Household Id              dbl           0 <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>     3 weight         Sample weight             dbl           0 <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>     4 interview_date Interview date            date          0 <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>     5 date_of_birth  Date of birth             date          0 <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>     6 age            Age at last anniversary … dbl           0 <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>     7 residency      Urban / rural residency   dbl+lbl       0 <span style="color: #BB0000;">NA</span>     [1] ur…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>     7 residency      Urban / rural residency   dbl+lbl       0 <span style="color: #BB0000;">NA</span>     [2] ru…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>     8 region         Region                    dbl+lbl       0 <span style="color: #BB0000;">NA</span>     [1] No…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span>     8 region         Region                    dbl+lbl       0 <span style="color: #BB0000;">NA</span>     [2] Ea…</span></span>
 <span><span class="co">## <span style="color: #949494;"># … with 31 more rows, and abbreviated variable names ¹​col_type, ²​value_labels</span></span></span></code></pre>
 </div>
   </div>

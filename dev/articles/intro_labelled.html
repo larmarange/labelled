@@ -174,19 +174,19 @@ data viewer.</p>
 <code><a href="../reference/look_for.html">look_for()</a></code>:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  pos variable     label           col_type values    </span></span>
-<span><span class="co">##  1   Sepal.Length —               dbl                </span></span>
-<span><span class="co">##  2   Sepal.Width  —               dbl                </span></span>
-<span><span class="co">##  3   Petal.Length Length of petal dbl                </span></span>
-<span><span class="co">##  4   Petal.Width  Width of Petal  dbl                </span></span>
-<span><span class="co">##  5   Species      —               fct      setosa    </span></span>
-<span><span class="co">##                                            versicolor</span></span>
-<span><span class="co">##                                            virginica</span></span></code></pre>
+<pre><code><span><span class="co">##  pos variable     label           col_type missing values    </span></span>
+<span><span class="co">##  1   Sepal.Length —               dbl      0                 </span></span>
+<span><span class="co">##  2   Sepal.Width  —               dbl      0                 </span></span>
+<span><span class="co">##  3   Petal.Length Length of petal dbl      0                 </span></span>
+<span><span class="co">##  4   Petal.Width  Width of Petal  dbl      0                 </span></span>
+<span><span class="co">##  5   Species      —               fct      0       setosa    </span></span>
+<span><span class="co">##                                                    versicolor</span></span>
+<span><span class="co">##                                                    virginica</span></span></code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, <span class="st">"pet"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  pos variable     label           col_type values</span></span>
-<span><span class="co">##  3   Petal.Length Length of petal dbl            </span></span>
-<span><span class="co">##  4   Petal.Width  Width of Petal  dbl</span></span></code></pre>
+<pre><code><span><span class="co">##  pos variable     label           col_type missing values</span></span>
+<span><span class="co">##  3   Petal.Length Length of petal dbl      0             </span></span>
+<span><span class="co">##  4   Petal.Width  Width of Petal  dbl      0</span></span></code></pre>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, details <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  pos variable     label          </span></span>
@@ -878,57 +878,57 @@ numeric or character vector by applying
 <span>    <span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  pos variable label col_type values </span></span>
-<span><span class="co">##  1   a        —     dbl+lbl  [1] No </span></span>
-<span><span class="co">##                              [2] Yes</span></span>
-<span><span class="co">##  2   b        —     dbl+lbl  [1] No </span></span>
-<span><span class="co">##                              [2] Yes</span></span>
-<span><span class="co">##                              [3] DK </span></span>
-<span><span class="co">##  3   c        —     dbl+lbl  [1] No </span></span>
-<span><span class="co">##                              [2] Yes</span></span>
-<span><span class="co">##                              [3] DK </span></span>
-<span><span class="co">##  4   d        —     chr+lbl  [a] No </span></span>
-<span><span class="co">##                              [b] Yes</span></span>
-<span><span class="co">##  5   e        —     hvn_lbl_ [1] No </span></span>
-<span><span class="co">##                              [2] Yes</span></span></code></pre>
+<pre><code><span><span class="co">##  pos variable label col_type missing values </span></span>
+<span><span class="co">##  1   a        —     dbl+lbl  0       [1] No </span></span>
+<span><span class="co">##                                      [2] Yes</span></span>
+<span><span class="co">##  2   b        —     dbl+lbl  0       [1] No </span></span>
+<span><span class="co">##                                      [2] Yes</span></span>
+<span><span class="co">##                                      [3] DK </span></span>
+<span><span class="co">##  3   c        —     dbl+lbl  0       [1] No </span></span>
+<span><span class="co">##                                      [2] Yes</span></span>
+<span><span class="co">##                                      [3] DK </span></span>
+<span><span class="co">##  4   d        —     chr+lbl  0       [a] No </span></span>
+<span><span class="co">##                                      [b] Yes</span></span>
+<span><span class="co">##  5   e        —     hvn_lbl_ 1       [1] No </span></span>
+<span><span class="co">##                                      [2] Yes</span></span></code></pre>
 <div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  pos variable label col_type values</span></span>
-<span><span class="co">##  1   a        —     dbl            </span></span>
-<span><span class="co">##  2   b        —     fct      No    </span></span>
-<span><span class="co">##                              Yes   </span></span>
-<span><span class="co">##                              DK    </span></span>
-<span><span class="co">##  3   c        —     fct      No    </span></span>
-<span><span class="co">##                              Yes   </span></span>
-<span><span class="co">##                              DK    </span></span>
-<span><span class="co">##  4   d        —     chr            </span></span>
-<span><span class="co">##  5   e        —     fct      No    </span></span>
-<span><span class="co">##                              Yes</span></span></code></pre>
+<pre><code><span><span class="co">##  pos variable label col_type missing values</span></span>
+<span><span class="co">##  1   a        —     dbl      0             </span></span>
+<span><span class="co">##  2   b        —     fct      0       No    </span></span>
+<span><span class="co">##                                      Yes   </span></span>
+<span><span class="co">##                                      DK    </span></span>
+<span><span class="co">##  3   c        —     fct      0       No    </span></span>
+<span><span class="co">##                                      Yes   </span></span>
+<span><span class="co">##                                      DK    </span></span>
+<span><span class="co">##  4   d        —     chr      0             </span></span>
+<span><span class="co">##  5   e        —     fct      1       No    </span></span>
+<span><span class="co">##                                      Yes</span></span></code></pre>
 <div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span><span class="op">(</span><span class="va">df</span>, user_na_to_na <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  pos variable label col_type values</span></span>
-<span><span class="co">##  1   a        —     dbl            </span></span>
-<span><span class="co">##  2   b        —     fct      No    </span></span>
-<span><span class="co">##                              Yes   </span></span>
-<span><span class="co">##                              DK    </span></span>
-<span><span class="co">##  3   c        —     fct      No    </span></span>
-<span><span class="co">##                              Yes   </span></span>
-<span><span class="co">##                              DK    </span></span>
-<span><span class="co">##  4   d        —     chr            </span></span>
-<span><span class="co">##  5   e        —     fct      No    </span></span>
-<span><span class="co">##                              Yes</span></span></code></pre>
+<pre><code><span><span class="co">##  pos variable label col_type missing values</span></span>
+<span><span class="co">##  1   a        —     dbl      0             </span></span>
+<span><span class="co">##  2   b        —     fct      0       No    </span></span>
+<span><span class="co">##                                      Yes   </span></span>
+<span><span class="co">##                                      DK    </span></span>
+<span><span class="co">##  3   c        —     fct      0       No    </span></span>
+<span><span class="co">##                                      Yes   </span></span>
+<span><span class="co">##                                      DK    </span></span>
+<span><span class="co">##  4   d        —     chr      0             </span></span>
+<span><span class="co">##  5   e        —     fct      1       No    </span></span>
+<span><span class="co">##                                      Yes</span></span></code></pre>
 <div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span><span class="op">(</span><span class="va">df</span>, drop_unused_labels <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  pos variable label col_type values</span></span>
-<span><span class="co">##  1   a        —     dbl            </span></span>
-<span><span class="co">##  2   b        —     fct      No    </span></span>
-<span><span class="co">##                              Yes   </span></span>
-<span><span class="co">##                              DK    </span></span>
-<span><span class="co">##  3   c        —     fct      No    </span></span>
-<span><span class="co">##                              Yes   </span></span>
-<span><span class="co">##  4   d        —     chr            </span></span>
-<span><span class="co">##  5   e        —     fct      No    </span></span>
-<span><span class="co">##                              Yes</span></span></code></pre>
+<pre><code><span><span class="co">##  pos variable label col_type missing values</span></span>
+<span><span class="co">##  1   a        —     dbl      0             </span></span>
+<span><span class="co">##  2   b        —     fct      0       No    </span></span>
+<span><span class="co">##                                      Yes   </span></span>
+<span><span class="co">##                                      DK    </span></span>
+<span><span class="co">##  3   c        —     fct      0       No    </span></span>
+<span><span class="co">##                                      Yes   </span></span>
+<span><span class="co">##  4   d        —     chr      0             </span></span>
+<span><span class="co">##  5   e        —     fct      1       No    </span></span>
+<span><span class="co">##                                      Yes</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="importing-labelled-data">Importing labelled data<a class="anchor" aria-label="anchor" href="#importing-labelled-data"></a>
