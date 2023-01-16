@@ -241,7 +241,7 @@ generate_dictionary <- look_for
 #' @rdname look_for
 #' @export
 print.look_for <- function(x, ...) {
-  if (nrow(x) > 0) {
+  if (nrow(x) > 0 && all(c("pos", "variable", "label") %in% names(x))) {
     x <- x %>%
       lookfor_to_long_format() %>%
       convert_list_columns_to_character() %>%
@@ -348,8 +348,10 @@ print.look_for <- function(x, ...) {
     }
 
     print.data.frame(x, row.names = FALSE, quote = FALSE, right = FALSE)
-  } else {
+  } else if (nrow(x) == 0) {
     message("Nothing found. Sorry.")
+  } else {
+    print(dplyr::as_tibble(x))
   }
 }
 
