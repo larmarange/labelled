@@ -6,6 +6,7 @@
 * new argument `null_action` for `var_label()` when applied on a data frame
   (#131)
 * `look_for()` now returns `"missing"` (number of `NA`s) by default (#133)
+* bug fix in `print.look_for()` (#135)
 
 # labelled 2.10.0
 
