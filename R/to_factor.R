@@ -250,6 +250,8 @@ to_factor.data.frame <- function(
 unlabelled <- function(x, ...) {
   if (is.data.frame(x))
     to_factor(x, strict = TRUE, unclass = TRUE, labelled_only = TRUE, ...)
-  else
+  else if (inherits(x, "haven_labelled"))
     to_factor(x, strict = TRUE, unclass = TRUE, ...)
+  else
+    x
 }
