@@ -978,6 +978,8 @@ test_that("unlabelled works correctly", {
 
   v <- labelled(c(1, 1, 2, 3), labels = c(No = 1, Yes = 2))
   expect_false(inherits(unlabelled(v), "haven_labelled"))
+
+  expect_false(is.factor(unlabelled(1:4)))
 })
 
 # remove_label ------------------------------------------
