@@ -7,7 +7,7 @@ state and is being actively
 developed.](https://www.repostatus.org/badges/0.1.0/active.svg)](https://www.repostatus.org/#active)
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
-[![R build status](https://github.com/larmarange/labelled/workflows/R-CMD-check/badge.svg)](https://github.com/larmarange/labelled/actions)
+[![R-CMD-check](https://github.com/larmarange/labelled/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/larmarange/labelled/actions/workflows/R-CMD-check.yaml)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/labelled)](https://cran.r-project.org/package=labelled)
 [![Downloads](https://cranlogs.r-pkg.org/badges/labelled)](https://cran.r-project.org/package=labelled)
 [![DOI](https://www.zenodo.org/badge/38772078.svg)](https://www.zenodo.org/badge/latestdoi/38772078)
