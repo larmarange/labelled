@@ -36,7 +36,7 @@ Suggests:
     covr,
     spelling
 Enhances: memisc
-URL: http://larmarange.github.io/labelled/
+URL: https://larmarange.github.io/labelled/
 BugReports: https://github.com/larmarange/labelled/issues
 VignetteBuilder: knitr
 LazyData: true
