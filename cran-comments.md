@@ -1,9 +1,9 @@
 ## Test environments
 
-* local R installation: R 4.2.1
-* mac OS (on github actions): R-release
-* windows (on github actions): R-release, R 3.6
-* ubuntu 18.04 (on github actions): R-devel, R-release, R-oldrel-1, R-oldrel-2, R-oldrel-3
+* local R installation: R 4.2.3
+* macos-latest (on github actions): R-release
+* windows-latest (on github actions): R-release
+* ubuntu-latest (on github actions): R-devel, R-release, R-oldrel-1, R-oldrel-2, R-oldrel-3
 
 cf. https://github.com/larmarange/labelled/actions/workflows/R-CMD-check.yaml
 
@@ -11,7 +11,15 @@ cf. https://github.com/larmarange/labelled/actions/workflows/R-CMD-check.yaml
 
 ## revdepcheck results
 
-We checked 25 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+We checked 29 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 0 new problems
+ * We saw 1 new problems
  * We failed to check 0 packages
+
+Issues with CRAN packages are summarised below.
+
+### New problems
+(This reports the first line of each new failure)
+
+* ggformula
+  checking for code/documentation mismatches ... WARNING
