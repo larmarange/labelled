@@ -69,9 +69,13 @@ var_label(iris) <- c(
 var_label(iris)
 var_label(iris) <- list(
   Petal.Width = "width of the petal",
-  Petal.Length = "length of the petal"
+  Petal.Length = "length of the petal",
+  Sepal.Width = NULL,
+  Sepal.Length = NULL
 )
 var_label(iris)
+var_label(iris, null_action = "fill")
+var_label(iris, null_action = "skip")
 var_label(iris, unlist = TRUE)
 
 if (require(dplyr)) {
