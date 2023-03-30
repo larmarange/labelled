@@ -65,7 +65,7 @@ While \code{set_value_labels()} will replace the list of value labels,
 
 \code{set_value_labels()} could also be applied to a vector / a data.frame column.
 In such case, you can provide a vector of value labels using \code{.labels} or
-several name-value pairs of value labels (see exemple).
+several name-value pairs of value labels (see example).
 Similarly, \code{add_value_labels()} and \code{remove_value_labels()} could also be
 applied on vectors.
 }
