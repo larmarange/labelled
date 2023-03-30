@@ -8,7 +8,7 @@
 #' @details
 #' `to_labelled()` is a general wrapper calling the appropriate sub-functions.
 #'
-#' `memisc_to_labelled()` converts a [memisc::data.set()] object created with
+#' `memisc_to_labelled()` converts a `memisc::data.set()`]` object created with
 #' \pkg{memisc} package to a labelled data frame.
 #'
 #' `foreign_to_labelled()` converts data imported with [foreign::read.spss()]
@@ -30,8 +30,8 @@
 #'
 #' @return A tbl data frame or a labelled vector.
 #' @seealso [haven::labelled()], [foreign::read.spss()],
-#'   [foreign::read.dta()], [memisc::data.set()],
-#'   [memisc::importer], [to_factor()].
+#'   [foreign::read.dta()], `memisc::data.set()`,
+#'   `memisc::importer`, [to_factor()].
 #'
 #' @examples
 #' \dontrun{
