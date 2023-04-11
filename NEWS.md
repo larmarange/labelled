@@ -1,4 +1,4 @@
-# labelled (development version)
+# labelled 2.11.0
 
 **Improvements**
 
