@@ -10,7 +10,7 @@
 |collate  |French_France.utf8                     |
 |ctype    |French_France.utf8                     |
 |tz       |Europe/Paris                           |
-|date     |2023-03-30                             |
+|date     |2023-04-11                             |
 |rstudio  |2023.03.0+386 Cherry Blossom (desktop) |
 |pandoc   |NA                                     |
 
@@ -54,6 +54,12 @@
 |withr       |2.5.0  |2.5.0       |   |
 
 # Revdeps
+
+## Failed to check (1)
+
+|package  |version |error |warning |note |
+|:--------|:-------|:-----|:-------|:----|
+|jsmodule |?       |      |        |     |
 
 ## New problems (1)
 
