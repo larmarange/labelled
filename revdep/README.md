@@ -57,13 +57,7 @@
 
 ## Failed to check (1)
 
-|package  |version |error |warning |note |
-|:--------|:-------|:-----|:-------|:----|
-|jsmodule |?       |      |        |     |
-
-## New problems (1)
-
-|package   |version |error |warning  |note |
-|:---------|:-------|:-----|:--------|:----|
-|[ggformula](problems.md#ggformula)|0.10.2  |      |1 __+1__ |     |
+|package       |version |error |warning |note |
+|:-------------|:-------|:-----|:-------|:----|
+|broom.helpers |?       |      |        |     |
 

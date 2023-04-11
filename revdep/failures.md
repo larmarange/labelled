@@ -1,4 +1,4 @@
-# jsmodule
+# broom.helpers
 
 <details>
 
@@ -15,26 +15,26 @@
 
 ```
 le package 'abind' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'anytime' a été décompressé et les sommes MD5 ont été vérifiées avec succés
 le package 'askpass' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'assertthat' a été décompressé et les sommes MD5 ont été vérifiées avec succés
 le package 'backports' a été décompressé et les sommes MD5 ont été vérifiées avec succés
 le package 'base64enc' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'bayesplot' a été décompressé et les sommes MD5 ont été vérifiées avec succés
 le package 'bayestestR' a été décompressé et les sommes MD5 ont été vérifiées avec succés
 le package 'bdsmatrix' a été décompressé et les sommes MD5 ont été vérifiées avec succés
 le package 'BH' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'bit' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'bigD' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'biglm' a été décompressé et les sommes MD5 ont été vérifiées avec succés
 ...
-le package 'nnet' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'numDeriv' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'officer' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'openssl' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'parallelly' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'parameters' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'parsedate' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'pbkrtest' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'pec' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'performance' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'survival' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'sys' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'tensorA' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'testthat' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'threejs' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'tibble' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'tidycmprsk' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'tidyr' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'tidyselect' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'tinytex' a été décompressé et les sommes MD5 ont été vérifiées avec succés
 
 
 
@@ -45,26 +45,26 @@ le package 'performance' a été décompressé et les sommes MD5 ont été véri
 
 ```
 le package 'abind' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'anytime' a été décompressé et les sommes MD5 ont été vérifiées avec succés
 le package 'askpass' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'assertthat' a été décompressé et les sommes MD5 ont été vérifiées avec succés
 le package 'backports' a été décompressé et les sommes MD5 ont été vérifiées avec succés
 le package 'base64enc' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'bayesplot' a été décompressé et les sommes MD5 ont été vérifiées avec succés
 le package 'bayestestR' a été décompressé et les sommes MD5 ont été vérifiées avec succés
 le package 'bdsmatrix' a été décompressé et les sommes MD5 ont été vérifiées avec succés
 le package 'BH' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'bit' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'bigD' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'biglm' a été décompressé et les sommes MD5 ont été vérifiées avec succés
 ...
-le package 'nnet' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'numDeriv' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'officer' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'openssl' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'parallelly' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'parameters' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'parsedate' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'pbkrtest' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'pec' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'performance' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'survival' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'sys' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'tensorA' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'testthat' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'threejs' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'tibble' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'tidycmprsk' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'tidyr' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'tidyselect' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'tinytex' a été décompressé et les sommes MD5 ont été vérifiées avec succés
 
 
 
