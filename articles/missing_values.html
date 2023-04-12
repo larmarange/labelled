@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">labelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.10.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.11.0</span>
       </span>
     </div>
 
@@ -84,8 +84,10 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>About missing values: regular NAs, tagged NAs and user NAs</h1>
-                        <h4 data-toc-skip class="author">Joseph Larmarange</h4>
+      <h1 data-toc-skip>About missing values: regular NAs, tagged NAs
+and user NAs</h1>
+                        <h4 data-toc-skip class="author">Joseph
+Larmarange</h4>
             
       
       <small class="dont-index">Source: <a href="https://github.com/larmarange/labelled/blob/HEAD/vignettes/missing_values.Rmd" class="external-link"><code>vignettes/missing_values.Rmd</code></a></small>
@@ -95,28 +97,45 @@
 
     
     
-<p>In base <strong>R</strong>, missing values are indicated using the specific value <code>NA</code>. <strong>Regular NAs</strong> could be used with any type of vector (double, integer, character, factor, Date, etc.).</p>
-<p>Other statistical software have implemented ways to differentiate several types of missing values.</p>
-<p><strong>Stata</strong> and <strong>SAS</strong> have a system of <strong>tagged NAs</strong>, where NA values are tagged with a letter (from a to z). <strong>SPSS</strong> allows users to indicate that certain non-missing values should be treated in some analysis as missing (<strong>user NAs</strong>). The <code>haven</code> package implements <strong>tagged NAs</strong> and <strong>user NAs</strong> in order to keep this information when importing files from <strong>Stata</strong>, <strong>SAS</strong> or <strong>SPSS</strong>.</p>
+<p>In base <strong>R</strong>, missing values are indicated using the
+specific value <code>NA</code>. <strong>Regular NAs</strong> could be
+used with any type of vector (double, integer, character, factor, Date,
+etc.).</p>
+<p>Other statistical software have implemented ways to differentiate
+several types of missing values.</p>
+<p><strong>Stata</strong> and <strong>SAS</strong> have a system of
+<strong>tagged NAs</strong>, where NA values are tagged with a letter
+(from a to z). <strong>SPSS</strong> allows users to indicate that
+certain non-missing values should be treated in some analysis as missing
+(<strong>user NAs</strong>). The <code>haven</code> package implements
+<strong>tagged NAs</strong> and <strong>user NAs</strong> in order to
+keep this information when importing files from <strong>Stata</strong>,
+<strong>SAS</strong> or <strong>SPSS</strong>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://larmarange.github.io/labelled/" class="external-link">labelled</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://larmarange.github.io/labelled/" class="external-link">labelled</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="tagged-nas">Tagged NAs<a class="anchor" aria-label="anchor" href="#tagged-nas"></a>
 </h2>
 <div class="section level3">
 <h3 id="creation-and-tests">Creation and tests<a class="anchor" aria-label="anchor" href="#creation-and-tests"></a>
 </h3>
-<p><strong>Tagged NAs</strong> are proper <code>NA</code> values with a tag attached to them. They can be created with <code><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na()</a></code>. The attached tag should be a single letter, lowercase (a-z) or uppercase (A-Z).</p>
+<p><strong>Tagged NAs</strong> are proper <code>NA</code> values with a
+tag attached to them. They can be created with <code><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na()</a></code>.
+The attached tag should be a single letter, lowercase (a-z) or uppercase
+(A-Z).</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span>, <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"z"</span><span class="op">)</span>, <span class="cn">NA</span><span class="op">)</span></span></code></pre></div>
-<p>For most <strong>R</strong> functions, tagged NAs are just considered as regular NAs. By default, they are just printed as any other regular NA.</p>
+<p>For most <strong>R</strong> functions, tagged NAs are just considered
+as regular NAs. By default, they are just printed as any other regular
+NA.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1]  1  2  3  4  5 NA NA NA</span></span></code></pre>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE</span></span></code></pre>
-<p>To show/print their tags, you need to use <code><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">na_tag()</a></code>, <code><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">print_tagged_na()</a></code> or <code><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">format_tagged_na()</a></code>.</p>
+<p>To show/print their tags, you need to use <code><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">na_tag()</a></code>,
+<code><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">print_tagged_na()</a></code> or <code><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">format_tagged_na()</a></code>.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">na_tag</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] NA  NA  NA  NA  NA  "a" "z" NA</span></span></code></pre>
@@ -126,7 +145,8 @@
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">format_tagged_na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "    1" "    2" "    3" "    4" "    5" "NA(a)" "NA(z)" "   NA"</span></span></code></pre>
-<p>To test if a certain NA is a regular NA or a tagged NA, you should use <code><a href="../reference/na_values.html">is_regular_na()</a></code> or <code><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">is_tagged_na()</a></code>.</p>
+<p>To test if a certain NA is a regular NA or a tagged NA, you should
+use <code><a href="../reference/na_values.html">is_regular_na()</a></code> or <code><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">is_tagged_na()</a></code>.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE</span></span></code></pre>
@@ -140,7 +160,10 @@
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/na_values.html">is_regular_na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE</span></span></code></pre>
-<p>Tagged NAs could be defined <strong>only</strong> for double vectors. If you add a tagged NA to a character vector, it will be converted into a regular NA. If you add a tagged NA to an integer vector, the vector will be converted into a double vector.</p>
+<p>Tagged NAs could be defined <strong>only</strong> for double vectors.
+If you add a tagged NA to a character vector, it will be converted into
+a regular NA. If you add a tagged NA to an integer vector, the vector
+will be converted into a double vector.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"z"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">y</span></span></code></pre></div>
@@ -162,7 +185,13 @@
 <div class="section level3">
 <h3 id="unique-values-duplicates-and-sorting-with-tagged-nas">Unique values, duplicates and sorting with tagged NAs<a class="anchor" aria-label="anchor" href="#unique-values-duplicates-and-sorting-with-tagged-nas"></a>
 </h3>
-<p>By default, functions such as <code><a href="https://rdrr.io/r/base/unique.html" class="external-link">base::unique()</a></code>, <code><a href="https://rdrr.io/r/base/duplicated.html" class="external-link">base::duplicated()</a></code>, <code><a href="https://rdrr.io/r/base/order.html" class="external-link">base::order()</a></code> or <code><a href="https://rdrr.io/r/base/sort.html" class="external-link">base::sort()</a></code> will treat tagged NAs as the same thing as a regular NA. You can use <code><a href="../reference/unique_tagged_na.html">unique_tagged_na()</a></code>, <code><a href="../reference/unique_tagged_na.html">duplicated_tagged_na()</a></code>, <code><a href="../reference/unique_tagged_na.html">order_tagged_na()</a></code> and <code><a href="../reference/unique_tagged_na.html">sort_tagged_na()</a></code> as alternatives that will treat two tagged NAs with different tags as separate values.</p>
+<p>By default, functions such as <code><a href="https://rdrr.io/r/base/unique.html" class="external-link">base::unique()</a></code>,
+<code><a href="https://rdrr.io/r/base/duplicated.html" class="external-link">base::duplicated()</a></code>, <code><a href="https://rdrr.io/r/base/order.html" class="external-link">base::order()</a></code> or
+<code><a href="https://rdrr.io/r/base/sort.html" class="external-link">base::sort()</a></code> will treat tagged NAs as the same thing as a
+regular NA. You can use <code><a href="../reference/unique_tagged_na.html">unique_tagged_na()</a></code>,
+<code><a href="../reference/unique_tagged_na.html">duplicated_tagged_na()</a></code>, <code><a href="../reference/unique_tagged_na.html">order_tagged_na()</a></code> and
+<code><a href="../reference/unique_tagged_na.html">sort_tagged_na()</a></code> as alternatives that will treat two tagged
+NAs with different tags as separate values.</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span>, <span class="fl">1</span>, <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"z"</span><span class="op">)</span>, <span class="fl">2</span>, <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span>, <span class="cn">NA</span><span class="op">)</span></span>
 <span><span class="va">x</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">print_tagged_na</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -207,12 +236,16 @@
 <span><span class="co">##      1        yes</span></span>
 <span><span class="co">##  NA(d) don't know</span></span>
 <span><span class="co">##  NA(r)    refusal</span></span></code></pre>
-<p>When converting such labelled vector into factor, tagged NAs are, by default, converted into regular NAs (it is not possible to define tagged NAs with factors).</p>
+<p>When converting such labelled vector into factor, tagged NAs are, by
+default, converted into regular NAs (it is not possible to define tagged
+NAs with factors).</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] yes  no   yes  &lt;NA&gt; no   &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;</span></span>
 <span><span class="co">## Levels: no yes</span></span></code></pre>
-<p>However, the option <code>explicit_tagged_na</code> of <code><a href="../reference/to_factor.html">to_factor()</a></code> allows to transform tagged NAs into explicit factor levels.</p>
+<p>However, the option <code>explicit_tagged_na</code> of
+<code><a href="../reference/to_factor.html">to_factor()</a></code> allows to transform tagged NAs into explicit
+factor levels.</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span><span class="op">(</span><span class="va">x</span>, explicit_tagged_na <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] yes        no         yes        refusal    no         don't know NA(z)     </span></span>
@@ -227,7 +260,8 @@
 <div class="section level3">
 <h3 id="conversion-into-user-nas">Conversion into user NAs<a class="anchor" aria-label="anchor" href="#conversion-into-user-nas"></a>
 </h3>
-<p>Tagged NAs can be converted into user NAs with <code><a href="../reference/tagged_na_to_user_na.html">tagged_na_to_user_na()</a></code>.</p>
+<p>Tagged NAs can be converted into user NAs with
+<code><a href="../reference/tagged_na_to_user_na.html">tagged_na_to_user_na()</a></code>.</p>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/tagged_na_to_user_na.html">tagged_na_to_user_na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled_spss&lt;double&gt;[8]&gt;</span></span>
@@ -254,7 +288,8 @@
 <span><span class="co">##     10 don't know</span></span>
 <span><span class="co">##     11    refusal</span></span>
 <span><span class="co">##     12      NA(z)</span></span></code></pre>
-<p>Use <code><a href="../reference/tagged_na_to_user_na.html">tagged_na_to_regular_na()</a></code> to convert tagged NAs into regular NAs.</p>
+<p>Use <code><a href="../reference/tagged_na_to_user_na.html">tagged_na_to_regular_na()</a></code> to convert tagged NAs into
+regular NAs.</p>
 <div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/tagged_na_to_user_na.html">tagged_na_to_regular_na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled&lt;double&gt;[8]&gt;</span></span>
@@ -272,13 +307,23 @@
 <div class="section level2">
 <h2 id="user-nas">User NAs<a class="anchor" aria-label="anchor" href="#user-nas"></a>
 </h2>
-<p><code>haven</code> introduced an <code>haven_labelled_spss</code> class to deal with user defined missing values in a similar way as <strong>SPSS</strong>. In such case, additional attributes will be used to indicate with values should be considered as missing, but such values will not be stored as internal <code>NA</code> values. You should note that most R function will not take this information into account. Therefore, you will have to convert missing values into <code>NA</code> if required before analysis. These defined missing values could co-exist with internal <code>NA</code> values.</p>
+<p><code>haven</code> introduced an <code>haven_labelled_spss</code>
+class to deal with user defined missing values in a similar way as
+<strong>SPSS</strong>. In such case, additional attributes will be used
+to indicate with values should be considered as missing, but such values
+will not be stored as internal <code>NA</code> values. You should note
+that most R function will not take this information into account.
+Therefore, you will have to convert missing values into <code>NA</code>
+if required before analysis. These defined missing values could co-exist
+with internal <code>NA</code> values.</p>
 <div class="section level3">
 <h3 id="creation">Creation<a class="anchor" aria-label="anchor" href="#creation"></a>
 </h3>
-<p>User NAs could be created directly with <code><a href="https://haven.tidyverse.org/reference/labelled_spss.html" class="external-link">labelled_spss()</a></code>. You can also manipulate them with <code><a href="../reference/na_values.html">na_values()</a></code> and <code><a href="../reference/na_values.html">na_range()</a></code>.</p>
+<p>User NAs could be created directly with <code><a href="https://haven.tidyverse.org/reference/labelled_spss.html" class="external-link">labelled_spss()</a></code>.
+You can also manipulate them with <code><a href="../reference/na_values.html">na_values()</a></code> and
+<code><a href="../reference/na_values.html">na_range()</a></code>.</p>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">labelled</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">9</span>,<span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">2</span>,<span class="cn">NA</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>yes <span class="op">=</span> <span class="fl">1</span>, no <span class="op">=</span> <span class="fl">3</span>, <span class="st">"don't know"</span> <span class="op">=</span> <span class="fl">9</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">labelled</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">9</span>, <span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">2</span>, <span class="cn">NA</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>yes <span class="op">=</span> <span class="fl">1</span>, no <span class="op">=</span> <span class="fl">3</span>, <span class="st">"don't know"</span> <span class="op">=</span> <span class="fl">9</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">v</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled&lt;double&gt;[8]&gt;</span></span>
 <span><span class="co">## [1]  1  2  3  9  1  3  2 NA</span></span>
@@ -326,7 +371,8 @@
 <span><span class="co">##      1        yes</span></span>
 <span><span class="co">##      3         no</span></span>
 <span><span class="co">##      9 don't know</span></span></code></pre>
-<p>NB: you cant also use <code><a href="../reference/na_values.html">set_na_range()</a></code> and <code><a href="../reference/na_values.html">set_na_values()</a></code> for a <code>dplyr</code>-like syntax.</p>
+<p>NB: you cant also use <code><a href="../reference/na_values.html">set_na_range()</a></code> and
+<code><a href="../reference/na_values.html">set_na_values()</a></code> for a <code>dplyr</code>-like syntax.</p>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
@@ -366,7 +412,9 @@
 <div class="section level3">
 <h3 id="tests">Tests<a class="anchor" aria-label="anchor" href="#tests"></a>
 </h3>
-<p>Note that <code><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na()</a></code> will return <code>TRUE</code> for user NAs. Use <code><a href="../reference/na_values.html">is_user_na()</a></code> to test if a specific value is a user NA and <code><a href="../reference/na_values.html">is_regular_na()</a></code> to test if it is a regular NA.</p>
+<p>Note that <code><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na()</a></code> will return <code>TRUE</code> for user
+NAs. Use <code><a href="../reference/na_values.html">is_user_na()</a></code> to test if a specific value is a user
+NA and <code><a href="../reference/na_values.html">is_regular_na()</a></code> to test if it is a regular NA.</p>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">v</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled_spss&lt;double&gt;[8]&gt;</span></span>
@@ -391,7 +439,8 @@
 <div class="section level3">
 <h3 id="conversion">Conversion<a class="anchor" aria-label="anchor" href="#conversion"></a>
 </h3>
-<p>For most <strong>R</strong> functions, user NAs values are <strong>still</strong> regular values.</p>
+<p>For most <strong>R</strong> functions, user NAs values are
+<strong>still</strong> regular values.</p>
 <div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">11</span><span class="op">:</span><span class="fl">15</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/na_values.html">na_range</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="cn">Inf</span><span class="op">)</span></span>
@@ -408,7 +457,9 @@
 <div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 8</span></span></code></pre>
-<p>You can convert user NAs into regular NAs with <code><a href="../reference/na_values.html">user_na_to_na()</a></code> or <code><a href="../reference/na_values.html">user_na_to_regular_na()</a></code> (both functions are identical).</p>
+<p>You can convert user NAs into regular NAs with
+<code><a href="../reference/na_values.html">user_na_to_na()</a></code> or <code><a href="../reference/na_values.html">user_na_to_regular_na()</a></code>
+(both functions are identical).</p>
 <div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/na_values.html">user_na_to_na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled&lt;integer&gt;[10]&gt;</span></span>
@@ -416,7 +467,8 @@
 <div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="fu"><a href="../reference/na_values.html">user_na_to_na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 3</span></span></code></pre>
-<p>Alternatively, if the vector is numeric, you can convert user NAs into tagged NAs with <code><a href="../reference/na_values.html">user_na_to_tagged_na()</a></code>.</p>
+<p>Alternatively, if the vector is numeric, you can convert user NAs
+into tagged NAs with <code><a href="../reference/na_values.html">user_na_to_tagged_na()</a></code>.</p>
 <div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/na_values.html">user_na_to_tagged_na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## 'x' has been converted into a double vector.</span></span></code></pre>
@@ -431,7 +483,9 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="fu"><a href="../reference/na_values.html">user_na_to_tagged_na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## 'x' has been converted into a double vector.</span></span></code></pre>
 <pre><code><span><span class="co">## [1] 3</span></span></code></pre>
-<p>Finally, you can also remove user NAs definition without converting these values to <code>NA</code>, using <code><a href="../reference/remove_labels.html">remove_user_na()</a></code>.</p>
+<p>Finally, you can also remove user NAs definition without converting
+these values to <code>NA</code>, using
+<code><a href="../reference/remove_labels.html">remove_user_na()</a></code>.</p>
 <div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/remove_labels.html">remove_user_na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled&lt;integer&gt;[10]&gt;</span></span>
@@ -465,7 +519,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
