@@ -4,6 +4,7 @@
 \alias{to_character}
 \alias{to_character.double}
 \alias{to_character.haven_labelled}
+\alias{to_character.data.frame}
 \title{Convert input to a character vector}
 \usage{
 to_character(x, ...)
@@ -16,6 +17,16 @@ to_character(x, ...)
   nolabel_to_na = FALSE,
   user_na_to_na = FALSE,
   explicit_tagged_na = FALSE,
+  ...
+)
+
+\method{to_character}{data.frame}(
+  x,
+  levels = c("labels", "values", "prefixed"),
+  nolabel_to_na = FALSE,
+  user_na_to_na = FALSE,
+  explicit_tagged_na = FALSE,
+  labelled_only = TRUE,
   ...
 )
 }
@@ -32,6 +43,9 @@ values or labels prefixed with values?}
 \item{nolabel_to_na}{Should values with no label be converted to \code{NA}?}
 
 \item{user_na_to_na}{user defined missing values into NA?}
+
+\item{labelled_only}{for a data.frame, convert only labelled variables to
+factors?}
 }
 \description{
 By default, \code{to_character()} is a wrapper for \code{\link[base:character]{base::as.character()}}.
@@ -41,6 +55,10 @@ labels prefixed with values should be used for conversion.
 \details{
 If some values doesn't have a label, automatic labels will be created,
 except if \code{nolabel_to_na} is \code{TRUE}.
+
+When applied to a data.frame, only labelled vectors are converted by
+default to character. Use \code{labelled_only = FALSE} to convert all variables
+to characters.
 }
 \examples{
 v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
@@ -48,4 +66,23 @@ to_character(v)
 to_character(v, nolabel_to_na = TRUE)
 to_character(v, "v")
 to_character(v, "p")
+
+df <- data.frame(
+  a = labelled(c(1, 1, 2, 3), labels = c(No = 1, Yes = 2)),
+  b = labelled(c(1, 1, 2, 3), labels = c(No = 1, Yes = 2, DK = 3)),
+  c = labelled(
+    c("a", "a", "b", "c"),
+    labels = c(No = "a", Maybe = "b", Yes = "c")
+  ),
+  d = 1:4,
+  e = factor(c("item1", "item2", "item1", "item2")),
+  f = c("itemA", "itemA", "itemB", "itemB"),
+  stringsAsFactors = FALSE
+)
+
+if (require(dplyr)) {
+  glimpse(df)
+  glimpse(to_character(df))
+  glimpse(to_character(df, labelled_only = FALSE))
+}
 }
