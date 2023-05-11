@@ -1,5 +1,9 @@
 # labelled (development version)
 
+**New features**
+
+* `to_character()` method for data frames (#140)
+
 # labelled 2.11.0
 
 **Improvements**

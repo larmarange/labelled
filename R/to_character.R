@@ -63,3 +63,79 @@ to_character.haven_labelled <- function(
   var_label(x) <- vl
   x
 }
+
+
+#' @rdname to_character
+#' @param labelled_only for a data.frame, convert only labelled variables to
+#' factors?
+#' @details
+#'   When applied to a data.frame, only labelled vectors are converted by
+#'   default to character. Use `labelled_only = FALSE` to convert all variables
+#'   to characters.
+#' @export
+#' @examples
+#'
+#' df <- data.frame(
+#'   a = labelled(c(1, 1, 2, 3), labels = c(No = 1, Yes = 2)),
+#'   b = labelled(c(1, 1, 2, 3), labels = c(No = 1, Yes = 2, DK = 3)),
+#'   c = labelled(
+#'     c("a", "a", "b", "c"),
+#'     labels = c(No = "a", Maybe = "b", Yes = "c")
+#'   ),
+#'   d = 1:4,
+#'   e = factor(c("item1", "item2", "item1", "item2")),
+#'   f = c("itemA", "itemA", "itemB", "itemB"),
+#'   stringsAsFactors = FALSE
+#' )
+#'
+#' if (require(dplyr)) {
+#'   glimpse(df)
+#'   glimpse(to_character(df))
+#'   glimpse(to_character(df, labelled_only = FALSE))
+#' }
+to_character.data.frame <- function(
+    x,
+    levels = c("labels", "values", "prefixed"),
+    nolabel_to_na = FALSE,
+    user_na_to_na = FALSE,
+    explicit_tagged_na = FALSE,
+    labelled_only = TRUE,
+    ...
+) {
+  cl <- class(x)
+  x <- dplyr::as_tibble(
+    lapply(
+      x,
+      .to_character_col_data_frame,
+      levels = levels,
+      nolabel_to_na = nolabel_to_na,
+      user_na_to_na = user_na_to_na,
+      explicit_tagged_na = explicit_tagged_na,
+      labelled_only = labelled_only,
+      ...
+    )
+  )
+  class(x) <- cl
+  x
+}
+
+.to_character_col_data_frame <- function(
+    x,
+    levels = c("labels", "values", "prefixed"),
+    nolabel_to_na = FALSE,
+    user_na_to_na = FALSE,
+    explicit_tagged_na = FALSE,
+    labelled_only = TRUE,
+    ...
+) {
+  if (inherits(x, "haven_labelled"))
+    x <- to_character(x,
+                      levels = levels,
+                      nolabel_to_na = nolabel_to_na,
+                      user_na_to_na = user_na_to_na,
+                      explicit_tagged_na = explicit_tagged_na,
+                      ...)
+  else if (!labelled_only)
+    x <- to_character(x)
+  x
+}
