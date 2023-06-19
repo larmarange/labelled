@@ -2,8 +2,8 @@
 #'
 #' @param x a vector or a data.frame
 #' @param value a character string or `NULL` to remove the label
-#'  For data frames, it could also be a named list or a character vector
-#'  of same length as the number of columns in `x`.
+#'  For data frames, with `var_labels()`, it could also be a named list or a
+#'  character vector of same length as the number of columns in `x`.
 #' @param unlist for data frames, return a named vector instead of a list
 #' @param null_action for data frames, by default `NULL` will be returned for
 #' columns with no variable label. Use `"fill"` to populate with the column name
@@ -11,10 +11,14 @@
 #' @details
 #'   `get_variable_labels()` is identical to `var_label()`.
 #'
-#'   For data frames, if `value` is a named list, only elements whose name will
-#'   match a column of the data frame will be taken into account. If `value`
-#'   is a character vector, labels should in the same order as the columns of
-#'   the data.frame.
+#'   For data frames, if you are using `var_label()<-` and if `value` is a
+#'   named list, only elements whose name will match a column of the data frame
+#'   will be taken into account. If `value` is a character vector, labels should
+#'   be in the same order as the columns of the data.frame.
+#'
+#'   If you are using `label_attribute()<-` or `set_label_attribute()` on a data
+#'   frame, the label attribute will be attached to the data frame itself, not
+#'   on a column of the data frame.
 #' @examples
 #' var_label(iris$Sepal.Length)
 #' var_label(iris$Sepal.Length) <- 'Length of the sepal'
@@ -234,4 +238,36 @@ set_variable_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
   }
 
   .data
+}
+
+#' @rdname var_label
+#' @export
+label_attribute <- function(x) {
+  attr(x, "label", exact = TRUE)
+}
+
+#' @rdname var_label
+#' @export
+`label_attribute<-` <- function(x, value) {
+  if ((!is.character(value) && !is.null(value)) || length(value) > 1)
+    stop(
+      "`value` should be a single character string or NULL",
+      call. = FALSE,
+      domain = "R-labelled"
+    )
+  attr(x, "label") <- value
+  x
+}
+
+#' @rdname var_label
+#' @export
+get_label_attribute <- function(x) {
+  label_attribute(x)
+}
+
+#' @rdname var_label
+#' @export
+set_label_attribute <- function(x, value) {
+  label_attribute(x) <- value
+  x
 }
