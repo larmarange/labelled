@@ -1208,12 +1208,12 @@ test_that("var_label works with packed columns", {
   )
 
   expect_equal(
-    length(var_label(d, recursive = TRUE)),
+    length(var_label(d, recurse = TRUE)),
     3L
   )
 
   expect_equal(
-    length(var_label(d, recursive = TRUE, unlist = TRUE)),
+    length(var_label(d, recurse = TRUE, unlist = TRUE)),
     5L
   )
 

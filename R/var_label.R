@@ -8,7 +8,7 @@
 #' @param null_action for data frames, by default `NULL` will be returned for
 #' columns with no variable label. Use `"fill"` to populate with the column name
 #' instead, or `"skip"` to remove such values from the returned list.
-#' @param recursive if `TRUE`, will apply `var_label()` on packed columns
+#' @param recurse if `TRUE`, will apply `var_label()` on packed columns
 #' (see [tidyr::pack()]) to return the variable labels of each sub-column;
 #' otherwise, the label of the group of columns will be returned.
 #' @details
@@ -71,15 +71,15 @@ var_label.default <- function(x, ...) {
 var_label.data.frame <- function(x,
                                  unlist = FALSE,
                                  null_action = c("keep", "fill", "skip"),
-                                 recursive = FALSE,
+                                 recurse = FALSE,
                                  ...) {
-  if (recursive) {
+  if (recurse) {
     r <- lapply(
       x,
       var_label_no_check,
       unlist = unlist,
       null_action = null_action,
-      recursive = TRUE
+      recurse = TRUE
     )
   } else {
     r <- lapply(x, label_attribute)

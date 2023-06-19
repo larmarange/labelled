@@ -18,7 +18,7 @@ var_label(x, ...)
   x,
   unlist = FALSE,
   null_action = c("keep", "fill", "skip"),
-  recursive = FALSE,
+  recurse = FALSE,
   ...
 )
 
@@ -47,7 +47,7 @@ set_label_attribute(x, value)
 columns with no variable label. Use \code{"fill"} to populate with the column name
 instead, or \code{"skip"} to remove such values from the returned list.}
 
-\item{recursive}{if \code{TRUE}, will apply \code{var_label()} on packed columns
+\item{recurse}{if \code{TRUE}, will apply \code{var_label()} on packed columns
 (see \code{\link[tidyr:pack]{tidyr::pack()}}) to return the variable labels of each sub-column;
 otherwise, the label of the group of columns will be returned.}
 
