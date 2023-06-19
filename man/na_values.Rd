@@ -5,6 +5,8 @@
 \alias{na_values<-}
 \alias{na_range}
 \alias{na_range<-}
+\alias{get_na_values}
+\alias{get_na_range}
 \alias{set_na_values}
 \alias{set_na_range}
 \alias{is_user_na}
@@ -21,6 +23,10 @@ na_values(x) <- value
 na_range(x)
 
 na_range(x) <- value
+
+get_na_values(x)
+
+get_na_range(x)
 
 set_na_values(.data, ..., .values = NA, .strict = TRUE)
 
@@ -93,6 +99,9 @@ vectors; and \code{\link[=user_na_to_tagged_na]{user_na_to_tagged_na()}} cannot 
 convert tagged \code{NA} into user defined missing values.
 }
 \note{
+\code{get_na_values()} is identical to \code{na_values()} and \code{get_na_range()}
+to \code{na_range()}.
+
 \code{set_na_values()} and \code{set_na_range()} could be used with \pkg{dplyr}
 syntax.
 }

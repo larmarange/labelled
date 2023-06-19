@@ -3,6 +3,9 @@
 **New features**
 
 * `to_character()` method for data frames (#140)
+* new functions `get_variable_labels()`, `get_value_labels()`, `get_na_values()`
+  and `get_na_range()` identical to `var_label()`, `val_labels()`, `na_values()`
+  and `na_range()`, respectively
 
 # labelled 2.11.0
 

@@ -9,6 +9,8 @@
 #' columns with no variable label. Use `"fill"` to populate with the column name
 #' instead, or `"skip"` to remove such values from the returned list.
 #' @details
+#'   `get_variable_labels()` is identical to `var_label()`.
+#'
 #'   For data frames, if `value` is a named list, only elements whose name will
 #'   match a column of the data frame will be taken into account. If `value`
 #'   is a character vector, labels should in the same order as the columns of
@@ -140,6 +142,10 @@ var_label.data.frame <- function(x, unlist = FALSE,
   for (var in names(value)) var_label(x[[var]]) <- value[[var]]
   x
 }
+
+#' @rdname var_label
+#' @export
+get_variable_labels <- var_label
 
 
 #' @rdname var_label

@@ -4,6 +4,7 @@
 \alias{var_label}
 \alias{var_label.data.frame}
 \alias{var_label<-}
+\alias{get_variable_labels}
 \alias{set_variable_labels}
 \title{Get / Set a variable label}
 \usage{
@@ -12,6 +13,8 @@ var_label(x, ...)
 \method{var_label}{data.frame}(x, unlist = FALSE, null_action = c("keep", "fill", "skip"), ...)
 
 var_label(x) <- value
+
+get_variable_labels(x, ...)
 
 set_variable_labels(.data, ..., .labels = NA, .strict = TRUE)
 }
@@ -45,6 +48,8 @@ doesn't correspond to a column of \code{x}?}
 Get / Set a variable label
 }
 \details{
+\code{get_variable_labels()} is identical to \code{var_label()}.
+
 For data frames, if \code{value} is a named list, only elements whose name will
 match a column of the data frame will be taken into account. If \code{value}
 is a character vector, labels should in the same order as the columns of
