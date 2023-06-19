@@ -28,7 +28,7 @@ Regarding variable labels, you may want to define a label for one sub-column of 
 For a sub-column, you could use easily `var_label()` to define your label.
 
 ```{r}
-# right
+library(labelled)
 var_label(d$Sepal$Length) <- "Length of the sepal"
 str(d)
 ```
