@@ -78,13 +78,13 @@ If you want to get the list of variable labels of a tibble, by default `var_labe
 d %>% get_variable_labels()
 ```
 
-To obtain the list of variable labels for sub-columns, you could use `recursive = TRUE`:
+To obtain the list of variable labels for sub-columns, you could use `recurse = TRUE`:
 
 ```{r}
-d %>% get_variable_labels(recursive = TRUE)
+d %>% get_variable_labels(recurse = TRUE)
 d %>%
   get_variable_labels(
-    recursive = TRUE,
+    recurse = TRUE,
     null_action = "fill",
     unlist = TRUE
   )
