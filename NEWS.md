@@ -9,7 +9,7 @@
 * new helpers `label_attribute()`, `get_label_attribute()` and
   `set_label_attribute()` to manipulate the "label" attribute on any
   object (#142)
-* Support of variable labels for packed columns (#142)
+* Support of variable labels for packed columns, see dedicated vignette (#142)
 
 # labelled 2.11.0
 
