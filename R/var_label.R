@@ -22,6 +22,9 @@
 #'   If you are using `label_attribute()<-` or `set_label_attribute()` on a data
 #'   frame, the label attribute will be attached to the data frame itself, not
 #'   on a column of the data frame.
+#'
+#'   If you are using packed columns (see [tidyr::pack()]), please read the
+#'   dedicated vignette.
 #' @examples
 #' var_label(iris$Sepal.Length)
 #' var_label(iris$Sepal.Length) <- 'Length of the sepal'

@@ -80,6 +80,9 @@ be in the same order as the columns of the data.frame.
 If you are using \verb{label_attribute()<-} or \code{set_label_attribute()} on a data
 frame, the label attribute will be attached to the data frame itself, not
 on a column of the data frame.
+
+If you are using packed columns (see \code{\link[tidyr:pack]{tidyr::pack()}}), please read the
+dedicated vignette.
 }
 \note{
 \code{set_variable_labels()} could be used with \pkg{dplyr} syntax.
