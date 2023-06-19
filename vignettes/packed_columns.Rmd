@@ -64,7 +64,7 @@ str(d)
 To use `set_variable_labels()` on sub-columns, you should use this syntax:
 
 ```{r}
-d$Petal <- d$Petal %>% 
+d$Petal <- d$Petal %>%
   set_variable_labels(
     Length = "Petal length",
     Width = "Petal width"
