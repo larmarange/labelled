@@ -266,10 +266,6 @@ label_attribute <- function(x) {
 
 #' @rdname var_label
 #' @export
-`label_attribute<-` <- set_label_attribute
-
-#' @rdname var_label
-#' @export
 get_label_attribute <- function(x) {
   label_attribute(x)
 }
@@ -286,3 +282,7 @@ set_label_attribute <- function(x, value) {
   attr(x, "label") <- value
   x
 }
+
+#' @rdname var_label
+#' @export
+`label_attribute<-` <- set_label_attribute
