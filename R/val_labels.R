@@ -258,6 +258,9 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
   x
 }
 
+#' @rdname val_labels
+#' @export
+get_value_labels <- val_labels
 
 #' @rdname val_labels
 #' @param .data a data frame or a vector
@@ -267,6 +270,8 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
 #' @param .strict should an error be returned if some labels
 #'   doesn't correspond to a column of `x`?
 #' @note
+#' `get_value_labels()` is identical to `val_labels()`.
+#'
 #' `set_value_labels()`, `add_value_labels()` and `remove_value_labels()`
 #' could be used with \pkg{dplyr} syntax.
 #' While `set_value_labels()` will replace the list of value labels,

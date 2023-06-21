@@ -1,0 +1,91 @@
+---
+author: "Joseph Larmarange"
+title: "Variables labels and packed columns"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Variables labels and packed columns}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+The **tidyr** allows to group several columns of a tibble into one single df-column, see `tidyr::pack()`. Such df-column is itself a tibble. It's not currently clear why you would ever want to pack columns since few functions work with this sort of data.
+
+```{r}
+library(tidyr)
+d <- iris %>%
+  as_tibble() %>%
+  pack(
+    Sepal = starts_with("Sepal"),
+    Petal = starts_with("Petal"),
+    .names_sep = "."
+  )
+str(d)
+class(d$Sepal)
+```
+
+Regarding variable labels, you may want to define a label for one sub-column of a df-column, or eventually a label for the df-column itself.
+
+For a sub-column, you could use easily `var_label()` to define your label.
+
+```{r}
+library(labelled)
+var_label(d$Sepal$Length) <- "Length of the sepal"
+str(d)
+```
+
+But you cannot use directly `var_label()` for the df-column. 
+
+```{r}
+var_label(d$Petal) <- "wrong label for Petal"
+str(d)
+```
+
+As `d$Petal` is itself a tibble, applying `var_label()` on it would have an effect on each sub-column. To change a variable label to the df-column itself, you could use `label_attribute()`.
+
+```{r}
+label_attribute(d$Petal) <- "correct label for Petal"
+str(d)
+```
+
+On the other hand, `set_variable_labels()` works differently, as the primary intention of this function is to work on the columns of a tibble.
+
+```{r}
+d <- d %>% set_variable_labels(Sepal = "Label of the Sepal df-column")
+str(d)
+```
+
+This is equivalent to:
+
+```{r}
+var_label(d) <- list(Sepal = "Label of the Sepal df-column")
+str(d)
+```
+
+To use `set_variable_labels()` on sub-columns, you should use this syntax:
+
+```{r}
+d$Petal <- d$Petal %>%
+  set_variable_labels(
+    Length = "Petal length",
+    Width = "Petal width"
+  )
+str(d)
+```
+
+If you want to get the list of variable labels of a tibble, by default `var_label()` or `get_variable_labels()` will return the labels of the first level of columns.
+
+```{r}
+d %>% get_variable_labels()
+```
+
+To obtain the list of variable labels for sub-columns, you could use `recurse = TRUE`:
+
+```{r}
+d %>% get_variable_labels(recurse = TRUE)
+d %>%
+  get_variable_labels(
+    recurse = TRUE,
+    null_action = "fill",
+    unlist = TRUE
+  )
+```

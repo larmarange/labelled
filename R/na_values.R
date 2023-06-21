@@ -262,6 +262,13 @@ na_range.data.frame <- function(x) {
   x
 }
 
+#' @rdname na_values
+#' @export
+get_na_values <- na_values
+
+#' @rdname na_values
+#' @export
+get_na_range <- na_range
 
 #' @rdname na_values
 #' @param .data a data frame or a vector
@@ -272,6 +279,9 @@ na_range.data.frame <- function(x) {
 #' @param .strict should an error be returned if some labels
 #'   doesn't correspond to a column of `x`?
 #' @note
+#'   `get_na_values()` is identical to `na_values()` and `get_na_range()`
+#'   to `na_range()`.
+#'
 #'   `set_na_values()` and `set_na_range()` could be used with \pkg{dplyr}
 #'   syntax.
 #' @return

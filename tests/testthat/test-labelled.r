@@ -1176,3 +1176,45 @@ test_that("null_action in var_label() works as expected", {
   )
   expect_error(var_label(df$Species, null_action = "skip"))
 })
+
+test_that("var_label works with packed columns", {
+  d <- iris %>%
+    tidyr::as_tibble() %>%
+    tidyr::pack(
+      Sepal = starts_with("Sepal"),
+      Petal = starts_with("Petal"),
+      .names_sep = "."
+    )
+
+  d <- d %>% set_variable_labels(Sepal = "Label of the Sepal df-column")
+  expect_equal(
+    label_attribute(d$Sepal),
+    "Label of the Sepal df-column"
+  )
+
+  d$Petal <- d$Petal %>%
+    set_variable_labels(
+      Length = "Petal length",
+      Width = "Petal width"
+    )
+  expect_equal(
+    label_attribute(d$Petal$Length),
+    "Petal length"
+  )
+
+  expect_equal(
+    length(var_label(d)),
+    3L
+  )
+
+  expect_equal(
+    length(var_label(d, recurse = TRUE)),
+    3L
+  )
+
+  expect_equal(
+    length(var_label(d, recurse = TRUE, unlist = TRUE)),
+    5L
+  )
+
+})

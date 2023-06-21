@@ -4,16 +4,37 @@
 \alias{var_label}
 \alias{var_label.data.frame}
 \alias{var_label<-}
+\alias{get_variable_labels}
 \alias{set_variable_labels}
+\alias{label_attribute}
+\alias{label_attribute<-}
+\alias{get_label_attribute}
+\alias{set_label_attribute}
 \title{Get / Set a variable label}
 \usage{
 var_label(x, ...)
 
-\method{var_label}{data.frame}(x, unlist = FALSE, null_action = c("keep", "fill", "skip"), ...)
+\method{var_label}{data.frame}(
+  x,
+  unlist = FALSE,
+  null_action = c("keep", "fill", "skip"),
+  recurse = FALSE,
+  ...
+)
 
 var_label(x) <- value
 
+get_variable_labels(x, ...)
+
 set_variable_labels(.data, ..., .labels = NA, .strict = TRUE)
+
+label_attribute(x)
+
+label_attribute(x) <- value
+
+get_label_attribute(x)
+
+set_label_attribute(x, value)
 }
 \arguments{
 \item{x}{a vector or a data.frame}
@@ -26,9 +47,13 @@ set_variable_labels(.data, ..., .labels = NA, .strict = TRUE)
 columns with no variable label. Use \code{"fill"} to populate with the column name
 instead, or \code{"skip"} to remove such values from the returned list.}
 
+\item{recurse}{if \code{TRUE}, will apply \code{var_label()} on packed columns
+(see \code{\link[tidyr:pack]{tidyr::pack()}}) to return the variable labels of each sub-column;
+otherwise, the label of the group of columns will be returned.}
+
 \item{value}{a character string or \code{NULL} to remove the label
-For data frames, it could also be a named list or a character vector
-of same length as the number of columns in \code{x}.}
+For data frames, with \code{var_labels()}, it could also be a named list or a
+character vector of same length as the number of columns in \code{x}.}
 
 \item{.data}{a data frame or a vector}
 
@@ -45,10 +70,19 @@ doesn't correspond to a column of \code{x}?}
 Get / Set a variable label
 }
 \details{
-For data frames, if \code{value} is a named list, only elements whose name will
-match a column of the data frame will be taken into account. If \code{value}
-is a character vector, labels should in the same order as the columns of
-the data.frame.
+\code{get_variable_labels()} is identical to \code{var_label()}.
+
+For data frames, if you are using \verb{var_label()<-} and if \code{value} is a
+named list, only elements whose name will match a column of the data frame
+will be taken into account. If \code{value} is a character vector, labels should
+be in the same order as the columns of the data.frame.
+
+If you are using \verb{label_attribute()<-} or \code{set_label_attribute()} on a data
+frame, the label attribute will be attached to the data frame itself, not
+to a column of the data frame.
+
+If you are using packed columns (see \code{\link[tidyr:pack]{tidyr::pack()}}), please read the
+dedicated vignette.
 }
 \note{
 \code{set_variable_labels()} could be used with \pkg{dplyr} syntax.

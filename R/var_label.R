@@ -2,17 +2,29 @@
 #'
 #' @param x a vector or a data.frame
 #' @param value a character string or `NULL` to remove the label
-#'  For data frames, it could also be a named list or a character vector
-#'  of same length as the number of columns in `x`.
+#'  For data frames, with `var_labels()`, it could also be a named list or a
+#'  character vector of same length as the number of columns in `x`.
 #' @param unlist for data frames, return a named vector instead of a list
 #' @param null_action for data frames, by default `NULL` will be returned for
 #' columns with no variable label. Use `"fill"` to populate with the column name
 #' instead, or `"skip"` to remove such values from the returned list.
+#' @param recurse if `TRUE`, will apply `var_label()` on packed columns
+#' (see [tidyr::pack()]) to return the variable labels of each sub-column;
+#' otherwise, the label of the group of columns will be returned.
 #' @details
-#'   For data frames, if `value` is a named list, only elements whose name will
-#'   match a column of the data frame will be taken into account. If `value`
-#'   is a character vector, labels should in the same order as the columns of
-#'   the data.frame.
+#'   `get_variable_labels()` is identical to `var_label()`.
+#'
+#'   For data frames, if you are using `var_label()<-` and if `value` is a
+#'   named list, only elements whose name will match a column of the data frame
+#'   will be taken into account. If `value` is a character vector, labels should
+#'   be in the same order as the columns of the data.frame.
+#'
+#'   If you are using `label_attribute()<-` or `set_label_attribute()` on a data
+#'   frame, the label attribute will be attached to the data frame itself, not
+#'   to a column of the data frame.
+#'
+#'   If you are using packed columns (see [tidyr::pack()]), please read the
+#'   dedicated vignette.
 #' @examples
 #' var_label(iris$Sepal.Length)
 #' var_label(iris$Sepal.Length) <- 'Length of the sepal'
@@ -45,6 +57,10 @@ var_label <- function(x, ...) {
   UseMethod("var_label")
 }
 
+var_label_no_check <- function(x, ...) {
+  UseMethod("var_label")
+}
+
 #' @export
 var_label.default <- function(x, ...) {
   attr(x, "label", exact = TRUE)
@@ -52,9 +68,22 @@ var_label.default <- function(x, ...) {
 
 #' @rdname var_label
 #' @export
-var_label.data.frame <- function(x, unlist = FALSE,
-                                 null_action = c("keep", "fill", "skip"), ...) {
-  r <- lapply(x, var_label)
+var_label.data.frame <- function(x,
+                                 unlist = FALSE,
+                                 null_action = c("keep", "fill", "skip"),
+                                 recurse = FALSE,
+                                 ...) {
+  if (recurse) {
+    r <- lapply(
+      x,
+      var_label_no_check,
+      unlist = unlist,
+      null_action = null_action,
+      recurse = TRUE
+    )
+  } else {
+    r <- lapply(x, label_attribute)
+  }
 
   null_action <- match.arg(null_action)
 
@@ -94,18 +123,16 @@ var_label.data.frame <- function(x, unlist = FALSE,
 
 #' @export
 `var_label<-.default` <- function(x, value) {
-  if ((!is.character(value) && !is.null(value)) || length(value) >
-    1)
-    stop("`value` should be a single character string or NULL",
-      call. = FALSE, domain = "R-labelled")
-  attr(x, "label") <- value
+  label_attribute(x) <- value
   x
 }
 
 #' @export
 `var_label<-.data.frame` <- function(x, value) {
-  if ((!is.character(value) && !is.null(value)) && !is.list(value) ||
-    (is.character(value) && length(value) > 1 && length(value) != ncol(x)))
+  if (
+    (!is.character(value) && !is.null(value)) && !is.list(value) ||
+    (is.character(value) && length(value) > 1 && length(value) != ncol(x))
+  )
     stop(
       paste0(
         "`value` should be a named list, NULL, a single character string or a ",
@@ -137,9 +164,13 @@ var_label.data.frame <- function(x, unlist = FALSE,
   }
 
   value <- value[names(value) %in% names(x)]
-  for (var in names(value)) var_label(x[[var]]) <- value[[var]]
+  for (var in names(value)) label_attribute(x[[var]]) <- value[[var]]
   x
 }
+
+#' @rdname var_label
+#' @export
+get_variable_labels <- var_label
 
 
 #' @rdname var_label
@@ -194,15 +225,12 @@ var_label.data.frame <- function(x, unlist = FALSE,
 #' }
 #' @export
 set_variable_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
-  if (!is.data.frame(.data) && !is.atomic(.data))
-    stop(".data should be a data.frame or a vector")
-
-  # vector case
-  if (is.atomic(.data)) {
+  # not a data.frame
+  if (!is.data.frame(.data)) {
     if (!identical(.labels, NA)) {
-      var_label(.data) <- .labels
+      label_attribute(.data) <- .labels
     } else {
-      var_label(.data) <- unname(unlist(rlang::dots_list(...)))
+      label_attribute(.data) <- unname(unlist(rlang::dots_list(...)))
     }
     return(.data)
   }
@@ -224,8 +252,40 @@ set_variable_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
     }
 
     for (v in intersect(names(values), names(.data)))
-      var_label(.data[[v]]) <- values[[v]]
+      label_attribute(.data[[v]]) <- values[[v]]
   }
 
   .data
+}
+
+#' @rdname var_label
+#' @export
+label_attribute <- function(x) {
+  attr(x, "label", exact = TRUE)
+}
+
+#' @rdname var_label
+#' @export
+`label_attribute<-` <- function(x, value) {
+  if ((!is.character(value) && !is.null(value)) || length(value) > 1)
+    stop(
+      "`value` should be a single character string or NULL",
+      call. = FALSE,
+      domain = "R-labelled"
+    )
+  attr(x, "label") <- value
+  x
+}
+
+#' @rdname var_label
+#' @export
+get_label_attribute <- function(x) {
+  label_attribute(x)
+}
+
+#' @rdname var_label
+#' @export
+set_label_attribute <- function(x, value) {
+  label_attribute(x) <- value
+  x
 }

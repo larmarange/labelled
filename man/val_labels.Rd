@@ -5,6 +5,7 @@
 \alias{val_labels<-}
 \alias{val_label}
 \alias{val_label<-}
+\alias{get_value_labels}
 \alias{set_value_labels}
 \alias{add_value_labels}
 \alias{remove_value_labels}
@@ -17,6 +18,8 @@ val_labels(x) <- value
 val_label(x, v, prefixed = FALSE)
 
 val_label(x, v) <- value
+
+get_value_labels(x, prefixed = FALSE)
 
 set_value_labels(.data, ..., .labels = NA, .strict = TRUE)
 
@@ -57,6 +60,8 @@ return an updated copy of \code{.data}.
 Get / Set value labels
 }
 \note{
+\code{get_value_labels()} is identical to \code{val_labels()}.
+
 \code{set_value_labels()}, \code{add_value_labels()} and \code{remove_value_labels()}
 could be used with \pkg{dplyr} syntax.
 While \code{set_value_labels()} will replace the list of value labels,
