@@ -1,9 +1,9 @@
 ## Test environments
 
-* local R installation: R 4.2.3
+* local R installation: R 4.3.0
 * macos-latest (on github actions): R-release
 * windows-latest (on github actions): R-release
-* ubuntu-latest (on github actions): R-devel, R-release, R-oldrel-1, R-oldrel-2, R-oldrel-3
+* ubuntu-latest (on github actions): R-devel, R-release, R-oldrel-1
 
 cf. https://github.com/larmarange/labelled/actions/workflows/R-CMD-check.yaml
 
@@ -11,7 +11,7 @@ cf. https://github.com/larmarange/labelled/actions/workflows/R-CMD-check.yaml
 
 ## revdepcheck results
 
-We checked 30 reverse dependencies (29 from CRAN + 1 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
+We checked 33 reverse dependencies (32 from CRAN + 1 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
 
  * We saw 0 new problems
  * We failed to check 0 packages

@@ -25,16 +25,16 @@ le package 'BH' a été décompressé et les sommes MD5 ont été vérifiées av
 le package 'bigD' a été décompressé et les sommes MD5 ont été vérifiées avec succés
 le package 'biglm' a été décompressé et les sommes MD5 ont été vérifiées avec succés
 ...
-le package 'survival' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'sys' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'tensorA' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'testthat' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'threejs' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'tibble' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'tidycmprsk' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'tidyr' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'tidyselect' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'tinytex' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'viridisLite' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'vroom' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'waldo' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'withr' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'xfun' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'xml2' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'xtable' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'xts' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'yaml' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'zoo' a été décompressé et les sommes MD5 ont été vérifiées avec succés
 
 
 
@@ -55,16 +55,16 @@ le package 'BH' a été décompressé et les sommes MD5 ont été vérifiées av
 le package 'bigD' a été décompressé et les sommes MD5 ont été vérifiées avec succés
 le package 'biglm' a été décompressé et les sommes MD5 ont été vérifiées avec succés
 ...
-le package 'survival' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'sys' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'tensorA' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'testthat' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'threejs' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'tibble' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'tidycmprsk' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'tidyr' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'tidyselect' a été décompressé et les sommes MD5 ont été vérifiées avec succés
-le package 'tinytex' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'viridisLite' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'vroom' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'waldo' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'withr' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'xfun' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'xml2' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'xtable' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'xts' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'yaml' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+le package 'zoo' a été décompressé et les sommes MD5 ont été vérifiées avec succés
 
 
 
