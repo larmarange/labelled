@@ -19,7 +19,7 @@ labels prefixed with values should be used for conversion."><!-- mathjax --><scr
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">labelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.11.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.12.0</span>
       </span>
     </div>
 
@@ -41,6 +41,9 @@ labels prefixed with values should be used for conversion."><!-- mathjax --><scr
     </li>
     <li>
       <a href="../articles/missing_values.html">About missing values: regular NAs, tagged NAs and user NAs</a>
+    </li>
+    <li>
+      <a href="../articles/packed_columns.html">Variables labels and packed columns</a>
     </li>
   </ul></li>
 <li>
@@ -86,6 +89,17 @@ labels prefixed with values should be used for conversion.</p>
 <span>  user_na_to_na <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  explicit_tagged_na <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for data.frame</span></span>
+<span><span class="fu">to_character</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"labels"</span>, <span class="st">"values"</span>, <span class="st">"prefixed"</span><span class="op">)</span>,</span>
+<span>  nolabel_to_na <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  user_na_to_na <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  explicit_tagged_na <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  labelled_only <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -115,11 +129,19 @@ values or labels prefixed with values?</p></dd>
 <dt>user_na_to_na</dt>
 <dd><p>user defined missing values into NA?</p></dd>
 
+
+<dt>labelled_only</dt>
+<dd><p>for a data.frame, convert only labelled variables to
+factors?</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
     <p>If some values doesn't have a label, automatic labels will be created,
 except if <code>nolabel_to_na</code> is <code>TRUE</code>.</p>
+<p>When applied to a data.frame, only labelled vectors are converted by
+default to character. Use <code>labelled_only = FALSE</code> to convert all variables
+to characters.</p>
     </div>
 
     <div id="ref-examples">
@@ -137,6 +159,49 @@ except if <code>nolabel_to_na</code> is <code>TRUE</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "[1] yes"        "[2] 2"          "[2] 2"          "[2] 2"         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "[3] no"         "[9] don't know" "[1] yes"        "[3] no"        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "[2] 2"          NA              </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  a <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">labelled</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>No <span class="op">=</span> <span class="fl">1</span>, Yes <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  b <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">labelled</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>No <span class="op">=</span> <span class="fl">1</span>, Yes <span class="op">=</span> <span class="fl">2</span>, DK <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  c <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">labelled</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>No <span class="op">=</span> <span class="st">"a"</span>, Maybe <span class="op">=</span> <span class="st">"b"</span>, Yes <span class="op">=</span> <span class="st">"c"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span>,</span></span>
+<span class="r-in"><span>  d <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,</span></span>
+<span class="r-in"><span>  e <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"item1"</span>, <span class="st">"item2"</span>, <span class="st">"item1"</span>, <span class="st">"item2"</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  f <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"itemA"</span>, <span class="st">"itemA"</span>, <span class="st">"itemB"</span>, <span class="st">"itemB"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="fu">to_character</span><span class="op">(</span><span class="va">df</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="fu">to_character</span><span class="op">(</span><span class="va">df</span>, labelled_only <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ a <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> 1, 1, 2, 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ b <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> 1, 1, 2, 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ c <span style="color: #949494; font-style: italic;">&lt;chr+lbl&gt;</span> "a", "a", "b", "c"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ d <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 2, 3, 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ e <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> item1, item2, item1, item2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ f <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "itemA", "itemA", "itemB", "itemB"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ a <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "No", "No", "Yes", "3"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ b <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "No", "No", "Yes", "DK"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ c <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "No", "No", "Maybe", "Yes"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ d <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 2, 3, 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ e <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> item1, item2, item1, item2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ f <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "itemA", "itemA", "itemB", "itemB"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ a <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "No", "No", "Yes", "3"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ b <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "No", "No", "Yes", "DK"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ c <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "No", "No", "Maybe", "Yes"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ d <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "1", "2", "3", "4"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ e <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "item1", "item2", "item1", "item2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ f <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "itemA", "itemA", "itemB", "itemB"</span>
 </code></pre></div>
     </div>
   </div>

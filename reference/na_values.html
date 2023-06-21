@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">labelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.11.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.12.0</span>
       </span>
     </div>
 
@@ -39,6 +39,9 @@
     </li>
     <li>
       <a href="../articles/missing_values.html">About missing values: regular NAs, tagged NAs and user NAs</a>
+    </li>
+    <li>
+      <a href="../articles/packed_columns.html">Variables labels and packed columns</a>
     </li>
   </ul></li>
 <li>
@@ -76,6 +79,10 @@
 <span><span class="fu">na_range</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">na_range</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="fu">get_na_values</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">get_na_range</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">set_na_values</span><span class="op">(</span><span class="va">.data</span>, <span class="va">...</span>, .values <span class="op">=</span> <span class="cn">NA</span>, .strict <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
@@ -161,7 +168,9 @@ convert tagged <code>NA</code> into user defined missing values.</p>
     </div>
     <div id="note">
     <h2>Note</h2>
-    <p><code>set_na_values()</code> and <code>set_na_range()</code> could be used with <span class="pkg">dplyr</span>
+    <p><code>get_na_values()</code> is identical to <code>na_values()</code> and <code>get_na_range()</code>
+to <code>na_range()</code>.</p>
+<p><code>set_na_values()</code> and <code>set_na_range()</code> could be used with <span class="pkg">dplyr</span>
 syntax.</p>
     </div>
     <div id="see-also">
