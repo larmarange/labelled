@@ -1,7 +1,7 @@
 Package: labelled
 Type: Package
 Title: Manipulating Labelled Data
-Version: 2.11.0.9000
+Version: 2.12.0
 Maintainer: Joseph Larmarange <joseph@larmarange.net>
 Authors@R: c(
   person("Joseph", "Larmarange", email = "joseph@larmarange.net", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-7097-700X")),
