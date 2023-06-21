@@ -2,14 +2,14 @@
 
 **New features**
 
-* `to_character()` method for data frames (#140)
-* new functions `get_variable_labels()`, `get_value_labels()`, `get_na_values()`
-  and `get_na_range()` identical to `var_label()`, `val_labels()`, `na_values()`
-  and `na_range()`, respectively
+* support of variable labels for packed columns, see dedicated vignette (#142)
 * new helpers `label_attribute()`, `get_label_attribute()` and
   `set_label_attribute()` to manipulate the "label" attribute on any
   object (#142)
-* Support of variable labels for packed columns, see dedicated vignette (#142)
+* new functions `get_variable_labels()`, `get_value_labels()`, `get_na_values()`
+  and `get_na_range()` identical to `var_label()`, `val_labels()`, `na_values()`
+  and `na_range()`, respectively
+* `to_character()` method for data frames (#140)
 
 # labelled 2.11.0
 
