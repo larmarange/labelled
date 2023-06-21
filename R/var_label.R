@@ -266,16 +266,7 @@ label_attribute <- function(x) {
 
 #' @rdname var_label
 #' @export
-`label_attribute<-` <- function(x, value) {
-  if ((!is.character(value) && !is.null(value)) || length(value) > 1)
-    stop(
-      "`value` should be a single character string or NULL",
-      call. = FALSE,
-      domain = "R-labelled"
-    )
-  attr(x, "label") <- value
-  x
-}
+`label_attribute<-` <- set_label_attribute
 
 #' @rdname var_label
 #' @export
@@ -286,6 +277,12 @@ get_label_attribute <- function(x) {
 #' @rdname var_label
 #' @export
 set_label_attribute <- function(x, value) {
-  label_attribute(x) <- value
+  if ((!is.character(value) && !is.null(value)) || length(value) > 1)
+    stop(
+      "`value` should be a single character string or NULL",
+      call. = FALSE,
+      domain = "R-labelled"
+    )
+  attr(x, "label") <- value
   x
 }
