@@ -40,6 +40,9 @@
     <li>
       <a href="../articles/missing_values.html">About missing values: regular NAs, tagged NAs and user NAs</a>
     </li>
+    <li>
+      <a href="../articles/packed_columns.html">Variables labels and packed columns</a>
+    </li>
   </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -76,6 +79,8 @@
 <span><span class="fu">val_label</span><span class="op">(</span><span class="va">x</span>, <span class="va">v</span>, prefixed <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">val_label</span><span class="op">(</span><span class="va">x</span>, <span class="va">v</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="fu">get_value_labels</span><span class="op">(</span><span class="va">x</span>, prefixed <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">set_value_labels</span><span class="op">(</span><span class="va">.data</span>, <span class="va">...</span>, .labels <span class="op">=</span> <span class="cn">NA</span>, .strict <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
@@ -136,7 +141,8 @@ return an updated copy of <code>.data</code>.</p>
     </div>
     <div id="note">
     <h2>Note</h2>
-    <p><code>set_value_labels()</code>, <code>add_value_labels()</code> and <code>remove_value_labels()</code>
+    <p><code>get_value_labels()</code> is identical to <code>val_labels()</code>.</p>
+<p><code>set_value_labels()</code>, <code>add_value_labels()</code> and <code>remove_value_labels()</code>
 could be used with <span class="pkg">dplyr</span> syntax.
 While <code>set_value_labels()</code> will replace the list of value labels,
 <code>add_value_labels()</code> and <code>remove_value_labels()</code> will update that list

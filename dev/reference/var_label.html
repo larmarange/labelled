@@ -40,6 +40,9 @@
     <li>
       <a href="../articles/missing_values.html">About missing values: regular NAs, tagged NAs and user NAs</a>
     </li>
+    <li>
+      <a href="../articles/packed_columns.html">Variables labels and packed columns</a>
+    </li>
   </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -72,11 +75,27 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">var_label</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S3 method for data.frame</span></span>
-<span><span class="fu">var_label</span><span class="op">(</span><span class="va">x</span>, unlist <span class="op">=</span> <span class="cn">FALSE</span>, null_action <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"keep"</span>, <span class="st">"fill"</span>, <span class="st">"skip"</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span>
+<span><span class="fu">var_label</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  unlist <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  null_action <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"keep"</span>, <span class="st">"fill"</span>, <span class="st">"skip"</span><span class="op">)</span>,</span>
+<span>  recurse <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">var_label</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
 <span></span>
-<span><span class="fu">set_variable_labels</span><span class="op">(</span><span class="va">.data</span>, <span class="va">...</span>, .labels <span class="op">=</span> <span class="cn">NA</span>, .strict <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">get_variable_labels</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">set_variable_labels</span><span class="op">(</span><span class="va">.data</span>, <span class="va">...</span>, .labels <span class="op">=</span> <span class="cn">NA</span>, .strict <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">label_attribute</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">label_attribute</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="fu">get_label_attribute</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">set_label_attribute</span><span class="op">(</span><span class="va">x</span>, <span class="va">value</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -99,10 +118,16 @@ columns with no variable label. Use <code>"fill"</code> to populate with the col
 instead, or <code>"skip"</code> to remove such values from the returned list.</p></dd>
 
 
+<dt>recurse</dt>
+<dd><p>if <code>TRUE</code>, will apply <code>var_label()</code> on packed columns
+(see <code><a href="https://tidyr.tidyverse.org/reference/pack.html" class="external-link">tidyr::pack()</a></code>) to return the variable labels of each sub-column;
+otherwise, the label of the group of columns will be returned.</p></dd>
+
+
 <dt>value</dt>
 <dd><p>a character string or <code>NULL</code> to remove the label
-For data frames, it could also be a named list or a character vector
-of same length as the number of columns in <code>x</code>.</p></dd>
+For data frames, with <code>var_labels()</code>, it could also be a named list or a
+character vector of same length as the number of columns in <code>x</code>.</p></dd>
 
 
 <dt>.data</dt>
@@ -127,10 +152,16 @@ doesn't correspond to a column of <code>x</code>?</p></dd>
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>For data frames, if <code>value</code> is a named list, only elements whose name will
-match a column of the data frame will be taken into account. If <code>value</code>
-is a character vector, labels should in the same order as the columns of
-the data.frame.</p>
+    <p><code>get_variable_labels()</code> is identical to <code>var_label()</code>.</p>
+<p>For data frames, if you are using <code>var_label()&lt;-</code> and if <code>value</code> is a
+named list, only elements whose name will match a column of the data frame
+will be taken into account. If <code>value</code> is a character vector, labels should
+be in the same order as the columns of the data.frame.</p>
+<p>If you are using <code>label_attribute()&lt;-</code> or <code>set_label_attribute()</code> on a data
+frame, the label attribute will be attached to the data frame itself, not
+to a column of the data frame.</p>
+<p>If you are using packed columns (see <code><a href="https://tidyr.tidyverse.org/reference/pack.html" class="external-link">tidyr::pack()</a></code>), please read the
+dedicated vignette.</p>
     </div>
     <div id="note">
     <h2>Note</h2>
