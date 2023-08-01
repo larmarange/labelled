@@ -1,5 +1,11 @@
 # labelled (development version)
 
+**New features**
+
+* add a `null_action` argument to `val_labels()`, `val_label()` and a 
+  `.null_action` argument to `set_value_labels()`, `add_value_labels()` and
+  `remove_value_labels()` (#145)
+
 # labelled 2.12.0
 
 **New features**

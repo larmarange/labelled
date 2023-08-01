@@ -4,20 +4,31 @@
 #' @param prefixed Should labels be prefixed with values?
 #' @param v A single value.
 #' @param value A named vector for `val_labels()` (see [haven::labelled()]) or
-#'   a character string for `val_label()`. `NULL` to remove the labels.
+#'   a character string for `val_label()`. `NULL` to remove the labels (except
+#'   if `null_action = "labelled"`).
 #'   For data frames, it could also be a named list with a vector of value
 #'   labels per variable.
+#' @param null_action,.null_action if `value = NULL`, unclass the vector (default) or
+#' force/keep `haven_labelled` class (if `null_action = "labelled"`)
 #' @return
 #'   `val_labels()` will return a named vector.
 #'   `val_label()` will return a single character string.
 #' @examples
-#' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
+#' v <- labelled(
+#'   c(1, 2, 2, 2, 3, 9, 1, 3, 2, NA),
+#'   c(yes = 1, no = 3, "don't know" = 9)
+#' )
 #' val_labels(v)
 #' val_labels(v, prefixed = TRUE)
 #' val_label(v, 2)
-#' val_label(v, 2) <- 'maybe'
+#' val_label(v, 2) <- "maybe"
+#' v
 #' val_label(v, 9) <- NULL
+#' v
+#' val_labels(v, null_action = "labelled") <- NULL
+#' v
 #' val_labels(v) <- NULL
+#' v
 #' @export
 val_labels <- function(x, prefixed = FALSE) {
   UseMethod("val_labels")
@@ -32,8 +43,9 @@ val_labels.default <- function(x, prefixed = FALSE) {
 #' @export
 val_labels.haven_labelled <- function(x, prefixed = FALSE) {
   labels <- attr(x, "labels", exact = TRUE)
-  if (prefixed)
+  if (prefixed) {
     names(labels) <- names_prefixed_by_values(labels)
+  }
   labels
 }
 
@@ -44,44 +56,71 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
 
 #' @rdname val_labels
 #' @export
-`val_labels<-` <- function(x, value) {
+`val_labels<-` <- function(
+    x,
+    null_action = c("unclass", "labelled"),
+    value) {
   UseMethod("val_labels<-")
 }
 
 #' @export
-`val_labels<-.default` <- function(x, value) {
-  # do nothing
+`val_labels<-.default` <- function(
+    x,
+    null_action = c("unclass", "labelled"),
+    value) {
+  null_action <- match.arg(null_action)
+  if (null_action == "labelled")
+    x <- labelled(x, value, label = val_label(x))
+  # otherwise do nothing
   x
 }
 
 #' @export
-`val_labels<-.factor` <- function(x, value) {
-  if (!is.null(value))
+`val_labels<-.factor` <- function(
+    x,
+    null_action = c("unclass", "labelled"),
+    value) {
+  null_action <- match.arg(null_action)
+  if (!is.null(value) || null_action == "labelled") {
     stop("Value labels cannot be applied to factors.")
+  }
   x %>% remove_attributes("labels")
 }
 
 #' @export
-`val_labels<-.numeric` <- function(x, value) {
-  if (!is.null(value) && length(value) > 0) {
+`val_labels<-.numeric` <- function(
+    x,
+    null_action = c("unclass", "labelled"),
+    value) {
+  null_action <- match.arg(null_action)
+  if ((!is.null(value) && length(value) > 0) || null_action == "labelled") {
     x <- labelled(x, value, label = var_label(x))
   }
   x
 }
 
 #' @export
-`val_labels<-.character` <- function(x, value) {
-  if (!is.null(value) && length(value) > 0) {
+`val_labels<-.character` <- function(
+    x,
+    null_action = c("unclass", "labelled"),
+    value) {
+  null_action <- match.arg(null_action)
+  if ((!is.null(value) && length(value) > 0) || null_action == "labelled") {
     x <- labelled(x, value, label = var_label(x))
   }
   x
 }
 
 #' @export
-`val_labels<-.haven_labelled` <- function(x, value) {
-  if (length(value) == 0)
+`val_labels<-.haven_labelled` <- function(
+    x,
+    null_action = c("unclass", "labelled"),
+    value) {
+  null_action <- match.arg(null_action)
+  if (length(value) == 0) {
     value <- NULL
-  if (is.null(value)) {
+  }
+  if (is.null(value) && null_action == "unclass") {
     x <- unclass(x)
     attr(x, "labels") <- NULL
   } else {
@@ -91,28 +130,41 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
 }
 
 #' @export
-`val_labels<-.haven_labelled_spss` <- function(x, value) {
-  if (length(value) == 0)
+`val_labels<-.haven_labelled_spss` <- function(
+    x,
+    null_action = c("unclass", "labelled"),
+    value) {
+  null_action <- match.arg(null_action)
+  if (length(value) == 0) {
     value <- NULL
-  if (is.null(value) &&
+  }
+  if (
+    is.null(value) &&
       is.null(attr(x, "na_values")) &&
-      is.null(attr(x, "na_range"))) {
+      is.null(attr(x, "na_range")) &&
+      null_action == "unclass"
+  ) {
     x <- unclass(x)
     attr(x, "labels") <- NULL
   } else {
-    x <- labelled_spss(
-      x,
-      value,
-      na_values = attr(x, "na_values"),
-      na_range = attr(x, "na_range"),
-      label = var_label(x)
-    )
+    x <-
+      labelled_spss(
+        x,
+        value,
+        na_values = attr(x, "na_values"),
+        na_range = attr(x, "na_range"),
+        label = var_label(x)
+      )
   }
   x
 }
 
 #' @export
-`val_labels<-.data.frame` <- function(x, value) {
+`val_labels<-.data.frame` <- function(
+    x,
+    null_action = c("unclass", "labelled"),
+    value) {
+  null_action <- match.arg(null_action)
   if (!is.list(value)) {
     temp <- as.list(rep(1, ncol(x)))
     names(temp) <- names(x)
@@ -129,15 +181,23 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
     stop("some variables not found in x:", missing_names)
   }
 
-  for (var in names(value)) if (!is.null(value[[var]])) {
-    if (mode(x[[var]]) != mode(value[[var]]))
-      stop("`x` and `value` must be same type", call. = FALSE,
-        domain = "R-labelled")
-    if (typeof(x[[var]]) != typeof(value[[var]]))
-      mode(value[[var]]) <- typeof(x[[var]])
+  for (var in names(value)) {
+    if (!is.null(value[[var]])) {
+      if (mode(x[[var]]) != mode(value[[var]])) {
+        stop("`x` and `value` must be same type",
+          call. = FALSE,
+          domain = "R-labelled"
+        )
+      }
+      if (typeof(x[[var]]) != typeof(value[[var]])) {
+        mode(value[[var]]) <- typeof(x[[var]])
+      }
+    }
   }
 
-  for (var in names(value)) val_labels(x[[var]]) <- value[[var]]
+  for (var in names(value)) {
+    val_labels(x[[var]], null_action = null_action) <- value[[var]]
+  }
 
   x
 }
@@ -151,16 +211,18 @@ val_label <- function(x, v, prefixed = FALSE) {
 
 #' @export
 val_label.default <- function(x, v, prefixed = FALSE) {
-  if (length(v) != 1)
+  if (length(v) != 1) {
     stop("`v` should be a single value", call. = FALSE, domain = "R-labelled")
+  }
   # return nothing
   NULL
 }
 
 #' @export
 val_label.haven_labelled <- function(x, v, prefixed = FALSE) {
-  if (length(v) != 1)
+  if (length(v) != 1) {
     stop("`v` should be a single value", call. = FALSE, domain = "R-labelled")
+  }
   labels <- val_labels(x, prefixed = prefixed)
   if (v %in% labels) {
     names(labels)[labels == v]
@@ -176,36 +238,50 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
 
 #' @rdname val_labels
 #' @export
-`val_label<-` <- function(x, v, value) {
+`val_label<-` <- function(x, v, null_action = c("unclass", "labelled"), value) {
   UseMethod("val_label<-")
 }
 
 #' @export
-`val_label<-.default` <- function(x, v, value) {
-  # do nothing
-  x
-}
-
-#' @export
-`val_label<-.factor` <- function(x, v, value) {
-  if (!is.null(value))
-    stop("Value labels cannot be applied to factors.")
-  x
-}
-
-#' @export
-`val_label<-.haven_labelled` <- function(x, v, value) {
-  if (length(v) != 1)
+`val_label<-.default` <- function(
+    x,
+    v,
+    null_action = c("unclass", "labelled"),
+    value) {
+  if (length(v) != 1) {
     stop("`v` should be a single value", call. = FALSE, domain = "R-labelled")
-  if (length(value) > 1)
+  }
+  if (length(value) > 1) {
     stop("`value` should be a single character string or NULL",
-      call. = FALSE, domain = "R-labelled")
+         call. = FALSE, domain = "R-labelled"
+    )
+  }
+  names(value) <- v
+  val_labels(x, null_action = null_action) <- value
+  x
+}
+
+#' @export
+`val_label<-.haven_labelled` <- function(
+    x,
+    v,
+    null_action = c("unclass", "labelled"),
+    value) {
+  if (length(v) != 1) {
+    stop("`v` should be a single value", call. = FALSE, domain = "R-labelled")
+  }
+  if (length(value) > 1) {
+    stop("`value` should be a single character string or NULL",
+      call. = FALSE, domain = "R-labelled"
+    )
+  }
 
   labels <- val_labels(x)
 
   if (is.null(value)) {
-    if (v %in% labels)
+    if (v %in% labels) {
       labels <- labels[labels != v]
+    }
   } else {
     if (v %in% labels) {
       names(labels)[labels == v] <- value
@@ -215,25 +291,26 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
     }
   }
 
-  if (length(labels) == 0)
+  if (length(labels) == 0) {
     labels <- NULL
+  }
 
-  val_labels(x) <- labels
+  val_labels(x, null_action = null_action) <- labels
   x
 }
 
 #' @export
-`val_label<-.numeric` <- function(x, v, value) {
-  `val_label<-.haven_labelled`(x = x, v = v, value = value)
-}
+`val_label<-.numeric` <- `val_label<-.haven_labelled`
 
 #' @export
-`val_label<-.character` <- function(x, v, value) {
-  `val_label<-.haven_labelled`(x = x, v = v, value = value)
-}
+`val_label<-.character` <- `val_label<-.haven_labelled`
 
 #' @export
-`val_label<-.data.frame` <- function(x, v, value) {
+`val_label<-.data.frame` <- function(
+    x,
+    v,
+    null_action = c("unclass", "labelled"),
+    value) {
   if (!is.list(value)) {
     temp <- as.list(rep(1, ncol(x)))
     names(temp) <- names(x)
@@ -245,15 +322,20 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
   value <- value[names(value) %in% names(x)]
 
   for (var in names(value)[]) {
-    if (!is.character(value[[var]]) && !is.null(value[[var]]))
+    if (!is.character(value[[var]]) && !is.null(value[[var]])) {
       stop("`value` should contain only characters or NULL",
-        call. = FALSE, domain = "R-labelled")
-    if (length(value[[var]]) > 1)
+        call. = FALSE, domain = "R-labelled"
+      )
+    }
+    if (length(value[[var]]) > 1) {
       stop("`value` should contain only one string (or NULL) per variable",
-        call. = FALSE, domain = "R-labelled")
+        call. = FALSE, domain = "R-labelled"
+      )
+    }
   }
 
-  for (var in names(value)) val_label(x[[var]], v) <- value[[var]]
+  for (var in names(value))
+    val_label(x[[var]], v, null_action = null_action) <- value[[var]]
 
   x
 }
@@ -314,30 +396,39 @@ get_value_labels <- val_labels
 #'   v
 #'   v %>% set_value_labels(middle = 3)
 #'   v %>% set_value_labels(NULL)
-#'   v %>% set_value_labels(.labels = c(a = 1, b = 2, c= 3, d = 4))
+#'   v %>% set_value_labels(.labels = c(a = 1, b = 2, c = 3, d = 4))
 #'   v %>% add_value_labels(between = 2)
 #'   v %>% remove_value_labels(4)
 #' }
 #' @export
-set_value_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
-  if (!is.data.frame(.data) && !is.atomic(.data))
+set_value_labels <- function(
+    .data,
+    ...,
+    .labels = NA,
+    .strict = TRUE,
+    .null_action = c("unclass", "labelled")) {
+  .null_action <- match.arg(.null_action)
+  if (!is.data.frame(.data) && !is.atomic(.data)) {
     stop(".data should be a data.frame or a vector")
+  }
 
   # vector case
   if (is.atomic(.data)) {
     if (!identical(.labels, NA)) {
-      val_labels(.data) <- .labels
+      val_labels(.data, null_action = .null_action) <- .labels
     } else {
-      val_labels(.data) <- values <- unlist(rlang::dots_list(...))
+      values <- unlist(rlang::dots_list(...))
+      val_labels(.data, null_action = .null_action) <- values
     }
     return(.data)
   }
 
   # data.frame case
   if (!identical(.labels, NA)) {
-    if (!.strict)
+    if (!.strict) {
       .labels <- .labels[intersect(names(.labels), names(.data))]
-    val_labels(.data) <- .labels
+    }
+    val_labels(.data, null_action = .null_action) <- .labels
   }
   values <- rlang::dots_list(...)
   if (.strict && !all(names(values) %in% names(.data))) {
@@ -348,25 +439,34 @@ set_value_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
     stop("some variables not found in .data: ", missing_names)
   }
 
-  for (v in intersect(names(values), names(.data)))
-    val_labels(.data[[v]]) <- values[[v]]
+  for (v in intersect(names(values), names(.data))) {
+    val_labels(.data[[v]], null_action = .null_action) <- values[[v]]
+  }
 
   .data
 }
 
 #' @rdname val_labels
 #' @export
-add_value_labels <- function(.data, ..., .strict = TRUE) {
-  if (!is.data.frame(.data) && !is.atomic(.data))
+add_value_labels <- function(
+    .data,
+    ...,
+    .strict = TRUE,
+    .null_action = c("unclass", "labelled")) {
+  .null_action <- match.arg(.null_action)
+  if (!is.data.frame(.data) && !is.atomic(.data)) {
     stop(".data should be a data.frame or a vector")
+  }
 
   # vector case
   if (is.atomic(.data)) {
     values <- unlist(rlang::dots_list(...))
-    if (is.null(names(values)) || any(names(values) == ""))
+    if (is.null(names(values)) || any(names(values) == "")) {
       stop("all arguments should be named")
-    for (v in names(values))
-      val_label(.data, values[[v]]) <- v
+    }
+    for (v in names(values)) {
+      val_label(.data, values[[v]], null_action = .null_action) <- v
+    }
     return(.data)
   }
 
@@ -380,34 +480,45 @@ add_value_labels <- function(.data, ..., .strict = TRUE) {
     stop("some variables not found in .data: ", missing_names)
   }
 
-  for (v in values)
-    if (is.null(names(v)) || any(names(v) == ""))
+  for (v in values) {
+    if (is.null(names(v)) || any(names(v) == "")) {
       stop("all arguments should be named vectors")
+    }
+  }
 
-  for (v in intersect(names(values), names(.data)))
-    for (l in names(values[[v]]))
-      val_label(.data[[v]], values[[v]][[l]]) <- l
+  for (v in intersect(names(values), names(.data))) {
+    for (l in names(values[[v]])) {
+      val_label(.data[[v]], values[[v]][[l]], null_action = .null_action) <- l
+    }
+  }
 
   .data
 }
 
 #' @rdname val_labels
 #' @export
-remove_value_labels <- function(.data, ..., .strict = TRUE) {
-  if (!is.data.frame(.data) && !is.atomic(.data))
+remove_value_labels <- function(
+    .data,
+    ...,
+    .strict = TRUE,
+    .null_action = c("unclass", "labelled")) {
+  .null_action <- match.arg(.null_action)
+  if (!is.data.frame(.data) && !is.atomic(.data)) {
     stop(".data should be a data.frame or a vector")
+  }
 
   # vector case
   if (is.atomic(.data)) {
     values <- unlist(rlang::dots_list(...))
-    for (v in values)
-      val_label(.data, v) <- NULL
+    for (v in values) {
+      val_label(.data, v, null_action = .null_action) <- NULL
+    }
     return(.data)
   }
 
   # data.frame case
   values <- rlang::dots_list(...)
-  if (.strict && !all(names(values) %in% names(.data)))  {
+  if (.strict && !all(names(values) %in% names(.data))) {
     missing_names <- stringr::str_c(
       setdiff(names(values), names(.data)),
       collapse = ", "
@@ -415,11 +526,13 @@ remove_value_labels <- function(.data, ..., .strict = TRUE) {
     stop("some variables not found in .data: ", missing_names)
   }
 
-  for (v in intersect(names(values), names(.data)))
-    for (l in values[[v]])
-      val_label(.data[[v]], l) <- NULL
+  for (v in intersect(names(values), names(.data))) {
+    for (l in values[[v]]) {
+      val_label(.data[[v]], l, null_action = .null_action) <- NULL
+    }
+  }
 
-    .data
+  .data
 }
 
 #' Sort value labels
@@ -434,41 +547,52 @@ remove_value_labels <- function(.data, ..., .strict = TRUE) {
 #' v
 #' sort_val_labels(v)
 #' sort_val_labels(v, decreasing = TRUE)
-#' sort_val_labels(v, 'l')
-#' sort_val_labels(v, 'l', TRUE)
+#' sort_val_labels(v, "l")
+#' sort_val_labels(v, "l", TRUE)
 #' @export
-sort_val_labels <- function(x, according_to = c("values", "labels"),
-  decreasing = FALSE) {
+sort_val_labels <- function(
+    x, according_to = c("values", "labels"),
+    decreasing = FALSE) {
   UseMethod("sort_val_labels")
 }
 
 #' @export
-sort_val_labels.default <- function(x, according_to = c("values",
-  "labels"), decreasing = FALSE) {
+sort_val_labels.default <- function(
+    x,
+    according_to = c("values", "labels"),
+    decreasing = FALSE) {
   # do nothing
   x
 }
 
 #' @export
-sort_val_labels.haven_labelled <- function(x, according_to = c("values",
-  "labels"), decreasing = FALSE) {
+sort_val_labels.haven_labelled <- function(
+    x,
+    according_to = c("values", "labels"),
+    decreasing = FALSE) {
   according_to <- match.arg(according_to)
   labels <- val_labels(x)
   if (!is.null(labels)) {
-    if (according_to == "values")
+    if (according_to == "values") {
       labels <- sort_tagged_na(labels, decreasing = decreasing)
-    if (according_to == "labels")
+    }
+    if (according_to == "labels") {
       labels <- labels[order(names(labels), decreasing = decreasing)]
+    }
     val_labels(x) <- labels
   }
   x
 }
 
 #' @export
-sort_val_labels.data.frame <- function(x, according_to = c("values",
-  "labels"), decreasing = FALSE) {
-  x[] <- lapply(x, sort_val_labels, according_to = according_to,
-    decreasing = decreasing)
+sort_val_labels.data.frame <- function(
+    x,
+    according_to = c("values", "labels"),
+    decreasing = FALSE) {
+  x[] <- lapply(x, sort_val_labels,
+    according_to = according_to,
+    decreasing = decreasing
+  )
   x
 }
 
@@ -490,7 +614,9 @@ names_prefixed_by_values <- function(x) {
 
 #' @export
 names_prefixed_by_values.default <- function(x) {
-  if (is.null(x)) return(NULL)
+  if (is.null(x)) {
+    return(NULL)
+  }
   res <- as.character(x)
   if (is.double(x)) {
     res[is_tagged_na(x)] <- format_tagged_na(x[is_tagged_na(x)])

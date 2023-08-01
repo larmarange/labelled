@@ -150,6 +150,16 @@ test_that("value labels can be removed if missing values are defined", {
   expect_null(val_labels(x))
 })
 
+test_that("val_labels() null action", {
+  x <- labelled(1:10, c(Good = 1, Bad = 8))
+
+  val_labels(x, null_action = "labelled") <- NULL
+  expect_true(inherits(x, "haven_labelled"))
+
+  val_labels(x) <- NULL
+  expect_false(inherits(x, "haven_labelled"))
+})
+
 test_that("value labels to NULL remove class if na_Values et na_range are NULL", { # nolint
   x <- labelled_spss(1:10, c(Good = 1, Bad = 8))
   val_labels(x) <- NULL
@@ -700,6 +710,10 @@ test_that("set_value_labels replaces all value labels", {
   expect_equal(val_labels(df$s2), c(Yes = 1, No = 2))
   df <- set_value_labels(df, s2 = c(Yes = 1, Unknown = 9))
   expect_equal(val_labels(df$s2), c(Yes = 1, Unknown = 9))
+  df <- set_value_labels(df, s1 = NULL)
+  df <- set_value_labels(df, s2 = NULL, .null_action = "lab")
+  expect_false(inherits(df$s1, "haven_labelled"))
+  expect_true(inherits(df$s2, "haven_labelled"))
 
   v <- set_value_labels(1:10, c(low = 1, high = 10))
   expect_equal(val_labels(v), c(low = 1, high = 10))
