@@ -50,16 +50,18 @@ unique_tagged_na <- function(x, fromLast = FALSE) {
 #' @export
 #' @rdname unique_tagged_na
 duplicated_tagged_na <- function(x, fromLast = FALSE) {
-  if (!is.double(x))
+  if (!is.double(x)) {
     return(duplicated(x, fromLast = fromLast))
+  }
 
   res <- duplicated(x, fromLast = fromLast, incomparables = NA)
 
-  if (anyNA(x))
+  if (anyNA(x)) {
     res[is.na(x)] <- duplicated(
       format_tagged_na(x[is.na(x)]),
       fromLast = fromLast
     )
+  }
 
   res
 }
@@ -77,13 +79,15 @@ order_tagged_na <- function(x, na.last = TRUE, decreasing = FALSE,
                             method = c("auto", "shell", "radix"),
                             na_decreasing = decreasing,
                             untagged_na_last = TRUE) {
-  if (!is.double(x))
+  if (!is.double(x)) {
     return(
       order(x, na.last = na.last, decreasing = decreasing, method = method)
     )
+  }
 
   res <- order(
-    x, na.last = TRUE, decreasing = decreasing, method = method
+    x,
+    na.last = TRUE, decreasing = decreasing, method = method
   )
 
   if (anyNA(x)) {
@@ -96,15 +100,20 @@ order_tagged_na <- function(x, na.last = TRUE, decreasing = FALSE,
 
     t_na <- format_tagged_na(x)
     t_na[!is.na(x)] <- NA
-    if (xor(untagged_na_last, na_decreasing))
+    if (xor(untagged_na_last, na_decreasing)) {
       t_na[is.na(x) & !is_tagged_na(x)] <- "ZZZ"
+    }
     na_order <- order(
-      t_na, na.last = TRUE, decreasing = na_decreasing, method = method
+      t_na,
+      na.last = TRUE, decreasing = na_decreasing, method = method
     )
     na_order <- na_order[1:n_na]
 
-    if (na.last) res <- c(res, na_order)
-    else res <- c(na_order, res)
+    if (na.last) {
+      res <- c(res, na_order)
+    } else {
+      res <- c(na_order, res)
+    }
   }
 
   res
@@ -165,20 +174,25 @@ tagged_na_to_user_na.default <- function(x, user_na_start = NULL) {
 
 #' @export
 tagged_na_to_user_na.double <- function(x, user_na_start = NULL) {
-  if (is.null(user_na_start))
+  if (is.null(user_na_start)) {
     user_na_start <- trunc(max(x, na.rm = TRUE)) + 1
-  tn <- x[is_tagged_na(x)] %>% unique_tagged_na() %>% sort_tagged_na()
-  if (length(tn) == 0)
+  }
+  tn <- x[is_tagged_na(x)] %>%
+    unique_tagged_na() %>%
+    sort_tagged_na()
+  if (length(tn) == 0) {
     return(x)
+  }
   labels <- val_labels(x)
   for (i in seq_along(tn)) {
     new_val <- user_na_start + i - 1
-    if (any(x == new_val, na.rm = TRUE))
+    if (any(x == new_val, na.rm = TRUE)) {
       stop(
         "Value ",
         new_val,
         " is already used in 'x'. Please change 'user_na_start'."
       )
+    }
     x[is_tagged_na(x, na_tag(tn[i]))] <- new_val
     if (any(is_tagged_na(labels, na_tag(tn[i])), na.rm = TRUE)) {
       labels[is_tagged_na(labels, na_tag(tn[i]))] <- new_val
@@ -187,8 +201,9 @@ tagged_na_to_user_na.double <- function(x, user_na_start = NULL) {
       labels <- c(labels, new_val)
     }
   }
-  if (length(labels) > 0)
+  if (length(labels) > 0) {
     val_labels(x) <- labels
+  }
   na_range(x) <- c(user_na_start, user_na_start + length(tn) - 1)
   x
 }
@@ -216,8 +231,9 @@ tagged_na_to_regular_na.double <- function(x) {
   x[is_tagged_na(x)] <- NA
   # removing value labels attached to tagged NAs, if any
   vl <- val_labels(x)
-  if (any(is_tagged_na(vl)))
+  if (any(is_tagged_na(vl))) {
     val_labels(x) <- vl[!is_tagged_na(vl)]
+  }
   x
 }
 

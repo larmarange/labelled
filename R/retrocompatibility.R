@@ -32,8 +32,10 @@ update_labelled.default <- function(x) {
 update_labelled.labelled <- function(x) {
   # update only previous labelled class, but not objects from Hmisc
   if (!is.null(attr(x, "labels", exact = TRUE))) {
-    if (is.null(attr(x, "na_values", exact = TRUE)) &&
-        is.null(attr(x, "na_range", exact = TRUE))) {
+    if (
+      is.null(attr(x, "na_values", exact = TRUE)) &&
+        is.null(attr(x, "na_range", exact = TRUE))
+    ) {
       x <- labelled(
         x,
         labels = attr(x, "labels", exact = TRUE),
@@ -56,7 +58,8 @@ update_labelled.labelled <- function(x) {
 #' @export
 update_labelled.haven_labelled_spss <- function(x) {
   labelled_spss(
-    x, labels = val_labels(x), label = var_label(x),
+    x,
+    labels = val_labels(x), label = var_label(x),
     na_values = na_values(x), na_range = na_range(x)
   )
 }
@@ -66,7 +69,8 @@ update_labelled.haven_labelled_spss <- function(x) {
 #' @export
 update_labelled.haven_labelled <- function(x) {
   labelled(
-    x, labels = val_labels(x), label = var_label(x)
+    x,
+    labels = val_labels(x), label = var_label(x)
   )
 }
 

@@ -8,8 +8,9 @@
 #'   if `null_action = "labelled"`).
 #'   For data frames, it could also be a named list with a vector of value
 #'   labels per variable.
-#' @param null_action,.null_action if `value = NULL`, unclass the vector (default) or
-#' force/keep `haven_labelled` class (if `null_action = "labelled"`)
+#' @param null_action,.null_action if `value = NULL`, unclass the vector
+#' (default) or force/keep `haven_labelled` class
+#' (if `null_action = "labelled"`)
 #' @return
 #'   `val_labels()` will return a named vector.
 #'   `val_label()` will return a single character string.
@@ -69,8 +70,9 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
     null_action = c("unclass", "labelled"),
     value) {
   null_action <- match.arg(null_action)
-  if (null_action == "labelled")
+  if (null_action == "labelled") {
     x <- labelled(x, value, label = val_label(x))
+  }
   # otherwise do nothing
   x
 }
@@ -253,7 +255,7 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
   }
   if (length(value) > 1) {
     stop("`value` should be a single character string or NULL",
-         call. = FALSE, domain = "R-labelled"
+      call. = FALSE, domain = "R-labelled"
     )
   }
   names(value) <- v
@@ -334,8 +336,9 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
     }
   }
 
-  for (var in names(value))
+  for (var in names(value)) {
     val_label(x[[var]], v, null_action = null_action) <- value[[var]]
+  }
 
   x
 }

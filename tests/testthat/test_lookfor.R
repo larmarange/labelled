@@ -1,7 +1,6 @@
 context("Test look_for()")
 
 test_that("look_for works correctly", {
-
   df <- data.frame(
     1:3,
     letters[1:3],
@@ -23,7 +22,7 @@ test_that("look_for works with a single keyword.", {
     c("Sepal.Length", "Sepal.Width")
   )
 
-  lfi  <-  look_for(iris, "s")
+  lfi <- look_for(iris, "s")
   expect_equal(
     lfi$variable,
     c("Sepal.Length", "Sepal.Width", "Species")
@@ -53,10 +52,10 @@ test_that("look_for works with no single keyword.", {
 })
 
 test_that("look_for works with a regular expression", {
-  lfi  <-  look_for(iris, "s")
+  lfi <- look_for(iris, "s")
   expect_identical(look_for(iris, "sepal|species"), lfi)
 
-  lfi  <-  look_for(iris, "s$")
+  lfi <- look_for(iris, "s$")
   expect_identical(
     lfi$levels[[lfi$variable]],
     levels(iris$Species)
@@ -65,7 +64,6 @@ test_that("look_for works with a regular expression", {
 
 
 test_that("look_for works with several keywords", {
-
   expect_equal(
     look_for(iris, details = "none", "s", "w")$variable,
     c("Sepal.Length", "Sepal.Width", "Petal.Width", "Species")
@@ -78,7 +76,6 @@ test_that("look_for works with several keywords", {
 
 
 test_that(" look_for with different details parameter values", {
-
   expect_false("levels" %in% names(look_for(iris, details = "none")))
   expect_false("range" %in% names(look_for(iris, "Sep")))
   expect_equal(
@@ -88,7 +85,6 @@ test_that(" look_for with different details parameter values", {
       Sepal.Width = range(iris$Sepal.Width)
     )
   )
-
 })
 
 
@@ -153,7 +149,7 @@ test_that("look_for get var_label", {
   df <- data.frame(col1 = 1:2, col2 = 3:4, stringsAsFactors = FALSE)
   expect_equal(nrow(look_for(df, "lb")), 0)
   var_label(df) <- c("lb1", "lb2")
-  lfd  <- look_for(df, "lb")
+  lfd <- look_for(df, "lb")
 
   expect_equal(
     lfd$variable,
@@ -163,7 +159,6 @@ test_that("look_for get var_label", {
     unname(lfd$label),
     c("lb1", "lb2")
   )
-
 })
 
 test_that("look_for works with factor levels and value labels", {

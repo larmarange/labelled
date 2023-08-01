@@ -9,7 +9,7 @@
 #' labels are preserved unchanged.
 #' @export
 #' @examples
-#' v <- labelled(c(1,2,2,9), c(yes = 1, no = 2))
+#' v <- labelled(c(1, 2, 2, 9), c(yes = 1, no = 2))
 #' v %>% recode_if(v == 9, NA)
 #' if (require(dplyr)) {
 #'   df <- tibble(s1 = c("M", "M", "F"), s2 = c(1, 2, 1)) %>%
@@ -28,12 +28,15 @@
 #'   df %>% look_for()
 #' }
 recode_if <- function(x, condition, true) {
-  if (!is.logical(condition))
+  if (!is.logical(condition)) {
     stop("'condition' should be logical.")
-  if (length(x) != length(condition))
+  }
+  if (length(x) != length(condition)) {
     stop("'condition' and 'x' should have the same length.")
-  if (length(true) > 1 && length(true) != length(x))
+  }
+  if (length(true) > 1 && length(true) != length(x)) {
     stop("'true' should be unique or of same length as 'x'.")
+  }
 
   original_class <- class(x)
 
@@ -45,7 +48,7 @@ recode_if <- function(x, condition, true) {
     x[condition] <- true[condition]
   }
 
-  if (!identical(class(x), original_class))
+  if (!identical(class(x), original_class)) {
     warning(
       "Class of 'x' has changed and is now equal to \"",
       paste(class(x), collapse = ", "),
@@ -53,6 +56,7 @@ recode_if <- function(x, condition, true) {
       "This is usually the case when class of 'value' is different from `x`\n.",
       "and forced R to coerce 'x' to the class of 'value'."
     )
+  }
 
   x
 }

@@ -387,7 +387,7 @@ test_that("remove_labels strips labelled attributes", {
   expect_equal(remove_labels(var), exp)
 })
 
-test_that("remove_labels returns variables not of class('labelled') unmodified", { #nolint
+test_that("remove_labels returns variables not of class('labelled') unmodified", { # nolint
   var <- c(1L, 98L, 99L)
   expect_equal(remove_labels(var), var)
 })
@@ -644,13 +644,15 @@ test_that("to_factor() and tagged NAs", {
   expect_equal(
     to_factor(x),
     structure(c(1L, 2L, NA, 1L, NA, 2L, NA, NA),
-              .Label = c("yes", "no"), class = "factor")
+      .Label = c("yes", "no"), class = "factor"
+    )
   )
   expect_equal(
     to_factor(x, explicit_tagged_na = TRUE),
     structure(c(1L, 2L, 4L, 1L, 5L, 2L, 4L, 3L),
-              .Label = c("yes", "no", "toto", "missing", "NA(z)"),
-              class = "factor")
+      .Label = c("yes", "no", "toto", "missing", "NA(z)"),
+      class = "factor"
+    )
   )
 })
 
@@ -857,7 +859,7 @@ test_that("set_variable_labels updates variable labels", {
 
 # missing values --------------------------------------------------------------
 
-test_that("it is possible to define missing values if no value labels were defined", {# nolint
+test_that("it is possible to define missing values if no value labels were defined", { # nolint
   x <- c(1, 2, 2, 9)
   na_values(x) <- 9
   expect_equal(na_values(x), 9)
@@ -909,7 +911,7 @@ test_that("update_labelled update previous haven's labelled objects but not Hmis
   expect_s3_class(update_labelled(df)$vHmisc, "labelled")
 })
 
-test_that("update_labelled update to haven_labelled_spss if there are na values", { #nolint
+test_that("update_labelled update to haven_labelled_spss if there are na values", { # nolint
   v1 <- structure(1:4,
     label = "label", labels = c(No = 1, Yes = 2),
     na_values = c(8, 9), class = c("labelled_spss", "labelled")
@@ -1029,7 +1031,8 @@ test_that("dplyr::recode works properly with labelled vectors", {
   x <- labelled(1:4, c(a = 1, b = 2, c = 3, d = 4))
 
   r <- dplyr::recode(
-    x, `1` = 1L, `2` = 1L, `3` = 2L, `4` = 2L,
+    x,
+    `1` = 1L, `2` = 1L, `3` = 2L, `4` = 2L,
     .combine_value_labels = TRUE
   )
   expect_equal(val_labels(r), c("a / b" = 1L, "c / d" = 2L))
@@ -1038,7 +1041,8 @@ test_that("dplyr::recode works properly with labelled vectors", {
   expect_equal(val_labels(r), c("a / b" = 1L, "c / d" = 3L))
 
   r <- dplyr::recode(
-    x, `2` = 1L, `4` = 3L,
+    x,
+    `2` = 1L, `4` = 3L,
     .combine_value_labels = TRUE,
     .sep = " or "
   )
@@ -1230,5 +1234,4 @@ test_that("var_label works with packed columns", {
     length(var_label(d, recurse = TRUE, unlist = TRUE)),
     5L
   )
-
 })

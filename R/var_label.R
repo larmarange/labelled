@@ -27,9 +27,9 @@
 #'   dedicated vignette.
 #' @examples
 #' var_label(iris$Sepal.Length)
-#' var_label(iris$Sepal.Length) <- 'Length of the sepal'
+#' var_label(iris$Sepal.Length) <- "Length of the sepal"
 #' \dontrun{
-#'  View(iris)
+#' View(iris)
 #' }
 #' # To remove a variable label
 #' var_label(iris$Sepal.Length) <- NULL
@@ -37,7 +37,7 @@
 #' var_label(iris) <- c(
 #'   "sepal length", "sepal width", "petal length",
 #'   "petal width", "species"
-#')
+#' )
 #' var_label(iris)
 #' var_label(iris) <- list(
 #'   Petal.Width = "width of the petal",
@@ -50,7 +50,7 @@
 #' var_label(iris, null_action = "skip")
 #' var_label(iris, unlist = TRUE)
 #'
-#
+#' #
 #' @export
 var_label <- function(x, ...) {
   rlang::check_dots_used()
@@ -131,14 +131,16 @@ var_label.data.frame <- function(x,
 `var_label<-.data.frame` <- function(x, value) {
   if (
     (!is.character(value) && !is.null(value)) && !is.list(value) ||
-    (is.character(value) && length(value) > 1 && length(value) != ncol(x))
-  )
+      (is.character(value) && length(value) > 1 && length(value) != ncol(x))
+  ) {
     stop(
       paste0(
         "`value` should be a named list, NULL, a single character string or a ",
         "character vector of same length than the number of columns in `x`"
       ),
-      call. = FALSE, domain = "R-labelled")
+      call. = FALSE, domain = "R-labelled"
+    )
+  }
   if (is.character(value) && length(value) == 1) {
     value <- as.list(rep(value, ncol(x)))
     names(value) <- names(x)
@@ -197,13 +199,15 @@ get_variable_labels <- var_label
 #'
 #'   # Set labels from dictionary, e.g. as read from external file
 #'   # One description is missing, one has no match
-#'   description = tibble(
+#'   description <- tibble(
 #'     name = c(
 #'       "Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width",
-#'       "Something"),
+#'       "Something"
+#'     ),
 #'     label = c(
-#'       "Sepal length", "Sepal width",  "Petal length", "Petal width",
-#'       "something")
+#'       "Sepal length", "Sepal width", "Petal length", "Petal width",
+#'       "something"
+#'     )
 #'   )
 #'   var_labels <- setNames(as.list(description$label), description$name)
 #'   iris_labelled <- iris %>%
@@ -237,8 +241,9 @@ set_variable_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
 
   # data.frame case
   if (!identical(.labels, NA)) {
-    if (!.strict)
+    if (!.strict) {
       .labels <- .labels[intersect(names(.labels), names(.data))]
+    }
     var_label(.data) <- .labels
   }
   values <- rlang::dots_list(...)
@@ -251,8 +256,9 @@ set_variable_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
       stop("some variables not found in .data: ", missing_names)
     }
 
-    for (v in intersect(names(values), names(.data)))
+    for (v in intersect(names(values), names(.data))) {
       label_attribute(.data[[v]]) <- values[[v]]
+    }
   }
 
   .data
@@ -273,12 +279,13 @@ get_label_attribute <- function(x) {
 #' @rdname var_label
 #' @export
 set_label_attribute <- function(x, value) {
-  if ((!is.character(value) && !is.null(value)) || length(value) > 1)
+  if ((!is.character(value) && !is.null(value)) || length(value) > 1) {
     stop(
       "`value` should be a single character string or NULL",
       call. = FALSE,
       domain = "R-labelled"
     )
+  }
   attr(x, "label") <- value
   x
 }

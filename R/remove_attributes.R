@@ -14,7 +14,8 @@
 #' d <- read_sav(path)
 #' str(d)
 #' d <- remove_attributes(d, "format.spss")
-#' str(d)}
+#' str(d)
+#' }
 remove_attributes <- function(x, attributes) {
   UseMethod("remove_attributes")
 }

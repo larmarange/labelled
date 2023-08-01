@@ -24,7 +24,7 @@ test_that("to_labelled.factor preserves labelled numerical vectors", {
   expect_equal(s2, to_labelled(to_factor(s2), val_labels(s2)))
 })
 
-test_that("to_labelled.factor converts to NA factor levels not found in labels", { #nolint
+test_that("to_labelled.factor converts to NA factor levels not found in labels", { # nolint
   f <- factor(
     c("yes", "yes", "no", "no", "don't know", "no", "yes", "don't know")
   )
@@ -98,7 +98,6 @@ test_that("to_labelled.factor works with '[code] label' factors", {
 
 
 test_that("foreign_to_labelled works correctly", {
-
   utils::data("spss_file", package = "labelled")
   utils::data("dta_file", package = "labelled")
 
@@ -114,7 +113,13 @@ test_that("foreign_to_labelled works correctly", {
   miss_attr <- attr(spss_file, "missings", exact = TRUE)
   miss_list <- lapply(
     miss_attr,
-    function(x) if (x$type == "none") return(NULL) else return(x$value)
+    function(x) {
+      if (x$type == "none") {
+        return(NULL)
+      } else {
+        return(x$value)
+      }
+    }
   )
   expect_equal(sapply(tl_spss_list, na_values), miss_list)
   expect_true(
@@ -132,7 +137,7 @@ test_that("foreign_to_labelled works correctly", {
   expect_true(all(sapply(sapply(tl_spss_df, na_values), is.null)))
   expect_true(all(sapply(sapply(tl_spss_df, na_range), is.null)))
 
-  tl_dta_df    <- to_labelled(dta_file)
+  tl_dta_df <- to_labelled(dta_file)
   expect_equal(
     val_labels(tl_dta_df),
     sapply(dta_file, function(x) attr(x, "value.labels", exact = TRUE))
@@ -143,12 +148,6 @@ test_that("foreign_to_labelled works correctly", {
   )
   expect_true(all(sapply(sapply(tl_dta_df, na_values), is.null)))
   expect_true(all(sapply(sapply(tl_dta_df, na_range), is.null)))
-
-
-
-
-
-
 })
 
 # memisc_to_labelled -----------------------------------------------------
@@ -172,7 +171,8 @@ test_that("memisc_to_labelled works correctly", {
     Scotland              =  2,
     Wales                 =  3,
     "Not applicable"      = 97,
-    "Not asked in survey" = 99)
+    "Not asked in survey" = 99
+  )
   memisc::labels(ds$vote) <- c(
     Conservatives         =  1,
     Labour                =  2,
@@ -180,27 +180,28 @@ test_that("memisc_to_labelled works correctly", {
     "Don't know"          =  8,
     "Answer refused"      =  9,
     "Not applicable"      = 97,
-    "Not asked in survey" = 99)
+    "Not asked in survey" = 99
+  )
 
   tl_ds <- to_labelled(ds)
 
-  desc                <- data.frame(memisc::description(ds))
-  var_label_ds        <- desc[, 2]
+  desc <- data.frame(memisc::description(ds))
+  var_label_ds <- desc[, 2]
   names(var_label_ds) <- desc[, 1]
   expect_identical(unlist(var_label(tl_ds)), var_label_ds)
 
   if (any(sapply(val_labels(tl_ds), function(x) !is.null(x)))) {
-
     val_labels_ds <- lapply(ds, function(x) memisc::labels(x))
     val_labels_ds <- lapply(ds, function(x) {
       vlabs <- memisc::labels(x)
-      if (is.null(vlabs)) return(NULL)
+      if (is.null(vlabs)) {
+        return(NULL)
+      }
       vals <- vlabs@values
       names(vals) <- vlabs@.Data
       return(vals)
     })
     expect_identical(val_labels(tl_ds), val_labels_ds)
-
   }
 })
 

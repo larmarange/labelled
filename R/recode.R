@@ -25,7 +25,7 @@
 #' dplyr::recode(x, `3` = 2)
 #'
 #' # except if you provide .default or new values for all old values
-#' dplyr::recode(x, `1` = 1, `2` = 1,`3` = 2)
+#' dplyr::recode(x, `1` = 1, `2` = 1, `3` = 2)
 #'
 #' # if you change the type of the vector (here transformed into character)
 #' # value labels are lost
@@ -41,8 +41,9 @@
 #'     "strongly agree" = 1,
 #'     "agree" = 2,
 #'     "disagree" = 3,
-#'     "strongly disagree" = 4)
+#'     "strongly disagree" = 4
 #'   )
+#' )
 #' dplyr::recode(
 #'   x,
 #'   `1` = 1L,
@@ -68,7 +69,7 @@
 #'   x,
 #'   `2` = 1L,
 #'   .default = 2L,
-#'  .combine_value_labels = TRUE
+#'   .combine_value_labels = TRUE
 #' )
 #'
 #' # example when combining some values without a label
@@ -76,14 +77,13 @@
 #' dplyr::recode(y, `2` = 1L, `4` = 3L, .combine_value_labels = TRUE)
 #' @export
 recode.haven_labelled <- function(
-  .x,
-  ...,
-  .default = NULL,
-  .missing = NULL,
-  .keep_value_labels = TRUE,
-  .combine_value_labels = FALSE,
-  .sep = " / "
-) {
+    .x,
+    ...,
+    .default = NULL,
+    .missing = NULL,
+    .keep_value_labels = TRUE,
+    .combine_value_labels = FALSE,
+    .sep = " / ") {
   ret <- dplyr::recode(
     .x = unclass(.x),
     ...,
@@ -108,18 +108,20 @@ recode.haven_labelled <- function(
         combined_label <- names(
           original_labels[original_labels %in% old_vals[new_vals == v]]
         )
-        if (length(combined_label) > 0)
+        if (length(combined_label) > 0) {
           val_label(ret, v) <- paste(combined_label, collapse = .sep)
+        }
       }
       ret <- drop_unused_value_labels(ret)
     }
   } else {
     var_label(ret) <- var_label(.x)
-    if (.keep_value_labels || .combine_value_labels)
+    if (.keep_value_labels || .combine_value_labels) {
       warning(
         "The type of .x has been changed and value labels attributes",
         "have been lost."
       )
+    }
   }
   ret
 }
