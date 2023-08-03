@@ -878,7 +878,7 @@ numeric or character vector by applying
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">9</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>,</span>
 <span>    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>No <span class="op">=</span> <span class="fl">1</span>, Yes <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span>
 <span>    na_values <span class="op">=</span> <span class="fl">9</span></span>
-<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  pos variable label col_type missing values </span></span>
@@ -968,26 +968,26 @@ variable metadata and store them in specific object of class
 <code>data.set</code>. The <code>to_labelled</code> method can convert a
 data.set into a labelled data frame.</p>
 <div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span>  <span class="co"># from foreign</span></span>
-<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://svn.r-project.org/R-packages/trunk/foreign/" class="external-link">foreign</a></span><span class="op">)</span></span>
-<span>  <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_labelled.html">to_labelled</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/foreign/man/read.spss.html" class="external-link">read.spss</a></span><span class="op">(</span></span>
-<span>    <span class="st">"file.sav"</span>,</span>
-<span>    to.data.frame <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>    use.value.labels <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>    use.missings <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span> <span class="op">)</span><span class="op">)</span></span>
-<span> <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_labelled.html">to_labelled</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/foreign/man/read.dta.html" class="external-link">read.dta</a></span><span class="op">(</span></span>
-<span>   <span class="st">"file.dta"</span>,</span>
-<span>   convert.factors <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span> <span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># from foreign</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://svn.r-project.org/R-packages/trunk/foreign/" class="external-link">foreign</a></span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_labelled.html">to_labelled</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/foreign/man/read.spss.html" class="external-link">read.spss</a></span><span class="op">(</span></span>
+<span>  <span class="st">"file.sav"</span>,</span>
+<span>  to.data.frame <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  use.value.labels <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  use.missings <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_labelled.html">to_labelled</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/foreign/man/read.dta.html" class="external-link">read.dta</a></span><span class="op">(</span></span>
+<span>  <span class="st">"file.dta"</span>,</span>
+<span>  convert.factors <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span> <span class="co"># from memisc</span></span>
-<span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://memisc.elff.eu" class="external-link">memisc</a></span><span class="op">)</span></span>
-<span> <span class="va">nes1948.por</span> <span class="op">&lt;-</span> <span class="fu">UnZip</span><span class="op">(</span><span class="st">"anes/NES1948.ZIP"</span>, <span class="st">"NES1948.POR"</span>, package <span class="op">=</span> <span class="st">"memisc"</span><span class="op">)</span></span>
-<span> <span class="va">nes1948</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/memisc/man/importers.html" class="external-link">spss.portable.file</a></span><span class="op">(</span><span class="va">nes1948.por</span><span class="op">)</span></span>
-<span> <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_labelled.html">to_labelled</a></span><span class="op">(</span><span class="va">nes1948</span><span class="op">)</span></span>
-<span> <span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/memisc/man/dataSets.html" class="external-link">as.data.set</a></span><span class="op">(</span><span class="va">nes19480</span><span class="op">)</span></span>
-<span> <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_labelled.html">to_labelled</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co"># from memisc</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://memisc.elff.eu" class="external-link">memisc</a></span><span class="op">)</span></span>
+<span><span class="va">nes1948.por</span> <span class="op">&lt;-</span> <span class="fu">UnZip</span><span class="op">(</span><span class="st">"anes/NES1948.ZIP"</span>, <span class="st">"NES1948.POR"</span>, package <span class="op">=</span> <span class="st">"memisc"</span><span class="op">)</span></span>
+<span><span class="va">nes1948</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/memisc/man/importers.html" class="external-link">spss.portable.file</a></span><span class="op">(</span><span class="va">nes1948.por</span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_labelled.html">to_labelled</a></span><span class="op">(</span><span class="va">nes1948</span><span class="op">)</span></span>
+<span><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/memisc/man/dataSets.html" class="external-link">as.data.set</a></span><span class="op">(</span><span class="va">nes19480</span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_labelled.html">to_labelled</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="using-labelled-with-dplyrmagrittr">Using labelled with dplyr/magrittr<a class="anchor" aria-label="anchor" href="#using-labelled-with-dplyrmagrittr"></a>
