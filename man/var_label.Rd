@@ -89,9 +89,9 @@ dedicated vignette.
 }
 \examples{
 var_label(iris$Sepal.Length)
-var_label(iris$Sepal.Length) <- 'Length of the sepal'
+var_label(iris$Sepal.Length) <- "Length of the sepal"
 \dontrun{
- View(iris)
+View(iris)
 }
 # To remove a variable label
 var_label(iris$Sepal.Length) <- NULL
@@ -112,6 +112,7 @@ var_label(iris, null_action = "fill")
 var_label(iris, null_action = "skip")
 var_label(iris, unlist = TRUE)
 
+#
 if (require(dplyr)) {
   # adding some variable labels
   df <- tibble(s1 = c("M", "M", "F"), s2 = c(1, 1, 2)) \%>\%
@@ -124,13 +125,15 @@ if (require(dplyr)) {
 
   # Set labels from dictionary, e.g. as read from external file
   # One description is missing, one has no match
-  description = tibble(
+  description <- tibble(
     name = c(
       "Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width",
-      "Something"),
+      "Something"
+    ),
     label = c(
-      "Sepal length", "Sepal width",  "Petal length", "Petal width",
-      "something")
+      "Sepal length", "Sepal width", "Petal length", "Petal width",
+      "something"
+    )
   )
   var_labels <- setNames(as.list(description$label), description$name)
   iris_labelled <- iris \%>\%

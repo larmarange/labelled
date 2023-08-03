@@ -21,8 +21,9 @@ nolabel_to_na.haven_labelled <- function(x) {
   allval <- unique(x)
   allval <- allval[!is.na(allval)]
   nolabel <- allval[!allval %in% val_labels(x)]
-  if (length(nolabel) > 0)
+  if (length(nolabel) > 0) {
     x[x %in% nolabel] <- NA
+  }
   x
 }
 
@@ -54,8 +55,9 @@ val_labels_to_na.default <- function(x) {
 #' @export
 val_labels_to_na.haven_labelled <- function(x) {
   val <- val_labels(x)
-  if (length(val) > 0)
+  if (length(val) > 0) {
     x[x %in% val] <- NA
+  }
   val_labels(x) <- NULL
   x
 }

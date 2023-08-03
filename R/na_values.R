@@ -37,7 +37,10 @@
 #'   (inclusive) extents of the range.
 #' @seealso [haven::labelled_spss()], [user_na_to_na()]
 #' @examples
-#' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
+#' v <- labelled(
+#'   c(1, 2, 2, 2, 3, 9, 1, 3, 2, NA),
+#'   c(yes = 1, no = 3, "don't know" = 9)
+#' )
 #' v
 #' na_values(v) <- 9
 #' na_values(v)
@@ -93,7 +96,7 @@ na_values.data.frame <- function(x) {
 
 #' @export
 `na_values<-.default` <- function(x, value) {
-  if (!is.null(value))
+  if (!is.null(value)) {
     x <- labelled_spss(
       x,
       val_labels(x),
@@ -101,14 +104,16 @@ na_values.data.frame <- function(x) {
       na_range = attr(x, "na_range"),
       label = var_label(x)
     )
+  }
   # else do nothing
   x
 }
 
 #' @export
 `na_values<-.factor` <- function(x, value) {
-  if (!is.null(value))
+  if (!is.null(value)) {
     stop("`na_values()` cannot be applied to factors.")
+  }
   x %>% remove_attributes("na_values")
 }
 
@@ -149,12 +154,18 @@ na_values.data.frame <- function(x) {
     stop("some variables not found in x:", missing_names)
   }
 
-  for (var in names(value)) if (!is.null(value[[var]])) {
-    if (mode(x[[var]]) != mode(value[[var]]))
-      stop("`x` and `value` must be same type", call. = FALSE,
-           domain = "R-labelled")
-    if (typeof(x[[var]]) != typeof(value[[var]]))
-      mode(value[[var]]) <- typeof(x[[var]])
+  for (var in names(value)) {
+    if (!is.null(value[[var]])) {
+      if (mode(x[[var]]) != mode(value[[var]])) {
+        stop("`x` and `value` must be same type",
+          call. = FALSE,
+          domain = "R-labelled"
+        )
+      }
+      if (typeof(x[[var]]) != typeof(value[[var]])) {
+        mode(value[[var]]) <- typeof(x[[var]])
+      }
+    }
   }
 
   for (var in names(value)) na_values(x[[var]]) <- value[[var]]
@@ -193,7 +204,7 @@ na_range.data.frame <- function(x) {
 
 #' @export
 `na_range<-.default` <- function(x, value) {
-  if (!is.null(value))
+  if (!is.null(value)) {
     x <- labelled_spss(
       x,
       val_labels(x),
@@ -201,14 +212,16 @@ na_range.data.frame <- function(x) {
       na_range = value,
       label = var_label(x)
     )
+  }
   # else do nothing
   x
 }
 
 #' @export
 `na_range<-.factor` <- function(x, value) {
-  if (!is.null(value))
+  if (!is.null(value)) {
     stop("`na_range()` cannot be applied to factors.")
+  }
   x %>% remove_attributes("na_range")
 }
 
@@ -249,12 +262,18 @@ na_range.data.frame <- function(x) {
     stop("some variables not found in x:", missing_names)
   }
 
-  for (var in names(value)) if (!is.null(value[[var]])) {
-    if (mode(x[[var]]) != mode(value[[var]]))
-      stop("`x` and `value` must be same type", call. = FALSE,
-           domain = "R-labelled")
-    if (typeof(x[[var]]) != typeof(value[[var]]))
-      mode(value[[var]]) <- typeof(x[[var]])
+  for (var in names(value)) {
+    if (!is.null(value[[var]])) {
+      if (mode(x[[var]]) != mode(value[[var]])) {
+        stop("`x` and `value` must be same type",
+          call. = FALSE,
+          domain = "R-labelled"
+        )
+      }
+      if (typeof(x[[var]]) != typeof(value[[var]])) {
+        mode(value[[var]]) <- typeof(x[[var]])
+      }
+    }
   }
 
   for (var in names(value)) na_range(x[[var]]) <- value[[var]]
@@ -309,8 +328,9 @@ get_na_range <- na_range
 #' }
 #' @export
 set_na_values <- function(.data, ..., .values = NA, .strict = TRUE) {
-  if (!is.data.frame(.data) && !is.atomic(.data))
+  if (!is.data.frame(.data) && !is.atomic(.data)) {
     stop(".data should be a data.frame or a vector")
+  }
 
   # vector case
   if (is.atomic(.data)) {
@@ -324,8 +344,9 @@ set_na_values <- function(.data, ..., .values = NA, .strict = TRUE) {
 
   # data.frame case
   if (!identical(.values, NA)) {
-    if (!.strict)
+    if (!.strict) {
       .values <- .values[intersect(names(.values), names(.data))]
+    }
     na_values(.data) <- .values
   }
   values <- rlang::dots_list(...)
@@ -337,8 +358,9 @@ set_na_values <- function(.data, ..., .values = NA, .strict = TRUE) {
     stop("some variables not found in .data: ", missing_names)
   }
 
-  for (v in intersect(names(values), names(.data)))
+  for (v in intersect(names(values), names(.data))) {
     na_values(.data[[v]]) <- values[[v]]
+  }
 
   .data
 }
@@ -346,8 +368,9 @@ set_na_values <- function(.data, ..., .values = NA, .strict = TRUE) {
 #' @rdname na_values
 #' @export
 set_na_range <- function(.data, ..., .values = NA, .strict = TRUE) {
-  if (!is.data.frame(.data) && !is.atomic(.data))
+  if (!is.data.frame(.data) && !is.atomic(.data)) {
     stop(".data should be a data.frame or a vector")
+  }
 
   # vector case
   if (is.atomic(.data)) {
@@ -361,24 +384,28 @@ set_na_range <- function(.data, ..., .values = NA, .strict = TRUE) {
 
   # data.frame case
   if (!identical(.values, NA)) {
-    if (!.strict)
+    if (!.strict) {
       .values <- .values[intersect(names(.values), names(.data))]
+    }
     na_range(.data) <- .values
   }
   values <- rlang::dots_list(...)
-  if (.strict && !all(names(values) %in% names(.data)))
+  if (.strict && !all(names(values) %in% names(.data))) {
     stop("some variables not found in .data")
+  }
 
-  for (v in intersect(names(values), names(.data)))
+  for (v in intersect(names(values), names(.data))) {
     na_range(.data[[v]]) <- values[[v]]
+  }
 
   .data
 }
 
 # internal function to test if a value is user_na
 test_if_user_na <- function(val, na_values = NULL, na_range = NULL) {
-  if (inherits(val, "haven_labelled"))
+  if (inherits(val, "haven_labelled")) {
     val <- unclass(val)
+  }
   miss <- rep.int(FALSE, length(val))
   if (!is.null(na_values)) {
     miss <- miss | val %in% na_values

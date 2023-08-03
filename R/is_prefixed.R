@@ -2,8 +2,9 @@
 #' @param x a factor
 #' @export
 is_prefixed <- function(x) {
-  if (!is.factor(x))
+  if (!is.factor(x)) {
     stop("is_prefixed should be used only with a factor.")
+  }
   l <- .get_prefixes.factor(x)
   all(!is.na(l$code)) && all(!is.na(l$code)) && !any(duplicated(l$code))
 }

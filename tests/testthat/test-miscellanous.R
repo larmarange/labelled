@@ -5,8 +5,6 @@ context("miscellanous")
 test_that("error with non factor argument", {
   x <- 1:2
   expect_error(is_prefixed("x"))
-
-
 })
 
 test_that("is_prefixed() works properly", {

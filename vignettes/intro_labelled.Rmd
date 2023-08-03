@@ -429,7 +429,7 @@ df <- data.frame(
     c(1, 9, 1, 2),
     labels = c(No = 1, Yes = 2),
     na_values = 9
-    )
+  )
 )
 df %>% look_for()
 unlabelled(df) %>% look_for()
@@ -461,26 +461,26 @@ The **memisc** package provide functions to import variable metadata and store t
 object of class `data.set`. The `to_labelled` method can convert a data.set into a labelled data frame.
 
 ```{r, eval=FALSE}
-  # from foreign
-  library(foreign)
-  df <- to_labelled(read.spss(
-    "file.sav",
-    to.data.frame = FALSE,
-    use.value.labels = FALSE,
-    use.missings = FALSE
- ))
- df <- to_labelled(read.dta(
-   "file.dta",
-   convert.factors = FALSE
- ))
+# from foreign
+library(foreign)
+df <- to_labelled(read.spss(
+  "file.sav",
+  to.data.frame = FALSE,
+  use.value.labels = FALSE,
+  use.missings = FALSE
+))
+df <- to_labelled(read.dta(
+  "file.dta",
+  convert.factors = FALSE
+))
 
- # from memisc
- library(memisc)
- nes1948.por <- UnZip("anes/NES1948.ZIP", "NES1948.POR", package = "memisc")
- nes1948 <- spss.portable.file(nes1948.por)
- df <- to_labelled(nes1948)
- ds <- as.data.set(nes19480)
- df <- to_labelled(ds)
+# from memisc
+library(memisc)
+nes1948.por <- UnZip("anes/NES1948.ZIP", "NES1948.POR", package = "memisc")
+nes1948 <- spss.portable.file(nes1948.por)
+df <- to_labelled(nes1948)
+ds <- as.data.set(nes19480)
+df <- to_labelled(ds)
 ```
 
 ## Using labelled with dplyr/magrittr

@@ -23,7 +23,7 @@ labels are preserved unchanged.
 Recode some values based on condition
 }
 \examples{
-v <- labelled(c(1,2,2,9), c(yes = 1, no = 2))
+v <- labelled(c(1, 2, 2, 9), c(yes = 1, no = 2))
 v \%>\% recode_if(v == 9, NA)
 if (require(dplyr)) {
   df <- tibble(s1 = c("M", "M", "F"), s2 = c(1, 2, 1)) \%>\%

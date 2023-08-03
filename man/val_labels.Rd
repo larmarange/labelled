@@ -13,27 +13,48 @@
 \usage{
 val_labels(x, prefixed = FALSE)
 
-val_labels(x) <- value
+val_labels(x, null_action = c("unclass", "labelled")) <- value
 
 val_label(x, v, prefixed = FALSE)
 
-val_label(x, v) <- value
+val_label(x, v, null_action = c("unclass", "labelled")) <- value
 
 get_value_labels(x, prefixed = FALSE)
 
-set_value_labels(.data, ..., .labels = NA, .strict = TRUE)
+set_value_labels(
+  .data,
+  ...,
+  .labels = NA,
+  .strict = TRUE,
+  .null_action = c("unclass", "labelled")
+)
 
-add_value_labels(.data, ..., .strict = TRUE)
+add_value_labels(
+  .data,
+  ...,
+  .strict = TRUE,
+  .null_action = c("unclass", "labelled")
+)
 
-remove_value_labels(.data, ..., .strict = TRUE)
+remove_value_labels(
+  .data,
+  ...,
+  .strict = TRUE,
+  .null_action = c("unclass", "labelled")
+)
 }
 \arguments{
 \item{x}{A vector or a data.frame}
 
 \item{prefixed}{Should labels be prefixed with values?}
 
+\item{null_action, .null_action}{for advanced users, if \code{value = NULL},
+unclass the vector (default) or force/keep \code{haven_labelled} class
+(if \code{null_action = "labelled"})}
+
 \item{value}{A named vector for \code{val_labels()} (see \code{\link[haven:labelled]{haven::labelled()}}) or
-a character string for \code{val_label()}. \code{NULL} to remove the labels.
+a character string for \code{val_label()}. \code{NULL} to remove the labels (except
+if \code{null_action = "labelled"}).
 For data frames, it could also be a named list with a vector of value
 labels per variable.}
 
@@ -75,13 +96,21 @@ Similarly, \code{add_value_labels()} and \code{remove_value_labels()} could also
 applied on vectors.
 }
 \examples{
-v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
+v <- labelled(
+  c(1, 2, 2, 2, 3, 9, 1, 3, 2, NA),
+  c(yes = 1, no = 3, "don't know" = 9)
+)
 val_labels(v)
 val_labels(v, prefixed = TRUE)
 val_label(v, 2)
-val_label(v, 2) <- 'maybe'
+val_label(v, 2) <- "maybe"
+v
 val_label(v, 9) <- NULL
+v
+val_labels(v, null_action = "labelled") <- NULL
+v
 val_labels(v) <- NULL
+v
 if (require(dplyr)) {
   # setting value labels
   df <- tibble(s1 = c("M", "M", "F"), s2 = c(1, 1, 2)) \%>\%
@@ -109,7 +138,7 @@ if (require(dplyr)) {
   v
   v \%>\% set_value_labels(middle = 3)
   v \%>\% set_value_labels(NULL)
-  v \%>\% set_value_labels(.labels = c(a = 1, b = 2, c= 3, d = 4))
+  v \%>\% set_value_labels(.labels = c(a = 1, b = 2, c = 3, d = 4))
   v \%>\% add_value_labels(between = 2)
   v \%>\% remove_value_labels(4)
 }

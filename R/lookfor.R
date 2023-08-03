@@ -54,7 +54,9 @@
 #' # Look for a single keyword.
 #' look_for(iris, "petal")
 #' look_for(iris, "s")
-#' iris %>% look_for_and_select("s") %>% head()
+#' iris %>%
+#'   look_for_and_select("s") %>%
+#'   head()
 #'
 #' # Look for with a regular expression
 #' look_for(iris, "petal|species")
@@ -112,11 +114,11 @@
 #' @export
 
 look_for <- function(data,
-                    ...,
-                    labels = TRUE,
-                    values = TRUE,
-                    ignore.case = TRUE,
-                    details = c("basic", "none", "full")) {
+                     ...,
+                     labels = TRUE,
+                     values = TRUE,
+                     ignore.case = TRUE,
+                     details = c("basic", "none", "full")) {
   if (inherits(data, c("survey.design", "svyrep.design"))) {
     data <- data$variables
   }
@@ -188,7 +190,6 @@ look_for <- function(data,
           levels = lapply(data, levels),
           value_labels = lapply(data, val_labels),
         )
-
     }
 
     if (details == "full") {
@@ -199,11 +200,17 @@ look_for <- function(data,
         length(unique(x))
       }
       generic_range <- function(x) {
-        if (all(unlist(lapply(x, is.null)))) return(NULL)
-        if (all(is.na(x))) return(NULL)
+        if (all(unlist(lapply(x, is.null)))) {
+          return(NULL)
+        }
+        if (all(is.na(x))) {
+          return(NULL)
+        }
 
         r <- suppressWarnings(try(range(x, na.rm = TRUE), silent = TRUE))
-        if (inherits(r, "try-error")) return(NULL)
+        if (inherits(r, "try-error")) {
+          return(NULL)
+        }
 
         r
       }
@@ -218,7 +225,6 @@ look_for <- function(data,
           unique_values = unlist(lapply(data, unique_values)),
           range = lapply(data, generic_range)
         )
-
     }
   } else {
     res <- dplyr::tibble()
@@ -271,7 +277,7 @@ print.look_for <- function(x, ...) {
           col_type = dplyr::if_else(duplicated(.data$pos), "", .data$col_type),
         )
 
-      if ("missing" %in% names(x))
+      if ("missing" %in% names(x)) {
         x <- x %>%
           dplyr::mutate(
             missing = dplyr::if_else(
@@ -280,36 +286,40 @@ print.look_for <- function(x, ...) {
               as.character(.data$missing)
             )
           )
+      }
 
-      if ("unique_values" %in% names(x))
+      if ("unique_values" %in% names(x)) {
         x <- x %>%
-        dplyr::mutate(
-          unique_values = dplyr::if_else(
-            duplicated(.data$pos),
-            "",
-            as.character(.data$unique_values)
+          dplyr::mutate(
+            unique_values = dplyr::if_else(
+              duplicated(.data$pos),
+              "",
+              as.character(.data$unique_values)
+            )
           )
-        )
+      }
 
-      if ("na_values" %in% names(x))
+      if ("na_values" %in% names(x)) {
         x <- x %>%
-        dplyr::mutate(
-          na_values = dplyr::if_else(
-            duplicated(.data$pos),
-            "",
-            as.character(.data$na_values)
+          dplyr::mutate(
+            na_values = dplyr::if_else(
+              duplicated(.data$pos),
+              "",
+              as.character(.data$na_values)
+            )
           )
-        )
+      }
 
-      if ("na_range" %in% names(x))
+      if ("na_range" %in% names(x)) {
         x <- x %>%
-        dplyr::mutate(
-          na_range = dplyr::if_else(
-            duplicated(.data$pos),
-            "",
-            as.character(.data$na_range)
+          dplyr::mutate(
+            na_range = dplyr::if_else(
+              duplicated(.data$pos),
+              "",
+              as.character(.data$na_range)
+            )
           )
-        )
+      }
 
       x <- x %>%
         dplyr::mutate(
@@ -320,8 +330,10 @@ print.look_for <- function(x, ...) {
           )
         ) %>%
         dplyr::select(
-          dplyr::any_of(c("pos", "variable", "label", "col_type", "missing",
-                          "unique_values", "values", "na_values", "na_range"))
+          dplyr::any_of(c(
+            "pos", "variable", "label", "col_type", "missing",
+            "unique_values", "values", "na_values", "na_range"
+          ))
         )
     }
     w <- getOption("width") # available width for printing
@@ -358,12 +370,11 @@ print.look_for <- function(x, ...) {
 #' @rdname look_for
 #' @export
 look_for_and_select <- function(
-  data,
-  ...,
-  labels = TRUE,
-  values = TRUE,
-  ignore.case = TRUE
-) {
+    data,
+    ...,
+    labels = TRUE,
+    values = TRUE,
+    ignore.case = TRUE) {
   lf <- data %>%
     look_for(
       ...,
@@ -378,13 +389,15 @@ look_for_and_select <- function(
 #' @rdname look_for
 #' @export
 convert_list_columns_to_character <- function(x) {
-  if ("range" %in% names(x))
+  if ("range" %in% names(x)) {
     x <- x %>%
       dplyr::mutate(range = unlist(lapply(range, paste, collapse = " - ")))
+  }
 
-  if ("value_labels" %in% names(x) && is.list(x$value_labels))
+  if ("value_labels" %in% names(x) && is.list(x$value_labels)) {
     x <- x %>%
       dplyr::mutate(value_labels = names_prefixed_by_values(.data$value_labels))
+  }
 
   x %>%
     dplyr::as_tibble() %>% # remove look_for class
@@ -400,18 +413,21 @@ convert_list_columns_to_character <- function(x) {
 #' @export
 lookfor_to_long_format <- function(x) {
   # only if details are provided
-  if (!"levels" %in% names(x) || !"value_labels" %in% names(x))
+  if (!"levels" %in% names(x) || !"value_labels" %in% names(x)) {
     return(x)
+  }
 
   x <- x %>%
     dplyr::as_tibble() %>% # remove look_for class
     dplyr::mutate(value_labels = names_prefixed_by_values(.data$value_labels))
 
   # tidyr::unnest() fails if all elements are NULL
-  if (all(unlist(lapply(x$levels, is.null))))
+  if (all(unlist(lapply(x$levels, is.null)))) {
     x$levels <- NA_character_
-  if (all(unlist(lapply(x$value_labels, is.null))))
+  }
+  if (all(unlist(lapply(x$value_labels, is.null)))) {
     x$value_labels <- NA_character_
+  }
 
   x %>%
     tidyr::unnest("levels", keep_empty = TRUE) %>%

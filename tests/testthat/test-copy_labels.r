@@ -62,7 +62,9 @@ test_that("if 'from' is not a labelled vector, copy only variable label", {
 
   x <- factor(1:10)
   var_label(x) <- "variable label"
-  y <- 10:1 %>% as.character() %>% copy_labels_from(x)
+  y <- 10:1 %>%
+    as.character() %>%
+    copy_labels_from(x)
   expect_equal(var_label(x), var_label(y))
 })
 

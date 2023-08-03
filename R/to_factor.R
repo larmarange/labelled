@@ -56,15 +56,18 @@ to_factor.default <- function(x, ...) {
 #'   if some values doesn't have a defined label. In such case,
 #'   `sort_levels == 'values'` will be applied.
 #' @examples
-#' v <- labelled(c(1,2,2,2,3,9,1,3,2,NA), c(yes = 1, no = 3, "don't know" = 9))
+#' v <- labelled(
+#'   c(1, 2, 2, 2, 3, 9, 1, 3, 2, NA),
+#'   c(yes = 1, no = 3, "don't know" = 9)
+#' )
 #' to_factor(v)
 #' to_factor(v, nolabel_to_na = TRUE)
-#' to_factor(v, 'p')
-#' to_factor(v, sort_levels = 'v')
-#' to_factor(v, sort_levels = 'n')
-#' to_factor(v, sort_levels = 'l')
+#' to_factor(v, "p")
+#' to_factor(v, sort_levels = "v")
+#' to_factor(v, sort_levels = "n")
+#' to_factor(v, sort_levels = "l")
 #'
-#' x <- labelled(c('H', 'M', 'H', 'L'), c(low = 'L', medium = 'M', high = 'H'))
+#' x <- labelled(c("H", "M", "H", "L"), c(low = "L", medium = "M", high = "H"))
 #' to_factor(x, ordered = TRUE)
 #'
 #' # Strict conversion
@@ -73,17 +76,21 @@ to_factor.default <- function(x, ...) {
 #' to_factor(v, strict = TRUE) # Not converted because 3 does not have a label
 #' to_factor(v, strict = TRUE, unclass = TRUE)
 #' @export
-to_factor.haven_labelled <- function(x, levels = c("labels", "values",
-  "prefixed"), ordered = FALSE, nolabel_to_na = FALSE,
-  sort_levels = c("auto", "none", "labels", "values"), decreasing = FALSE,
-  drop_unused_labels = FALSE, user_na_to_na = FALSE, strict = FALSE,
-  unclass = FALSE, explicit_tagged_na = FALSE,
-  ...) {
+to_factor.haven_labelled <- function(
+    x, levels = c(
+      "labels", "values",
+      "prefixed"
+    ), ordered = FALSE, nolabel_to_na = FALSE,
+    sort_levels = c("auto", "none", "labels", "values"), decreasing = FALSE,
+    drop_unused_labels = FALSE, user_na_to_na = FALSE, strict = FALSE,
+    unclass = FALSE, explicit_tagged_na = FALSE,
+    ...) {
   vl <- var_label(x)
   levels <- match.arg(levels)
   sort_levels <- match.arg(sort_levels)
-  if (user_na_to_na)
+  if (user_na_to_na) {
     x <- user_na_to_na(x)
+  }
   if (explicit_tagged_na && is.double(x)) {
     new_labels <- to_character(val_labels(x), explicit_tagged_na = TRUE)
     x <- to_character(unclass(x), explicit_tagged_na = TRUE)
@@ -107,8 +114,9 @@ to_factor.haven_labelled <- function(x, levels = c("labels", "values",
       return(x)
     }
   }
-  if (nolabel_to_na)
+  if (nolabel_to_na) {
     x <- nolabel_to_na(x)
+  }
   labels <- val_labels(x)
   allval <- unique(x)
   allval <- allval[!is.na(allval)]
@@ -121,24 +129,33 @@ to_factor.haven_labelled <- function(x, levels = c("labels", "values",
     levs <- labels
   }
 
-  if (sort_levels == "auto" && length(nolabel) > 0)
+  if (sort_levels == "auto" && length(nolabel) > 0) {
     sort_levels <- "values"
-  if (sort_levels == "labels")
+  }
+  if (sort_levels == "labels") {
     levs <- levs[order(names(levs), decreasing = decreasing)]
-  if (sort_levels == "values")
+  }
+  if (sort_levels == "values") {
     levs <- sort(levs, decreasing = decreasing)
+  }
 
-  if (levels == "labels")
+  if (levels == "labels") {
     labs <- names(levs)
-  if (levels == "values")
+  }
+  if (levels == "values") {
     labs <- unname(levs)
-  if (levels == "prefixed")
+  }
+  if (levels == "prefixed") {
     labs <- names_prefixed_by_values(levs)
+  }
   levs <- unname(levs)
-  x <- factor(x, levels = levs, labels = labs, ordered = ordered,
-    ...)
-  if (drop_unused_labels)
+  x <- factor(x,
+    levels = levs, labels = labs, ordered = ordered,
+    ...
+  )
+  if (drop_unused_labels) {
     x <- droplevels(x)
+  }
   var_label(x) <- vl
   x
 }
@@ -152,19 +169,18 @@ to_factor.haven_labelled <- function(x, levels = c("labels", "values",
 #'   to factors.
 #' @export
 to_factor.data.frame <- function(
-  x,
-  levels = c("labels", "values", "prefixed"),
-  ordered = FALSE,
-  nolabel_to_na = FALSE,
-  sort_levels = c("auto", "none", "labels", "values"),
-  decreasing = FALSE,
-  labelled_only = TRUE,
-  drop_unused_labels = FALSE,
-  strict = FALSE,
-  unclass = FALSE,
-  explicit_tagged_na = FALSE,
-  ...
-) {
+    x,
+    levels = c("labels", "values", "prefixed"),
+    ordered = FALSE,
+    nolabel_to_na = FALSE,
+    sort_levels = c("auto", "none", "labels", "values"),
+    decreasing = FALSE,
+    labelled_only = TRUE,
+    drop_unused_labels = FALSE,
+    strict = FALSE,
+    unclass = FALSE,
+    explicit_tagged_na = FALSE,
+    ...) {
   cl <- class(x)
   x <- dplyr::as_tibble(
     lapply(
@@ -188,33 +204,34 @@ to_factor.data.frame <- function(
 }
 
 .to_factor_col_data_frame <- function(
-  x,
-  levels = c("labels", "values", "prefixed"),
-  ordered = FALSE,
-  nolabel_to_na = FALSE,
-  sort_levels = c("auto", "none", "labels", "values"),
-  decreasing = FALSE,
-  labelled_only = TRUE,
-  drop_unused_labels = FALSE,
-  strict = FALSE,
-  unclass = FALSE,
-  explicit_tagged_na = FALSE,
-  ...
-) {
-  if (inherits(x, "haven_labelled"))
+    x,
+    levels = c("labels", "values", "prefixed"),
+    ordered = FALSE,
+    nolabel_to_na = FALSE,
+    sort_levels = c("auto", "none", "labels", "values"),
+    decreasing = FALSE,
+    labelled_only = TRUE,
+    drop_unused_labels = FALSE,
+    strict = FALSE,
+    unclass = FALSE,
+    explicit_tagged_na = FALSE,
+    ...) {
+  if (inherits(x, "haven_labelled")) {
     x <- to_factor(x,
-                   levels = levels,
-                   ordered = ordered,
-                   nolabel_to_na = nolabel_to_na,
-                   sort_levels = sort_levels,
-                   decreasing = decreasing,
-                   drop_unused_labels = drop_unused_labels,
-                   strict = strict,
-                   unclass = unclass,
-                   explicit_tagged_na = explicit_tagged_na,
-                   ...)
-  else if (!labelled_only)
+      levels = levels,
+      ordered = ordered,
+      nolabel_to_na = nolabel_to_na,
+      sort_levels = sort_levels,
+      decreasing = decreasing,
+      drop_unused_labels = drop_unused_labels,
+      strict = strict,
+      unclass = unclass,
+      explicit_tagged_na = explicit_tagged_na,
+      ...
+    )
+  } else if (!labelled_only) {
     x <- to_factor(x)
+  }
   x
 }
 
@@ -248,10 +265,11 @@ to_factor.data.frame <- function(
 #' }
 #' @export
 unlabelled <- function(x, ...) {
-  if (is.data.frame(x))
+  if (is.data.frame(x)) {
     to_factor(x, strict = TRUE, unclass = TRUE, labelled_only = TRUE, ...)
-  else if (inherits(x, "haven_labelled"))
+  } else if (inherits(x, "haven_labelled")) {
     to_factor(x, strict = TRUE, unclass = TRUE, ...)
-  else
+  } else {
     x
+  }
 }

@@ -67,7 +67,7 @@ dplyr::recode(x, `3` = 2L, .keep_value_labels = FALSE)
 dplyr::recode(x, `3` = 2)
 
 # except if you provide .default or new values for all old values
-dplyr::recode(x, `1` = 1, `2` = 1,`3` = 2)
+dplyr::recode(x, `1` = 1, `2` = 1, `3` = 2)
 
 # if you change the type of the vector (here transformed into character)
 # value labels are lost
@@ -83,8 +83,9 @@ x <- labelled(
     "strongly agree" = 1,
     "agree" = 2,
     "disagree" = 3,
-    "strongly disagree" = 4)
+    "strongly disagree" = 4
   )
+)
 dplyr::recode(
   x,
   `1` = 1L,
@@ -110,7 +111,7 @@ dplyr::recode(
   x,
   `2` = 1L,
   .default = 2L,
- .combine_value_labels = TRUE
+  .combine_value_labels = TRUE
 )
 
 # example when combining some values without a label

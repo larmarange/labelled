@@ -9,8 +9,8 @@ test_that("na_values works with data.frame", {
     na_value = 99,
     label = "variable label"
   )
-  y   <- c(1:4, NA)
-  df  <- data.frame(xhs = xhs, y = y, stringsAsFactors = FALSE)
+  y <- c(1:4, NA)
+  df <- data.frame(xhs = xhs, y = y, stringsAsFactors = FALSE)
   res <- list(xhs = 99, y = NULL)
   expect_equal(na_values(df), res)
 })
@@ -25,8 +25,8 @@ test_that("na_range works with data.frame", {
     na_range = c(99, Inf),
     label = "variable label"
   )
-  y   <- c(1:4, NA)
-  df  <- data.frame(xhs = xhs, y = y, stringsAsFactors = FALSE)
+  y <- c(1:4, NA)
+  df <- data.frame(xhs = xhs, y = y, stringsAsFactors = FALSE)
   res <- list(xhs = c(99, Inf), y = NULL)
   expect_equal(na_range(df), res)
 })
@@ -53,8 +53,8 @@ test_that("user_na_to_na works with data.frame", {
 # set_na_values ----------------------------------------------------------------
 
 test_that("set_na_values works correctly", {
-  df     <- dplyr::tibble(s1 = c("M", "M", "F", "F"), s2 = c(1, 1, 2, 9))
-  svdf   <- set_value_labels(df, s2 = c(yes = 1, no = 2))
+  df <- dplyr::tibble(s1 = c("M", "M", "F", "F"), s2 = c(1, 1, 2, 9))
+  svdf <- set_value_labels(df, s2 = c(yes = 1, no = 2))
 
   sna_svdf <- set_na_values(svdf, s2 = 9)
   expect_equal(which(is.na(sna_svdf$s2)), 4L)
@@ -80,14 +80,13 @@ test_that("set_na_values works correctly", {
     .strict = FALSE
   )
   expect_equal(na_values(sna_svdfF), list(s1 = 9, s2 = NULL))
-
 })
 
 # set_na_range -----------------------------------------------------------------
 
 test_that("set_na_range works correctly", {
-  df     <- dplyr::tibble(s1 = c("M", "M", "F", "F"), s2 = c(1, 1, 2, 9))
-  svdf   <- set_value_labels(df, s2 = c(yes = 1, no = 2))
+  df <- dplyr::tibble(s1 = c("M", "M", "F", "F"), s2 = c(1, 1, 2, 9))
+  svdf <- set_value_labels(df, s2 = c(yes = 1, no = 2))
 
 
   expect_error(set_na_range(svdf, s2 = 9))
@@ -113,8 +112,8 @@ test_that("set_na_range works correctly", {
   )
   expect_equal(snrv_svdfF, snr_svdf)
 
-  df       <- dplyr::tibble(s1 = c(2, 4, 7, 9), s2 = c(1, 1, 2, 9))
-  svdf     <- set_value_labels(df, s2 = c(yes = 1, no = 2))
+  df <- dplyr::tibble(s1 = c(2, 4, 7, 9), s2 = c(1, 1, 2, 9))
+  svdf <- set_value_labels(df, s2 = c(yes = 1, no = 2))
   sna_svdf <- set_na_range(svdf, .values = c(9L, 100L))
   expect_equal(na_range(sna_svdf), list(s1 = c(9, 100), s2 = c(9, 100)))
 

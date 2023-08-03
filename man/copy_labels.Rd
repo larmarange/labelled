@@ -38,14 +38,14 @@ see examples.
 library(dplyr)
 df <- tibble(
   id = 1:3,
-  happy = factor(c('yes', 'no', 'yes')),
+  happy = factor(c("yes", "no", "yes")),
   gender = labelled(c(1, 1, 2), c(female = 1, male = 2))
 ) \%>\%
-set_variable_labels(
-  id = "Individual ID",
-  happy = "Are you happy?",
-  gender = "Gender of respondent"
-)
+  set_variable_labels(
+    id = "Individual ID",
+    happy = "Are you happy?",
+    gender = "Gender of respondent"
+  )
 var_label(df)
 fdf <- df \%>\% filter(id < 3)
 var_label(fdf) # some variable labels have been lost

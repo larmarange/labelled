@@ -24,14 +24,14 @@
 #' library(dplyr)
 #' df <- tibble(
 #'   id = 1:3,
-#'   happy = factor(c('yes', 'no', 'yes')),
+#'   happy = factor(c("yes", "no", "yes")),
 #'   gender = labelled(c(1, 1, 2), c(female = 1, male = 2))
 #' ) %>%
-#' set_variable_labels(
-#'   id = "Individual ID",
-#'   happy = "Are you happy?",
-#'   gender = "Gender of respondent"
-#' )
+#'   set_variable_labels(
+#'     id = "Individual ID",
+#'     happy = "Are you happy?",
+#'     gender = "Gender of respondent"
+#'   )
 #' var_label(df)
 #' fdf <- df %>% filter(id < 3)
 #' var_label(fdf) # some variable labels have been lost
@@ -47,12 +47,18 @@ copy_labels <- function(from, to, .strict = TRUE) {
 
 #' @export
 copy_labels.default <- function(from, to, .strict = TRUE) {
-  if (!is.atomic(from))
-    stop("`from` should be a vector or a data.frame", call. = FALSE,
-         domain = "R-labelled")
-  if (!is.atomic(to))
-    stop("`to` should be a vector", call. = FALSE,
-         domain = "R-labelled")
+  if (!is.atomic(from)) {
+    stop("`from` should be a vector or a data.frame",
+      call. = FALSE,
+      domain = "R-labelled"
+    )
+  }
+  if (!is.atomic(to)) {
+    stop("`to` should be a vector",
+      call. = FALSE,
+      domain = "R-labelled"
+    )
+  }
   var_label(to) <- var_label(from)
   to
 }
@@ -60,9 +66,12 @@ copy_labels.default <- function(from, to, .strict = TRUE) {
 
 #' @export
 copy_labels.haven_labelled <- function(from, to, .strict = TRUE) {
-  if (mode(from) != mode(to) && .strict)
-    stop("`from` and `to` should be of same type", call. = FALSE,
-      domain = "R-labelled")
+  if (mode(from) != mode(to) && .strict) {
+    stop("`from` and `to` should be of same type",
+      call. = FALSE,
+      domain = "R-labelled"
+    )
+  }
   var_label(to) <- var_label(from)
 
   if (mode(from) == mode(to)) {
@@ -75,10 +84,14 @@ copy_labels.haven_labelled <- function(from, to, .strict = TRUE) {
 
 #' @export
 copy_labels.data.frame <- function(from, to, .strict = TRUE) {
-  if (!is.data.frame(to))
+  if (!is.data.frame(to)) {
     stop("`to` should be a data frame", call. = FALSE, domain = "R-labelled")
-  for (var in names(to)) if (var %in% names(from))
-    to[[var]] <- copy_labels(from[[var]], to[[var]], .strict = .strict)
+  }
+  for (var in names(to)) {
+    if (var %in% names(from)) {
+      to[[var]] <- copy_labels(from[[var]], to[[var]], .strict = .strict)
+    }
+  }
   to
 }
 
