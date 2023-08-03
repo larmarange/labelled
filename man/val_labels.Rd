@@ -48,8 +48,9 @@ remove_value_labels(
 
 \item{prefixed}{Should labels be prefixed with values?}
 
-\item{null_action, .null_action}{if \code{value = NULL}, unclass the vector (default) or
-force/keep \code{haven_labelled} class (if \code{null_action = "labelled"})}
+\item{null_action, .null_action}{for advanced users, if \code{value = NULL},
+unclass the vector (default) or force/keep \code{haven_labelled} class
+(if \code{null_action = "labelled"})}
 
 \item{value}{A named vector for \code{val_labels()} (see \code{\link[haven:labelled]{haven::labelled()}}) or
 a character string for \code{val_label()}. \code{NULL} to remove the labels (except

@@ -75,22 +75,22 @@ to reconvert it to a labelled vector with same values and labels.
 }
 \examples{
 \dontrun{
-  # from foreign
-  library(foreign)
-  sav <- system.file("files", "electric.sav", package = "foreign")
-  df <- to_labelled(read.spss(
-    sav,
-    to.data.frame = FALSE,
-    use.value.labels = FALSE,
-    use.missings = FALSE
- ))
+# from foreign
+library(foreign)
+sav <- system.file("files", "electric.sav", package = "foreign")
+df <- to_labelled(read.spss(
+  sav,
+  to.data.frame = FALSE,
+  use.value.labels = FALSE,
+  use.missings = FALSE
+))
 
- # from memisc
- library(memisc)
- nes1948.por <- UnZip('anes/NES1948.ZIP', 'NES1948.POR', package='memisc')
- nes1948 <- spss.portable.file(nes1948.por)
- ds <- as.data.set(nes1948)
- df <- to_labelled(ds)
+# from memisc
+library(memisc)
+nes1948.por <- UnZip("anes/NES1948.ZIP", "NES1948.POR", package = "memisc")
+nes1948 <- spss.portable.file(nes1948.por)
+ds <- as.data.set(nes1948)
+df <- to_labelled(ds)
 }
 
 # Converting factors to labelled vectors
@@ -102,7 +102,7 @@ to_labelled(f, c("yes" = 1, "no" = 2, "don't know" = 9))
 to_labelled(f, c("yes" = 1, "no" = 2))
 to_labelled(f, c("yes" = "Y", "no" = "N", "don't know" = "DK"))
 
-s1 <- labelled(c('M', 'M', 'F'), c(Male = 'M', Female = 'F'))
+s1 <- labelled(c("M", "M", "F"), c(Male = "M", Female = "F"))
 labels <- val_labels(s1)
 f1 <- to_factor(s1)
 f1

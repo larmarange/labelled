@@ -118,7 +118,9 @@ look_for(iris)
 # Look for a single keyword.
 look_for(iris, "petal")
 look_for(iris, "s")
-iris \%>\% look_for_and_select("s") \%>\% head()
+iris \%>\%
+  look_for_and_select("s") \%>\%
+  head()
 
 # Look for with a regular expression
 look_for(iris, "petal|species")

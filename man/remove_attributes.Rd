@@ -23,5 +23,6 @@ path <- system.file("examples", "iris.sav", package = "haven")
 d <- read_sav(path)
 str(d)
 d <- remove_attributes(d, "format.spss")
-str(d)}
+str(d)
+}
 }
