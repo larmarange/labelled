@@ -8,8 +8,8 @@
 #'   if `null_action = "labelled"`).
 #'   For data frames, it could also be a named list with a vector of value
 #'   labels per variable.
-#' @param null_action,.null_action if `value = NULL`, unclass the vector
-#' (default) or force/keep `haven_labelled` class
+#' @param null_action,.null_action for advanced users, if `value = NULL`,
+#' unclass the vector (default) or force/keep `haven_labelled` class
 #' (if `null_action = "labelled"`)
 #' @return
 #'   `val_labels()` will return a named vector.
