@@ -8,7 +8,7 @@ vignette: >
   \usepackage[utf8]{inputenc}
 ---
 
-The **tidyr** allows to group several columns of a tibble into one single df-column, see `tidyr::pack()`. Such df-column is itself a tibble. It's not currently clear why you would ever want to pack columns since few functions work with this sort of data.
+The **tidyr** package allows to group several columns of a tibble into one single df-column, see `tidyr::pack()`. Such df-column is itself a tibble. It's not currently clear why you would ever want to pack columns since few functions work with this sort of data.
 
 ```{r}
 library(tidyr)
