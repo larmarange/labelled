@@ -351,11 +351,13 @@ print.look_for <- function(x, ...) {
         w_label < lw / 2 ~ lw - w_label,
         TRUE ~ trunc(lw / 2)
       )
+      # a minimum of 10
+      lw <- max(10, lw)
       x$label <- stringr::str_trunc(x$label, lw, ellipsis = "~")
       x$values <- stringr::str_trunc(x$values, lw, ellipsis = "~")
     } else {
-      # width for labels
       lw <- w - 4 - w_pos - w_variable
+      lw <- max(10, lw)
       x$label <- stringr::str_trunc(x$label, lw, ellipsis = "~")
     }
 
