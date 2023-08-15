@@ -6,6 +6,11 @@
   `.null_action` argument to `set_value_labels()`, `add_value_labels()` and
   `remove_value_labels()` (#145)
 
+**Bug fix**
+
+* avoid an error with `print.look_for()` when console pane is physically shrunk
+  too small (#148)
+
 # labelled 2.12.0
 
 **New features**

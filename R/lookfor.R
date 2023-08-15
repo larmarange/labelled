@@ -344,18 +344,21 @@ print.look_for <- function(x, ...) {
     if ("values" %in% names(x)) {
       w_col_type <- max(8, stringr::str_length(x$col_type))
       w_values <- max(5, stringr::str_length(x$values)) # nolint
+      w_missing <- max(7, stringr::str_length(x$missing))
       # width for labels
-      lw <- w - 8 - w_pos - w_variable - w_col_type
+      lw <- w - 8 - w_pos - w_variable - w_col_type - w_missing
       lw <- dplyr::case_when(
         w_values < lw / 2 ~ lw - w_values,
         w_label < lw / 2 ~ lw - w_label,
         TRUE ~ trunc(lw / 2)
       )
+      # a minimum of 10
+      lw <- max(10, lw)
       x$label <- stringr::str_trunc(x$label, lw, ellipsis = "~")
       x$values <- stringr::str_trunc(x$values, lw, ellipsis = "~")
     } else {
-      # width for labels
       lw <- w - 4 - w_pos - w_variable
+      lw <- max(10, lw)
       x$label <- stringr::str_trunc(x$label, lw, ellipsis = "~")
     }
 
