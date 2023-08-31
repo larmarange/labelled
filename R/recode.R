@@ -97,10 +97,10 @@ recode.haven_labelled <- function(
     if (.combine_value_labels) {
       ret <- copy_labels(.x, ret)
 
-      old_vals <- unique(.x)
+      old_vals <- unique(.x) %>% na.omit()
       new_vals <- c()
       for (o in old_vals) {
-        new_vals <- c(new_vals, ret[.x == o][1])
+        new_vals <- c(new_vals, ret[!is.na(.x) & .x == o][1])
       }
 
       original_labels <- val_labels(.x)
