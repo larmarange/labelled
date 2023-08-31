@@ -892,6 +892,13 @@ test_that("dplyr::recode could be applied to character labelled vector", {
   expect_equal(x, labelled(c("a", "b", "b"), c(yes = "a", no = "b")))
 })
 
+test_that("dplyr::recode could handle NA with .combine_value_labels", {
+  x <- labelled(c(NA, 1:3), c(yes = 1, maybe = 2, no = 3))
+  y <- x %>% dplyr::recode(`2` = 0L, .combine_value_labels = TRUE)
+  expect_true(all(c(0, 1, 3) %in% val_labels(y)))
+})
+
+
 # update_labelled ----------------------------------------
 
 test_that("update_labelled update previous haven's labelled objects but not Hmisc's labelled objects", { # nolint

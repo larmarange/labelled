@@ -10,6 +10,8 @@
 
 * avoid an error with `print.look_for()` when console pane is physically shrunk
   too small (#148)
+* fix in `recode.haven_labelled()` when `.x` contains `NA` and
+  `.combine_value_labels = TRUE` (#151)
 
 # labelled 2.12.0
 
