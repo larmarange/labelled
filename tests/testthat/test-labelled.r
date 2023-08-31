@@ -896,6 +896,10 @@ test_that("dplyr::recode could handle NA with .combine_value_labels", {
   x <- labelled(c(NA, 1:3), c(yes = 1, maybe = 2, no = 3))
   y <- x %>% dplyr::recode(`2` = 0L, .combine_value_labels = TRUE)
   expect_true(all(c(0, 1, 3) %in% val_labels(y)))
+
+  y <- x %>% dplyr::recode(`2` = 0L, `3` = 0L, .combine_value_labels = TRUE)
+  expect_true(all(c(0, 1) %in% val_labels(y)))
+  expect_equal(val_label(y, 0), "maybe / no")
 })
 
 
