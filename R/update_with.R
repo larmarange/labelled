@@ -1,5 +1,5 @@
 #' Update variable/value labels with a function
-#' @param .data A data frame, data frame extension (e.g. a tibble)
+#' @param .data A data frame, or data frame extension (e.g. a tibble)
 #' @param .fn A function used to transform the variable/value labels of the
 #' selected `.cols`.
 #' @param .cols Columns to update; defaults to all columns. Use tidy selection.
