@@ -25,7 +25,8 @@ Imports:
     rlang,
     vctrs,
     stringr,
-    tidyr
+    tidyr,
+    tidyselect
 Suggests:
     testthat,
     knitr,
@@ -40,7 +41,7 @@ URL: https://larmarange.github.io/labelled/
 BugReports: https://github.com/larmarange/labelled/issues
 VignetteBuilder: knitr
 LazyData: true
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 Roxygen: list(markdown = TRUE)
 RdMacros: lifecycle
 Language: en-US

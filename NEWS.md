@@ -5,6 +5,8 @@
 * add a `null_action` argument to `val_labels()`, `val_label()` and a 
   `.null_action` argument to `set_value_labels()`, `add_value_labels()` and
   `remove_value_labels()` (#145)
+* new functions `update_variable_labels_with()` and `update_value_labels_with()`
+  allowing to update variable/value labels with a custom function (#153)
 
 **Bug fix**
 
