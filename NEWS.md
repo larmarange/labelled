@@ -12,6 +12,7 @@
   too small (#148)
 * fix in `recode.haven_labelled()` when `.x` contains `NA` and
   `.combine_value_labels = TRUE` (#151)
+* producing an error when trying to assign value labels to a Date vector (#156)
 
 # labelled 2.12.0
 
