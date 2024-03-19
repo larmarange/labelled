@@ -113,8 +113,8 @@ Therefore, value labels are not intended to be use for data analysis.
 For example, before performing modeling, you should convert vectors with
 value labels into factors or into classic numeric/character vectors.</p>
 <p>Therefore, two main approaches could be considered.</p>
-<div class="figure">
-<img src="approaches.png" style="width:100.0%" alt=""><p class="caption">Two main approaches</p>
+<div class="float">
+<img src="approaches.png" style="width:100.0%" alt="Two main approaches"><div class="figcaption">Two main approaches</div>
 </div>
 <p>In <strong>approach A</strong>, <code>haven_labelled</code> vectors
 are converted into factors or into numeric/character vectors just after
@@ -984,9 +984,9 @@ data.set into a labelled data frame.</p>
 <span><span class="co"># from memisc</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://memisc.elff.eu" class="external-link">memisc</a></span><span class="op">)</span></span>
 <span><span class="va">nes1948.por</span> <span class="op">&lt;-</span> <span class="fu">UnZip</span><span class="op">(</span><span class="st">"anes/NES1948.ZIP"</span>, <span class="st">"NES1948.POR"</span>, package <span class="op">=</span> <span class="st">"memisc"</span><span class="op">)</span></span>
-<span><span class="va">nes1948</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/memisc/man/importers.html" class="external-link">spss.portable.file</a></span><span class="op">(</span><span class="va">nes1948.por</span><span class="op">)</span></span>
+<span><span class="va">nes1948</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://melff.github.io/memisc/reference/importers.html" class="external-link">spss.portable.file</a></span><span class="op">(</span><span class="va">nes1948.por</span><span class="op">)</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_labelled.html">to_labelled</a></span><span class="op">(</span><span class="va">nes1948</span><span class="op">)</span></span>
-<span><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/memisc/man/dataSets.html" class="external-link">as.data.set</a></span><span class="op">(</span><span class="va">nes19480</span><span class="op">)</span></span>
+<span><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://melff.github.io/memisc/reference/dataSets.html" class="external-link">as.data.set</a></span><span class="op">(</span><span class="va">nes19480</span><span class="op">)</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_labelled.html">to_labelled</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
