@@ -70,8 +70,8 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
     null_action = c("unclass", "labelled"),
     value) {
   null_action <- match.arg(null_action)
-  if (null_action == "labelled") {
-    x <- labelled(x, value, label = val_label(x))
+  if (!is.null(value) || null_action == "labelled") {
+    x <- labelled(x, value, label = var_label(x))
   }
   # otherwise do nothing
   x

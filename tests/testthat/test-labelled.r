@@ -334,6 +334,10 @@ test_that(" 'val_label<-' works properly", {
   expect_error(val_label(df, 2:3) <- "a")
 
   sub_df <- df[, -match("ch", names(df))]
+
+  v <- as.Date("2023-01-01")
+  l <- as.Date(c("The first day of 2023" = "2023-01-01"))
+  expect_error(val_labels(v) <- l)
 })
 
 test_that(" 'val_label<-.data.frame' works properly", {
