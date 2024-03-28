@@ -36,4 +36,4 @@ test_that("update_value_labels_with() works as expected", {
   tmp <- df %>%
     update_value_labels_with(casefold, upper = TRUE)
   expect_equal(val_label(tmp$Species, 1), "SETOSA")
-  })
+})
