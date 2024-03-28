@@ -11,6 +11,7 @@ reference:
   - var_label
   - remove_var_label
   - copy_labels
+  - update_variable_labels_with
 - title: Manipulating value labels
   desc:  Functions to set, manipulate and remove value labels
   contents:
@@ -22,6 +23,7 @@ reference:
   - nolabel_to_na
   - drop_unused_value_labels
   - copy_labels
+  - update_variable_labels_with
 - title: Data dictionnary
   desc:  Functions to look for keywords variable names / labels and create a data dictionary
   contents:
