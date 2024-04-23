@@ -1,10 +1,10 @@
 pandoc: 3.1.11
-pkgdown: 2.0.7
+pkgdown: 2.0.9
 pkgdown_sha: ~
 articles:
   intro_labelled: intro_labelled.html
   look_for: look_for.html
   missing_values: missing_values.html
   packed_columns: packed_columns.html
-last_built: 2024-04-05T11:45Z
+last_built: 2024-04-23T17:05Z
 
