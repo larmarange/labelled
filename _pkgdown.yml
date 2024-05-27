@@ -1,3 +1,7 @@
+url: https://larmarange.github.io/labelled/
+template:
+  bootstrap: 5
+
 destination: docs
 
 development:
