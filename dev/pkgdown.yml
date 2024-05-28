@@ -6,5 +6,8 @@ articles:
   look_for: look_for.html
   missing_values: missing_values.html
   packed_columns: packed_columns.html
-last_built: 2024-04-23T17:05Z
+last_built: 2024-05-28T06:46Z
+urls:
+  reference: https://larmarange.github.io/labelled/reference
+  article: https://larmarange.github.io/labelled/articles
 
