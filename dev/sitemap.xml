@@ -1,105 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/articles/intro_labelled.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/articles/look_for.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/articles/missing_values.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/articles/packed_columns.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/index.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/reference/copy_labels.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/reference/drop_unused_value_labels.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/reference/is_prefixed.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/reference/look_for.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/reference/na_values.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/reference/names_prefixed_by_values.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/reference/nolabel_to_na.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/reference/recode.haven_labelled.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/reference/recode_if.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/reference/reexports.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/reference/remove_attributes.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/reference/remove_labels.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/reference/sort_val_labels.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/reference/tagged_na_to_user_na.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/reference/test_datasets.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/reference/to_character.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/reference/to_factor.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/reference/to_labelled.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/reference/unique_tagged_na.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/reference/update_labelled.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/reference/update_variable_labels_with.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/reference/val_labels.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/reference/val_labels_to_na.html</loc>
-  </url>
-  <url>
-    <loc>https://larmarange.github.io/labelled/dev/reference/var_label.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://larmarange.github.io/labelled/dev/LICENSE.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/articles/index.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/articles/intro_labelled.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/articles/look_for.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/articles/missing_values.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/articles/packed_columns.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/authors.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/index.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/news/index.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/reference/copy_labels.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/reference/drop_unused_value_labels.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/reference/index.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/reference/is_prefixed.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/reference/look_for.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/reference/na_values.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/reference/names_prefixed_by_values.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/reference/nolabel_to_na.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/reference/recode.haven_labelled.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/reference/recode_if.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/reference/reexports.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/reference/remove_attributes.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/reference/remove_labels.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/reference/sort_val_labels.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/reference/tagged_na_to_user_na.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/reference/test_datasets.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/reference/to_character.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/reference/to_factor.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/reference/to_labelled.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/reference/unique_tagged_na.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/reference/update_labelled.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/reference/update_variable_labels_with.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/reference/val_labels.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/reference/val_labels_to_na.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/reference/var_label.html</loc></url>
 </urlset>
+
