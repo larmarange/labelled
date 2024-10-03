@@ -4,6 +4,11 @@
 #' selected `.cols`.
 #' @param .cols Columns to update; defaults to all columns. Use tidy selection.
 #' @param ... additional arguments passed onto `.fn`.
+#' @details
+#' For `update_variable_labels_with()`, it is possible to access the name of
+#' the variable inside `.fn` by using `names()`, i.e. `.fn` receive a named
+#' character vector (see example). `.fn` can return `as.character(NA)` to
+#' remove a variable label.
 #' @examples
 #' df <- iris %>%
 #'   set_variable_labels(
@@ -18,6 +23,12 @@
 #' df %>%
 #'   update_variable_labels_with(toupper) %>%
 #'   look_for()
+#'
+#' # accessing variable names with names()
+#' df %>%
+#'   update_variable_labels_with(function(x){tolower(names(x))}) %>%
+#'   look_for()
+#'
 #' df %>%
 #'   update_variable_labels_with(toupper, .cols = dplyr::starts_with("S")) %>%
 #'   look_for()
@@ -40,9 +51,19 @@ update_variable_labels_with.data.frame <- function(.data,
     .data,
     allow_rename = FALSE
   )
-  vl <- var_label(.data)
+  vl <- var_label(.data, null_action = "na")
   vl <- vl[names(cols)]
+
+  vl <- mapply(
+    function(variable, label) {
+      setNames(label, variable)
+    },
+    names(vl),
+    vl,
+    SIMPLIFY = FALSE
+  )
   vl <- lapply(vl, .fn, ...)
+  vl <- lapply(vl, unname)
   var_label(.data) <- vl
   .data
 }

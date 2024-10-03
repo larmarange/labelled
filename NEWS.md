@@ -1,5 +1,11 @@
 # labelled (development version)
 
+**New features**
+
+* in `update_variable_labels_with()`, it is now possible to access the variable
+  name inside `.fn` by using `names()` (#163)
+* `var_label()` gets new options `"na"` and `"empty"` for `null_action`
+
 # labelled 2.13.0
 
 **New features**
