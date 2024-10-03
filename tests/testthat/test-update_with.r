@@ -20,6 +20,16 @@ test_that("update_variable_labels_with() works as expected", {
   expect_equal(var_label(tmp$Species), "SPECIES")
   expect_equal(var_label(tmp$Sepal.Length), "LENGTH OF SEPAL")
   expect_equal(var_label(tmp$Petal.Width), "Width of petal")
+
+  tmp <- df %>%
+    update_variable_labels_with(~ tolower(names(.x)))
+  expect_equal(var_label(tmp$Species), "species")
+  expect_equal(var_label(tmp$Sepal.Length), "sepal.length")
+
+  tmp <- iris %>%
+    update_variable_labels_with(~ tolower(names(.x)))
+  expect_equal(var_label(tmp$Species), "species")
+  expect_equal(var_label(tmp$Sepal.Length), "sepal.length")
 })
 
 test_that("update_value_labels_with() works as expected", {

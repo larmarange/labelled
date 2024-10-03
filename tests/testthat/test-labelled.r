@@ -1201,6 +1201,26 @@ test_that("null_action in var_label() works as expected", {
     )
   )
   expect_equal(
+    var_label(df, null_action = "na"),
+    list(
+      Sepal.Length = NA_character_,
+      Sepal.Width = NA_character_,
+      Petal.Length = "length of petal",
+      Petal.Width = "width of petal",
+      Species = NA_character_
+    )
+  )
+  expect_equal(
+    var_label(df, null_action = "empty"),
+    list(
+      Sepal.Length = "",
+      Sepal.Width = "",
+      Petal.Length = "length of petal",
+      Petal.Width = "width of petal",
+      Species = ""
+    )
+  )
+  expect_equal(
     var_label(df, null_action = "skip"),
     list(
       Petal.Length = "length of petal",

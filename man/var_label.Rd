@@ -17,7 +17,7 @@ var_label(x, ...)
 \method{var_label}{data.frame}(
   x,
   unlist = FALSE,
-  null_action = c("keep", "fill", "skip"),
+  null_action = c("keep", "fill", "skip", "na", "empty"),
   recurse = FALSE,
   ...
 )
@@ -45,7 +45,8 @@ label_attribute(x) <- value
 
 \item{null_action}{for data frames, by default \code{NULL} will be returned for
 columns with no variable label. Use \code{"fill"} to populate with the column name
-instead, or \code{"skip"} to remove such values from the returned list.}
+instead, \code{"skip"} to remove such values from the returned list, \code{"na"} to
+populate with \code{NA} or \code{"empty"} to populate with an empty string (\code{""}).}
 
 \item{recurse}{if \code{TRUE}, will apply \code{var_label()} on packed columns
 (see \code{\link[tidyr:pack]{tidyr::pack()}}) to return the variable labels of each sub-column;

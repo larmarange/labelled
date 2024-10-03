@@ -22,6 +22,12 @@ selected \code{.cols}.}
 \description{
 Update variable/value labels with a function
 }
+\details{
+For \code{update_variable_labels_with()}, it is possible to access the name of
+the variable inside \code{.fn} by using \code{names()}, i.e. \code{.fn} receive a named
+character vector (see example). \code{.fn} can return \code{as.character(NA)} to
+remove a variable label.
+}
 \examples{
 df <- iris \%>\%
   set_variable_labels(
@@ -36,6 +42,12 @@ df \%>\% look_for()
 df \%>\%
   update_variable_labels_with(toupper) \%>\%
   look_for()
+
+# accessing variable names with names()
+df \%>\%
+  update_variable_labels_with(function(x){tolower(names(x))}) \%>\%
+  look_for()
+
 df \%>\%
   update_variable_labels_with(toupper, .cols = dplyr::starts_with("S")) \%>\%
   look_for()
