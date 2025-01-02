@@ -1,6 +1,7 @@
 ## usethis namespace: start
 #' @importFrom lifecycle deprecate_soft
 #' @importFrom dplyr .data
+#' @import rlang
 ## usethis namespace: end
 NULL
 

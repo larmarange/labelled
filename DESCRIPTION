@@ -20,9 +20,10 @@ Depends:
     R (>= 3.0)
 Imports:
     haven (>= 2.4.1),
+    cli,
     dplyr (>= 1.0.0),
     lifecycle,
-    rlang,
+    rlang (>= 1.1.0),
     vctrs,
     stringr,
     tidyr,
@@ -43,5 +44,4 @@ VignetteBuilder: knitr
 LazyData: true
 RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)
-RdMacros: lifecycle
 Language: en-US
