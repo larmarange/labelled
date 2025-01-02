@@ -1,5 +1,3 @@
-context("Labelled")
-
 # var_label --------------------------------------------------------------
 
 test_that("var_label works properly", {
@@ -484,14 +482,15 @@ test_that("sort_val_labels works properly", {
   x <- c(2, tagged_na("z"), 1, tagged_na("a"))
   val_labels(x) <-
     c(no = 2, refused = tagged_na("z"), yes = 1, dk = tagged_na("a"))
-  expect_equivalent(
+  expect_equal(
     sort_val_labels(x, according_to = "v") %>%
       val_labels() %>%
       format_tagged_na() %>%
       trimws(),
-    c("1", "2", "NA(a)", "NA(z)")
+    c("1", "2", "NA(a)", "NA(z)"),
+    ignore_attr = "names"
   )
-  expect_equivalent(
+  expect_equal(
     sort_val_labels(x, according_to = "l") %>% val_labels() %>% names(),
     c("dk", "no", "refused", "yes")
   )
@@ -1160,12 +1159,13 @@ test_that("names_prefixed_by_values works properly", {
     c1 = c("[M] Male", "[F] Female"),
     c2 = c("[1] Yes", "[2] No")
   )
-  expect_equivalent(
+  expect_equal(
     names_prefixed_by_values(val_labels(df)),
-    res_names_prefixed
+    res_names_prefixed,
+    ignore_attr = "names"
   )
 
-  expect_true(is.null(names_prefixed_by_values(NULL)))
+  expect_null(names_prefixed_by_values(NULL))
 })
 
 test_that("null_action in var_label() works as expected", {

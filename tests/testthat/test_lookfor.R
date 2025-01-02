@@ -1,5 +1,3 @@
-context("Test look_for()")
-
 test_that("look_for works correctly", {
   df <- data.frame(
     1:3,

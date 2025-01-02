@@ -1,5 +1,3 @@
-context("Tests related to tagged NAs")
-
 test_that("unique_tagged_na(), duplicated_tagged_na, order_tagged_na and sort_tagged_na work as expected", { # nolint
   x <- c(1, 2, tagged_na("a"), 1, tagged_na("z"), 2, tagged_na("a"), NA)
 

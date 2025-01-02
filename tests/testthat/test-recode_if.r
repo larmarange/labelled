@@ -1,5 +1,3 @@
-context("Test recode_if()")
-
 test_that("recode_if() works as expected", {
   x <- labelled(c(1, 2, 2, 9), c(yes = 1, no = 2))
   y <- x %>% recode_if(x == 9, NA)

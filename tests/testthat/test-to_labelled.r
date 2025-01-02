@@ -1,6 +1,3 @@
-context("Test to_labelled()")
-
-
 test_that("to_labelled.factor preserves variable label", {
   x <- factor(c(1, 1, 2))
   var_label(x) <- "test"
@@ -73,9 +70,10 @@ test_that("to_labelled.factor works with '[code] label' factors", {
   )
   f <- to_factor(l, levels = "p")
   x <- f %>% to_labelled(labels = c("[1] yes" = 123, "[2] no" = 456))
-  expect_equivalent(
+  expect_equal(
     unclass(x),
-    c(123, 123, 456, 456, NA, 456, 123, NA)
+    c(123, 123, 456, 456, NA, 456, 123, NA),
+    ignore_attr = "labels"
   )
 
   # should not be applied if duplicates in code

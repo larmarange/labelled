@@ -1,5 +1,3 @@
-context("Test copy_labels()")
-
 test_that("copy_labels() copy variable / value labels and missing values", {
   x <- labelled(
     c(1, 1, 2),
