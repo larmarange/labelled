@@ -56,7 +56,7 @@ update_variable_labels_with.data.frame <- function(.data,
 
   vl <- mapply(
     function(variable, label) {
-      setNames(label, variable)
+      stats::setNames(label, variable)
     },
     names(vl),
     vl,

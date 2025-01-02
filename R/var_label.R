@@ -229,7 +229,7 @@ get_variable_labels <- var_label
 #'       "something"
 #'     )
 #'   )
-#'   var_labels <- setNames(as.list(description$label), description$name)
+#'   var_labels <- stats::setNames(as.list(description$label), description$name)
 #'   iris_labelled <- iris %>%
 #'     set_variable_labels(.labels = var_labels, .strict = FALSE)
 #'   var_label(iris_labelled)
