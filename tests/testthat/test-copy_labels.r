@@ -1,5 +1,3 @@
-context("Test copy_labels()")
-
 test_that("copy_labels() copy variable / value labels and missing values", {
   x <- labelled(
     c(1, 1, 2),
@@ -111,9 +109,8 @@ test_that("copy_labels checks", {
     labels = c(Male = 1, Female = 2),
     label = "Assigned sex at birth"
   )
-  expect_error(
-    copy_labels(x, c("1", "2"), .strict = FALSE),
-    NA
+  expect_no_error(
+    copy_labels(x, c("1", "2"), .strict = FALSE)
   )
   x <- labelled_spss(
     1:10,
@@ -122,8 +119,7 @@ test_that("copy_labels checks", {
     na_range = c(11, 19),
     label = "variable label"
   )
-  expect_error(
-    copy_labels(x, c("1", "2"), .strict = FALSE),
-    NA
+  expect_no_error(
+    copy_labels(x, c("1", "2"), .strict = FALSE)
   )
 })

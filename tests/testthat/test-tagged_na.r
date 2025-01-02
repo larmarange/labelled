@@ -1,5 +1,3 @@
-context("Tests related to tagged NAs")
-
 test_that("unique_tagged_na(), duplicated_tagged_na, order_tagged_na and sort_tagged_na work as expected", { # nolint
   x <- c(1, 2, tagged_na("a"), 1, tagged_na("z"), 2, tagged_na("a"), NA)
 
@@ -83,8 +81,7 @@ test_that("tagged_na_to_regular_na() works as expected", {
 
   test <- rep(c(-99, -99, 3, 5, -1), 120)
   labelled::na_values(test) <- c(-99, -1)
-  expect_warning(
-    user_na_to_tagged_na(test),
-    NA
+  expect_no_warning(
+    user_na_to_tagged_na(test)
   )
 })

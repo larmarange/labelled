@@ -1,5 +1,3 @@
-context("na_values")
-
 # na_values --------------------------------------------------------------------
 
 test_that("na_values works with data.frame", {

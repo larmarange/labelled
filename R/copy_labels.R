@@ -84,9 +84,7 @@ copy_labels.haven_labelled <- function(from, to, .strict = TRUE) {
 
 #' @export
 copy_labels.data.frame <- function(from, to, .strict = TRUE) {
-  if (!is.data.frame(to)) {
-    stop("`to` should be a data frame", call. = FALSE, domain = "R-labelled")
-  }
+  check_data_frame(to)
   for (var in names(to)) {
     if (var %in% names(from)) {
       to[[var]] <- copy_labels(from[[var]], to[[var]], .strict = .strict)

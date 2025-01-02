@@ -1,5 +1,3 @@
-context("miscellanous")
-
 # is_prefixed -------------------------------------------------------------
 
 test_that("error with non factor argument", {

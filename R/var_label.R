@@ -178,11 +178,11 @@ var_label.data.frame <- function(x,
   }
 
   if (!all(names(value) %in% names(x))) {
-    missing_names <- stringr::str_c(
-      setdiff(names(value), names(x)),
-      collapse = ", "
-    )
-    stop("some variables not found in x:", missing_names)
+    missing_names <- setdiff(names(value), names(x))
+
+    cli::cli_abort(c(
+      "Can't find variables {.var {missing_names}}  in {.arg x}."
+    ))
   }
 
   value <- value[names(value) %in% names(x)]
@@ -263,17 +263,20 @@ set_variable_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
   if (!identical(.labels, NA)) {
     if (!.strict) {
       .labels <- .labels[intersect(names(.labels), names(.data))]
+    } else {
+      check_character(.labels)
+
     }
     var_label(.data) <- .labels
   }
   values <- rlang::dots_list(...)
   if (length(values) > 0) {
     if (.strict && !all(names(values) %in% names(.data))) {
-      missing_names <- stringr::str_c(
-        setdiff(names(values), names(.data)),
-        collapse = ", "
-      )
-      stop("some variables not found in .data: ", missing_names)
+      missing_names <- setdiff(names(values), names(.data))
+
+      cli::cli_abort(c(
+        "Can't find variables {.var {missing_names}}  in {.arg .data}."
+      ))
     }
 
     for (v in intersect(names(values), names(.data))) {
@@ -299,13 +302,7 @@ get_label_attribute <- function(x) {
 #' @rdname var_label
 #' @export
 set_label_attribute <- function(x, value) {
-  if ((!is.character(value) && !is.null(value)) || length(value) > 1) {
-    stop(
-      "`value` should be a single character string or NULL",
-      call. = FALSE,
-      domain = "R-labelled"
-    )
-  }
+  check_string(value, allow_null = TRUE)
   attr(x, "label") <- value
   x
 }

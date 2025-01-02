@@ -147,11 +147,10 @@ na_values.data.frame <- function(x) {
   }
 
   if (!all(names(value) %in% names(x))) {
-    missing_names <- stringr::str_c(
-      setdiff(names(value), names(x)),
-      collapse = ", "
-    )
-    stop("some variables not found in x:", missing_names)
+    missing_names <- setdiff(names(value), names(x))
+    cli::cli_abort(c(
+      "Can't find variables {.var {missing_names}} in {.arg x}."
+    ))
   }
 
   for (var in names(value)) {
@@ -255,11 +254,11 @@ na_range.data.frame <- function(x) {
   }
 
   if (!all(names(value) %in% names(x))) {
-    missing_names <- stringr::str_c(
-      setdiff(names(value), names(x)),
-      collapse = ", "
-    )
-    stop("some variables not found in x:", missing_names)
+    missing_names <- setdiff(names(value), names(x))
+
+    cli::cli_abort(c(
+      "Can't find variables {.var {missing_names}} in {.arg x}."
+    ))
   }
 
   for (var in names(value)) {
@@ -351,11 +350,10 @@ set_na_values <- function(.data, ..., .values = NA, .strict = TRUE) {
   }
   values <- rlang::dots_list(...)
   if (.strict && !all(names(values) %in% names(.data))) {
-    missing_names <- stringr::str_c(
-      setdiff(names(values), names(.data)),
-      collapse = ", "
-    )
-    stop("some variables not found in .data: ", missing_names)
+    missing_names <- setdiff(names(values), names(.data))
+    cli::cli_abort(c(
+      "Can't find variables {.var {missing_names}} in {.arg .data}."
+    ))
   }
 
   for (v in intersect(names(values), names(.data))) {

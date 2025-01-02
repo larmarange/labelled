@@ -97,11 +97,7 @@ foreign_to_labelled <- function(x) {
   # if imported with read.spss(to.data.frame=FALSE) it's a
   # list, not a df
   if (!is.data.frame(x)) {
-    if (requireNamespace("dplyr")) {
-      x <- dplyr::as_tibble(x)
-    } else {
-      x <- as.data.frame(x, stringsAsFactors = FALSE)
-    }
+    x <- dplyr::as_tibble(x)
   }
 
   # variable labels (read.spss)
@@ -173,11 +169,7 @@ memisc_to_labelled <- function(x) {
     return(x)
   }
 
-  if (!requireNamespace("memisc")) {
-    stop("memisc package is required to convert a data.set",
-      call. = FALSE, domain = "R-labelled"
-    )
-  }
+  rlang::check_installed("memisc", "to convert a data.set.")
 
   df <- as.data.frame(x)
   for (var in names(x)) {

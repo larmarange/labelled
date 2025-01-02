@@ -1,6 +1,3 @@
-context("Test to_labelled()")
-
-
 test_that("to_labelled.factor preserves variable label", {
   x <- factor(c(1, 1, 2))
   var_label(x) <- "test"
@@ -73,15 +70,16 @@ test_that("to_labelled.factor works with '[code] label' factors", {
   )
   f <- to_factor(l, levels = "p")
   x <- f %>% to_labelled(labels = c("[1] yes" = 123, "[2] no" = 456))
-  expect_equivalent(
+  expect_equal(
     unclass(x),
-    c(123, 123, 456, 456, NA, 456, 123, NA)
+    c(123, 123, 456, 456, NA, 456, 123, NA),
+    ignore_attr = "labels"
   )
 
   # should not be applied if duplicates in code
   f <- factor(c("[1] yes", "[2] no", "[1] don't know"))
   expect_warning(l <- to_labelled(f))
-  expect_warning(l <- to_labelled(f, .quiet = TRUE), NA)
+  expect_no_warning(l <- to_labelled(f, .quiet = TRUE))
   expect_identical(
     names(val_labels(l)),
     levels(f)
@@ -90,7 +88,7 @@ test_that("to_labelled.factor works with '[code] label' factors", {
   # check potential duplicates in numerical codes
   f <- factor(c("[1] yes", "[1.0] no", "[01] don't know"))
   expect_warning(to_labelled(f))
-  expect_warning(to_labelled(f, .quiet = TRUE), NA)
+  expect_no_warning(to_labelled(f, .quiet = TRUE))
   expect_true(is.character(to_labelled(f, .quiet = TRUE)))
 })
 
@@ -116,9 +114,8 @@ test_that("foreign_to_labelled works correctly", {
     function(x) {
       if (x$type == "none") {
         return(NULL)
-      } else {
-        return(x$value)
       }
+      x$value
     }
   )
   expect_equal(sapply(tl_spss_list, na_values), miss_list)
@@ -199,7 +196,7 @@ test_that("memisc_to_labelled works correctly", {
       }
       vals <- vlabs@values
       names(vals) <- vlabs@.Data
-      return(vals)
+      vals
     })
     expect_identical(val_labels(tl_ds), val_labels_ds)
   }
