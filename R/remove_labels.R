@@ -152,7 +152,8 @@ remove_user_na.haven_labelled_spss <- function(x,
 
     if (length(val_to_tag) > 26) {
       cli::cli_warn(c(
-        "{length(val_to_tag)} different user-defined missing values found in 'x'.",
+        "{length(val_to_tag)} different user-defined missing
+         values found in 'x'.",
         i = "A maximum of 26 could be tagged.",
         "!" = "'user_na_to_tagged_na' has been ignored.",
         i = "'user_na_to_na = TRUE' has been used instead."

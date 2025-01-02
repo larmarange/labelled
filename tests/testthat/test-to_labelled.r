@@ -114,9 +114,8 @@ test_that("foreign_to_labelled works correctly", {
     function(x) {
       if (x$type == "none") {
         return(NULL)
-      } else {
-        return(x$value)
       }
+      x$value
     }
   )
   expect_equal(sapply(tl_spss_list, na_values), miss_list)
@@ -197,7 +196,7 @@ test_that("memisc_to_labelled works correctly", {
       }
       vals <- vlabs@values
       names(vals) <- vlabs@.Data
-      return(vals)
+      vals
     })
     expect_identical(val_labels(tl_ds), val_labels_ds)
   }
