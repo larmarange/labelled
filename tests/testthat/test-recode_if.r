@@ -36,13 +36,11 @@ test_that("recode_if() preserve value and variable labels", {
 })
 
 test_that("recode_if() checks", {
-  expect_error(
-    1:3 %>% recode_if(c(TRUE, FALSE, NA), 9L),
-    NA
+  expect_no_error(
+    1:3 %>% recode_if(c(TRUE, FALSE, NA), 9L)
   )
-  expect_error(
-    1:3 %>% recode_if(c(TRUE, FALSE, NA), 11:13),
-    NA
+  expect_no_error(
+    1:3 %>% recode_if(c(TRUE, FALSE, NA), 11:13)
   )
 
   expect_error(

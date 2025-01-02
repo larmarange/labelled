@@ -83,8 +83,7 @@ test_that("tagged_na_to_regular_na() works as expected", {
 
   test <- rep(c(-99, -99, 3, 5, -1), 120)
   labelled::na_values(test) <- c(-99, -1)
-  expect_warning(
-    user_na_to_tagged_na(test),
-    NA
+  expect_no_warning(
+    user_na_to_tagged_na(test)
   )
 })

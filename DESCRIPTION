@@ -29,7 +29,7 @@ Imports:
     tidyr,
     tidyselect
 Suggests:
-    testthat,
+    testthat (>= 3.2.0),
     knitr,
     rmarkdown,
     questionr,

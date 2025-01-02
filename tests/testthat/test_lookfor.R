@@ -38,9 +38,8 @@ test_that("look_for works with a single keyword.", {
 
   expect_equal(lfi$variable, names(iris)[lfi$pos])
 
-  expect_error(
-    look_for(iris, "petal") %>% dplyr::select(pos) %>% print(),
-    NA
+  expect_no_error(
+    look_for(iris, "petal") %>% dplyr::select(pos) %>% print()
   )
 })
 

@@ -51,15 +51,13 @@ test_that("var_label produce appropriate errors", {
       set_variable_labels(x = "ghj", z = "ggg")
   )
   # no error if .strict = FALSE
-  expect_error(
+  expect_no_error(
     df %>%
-      set_variable_labels(.labels = list(x = "xx", z = "zz"), .strict = FALSE),
-    NA
+      set_variable_labels(.labels = list(x = "xx", z = "zz"), .strict = FALSE)
   )
-  expect_error(
+  expect_no_error(
     df %>%
-      set_variable_labels(x = "ghj", z = "ggg", .strict = FALSE),
-    NA
+      set_variable_labels(x = "ghj", z = "ggg", .strict = FALSE)
   )
 })
 
@@ -86,8 +84,8 @@ test_that("x must be numeric or character", {
 
 test_that("x and labels must be compatible", {
   expect_error(labelled(1, "a"))
-  expect_error(labelled(1, c(female = 2L, male = 1L)), NA)
-  expect_error(labelled(1L, c(female = 2, male = 1)), NA)
+  expect_no_error(labelled(1, c(female = 2L, male = 1L)))
+  expect_no_error(labelled(1L, c(female = 2, male = 1)))
 })
 
 test_that("labels must have names", {
@@ -244,7 +242,7 @@ test_that(" 'val_labels <-'  works for dataframe", {
     num = c(two = 2)
   )
   vldf <- df
-  expect_error(val_labels(vldf) <- valeurs, NA)
+  expect_no_error(val_labels(vldf) <- valeurs)
 
   expect_null(val_labels(vldf)$fac)
   expect_equal(df$fac, vldf$fac)
@@ -410,7 +408,7 @@ test_that("remove_labels works with labelled_spss", {
   xhs <- haven::labelled_spss(
     c(1, 2, 3, NA, 99),
     c(t1 = 1, t2 = 2, Missing = 99),
-    na_value = 99,
+    na_values = 99,
     na_range = c(99, Inf),
     label = "A test variable"
   )
@@ -754,16 +752,15 @@ test_that("set_value_labels errors", {
       )
   )
   # no error if .strict = FALSE
-  expect_error(
+  expect_no_error(
     df %>%
       set_value_labels(
         s1 = c(Male = "M", Female = "F"),
         s3 = c(Yes = 1, No = 2),
         .strict = FALSE
-      ),
-    NA
+      )
   )
-  expect_error(
+  expect_no_error(
     df %>%
       set_value_labels(
         .labels = list(
@@ -771,8 +768,7 @@ test_that("set_value_labels errors", {
           s3 = c(Yes = 1, No = 2)
         ),
         .strict = FALSE
-      ),
-    NA
+      )
   )
 })
 
@@ -799,16 +795,15 @@ test_that("add_value_labels errors", {
       )
   )
   # no error if .strict = FALSE
-  expect_error(
+  expect_no_error(
     df %>%
       add_value_labels(
         s1 = c(Male = "M", Female = "F"),
         s3 = c(Yes = 1, No = 2),
         .strict = FALSE
-      ),
-    NA
+      )
   )
-  expect_error(
+  expect_no_error(
     df %>%
       add_value_labels(
         .labels = list(
@@ -816,8 +811,7 @@ test_that("add_value_labels errors", {
           s3 = c(Yes = 1, No = 2)
         ),
         .strict = FALSE
-      ),
-    NA
+      )
   )
 
   expect_error(add_value_labels(df, s1 = c("F", Male = "M")))
