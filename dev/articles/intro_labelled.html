@@ -8,8 +8,10 @@
 <title>Introduction to labelled • labelled</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Source_Sans_Pro-0.4.9/font.css" rel="stylesheet">
+<link href="../deps/Source_Code_Pro-0.4.9/font.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to labelled">
 <meta name="robots" content="noindex">
 </head>
@@ -107,21 +109,23 @@ functions.</p>
 <p>A variable label could be specified for any vector using
 <code><a href="../reference/var_label.html">var_label()</a></code>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://larmarange.github.io/labelled/">labelled</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="../reference/var_label.html">var_label</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Sepal.Length</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Length of sepal"</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://larmarange.github.io/labelled/">labelled</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Error in get(paste0(generic, ".", class), envir = get_method_env()) : </span></span>
+<span><span class="co">##   object 'type_sum.accel' not found</span></span></code></pre>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/var_label.html">var_label</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Sepal.Length</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Length of sepal"</span></span></code></pre></div>
 <p>It’s possible to add a variable label to several columns of a data
 frame using a named list.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/var_label.html">var_label</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  Petal.Length <span class="op">=</span> <span class="st">"Length of petal"</span>,</span>
 <span>  Petal.Width <span class="op">=</span> <span class="st">"Width of Petal"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>To get the variable label, simply call <code><a href="../reference/var_label.html">var_label()</a></code>.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/var_label.html">var_label</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Petal.Width</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "Width of Petal"</span></span></code></pre>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/var_label.html">var_label</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## $Sepal.Length</span></span>
 <span><span class="co">## [1] "Length of sepal"</span></span>
@@ -138,15 +142,15 @@ frame using a named list.</p>
 <span><span class="co">## $Species</span></span>
 <span><span class="co">## NULL</span></span></code></pre>
 <p>To remove a variable label, use <code>NULL</code>.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/var_label.html">var_label</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Sepal.Length</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 <p>In <strong>RStudio</strong>, variable labels will be displayed in
 data viewer.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/View.html" class="external-link">View</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></code></pre></div>
 <p>You can display and search through variable names and labels with
 <code><a href="../reference/look_for.html">look_for()</a></code>:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  pos variable     label           col_type missing values    </span></span>
 <span><span class="co">##  1   Sepal.Length —               dbl      0                 </span></span>
@@ -156,12 +160,12 @@ data viewer.</p>
 <span><span class="co">##  5   Species      —               fct      0       setosa    </span></span>
 <span><span class="co">##                                                    versicolor</span></span>
 <span><span class="co">##                                                    virginica</span></span></code></pre>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, <span class="st">"pet"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  pos variable     label           col_type missing values</span></span>
 <span><span class="co">##  3   Petal.Length Length of petal dbl      0             </span></span>
 <span><span class="co">##  4   Petal.Width  Width of Petal  dbl      0</span></span></code></pre>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="va">iris</span>, details <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  pos variable     label          </span></span>
 <span><span class="co">##  1   Sepal.Length —              </span></span>
@@ -177,7 +181,7 @@ data viewer.</p>
 <code><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">labelled()</a></code> function. It’s not mandatory to provide a label
 for each value observed in your vector. You can also provide a label for
 values not observed.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">labelled</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">9</span>, <span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">2</span>, <span class="cn">NA</span><span class="op">)</span>,</span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>yes <span class="op">=</span> <span class="fl">1</span>, no <span class="op">=</span> <span class="fl">3</span>, <span class="st">"don't know"</span> <span class="op">=</span> <span class="fl">8</span>, refused <span class="op">=</span> <span class="fl">9</span><span class="op">)</span></span>
@@ -195,17 +199,17 @@ values not observed.</p>
 <p>Use <code><a href="../reference/val_labels.html">val_labels()</a></code> to get all value labels and
 <code><a href="../reference/val_labels.html">val_label()</a></code> to get the value label associated with a
 specific value.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/val_labels.html">val_labels</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##        yes         no don't know    refused </span></span>
 <span><span class="co">##          1          3          8          9</span></span></code></pre>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/val_labels.html">val_label</a></span><span class="op">(</span><span class="va">v</span>, <span class="fl">8</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "don't know"</span></span></code></pre>
 <p><code><a href="../reference/val_labels.html">val_labels()</a></code> could also be used to modify all the value
 labels attached to a vector, while <code><a href="../reference/val_labels.html">val_label()</a></code> will update
 only one specific value label.</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/val_labels.html">val_labels</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>yes <span class="op">=</span> <span class="fl">1</span>, nno <span class="op">=</span> <span class="fl">3</span>, bug <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="va">v</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled&lt;double&gt;[10]&gt;</span></span>
@@ -216,7 +220,7 @@ only one specific value label.</p>
 <span><span class="co">##      1   yes</span></span>
 <span><span class="co">##      3   nno</span></span>
 <span><span class="co">##      5   bug</span></span></code></pre>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/val_labels.html">val_label</a></span><span class="op">(</span><span class="va">v</span>, <span class="fl">3</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"no"</span></span>
 <span><span class="va">v</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled&lt;double&gt;[10]&gt;</span></span>
@@ -229,7 +233,7 @@ only one specific value label.</p>
 <span><span class="co">##      5   bug</span></span></code></pre>
 <p>With <code><a href="../reference/val_labels.html">val_label()</a></code>, you can also add or remove specific
 value labels.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/val_labels.html">val_label</a></span><span class="op">(</span><span class="va">v</span>, <span class="fl">2</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"maybe"</span></span>
 <span><span class="fu"><a href="../reference/val_labels.html">val_label</a></span><span class="op">(</span><span class="va">v</span>, <span class="fl">5</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
 <span><span class="va">v</span></span></code></pre></div>
@@ -244,13 +248,13 @@ value labels.</p>
 <p>To remove all value labels, use <code><a href="../reference/val_labels.html">val_labels()</a></code> and
 <code>NULL</code>. The <code>haven_labelled</code> class will also be
 removed.</p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/val_labels.html">val_labels</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
 <span><span class="va">v</span></span></code></pre></div>
 <pre><code><span><span class="co">##  [1]  1  2  2  2  3  9  1  3  2 NA</span></span></code></pre>
 <p>Adding a value label to a non labelled vector will apply
 <code>haven_labelled</code> class to it.</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/val_labels.html">val_label</a></span><span class="op">(</span><span class="va">v</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"yes"</span></span>
 <span><span class="va">v</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled&lt;double&gt;[10]&gt;</span></span>
@@ -261,17 +265,17 @@ removed.</p>
 <span><span class="co">##      1   yes</span></span></code></pre>
 <p>Note that applying <code><a href="../reference/val_labels.html">val_labels()</a></code> to a factor will
 generate an error!</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="va">f</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1 2 3</span></span>
 <span><span class="co">## Levels: 1 2 3</span></span></code></pre>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/val_labels.html">val_labels</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>yes <span class="op">=</span> <span class="fl">1</span>, no <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Error in `val_labels&lt;-.factor`(`*tmp*`, value = c(yes = 1, no = 3)): Value labels cannot be applied to factors.</span></span></code></pre>
 <p>You could also apply <code><a href="../reference/val_labels.html">val_labels()</a></code> to several columns of
 a data frame.</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>v1 <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, v2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">1</span><span class="op">)</span>, v3 <span class="op">=</span> <span class="fl">3</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/val_labels.html">val_label</a></span><span class="op">(</span><span class="va">df</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"yes"</span></span>
@@ -289,7 +293,7 @@ a data frame.</p>
 <span><span class="co">## $v3</span></span>
 <span><span class="co">##   yes maybe    no </span></span>
 <span><span class="co">##     1     2     3</span></span></code></pre>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/val_labels.html">val_labels</a></span><span class="op">(</span><span class="va">df</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"v1"</span>, <span class="st">"v3"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>YES <span class="op">=</span> <span class="fl">1</span>, MAYBE <span class="op">=</span> <span class="fl">2</span>, NO <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/val_labels.html">val_labels</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## $v1</span></span>
@@ -303,7 +307,7 @@ a data frame.</p>
 <span><span class="co">## $v3</span></span>
 <span><span class="co">##   YES MAYBE    NO </span></span>
 <span><span class="co">##     1     2     3</span></span></code></pre>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/val_labels.html">val_labels</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
 <span><span class="fu"><a href="../reference/val_labels.html">val_labels</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## $v1</span></span>
@@ -314,7 +318,7 @@ a data frame.</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## $v3</span></span>
 <span><span class="co">## NULL</span></span></code></pre>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/val_labels.html">val_labels</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>v1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>yes <span class="op">=</span> <span class="fl">1</span>, no <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>, v2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span>, b <span class="op">=</span> <span class="fl">2</span>, c <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/val_labels.html">val_labels</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## $v1</span></span>
@@ -333,7 +337,7 @@ a data frame.</p>
 </h2>
 <p>Value labels are sorted by default in the order they have been
 created.</p>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">9</span>, <span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">2</span>, <span class="cn">NA</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/val_labels.html">val_label</a></span><span class="op">(</span><span class="va">v</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"yes"</span></span>
 <span><span class="fu"><a href="../reference/val_labels.html">val_label</a></span><span class="op">(</span><span class="va">v</span>, <span class="fl">3</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"no"</span></span>
@@ -353,7 +357,7 @@ created.</p>
 <span><span class="co">##      8 don't know</span></span></code></pre>
 <p>It could be useful to reorder the value labels according to their
 attached values, with <code><a href="../reference/sort_val_labels.html">sort_val_labels()</a></code>.</p>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sort_val_labels.html">sort_val_labels</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled&lt;double&gt;[10]&gt;</span></span>
 <span><span class="co">##  [1]  1  2  2  2  3  9  1  3  2 NA</span></span>
@@ -365,7 +369,7 @@ attached values, with <code><a href="../reference/sort_val_labels.html">sort_val
 <span><span class="co">##      3         no</span></span>
 <span><span class="co">##      8 don't know</span></span>
 <span><span class="co">##      9    refused</span></span></code></pre>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sort_val_labels.html">sort_val_labels</a></span><span class="op">(</span><span class="va">v</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled&lt;double&gt;[10]&gt;</span></span>
 <span><span class="co">##  [1]  1  2  2  2  3  9  1  3  2 NA</span></span>
@@ -378,7 +382,7 @@ attached values, with <code><a href="../reference/sort_val_labels.html">sort_val
 <span><span class="co">##      2      maybe</span></span>
 <span><span class="co">##      1        yes</span></span></code></pre>
 <p>If you prefer, you can also sort them according to the labels.</p>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sort_val_labels.html">sort_val_labels</a></span><span class="op">(</span><span class="va">v</span>, according_to <span class="op">=</span> <span class="st">"l"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled&lt;double&gt;[10]&gt;</span></span>
 <span><span class="co">##  [1]  1  2  2  2  3  9  1  3  2 NA</span></span>
@@ -407,7 +411,7 @@ internal <code>NA</code> values.</p>
 <code><a href="../reference/na_values.html">na_values()</a></code> and <code><a href="../reference/na_values.html">na_range()</a></code>. Note that
 <code><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na()</a></code> will return <code>TRUE</code> as well for
 user-defined missing values.</p>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">labelled</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">9</span>, <span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">2</span>, <span class="cn">NA</span><span class="op">)</span>,</span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>yes <span class="op">=</span> <span class="fl">1</span>, no <span class="op">=</span> <span class="fl">3</span>, <span class="st">"don't know"</span> <span class="op">=</span> <span class="fl">9</span><span class="op">)</span></span>
@@ -421,11 +425,11 @@ user-defined missing values.</p>
 <span><span class="co">##      1        yes</span></span>
 <span><span class="co">##      3         no</span></span>
 <span><span class="co">##      9 don't know</span></span></code></pre>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/na_values.html">na_values</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fl">9</span></span>
 <span><span class="fu"><a href="../reference/na_values.html">na_values</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 9</span></span></code></pre>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">v</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled_spss&lt;double&gt;[10]&gt;</span></span>
 <span><span class="co">##  [1]  1  2  2  2  3  9  1  3  2 NA</span></span>
@@ -436,10 +440,10 @@ user-defined missing values.</p>
 <span><span class="co">##      1        yes</span></span>
 <span><span class="co">##      3         no</span></span>
 <span><span class="co">##      9 don't know</span></span></code></pre>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  [1] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE</span></span></code></pre>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/na_values.html">na_values</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
 <span><span class="va">v</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled&lt;double&gt;[10]&gt;</span></span>
@@ -450,11 +454,11 @@ user-defined missing values.</p>
 <span><span class="co">##      1        yes</span></span>
 <span><span class="co">##      3         no</span></span>
 <span><span class="co">##      9 don't know</span></span></code></pre>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/na_values.html">na_range</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="cn">Inf</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/na_values.html">na_range</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1]   5 Inf</span></span></code></pre>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">v</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled_spss&lt;double&gt;[10]&gt;</span></span>
 <span><span class="co">##  [1]  1  2  2  2  3  9  1  3  2 NA</span></span>
@@ -467,7 +471,7 @@ user-defined missing values.</p>
 <span><span class="co">##      9 don't know</span></span></code></pre>
 <p>Since version 2.1.0, it is not mandatory to define at least one value
 label before defining missing values.</p>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">9</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/na_values.html">na_values</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fl">9</span></span>
 <span><span class="va">x</span></span></code></pre></div>
@@ -476,7 +480,7 @@ label before defining missing values.</p>
 <span><span class="co">## Missing values: 9</span></span></code></pre>
 <p>To convert user defined missing values into <code>NA</code>, simply
 use <code><a href="../reference/na_values.html">user_na_to_na()</a></code>.</p>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled_spss.html" class="external-link">labelled_spss</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>Good <span class="op">=</span> <span class="fl">1</span>, Bad <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>, na_values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">9</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">v</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled_spss&lt;integer&gt;[10]&gt;</span></span>
@@ -487,7 +491,7 @@ use <code><a href="../reference/na_values.html">user_na_to_na()</a></code>.</p>
 <span><span class="co">##  value label</span></span>
 <span><span class="co">##      1  Good</span></span>
 <span><span class="co">##      8   Bad</span></span></code></pre>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">v2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/na_values.html">user_na_to_na</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span>
 <span><span class="va">v2</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled&lt;integer&gt;[10]&gt;</span></span>
@@ -499,7 +503,7 @@ use <code><a href="../reference/na_values.html">user_na_to_na()</a></code>.</p>
 <span><span class="co">##      8   Bad</span></span></code></pre>
 <p>You can also remove user missing values definition without converting
 these values to <code>NA</code>.</p>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled_spss.html" class="external-link">labelled_spss</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>Good <span class="op">=</span> <span class="fl">1</span>, Bad <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>, na_values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">9</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">v</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled_spss&lt;integer&gt;[10]&gt;</span></span>
@@ -510,7 +514,7 @@ these values to <code>NA</code>.</p>
 <span><span class="co">##  value label</span></span>
 <span><span class="co">##      1  Good</span></span>
 <span><span class="co">##      8   Bad</span></span></code></pre>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">v2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/remove_labels.html">remove_user_na</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span>
 <span><span class="va">v2</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled&lt;integer&gt;[10]&gt;</span></span>
@@ -521,7 +525,7 @@ these values to <code>NA</code>.</p>
 <span><span class="co">##      1  Good</span></span>
 <span><span class="co">##      8   Bad</span></span></code></pre>
 <p>or</p>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled_spss.html" class="external-link">labelled_spss</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>Good <span class="op">=</span> <span class="fl">1</span>, Bad <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>, na_values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">9</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">v</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled_spss&lt;integer&gt;[10]&gt;</span></span>
@@ -532,7 +536,7 @@ these values to <code>NA</code>.</p>
 <span><span class="co">##  value label</span></span>
 <span><span class="co">##      1  Good</span></span>
 <span><span class="co">##      8   Bad</span></span></code></pre>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/na_values.html">na_values</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
 <span><span class="va">v</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled&lt;integer&gt;[10]&gt;</span></span>
@@ -549,7 +553,7 @@ these values to <code>NA</code>.</p>
 <p>In some cases, values who don’t have an attached value label could be
 considered as missing. <code><a href="../reference/nolabel_to_na.html">nolabel_to_na()</a></code> will convert them to
 <code>NA</code>.</p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">labelled</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">9</span>, <span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">2</span>, <span class="cn">NA</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>yes <span class="op">=</span> <span class="fl">1</span>, maybe <span class="op">=</span> <span class="fl">2</span>, no <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">v</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled&lt;double&gt;[10]&gt;</span></span>
@@ -560,7 +564,7 @@ considered as missing. <code><a href="../reference/nolabel_to_na.html">nolabel_t
 <span><span class="co">##      1   yes</span></span>
 <span><span class="co">##      2 maybe</span></span>
 <span><span class="co">##      3    no</span></span></code></pre>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/nolabel_to_na.html">nolabel_to_na</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled&lt;double&gt;[10]&gt;</span></span>
 <span><span class="co">##  [1]  1  2  2  2  3 NA  1  3  2 NA</span></span>
@@ -572,7 +576,7 @@ considered as missing. <code><a href="../reference/nolabel_to_na.html">nolabel_t
 <span><span class="co">##      3    no</span></span></code></pre>
 <p>In other cases, a value label is attached only to specific values
 that corresponds to a missing value. For example:</p>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">size</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">labelled</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.88</span>, <span class="fl">1.62</span>, <span class="fl">1.78</span>, <span class="fl">99</span>, <span class="fl">1.91</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"not measured"</span> <span class="op">=</span> <span class="fl">99</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">size</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled&lt;double&gt;[5]&gt;</span></span>
@@ -583,7 +587,7 @@ that corresponds to a missing value. For example:</p>
 <span><span class="co">##     99 not measured</span></span></code></pre>
 <p>In such cases, <code><a href="../reference/val_labels_to_na.html">val_labels_to_na()</a></code> could be
 appropriate.</p>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/val_labels_to_na.html">val_labels_to_na</a></span><span class="op">(</span><span class="va">size</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1.88 1.62 1.78   NA 1.91</span></span></code></pre>
 <p>These two functions could also be applied to an overall data frame.
@@ -594,7 +598,7 @@ Only labelled vectors will be impacted.</p>
 </h2>
 <p>A labelled vector could easily be converted to a factor with
 <code><a href="../reference/to_factor.html">to_factor()</a></code>.</p>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">labelled</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">9</span>, <span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">2</span>, <span class="cn">NA</span><span class="op">)</span>,</span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>yes <span class="op">=</span> <span class="fl">1</span>, no <span class="op">=</span> <span class="fl">3</span>, <span class="st">"don't know"</span> <span class="op">=</span> <span class="fl">8</span>, refused <span class="op">=</span> <span class="fl">9</span><span class="op">)</span></span>
@@ -609,7 +613,7 @@ Only labelled vectors will be impacted.</p>
 <span><span class="co">##      3         no</span></span>
 <span><span class="co">##      8 don't know</span></span>
 <span><span class="co">##      9    refused</span></span></code></pre>
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  [1] yes     2       2       2       no      refused yes     no      2      </span></span>
 <span><span class="co">## [10] &lt;NA&gt;   </span></span>
@@ -617,17 +621,17 @@ Only labelled vectors will be impacted.</p>
 <p>The <code>levels</code> argument allows to specify what should be
 used as the factor levels, i.e. the labels (default), the values or the
 labels prefixed with values.</p>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span><span class="op">(</span><span class="va">v</span>, levels <span class="op">=</span> <span class="st">"v"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  [1] 1    2    2    2    3    9    1    3    2    &lt;NA&gt;</span></span>
 <span><span class="co">## Levels: 1 2 3 8 9</span></span></code></pre>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span><span class="op">(</span><span class="va">v</span>, levels <span class="op">=</span> <span class="st">"p"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  [1] [1] yes     [2] 2       [2] 2       [2] 2       [3] no      [9] refused</span></span>
 <span><span class="co">##  [7] [1] yes     [3] no      [2] 2       &lt;NA&gt;       </span></span>
 <span><span class="co">## Levels: [1] yes [2] 2 [3] no [8] don't know [9] refused</span></span></code></pre>
 <p>The <code>ordered</code> argument will create an ordinal factor.</p>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span><span class="op">(</span><span class="va">v</span>, ordered <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  [1] yes     2       2       2       no      refused yes     no      2      </span></span>
 <span><span class="co">## [10] &lt;NA&gt;   </span></span>
@@ -635,12 +639,12 @@ labels prefixed with values.</p>
 <p>The argument <code>nolabel_to_na</code> specify if the corresponding
 function should be applied before converting to a factor. Therefore, the
 two following commands are equivalent.</p>
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span><span class="op">(</span><span class="va">v</span>, nolabel_to_na <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  [1] yes     &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;    no      refused yes     no      &lt;NA&gt;   </span></span>
 <span><span class="co">## [10] &lt;NA&gt;   </span></span>
 <span><span class="co">## Levels: yes no don't know refused</span></span></code></pre>
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span><span class="op">(</span><span class="fu"><a href="../reference/nolabel_to_na.html">nolabel_to_na</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  [1] yes     &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;    no      refused yes     no      &lt;NA&gt;   </span></span>
 <span><span class="co">## [10] &lt;NA&gt;   </span></span>
@@ -652,24 +656,24 @@ values and <code>"labels"</code> according to the labels.
 <code>"auto"</code> (default) will be equivalent to <code>"none"</code>
 except if some values with no attached labels are found and are not
 dropped. In that case, <code>"values"</code> will be used.</p>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span><span class="op">(</span><span class="va">v</span>, sort_levels <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  [1] yes     2       2       2       no      refused yes     no      2      </span></span>
 <span><span class="co">## [10] &lt;NA&gt;   </span></span>
 <span><span class="co">## Levels: yes no don't know refused 2</span></span></code></pre>
-<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span><span class="op">(</span><span class="va">v</span>, sort_levels <span class="op">=</span> <span class="st">"v"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  [1] yes     2       2       2       no      refused yes     no      2      </span></span>
 <span><span class="co">## [10] &lt;NA&gt;   </span></span>
 <span><span class="co">## Levels: yes 2 no don't know refused</span></span></code></pre>
-<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span><span class="op">(</span><span class="va">v</span>, sort_levels <span class="op">=</span> <span class="st">"l"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  [1] yes     2       2       2       no      refused yes     no      2      </span></span>
 <span><span class="co">## [10] &lt;NA&gt;   </span></span>
 <span><span class="co">## Levels: 2 don't know no refused yes</span></span></code></pre>
 <p>The function <code><a href="../reference/to_labelled.html">to_labelled()</a></code> could be used to turn a
 factor into a labelled numeric vector.</p>
-<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/to_labelled.html">to_labelled</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled&lt;double&gt;[3]&gt;</span></span>
@@ -683,7 +687,7 @@ factor into a labelled numeric vector.</p>
 <p>Note that <code>to_labelled(to_factor(v))</code> will not be equal to
 <code>v</code> due to the way factors are stored internally by
 <strong>R</strong>.</p>
-<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">v</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled&lt;double&gt;[10]&gt;</span></span>
 <span><span class="co">##  [1]  1  2  2  2  3  9  1  3  2 NA</span></span>
@@ -694,7 +698,7 @@ factor into a labelled numeric vector.</p>
 <span><span class="co">##      3         no</span></span>
 <span><span class="co">##      8 don't know</span></span>
 <span><span class="co">##      9    refused</span></span></code></pre>
-<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/to_labelled.html">to_labelled</a></span><span class="op">(</span><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled&lt;double&gt;[10]&gt;</span></span>
 <span><span class="co">##  [1]  1  2  2  2  3  5  1  3  2 NA</span></span>
@@ -712,7 +716,7 @@ factor into a labelled numeric vector.</p>
 </h2>
 <p>You can use <code><a href="../reference/to_character.html">to_character()</a></code> for converting into a
 character vector instead of a factor.</p>
-<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">v</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled&lt;double&gt;[10]&gt;</span></span>
 <span><span class="co">##  [1]  1  2  2  2  3  9  1  3  2 NA</span></span>
@@ -723,13 +727,13 @@ character vector instead of a factor.</p>
 <span><span class="co">##      3         no</span></span>
 <span><span class="co">##      8 don't know</span></span>
 <span><span class="co">##      9    refused</span></span></code></pre>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/to_character.html">to_character</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  [1] "yes"     "2"       "2"       "2"       "no"      "refused" "yes"    </span></span>
 <span><span class="co">##  [8] "no"      "2"       NA</span></span></code></pre>
 <p>To remove the <code>haven_class</code>, you can simply use
 <code><a href="https://rdrr.io/r/base/class.html" class="external-link">unclass()</a></code>.</p>
-<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">unclass</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  [1]  1  2  2  2  3  9  1  3  2 NA</span></span>
 <span><span class="co">## attr(,"labels")</span></span>
@@ -737,16 +741,16 @@ character vector instead of a factor.</p>
 <span><span class="co">##          1          3          8          9</span></span></code></pre>
 <p>Note that value labels will be preserved as an attribute to the
 vector.</p>
-<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/remove_labels.html">remove_val_labels</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  [1]  1  2  2  2  3  9  1  3  2 NA</span></span></code></pre>
 <p>To remove value labels, use <code><a href="../reference/remove_labels.html">remove_val_labels()</a></code>.</p>
-<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/remove_labels.html">remove_val_labels</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  [1]  1  2  2  2  3  9  1  3  2 NA</span></span></code></pre>
 <p>Note that if your vector does have user-defined missing values, you
 may also want to use <code><a href="../reference/remove_labels.html">remove_user_na()</a></code>.</p>
-<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">9</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/na_values.html">na_values</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fl">9</span></span>
 <span><span class="fu"><a href="../reference/val_labels.html">val_labels</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>yes <span class="op">=</span> <span class="fl">1</span>, no <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
@@ -760,12 +764,12 @@ may also want to use <code><a href="../reference/remove_labels.html">remove_user
 <span><span class="co">##  value label</span></span>
 <span><span class="co">##      1   yes</span></span>
 <span><span class="co">##      2    no</span></span></code></pre>
-<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/remove_labels.html">remove_val_labels</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled_spss&lt;double&gt;[4]&gt;: A test variable</span></span>
 <span><span class="co">## [1] 1 2 2 9</span></span>
 <span><span class="co">## Missing values: 9</span></span></code></pre>
-<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/remove_labels.html">remove_user_na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled&lt;double&gt;[4]&gt;: A test variable</span></span>
 <span><span class="co">## [1] 1 2 2 9</span></span>
@@ -774,7 +778,7 @@ may also want to use <code><a href="../reference/remove_labels.html">remove_user
 <span><span class="co">##  value label</span></span>
 <span><span class="co">##      1   yes</span></span>
 <span><span class="co">##      2    no</span></span></code></pre>
-<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/remove_labels.html">remove_user_na</a></span><span class="op">(</span><span class="va">x</span>, user_na_to_na <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled&lt;double&gt;[4]&gt;: A test variable</span></span>
 <span><span class="co">## [1]  1  2  2 NA</span></span>
@@ -783,12 +787,12 @@ may also want to use <code><a href="../reference/remove_labels.html">remove_user
 <span><span class="co">##  value label</span></span>
 <span><span class="co">##      1   yes</span></span>
 <span><span class="co">##      2    no</span></span></code></pre>
-<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/remove_labels.html">remove_val_labels</a></span><span class="op">(</span><span class="fu"><a href="../reference/remove_labels.html">remove_user_na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1 2 2 9</span></span>
 <span><span class="co">## attr(,"label")</span></span>
 <span><span class="co">## [1] "A test variable"</span></span></code></pre>
-<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">unclass</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1 2 2 9</span></span>
 <span><span class="co">## attr(,"labels")</span></span>
@@ -801,10 +805,10 @@ may also want to use <code><a href="../reference/remove_labels.html">remove_user
 <p>You can remove all labels and user-defined missing values with
 <code><a href="../reference/remove_labels.html">remove_labels()</a></code>. Use <code>keep_var_label = TRUE</code> to
 preserve only variable label.</p>
-<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/remove_labels.html">remove_labels</a></span><span class="op">(</span><span class="va">x</span>, user_na_to_na <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1]  1  2  2 NA</span></span></code></pre>
-<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/remove_labels.html">remove_labels</a></span><span class="op">(</span><span class="va">x</span>, user_na_to_na <span class="op">=</span> <span class="cn">TRUE</span>, keep_var_label <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1]  1  2  2 NA</span></span>
 <span><span class="co">## attr(,"label")</span></span>
@@ -839,7 +843,7 @@ will be converted into a factor (using <code><a href="../reference/to_factor.htm
 numeric or character vector by applying
 <code><a href="https://rdrr.io/r/base/class.html" class="external-link">base::unclass()</a></code>).</li>
 </ul>
-<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  a <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">labelled</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>No <span class="op">=</span> <span class="fl">1</span>, Yes <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  b <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">labelled</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>No <span class="op">=</span> <span class="fl">1</span>, Yes <span class="op">=</span> <span class="fl">2</span>, DK <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -865,7 +869,7 @@ numeric or character vector by applying
 <span><span class="co">##                                      [b] Yes</span></span>
 <span><span class="co">##  5   e        —     dbl+lbl  1       [1] No </span></span>
 <span><span class="co">##                                      [2] Yes</span></span></code></pre>
-<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  pos variable label col_type missing values</span></span>
 <span><span class="co">##  1   a        —     dbl      0             </span></span>
@@ -878,7 +882,7 @@ numeric or character vector by applying
 <span><span class="co">##  4   d        —     chr      0             </span></span>
 <span><span class="co">##  5   e        —     fct      1       No    </span></span>
 <span><span class="co">##                                      Yes</span></span></code></pre>
-<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span><span class="op">(</span><span class="va">df</span>, user_na_to_na <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  pos variable label col_type missing values</span></span>
 <span><span class="co">##  1   a        —     dbl      0             </span></span>
@@ -891,7 +895,7 @@ numeric or character vector by applying
 <span><span class="co">##  4   d        —     chr      0             </span></span>
 <span><span class="co">##  5   e        —     fct      1       No    </span></span>
 <span><span class="co">##                                      Yes</span></span></code></pre>
-<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span><span class="op">(</span><span class="va">df</span>, drop_unused_labels <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/look_for.html">look_for</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  pos variable label col_type missing values</span></span>
 <span><span class="co">##  1   a        —     dbl      0             </span></span>
@@ -938,7 +942,7 @@ by <code>read.dta</code> and could not be retrieved by
 variable metadata and store them in specific object of class
 <code>data.set</code>. The <code>to_labelled</code> method can convert a
 data.set into a labelled data frame.</p>
-<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># from foreign</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://svn.r-project.org/R-packages/trunk/foreign/" class="external-link">foreign</a></span><span class="op">)</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_labelled.html">to_labelled</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/foreign/man/read.spss.html" class="external-link">read.spss</a></span><span class="op">(</span></span>
@@ -967,7 +971,7 @@ data.set into a labelled data frame.</p>
 functions <code><a href="../reference/var_label.html">set_variable_labels()</a></code>,
 <code><a href="../reference/val_labels.html">set_value_labels()</a></code>, <code><a href="../reference/val_labels.html">add_value_labels()</a></code> and
 <code><a href="../reference/val_labels.html">remove_value_labels()</a></code>.</p>
-<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">## Attaching package: 'dplyr'</span></span></code></pre>
@@ -977,7 +981,7 @@ functions <code><a href="../reference/var_label.html">set_variable_labels()</a><
 <pre><code><span><span class="co">## The following objects are masked from 'package:base':</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##     intersect, setdiff, setequal, union</span></span></code></pre>
-<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/deprecated.html" class="external-link">data_frame</a></span><span class="op">(</span>s1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"M"</span>, <span class="st">"M"</span>, <span class="st">"F"</span><span class="op">)</span>, s2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/var_label.html">set_variable_labels</a></span><span class="op">(</span>s1 <span class="op">=</span> <span class="st">"Sex"</span>, s2 <span class="op">=</span> <span class="st">"Question"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/val_labels.html">set_value_labels</a></span><span class="op">(</span>s1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>Male <span class="op">=</span> <span class="st">"M"</span>, Female <span class="op">=</span> <span class="st">"F"</span><span class="op">)</span>, s2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>Yes <span class="op">=</span> <span class="fl">1</span>, No <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -986,7 +990,7 @@ functions <code><a href="../reference/var_label.html">set_variable_labels()</a><
 <span><span class="co">## <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
 <span><span class="co">## <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
 <span><span class="co">## <span style="color: #555555;">generated.</span></span></span></code></pre>
-<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span><span class="op">$</span><span class="va">s2</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;labelled&lt;double&gt;[3]&gt;: Question</span></span>
 <span><span class="co">## [1] 1 1 2</span></span>
@@ -997,7 +1001,7 @@ functions <code><a href="../reference/var_label.html">set_variable_labels()</a><
 <span><span class="co">##      2    No</span></span></code></pre>
 <p><code><a href="../reference/val_labels.html">set_value_labels()</a></code> will replace the list of value labels
 while <code><a href="../reference/val_labels.html">add_value_labels()</a></code> will update it.</p>
-<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/val_labels.html">set_value_labels</a></span><span class="op">(</span>s2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>Yes <span class="op">=</span> <span class="fl">1</span>, <span class="st">"Don't know"</span> <span class="op">=</span> <span class="fl">8</span>, Unknown <span class="op">=</span> <span class="fl">9</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">df</span><span class="op">$</span><span class="va">s2</span></span></code></pre></div>
@@ -1009,7 +1013,7 @@ while <code><a href="../reference/val_labels.html">add_value_labels()</a></code>
 <span><span class="co">##      1        Yes</span></span>
 <span><span class="co">##      8 Don't know</span></span>
 <span><span class="co">##      9    Unknown</span></span></code></pre>
-<div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/val_labels.html">add_value_labels</a></span><span class="op">(</span>s2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>No <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">df</span><span class="op">$</span><span class="va">s2</span></span></code></pre></div>
@@ -1023,7 +1027,7 @@ while <code><a href="../reference/val_labels.html">add_value_labels()</a></code>
 <span><span class="co">##      9    Unknown</span></span>
 <span><span class="co">##      2         No</span></span></code></pre>
 <p>You can also remove some variable and/or value labels.</p>
-<div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/var_label.html">set_variable_labels</a></span><span class="op">(</span>s1 <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
 <span></span>
@@ -1039,7 +1043,7 @@ while <code><a href="../reference/val_labels.html">add_value_labels()</a></code>
 <span><span class="co">##      1        Yes</span></span>
 <span><span class="co">##      8 Don't know</span></span>
 <span><span class="co">##      9    Unknown</span></span></code></pre>
-<div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># removing several value labels</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/val_labels.html">remove_value_labels</a></span><span class="op">(</span>s2 <span class="op">=</span> <span class="fl">8</span><span class="op">:</span><span class="fl">9</span><span class="op">)</span></span>
@@ -1050,7 +1054,7 @@ while <code><a href="../reference/val_labels.html">add_value_labels()</a></code>
 <span><span class="co">## Labels:</span></span>
 <span><span class="co">##  value label</span></span>
 <span><span class="co">##      1   Yes</span></span></code></pre>
-<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># removing all value labels</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/val_labels.html">set_value_labels</a></span><span class="op">(</span>s2 <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
@@ -1060,7 +1064,7 @@ while <code><a href="../reference/val_labels.html">add_value_labels()</a></code>
 <span><span class="co">## [1] "Question"</span></span></code></pre>
 <p>To convert variables, the easiest is to use
 <code><a href="../reference/to_factor.html">unlabelled()</a></code>.</p>
-<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://juba.github.io/questionr/" class="external-link">questionr</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">fertility</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span></span></code></pre></div>
@@ -1082,8 +1086,8 @@ while <code><a href="../reference/val_labels.html">add_value_labels()</a></code>
 <span><span class="co">## $ radio             <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, …</span></span>
 <span><span class="co">## $ tv                <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, …</span></span>
 <span><span class="co">## $ ideal_nb_children <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span>  4,  4,  4,  4,  4,  5, 10,  5,  4,  5,  6, 10, …</span></span>
-<span><span class="co">## $ test              <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> 0, 9, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, …</span></span></code></pre>
-<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
+<span><span class="co">## $ test              <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> 0, <span style="color: #BB0000;">9</span>, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, …</span></span></code></pre>
+<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">women</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/to_factor.html">unlabelled</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Rows: 2,000</span></span>
 <span><span class="co">## Columns: 17</span></span>
@@ -1107,7 +1111,7 @@ while <code><a href="../reference/val_labels.html">add_value_labels()</a></code>
 <p>Alternatively, you can use functions as
 <code><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">dplyr::mutate_if()</a></code> or <code><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">dplyr::mutate_at()</a></code>. See
 the example below.</p>
-<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="fu"><a href="../reference/to_factor.html">to_factor</a></span><span class="op">(</span><span class="va">women</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Rows: 2,000</span></span>
 <span><span class="co">## Columns: 17</span></span>
@@ -1128,7 +1132,7 @@ the example below.</p>
 <span><span class="co">## $ tv                <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> no, no, no, no, no, yes, no, no, no, no, yes, yes, n…</span></span>
 <span><span class="co">## $ ideal_nb_children <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> 4, 4, 4, 4, 4, 5, 10, 5, 4, 5, 6, 10, 2, 6, 6, 6, 4,…</span></span>
 <span><span class="co">## $ test              <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> no, missing, no, no, yes, no, no, no, no, yes, yes, …</span></span></code></pre>
-<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">women</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_if</a></span><span class="op">(</span><span class="va">is.labelled</span>, <span class="va">to_factor</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Rows: 2,000</span></span>
 <span><span class="co">## Columns: 17</span></span>
@@ -1149,7 +1153,7 @@ the example below.</p>
 <span><span class="co">## $ tv                <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> no, no, no, no, no, yes, no, no, no, no, yes, yes, n…</span></span>
 <span><span class="co">## $ ideal_nb_children <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> 4, 4, 4, 4, 4, 5, 10, 5, 4, 5, 6, 10, 2, 6, 6, 6, 4,…</span></span>
 <span><span class="co">## $ test              <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> no, missing, no, no, yes, no, no, no, no, yes, yes, …</span></span></code></pre>
-<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">women</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">employed</span><span class="op">:</span><span class="va">religion</span><span class="op">)</span>, <span class="va">to_factor</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Rows: 2,000</span></span>
 <span><span class="co">## Columns: 17</span></span>
@@ -1169,7 +1173,7 @@ the example below.</p>
 <span><span class="co">## $ radio             <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, …</span></span>
 <span><span class="co">## $ tv                <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, …</span></span>
 <span><span class="co">## $ ideal_nb_children <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span>  4,  4,  4,  4,  4,  5, 10,  5,  4,  5,  6, 10, …</span></span>
-<span><span class="co">## $ test              <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> 0, 9, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, …</span></span></code></pre>
+<span><span class="co">## $ test              <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> 0, <span style="color: #BB0000;">9</span>, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, …</span></span></code></pre>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
