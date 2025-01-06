@@ -17,7 +17,7 @@ Description: Work with labelled data imported from 'SPSS'
 License: GPL (>= 3)
 Encoding: UTF-8
 Depends:
-    R (>= 3.0)
+    R (>= 3.2)
 Imports:
     haven (>= 2.4.1),
     cli,

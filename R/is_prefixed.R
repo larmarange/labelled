@@ -8,7 +8,7 @@ is_prefixed <- function(x) {
       "({.arg x} is {class(x)})."
     ))
   l <- .get_prefixes.factor(x)
-  !any(is.na(l$code)) && !any(is.na(l$code)) && !any(duplicated(l$code))
+  !anyNA(l$code) && !anyNA(l$code) && !any(duplicated(l$code))
 }
 
 
