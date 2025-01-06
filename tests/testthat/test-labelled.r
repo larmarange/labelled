@@ -1,5 +1,3 @@
-context("Labelled")
-
 # var_label --------------------------------------------------------------
 
 test_that("var_label works properly", {
@@ -51,15 +49,13 @@ test_that("var_label produce appropriate errors", {
       set_variable_labels(x = "ghj", z = "ggg")
   )
   # no error if .strict = FALSE
-  expect_error(
+  expect_no_error(
     df %>%
-      set_variable_labels(.labels = list(x = "xx", z = "zz"), .strict = FALSE),
-    NA
+      set_variable_labels(.labels = list(x = "xx", z = "zz"), .strict = FALSE)
   )
-  expect_error(
+  expect_no_error(
     df %>%
-      set_variable_labels(x = "ghj", z = "ggg", .strict = FALSE),
-    NA
+      set_variable_labels(x = "ghj", z = "ggg", .strict = FALSE)
   )
 })
 
@@ -86,8 +82,8 @@ test_that("x must be numeric or character", {
 
 test_that("x and labels must be compatible", {
   expect_error(labelled(1, "a"))
-  expect_error(labelled(1, c(female = 2L, male = 1L)), NA)
-  expect_error(labelled(1L, c(female = 2, male = 1)), NA)
+  expect_no_error(labelled(1, c(female = 2L, male = 1L)))
+  expect_no_error(labelled(1L, c(female = 2, male = 1)))
 })
 
 test_that("labels must have names", {
@@ -244,7 +240,7 @@ test_that(" 'val_labels <-'  works for dataframe", {
     num = c(two = 2)
   )
   vldf <- df
-  expect_error(val_labels(vldf) <- valeurs, NA)
+  expect_no_error(val_labels(vldf) <- valeurs)
 
   expect_null(val_labels(vldf)$fac)
   expect_equal(df$fac, vldf$fac)
@@ -410,7 +406,7 @@ test_that("remove_labels works with labelled_spss", {
   xhs <- haven::labelled_spss(
     c(1, 2, 3, NA, 99),
     c(t1 = 1, t2 = 2, Missing = 99),
-    na_value = 99,
+    na_values = 99,
     na_range = c(99, Inf),
     label = "A test variable"
   )
@@ -486,14 +482,15 @@ test_that("sort_val_labels works properly", {
   x <- c(2, tagged_na("z"), 1, tagged_na("a"))
   val_labels(x) <-
     c(no = 2, refused = tagged_na("z"), yes = 1, dk = tagged_na("a"))
-  expect_equivalent(
+  expect_equal(
     sort_val_labels(x, according_to = "v") %>%
       val_labels() %>%
       format_tagged_na() %>%
       trimws(),
-    c("1", "2", "NA(a)", "NA(z)")
+    c("1", "2", "NA(a)", "NA(z)"),
+    ignore_attr = "names"
   )
-  expect_equivalent(
+  expect_equal(
     sort_val_labels(x, according_to = "l") %>% val_labels() %>% names(),
     c("dk", "no", "refused", "yes")
   )
@@ -754,16 +751,15 @@ test_that("set_value_labels errors", {
       )
   )
   # no error if .strict = FALSE
-  expect_error(
+  expect_no_error(
     df %>%
       set_value_labels(
         s1 = c(Male = "M", Female = "F"),
         s3 = c(Yes = 1, No = 2),
         .strict = FALSE
-      ),
-    NA
+      )
   )
-  expect_error(
+  expect_no_error(
     df %>%
       set_value_labels(
         .labels = list(
@@ -771,8 +767,7 @@ test_that("set_value_labels errors", {
           s3 = c(Yes = 1, No = 2)
         ),
         .strict = FALSE
-      ),
-    NA
+      )
   )
 })
 
@@ -799,16 +794,15 @@ test_that("add_value_labels errors", {
       )
   )
   # no error if .strict = FALSE
-  expect_error(
+  expect_no_error(
     df %>%
       add_value_labels(
         s1 = c(Male = "M", Female = "F"),
         s3 = c(Yes = 1, No = 2),
         .strict = FALSE
-      ),
-    NA
+      )
   )
-  expect_error(
+  expect_no_error(
     df %>%
       add_value_labels(
         .labels = list(
@@ -816,8 +810,7 @@ test_that("add_value_labels errors", {
           s3 = c(Yes = 1, No = 2)
         ),
         .strict = FALSE
-      ),
-    NA
+      )
   )
 
   expect_error(add_value_labels(df, s1 = c("F", Male = "M")))
@@ -1166,12 +1159,13 @@ test_that("names_prefixed_by_values works properly", {
     c1 = c("[M] Male", "[F] Female"),
     c2 = c("[1] Yes", "[2] No")
   )
-  expect_equivalent(
+  expect_equal(
     names_prefixed_by_values(val_labels(df)),
-    res_names_prefixed
+    res_names_prefixed,
+    ignore_attr = "names"
   )
 
-  expect_true(is.null(names_prefixed_by_values(NULL)))
+  expect_null(names_prefixed_by_values(NULL))
 })
 
 test_that("null_action in var_label() works as expected", {

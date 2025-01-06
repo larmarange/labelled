@@ -176,11 +176,11 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
   }
 
   if (!all(names(value) %in% names(x))) {
-    missing_names <- stringr::str_c(
-      setdiff(names(value), names(x)),
-      collapse = ", "
-    )
-    stop("some variables not found in x:", missing_names)
+    missing_names <- setdiff(names(value), names(x))
+
+    cli::cli_abort(c(
+      "Can't find variables {.var {missing_names}} in {.arg x}."
+    ))
   }
 
   for (var in names(value)) {
@@ -324,16 +324,7 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
   value <- value[names(value) %in% names(x)]
 
   for (var in names(value)[]) {
-    if (!is.character(value[[var]]) && !is.null(value[[var]])) {
-      stop("`value` should contain only characters or NULL",
-        call. = FALSE, domain = "R-labelled"
-      )
-    }
-    if (length(value[[var]]) > 1) {
-      stop("`value` should contain only one string (or NULL) per variable",
-        call. = FALSE, domain = "R-labelled"
-      )
-    }
+    check_string(value[[var]], allow_null = TRUE, arg = "value")
   }
 
   for (var in names(value)) {
@@ -435,11 +426,10 @@ set_value_labels <- function(
   }
   values <- rlang::dots_list(...)
   if (.strict && !all(names(values) %in% names(.data))) {
-    missing_names <- stringr::str_c(
-      setdiff(names(values), names(.data)),
-      collapse = ", "
-    )
-    stop("some variables not found in .data: ", missing_names)
+    missing_names <- setdiff(names(values), names(.data))
+    cli::cli_abort(c(
+      "Can't find variables {.var {missing_names}} in {.arg .data}."
+    ))
   }
 
   for (v in intersect(names(values), names(.data))) {
@@ -476,11 +466,10 @@ add_value_labels <- function(
   # data.frame case
   values <- rlang::dots_list(...)
   if (.strict && !all(names(values) %in% names(.data))) {
-    missing_names <- stringr::str_c(
-      setdiff(names(values), names(.data)),
-      collapse = ", "
-    )
-    stop("some variables not found in .data: ", missing_names)
+    missing_names <- setdiff(names(values), names(.data))
+    cli::cli_abort(c(
+      "Can't find variables {.var {missing_names}}  in {.arg .data}."
+    ))
   }
 
   for (v in values) {
@@ -522,11 +511,10 @@ remove_value_labels <- function(
   # data.frame case
   values <- rlang::dots_list(...)
   if (.strict && !all(names(values) %in% names(.data))) {
-    missing_names <- stringr::str_c(
-      setdiff(names(values), names(.data)),
-      collapse = ", "
-    )
-    stop("some variables not found in .data: ", missing_names)
+    missing_names <- setdiff(names(values), names(.data))
+    cli::cli_abort(c(
+      "Can't find variables {.var {missing_names}}  in {.arg .data}."
+    ))
   }
 
   for (v in intersect(names(values), names(.data))) {

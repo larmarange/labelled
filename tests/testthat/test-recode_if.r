@@ -1,5 +1,3 @@
-context("Test recode_if()")
-
 test_that("recode_if() works as expected", {
   x <- labelled(c(1, 2, 2, 9), c(yes = 1, no = 2))
   y <- x %>% recode_if(x == 9, NA)
@@ -36,13 +34,11 @@ test_that("recode_if() preserve value and variable labels", {
 })
 
 test_that("recode_if() checks", {
-  expect_error(
-    1:3 %>% recode_if(c(TRUE, FALSE, NA), 9L),
-    NA
+  expect_no_error(
+    1:3 %>% recode_if(c(TRUE, FALSE, NA), 9L)
   )
-  expect_error(
-    1:3 %>% recode_if(c(TRUE, FALSE, NA), 11:13),
-    NA
+  expect_no_error(
+    1:3 %>% recode_if(c(TRUE, FALSE, NA), 11:13)
   )
 
   expect_error(
