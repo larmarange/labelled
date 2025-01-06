@@ -509,7 +509,7 @@ test_that("remove_user_na works properly", {
   xhs <- haven::labelled_spss(
     c(1, 2, NA, 98, 99),
     c(t1 = 1, t2 = 2, Missing = 99),
-    na_value = 99,
+    na_values = 99,
     na_range = c(99, Inf),
     label = "A test variable"
   )
@@ -583,7 +583,7 @@ test_that("to_factor boolean parameters", {
   x1 <- haven::labelled_spss(
     c(1, 2, 3, 5, 4, NA, 99),
     c(t1 = 1, t2 = 2, t5 = 5, Missing = 99),
-    na_value = 99
+    na_values = 99
   )
 
   tfx <- to_factor(x1, user_na_to_na = TRUE)
@@ -606,7 +606,7 @@ test_that("to_factor parameters : sort_levels + levels", {
   x1 <- haven::labelled_spss(
     c(1, 2, 3, 5, 4, NA, 99),
     c(t1 = 1, t2 = 2, t5 = 5, Missing = 99),
-    na_value = 99
+    na_values = 99
   )
 
   tfx <- to_factor(x1, sort_levels = "auto")
