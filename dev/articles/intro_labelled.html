@@ -277,7 +277,8 @@ generate an error!</p>
 <span><span class="co">## Levels: 1 2 3</span></span></code></pre>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/val_labels.html">val_labels</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>yes <span class="op">=</span> <span class="fl">1</span>, no <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Error in `val_labels&lt;-.factor`(`*tmp*`, value = c(yes = 1, no = 3)): Value labels cannot be applied to factors.</span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;"> in `val_labels&lt;-`:</span></span></span>
+<span><span class="co">## <span style="color: #BBBB00;">!</span> Value labels cannot be applied to factors.</span></span></code></pre>
 <p>You could also apply <code><a href="../reference/val_labels.html">val_labels()</a></code> to several columns of
 a data frame.</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
