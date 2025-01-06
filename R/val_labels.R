@@ -78,14 +78,12 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
 }
 
 #' @export
-`val_labels<-.factor` <- function(
-    x,
-    null_action = c("unclass", "labelled"),
-    value) {
+`val_labels<-.factor` <- function(x,
+                                  null_action = c("unclass", "labelled"),
+                                  value) {
   null_action <- match.arg(null_action)
-  if (!is.null(value) || null_action == "labelled") {
-    stop("Value labels cannot be applied to factors.")
-  }
+  if (!is.null(value) || null_action == "labelled")
+    cli::cli_abort("Value labels cannot be applied to factors.")
   x %>% remove_attributes("labels")
 }
 
@@ -185,12 +183,11 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
 
   for (var in names(value)) {
     if (!is.null(value[[var]])) {
-      if (mode(x[[var]]) != mode(value[[var]])) {
-        stop("`x` and `value` must be same type",
-          call. = FALSE,
-          domain = "R-labelled"
-        )
-      }
+      if (mode(x[[var]]) != mode(value[[var]]))
+        cli::cli_abort(paste(
+          "{.arg x} ({class(x)}) and {.arg value} ({class(value)})",
+          "must be same type."
+        ))
       if (typeof(x[[var]]) != typeof(value[[var]])) {
         mode(value[[var]]) <- typeof(x[[var]])
       }
@@ -213,18 +210,16 @@ val_label <- function(x, v, prefixed = FALSE) {
 
 #' @export
 val_label.default <- function(x, v, prefixed = FALSE) {
-  if (length(v) != 1) {
-    stop("`v` should be a single value", call. = FALSE, domain = "R-labelled")
-  }
+  if (length(v) != 1)
+    cli::cli_abort("{.arg v} (length: {length(v)}) should be a single value.")
   # return nothing
   NULL
 }
 
 #' @export
 val_label.haven_labelled <- function(x, v, prefixed = FALSE) {
-  if (length(v) != 1) {
-    stop("`v` should be a single value", call. = FALSE, domain = "R-labelled")
-  }
+  if (length(v) != 1)
+    cli::cli_abort("{.arg v} (length: {length(v)}) should be a single value.")
   labels <- val_labels(x, prefixed = prefixed)
   if (v %in% labels) {
     names(labels)[labels == v]
@@ -251,13 +246,13 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
     null_action = c("unclass", "labelled"),
     value) {
   if (length(v) != 1) {
-    stop("`v` should be a single value", call. = FALSE, domain = "R-labelled")
+    cli::cli_abort("{.arg v} (length: {length(v)}) should be a single value.")
   }
-  if (length(value) > 1) {
-    stop("`value` should be a single character string or NULL",
-      call. = FALSE, domain = "R-labelled"
+  check_character(value, allow_null = TRUE)
+  if (length(value) > 1)
+    cli::cli_abort(
+      "{.arg value} (length: {length(value)}) should be a single value."
     )
-  }
   names(value) <- v
   val_labels(x, null_action = null_action) <- value
   x
@@ -270,13 +265,13 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
     null_action = c("unclass", "labelled"),
     value) {
   if (length(v) != 1) {
-    stop("`v` should be a single value", call. = FALSE, domain = "R-labelled")
+    cli::cli_abort("{.arg v} (length: {length(v)}) should be a single value.")
   }
-  if (length(value) > 1) {
-    stop("`value` should be a single character string or NULL",
-      call. = FALSE, domain = "R-labelled"
+  check_character(value, allow_null = TRUE)
+  if (length(value) > 1)
+    cli::cli_abort(
+      "{.arg value} (length: {length(value)}) should be a single value."
     )
-  }
 
   labels <- val_labels(x)
 
@@ -402,9 +397,8 @@ set_value_labels <- function(
     .strict = TRUE,
     .null_action = c("unclass", "labelled")) {
   .null_action <- match.arg(.null_action)
-  if (!is.data.frame(.data) && !is.atomic(.data)) {
-    stop(".data should be a data.frame or a vector")
-  }
+  if (!is.data.frame(.data) && !is.atomic(.data))
+    cli::cli_abort("{.arg .data} should be a data frame or a vector.")
 
   # vector case
   if (is.atomic(.data)) {
@@ -447,16 +441,14 @@ add_value_labels <- function(
     .strict = TRUE,
     .null_action = c("unclass", "labelled")) {
   .null_action <- match.arg(.null_action)
-  if (!is.data.frame(.data) && !is.atomic(.data)) {
-    stop(".data should be a data.frame or a vector")
-  }
+  if (!is.data.frame(.data) && !is.atomic(.data))
+    cli::cli_abort("{.arg .data} should be a data frame or a vector.")
 
   # vector case
   if (is.atomic(.data)) {
     values <- unlist(rlang::dots_list(...))
-    if (is.null(names(values)) || any(names(values) == "")) {
-      stop("all arguments should be named")
-    }
+    if (is.null(names(values)) || any(names(values) == ""))
+      cli::cli_abort("All arguments should be named.")
     for (v in names(values)) {
       val_label(.data, values[[v]], null_action = .null_action) <- v
     }
@@ -473,9 +465,8 @@ add_value_labels <- function(
   }
 
   for (v in values) {
-    if (is.null(names(v)) || any(names(v) == "")) {
-      stop("all arguments should be named vectors")
-    }
+    if (is.null(names(v)) || any(names(v) == ""))
+      cli::cli_abort("All arguments should be named vectors.")
   }
 
   for (v in intersect(names(values), names(.data))) {
@@ -495,9 +486,8 @@ remove_value_labels <- function(
     .strict = TRUE,
     .null_action = c("unclass", "labelled")) {
   .null_action <- match.arg(.null_action)
-  if (!is.data.frame(.data) && !is.atomic(.data)) {
-    stop(".data should be a data.frame or a vector")
-  }
+  if (!is.data.frame(.data) && !is.atomic(.data))
+    cli::cli_abort("{.arg .data} should be a data frame or a vector.")
 
   # vector case
   if (is.atomic(.data)) {
@@ -557,19 +547,16 @@ sort_val_labels.default <- function(
 }
 
 #' @export
-sort_val_labels.haven_labelled <- function(
-    x,
-    according_to = c("values", "labels"),
-    decreasing = FALSE) {
+sort_val_labels.haven_labelled <- function(x,
+                                           according_to = c("values", "labels"),
+                                           decreasing = FALSE) {
   according_to <- match.arg(according_to)
   labels <- val_labels(x)
   if (!is.null(labels)) {
-    if (according_to == "values") {
+    if (according_to == "values")
       labels <- sort_tagged_na(labels, decreasing = decreasing)
-    }
-    if (according_to == "labels") {
+    if (according_to == "labels")
       labels <- labels[order(names(labels), decreasing = decreasing)]
-    }
     val_labels(x) <- labels
   }
   x

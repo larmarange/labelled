@@ -152,15 +152,12 @@ var_label.data.frame <- function(x,
   if (
     (!is.character(value) && !is.null(value)) && !is.list(value) ||
       (is.character(value) && length(value) > 1 && length(value) != ncol(x))
-  ) {
-    stop(
-      paste0(
-        "`value` should be a named list, NULL, a single character string or a ",
-        "character vector of same length than the number of columns in `x`"
-      ),
-      call. = FALSE, domain = "R-labelled"
-    )
-  }
+  )
+    cli::cli_abort(paste(
+      "{.arg value} should be a named list, NULL, a single character string",
+      "or a character vector of same length than the number of columns",
+      "in {.arg x}."
+    ))
   if (is.character(value) && length(value) == 1) {
     value <- as.list(rep(value, ncol(x)))
     names(value) <- names(x)

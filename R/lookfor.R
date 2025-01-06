@@ -132,7 +132,8 @@ look_for <- function(data,
   data <- to_labelled(data)
   # search scope
   n <- names(data)
-  if (!length(n)) stop("there are no names to search in that object")
+  if (!length(n))
+    cli::cli_abort("There are no names to search in that object.")
   # search function
   keywords <- c(...)
   l <- unlist(var_label(data))

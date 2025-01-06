@@ -28,15 +28,16 @@
 #'   df %>% look_for()
 #' }
 recode_if <- function(x, condition, true) {
-  if (!is.logical(condition)) {
-    stop("'condition' should be logical.")
-  }
-  if (length(x) != length(condition)) {
-    stop("'condition' and 'x' should have the same length.")
-  }
-  if (length(true) > 1 && length(true) != length(x)) {
-    stop("'true' should be unique or of same length as 'x'.")
-  }
+  check_logical(condition)
+  if (length(x) != length(condition))
+    cli::cli_abort(paste(
+      "{.arg condition} (length: {length(condition)}) and",
+      "{.arg x} (length: {length(x)}) should have the same length."
+    ))
+  if (length(true) > 1 && length(true) != length(x))
+    cli::cli_abort(
+      "{.arg true} should be unique or of same length as {.arg x}."
+    )
 
   original_class <- class(x)
 
