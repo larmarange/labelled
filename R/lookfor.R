@@ -365,7 +365,7 @@ print.look_for <- function(x, ...) {
 
     print.data.frame(x, row.names = FALSE, quote = FALSE, right = FALSE)
   } else if (nrow(x) == 0) {
-    message("Nothing found. Sorry.")
+    cli::cli_alert_warning("Nothing found. Sorry.")
   } else {
     print(dplyr::as_tibble(x))
   }

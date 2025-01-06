@@ -249,7 +249,7 @@ to_labelled.factor <- function(x, labels = NULL, .quiet = FALSE, ...) {
           all(!is.na(l$code)) &&
           all(!is.na(l$code))
       ) {
-        warning("'x' looks prefixed, but duplicated codes found.")
+        cli::cli_warn("{.arg x} looks prefixed, but duplicated codes found.")
       }
       # normal case
       labs <- seq_along(levels(x))
@@ -259,7 +259,7 @@ to_labelled.factor <- function(x, labels = NULL, .quiet = FALSE, ...) {
       # "[code] label" case
       num_l <- suppressWarnings(as.numeric(l$code))
       if (!.quiet && all(!is.na(num_l)) && any(duplicated(num_l))) {
-        warning("All codes seem numeric but some duplicates found.")
+        cli::cli_warn("All codes seem numeric but some duplicates found.")
       }
       if (all(!is.na(num_l)) && !any(duplicated(num_l))) {
         l$code <- as.numeric(l$code)
