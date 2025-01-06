@@ -132,7 +132,8 @@ look_for <- function(data,
   data <- to_labelled(data)
   # search scope
   n <- names(data)
-  if (!length(n)) stop("there are no names to search in that object")
+  if (!length(n))
+    cli::cli_abort("There are no names to search in that object.")
   # search function
   keywords <- c(...)
   l <- unlist(var_label(data))
@@ -364,7 +365,7 @@ print.look_for <- function(x, ...) {
 
     print.data.frame(x, row.names = FALSE, quote = FALSE, right = FALSE)
   } else if (nrow(x) == 0) {
-    message("Nothing found. Sorry.")
+    cli::cli_alert_warning("Nothing found. Sorry.")
   } else {
     print(dplyr::as_tibble(x))
   }
