@@ -41,10 +41,10 @@ are not compatible, unmatched values are replaced with \code{NA}.
 replaced by this value. Must be either length 1 or the same length as
 \code{.x}.}
 
-\item{.keep_value_labels}{If TRUE, keep original value labels.
-If FALSE, remove value labels.}
+\item{.keep_value_labels}{If \code{TRUE}, keep original value labels.
+If \code{FALSE}, remove value labels.}
 
-\item{.combine_value_labels}{If TRUE, will combine original value labels
+\item{.combine_value_labels}{If \code{TRUE}, will combine original value labels
 to generate new value labels. Note that unexpected results could be
 obtained if a same old value is recoded into several different new values.}
 

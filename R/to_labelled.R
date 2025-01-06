@@ -206,7 +206,7 @@ memisc_to_labelled <- function(x) {
 #'   codes
 #' @details
 #' If you convert a labelled vector into a factor with prefix, i.e. by using
-#' [to_factor(levels = "prefixed")][to_factor()], `to_labelled.factor()` is able
+#' [`to_factor(levels = "prefixed")`[to_factor()], `to_labelled.factor()` is able
 #' to reconvert it to a labelled vector with same values and labels.
 #' @export
 #' @examples

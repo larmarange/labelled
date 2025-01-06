@@ -175,6 +175,9 @@ d \%>\%
   lookfor_to_long_format() \%>\%
   convert_list_columns_to_character()
 }
+\seealso{
+\code{vignette("look_for")}
+}
 \author{
 François Briatte \href{mailto:f.briatte@gmail.com}{f.briatte@gmail.com},
 Joseph Larmarange \href{mailto:joseph@larmarange.net}{joseph@larmarange.net}

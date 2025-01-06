@@ -25,6 +25,7 @@
 #' @param x a tibble returned by `look_for()`
 #' @return a tibble data frame featuring the variable position, name and
 #' description (if it exists) in the original data frame
+#' @seealso `vignette("look_for")`
 #' @details The function looks into the variable names for matches to the
 #' keywords. If available, variable labels are included in the search scope.
 #' Variable labels of data.frame imported with \pkg{foreign} or
