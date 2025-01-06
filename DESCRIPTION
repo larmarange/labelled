@@ -45,4 +45,3 @@ Roxygen: list(markdown = TRUE)
 Language: en-US
 Config/testthat/edition: 3
 Config/Needs/check: memisc
-Config/Needs/coverage: memisc
