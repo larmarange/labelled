@@ -541,12 +541,12 @@ glimpse(women %>% unlabelled())
 ```
 
 
-Alternatively, you can use functions as `dplyr::mutate_if()` or `dplyr::mutate_at()`. See the example below.
+Alternatively, you can use functions as `dplyr::mutate()` +  `dplyr::across()`. See the example below.
 
 ```{r}
 glimpse(to_factor(women))
-glimpse(women %>% mutate_if(is.labelled, to_factor))
-glimpse(women %>% mutate_at(vars(employed:religion), to_factor))
+glimpse(women %>% mutate(across(where(is.labelled), to_factor)))
+glimpse(women %>% mutate(across(employed:religion, to_factor)))
 ```
 
 
