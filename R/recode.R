@@ -117,10 +117,10 @@ recode.haven_labelled <- function(
   } else {
     var_label(ret) <- var_label(.x)
     if (.keep_value_labels || .combine_value_labels) {
-      warning(
-        "The type of .x has been changed and value labels attributes",
-        "have been lost."
-      )
+      cli::cli_warn(paste(
+        "The type of {.arg .x} ({mode(ret)}) has been changed",
+        "and value labels have been lost."
+      ))
     }
   }
   ret

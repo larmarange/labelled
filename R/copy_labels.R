@@ -47,18 +47,10 @@ copy_labels <- function(from, to, .strict = TRUE) {
 
 #' @export
 copy_labels.default <- function(from, to, .strict = TRUE) {
-  if (!is.atomic(from)) {
-    stop("`from` should be a vector or a data.frame",
-      call. = FALSE,
-      domain = "R-labelled"
-    )
-  }
-  if (!is.atomic(to)) {
-    stop("`to` should be a vector",
-      call. = FALSE,
-      domain = "R-labelled"
-    )
-  }
+  if (!is.atomic(from))
+    cli::cli_abort("{.arg from} must be a vector or a data frame.")
+  if (!is.atomic(to))
+    cli::cli_abort("{.arg to} must be a vector.")
   var_label(to) <- var_label(from)
   to
 }
@@ -66,12 +58,13 @@ copy_labels.default <- function(from, to, .strict = TRUE) {
 
 #' @export
 copy_labels.haven_labelled <- function(from, to, .strict = TRUE) {
-  if (mode(from) != mode(to) && .strict) {
-    stop("`from` and `to` should be of same type",
-      call. = FALSE,
-      domain = "R-labelled"
+  if (mode(from) != mode(to) && .strict)
+    cli::cli_abort(
+      paste(
+        "{.arg from} ({class(from)}) and {.arg to} ({class(to)})",
+        "must be of same type."
+      )
     )
-  }
   var_label(to) <- var_label(from)
 
   if (mode(from) == mode(to)) {
@@ -84,9 +77,7 @@ copy_labels.haven_labelled <- function(from, to, .strict = TRUE) {
 
 #' @export
 copy_labels.data.frame <- function(from, to, .strict = TRUE) {
-  if (!is.data.frame(to)) {
-    stop("`to` should be a data frame", call. = FALSE, domain = "R-labelled")
-  }
+  check_data_frame(to)
   for (var in names(to)) {
     if (var %in% names(from)) {
       to[[var]] <- copy_labels(from[[var]], to[[var]], .strict = .strict)

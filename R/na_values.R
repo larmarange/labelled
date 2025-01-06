@@ -111,9 +111,8 @@ na_values.data.frame <- function(x) {
 
 #' @export
 `na_values<-.factor` <- function(x, value) {
-  if (!is.null(value)) {
-    stop("`na_values()` cannot be applied to factors.")
-  }
+  if (!is.null(value))
+    cli::cli_abort("{.fn na_values}` cannot be applied to factors.")
   x %>% remove_attributes("na_values")
 }
 
@@ -147,21 +146,19 @@ na_values.data.frame <- function(x) {
   }
 
   if (!all(names(value) %in% names(x))) {
-    missing_names <- stringr::str_c(
-      setdiff(names(value), names(x)),
-      collapse = ", "
-    )
-    stop("some variables not found in x:", missing_names)
+    missing_names <- setdiff(names(value), names(x))
+    cli::cli_abort(c(
+      "Can't find variables {.var {missing_names}} in {.arg x}."
+    ))
   }
 
   for (var in names(value)) {
     if (!is.null(value[[var]])) {
-      if (mode(x[[var]]) != mode(value[[var]])) {
-        stop("`x` and `value` must be same type",
-          call. = FALSE,
-          domain = "R-labelled"
-        )
-      }
+      if (mode(x[[var]]) != mode(value[[var]]))
+        cli::cli_abort(paste(
+          "{.arg x} ({class(x)}) and {.arg value} ({class(value)})",
+          "must be same type."
+        ))
       if (typeof(x[[var]]) != typeof(value[[var]])) {
         mode(value[[var]]) <- typeof(x[[var]])
       }
@@ -220,7 +217,7 @@ na_range.data.frame <- function(x) {
 #' @export
 `na_range<-.factor` <- function(x, value) {
   if (!is.null(value)) {
-    stop("`na_range()` cannot be applied to factors.")
+    cli::cli_abort("{.fn na_range} cannot be applied to factors.")
   }
   x %>% remove_attributes("na_range")
 }
@@ -255,21 +252,20 @@ na_range.data.frame <- function(x) {
   }
 
   if (!all(names(value) %in% names(x))) {
-    missing_names <- stringr::str_c(
-      setdiff(names(value), names(x)),
-      collapse = ", "
-    )
-    stop("some variables not found in x:", missing_names)
+    missing_names <- setdiff(names(value), names(x))
+
+    cli::cli_abort(c(
+      "Can't find variables {.var {missing_names}} in {.arg x}."
+    ))
   }
 
   for (var in names(value)) {
     if (!is.null(value[[var]])) {
-      if (mode(x[[var]]) != mode(value[[var]])) {
-        stop("`x` and `value` must be same type",
-          call. = FALSE,
-          domain = "R-labelled"
-        )
-      }
+      if (mode(x[[var]]) != mode(value[[var]]))
+        cli::cli_abort(paste(
+          "{.arg x} ({class(x)}) and {.arg value} ({class(value)})",
+          "must be same type."
+        ))
       if (typeof(x[[var]]) != typeof(value[[var]])) {
         mode(value[[var]]) <- typeof(x[[var]])
       }
@@ -328,9 +324,8 @@ get_na_range <- na_range
 #' }
 #' @export
 set_na_values <- function(.data, ..., .values = NA, .strict = TRUE) {
-  if (!is.data.frame(.data) && !is.atomic(.data)) {
-    stop(".data should be a data.frame or a vector")
-  }
+  if (!is.data.frame(.data) && !is.atomic(.data))
+    cli::cli_abort("{.arg .data} should be a data frame or a vector.")
 
   # vector case
   if (is.atomic(.data)) {
@@ -351,11 +346,10 @@ set_na_values <- function(.data, ..., .values = NA, .strict = TRUE) {
   }
   values <- rlang::dots_list(...)
   if (.strict && !all(names(values) %in% names(.data))) {
-    missing_names <- stringr::str_c(
-      setdiff(names(values), names(.data)),
-      collapse = ", "
-    )
-    stop("some variables not found in .data: ", missing_names)
+    missing_names <- setdiff(names(values), names(.data))
+    cli::cli_abort(c(
+      "Can't find variables {.var {missing_names}} in {.arg .data}."
+    ))
   }
 
   for (v in intersect(names(values), names(.data))) {
@@ -368,9 +362,8 @@ set_na_values <- function(.data, ..., .values = NA, .strict = TRUE) {
 #' @rdname na_values
 #' @export
 set_na_range <- function(.data, ..., .values = NA, .strict = TRUE) {
-  if (!is.data.frame(.data) && !is.atomic(.data)) {
-    stop(".data should be a data.frame or a vector")
-  }
+  if (!is.data.frame(.data) && !is.atomic(.data))
+    cli::cli_abort("{.arg .data} should be a data frame or a vector.")
 
   # vector case
   if (is.atomic(.data)) {
@@ -391,7 +384,10 @@ set_na_range <- function(.data, ..., .values = NA, .strict = TRUE) {
   }
   values <- rlang::dots_list(...)
   if (.strict && !all(names(values) %in% names(.data))) {
-    stop("some variables not found in .data")
+    missing_names <- setdiff(names(value), names(.data))
+    cli::cli_abort(c(
+      "Can't find variables {.var {missing_names}} in {.arg .data}."
+    ))
   }
 
   for (v in intersect(names(values), names(.data))) {

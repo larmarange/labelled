@@ -1,5 +1,3 @@
-context("Test update_*_with()")
-
 test_that("update_variable_labels_with() works as expected", {
   df <- iris %>%
     set_variable_labels(
