@@ -1,7 +1,7 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://larmarange.github.io/labelled/dev/LICENSE.html</loc></url>
 <url><loc>https://larmarange.github.io/labelled/dev/articles/index.html</loc></url>
-<url><loc>https://larmarange.github.io/labelled/dev/articles/intro_labelled.html</loc></url>
+<url><loc>https://larmarange.github.io/labelled/dev/articles/labelled.html</loc></url>
 <url><loc>https://larmarange.github.io/labelled/dev/articles/look_for.html</loc></url>
 <url><loc>https://larmarange.github.io/labelled/dev/articles/missing_values.html</loc></url>
 <url><loc>https://larmarange.github.io/labelled/dev/articles/packed_columns.html</loc></url>
