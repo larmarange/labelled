@@ -33,7 +33,7 @@ reference:
   - drop_unused_value_labels
   - copy_labels
   - update_variable_labels_with
-- title: Data dictionnary
+- title: Data dictionary
   desc:  Functions to look for keywords variable names / labels and create a data dictionary
   contents:
   - look_for

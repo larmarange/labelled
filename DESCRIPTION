@@ -21,7 +21,7 @@ Depends:
 Imports:
     haven (>= 2.4.1),
     cli,
-    dplyr (>= 1.0.0),
+    dplyr (>= 1.1.0),
     lifecycle,
     rlang (>= 1.1.0),
     vctrs,

@@ -178,7 +178,7 @@ look_for <- function(data,
 
     if (details != "none") {
       data <- data %>%
-        dplyr::select(res$variable)
+        dplyr::select(dplyr::all_of(res$variable))
 
       n_missing <- function(x) {
         sum(is.na(x))
@@ -195,7 +195,7 @@ look_for <- function(data,
 
     if (details == "full") {
       data <- data %>%
-        dplyr::select(res$variable)
+        dplyr::select(dplyr::all_of(res$variable))
 
       unique_values <- function(x) {
         length(unique(x))
@@ -267,7 +267,7 @@ print.look_for <- function(x, ...) {
             !is.na(.data$value_labels) ~ .data$value_labels,
             !is.na(.data$levels) ~ .data$levels,
             !is.na(.data$range) ~ paste("range:", .data$range),
-            TRUE ~ "" # zero-width space
+            .default = "" # zero-width space
           ),
           variable = dplyr::if_else(
             duplicated(.data$pos),
@@ -351,7 +351,7 @@ print.look_for <- function(x, ...) {
       lw <- dplyr::case_when(
         w_values < lw / 2 ~ lw - w_values,
         w_label < lw / 2 ~ lw - w_label,
-        TRUE ~ trunc(lw / 2)
+        .default = trunc(lw / 2)
       )
       # a minimum of 10
       lw <- max(10, lw)
@@ -407,7 +407,7 @@ convert_list_columns_to_character <- function(x) {
     dplyr::as_tibble() %>% # remove look_for class
     dplyr::mutate(
       dplyr::across(
-        where(is.list),
+        dplyr::where(is.list),
         ~ unlist(lapply(.x, paste, collapse = "; "))
       )
     )

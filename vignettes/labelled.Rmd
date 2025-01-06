@@ -545,8 +545,8 @@ Alternatively, you can use functions as `dplyr::mutate()` +  `dplyr::across()`. 
 
 ```{r}
 glimpse(to_factor(women))
-glimpse(women %>% mutate(across(where(is.labelled), to_factor))
-glimpse(women %>% mutate(across(employed:religion, to_factor))
+glimpse(women %>% mutate(across(where(is.labelled), to_factor)))
+glimpse(women %>% mutate(across(employed:religion, to_factor)))
 ```
 
 
