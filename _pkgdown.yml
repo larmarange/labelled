@@ -64,3 +64,6 @@ reference:
 - title: Internal datasets for testing
   contents:
   - spss_file
+
+redirects:
+- ["articles/intro_labelled.html", "articles/labelled.html"]
