@@ -299,7 +299,7 @@ get_label_attribute <- function(x) {
 #' @rdname var_label
 #' @export
 set_label_attribute <- function(x, value) {
-  check_string(value, allow_null = TRUE)
+  check_string(value, allow_null = TRUE, allow_na = TRUE)
   attr(x, "label") <- value
   x
 }

@@ -8,6 +8,7 @@ test_that("var_label works properly", {
   var_label(x) <- NULL
   expect_null(attr(x, "label"))
   expect_null(var_label(x))
+  expect_no_error(var_label(x) <- NA_character_)
 
   x <- 1:3
   x <- set_variable_labels(x, "value")
