@@ -10,7 +10,7 @@
 |collate  |French_France.utf8                    |
 |ctype    |French_France.utf8                    |
 |tz       |Europe/Paris                          |
-|date     |2025-01-02                            |
+|date     |2025-01-07                            |
 |rstudio  |2024.12.0+467 Kousa Dogwood (desktop) |
 |pandoc   |NA                                    |
 
@@ -34,7 +34,7 @@
 |hms         |1.1.3   |1.1.3       |   |
 |lifecycle   |1.0.4   |1.0.4       |   |
 |magrittr    |2.0.3   |2.0.3       |   |
-|pillar      |1.10.0  |1.10.0      |   |
+|pillar      |1.10.1  |1.10.1      |   |
 |pkgconfig   |2.0.3   |2.0.3       |   |
 |prettyunits |1.2.0   |1.2.0       |   |
 |progress    |1.2.3   |1.2.3       |   |
@@ -55,12 +55,10 @@
 
 # Revdeps
 
-## Failed to check (4)
+## Failed to check (2)
 
 |package       |version |error |warning |note |
 |:-------------|:-------|:-----|:-------|:----|
 |broom.helpers |?       |      |        |     |
-|codebook      |?       |      |        |     |
-|dm            |1.0.11  |2     |        |     |
 |modelsummary  |?       |      |        |     |
 
