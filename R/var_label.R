@@ -2,7 +2,7 @@
 #'
 #' @param x a vector or a data.frame
 #' @param value a character string or `NULL` to remove the label
-#'  For data frames, with `var_labels()`, it could also be a named list or a
+#'  For data frames, with `var_label()`, it could also be a named list or a
 #'  character vector of same length as the number of columns in `x`.
 #' @param unlist for data frames, return a named vector instead of a list
 #' @param null_action for data frames, by default `NULL` will be returned for

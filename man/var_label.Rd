@@ -53,7 +53,7 @@ populate with \code{NA} or \code{"empty"} to populate with an empty string (\cod
 otherwise, the label of the group of columns will be returned.}
 
 \item{value}{a character string or \code{NULL} to remove the label
-For data frames, with \code{var_labels()}, it could also be a named list or a
+For data frames, with \code{var_label()}, it could also be a named list or a
 character vector of same length as the number of columns in \code{x}.}
 
 \item{.data}{a data frame or a vector}
