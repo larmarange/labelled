@@ -24,7 +24,7 @@ reference:
 - title: Manipulating value labels
   desc:  Functions to set, manipulate and remove value labels
   contents:
-  - labelled
+  - haven::labelled
   - val_label
   - remove_var_label
   - sort_val_labels
@@ -34,19 +34,19 @@ reference:
   - copy_labels
   - update_variable_labels_with
 - title: Data dictionary
-  desc:  Functions to look for keywords variable names / labels and create a data dictionary
+  desc:  Functions to look for keywords variable names / labels and create a data dictionary.
   contents:
   - look_for
 - title: Manipulating SPSS style missing values
   desc:  Functions to set, manipulate and remove SPSS style missing values
   contents:
-  - labelled_spss
+  - haven::labelled_spss
   - na_values
   - copy_labels
   - remove_user_na
 - title: Tagged missing values
   contents:
-  - tagged_na
+  - haven::tagged_na
   - unique_tagged_na
   - tagged_na_to_user_na
 - title: Converting

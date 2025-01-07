@@ -5,9 +5,9 @@
 #'
 #' @importFrom dplyr recode
 #' @inheritParams dplyr::recode
-#' @param .keep_value_labels If TRUE, keep original value labels.
-#'   If FALSE, remove value labels.
-#' @param .combine_value_labels If TRUE, will combine original value labels
+#' @param .keep_value_labels If `TRUE`, keep original value labels.
+#'   If `FALSE`, remove value labels.
+#' @param .combine_value_labels If `TRUE`, will combine original value labels
 #'   to generate new value labels. Note that unexpected results could be
 #'   obtained if a same old value is recoded into several different new values.
 #' @param .sep Separator to be used when combining value labels.
