@@ -384,7 +384,7 @@ set_na_range <- function(.data, ..., .values = NA, .strict = TRUE) {
   }
   values <- rlang::dots_list(...)
   if (.strict && !all(names(values) %in% names(.data))) {
-    missing_names <- setdiff(names(value), names(.data))
+    missing_names <- setdiff(names(values), names(.data))
     cli::cli_abort(c(
       "Can't find variables {.var {missing_names}} in {.arg .data}."
     ))
