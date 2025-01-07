@@ -206,8 +206,8 @@ memisc_to_labelled <- function(x) {
 #'   codes
 #' @details
 #' If you convert a labelled vector into a factor with prefix, i.e. by using
-#' [to_factor(levels = "prefixed")][to_factor()], `to_labelled.factor()` is able
-#' to reconvert it to a labelled vector with same values and labels.
+#' [`to_factor(levels = "prefixed")`][to_factor()], `to_labelled.factor()` is
+#' able to reconvert it to a labelled vector with same values and labels.
 #' @export
 #' @examples
 #' # Converting factors to labelled vectors
@@ -242,12 +242,12 @@ to_labelled.factor <- function(x, labels = NULL, .quiet = FALSE, ...) {
   if (is.null(labels)) {
     # check if levels are formatted as "[code] label"
     l <- .get_prefixes.factor(x)
-    if (any(is.na(l$code)) || any(is.na(l$code)) || any(duplicated(l$code))) {
+    if (anyNA(l$code) || anyNA(l$code) || any(duplicated(l$code))) {
       if (
         !.quiet &&
           any(duplicated(l$code)) &&
-          all(!is.na(l$code)) &&
-          all(!is.na(l$code))
+          !anyNA(l$code) &&
+          !anyNA(l$code)
       ) {
         cli::cli_warn("{.arg x} looks prefixed, but duplicated codes found.")
       }
@@ -258,10 +258,10 @@ to_labelled.factor <- function(x, labels = NULL, .quiet = FALSE, ...) {
     } else {
       # "[code] label" case
       num_l <- suppressWarnings(as.numeric(l$code))
-      if (!.quiet && all(!is.na(num_l)) && any(duplicated(num_l))) {
+      if (!.quiet && !anyNA(num_l) && any(duplicated(num_l))) {
         cli::cli_warn("All codes seem numeric but some duplicates found.")
       }
-      if (all(!is.na(num_l)) && !any(duplicated(num_l))) {
+      if (!anyNA(num_l) && !any(duplicated(num_l))) {
         l$code <- as.numeric(l$code)
       }
       r <- l$levels

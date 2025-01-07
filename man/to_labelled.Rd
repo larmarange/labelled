@@ -70,8 +70,8 @@ So far, missing values defined in \strong{Stata} are always imported as \code{NA
 \code{\link[foreign:read.dta]{foreign::read.dta()}} and could not be retrieved by \code{foreign_to_labelled()}.
 
 If you convert a labelled vector into a factor with prefix, i.e. by using
-\link[=to_factor]{to_factor(levels = "prefixed")}, \code{to_labelled.factor()} is able
-to reconvert it to a labelled vector with same values and labels.
+\code{\link[=to_factor]{to_factor(levels = "prefixed")}}, \code{to_labelled.factor()} is
+able to reconvert it to a labelled vector with same values and labels.
 }
 \examples{
 \dontrun{

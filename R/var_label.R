@@ -113,7 +113,7 @@ var_label.data.frame <- function(x,
     r <- lapply(
       r,
       function(x) {
-        if (is.null(x)) as.character(NA) else x
+        if (is.null(x)) NA_character_ else x
       }
     )
   }
@@ -178,7 +178,7 @@ var_label.data.frame <- function(x,
     missing_names <- setdiff(names(value), names(x))
 
     cli::cli_abort(c(
-      "Can't find variables {.var {missing_names}}  in {.arg x}."
+      "Can't find variables {.var {missing_names}} in {.arg x}."
     ))
   }
 

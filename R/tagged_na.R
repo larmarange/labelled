@@ -187,9 +187,9 @@ tagged_na_to_user_na.double <- function(x, user_na_start = NULL) {
   for (i in seq_along(tn)) {
     new_val <- user_na_start + i - 1
     if (any(x == new_val, na.rm = TRUE))
-      cli::cli_abort(paste(
+      cli::cli_abort(c(
         "Value {new_val} is already used in {.arg x}.",
-        "Please change {.arg user_na_start}."
+        i = "Please change {.arg user_na_start}."
       ))
     x[is_tagged_na(x, na_tag(tn[i]))] <- new_val
     if (any(is_tagged_na(labels, na_tag(tn[i])), na.rm = TRUE)) {

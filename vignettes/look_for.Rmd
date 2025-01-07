@@ -1,9 +1,9 @@
 ---
 author: "Joseph Larmarange"
-title: "Generate a data dictionnary and search for variables with `look_for()`"
+title: "Generate a data dictionary and search for variables with `look_for()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Generate a data dictionnary and search for variables with `look_for()`}
+  %\VignetteIndexEntry{Generate a data dictionary and search for variables with `look_for()`}
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
 ---

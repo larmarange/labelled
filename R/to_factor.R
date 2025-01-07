@@ -94,7 +94,7 @@ to_factor.haven_labelled <- function(
   if (explicit_tagged_na && is.double(x)) {
     new_labels <- to_character(val_labels(x), explicit_tagged_na = TRUE)
     x <- to_character(unclass(x), explicit_tagged_na = TRUE)
-    if (any(is.na(new_labels))) { # regular NA with a label
+    if (anyNA(new_labels)) { # regular NA with a label
       x[is.na(x)] <- "NA"
       new_labels[is.na(new_labels)] <- "NA"
     }

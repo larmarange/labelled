@@ -248,11 +248,7 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
   if (length(v) != 1) {
     cli::cli_abort("{.arg v} (length: {length(v)}) should be a single value.")
   }
-  check_character(value, allow_null = TRUE)
-  if (length(value) > 1)
-    cli::cli_abort(
-      "{.arg value} (length: {length(value)}) should be a single value."
-    )
+  check_string(value, allow_null = TRUE)
   names(value) <- v
   val_labels(x, null_action = null_action) <- value
   x
@@ -267,11 +263,7 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
   if (length(v) != 1) {
     cli::cli_abort("{.arg v} (length: {length(v)}) should be a single value.")
   }
-  check_character(value, allow_null = TRUE)
-  if (length(value) > 1)
-    cli::cli_abort(
-      "{.arg value} (length: {length(value)}) should be a single value."
-    )
+  check_string(value, allow_null = TRUE)
 
   labels <- val_labels(x)
 
