@@ -9,6 +9,11 @@ cf. https://github.com/larmarange/labelled/actions/workflows/R-CMD-check.yaml
 
 0 errors √ | 0 warnings √ | 0 notes √
 
+## Fixes
+
+During previous submission, there was a NOTE about no visible binding for a
+global variable for one function. It has been fixed.
+
 ## revdepcheck results
 
 We checked 43 reverse dependencies (41 from CRAN + 2 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
