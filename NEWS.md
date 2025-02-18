@@ -1,5 +1,11 @@
 # labelled (development version)
 
+**Bug fix**
+
+* fix a bug introduced in 2.14.0 in `set_variable_labels()` when using `.labels`
+  argument (#171)
+
+
 # labelled 2.14.0
 
 **New features**

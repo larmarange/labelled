@@ -260,9 +260,6 @@ set_variable_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
   if (!identical(.labels, NA)) {
     if (!.strict) {
       .labels <- .labels[intersect(names(.labels), names(.data))]
-    } else {
-      check_character(.labels)
-
     }
     var_label(.data) <- .labels
   }
