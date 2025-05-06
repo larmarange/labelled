@@ -25,6 +25,14 @@ test_that("var_label works properly", {
   expect_no_error(
     var_label(cars) <- labs
   )
+
+  labels <- list(dist = "BAR", speed = "FOO")
+  data_labelled <- set_variable_labels(cars, .labels = labels)
+
+  expect_identical(
+    get_variable_labels(data_labelled),
+    list(speed = "FOO", dist = "BAR")
+  )
 })
 
 test_that("var_label works on data.frame", {
