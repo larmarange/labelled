@@ -273,6 +273,7 @@ get_variable_labels <- var_label
 #' }
 #' @export
 set_variable_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
+
   # survey design
   if (inherits(.data, "survey.design")) {
     .data$variables <-

@@ -22,4 +22,34 @@ test_that("labelled works with survey design", {
       Species = "type of iris"
     )
   )
+
+  expect_no_error(
+    val_labels(ds) <- list(Sepal.Length = c("test 1" = 1))
+  )
+  expect_no_error(
+    val_label(ds, v = 2) <- list(Sepal.Length = "test 2")
+  )
+  expect_no_error(
+    ds <- add_value_labels(ds, Sepal.Length = c("test 3" = 3))
+  )
+  expect_no_error(
+    vl <- get_value_labels(ds)
+  )
+  expect_equal(
+    vl$Sepal.Length,
+    c(`test 1` = 1, `test 2` = 2, `test 3` = 3)
+  )
+  expect_no_error(
+    ds <- remove_value_labels(ds, Sepal.Length = 3)
+  )
+  expect_equal(
+    val_labels(ds$variables$Sepal.Length),
+    c(`test 1` = 1, `test 2` = 2)
+  )
+  expect_no_error(
+    ds <- add_value_labels(ds, Sepal.Length = c(test = 3))
+  )
+  expect_no_error(
+    ds <- set_value_labels(ds, Sepal.Length = NULL)
+  )
 })
