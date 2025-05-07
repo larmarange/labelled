@@ -3,6 +3,8 @@ test_that("labelled works with survey design", {
   skip_if_not_installed("survey")
 
   ds <- survey::svydesign(~ 1, data = iris, weights = ~ 1)
+
+  # variable labels
   expect_no_error(
     var_label(ds) <- list(Species = "type of iris")
   )
@@ -23,6 +25,7 @@ test_that("labelled works with survey design", {
     )
   )
 
+  # value labels
   expect_no_error(
     val_labels(ds) <- list(Sepal.Length = c("test 1" = 1))
   )
@@ -47,9 +50,17 @@ test_that("labelled works with survey design", {
     c(`test 1` = 1, `test 2` = 2)
   )
   expect_no_error(
-    ds <- add_value_labels(ds, Sepal.Length = c(test = 3))
+    ds <- set_value_labels(ds, Sepal.Length = NULL)
   )
   expect_no_error(
-    ds <- set_value_labels(ds, Sepal.Length = NULL)
+    ds <- add_value_labels(ds, Sepal.Length = c(test = 3))
+  )
+
+  # update labels
+  expect_no_error(
+    update_variable_labels_with(ds, toupper)
+  )
+  expect_no_error(
+    update_value_labels_with(ds, toupper)
   )
 })
