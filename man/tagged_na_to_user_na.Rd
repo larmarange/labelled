@@ -10,7 +10,7 @@ tagged_na_to_user_na(x, user_na_start = NULL)
 tagged_na_to_regular_na(x)
 }
 \arguments{
-\item{x}{a vector or a data frame}
+\item{x}{a vector, a data frame or a survey design}
 
 \item{user_na_start}{minimum value of the new user na, if \code{NULL},
 computed automatically (maximum of observed values + 1)}

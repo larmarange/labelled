@@ -143,3 +143,29 @@ to_character.data.frame <- function(
   }
   x
 }
+
+#' @export
+#' @rdname to_character
+to_character.survey.design <- function(
+    x,
+    levels = c("labels", "values", "prefixed"),
+    nolabel_to_na = FALSE,
+    user_na_to_na = FALSE,
+    explicit_tagged_na = FALSE,
+    labelled_only = TRUE,
+    ...) {
+  x$variables <-
+    to_character(
+      x$variables,
+      levels = levels,
+      nolabel_to_na = nolabel_to_na,
+      user_na_to_na = user_na_to_na,
+      explicit_tagged_na = explicit_tagged_na,
+      labelled_only = labelled_only,
+      ...
+    )
+  x
+}
+
+#' @export
+to_character.svyrep.design <- to_character.survey.design

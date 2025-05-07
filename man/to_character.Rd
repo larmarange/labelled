@@ -5,6 +5,7 @@
 \alias{to_character.double}
 \alias{to_character.haven_labelled}
 \alias{to_character.data.frame}
+\alias{to_character.survey.design}
 \title{Convert input to a character vector}
 \usage{
 to_character(x, ...)
@@ -21,6 +22,16 @@ to_character(x, ...)
 )
 
 \method{to_character}{data.frame}(
+  x,
+  levels = c("labels", "values", "prefixed"),
+  nolabel_to_na = FALSE,
+  user_na_to_na = FALSE,
+  explicit_tagged_na = FALSE,
+  labelled_only = TRUE,
+  ...
+)
+
+\method{to_character}{survey.design}(
   x,
   levels = c("labels", "values", "prefixed"),
   nolabel_to_na = FALSE,
