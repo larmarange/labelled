@@ -76,4 +76,24 @@ test_that("labelled works with survey.design", {
   expect_no_error(
     drop_unused_value_labels(ds)
   )
+
+  # user_na
+  expect_no_error(
+    na_range(ds) <- list(Petal.Length = c(97, 98))
+  )
+  expect_no_error(
+    na_values(ds) <- list(Petal.Length = 99)
+  )
+  expect_no_error(
+    get_na_range(ds)
+  )
+  expect_no_error(
+    get_na_values(ds)
+  )
+  expect_no_error(
+    user_na_to_na(ds)
+  )
+  expect_no_error(
+    user_na_to_tagged_na(ds)
+  )
 })

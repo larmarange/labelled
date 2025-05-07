@@ -43,14 +43,14 @@ user_na_to_regular_na(x)
 user_na_to_tagged_na(x)
 }
 \arguments{
-\item{x}{A vector (or a data frame).}
+\item{x}{A vector, a data frame, or a survey design.}
 
 \item{value}{A vector of values that should also be considered as missing
 (for \code{na_values}) or a numeric vector of length two giving the (inclusive)
 extents of the range (for \code{na_values}, use \code{-Inf} and \code{Inf} if you
 want the range to be open ended).}
 
-\item{.data}{a data frame or a vector}
+\item{.data}{a data frame, a survey design or a vector}
 
 \item{...}{name-value pairs of missing values (see examples)}
 
