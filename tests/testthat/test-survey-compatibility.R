@@ -63,4 +63,12 @@ test_that("labelled works with survey design", {
   expect_no_error(
     update_value_labels_with(ds, toupper)
   )
+
+  # copy labels
+  expect_no_error(
+    copy_labels(ds, iris)
+  )
+  expect_no_error(
+    copy_labels_from(ds, iris)
+  )
 })

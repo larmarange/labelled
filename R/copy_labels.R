@@ -12,8 +12,8 @@
 #' `copy_labels_from` is intended to be used with \pkg{dplyr} syntax,
 #' see examples.
 #'
-#' @param from A vector or a data.frame (or tibble) to copy labels from.
-#' @param to A vector or data.frame (or tibble) to copy labels to.
+#' @param from A vector or a data.frame (or survey design) to copy labels from.
+#' @param to A vector or data.frame (or survey design) to copy labels to.
 #' @param .strict When `from` is a labelled vector, `to` have to be of the same
 #' type (numeric or character) in order to copy value labels and SPSS-style
 #' missing values. If this is not the case and `.strict = TRUE`, an error
@@ -77,14 +77,32 @@ copy_labels.haven_labelled <- function(from, to, .strict = TRUE) {
 
 #' @export
 copy_labels.data.frame <- function(from, to, .strict = TRUE) {
-  check_data_frame(to)
-  for (var in names(to)) {
-    if (var %in% names(from)) {
-      to[[var]] <- copy_labels(from[[var]], to[[var]], .strict = .strict)
+  if (!inherits(to, "data.frame") && !inherits(to, "survey.design"))
+    cli::cli_abort("{.arg to} should be a data frame or a survey design")
+
+  if (inherits(from, "survey.design"))
+    from <- from$variables
+
+  if (inherits(to, "data.frame")) {
+    for (var in names(to)) {
+      if (var %in% names(from)) {
+        to[[var]] <- copy_labels(from[[var]], to[[var]], .strict = .strict)
+      }
+    }
+  } else { # survey design case
+    for (var in names(to$variables)) {
+      if (var %in% names(from)) {
+        to$variables[[var]] <-
+          copy_labels(from[[var]], to$variables[[var]], .strict = .strict)
+      }
     }
   }
+
   to
 }
+
+#' @export
+copy_labels.survey.design <- copy_labels.data.frame
 
 #' @rdname copy_labels
 #' @export
