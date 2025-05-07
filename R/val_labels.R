@@ -60,6 +60,9 @@ val_labels.survey.design <- function(x, prefixed = FALSE) {
   val_labels(x$variables, prefixed = prefixed)
 }
 
+#' @export
+val_labels.svyrep.design <- val_labels.survey.design
+
 #' @rdname val_labels
 #' @export
 `val_labels<-` <- function(
@@ -216,6 +219,8 @@ val_labels.survey.design <- function(x, prefixed = FALSE) {
   x
 }
 
+#' @export
+`val_labels<-.svyrep.design` <- `val_labels<-.survey.design`
 
 #' @rdname val_labels
 #' @export
@@ -252,6 +257,9 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
 val_label.survey.design <- function(x, v, prefixed = FALSE) {
   val_label(x$variables, v = v, prefixed = prefixed)
 }
+
+#' @export
+val_label.svyrep.design <- val_label.survey.design
 
 #' @rdname val_labels
 #' @export
@@ -351,6 +359,8 @@ val_label.survey.design <- function(x, v, prefixed = FALSE) {
   x
 }
 
+#' @export
+`val_label<-.svyrep.design` <- `val_label<-.survey.design`
 
 #' @rdname val_labels
 #' @export
@@ -421,7 +431,7 @@ set_value_labels <- function(
     .null_action = c("unclass", "labelled")) {
   .null_action <- match.arg(.null_action)
   # survey.design case
-  if (inherits(.data, "survey.design")) {
+  if (inherits(.data, "survey.design") || inherits(.data, "svyrep.design")) {
     .data$variables <-
       set_value_labels(
         .data$variables,
@@ -481,7 +491,7 @@ add_value_labels <- function(
   .null_action <- match.arg(.null_action)
 
   # survey.design case
-  if (inherits(.data, "survey.design")) {
+  if (inherits(.data, "survey.design") || inherits(.data, "svyrep.design")) {
     .data$variables <-
       add_value_labels(
         .data$variables,
@@ -541,7 +551,7 @@ remove_value_labels <- function(
   .null_action <- match.arg(.null_action)
 
   # survey.design case
-  if (inherits(.data, "survey.design")) {
+  if (inherits(.data, "survey.design") || inherits(.data, "svyrep.design")) {
     .data$variables <-
       remove_value_labels(
         .data$variables,
@@ -653,6 +663,9 @@ sort_val_labels.survey.design <- function(
     decreasing = decreasing
   )
 }
+
+#' @export
+sort_val_labels.svyrep.design <- sort_val_labels.survey.design
 
 #' Turn a named vector into a vector of names prefixed by values
 #' @param x vector to be prefixed

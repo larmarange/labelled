@@ -1,4 +1,4 @@
-test_that("labelled works with survey design", {
+test_that("labelled works with survey.design", {
   skip_on_cran()
   skip_if_not_installed("survey")
 
@@ -70,5 +70,10 @@ test_that("labelled works with survey design", {
   )
   expect_no_error(
     copy_labels_from(ds, iris)
+  )
+
+  # drop_unused_value_labels
+  expect_no_error(
+    drop_unused_value_labels(ds)
   )
 })

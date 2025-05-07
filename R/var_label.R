@@ -155,6 +155,8 @@ var_label.survey.design <- function(x,
   )
 }
 
+#' @export
+var_label.svyrep.design <- var_label.survey.design
 
 #' @rdname var_label
 #' @export
@@ -213,6 +215,10 @@ var_label.survey.design <- function(x,
   var_label(x$variables) <- value
   x
 }
+
+#' @export
+`var_label<-.svyrep.design` <- `var_label<-.survey.design`
+
 
 #' @rdname var_label
 #' @export
@@ -275,7 +281,7 @@ get_variable_labels <- var_label
 set_variable_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
 
   # survey design
-  if (inherits(.data, "survey.design")) {
+  if (inherits(.data, "survey.design") || inherits(.data, "svyrep.design")) {
     .data$variables <-
       set_variable_labels(
         .data$variables,

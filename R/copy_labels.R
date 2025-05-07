@@ -77,10 +77,14 @@ copy_labels.haven_labelled <- function(from, to, .strict = TRUE) {
 
 #' @export
 copy_labels.data.frame <- function(from, to, .strict = TRUE) {
-  if (!inherits(to, "data.frame") && !inherits(to, "survey.design"))
-    cli::cli_abort("{.arg to} should be a data frame or a survey design")
+  if (
+    !inherits(to, "data.frame") &&
+      !inherits(to, "survey.design") &&
+      !inherits(to, "svyrep.design")
+  )
+    cli::cli_abort("{.arg to} should be a data frame or a survey design.")
 
-  if (inherits(from, "survey.design"))
+  if (inherits(from, "survey.design") || inherits(from, "svyrep.design"))
     from <- from$variables
 
   if (inherits(to, "data.frame")) {
@@ -103,6 +107,9 @@ copy_labels.data.frame <- function(from, to, .strict = TRUE) {
 
 #' @export
 copy_labels.survey.design <- copy_labels.data.frame
+
+#' @export
+copy_labels.svyrep.design <- copy_labels.data.frame
 
 #' @rdname copy_labels
 #' @export

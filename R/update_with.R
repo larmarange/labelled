@@ -85,6 +85,10 @@ update_variable_labels_with.survey.design <- function(
 }
 
 #' @export
+update_variable_labels_with.svyrep.design <-
+  update_variable_labels_with.survey.design
+
+#' @export
 #' @rdname update_variable_labels_with
 #' @examples
 #' df %>%
@@ -132,3 +136,6 @@ update_value_labels_with.survey.design <- function(
     ...
   )
 }
+
+#' @export
+update_value_labels_with.svyrep.design <- update_value_labels_with.survey.design
