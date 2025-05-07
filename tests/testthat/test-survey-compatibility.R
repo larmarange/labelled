@@ -96,4 +96,18 @@ test_that("labelled works with survey.design", {
   expect_no_error(
     user_na_to_tagged_na(ds)
   )
+
+  # remove labels
+  expect_no_error(
+    remove_labels(ds)
+  )
+  expect_no_error(
+    remove_var_label(ds)
+  )
+  expect_no_error(
+    remove_val_labels(ds)
+  )
+  expect_no_error(
+    remove_user_na(ds)
+  )
 })

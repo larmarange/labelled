@@ -21,7 +21,7 @@ remove_val_labels(x)
 remove_user_na(x, user_na_to_na = FALSE, user_na_to_tagged_na = FALSE)
 }
 \arguments{
-\item{x}{A vector or a data frame.}
+\item{x}{A vector, a data frame or a survey design.}
 
 \item{user_na_to_na}{Convert user defined missing values into \code{NA}?}
 
