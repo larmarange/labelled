@@ -235,6 +235,43 @@ to_factor.data.frame <- function(
   x
 }
 
+
+#' @export
+#' @rdname to_factor
+to_factor.survey.design <- function(
+    x,
+    levels = c("labels", "values", "prefixed"),
+    ordered = FALSE,
+    nolabel_to_na = FALSE,
+    sort_levels = c("auto", "none", "labels", "values"),
+    decreasing = FALSE,
+    labelled_only = TRUE,
+    drop_unused_labels = FALSE,
+    strict = FALSE,
+    unclass = FALSE,
+    explicit_tagged_na = FALSE,
+    ...) {
+  x$variables <-
+    to_factor(
+      x$variables,
+      levels = levels,
+      ordered = ordered,
+      nolabel_to_na = nolabel_to_na,
+      sort_levels = sort_levels,
+      decreasing = decreasing,
+      labelled_only = labelled_only,
+      drop_unused_labels = drop_unused_labels,
+      strict = strict,
+      unclass = unclass,
+      explicit_tagged_na = explicit_tagged_na,
+      ...
+    )
+  x
+}
+
+#' @export
+to_factor.svyrep.design <- to_factor.survey.design
+
 #' @rdname to_factor
 #' @description
 #' `unlabelled(x)` is a shortcut for
@@ -265,7 +302,11 @@ to_factor.data.frame <- function(
 #' }
 #' @export
 unlabelled <- function(x, ...) {
-  if (is.data.frame(x)) {
+  if (
+    is.data.frame(x) ||
+      inherits(x, "survey.design") ||
+      inherits(x, "svyrep.design")
+  ) {
     to_factor(x, strict = TRUE, unclass = TRUE, labelled_only = TRUE, ...)
   } else if (inherits(x, "haven_labelled")) {
     to_factor(x, strict = TRUE, unclass = TRUE, ...)

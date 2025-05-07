@@ -123,4 +123,12 @@ test_that("labelled works with survey.design", {
   expect_no_error(
     to_character(ds)
   )
+
+  # to_labelled
+  expect_no_error(
+    to_labelled(ds)
+  )
+  expect_no_error(
+    unlabelled(ds)
+  )
 })

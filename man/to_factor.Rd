@@ -4,6 +4,7 @@
 \alias{to_factor}
 \alias{to_factor.haven_labelled}
 \alias{to_factor.data.frame}
+\alias{to_factor.survey.design}
 \alias{unlabelled}
 \title{Convert input to a factor.}
 \usage{
@@ -25,6 +26,21 @@ to_factor(x, ...)
 )
 
 \method{to_factor}{data.frame}(
+  x,
+  levels = c("labels", "values", "prefixed"),
+  ordered = FALSE,
+  nolabel_to_na = FALSE,
+  sort_levels = c("auto", "none", "labels", "values"),
+  decreasing = FALSE,
+  labelled_only = TRUE,
+  drop_unused_labels = FALSE,
+  strict = FALSE,
+  unclass = FALSE,
+  explicit_tagged_na = FALSE,
+  ...
+)
+
+\method{to_factor}{survey.design}(
   x,
   levels = c("labels", "values", "prefixed"),
   ordered = FALSE,
