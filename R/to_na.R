@@ -33,6 +33,15 @@ nolabel_to_na.data.frame <- function(x) {
   x
 }
 
+#' @export
+nolabel_to_na.survey.design <- function(x) {
+  x$variables <- nolabel_to_na(x$variables)
+  x
+}
+
+#' @export
+nolabel_to_na.svyrep.design <- nolabel_to_na.survey.design
+
 #' Recode value labels  to NA
 #'
 #' For labelled variables, values with a label will be recoded to `NA`.
@@ -67,3 +76,12 @@ val_labels_to_na.data.frame <- function(x) {
   x[] <- lapply(x, val_labels_to_na)
   x
 }
+
+#' @export
+val_labels_to_na.survey.design <- function(x) {
+  x$variables <- val_labels_to_na(x$variables)
+  x
+}
+
+#' @export
+val_labels_to_na.svyrep.design  <- val_labels_to_na.survey.design

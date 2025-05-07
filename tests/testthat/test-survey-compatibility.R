@@ -131,6 +131,14 @@ test_that("labelled works with survey.design", {
   expect_no_error(
     unlabelled(ds)
   )
+
+  # to_na
+  expect_no_error(
+    nolabel_to_na(ds)
+  )
+  expect_no_error(
+    val_labels_to_na(ds)
+  )
 })
 
 test_that("labelled works with svyrep.design", {
@@ -266,5 +274,13 @@ test_that("labelled works with svyrep.design", {
   )
   expect_no_error(
     unlabelled(ds)
+  )
+
+  # to_na
+  expect_no_error(
+    nolabel_to_na(ds)
+  )
+  expect_no_error(
+    val_labels_to_na(ds)
   )
 })
