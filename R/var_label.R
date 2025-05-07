@@ -143,7 +143,7 @@ var_label.data.frame <- function(x,
 var_label.survey.design <- function(x,
                                     unlist = FALSE,
                                     null_action =
-                                     c("keep", "fill", "skip", "na", "empty"),
+                                      c("keep", "fill", "skip", "na", "empty"),
                                     recurse = FALSE,
                                     ...) {
   var_label(
