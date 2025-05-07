@@ -4,9 +4,11 @@
 #' @param value a character string or `NULL` to remove the label
 #'  For data frames, with `var_label()`, it could also be a named list or a
 #'  character vector of same length as the number of columns in `x`.
-#' @param unlist for data frames, return a named vector instead of a list
-#' @param null_action for data frames, by default `NULL` will be returned for
-#' columns with no variable label. Use `"fill"` to populate with the column name
+#' @param unlist for data frames and survey design, return a named vector
+#' instead of a list
+#' @param null_action for data frames and survey design, by default `NULL` will
+#' be returned for columns with no variable label.
+#' Use `"fill"` to populate with the column name
 #' instead, `"skip"` to remove such values from the returned list, `"na"` to
 #' populate with `NA` or `"empty"` to populate with an empty string (`""`).
 #' @param recurse if `TRUE`, will apply `var_label()` on packed columns
@@ -15,10 +17,11 @@
 #' @details
 #'   `get_variable_labels()` is identical to `var_label()`.
 #'
-#'   For data frames, if you are using `var_label()<-` and if `value` is a
-#'   named list, only elements whose name will match a column of the data frame
+#'   For data frames and survey design, if you are using `var_label()<-` and
+#'   if `value` is a named list,
+#'   only elements whose name will match a column of the data frame
 #'   will be taken into account. If `value` is a character vector, labels should
-#'   be in the same order as the columns of the data.frame.
+#'   be in the same order as the columns of the data frame / survey design.
 #'
 #'   If you are using `label_attribute()<-` or `set_label_attribute()` on a data
 #'   frame, the label attribute will be attached to the data frame itself, not
@@ -137,6 +140,24 @@ var_label.data.frame <- function(x,
 
 #' @rdname var_label
 #' @export
+var_label.survey.design <- function(x,
+                                    unlist = FALSE,
+                                    null_action =
+                                     c("keep", "fill", "skip", "na", "empty"),
+                                    recurse = FALSE,
+                                    ...) {
+  var_label(
+    x$variables,
+    unlist = unlist,
+    null_action = null_action,
+    recurse = recurse,
+    ...
+  )
+}
+
+
+#' @rdname var_label
+#' @export
 `var_label<-` <- function(x, value) {
   UseMethod("var_label<-")
 }
@@ -187,13 +208,19 @@ var_label.data.frame <- function(x,
   x
 }
 
+#' @export
+`var_label<-.survey.design` <- function(x, value) {
+  var_label(x$variables) <- value
+  x
+}
+
 #' @rdname var_label
 #' @export
 get_variable_labels <- var_label
 
 
 #' @rdname var_label
-#' @param .data a data frame or a vector
+#' @param .data a data frame, a survey design or a vector
 #' @param ... name-value pairs of variable labels (see examples)
 #' @param .labels variable labels to be applied to the data.frame,
 #'   using the same syntax as `value` in `var_label(df) <- value`.
@@ -246,6 +273,18 @@ get_variable_labels <- var_label
 #' }
 #' @export
 set_variable_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
+  # survey design
+  if (inherits(.data, "survey.design")) {
+    .data$variables <-
+      set_variable_labels(
+        .data$variables,
+        ...,
+        .labels = .labels,
+        .strict = .strict
+      )
+    return(.data)
+  }
+
   # not a data.frame
   if (!is.data.frame(.data)) {
     if (!identical(.labels, NA)) {
