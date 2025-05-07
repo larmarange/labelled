@@ -4,7 +4,7 @@
 #' to remove value labels, `remove_user_na()` to remove user defined missing
 #' values (*na_values* and *na_range*) and `remove_labels()` to remove all.
 #'
-#' @param x A vector or a data frame.
+#' @param x A vector, a data frame or a survey design.
 #' @param user_na_to_na Convert user defined missing values into `NA`?
 #' @param user_na_to_tagged_na Convert user defined missing values into
 #' tagged `NA`? It could be applied only to numeric vectors. Note that integer
@@ -79,12 +79,28 @@ remove_labels.data.frame <- function(x,
   x
 }
 
+#' @export
+remove_labels.survey.design <- function(x,
+                                        user_na_to_na = FALSE,
+                                        keep_var_label = FALSE,
+                                        user_na_to_tagged_na = FALSE) {
+  x$variables <- remove_labels(
+    x$variables,
+    user_na_to_na = user_na_to_na,
+    keep_var_label = keep_var_label,
+    user_na_to_tagged_na = user_na_to_tagged_na
+  )
+  x
+}
+
+#' @export
+remove_labels.svyrep.design <- remove_labels.survey.design
+
 #' @rdname remove_labels
 #' @export
 remove_var_label <- function(x) {
   UseMethod("remove_var_label")
 }
-
 
 #' @export
 remove_var_label.default <- function(x) {
@@ -98,12 +114,20 @@ remove_var_label.data.frame <- function(x) {
   x
 }
 
+#' @export
+remove_var_label.survey.design <- function(x) {
+  x$variables <- remove_var_label(x$variables)
+  x
+}
+
+#' @export
+remove_var_label.svyrep.design <- remove_var_label.survey.design
+
 #' @rdname remove_labels
 #' @export
 remove_val_labels <- function(x) {
   UseMethod("remove_val_labels")
 }
-
 
 #' @export
 remove_val_labels.default <- function(x) {
@@ -117,6 +141,15 @@ remove_val_labels.data.frame <- function(x) {
   x
 }
 
+#' @export
+remove_val_labels.survey.design <- function(x) {
+  x$variables <- remove_val_labels(x$variables)
+  x
+}
+
+#' @export
+remove_val_labels.svyrep.design <- remove_val_labels.survey.design
+
 #' @rdname remove_labels
 #' @export
 remove_user_na <- function(x,
@@ -124,7 +157,6 @@ remove_user_na <- function(x,
                            user_na_to_tagged_na = FALSE) {
   UseMethod("remove_user_na")
 }
-
 
 #' @export
 remove_user_na.default <- function(x,
@@ -208,3 +240,18 @@ remove_user_na.data.frame <- function(x,
   )
   x
 }
+
+#' @export
+remove_user_na.survey.design <- function(x,
+                                         user_na_to_na = FALSE,
+                                         user_na_to_tagged_na = FALSE) {
+  x$variables <- remove_user_na(
+    x$variables,
+    user_na_to_na = user_na_to_na,
+    user_na_to_tagged_na = user_na_to_tagged_na
+  )
+  x
+}
+
+#' @export
+remove_user_na.svyrep.design <- remove_user_na.survey.design

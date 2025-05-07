@@ -141,7 +141,7 @@ sort_tagged_na <- function(x, decreasing = FALSE, na.last = TRUE,
 #'
 #' [tagged_na_to_regular_na()] converts tagged NAs into regular NAs.
 #'
-#' @param x a vector or a data frame
+#' @param x a vector, a data frame or a survey design
 #' @param user_na_start minimum value of the new user na, if `NULL`,
 #' computed automatically (maximum of observed values + 1)
 #' @export
@@ -212,6 +212,16 @@ tagged_na_to_user_na.data.frame <- function(x, user_na_start = NULL) {
   x
 }
 
+#' @export
+tagged_na_to_user_na.survey.design <- function(x, user_na_start = NULL) {
+  x$variables <-
+    tagged_na_to_user_na(x$variables, user_na_start = user_na_start)
+  x
+}
+
+#' @export
+tagged_na_to_user_na.svyrep.design <- tagged_na_to_user_na.survey.design
+
 #' @rdname tagged_na_to_user_na
 #' @export
 tagged_na_to_regular_na <- function(x) {
@@ -240,3 +250,12 @@ tagged_na_to_regular_na.data.frame <- function(x) {
   x[] <- lapply(x, tagged_na_to_regular_na)
   x
 }
+
+#' @export
+tagged_na_to_regular_na.survey.design <- function(x) {
+  x$variables <- tagged_na_to_regular_na(x$variables)
+  x
+}
+
+#' @export
+tagged_na_to_regular_na.svyrep.design <- tagged_na_to_regular_na.survey.design

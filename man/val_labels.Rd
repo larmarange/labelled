@@ -44,7 +44,7 @@ remove_value_labels(
 )
 }
 \arguments{
-\item{x}{A vector or a data.frame}
+\item{x}{A vector, a data frame or a survey design}
 
 \item{prefixed}{Should labels be prefixed with values?}
 
@@ -55,8 +55,8 @@ unclass the vector (default) or force/keep \code{haven_labelled} class
 \item{value}{A named vector for \code{val_labels()} (see \code{\link[haven:labelled]{haven::labelled()}}) or
 a character string for \code{val_label()}. \code{NULL} to remove the labels (except
 if \code{null_action = "labelled"}).
-For data frames, it could also be a named list with a vector of value
-labels per variable.}
+For data frames and survey design, it could also be a named list with a
+vector of value labels per variable.}
 
 \item{v}{A single value.}
 

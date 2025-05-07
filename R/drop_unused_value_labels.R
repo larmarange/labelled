@@ -2,7 +2,7 @@
 #'
 #' Drop value labels associated to a value not present in the data.
 #'
-#' @param x A vector or a data frame.
+#' @param x A vector, a data frame or a survey design.
 #' @examples
 #' x <- labelled(c(1, 2, 2, 1), c(yes = 1, no = 2, maybe = 3))
 #' x
@@ -32,3 +32,12 @@ drop_unused_value_labels.data.frame <- function(x) {
   x[] <- lapply(x, drop_unused_value_labels)
   x
 }
+
+#' @export
+drop_unused_value_labels.survey.design <- function(x) {
+  x$variables <- drop_unused_value_labels(x$variables)
+  x
+}
+
+#' @export
+drop_unused_value_labels.svyrep.design <- drop_unused_value_labels.survey.design

@@ -1,13 +1,13 @@
 #' Get / Set value labels
 #'
-#' @param x A vector or a data.frame
+#' @param x A vector, a data frame or a survey design
 #' @param prefixed Should labels be prefixed with values?
 #' @param v A single value.
 #' @param value A named vector for `val_labels()` (see [haven::labelled()]) or
 #'   a character string for `val_label()`. `NULL` to remove the labels (except
 #'   if `null_action = "labelled"`).
-#'   For data frames, it could also be a named list with a vector of value
-#'   labels per variable.
+#'   For data frames and survey design, it could also be a named list with a
+#'   vector of value labels per variable.
 #' @param null_action,.null_action for advanced users, if `value = NULL`,
 #' unclass the vector (default) or force/keep `haven_labelled` class
 #' (if `null_action = "labelled"`)
@@ -54,6 +54,14 @@ val_labels.haven_labelled <- function(x, prefixed = FALSE) {
 val_labels.data.frame <- function(x, prefixed = FALSE) {
   lapply(x, val_labels, prefixed = prefixed)
 }
+
+#' @export
+val_labels.survey.design <- function(x, prefixed = FALSE) {
+  val_labels(x$variables, prefixed = prefixed)
+}
+
+#' @export
+val_labels.svyrep.design <- val_labels.survey.design
 
 #' @rdname val_labels
 #' @export
@@ -201,6 +209,18 @@ val_labels.data.frame <- function(x, prefixed = FALSE) {
   x
 }
 
+#' @export
+`val_labels<-.survey.design` <- function(
+    x,
+    null_action = c("unclass", "labelled"),
+    value) {
+
+  val_labels(x$variables, null_action = null_action) <- value
+  x
+}
+
+#' @export
+`val_labels<-.svyrep.design` <- `val_labels<-.survey.design`
 
 #' @rdname val_labels
 #' @export
@@ -232,6 +252,14 @@ val_label.haven_labelled <- function(x, v, prefixed = FALSE) {
 val_label.data.frame <- function(x, v, prefixed = FALSE) {
   lapply(x, val_label, v = v, prefixed = prefixed)
 }
+
+#' @export
+val_label.survey.design <- function(x, v, prefixed = FALSE) {
+  val_label(x$variables, v = v, prefixed = prefixed)
+}
+
+#' @export
+val_label.svyrep.design <- val_label.survey.design
 
 #' @rdname val_labels
 #' @export
@@ -321,6 +349,19 @@ val_label.data.frame <- function(x, v, prefixed = FALSE) {
   x
 }
 
+#' @export
+`val_label<-.survey.design` <- function(
+    x,
+    v,
+    null_action = c("unclass", "labelled"),
+    value) {
+  val_label(x$variables, v = v, null_action = null_action) <- value
+  x
+}
+
+#' @export
+`val_label<-.svyrep.design` <- `val_label<-.survey.design`
+
 #' @rdname val_labels
 #' @export
 get_value_labels <- val_labels
@@ -389,8 +430,23 @@ set_value_labels <- function(
     .strict = TRUE,
     .null_action = c("unclass", "labelled")) {
   .null_action <- match.arg(.null_action)
+  # survey.design case
+  if (inherits(.data, "survey.design") || inherits(.data, "svyrep.design")) {
+    .data$variables <-
+      set_value_labels(
+        .data$variables,
+        ...,
+        .labels = .labels,
+        .strict = .strict,
+        .null_action = .null_action
+      )
+    return(.data)
+  }
+
   if (!is.data.frame(.data) && !is.atomic(.data))
-    cli::cli_abort("{.arg .data} should be a data frame or a vector.")
+    cli::cli_abort(
+      "{.arg .data} should be a data frame, a survey design or a vector."
+    )
 
   # vector case
   if (is.atomic(.data)) {
@@ -433,8 +489,23 @@ add_value_labels <- function(
     .strict = TRUE,
     .null_action = c("unclass", "labelled")) {
   .null_action <- match.arg(.null_action)
+
+  # survey.design case
+  if (inherits(.data, "survey.design") || inherits(.data, "svyrep.design")) {
+    .data$variables <-
+      add_value_labels(
+        .data$variables,
+        ...,
+        .strict = .strict,
+        .null_action = .null_action
+      )
+    return(.data)
+  }
+
   if (!is.data.frame(.data) && !is.atomic(.data))
-    cli::cli_abort("{.arg .data} should be a data frame or a vector.")
+    cli::cli_abort(
+      "{.arg .data} should be a data frame, a survey design or a vector."
+    )
 
   # vector case
   if (is.atomic(.data)) {
@@ -478,8 +549,23 @@ remove_value_labels <- function(
     .strict = TRUE,
     .null_action = c("unclass", "labelled")) {
   .null_action <- match.arg(.null_action)
+
+  # survey.design case
+  if (inherits(.data, "survey.design") || inherits(.data, "svyrep.design")) {
+    .data$variables <-
+      remove_value_labels(
+        .data$variables,
+        ...,
+        .strict = .strict,
+        .null_action = .null_action
+      )
+    return(.data)
+  }
+
   if (!is.data.frame(.data) && !is.atomic(.data))
-    cli::cli_abort("{.arg .data} should be a data frame or a vector.")
+    cli::cli_abort(
+      "{.arg .data} should be a data frame, a survey design or a vector."
+    )
 
   # vector case
   if (is.atomic(.data)) {
@@ -565,6 +651,21 @@ sort_val_labels.data.frame <- function(
   )
   x
 }
+
+#' @export
+sort_val_labels.survey.design <- function(
+    x,
+    according_to = c("values", "labels"),
+    decreasing = FALSE) {
+  sort_val_labels(
+    x$variables,
+    according_to = according_to,
+    decreasing = decreasing
+  )
+}
+
+#' @export
+sort_val_labels.svyrep.design <- sort_val_labels.survey.design
 
 #' Turn a named vector into a vector of names prefixed by values
 #' @param x vector to be prefixed

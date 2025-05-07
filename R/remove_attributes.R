@@ -36,3 +36,12 @@ remove_attributes.data.frame <- function(x, attributes) {
   class(x) <- cl
   x
 }
+
+#' @export
+remove_attributes.survey.design <- function(x, attributes) {
+  x$variables <- remove_attributes(x$variables, attributes = attributes)
+  x
+}
+
+#' @export
+remove_attributes.svyrep.design <- remove_attributes.survey.design

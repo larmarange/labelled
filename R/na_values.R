@@ -1,6 +1,6 @@
 #' Get / Set SPSS missing values
 #'
-#' @param x A vector (or a data frame).
+#' @param x A vector, a data frame, or a survey design.
 #' @param value A vector of values that should also be considered as missing
 #' (for `na_values`) or a numeric vector of length two giving the (inclusive)
 #' extents of the range (for `na_values`, use `-Inf` and `Inf` if you
@@ -88,6 +88,14 @@ na_values.data.frame <- function(x) {
   lapply(x, na_values)
 }
 
+#' @export
+na_values.survey.design <- function(x) {
+  na_values(x$variables)
+}
+
+#' @export
+na_values.svyrep.design <- na_values.survey.design
+
 #' @rdname na_values
 #' @export
 `na_values<-` <- function(x, value) {
@@ -170,6 +178,14 @@ na_values.data.frame <- function(x) {
   x
 }
 
+#' @export
+`na_values<-.survey.design` <- function(x, value) {
+  na_values(x$variables) <- value
+  x
+}
+
+#' @export
+`na_values<-.svyrep.design` <- `na_values<-.survey.design`
 
 #' @rdname na_values
 #' @export
@@ -192,6 +208,14 @@ na_range.haven_labelled_spss <- function(x) {
 na_range.data.frame <- function(x) {
   lapply(x, na_range)
 }
+
+#' @export
+na_range.survey.design <- function(x) {
+  na_range(x$variables)
+}
+
+#' @export
+na_range.svyrep.design <- na_range.survey.design
 
 #' @rdname na_values
 #' @export
@@ -277,6 +301,15 @@ na_range.data.frame <- function(x) {
   x
 }
 
+#' @export
+`na_range<-.survey.design` <- function(x, value) {
+  na_range(x$variables) <- value
+  x
+}
+
+#' @export
+`na_range<-.svyrep.design` <- `na_range<-.survey.design`
+
 #' @rdname na_values
 #' @export
 get_na_values <- na_values
@@ -286,7 +319,7 @@ get_na_values <- na_values
 get_na_range <- na_range
 
 #' @rdname na_values
-#' @param .data a data frame or a vector
+#' @param .data a data frame, a survey design or a vector
 #' @param ... name-value pairs of missing values (see examples)
 #' @param .values missing values to be applied to the data.frame,
 #'   using the same syntax as `value` in `na_values(df) <- value` or
@@ -324,8 +357,23 @@ get_na_range <- na_range
 #' }
 #' @export
 set_na_values <- function(.data, ..., .values = NA, .strict = TRUE) {
+
+  # survey case
+  if (inherits(.data, "survey.design") || inherits(.data, "svyrep.design")) {
+    .data$variables <-
+      set_na_values(
+        .data$variables,
+        ...,
+        .values = .values,
+        .strict = .strict
+      )
+    return(.data)
+  }
+
   if (!is.data.frame(.data) && !is.atomic(.data))
-    cli::cli_abort("{.arg .data} should be a data frame or a vector.")
+    cli::cli_abort(
+      "{.arg .data} should be a data frame, a survey design or a vector."
+    )
 
   # vector case
   if (is.atomic(.data)) {
@@ -362,8 +410,23 @@ set_na_values <- function(.data, ..., .values = NA, .strict = TRUE) {
 #' @rdname na_values
 #' @export
 set_na_range <- function(.data, ..., .values = NA, .strict = TRUE) {
+
+  # survey case
+  if (inherits(.data, "survey.design") || inherits(.data, "svyrep.design")) {
+    .data$variables <-
+      set_na_range(
+        .data$variables,
+        ...,
+        .values = .values,
+        .strict = .strict
+      )
+    return(.data)
+  }
+
   if (!is.data.frame(.data) && !is.atomic(.data))
-    cli::cli_abort("{.arg .data} should be a data frame or a vector.")
+    cli::cli_abort(
+      "{.arg .data} should be a data frame, a survey design or a vector."
+    )
 
   # vector case
   if (is.atomic(.data)) {
@@ -451,7 +514,14 @@ user_na_to_na.data.frame <- function(x) {
   x
 }
 
+#' @export
+user_na_to_na.survey.design <- function(x) {
+  x$variables <- user_na_to_na(x$variables)
+  x
+}
 
+#' @export
+user_na_to_na.svyrep.design <- user_na_to_na.survey.design
 
 #' @rdname na_values
 #' @export
@@ -475,3 +545,12 @@ user_na_to_tagged_na.data.frame <- function(x) {
   x[] <- lapply(x, user_na_to_tagged_na)
   x
 }
+
+#' @export
+user_na_to_tagged_na.survey.design <- function(x) {
+  x$variables <- user_na_to_tagged_na(x$variables)
+  x
+}
+
+#' @export
+user_na_to_tagged_na.svyrep.design <- user_na_to_tagged_na.survey.design

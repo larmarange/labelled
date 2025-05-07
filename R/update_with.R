@@ -1,5 +1,6 @@
 #' Update variable/value labels with a function
-#' @param .data A data frame, or data frame extension (e.g. a tibble)
+#' @param .data A data frame, adata frame extension (e.g. a tibble) or
+#' a survey design
 #' @param .fn A function used to transform the variable/value labels of the
 #' selected `.cols`.
 #' @param .cols Columns to update; defaults to all columns. Use tidy selection.
@@ -69,6 +70,25 @@ update_variable_labels_with.data.frame <- function(.data,
 }
 
 #' @export
+update_variable_labels_with.survey.design <- function(
+  .data,
+  .fn,
+  .cols = dplyr::everything(),
+  ...
+) {
+  update_variable_labels_with(
+    .data$variables,
+    .fn = .fn,
+    .cols = {{ .cols }},
+    ...
+  )
+}
+
+#' @export
+update_variable_labels_with.svyrep.design <-
+  update_variable_labels_with.survey.design
+
+#' @export
 #' @rdname update_variable_labels_with
 #' @examples
 #' df %>%
@@ -101,3 +121,21 @@ update_value_labels_with.data.frame <- function(.data,
   }
   .data
 }
+
+#' @export
+update_value_labels_with.survey.design <- function(
+  .data,
+  .fn,
+  .cols = dplyr::everything(),
+  ...
+) {
+  update_value_labels_with(
+    .data$variables,
+    .fn = .fn,
+    .cols = {{ .cols }},
+    ...
+  )
+}
+
+#' @export
+update_value_labels_with.svyrep.design <- update_value_labels_with.survey.design

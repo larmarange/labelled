@@ -3,6 +3,7 @@
 \name{var_label}
 \alias{var_label}
 \alias{var_label.data.frame}
+\alias{var_label.survey.design}
 \alias{var_label<-}
 \alias{get_variable_labels}
 \alias{set_variable_labels}
@@ -15,6 +16,14 @@
 var_label(x, ...)
 
 \method{var_label}{data.frame}(
+  x,
+  unlist = FALSE,
+  null_action = c("keep", "fill", "skip", "na", "empty"),
+  recurse = FALSE,
+  ...
+)
+
+\method{var_label}{survey.design}(
   x,
   unlist = FALSE,
   null_action = c("keep", "fill", "skip", "na", "empty"),
@@ -41,10 +50,12 @@ label_attribute(x) <- value
 
 \item{...}{name-value pairs of variable labels (see examples)}
 
-\item{unlist}{for data frames, return a named vector instead of a list}
+\item{unlist}{for data frames and survey design, return a named vector
+instead of a list}
 
-\item{null_action}{for data frames, by default \code{NULL} will be returned for
-columns with no variable label. Use \code{"fill"} to populate with the column name
+\item{null_action}{for data frames and survey design, by default \code{NULL} will
+be returned for columns with no variable label.
+Use \code{"fill"} to populate with the column name
 instead, \code{"skip"} to remove such values from the returned list, \code{"na"} to
 populate with \code{NA} or \code{"empty"} to populate with an empty string (\code{""}).}
 
@@ -56,7 +67,7 @@ otherwise, the label of the group of columns will be returned.}
 For data frames, with \code{var_label()}, it could also be a named list or a
 character vector of same length as the number of columns in \code{x}.}
 
-\item{.data}{a data frame or a vector}
+\item{.data}{a data frame, a survey design or a vector}
 
 \item{.labels}{variable labels to be applied to the data.frame,
 using the same syntax as \code{value} in \code{var_label(df) <- value}.}
@@ -73,10 +84,11 @@ Get / Set a variable label
 \details{
 \code{get_variable_labels()} is identical to \code{var_label()}.
 
-For data frames, if you are using \verb{var_label()<-} and if \code{value} is a
-named list, only elements whose name will match a column of the data frame
+For data frames and survey design, if you are using \verb{var_label()<-} and
+if \code{value} is a named list,
+only elements whose name will match a column of the data frame
 will be taken into account. If \code{value} is a character vector, labels should
-be in the same order as the columns of the data.frame.
+be in the same order as the columns of the data frame / survey design.
 
 If you are using \verb{label_attribute()<-} or \code{set_label_attribute()} on a data
 frame, the label attribute will be attached to the data frame itself, not

@@ -7,7 +7,7 @@
 drop_unused_value_labels(x)
 }
 \arguments{
-\item{x}{A vector or a data frame.}
+\item{x}{A vector, a data frame or a survey design.}
 }
 \description{
 Drop value labels associated to a value not present in the data.

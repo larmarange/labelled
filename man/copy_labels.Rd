@@ -10,9 +10,9 @@ copy_labels(from, to, .strict = TRUE)
 copy_labels_from(to, from, .strict = TRUE)
 }
 \arguments{
-\item{from}{A vector or a data.frame (or tibble) to copy labels from.}
+\item{from}{A vector or a data.frame (or survey design) to copy labels from.}
 
-\item{to}{A vector or data.frame (or tibble) to copy labels to.}
+\item{to}{A vector or data.frame (or survey design) to copy labels to.}
 
 \item{.strict}{When \code{from} is a labelled vector, \code{to} have to be of the same
 type (numeric or character) in order to copy value labels and SPSS-style

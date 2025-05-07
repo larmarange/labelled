@@ -1,5 +1,10 @@
 # labelled (development version)
 
+**New features**
+
+* `{labelled}` functions are not compatible with survey design objects created
+  with the `{survey}` package (#174)
+
 # labelled 2.14.1
 
 **Bug fix**
