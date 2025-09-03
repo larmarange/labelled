@@ -2,7 +2,7 @@
 
 **New features**
 
-* `{labelled}` functions are not compatible with survey design objects created
+* `{labelled}` functions are now compatible with survey design objects created
   with the `{survey}` package (#174)
 * Argument `user_na_to_na` has been added to `to_factor.data.frame()` (#178)
 
