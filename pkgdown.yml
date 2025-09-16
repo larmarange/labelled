@@ -1,12 +1,12 @@
 pandoc: 3.1.11
-pkgdown: 2.1.2
+pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
   labelled: labelled.html
   look_for: look_for.html
   missing_values: missing_values.html
   packed_columns: packed_columns.html
-last_built: 2025-05-07T07:55Z
+last_built: 2025-09-16T12:49Z
 urls:
   reference: https://larmarange.github.io/labelled/reference
   article: https://larmarange.github.io/labelled/articles
