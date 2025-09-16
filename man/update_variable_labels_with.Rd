@@ -10,7 +10,7 @@ update_variable_labels_with(.data, .fn, .cols = dplyr::everything(), ...)
 update_value_labels_with(.data, .fn, .cols = dplyr::everything(), ...)
 }
 \arguments{
-\item{.data}{A data frame, adata frame extension (e.g. a tibble) or
+\item{.data}{A data frame, a data frame extension (e.g. a tibble) or
 a survey design}
 
 \item{.fn}{A function used to transform the variable/value labels of the
