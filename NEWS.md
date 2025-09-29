@@ -1,5 +1,10 @@
 # labelled (development version)
 
+**New features**
+
+* new function `replace_labels_from_df()` to replace variable labels in a data 
+  frame using mappings from a lookup data frame (#XXX)
+
 # labelled 2.15.0
 
 **New features**
