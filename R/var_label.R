@@ -345,7 +345,7 @@ get_label_attribute <- function(x) {
 #' @export
 set_label_attribute <- function(x, value) {
   check_string(value, allow_null = TRUE, allow_na = TRUE)
-  if (is.na(value)) value <- NULL
+  if (!is.null(value) && is.na(value)) value <- NULL
   attr(x, "label") <- value
   x
 }
