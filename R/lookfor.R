@@ -109,8 +109,10 @@
 #' look_for(d)
 #' d %>%
 #'   look_for() %>%
-#'   lookfor_to_long_format() %>%
-#'   convert_list_columns_to_character()
+#'   lookfor_to_long_format(sep_value_labels = ":")
+#' d %>%
+#'   look_for() %>%
+#'   convert_list_columns_to_character(sep_value_labels = ":", sep_other = "|")
 #' @source Inspired by the `lookfor` command in Stata.
 #' @export
 
@@ -392,8 +394,13 @@ look_for_and_select <- function(
 }
 
 #' @rdname look_for
+#' @param sep_value_labels (string) for value labels, separator between value
+#' and name
+#' @param sep_other separator for other list columns
 #' @export
-convert_list_columns_to_character <- function(x) {
+convert_list_columns_to_character <- function(x,
+                                              sep_value_labels = "[]",
+                                              sep_other = "; ") {
   if ("range" %in% names(x)) {
     x <- x %>%
       dplyr::mutate(range = unlist(lapply(range, paste, collapse = " - ")))
@@ -401,7 +408,12 @@ convert_list_columns_to_character <- function(x) {
 
   if ("value_labels" %in% names(x) && is.list(x$value_labels)) {
     x <- x %>%
-      dplyr::mutate(value_labels = names_prefixed_by_values(.data$value_labels))
+      dplyr::mutate(
+        value_labels = names_prefixed_by_values(
+          .data$value_labels,
+          sep = sep_value_labels
+        )
+      )
   }
 
   x %>%
@@ -409,14 +421,14 @@ convert_list_columns_to_character <- function(x) {
     dplyr::mutate(
       dplyr::across(
         dplyr::where(is.list),
-        ~ unlist(lapply(.x, paste, collapse = "; "))
+        ~ unlist(lapply(.x, paste, collapse = sep_other))
       )
     )
 }
 
 #' @rdname look_for
 #' @export
-lookfor_to_long_format <- function(x) {
+lookfor_to_long_format <- function(x, sep_value_labels = "[]") {
   # only if details are provided
   if (!"levels" %in% names(x) || !"value_labels" %in% names(x)) {
     return(x)
@@ -424,7 +436,12 @@ lookfor_to_long_format <- function(x) {
 
   x <- x %>%
     dplyr::as_tibble() %>% # remove look_for class
-    dplyr::mutate(value_labels = names_prefixed_by_values(.data$value_labels))
+    dplyr::mutate(
+      value_labels = names_prefixed_by_values(
+        .data$value_labels,
+        sep = sep_value_labels
+      )
+    )
 
   # tidyr::unnest() fails if all elements are NULL
   if (all(unlist(lapply(x$levels, is.null)))) {

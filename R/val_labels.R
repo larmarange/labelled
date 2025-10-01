@@ -671,6 +671,7 @@ sort_val_labels.svyrep.design <- sort_val_labels.survey.design
 
 #' Turn a named vector into a vector of names prefixed by values
 #' @param x vector to be prefixed
+#' @param sep (string) separator between value and name
 #' @examples
 #' df <- dplyr::tibble(
 #'   c1 = labelled(c("M", "M", "F"), c(Male = "M", Female = "F")),
@@ -680,13 +681,14 @@ sort_val_labels.svyrep.design <- sort_val_labels.survey.design
 #' val_labels(df$c1) %>% names_prefixed_by_values()
 #' val_labels(df)
 #' val_labels(df) %>% names_prefixed_by_values()
+#' val_labels(df) %>% names_prefixed_by_values(sep = ":")
 #' @export
-names_prefixed_by_values <- function(x) {
+names_prefixed_by_values <- function(x, sep = "[]") {
   UseMethod("names_prefixed_by_values")
 }
 
 #' @export
-names_prefixed_by_values.default <- function(x) {
+names_prefixed_by_values.default <- function(x, sep = "[]") {
   if (is.null(x)) {
     return(NULL)
   }
@@ -694,12 +696,16 @@ names_prefixed_by_values.default <- function(x) {
   if (is.double(x)) {
     res[is_tagged_na(x)] <- format_tagged_na(x[is_tagged_na(x)])
   }
-  res <- paste0("[", res, "] ", names(x))
+  if (sep == "[]") {
+    res <- paste0("[", res, "] ", names(x))
+  } else {
+    res <- paste0(res, sep, names(x))
+  }
   names(res) <- names(x)
   res
 }
 
 #' @export
-names_prefixed_by_values.list <- function(x) {
-  lapply(x, names_prefixed_by_values)
+names_prefixed_by_values.list <- function(x, sep = "[]") {
+  lapply(x, names_prefixed_by_values, sep = sep)
 }

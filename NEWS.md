@@ -1,5 +1,9 @@
 # labelled (development version)
 
+- new `sep` argument for `names_prefixed_by_values()`
+- new arguments (`sep_value_labels` and `sep_other`) for
+  `convert_list_columns_to_character()` and `lookfor_to_long_format()`
+
 # labelled 2.15.0
 
 **New features**

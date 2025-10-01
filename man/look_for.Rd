@@ -50,9 +50,9 @@ look_for_and_select(
   ignore.case = TRUE
 )
 
-convert_list_columns_to_character(x)
+convert_list_columns_to_character(x, sep_value_labels = "[]", sep_other = "; ")
 
-lookfor_to_long_format(x)
+lookfor_to_long_format(x, sep_value_labels = "[]")
 }
 \arguments{
 \item{data}{a data frame or a survey object}
@@ -76,6 +76,11 @@ consuming for big data frames, \code{FALSE} is equivalent to \code{"none"}
 and \code{TRUE} to \code{"full"})}
 
 \item{x}{a tibble returned by \code{look_for()}}
+
+\item{sep_value_labels}{(string) for value labels, separator between value
+and name}
+
+\item{sep_other}{separator for other list columns}
 }
 \value{
 a tibble data frame featuring the variable position, name and
@@ -172,8 +177,10 @@ d <- dplyr::tibble(
 look_for(d)
 d \%>\%
   look_for() \%>\%
-  lookfor_to_long_format() \%>\%
-  convert_list_columns_to_character()
+  lookfor_to_long_format(sep_value_labels = ":")
+d \%>\%
+  look_for() \%>\%
+  convert_list_columns_to_character(sep_value_labels = ":", sep_other = "|")
 }
 \seealso{
 \code{vignette("look_for")}
