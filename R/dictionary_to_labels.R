@@ -126,9 +126,11 @@ dictionary_to_value_labels <- function(dictionary,
     dplyr::pull("..val_labels..") %>%
     setNames(d %>% dplyr::pull({{ names_from }}))
 
-  if (!is.null(data))
-    for (v in intersect(names(vl), colnames(data)))
+  if (!is.null(data)) {
+    for (v in intersect(names(vl), colnames(data))) {
       mode(vl[[v]]) <- mode(data[[v]])
+    }
+  }
 
   vl
 }
