@@ -119,12 +119,12 @@ dictionary_to_value_labels <- function(dictionary,
       ..val_labels.. = purrr::map2(
         dplyr::pick({{ values_from }}),
         dplyr::pick({{ labels_from }}),
-        ~ setNames(.x, .y)
+        ~ stats::setNames(.x, .y)
       )
     )
   vl <- d %>%
     dplyr::pull("..val_labels..") %>%
-    setNames(d %>% dplyr::pull({{ names_from }}))
+    stats::setNames(d %>% dplyr::pull({{ names_from }}))
 
   if (!is.null(data)) {
     for (v in intersect(names(vl), colnames(data))) {
