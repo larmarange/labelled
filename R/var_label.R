@@ -21,7 +21,9 @@
 #'   if `value` is a named list,
 #'   only elements whose name will match a column of the data frame
 #'   will be taken into account. If `value` is a character vector, labels should
-#'   be in the same order as the columns of the data frame / survey design.
+#'   be in the same order as the columns of the data frame / survey design. You
+#'   could consider [dictionary_to_variable_labels()] to generate a list of
+#'   variable labels from a dictionary data frame.
 #'
 #'   If you are using `label_attribute()<-` or `set_label_attribute()` on a data
 #'   frame, the label attribute will be attached to the data frame itself, not

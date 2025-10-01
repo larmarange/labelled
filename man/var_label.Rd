@@ -88,7 +88,9 @@ For data frames and survey design, if you are using \verb{var_label()<-} and
 if \code{value} is a named list,
 only elements whose name will match a column of the data frame
 will be taken into account. If \code{value} is a character vector, labels should
-be in the same order as the columns of the data frame / survey design.
+be in the same order as the columns of the data frame / survey design. You
+could consider \code{\link[=dictionary_to_variable_labels]{dictionary_to_variable_labels()}} to generate a list of
+variable labels from a dictionary data frame.
 
 If you are using \verb{label_attribute()<-} or \code{set_label_attribute()} on a data
 frame, the label attribute will be attached to the data frame itself, not

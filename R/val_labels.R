@@ -384,7 +384,9 @@ get_value_labels <- val_labels
 #'
 #' `set_value_labels()` could also be applied to a vector / a data.frame column.
 #' In such case, you can provide a vector of value labels using `.labels` or
-#' several name-value pairs of value labels (see example).
+#' several name-value pairs of value labels (see example).  You
+#' could consider [dictionary_to_value_labels()] to generate a list of
+#' variable labels from a dictionary data frame.
 #' Similarly, `add_value_labels()` and `remove_value_labels()` could also be
 #' applied on vectors.
 #' @return
