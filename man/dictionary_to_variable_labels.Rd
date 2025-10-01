@@ -56,28 +56,28 @@ dic <- dplyr::tibble(
 )
 dic
 
-l <- dic |> dictionary_to_variable_labels()
+l <- dic \%>\% dictionary_to_variable_labels()
 l
-mtcars |>
-  set_variable_labels(.labels = l) |>
+mtcars \%>\%
+  set_variable_labels(.labels = l) \%>\%
   look_for()
 
-vl <- dic |>
+vl <- dic \%>\%
   dictionary_to_value_labels(
     values_from = values,
     delim_entries = ",",
     delim_value_label = ":",
     data = mtcars
   )
-mtcars |>
-  set_value_labels(.labels = vl) |>
+mtcars \%>\%
+  set_value_labels(.labels = vl) \%>\%
   look_for()
 
 dic2 <- dplyr::tibble(
   variable = c("am", "am", "vs", "vs"),
   labels = c("0:automatic", "1:manual", "0:V-shaped", "1:straight")
 )
-dic2 |>
+dic2 \%>\%
   dictionary_to_value_labels(
     delim_value_label = ":",
     data = mtcars
@@ -88,7 +88,7 @@ dic3 <- dplyr::tibble(
   label = c("automatic", "manual", "V-shaped", "straight"),
   var = c("am", "am", "vs", "vs")
 )
-dic3 |>
+dic3 \%>\%
   dictionary_to_value_labels(
     names_from = var,
     values_from = code,

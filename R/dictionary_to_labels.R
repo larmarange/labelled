@@ -30,28 +30,28 @@
 #' )
 #' dic
 #'
-#' l <- dic |> dictionary_to_variable_labels()
+#' l <- dic %>% dictionary_to_variable_labels()
 #' l
-#' mtcars |>
-#'   set_variable_labels(.labels = l) |>
+#' mtcars %>%
+#'   set_variable_labels(.labels = l) %>%
 #'   look_for()
 #'
-#' vl <- dic |>
+#' vl <- dic %>%
 #'   dictionary_to_value_labels(
 #'     values_from = values,
 #'     delim_entries = ",",
 #'     delim_value_label = ":",
 #'     data = mtcars
 #'   )
-#' mtcars |>
-#'   set_value_labels(.labels = vl) |>
+#' mtcars %>%
+#'   set_value_labels(.labels = vl) %>%
 #'   look_for()
 #'
 #' dic2 <- dplyr::tibble(
 #'   variable = c("am", "am", "vs", "vs"),
 #'   labels = c("0:automatic", "1:manual", "0:V-shaped", "1:straight")
 #' )
-#' dic2 |>
+#' dic2 %>%
 #'   dictionary_to_value_labels(
 #'     delim_value_label = ":",
 #'     data = mtcars
@@ -62,7 +62,7 @@
 #'   label = c("automatic", "manual", "V-shaped", "straight"),
 #'   var = c("am", "am", "vs", "vs")
 #' )
-#' dic3 |>
+#' dic3 %>%
 #'   dictionary_to_value_labels(
 #'     names_from = var,
 #'     values_from = code,
@@ -73,13 +73,13 @@ dictionary_to_variable_labels <- function(dictionary,
                                           names_from = 1,
                                           labels_from = 2) {
   dictionary <-
-    dictionary |>
+    dictionary %>%
     tidyr::drop_na({{ names_from }})
-  dictionary |>
-    dplyr::pull({{ labels_from }}) |>
-    as.list() |>
+  dictionary %>%
+    dplyr::pull({{ labels_from }}) %>%
+    as.list() %>%
     rlang::set_names(
-      dictionary |> dplyr::pull({{ names_from }})
+      dictionary %>% dplyr::pull({{ names_from }})
     )
 }
 
@@ -93,18 +93,18 @@ dictionary_to_value_labels <- function(dictionary,
                                        delim_value_label = NULL,
                                        data = NULL) {
   dictionary <-
-    dictionary |>
+    dictionary %>%
     tidyr::drop_na({{ names_from }}, {{ values_from }})
   if (!is.null(delim_entries))
     dictionary <-
-      dictionary |>
+      dictionary %>%
       tidyr::separate_longer_delim(
         cols = {{ values_from}},
         delim = delim_entries
       )
   if (!is.null(delim_value_label)) {
     dictionary <-
-      dictionary |>
+      dictionary %>%
       tidyr::separate_wider_delim(
         delim = delim_value_label,
         cols = {{ values_from }},
@@ -113,18 +113,18 @@ dictionary_to_value_labels <- function(dictionary,
     values_from <- "..value.."
     labels_from <- "..label.."
   }
-  d <- dictionary |>
-    dplyr::group_by(dplyr::pick({{ names_from }})) |>
+  d <- dictionary %>%
+    dplyr::group_by(dplyr::pick({{ names_from }})) %>%
     dplyr::summarise(
       ..val_labels.. = purrr::map2(
         dplyr::pick({{ values_from }}),
         dplyr::pick({{ labels_from }}),
-        \(v, l) {setNames(v, l)}
+        ~ setNames(.x, .y)
       )
     )
-  vl <- d |>
-    dplyr::pull("..val_labels..") |>
-    setNames(d |> dplyr::pull({{ names_from }}))
+  vl <- d %>%
+    dplyr::pull("..val_labels..") %>%
+    setNames(d %>% dplyr::pull({{ names_from }}))
 
   if (!is.null(data))
     for (v in intersect(names(vl), colnames(data)))
