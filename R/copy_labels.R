@@ -47,10 +47,6 @@ copy_labels <- function(from, to, .strict = TRUE) {
 
 #' @export
 copy_labels.default <- function(from, to, .strict = TRUE) {
-  if (!is.atomic(from))
-    cli::cli_abort("{.arg from} must be a vector or a data frame.")
-  if (!is.atomic(to))
-    cli::cli_abort("{.arg to} must be a vector.")
   var_label(to) <- var_label(from)
   to
 }

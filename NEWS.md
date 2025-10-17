@@ -1,5 +1,9 @@
 # labelled (development version)
 
+**Bug fix**
+
+- Fix in `copy_labels()` (#187)
+
 # labelled 2.15.0
 
 **New features**
