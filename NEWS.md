@@ -1,5 +1,10 @@
 # labelled (development version)
 
+**Bug fix**
+
+- `copy_labels()` is now less restrictive and accept tibble with list
+  columns (#187)
+
 # labelled 2.15.0
 
 **New features**

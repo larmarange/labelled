@@ -67,14 +67,6 @@ test_that("if 'from' is not a labelled vector, copy only variable label", {
 })
 
 test_that("copy_labels checks", {
-  # do not work with a list
-  expect_error(
-    copy_labels(list(1, 2), 1:2)
-  )
-  expect_error(
-    copy_labels(1:2, list(1, 2))
-  )
-
   # if from is a data.frame, to should also be a data.frame
   expect_error(
     copy_labels(iris, 1:2)
