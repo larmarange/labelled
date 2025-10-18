@@ -2,7 +2,8 @@
 
 **Bug fix**
 
-- Fix in `copy_labels()` (#187)
+- `copy_labels()` is now less restrictive and accept tibble with list
+  columns (#187)
 
 # labelled 2.15.0
 

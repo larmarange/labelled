@@ -47,6 +47,10 @@ copy_labels <- function(from, to, .strict = TRUE) {
 
 #' @export
 copy_labels.default <- function(from, to, .strict = TRUE) {
+  if (is.data.frame(to))
+    cli::cli_abort(
+      "If {.arg to} is a data frame, {.arg from} should also be a data frame."
+    )
   var_label(to) <- var_label(from)
   to
 }
