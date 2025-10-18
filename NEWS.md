@@ -1,8 +1,16 @@
 # labelled (development version)
 
+**New features**
+
 - new `sep` argument for `names_prefixed_by_values()`
 - new arguments (`sep_value_labels` and `sep_other`) for
   `convert_list_columns_to_character()` and `lookfor_to_long_format()`
+
+**Bug fix**
+
+- `copy_labels()` is now less restrictive and accept tibble with list
+  columns (#187)
+
 
 # labelled 2.15.0
 
