@@ -2,6 +2,9 @@
 
 **New features**
 
+- new functions `dictionary_to_variable_labels()` and
+  `dictionary_to_value_labels()` to convert a dictionary data frame into a list
+  of variable / value labels (#183)
 - new function `to_gt()` for converting the result of `look_for()` into a nicely
   formatted table (#189)
 - new `sep` argument for `names_prefixed_by_values()`
