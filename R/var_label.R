@@ -369,4 +369,6 @@ set_label_attribute <- function(x, value, .overwrite = TRUE) {
 
 #' @rdname var_label
 #' @export
-`label_attribute<-` <- set_label_attribute
+`label_attribute<-` <- function(x, value) {
+  set_label_attribute(x, value)
+}

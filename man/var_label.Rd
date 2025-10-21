@@ -49,7 +49,7 @@ get_label_attribute(x)
 
 set_label_attribute(x, value, .overwrite = TRUE)
 
-label_attribute(x, .overwrite = TRUE) <- value
+label_attribute(x) <- value
 }
 \arguments{
 \item{x}{a vector or a data.frame}
