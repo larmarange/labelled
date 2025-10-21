@@ -62,7 +62,6 @@ to_gt(
     "Unique values", na_values = "User-defined missings (values)", na_range =
     "User-defined missings (range)")
 )
-
 }
 \arguments{
 \item{data}{a data frame or a survey object}
@@ -91,9 +90,8 @@ and \code{TRUE} to \code{"full"})}
 and name}
 
 \item{sep_other}{separator for other list columns}
-  
-\item{column_labels}{Optional column labels}
 
+\item{column_labels}{Optional column labels}
 }
 \value{
 a tibble data frame featuring the variable position, name and
@@ -199,7 +197,6 @@ d \%>\%
 d \%>\%
   look_for() \%>\%
   convert_list_columns_to_character(sep_value_labels = ":", sep_other = "|")
-
 \dontshow{if (rlang::is_installed(c("gt", "purrr"))) withAutoprint(\{ # examplesIf}
 iris \%>\% look_for(details = TRUE) \%>\% to_gt()
 d \%>\%
