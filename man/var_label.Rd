@@ -35,15 +35,21 @@ var_label(x) <- value
 
 get_variable_labels(x, ...)
 
-set_variable_labels(.data, ..., .labels = NA, .strict = TRUE)
+set_variable_labels(
+  .data,
+  ...,
+  .labels = NA,
+  .strict = TRUE,
+  .overwrite = TRUE
+)
 
 label_attribute(x)
 
 get_label_attribute(x)
 
-set_label_attribute(x, value)
+set_label_attribute(x, value, .overwrite = TRUE)
 
-label_attribute(x) <- value
+label_attribute(x, .overwrite = TRUE) <- value
 }
 \arguments{
 \item{x}{a vector or a data.frame}
@@ -74,6 +80,8 @@ using the same syntax as \code{value} in \code{var_label(df) <- value}.}
 
 \item{.strict}{should an error be returned if some labels
 doesn't correspond to a column of \code{x}?}
+
+\item{.overwrite}{if a variable label is already defined, overwrite it?}
 }
 \value{
 \code{set_variable_labels()} will return an updated copy of \code{.data}.
