@@ -69,6 +69,15 @@ Note that `lookfor()` and `generate_dictionary()` are synonyms of `look_for()` a
 
 If there is not enough space to print full labels in the console, they will be truncated (truncation is indicated by a `~`).
 
+To get a nicely formatted table from `look_for()`, you could use `to_gt()` (the `{gt}` package is required).
+
+```{r}
+women %>%
+  look_for() %>%
+  to_gt()
+```
+
+
 ## Searching variables by key
 
 When a data frame has dozens or even hundreds of variables, it could become difficult to find a specific variable. In such case, you can provide an optional list of keywords, which can be simple character strings or regular expression, to search for specific variables.
@@ -118,6 +127,7 @@ If you want more details (but can be time consuming for big data frames), indica
 look_for(women, details = "full")
 look_for(women, details = "full") %>%
   dplyr::glimpse()
+look_for(women, details = "full") %>% to_gt()
 ```
 
 
