@@ -21,7 +21,9 @@
 #'   if `value` is a named list,
 #'   only elements whose name will match a column of the data frame
 #'   will be taken into account. If `value` is a character vector, labels should
-#'   be in the same order as the columns of the data frame / survey design.
+#'   be in the same order as the columns of the data frame / survey design. You
+#'   could consider [dictionary_to_variable_labels()] to generate a list of
+#'   variable labels from a dictionary data frame.
 #'
 #'   If you are using `label_attribute()<-` or `set_label_attribute()` on a data
 #'   frame, the label attribute will be attached to the data frame itself, not
@@ -232,6 +234,7 @@ get_variable_labels <- var_label
 #'   using the same syntax as `value` in `var_label(df) <- value`.
 #' @param .strict should an error be returned if some labels
 #'   doesn't correspond to a column of `x`?
+#' @param .overwrite if a variable label is already defined, overwrite it?
 #' @note
 #'   `set_variable_labels()` could be used with \pkg{dplyr} syntax.
 #' @return
@@ -278,7 +281,12 @@ get_variable_labels <- var_label
 #'   v %>% set_variable_labels(NULL)
 #' }
 #' @export
-set_variable_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
+set_variable_labels <- function(
+    .data,
+    ...,
+    .labels = NA,
+    .strict = TRUE,
+    .overwrite = TRUE) {
 
   # survey design
   if (inherits(.data, "survey.design") || inherits(.data, "svyrep.design")) {
@@ -287,13 +295,15 @@ set_variable_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
         .data$variables,
         ...,
         .labels = .labels,
-        .strict = .strict
+        .strict = .strict,
+        .overwrite = .overwrite
       )
     return(.data)
   }
 
   # not a data.frame
   if (!is.data.frame(.data)) {
+    if (!.overwrite && !is.null(get_label_attribute(.data))) return(.data)
     if (!identical(.labels, NA)) {
       label_attribute(.data) <- .labels
     } else {
@@ -302,10 +312,14 @@ set_variable_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
     return(.data)
   }
 
+  already <- var_label(.data, null_action = "skip")
   # data.frame case
   if (!identical(.labels, NA)) {
     if (!.strict) {
       .labels <- .labels[intersect(names(.labels), names(.data))]
+    }
+    if (!.overwrite) {
+      .labels <- .labels[setdiff(names(.labels), names(already))]
     }
     var_label(.data) <- .labels
   }
@@ -317,6 +331,10 @@ set_variable_labels <- function(.data, ..., .labels = NA, .strict = TRUE) {
       cli::cli_abort(c(
         "Can't find variables {.var {missing_names}}  in {.arg .data}."
       ))
+    }
+
+    if (!.overwrite) {
+      values <- values[setdiff(names(values), names(already))]
     }
 
     for (v in intersect(names(values), names(.data))) {
@@ -341,12 +359,16 @@ get_label_attribute <- function(x) {
 
 #' @rdname var_label
 #' @export
-set_label_attribute <- function(x, value) {
+set_label_attribute <- function(x, value, .overwrite = TRUE) {
+  if (!.overwrite && !is.null(get_label_attribute(x))) return(x)
   check_string(value, allow_null = TRUE, allow_na = TRUE)
+  if (!is.null(value) && is.na(value)) value <- NULL
   attr(x, "label") <- value
   x
 }
 
 #' @rdname var_label
 #' @export
-`label_attribute<-` <- set_label_attribute
+`label_attribute<-` <- function(x, value) {
+  set_label_attribute(x, value)
+}

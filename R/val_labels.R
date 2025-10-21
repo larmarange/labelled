@@ -373,6 +373,7 @@ get_value_labels <- val_labels
 #'   using the same syntax as `value` in `val_labels(df) <- value`.
 #' @param .strict should an error be returned if some labels
 #'   doesn't correspond to a column of `x`?
+#' @param .overwrite If value labels are already defined, overwrite them?
 #' @note
 #' `get_value_labels()` is identical to `val_labels()`.
 #'
@@ -384,7 +385,9 @@ get_value_labels <- val_labels
 #'
 #' `set_value_labels()` could also be applied to a vector / a data.frame column.
 #' In such case, you can provide a vector of value labels using `.labels` or
-#' several name-value pairs of value labels (see example).
+#' several name-value pairs of value labels (see example).  You
+#' could consider [dictionary_to_value_labels()] to generate a list of
+#' variable labels from a dictionary data frame.
 #' Similarly, `add_value_labels()` and `remove_value_labels()` could also be
 #' applied on vectors.
 #' @return
@@ -428,6 +431,7 @@ set_value_labels <- function(
     ...,
     .labels = NA,
     .strict = TRUE,
+    .overwrite = TRUE,
     .null_action = c("unclass", "labelled")) {
   .null_action <- match.arg(.null_action)
   # survey.design case
@@ -438,6 +442,7 @@ set_value_labels <- function(
         ...,
         .labels = .labels,
         .strict = .strict,
+        .overwrite = .overwrite,
         .null_action = .null_action
       )
     return(.data)
@@ -450,6 +455,7 @@ set_value_labels <- function(
 
   # vector case
   if (is.atomic(.data)) {
+    if (!.overwrite && !is.null(val_labels(.data))) return(.data)
     if (!identical(.labels, NA)) {
       val_labels(.data, null_action = .null_action) <- .labels
     } else {
@@ -459,10 +465,15 @@ set_value_labels <- function(
     return(.data)
   }
 
+  already <- !unlist(lapply(val_labels(.data), is.null))
+  already <- names(already)[already]
   # data.frame case
   if (!identical(.labels, NA)) {
     if (!.strict) {
       .labels <- .labels[intersect(names(.labels), names(.data))]
+    }
+    if (!.overwrite) {
+      .labels <- .labels[setdiff(already, names(.data))]
     }
     val_labels(.data, null_action = .null_action) <- .labels
   }
@@ -473,7 +484,9 @@ set_value_labels <- function(
       "Can't find variables {.var {missing_names}} in {.arg .data}."
     ))
   }
-
+  if (!.overwrite) {
+    values <- values[setdiff(names(values), already)]
+  }
   for (v in intersect(names(values), names(.data))) {
     val_labels(.data[[v]], null_action = .null_action) <- values[[v]]
   }
@@ -669,6 +682,7 @@ sort_val_labels.svyrep.design <- sort_val_labels.survey.design
 
 #' Turn a named vector into a vector of names prefixed by values
 #' @param x vector to be prefixed
+#' @param sep (string) separator between value and name
 #' @examples
 #' df <- dplyr::tibble(
 #'   c1 = labelled(c("M", "M", "F"), c(Male = "M", Female = "F")),
@@ -678,13 +692,14 @@ sort_val_labels.svyrep.design <- sort_val_labels.survey.design
 #' val_labels(df$c1) %>% names_prefixed_by_values()
 #' val_labels(df)
 #' val_labels(df) %>% names_prefixed_by_values()
+#' val_labels(df) %>% names_prefixed_by_values(sep = ":")
 #' @export
-names_prefixed_by_values <- function(x) {
+names_prefixed_by_values <- function(x, sep = "[]") {
   UseMethod("names_prefixed_by_values")
 }
 
 #' @export
-names_prefixed_by_values.default <- function(x) {
+names_prefixed_by_values.default <- function(x, sep = "[]") {
   if (is.null(x)) {
     return(NULL)
   }
@@ -692,12 +707,16 @@ names_prefixed_by_values.default <- function(x) {
   if (is.double(x)) {
     res[is_tagged_na(x)] <- format_tagged_na(x[is_tagged_na(x)])
   }
-  res <- paste0("[", res, "] ", names(x))
+  if (sep == "[]") {
+    res <- paste0("[", res, "] ", names(x))
+  } else {
+    res <- paste0(res, sep, names(x))
+  }
   names(res) <- names(x)
   res
 }
 
 #' @export
-names_prefixed_by_values.list <- function(x) {
-  lapply(x, names_prefixed_by_values)
+names_prefixed_by_values.list <- function(x, sep = "[]") {
+  lapply(x, names_prefixed_by_values, sep = sep)
 }

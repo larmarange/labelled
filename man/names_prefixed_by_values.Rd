@@ -4,10 +4,12 @@
 \alias{names_prefixed_by_values}
 \title{Turn a named vector into a vector of names prefixed by values}
 \usage{
-names_prefixed_by_values(x)
+names_prefixed_by_values(x, sep = "[]")
 }
 \arguments{
 \item{x}{vector to be prefixed}
+
+\item{sep}{(string) separator between value and name}
 }
 \description{
 Turn a named vector into a vector of names prefixed by values
@@ -21,4 +23,5 @@ val_labels(df$c1)
 val_labels(df$c1) \%>\% names_prefixed_by_values()
 val_labels(df)
 val_labels(df) \%>\% names_prefixed_by_values()
+val_labels(df) \%>\% names_prefixed_by_values(sep = ":")
 }

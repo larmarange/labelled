@@ -26,6 +26,7 @@ set_value_labels(
   ...,
   .labels = NA,
   .strict = TRUE,
+  .overwrite = TRUE,
   .null_action = c("unclass", "labelled")
 )
 
@@ -69,6 +70,8 @@ using the same syntax as \code{value} in \code{val_labels(df) <- value}.}
 
 \item{.strict}{should an error be returned if some labels
 doesn't correspond to a column of \code{x}?}
+
+\item{.overwrite}{If value labels are already defined, overwrite them?}
 }
 \value{
 \code{val_labels()} will return a named vector.
@@ -91,7 +94,9 @@ While \code{set_value_labels()} will replace the list of value labels,
 
 \code{set_value_labels()} could also be applied to a vector / a data.frame column.
 In such case, you can provide a vector of value labels using \code{.labels} or
-several name-value pairs of value labels (see example).
+several name-value pairs of value labels (see example).  You
+could consider \code{\link[=dictionary_to_value_labels]{dictionary_to_value_labels()}} to generate a list of
+variable labels from a dictionary data frame.
 Similarly, \code{add_value_labels()} and \code{remove_value_labels()} could also be
 applied on vectors.
 }

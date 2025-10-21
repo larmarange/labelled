@@ -35,13 +35,19 @@ var_label(x) <- value
 
 get_variable_labels(x, ...)
 
-set_variable_labels(.data, ..., .labels = NA, .strict = TRUE)
+set_variable_labels(
+  .data,
+  ...,
+  .labels = NA,
+  .strict = TRUE,
+  .overwrite = TRUE
+)
 
 label_attribute(x)
 
 get_label_attribute(x)
 
-set_label_attribute(x, value)
+set_label_attribute(x, value, .overwrite = TRUE)
 
 label_attribute(x) <- value
 }
@@ -74,6 +80,8 @@ using the same syntax as \code{value} in \code{var_label(df) <- value}.}
 
 \item{.strict}{should an error be returned if some labels
 doesn't correspond to a column of \code{x}?}
+
+\item{.overwrite}{if a variable label is already defined, overwrite it?}
 }
 \value{
 \code{set_variable_labels()} will return an updated copy of \code{.data}.
@@ -88,7 +96,9 @@ For data frames and survey design, if you are using \verb{var_label()<-} and
 if \code{value} is a named list,
 only elements whose name will match a column of the data frame
 will be taken into account. If \code{value} is a character vector, labels should
-be in the same order as the columns of the data frame / survey design.
+be in the same order as the columns of the data frame / survey design. You
+could consider \code{\link[=dictionary_to_variable_labels]{dictionary_to_variable_labels()}} to generate a list of
+variable labels from a dictionary data frame.
 
 If you are using \verb{label_attribute()<-} or \code{set_label_attribute()} on a data
 frame, the label attribute will be attached to the data frame itself, not

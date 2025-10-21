@@ -51,9 +51,9 @@ look_for_and_select(
   ignore.case = TRUE
 )
 
-convert_list_columns_to_character(x)
+convert_list_columns_to_character(x, sep_value_labels = "[]", sep_other = "; ")
 
-lookfor_to_long_format(x)
+lookfor_to_long_format(x, sep_value_labels = "[]")
 
 to_gt(
   x,
@@ -85,6 +85,11 @@ consuming for big data frames, \code{FALSE} is equivalent to \code{"none"}
 and \code{TRUE} to \code{"full"})}
 
 \item{x}{a tibble returned by \code{look_for()}}
+
+\item{sep_value_labels}{(string) for value labels, separator between value
+and name}
+
+\item{sep_other}{separator for other list columns}
 
 \item{column_labels}{Optional column labels}
 }
@@ -188,8 +193,10 @@ d <- dplyr::tibble(
 look_for(d)
 d \%>\%
   look_for() \%>\%
-  lookfor_to_long_format() \%>\%
-  convert_list_columns_to_character()
+  lookfor_to_long_format(sep_value_labels = ":")
+d \%>\%
+  look_for() \%>\%
+  convert_list_columns_to_character(sep_value_labels = ":", sep_other = "|")
 \dontshow{if (rlang::is_installed(c("gt", "purrr"))) withAutoprint(\{ # examplesIf}
 iris \%>\% look_for(details = TRUE) \%>\% to_gt()
 d \%>\%
