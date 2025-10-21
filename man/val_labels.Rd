@@ -26,6 +26,7 @@ set_value_labels(
   ...,
   .labels = NA,
   .strict = TRUE,
+  .overwrite = TRUE,
   .null_action = c("unclass", "labelled")
 )
 
@@ -69,6 +70,8 @@ using the same syntax as \code{value} in \code{val_labels(df) <- value}.}
 
 \item{.strict}{should an error be returned if some labels
 doesn't correspond to a column of \code{x}?}
+
+\item{.overwrite}{If value labels are already defined, overwrite them?}
 }
 \value{
 \code{val_labels()} will return a named vector.

@@ -7,7 +7,8 @@
 - new functions `dictionary_to_variable_labels()` and
   `dictionary_to_value_labels()` to convert a dictionary data frame into a list
   of variable / value labels (#183)
-- new `.overwrite` argument for `set_variable_labels()` (#183)
+- new `.overwrite` argument for `set_variable_labels()` and
+  `set_value_labels()` (#183)
 - new `sep` argument for `names_prefixed_by_values()`
 - new arguments (`sep_value_labels` and `sep_other`) for
   `convert_list_columns_to_character()` and `lookfor_to_long_format()`

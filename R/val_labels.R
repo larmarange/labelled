@@ -373,6 +373,7 @@ get_value_labels <- val_labels
 #'   using the same syntax as `value` in `val_labels(df) <- value`.
 #' @param .strict should an error be returned if some labels
 #'   doesn't correspond to a column of `x`?
+#' @param .overwrite If value labels are already defined, overwrite them?
 #' @note
 #' `get_value_labels()` is identical to `val_labels()`.
 #'
@@ -430,6 +431,7 @@ set_value_labels <- function(
     ...,
     .labels = NA,
     .strict = TRUE,
+    .overwrite = TRUE,
     .null_action = c("unclass", "labelled")) {
   .null_action <- match.arg(.null_action)
   # survey.design case
@@ -440,6 +442,7 @@ set_value_labels <- function(
         ...,
         .labels = .labels,
         .strict = .strict,
+        .overwrite = .overwrite,
         .null_action = .null_action
       )
     return(.data)
@@ -452,6 +455,7 @@ set_value_labels <- function(
 
   # vector case
   if (is.atomic(.data)) {
+    if (!.overwrite && !is.null(val_labels(.data))) return(.data)
     if (!identical(.labels, NA)) {
       val_labels(.data, null_action = .null_action) <- .labels
     } else {
@@ -461,10 +465,15 @@ set_value_labels <- function(
     return(.data)
   }
 
+  already <- !unlist(lapply(val_labels(.data), is.null))
+  already <- names(already)[already]
   # data.frame case
   if (!identical(.labels, NA)) {
     if (!.strict) {
       .labels <- .labels[intersect(names(.labels), names(.data))]
+    }
+    if (!.overwrite) {
+      .labels <- .labels[setdiff(already, names(.data))]
     }
     val_labels(.data, null_action = .null_action) <- .labels
   }
@@ -475,7 +484,9 @@ set_value_labels <- function(
       "Can't find variables {.var {missing_names}} in {.arg .data}."
     ))
   }
-
+  if (!.overwrite) {
+    values <- values[setdiff(names(values), already)]
+  }
   for (v in intersect(names(values), names(.data))) {
     val_labels(.data[[v]], null_action = .null_action) <- values[[v]]
   }
