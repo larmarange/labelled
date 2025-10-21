@@ -29,13 +29,15 @@ Imports:
     tidyr,
     tidyselect
 Suggests:
-    testthat (>= 3.2.0),
+    gt,
     knitr,
     rmarkdown,
+    purrr,
     questionr,
     snakecase,
     spelling,
-    survey
+    survey,
+    testthat (>= 3.2.0)
 Enhances: memisc
 URL: https://larmarange.github.io/labelled/, https://github.com/larmarange/labelled
 BugReports: https://github.com/larmarange/labelled/issues
