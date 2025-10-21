@@ -32,6 +32,7 @@ Suggests:
     gt,
     knitr,
     rmarkdown,
+    purrr,
     questionr,
     snakecase,
     spelling,

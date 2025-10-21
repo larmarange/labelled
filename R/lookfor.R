@@ -447,7 +447,7 @@ lookfor_to_long_format <- function(x) {
 #' @rdname look_for
 #' @param column_labels Optional column labels
 #' @export
-#' @examplesIf rlang::is_installed("gt")
+#' @examplesIf rlang::is_installed(c("gt", "purrr"))
 #' iris %>% look_for(details = TRUE) %>% to_gt()
 #' d %>%
 #'   generate_dictionary() %>%
@@ -467,7 +467,7 @@ to_gt <- function(
     na_range = "User-defined missings (range)"
   )
 ) {
-  rlang::check_installed("gt")
+  rlang::check_installed(c("gt", "purrr"))
   if (!inherits(x, "look_for"))
     cli::cli_abort("{.arg x} shoud be a {.class look_for} object.")
 
@@ -512,7 +512,7 @@ to_gt <- function(
           .data$range,
           function(x) {
             if (is.null(x)) return("")
-            paste(x, collapse = " – ")
+            paste(x, collapse = " \u2013 ")
           }
         )
       )
