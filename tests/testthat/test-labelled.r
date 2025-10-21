@@ -13,7 +13,11 @@ test_that("var_label works properly", {
   x <- 1:3
   x <- set_variable_labels(x, "value")
   expect_equal(attr(x, "label"), "value")
+  x <- set_variable_labels(x, "something elese", .overwrite = FALSE)
+  expect_equal(attr(x, "label"), "value")
   x <- set_variable_labels(x, .labels = "other value")
+  expect_equal(attr(x, "label"), "other value")
+  x <- set_variable_labels(x, .labels = "something else", .overwrite = FALSE)
   expect_equal(attr(x, "label"), "other value")
   x <- set_variable_labels(x, NULL)
   expect_null(attr(x, "label"))
@@ -28,7 +32,14 @@ test_that("var_label works properly", {
 
   labels <- list(dist = "BAR", speed = "FOO")
   data_labelled <- set_variable_labels(cars, .labels = labels)
+  expect_identical(
+    get_variable_labels(data_labelled),
+    list(speed = "FOO", dist = "BAR")
+  )
 
+  labels <- list(dist = "BLUE", speed = "YELLOW")
+  data_labelled <- data_labelled %>%
+    set_variable_labels(.labels = labels, .overwrite = FALSE)
   expect_identical(
     get_variable_labels(data_labelled),
     list(speed = "FOO", dist = "BAR")
