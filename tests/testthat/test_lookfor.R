@@ -174,3 +174,55 @@ test_that("look_for works with factor levels and value labels", {
   res <- df %>% look_for("vers", details = "none", values = FALSE)
   expect_equal(nrow(res), 0)
 })
+
+test_that("to_gt() does not produce errors", {
+  skip_on_cran()
+  skip_if_not_installed("gt")
+  skip_if_not_installed("purrr")
+
+  expect_no_error(
+    tbl <- iris %>% look_for() %>% to_gt()
+  )
+  expect_s3_class(tbl, "gt_tbl")
+  expect_no_error(
+    tbl <- iris %>% look_for(details = FALSE) %>% to_gt()
+  )
+  expect_no_error(
+    tbl <- iris %>% look_for(details = TRUE) %>% to_gt()
+  )
+  expect_no_error(
+    tbl <- iris %>% look_for("no_data") %>% to_gt()
+  )
+
+  d <- dplyr::tibble(
+    region = labelled_spss(
+      c(1, 2, 1, 9, 2, 3),
+      c(north = 1, south = 2, center = 3, missing = 9),
+      na_values = 9,
+      na_range = c(90, 99),
+      label = "Region of the respondent"
+    ),
+    sex = labelled(
+      c("f", "f", "m", "m", "m", "f"),
+      c(female = "f", male = "m"),
+      label = "Sex of the respondent"
+    )
+  )
+  expect_no_error(
+    tbl <- d %>% look_for() %>% to_gt()
+  )
+  expect_no_error(
+    tbl <- d %>% look_for(details = FALSE) %>% to_gt()
+  )
+  expect_no_error(
+    tbl <- d %>% look_for(details = TRUE) %>% to_gt()
+  )
+  expect_no_error(
+    tbl <- d %>% look_for() %>% to_gt(column_labels = NULL)
+  )
+  expect_no_error(
+    tbl <- d %>%
+      look_for() %>%
+      to_gt(column_labels = list(pos = "POSITION"))
+  )
+})

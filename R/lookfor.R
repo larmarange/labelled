@@ -470,6 +470,7 @@ to_gt <- function(
   rlang::check_installed(c("gt", "purrr"))
   if (!inherits(x, "look_for"))
     cli::cli_abort("{.arg x} shoud be a {.class look_for} object.")
+  if (nrow(x) == 0) return(gt::gt(data.frame()))
 
   x <-
     x %>%

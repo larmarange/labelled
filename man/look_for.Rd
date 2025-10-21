@@ -190,7 +190,7 @@ d \%>\%
   look_for() \%>\%
   lookfor_to_long_format() \%>\%
   convert_list_columns_to_character()
-\dontshow{if (rlang::is_installed("gt")) withAutoprint(\{ # examplesIf}
+\dontshow{if (rlang::is_installed(c("gt", "purrr"))) withAutoprint(\{ # examplesIf}
 iris \%>\% look_for(details = TRUE) \%>\% to_gt()
 d \%>\%
   generate_dictionary() \%>\%
