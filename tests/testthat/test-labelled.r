@@ -730,6 +730,7 @@ test_that("set_value_labels replaces all value labels", {
   df <- data.frame(
     s1 = c("M", "M", "F"),
     s2 = c(1, 1, 2),
+    x = 1:3,
     stringsAsFactors = FALSE
   )
   df <- set_value_labels(
@@ -739,6 +740,10 @@ test_that("set_value_labels replaces all value labels", {
   )
   expect_equal(val_labels(df$s1), c(Male = "M", Female = "F"))
   expect_equal(val_labels(df$s2), c(Yes = 1, No = 2))
+  df <- df %>%
+    set_value_labels(s2 = c(test = 1), x = c(test = 1), .overwrite = FALSE)
+  expect_equal(val_labels(df$s2), c(Yes = 1, No = 2))
+  expect_equal(val_labels(df$x), c(test = 1))
   df <- set_value_labels(df, s2 = c(Yes = 1, Unknown = 9))
   expect_equal(val_labels(df$s2), c(Yes = 1, Unknown = 9))
   df <- set_value_labels(df, s1 = NULL)
@@ -748,10 +753,17 @@ test_that("set_value_labels replaces all value labels", {
 
   v <- set_value_labels(1:10, c(low = 1, high = 10))
   expect_equal(val_labels(v), c(low = 1, high = 10))
+
   v <- set_value_labels(1:10, low = 1, high = 10)
   expect_equal(val_labels(v), c(low = 1, high = 10))
+  v <- set_value_labels(v, test = 1, .overwrite = FALSE)
+  expect_equal(val_labels(v), c(low = 1, high = 10))
+
   v <- set_value_labels(1:10, .labels = c(low = 1, high = 10))
   expect_equal(val_labels(v), c(low = 1, high = 10))
+  v <- set_value_labels(v, .labels = c(test = 1), .overwrite = FALSE)
+  expect_equal(val_labels(v), c(low = 1, high = 10))
+
   v <- set_value_labels(v, NULL)
   expect_null(val_labels(v))
 })
