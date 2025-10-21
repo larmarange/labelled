@@ -502,7 +502,7 @@ to_gt <- function(
           .data$levels,
           function(x) {
             if (is.null(x)) return("")
-            paste("-", x, collapse = "\n") |>
+            paste("-", x, collapse = "\n") %>%
               gt::md()
           }
         )
@@ -516,7 +516,7 @@ to_gt <- function(
           .data$value_labels,
           function(x) {
             if (is.null(x)) return("")
-            paste("-", names_prefixed_by_values(x), collapse = "\n") |>
+            paste("-", names_prefixed_by_values(x), collapse = "\n") %>%
               gt::md()
           }
         )
