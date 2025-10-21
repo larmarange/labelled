@@ -62,6 +62,7 @@ mtcars \%>\%
   set_variable_labels(.labels = l) \%>\%
   look_for()
 
+\dontshow{if (rlang::is_installed("purrr")) withAutoprint(\{ # examplesIf}
 vl <- dic \%>\%
   dictionary_to_value_labels(
     values_from = values,
@@ -95,4 +96,5 @@ dic3 \%>\%
     labels_from = label,
     data = mtcars
   )
+\dontshow{\}) # examplesIf}
 }

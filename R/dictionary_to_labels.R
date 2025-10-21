@@ -36,6 +36,7 @@
 #'   set_variable_labels(.labels = l) %>%
 #'   look_for()
 #'
+#' @examplesIf rlang::is_installed("purrr")
 #' vl <- dic %>%
 #'   dictionary_to_value_labels(
 #'     values_from = values,
@@ -92,6 +93,7 @@ dictionary_to_value_labels <- function(dictionary,
                                        delim_entries = NULL,
                                        delim_value_label = NULL,
                                        data = NULL) {
+  rlang::check_installed("purrr")
   dictionary <-
     dictionary %>%
     tidyr::drop_na({{ names_from }}, {{ values_from }})
