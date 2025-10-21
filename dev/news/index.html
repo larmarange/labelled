@@ -40,7 +40,14 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="labelled-development-version">labelled (development version)<a class="anchor" aria-label="anchor" href="#labelled-development-version"></a></h2>
+<p><strong>New features</strong></p>
 <ul><li>new function <code><a href="../reference/look_for.html">to_gt()</a></code> for converting the result of <code><a href="../reference/look_for.html">look_for()</a></code> into a nicely formatted table (<a href="https://github.com/larmarange/labelled/issues/189" class="external-link">#189</a>)</li>
+<li>new functions <code><a href="../reference/dictionary_to_variable_labels.html">dictionary_to_variable_labels()</a></code> and <code><a href="../reference/dictionary_to_variable_labels.html">dictionary_to_value_labels()</a></code> to convert a dictionary data frame into a list of variable / value labels (<a href="https://github.com/larmarange/labelled/issues/183" class="external-link">#183</a>)</li>
+<li>new <code>.overwrite</code> argument for <code><a href="../reference/var_label.html">set_variable_labels()</a></code> and <code><a href="../reference/val_labels.html">set_value_labels()</a></code> (<a href="https://github.com/larmarange/labelled/issues/183" class="external-link">#183</a>)</li>
+<li>new <code>sep</code> argument for <code><a href="../reference/names_prefixed_by_values.html">names_prefixed_by_values()</a></code>
+</li>
+<li>new arguments (<code>sep_value_labels</code> and <code>sep_other</code>) for <code><a href="../reference/look_for.html">convert_list_columns_to_character()</a></code> and <code><a href="../reference/look_for.html">lookfor_to_long_format()</a></code>
+</li>
 </ul><p><strong>Bug fix</strong></p>
 <ul><li>
 <code><a href="../reference/copy_labels.html">copy_labels()</a></code> is now less restrictive and accept tibble with list columns (<a href="https://github.com/larmarange/labelled/issues/187" class="external-link">#187</a>)</li>
