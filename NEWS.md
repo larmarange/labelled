@@ -1,7 +1,7 @@
 # labelled (development version)
 
 - new function `to_gt()` for converting the result of `look_for()` into a nicely
-  formatted table
+  formatted table (#189)
 
 **Bug fix**
 

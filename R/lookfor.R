@@ -479,16 +479,16 @@ to_gt <- function(
   if ("levels" %in% names(x)) {
     x <-
       x %>%
-        dplyr::mutate(
-          levels = purrr::map(
-            .data$levels,
-            function(x) {
-              if (is.null(x)) return("")
-              paste("-", x, collapse = "\n") |>
-                gt::md()
-            }
-          )
+      dplyr::mutate(
+        levels = purrr::map(
+          .data$levels,
+          function(x) {
+            if (is.null(x)) return("")
+            paste("-", x, collapse = "\n") |>
+              gt::md()
+          }
         )
+      )
   }
   if ("value_labels" %in% names(x)) {
     x <-
@@ -498,7 +498,7 @@ to_gt <- function(
           .data$value_labels,
           function(x) {
             if (is.null(x)) return("")
-            paste("-", x |> names_prefixed_by_values(), collapse = "\n") |>
+            paste("-", names_prefixed_by_values(x), collapse = "\n") |>
               gt::md()
           }
         )
