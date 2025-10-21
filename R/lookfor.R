@@ -1,6 +1,6 @@
 #' Look for keywords variable names and descriptions / Create a data dictionary
 #'
-#' `look_for` emulates the `lookfor` Stata command in \R. It supports
+#' `look_for()` emulates the `lookfor` Stata command in \R. It supports
 #' searching into the variable names of regular \R data frames as well as into
 #' variable labels descriptions, factor levels and value labels.
 #' The command is meant to help users finding variables in large datasets.
@@ -43,8 +43,13 @@
 #' Use `convert_list_columns_to_character()` to convert named list columns into
 #' character vectors (see examples).
 #'
+#' The function `to_gt()` transform the results of `look_for()` into a nicely
+#' formatted table using [gt::gt()]. This table could be easily be exported
+#' to a file with [gt::gtsave()]. [gt::tab_header()] could be used to add a
+#' title to the table (see examples).
+#'
 #' `look_for_and_select()` is a shortcut for selecting some variables and
-#' applying `dplyr::select()` to return a data frame with only the selected
+#' applying [dplyr::select()]s to return a data frame with only the selected
 #' variables.
 #'
 #' @author François Briatte <f.briatte@@gmail.com>,
@@ -437,4 +442,141 @@ lookfor_to_long_format <- function(x) {
   x %>%
     tidyr::unnest("levels", keep_empty = TRUE) %>%
     tidyr::unnest("value_labels", keep_empty = TRUE)
+}
+
+#' @rdname look_for
+#' @param column_labels Optional column labels
+#' @export
+#' @examplesIf rlang::is_installed("gt")
+#' iris %>% look_for(details = TRUE) %>% to_gt()
+#' d %>%
+#'   generate_dictionary() %>%
+#'   to_gt() %>%
+#'   gt::tab_header(gt::md("**Variable dictionary**"))
+to_gt <- function(
+  x,
+  column_labels = list(
+    pos = "#",
+    variable = "Variable",
+    col_type = "Type",
+    label = "Variable label",
+    values = "Values",
+    missing = "Missing values",
+    unique_values = "Unique values",
+    na_values = "User-defined missings (values)",
+    na_range = "User-defined missings (range)"
+  )
+) {
+  rlang::check_installed("gt")
+  if (!inherits(x, "look_for"))
+    cli::cli_abort("{.arg x} shoud be a {.class look_for} object.")
+
+  x <-
+    x %>%
+    dplyr::mutate(
+      label = dplyr::if_else(is.na(.data$label), "\u2014", .data$label)
+    )
+  if ("levels" %in% names(x)) {
+    x <-
+      x %>%
+        dplyr::mutate(
+          levels = purrr::map(
+            .data$levels,
+            function(x) {
+              if (is.null(x)) return("")
+              paste("-", x, collapse = "\n") |>
+                gt::md()
+            }
+          )
+        )
+  }
+  if ("value_labels" %in% names(x)) {
+    x <-
+      x %>%
+      dplyr::mutate(
+        value_labels = purrr::map(
+          .data$value_labels,
+          function(x) {
+            if (is.null(x)) return("")
+            paste("-", x |> names_prefixed_by_values(), collapse = "\n") |>
+              gt::md()
+          }
+        )
+      )
+  }
+  if ("range" %in% names(x)) {
+    x <-
+      x %>%
+      dplyr::mutate(
+        range = purrr::map(
+          .data$range,
+          function(x) {
+            if (is.null(x)) return("")
+            paste(x, collapse = " – ")
+          }
+        )
+      )
+  } else {
+    x$range <- ""
+    x$range <- as.list(x$range)
+  }
+  if (all(c("levels", "value_labels") %in% names(x))) {
+    x$values <-
+      dplyr::case_when(
+        x$value_labels != "" ~ x$value_labels,
+        x$levels != "" ~ x$levels,
+        TRUE ~ x$range
+      )
+  }
+
+  keep <- c(
+    "pos", "variable", "col_type", "label",
+    "values", "missing", "unique_values"
+  )
+
+  if ("na_values" %in% names(x) && !is.null(unlist(x$na_values)))
+    keep <- c(keep, "na_values")
+  if ("na_range" %in% names(x) && !is.null(unlist(x$na_range)))
+    keep <- c(keep, "na_range")
+
+
+  tbl <-
+    x %>%
+    dplyr::select(
+      dplyr::any_of(keep)
+    ) %>%
+    set_variable_labels(.labels = column_labels, .strict = FALSE) %>%
+    gt::gt() %>%
+    gt::tab_style(
+      style = gt::cell_text(weight = "bold"),
+      locations = gt::cells_column_labels()
+    ) %>%
+    gt::tab_style(
+      style = gt::cell_text(weight = "bold"),
+      locations = gt::cells_body(column = "variable")
+    )
+
+  if ("values" %in% names(x)) {
+    tbl <-
+      tbl %>%
+      gt::tab_style(
+        style = gt::cell_text(align = "left"),
+        locations = gt::cells_body(
+          columns = "values",
+          rows = x$values %>%
+            purrr::map(~ inherits(.x, "from_markdown")) %>%
+            unlist()
+        )
+      )
+  }
+
+  tbl %>%
+    gt::tab_style(
+      style = "vertical-align:top",
+      locations = gt::cells_body()
+    ) %>%
+    gt::tab_style(
+      style = "vertical-align:top",
+      locations = gt::cells_column_labels()
+    )
 }

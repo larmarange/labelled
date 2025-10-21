@@ -8,6 +8,7 @@
 \alias{look_for_and_select}
 \alias{convert_list_columns_to_character}
 \alias{lookfor_to_long_format}
+\alias{to_gt}
 \title{Look for keywords variable names and descriptions / Create a data dictionary}
 \source{
 Inspired by the \code{lookfor} command in Stata.
@@ -53,6 +54,14 @@ look_for_and_select(
 convert_list_columns_to_character(x)
 
 lookfor_to_long_format(x)
+
+to_gt(
+  x,
+  column_labels = list(pos = "#", variable = "Variable", col_type = "Type", label =
+    "Variable label", values = "Values", missing = "Missing values", unique_values =
+    "Unique values", na_values = "User-defined missings (values)", na_range =
+    "User-defined missings (range)")
+)
 }
 \arguments{
 \item{data}{a data frame or a survey object}
@@ -76,13 +85,15 @@ consuming for big data frames, \code{FALSE} is equivalent to \code{"none"}
 and \code{TRUE} to \code{"full"})}
 
 \item{x}{a tibble returned by \code{look_for()}}
+
+\item{column_labels}{Optional column labels}
 }
 \value{
 a tibble data frame featuring the variable position, name and
 description (if it exists) in the original data frame
 }
 \description{
-\code{look_for} emulates the \code{lookfor} Stata command in \R. It supports
+\code{look_for()} emulates the \code{lookfor} Stata command in \R. It supports
 searching into the variable names of regular \R data frames as well as into
 variable labels descriptions, factor levels and value labels.
 The command is meant to help users finding variables in large datasets.
@@ -108,8 +119,13 @@ per factor level and per value label.
 Use \code{convert_list_columns_to_character()} to convert named list columns into
 character vectors (see examples).
 
+The function \code{to_gt()} transform the results of \code{look_for()} into a nicely
+formatted table using \code{\link[gt:gt]{gt::gt()}}. This table could be easily be exported
+to a file with \code{\link[gt:gtsave]{gt::gtsave()}}. \code{\link[gt:tab_header]{gt::tab_header()}} could be used to add a
+title to the table (see examples).
+
 \code{look_for_and_select()} is a shortcut for selecting some variables and
-applying \code{dplyr::select()} to return a data frame with only the selected
+applying \code{\link[dplyr:select]{dplyr::select()}}s to return a data frame with only the selected
 variables.
 }
 \examples{
@@ -174,6 +190,13 @@ d \%>\%
   look_for() \%>\%
   lookfor_to_long_format() \%>\%
   convert_list_columns_to_character()
+\dontshow{if (rlang::is_installed("gt")) withAutoprint(\{ # examplesIf}
+iris \%>\% look_for(details = TRUE) \%>\% to_gt()
+d \%>\%
+  generate_dictionary() \%>\%
+  to_gt() \%>\%
+  gt::tab_header(gt::md("**Variable dictionary**"))
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 \code{vignette("look_for")}

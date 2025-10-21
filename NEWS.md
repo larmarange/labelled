@@ -1,5 +1,8 @@
 # labelled (development version)
 
+- new function `to_gt()` for converting the result of `look_for()` into a nicely
+  formatted table
+
 **Bug fix**
 
 - `copy_labels()` is now less restrictive and accept tibble with list
