@@ -362,7 +362,6 @@ get_label_attribute <- function(x) {
 set_label_attribute <- function(x, value, .overwrite = TRUE) {
   if (!.overwrite && !is.null(get_label_attribute(x))) return(x)
   check_string(value, allow_null = TRUE, allow_na = TRUE)
-  if (!is.null(value) && is.na(value)) value <- NULL
   attr(x, "label") <- value
   x
 }
