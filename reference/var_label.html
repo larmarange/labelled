@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">labelled</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.15.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.16.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,13 +69,19 @@
 <span></span>
 <span><span class="fu">get_variable_labels</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">set_variable_labels</span><span class="op">(</span><span class="va">.data</span>, <span class="va">...</span>, .labels <span class="op">=</span> <span class="cn">NA</span>, .strict <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">set_variable_labels</span><span class="op">(</span></span>
+<span>  <span class="va">.data</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  .labels <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  .strict <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  .overwrite <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">label_attribute</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">get_label_attribute</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">set_label_attribute</span><span class="op">(</span><span class="va">x</span>, <span class="va">value</span><span class="op">)</span></span>
+<span><span class="fu">set_label_attribute</span><span class="op">(</span><span class="va">x</span>, <span class="va">value</span>, .overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">label_attribute</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span></code></pre></div>
     </div>
@@ -130,6 +136,10 @@ using the same syntax as <code>value</code> in <code>var_label(df) &lt;- value</
 <dd><p>should an error be returned if some labels
 doesn't correspond to a column of <code>x</code>?</p></dd>
 
+
+<dt id="arg--overwrite">.overwrite<a class="anchor" aria-label="anchor" href="#arg--overwrite"></a></dt>
+<dd><p>if a variable label is already defined, overwrite it?</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -142,7 +152,9 @@ doesn't correspond to a column of <code>x</code>?</p></dd>
 if <code>value</code> is a named list,
 only elements whose name will match a column of the data frame
 will be taken into account. If <code>value</code> is a character vector, labels should
-be in the same order as the columns of the data frame / survey design.</p>
+be in the same order as the columns of the data frame / survey design. You
+could consider <code><a href="dictionary_to_variable_labels.html">dictionary_to_variable_labels()</a></code> to generate a list of
+variable labels from a dictionary data frame.</p>
 <p>If you are using <code>label_attribute()&lt;-</code> or <code>set_label_attribute()</code> on a data
 frame, the label attribute will be attached to the data frame itself, not
 to a column of the data frame.</p>

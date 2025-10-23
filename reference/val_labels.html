@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">labelled</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.15.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">2.16.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,6 +60,7 @@
 <span>  <span class="va">...</span>,</span>
 <span>  .labels <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  .strict <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  .overwrite <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  .null_action <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"unclass"</span>, <span class="st">"labelled"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
@@ -125,6 +126,10 @@ using the same syntax as <code>value</code> in <code>val_labels(df) &lt;- value<
 <dd><p>should an error be returned if some labels
 doesn't correspond to a column of <code>x</code>?</p></dd>
 
+
+<dt id="arg--overwrite">.overwrite<a class="anchor" aria-label="anchor" href="#arg--overwrite"></a></dt>
+<dd><p>If value labels are already defined, overwrite them?</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -143,7 +148,9 @@ While <code>set_value_labels()</code> will replace the list of value labels,
 (see examples).</p>
 <p><code>set_value_labels()</code> could also be applied to a vector / a data.frame column.
 In such case, you can provide a vector of value labels using <code>.labels</code> or
-several name-value pairs of value labels (see example).
+several name-value pairs of value labels (see example).  You
+could consider <code><a href="dictionary_to_variable_labels.html">dictionary_to_value_labels()</a></code> to generate a list of
+variable labels from a dictionary data frame.
 Similarly, <code>add_value_labels()</code> and <code>remove_value_labels()</code> could also be
 applied on vectors.</p>
     </div>
