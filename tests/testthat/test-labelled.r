@@ -279,6 +279,28 @@ test_that(" 'val_labels <-'  works for dataframe", {
   expect_true(all(sapply(val_labels(df), is.null)))
 })
 
+test_that("val_labels works with all NAs vectors", {
+  x <- c(NA, NA)
+  expect_message(
+    val_labels(x) <- c(yes = 1, no = 2)
+  )
+
+  x <- c(NA, NA)
+  expect_message(
+    val_labels(x) <- c(yes = "y")
+  )
+
+  d <- data.frame(q = c(NA, NA))
+  expect_message(
+    val_labels(d) <- list(q = c(no = 1))
+  )
+
+  d <- data.frame(q = c(NA, NA))
+  expect_message(
+    d %>% set_value_labels(q = c(yes = "y"))
+  )
+})
+
 test_that("val_label works for haven_labelled", {
   v <- labelled(
     c(1, 2, 2, 2, 3, 9, 1, 3, 2, NA),

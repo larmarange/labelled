@@ -79,6 +79,16 @@ val_labels.svyrep.design <- val_labels.survey.design
     value) {
   null_action <- match.arg(null_action)
   if (!is.null(value) || null_action == "labelled") {
+    if (!is.null(value) && all(is.na(x)) && mode(x) != mode(value)) {
+      cli::cli_alert_info(
+        c(
+          "Vectors must be same type. ",
+          "i" =
+            "Converted {.var x} from {.cls {mode(x)}} to {.cls {mode(value)}}."
+        )
+      )
+      mode(x) <- mode(value)
+    }
     x <- labelled(x, value, label = var_label(x))
   }
   # otherwise do nothing
@@ -97,10 +107,13 @@ val_labels.svyrep.design <- val_labels.survey.design
 
 #' @export
 `val_labels<-.numeric` <- function(
-    x,
-    null_action = c("unclass", "labelled"),
-    value) {
+  x,
+  null_action = c("unclass", "labelled"),
+  value
+) {
   null_action <- match.arg(null_action)
+  if (!is.null(value) && !is.numeric(value))
+    cli::cli_abort("{.arg x} and {.arg value} should be same type.")
   if ((!is.null(value) && length(value) > 0) || null_action == "labelled") {
     x <- labelled(x, value, label = var_label(x))
   }
@@ -109,10 +122,13 @@ val_labels.svyrep.design <- val_labels.survey.design
 
 #' @export
 `val_labels<-.character` <- function(
-    x,
-    null_action = c("unclass", "labelled"),
-    value) {
+  x,
+  null_action = c("unclass", "labelled"),
+  value
+) {
   null_action <- match.arg(null_action)
+  if (!is.null(value) && !is.character(value))
+    cli::cli_abort("{.arg x} and {.arg value} should be same type.")
   if ((!is.null(value) && length(value) > 0) || null_action == "labelled") {
     x <- labelled(x, value, label = var_label(x))
   }
@@ -191,11 +207,27 @@ val_labels.svyrep.design <- val_labels.survey.design
 
   for (var in names(value)) {
     if (!is.null(value[[var]])) {
-      if (mode(x[[var]]) != mode(value[[var]]))
-        cli::cli_abort(paste(
-          "{.arg x} ({class(x)}) and {.arg value} ({class(value)})",
-          "must be same type."
-        ))
+      if (mode(x[[var]]) != mode(value[[var]])) {
+        if (all(is.na(x[[var]]))) {
+          cli::cli_alert_info(c(
+            "Vectors must be same type. ",
+            "i" = paste(
+              "Converted {.var x${var}} from {.cls {mode(x[[var]])}}",
+              "to {.cls {mode(value[[var]])}}."
+            )
+          ))
+          mode(x[[var]]) <- mode(value[[var]])
+        } else {
+          cli::cli_abort(c(
+            "Vectors must be same type. ",
+            "x" = paste(
+              "{.var x[[{.str {var}}]]} is {.cls {mode(x[[var]])}}",
+              "but",
+              "{.var value[[{.str {var}}]]} is {.cls {mode(value[[var]])}}."
+            )
+          ))
+        }
+      }
       if (typeof(x[[var]]) != typeof(value[[var]])) {
         mode(value[[var]]) <- typeof(x[[var]])
       }

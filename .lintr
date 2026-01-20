@@ -1,4 +1,4 @@
-linters: linters_with_defaults(object_name_linter=NULL, object_length_linter=NULL, object_usage_linter = NULL) # see vignette("lintr")
+linters: linters_with_defaults(object_name_linter=NULL, object_length_linter=NULL, object_usage_linter = NULL, pipe_consistency_linter=NULL) # see vignette("lintr")
 encoding: "UTF-8"
 exclusions: list(
     "R/import-standalone-obj-type.R",

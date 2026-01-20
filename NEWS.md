@@ -1,5 +1,10 @@
 # labelled (development version)
 
+**Bug fix**
+
+* `value_labels()` works on empty vector, i.e. a logical vector containing
+  only `NA` values (#192)
+
 # labelled 2.16.0
 
 **New features**
