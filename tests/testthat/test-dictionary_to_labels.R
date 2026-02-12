@@ -90,4 +90,19 @@ test_that("dictionary_to_value_labels() works", {
     val_labels(m$am),
     c(automatic = 0, manual = 1)
   )
+
+  # with repeated delim_value_label
+  dic4 <- dplyr::tibble(
+    variable = c("mpg", "vs", "am", "cyl"),
+    values = c(NA, "0,V-Shaped|1,straight,perfect", "0,automatic|1,manual", NA)
+  )
+  expect_no_error(
+    vl <-
+      dic4 %>%
+      dictionary_to_value_labels(
+        delim_entries = "|",
+        delim_value_label = ","
+      )
+  )
+  expect_equal(names(vl$vs)[2], "straight,perfect")
 })

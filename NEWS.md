@@ -4,6 +4,8 @@
 
 * `value_labels()` works on empty vector, i.e. a logical vector containing
   only `NA` values (#192)
+* `dictionary_to_value_labels()` now handles value labels with repeated
+  `delim_value_label` (#194)
 
 # labelled 2.16.0
 

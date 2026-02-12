@@ -4,7 +4,10 @@
 #' a variable dictionary, a list of variable or value labels that could be
 #' passed to [set_variable_labels()] or to [set_value_labels()].
 #'
-#' It should be noted that value labels could be
+#' @note
+#' For more complex cases, you may consider using
+#' [tidyr::separate_longer_delim()] or [tidyr::separate_wider_regex()] before
+#' calling `dictionary_to_value_labels()`.
 #'
 #' @param dictionary A data frame or a tibble containing the definitions of the
 #' variable / value labels.
@@ -110,7 +113,8 @@ dictionary_to_value_labels <- function(dictionary,
       tidyr::separate_wider_delim(
         delim = delim_value_label,
         cols = {{ values_from }},
-        names = c("..value..", "..label..")
+        names = c("..value..", "..label.."),
+        too_many = "merge"
       )
     values_from <- "..value.."
     labels_from <- "..label.."
