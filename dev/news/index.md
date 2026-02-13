@@ -7,6 +7,9 @@
 - `value_labels()` works on empty vector, i.e. a logical vector
   containing only `NA` values
   ([\#192](https://github.com/larmarange/labelled/issues/192))
+- [`dictionary_to_value_labels()`](https://larmarange.github.io/labelled/dev/reference/dictionary_to_variable_labels.md)
+  now handles value labels with repeated `delim_value_label`
+  ([\#194](https://github.com/larmarange/labelled/issues/194))
 
 ## labelled 2.16.0
 

@@ -62,9 +62,13 @@ dictionary_to_value_labels(
   A data frame or a tibble containing the raw data to identify the type
   (integer, numeric, character) of each variable.
 
-## Details
+## Note
 
-It should be noted that value labels could be
+For more complex cases, you may consider using
+[`tidyr::separate_longer_delim()`](https://tidyr.tidyverse.org/reference/separate_longer_delim.html)
+or
+[`tidyr::separate_wider_regex()`](https://tidyr.tidyverse.org/reference/separate_wider_delim.html)
+before calling `dictionary_to_value_labels()`.
 
 ## Examples
 
