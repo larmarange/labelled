@@ -45,8 +45,10 @@ These helpers could be used to generate, from a data frame corresponding to
 a variable dictionary, a list of variable or value labels that could be
 passed to \code{\link[=set_variable_labels]{set_variable_labels()}} or to \code{\link[=set_value_labels]{set_value_labels()}}.
 }
-\details{
-It should be noted that value labels could be
+\note{
+For more complex cases, you may consider using
+\code{\link[tidyr:separate_longer_delim]{tidyr::separate_longer_delim()}} or \code{\link[tidyr:separate_wider_delim]{tidyr::separate_wider_regex()}} before
+calling \code{dictionary_to_value_labels()}.
 }
 \examples{
 dic <- dplyr::tibble(
