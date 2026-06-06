@@ -505,7 +505,7 @@ set_value_labels <- function(
       .labels <- .labels[intersect(names(.labels), names(.data))]
     }
     if (!.overwrite) {
-      .labels <- .labels[setdiff(already, names(.data))]
+      .labels <- .labels[setdiff(names(.labels), already)]
     }
     val_labels(.data, null_action = .null_action) <- .labels
   }

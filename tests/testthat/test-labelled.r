@@ -468,7 +468,7 @@ test_that("remove_labels works with labelled_spss", {
 # remove_val_labels ------------------------------------------------------------
 
 
-test_that("remove_labels works properly", {
+test_that("remove_val_labels works properly", {
   var <- labelled(
     c(1L, 98L, 99L),
     c(not_answered = 98L, not_applicable = 99L),
@@ -485,7 +485,7 @@ test_that("remove_labels works properly", {
 # remove_var_label ------------------------------------------------------------
 
 
-test_that("remove_labels works properly", {
+test_that("remove_var_label works properly", {
   var <- labelled(
     c(1L, 98L, 99L),
     c(not_answered = 98L, not_applicable = 99L),
@@ -788,6 +788,26 @@ test_that("set_value_labels replaces all value labels", {
 
   v <- set_value_labels(v, NULL)
   expect_null(val_labels(v))
+})
+
+test_that("set_value_labels .labels + .overwrite = FALSE on data frames", {
+  df <- data.frame(
+    s1 = labelled(c("M", "M", "F"), c(Male = "M", Female = "F")),
+    s2 = labelled(c(1, 1, 2), c(Yes = 1, No = 2)),
+    x = 1:3,
+    stringsAsFactors = FALSE
+  )
+
+  # .labels + .overwrite = FALSE: should skip s1 and s2 (already labelled)
+  # and apply to x (unlabelled)
+  df2 <- set_value_labels(
+    df,
+    .labels = list(s1 = c(Male2 = "M"), s2 = c(Maybe = 3), x = c(low = 1)),
+    .overwrite = FALSE
+  )
+  expect_equal(val_labels(df2$s1), c(Male = "M", Female = "F"))
+  expect_equal(val_labels(df2$s2), c(Yes = 1, No = 2))
+  expect_equal(val_labels(df2$x), c(low = 1))
 })
 
 test_that("set_value_labels errors", {
