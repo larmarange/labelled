@@ -47,7 +47,7 @@ user_na_to_tagged_na(x)
 
 \item{value}{A vector of values that should also be considered as missing
 (for \code{na_values}) or a numeric vector of length two giving the (inclusive)
-extents of the range (for \code{na_values}, use \code{-Inf} and \code{Inf} if you
+extents of the range (for \code{na_range}), use \code{-Inf} and \code{Inf} if you
 want the range to be open ended).}
 
 \item{.data}{a data frame, a survey design or a vector}
@@ -77,7 +77,7 @@ Get / Set SPSS missing values
 See \code{\link[haven:labelled_spss]{haven::labelled_spss()}} for a presentation of SPSS's user defined
 missing values.
 
-Note that \code{\link[base:NA]{base::is.na()}} will return \code{TRUE} for user defined missing values.
+Note that \code{\link[base:is.na]{base::is.na()}} will return \code{TRUE} for user defined missing values.
 It will also return \code{TRUE} for regular \code{NA} values. If you want to test if a
 specific value is a user NA but not a regular \code{NA}, use \code{is_user_na()}.
 If you want to test if a value is a regular \code{NA} but not a user NA, not a

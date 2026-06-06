@@ -45,7 +45,7 @@ update_labelled.labelled <- function(x) {
       x <- labelled_spss(
         x,
         na_values = attr(x, "na_values", exact = TRUE),
-        na_range = attr(x, "range", exact = TRUE),
+        na_range = attr(x, "na_range", exact = TRUE),
         labels = attr(x, "labels", exact = TRUE),
         label = attr(x, "label", exact = TRUE)
       )

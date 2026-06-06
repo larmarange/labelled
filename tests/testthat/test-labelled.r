@@ -992,7 +992,8 @@ test_that("update_labelled update to haven_labelled_spss if there are na values"
   )
 
   expect_s3_class(update_labelled(v1), "haven_labelled_spss")
-  expect_s3_class(update_labelled(v1), "haven_labelled_spss")
+  expect_s3_class(update_labelled(v2), "haven_labelled_spss")
+  expect_equal(na_range(update_labelled(v2)), c(8, 9))
 })
 
 test_that("update_labelled preserve variable and value labels", {
