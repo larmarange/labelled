@@ -402,6 +402,9 @@ look_for_and_select <- function(
 #' @param sep_value_labels (string) for value labels, separator between value
 #' and name
 #' @param sep_other separator for other list columns
+#' @return `convert_list_columns_to_character()` returns a tibble where list
+#'   columns have been converted to character vectors with items separated by
+#'   `sep_other` (or `sep_value_labels` for value labels).
 #' @export
 convert_list_columns_to_character <- function(x,
                                               sep_value_labels = "[]",
@@ -432,6 +435,9 @@ convert_list_columns_to_character <- function(x,
 }
 
 #' @rdname look_for
+#' @return `lookfor_to_long_format()` returns a tibble with one row per factor
+#'   level and per value label, useful for detailed exploration of labelled
+#'   data.
 #' @export
 lookfor_to_long_format <- function(x, sep_value_labels = "[]") {
   # only if details are provided

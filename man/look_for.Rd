@@ -96,6 +96,14 @@ and name}
 \value{
 a tibble data frame featuring the variable position, name and
 description (if it exists) in the original data frame
+
+\code{convert_list_columns_to_character()} returns a tibble where list
+columns have been converted to character vectors with items separated by
+\code{sep_other} (or \code{sep_value_labels} for value labels).
+
+\code{lookfor_to_long_format()} returns a tibble with one row per factor
+level and per value label, useful for detailed exploration of labelled
+data.
 }
 \description{
 \code{look_for()} emulates the \code{lookfor} Stata command in \R. It supports
