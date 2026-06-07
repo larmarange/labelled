@@ -11,11 +11,11 @@
 #'
 #' @param dictionary A data frame or a tibble containing the definitions of the
 #' variable / value labels.
-#' @param names_from <[`tidy-select`][dplyr::dplyr_tidy_select ]> Column
+#' @param names_from <[`tidy-select`][dplyr::dplyr_tidy_select]> Column
 #' containing the names of the variables.
-#' @param labels_from <[`tidy-select`][dplyr::dplyr_tidy_select ]> Column
+#' @param labels_from <[`tidy-select`][dplyr::dplyr_tidy_select]> Column
 #' containing the labels (unused if `delim_value_label` is provided).
-#' @param values_from <[`tidy-select`][dplyr::dplyr_tidy_select ]> Column
+#' @param values_from <[`tidy-select`][dplyr::dplyr_tidy_select]> Column
 #' containing the values or the pairs of values and labels (see examples).
 #' @param delim_value_label Optional string giving the delimiter between the
 #' value and the label.
