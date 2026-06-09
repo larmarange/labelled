@@ -13,10 +13,12 @@ it as a nice printing showing the first rows of the data frame as well
 as the type of column.
 
 ``` r
+
 library(dplyr)
 ```
 
 ``` r
+
 iris %>% as_tibble()
 ```
 
@@ -39,6 +41,7 @@ However, when you have too many variables, all of them cannot be printed
 and their are just listed.
 
 ``` r
+
 data(fertility, package = "questionr")
 women
 ```
@@ -72,6 +75,7 @@ The function
 allows you to have a quick look at all the variables in a data frame.
 
 ``` r
+
 glimpse(iris)
 ```
 
@@ -84,6 +88,7 @@ glimpse(iris)
     ## $ Species      <fct> setosa, setosa, setosa, setosa, setosa, setosa, setosa, s…
 
 ``` r
+
 glimpse(women)
 ```
 
@@ -129,6 +134,7 @@ type of variable and a list of values corresponding to:
   `details = "full"`).
 
 ``` r
+
 library(labelled)
 look_for(iris)
 ```
@@ -143,6 +149,7 @@ look_for(iris)
     ##                                          virginica
 
 ``` r
+
 look_for(women)
 ```
 
@@ -207,6 +214,7 @@ you could use
 (the [gt](https://gt.rstudio.com) package is required).
 
 ``` r
+
 women %>%
   look_for() %>%
   to_gt()
@@ -222,6 +230,7 @@ provide an optional list of keywords, which can be simple character
 strings or regular expression, to search for specific variables.
 
 ``` r
+
 # Look for a single keyword.
 look_for(iris, "petal")
 ```
@@ -231,6 +240,7 @@ look_for(iris, "petal")
     ##  4   Petal.Width  —     dbl      0
 
 ``` r
+
 look_for(iris, "s")
 ```
 
@@ -242,6 +252,7 @@ look_for(iris, "s")
     ##                                          virginica
 
 ``` r
+
 # Look for with a regular expression
 look_for(iris, "petal|species")
 ```
@@ -254,6 +265,7 @@ look_for(iris, "petal|species")
     ##                                          virginica
 
 ``` r
+
 look_for(iris, "s$")
 ```
 
@@ -263,6 +275,7 @@ look_for(iris, "s$")
     ##                                      virginica
 
 ``` r
+
 # Look for with several keywords
 look_for(iris, "pet", "sp")
 ```
@@ -275,6 +288,7 @@ look_for(iris, "pet", "sp")
     ##                                          virginica
 
 ``` r
+
 # Look_for will take variable labels into account
 look_for(women, "read", "level")
 ```
@@ -293,6 +307,7 @@ will look through both variable names and variables labels. Use
 `labels = FALSE` to look only through variable names.
 
 ``` r
+
 look_for(women, "read")
 ```
 
@@ -301,6 +316,7 @@ look_for(women, "read")
     ##                                                 [1] yes
 
 ``` r
+
 look_for(women, "read", labels = FALSE)
 ```
 
@@ -310,6 +326,7 @@ Similarly, the search is by default case insensitive. To make the search
 case sensitive, use `ignore.case = FALSE`.
 
 ``` r
+
 look_for(iris, "sepal")
 ```
 
@@ -318,6 +335,7 @@ look_for(iris, "sepal")
     ##  2   Sepal.Width  —     dbl      0
 
 ``` r
+
 look_for(iris, "sepal", ignore.case = FALSE)
 ```
 
@@ -331,6 +349,7 @@ without computing the details of each variable, simply indicate
 `details = "none"` or `details = FALSE`.
 
 ``` r
+
 look_for(women, "id", details = "none")
 ```
 
@@ -344,6 +363,7 @@ If you want more details (but can be time consuming for big data
 frames), indicate `details = "full"` or `details = TRUE`.
 
 ``` r
+
 look_for(women, details = "full")
 ```
 
@@ -433,6 +453,7 @@ look_for(women, details = "full")
     ##  [9] missing
 
 ``` r
+
 look_for(women, details = "full") %>%
   dplyr::glimpse()
 ```
@@ -455,6 +476,7 @@ look_for(women, details = "full") %>%
     ## $ range         <named list> <1, 2000>, <1, 1814>, <0.044629, 4.396831>, <2011…
 
 ``` r
+
 look_for(women, details = "full") %>% to_gt()
 ```
 
@@ -470,10 +492,12 @@ deactivate default printing and see full results, simply use
 even [`utils::View()`](https://rdrr.io/r/utils/View.html).
 
 ``` r
+
 look_for(women) %>% View()
 ```
 
 ``` r
+
 look_for(women) %>% as_tibble()
 ```
 
@@ -499,6 +523,7 @@ look_for(women) %>% as_tibble()
     ## 17    17 test              Ever tested for… dbl+lbl       29 <NULL> <dbl [3]>
 
 ``` r
+
 glimpse(look_for(women))
 ```
 
@@ -522,6 +547,7 @@ convert named lists into simpler character vectors, you can use
 [`convert_list_columns_to_character()`](https://larmarange.github.io/labelled/dev/reference/look_for.md).
 
 ``` r
+
 look_for(women) %>% convert_list_columns_to_character()
 ```
 
@@ -552,6 +578,7 @@ to transform results into a long format with one row per factor level
 and per value label.
 
 ``` r
+
 look_for(women) %>% lookfor_to_long_format()
 ```
 
@@ -573,6 +600,7 @@ look_for(women) %>% lookfor_to_long_format()
 Both can be combined:
 
 ``` r
+
 look_for(women) %>%
   lookfor_to_long_format() %>%
   convert_list_columns_to_character()

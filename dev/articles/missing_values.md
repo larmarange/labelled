@@ -15,6 +15,7 @@ analysis as missing (**user NAs**). The `haven` package implements
 importing files from **Stata**, **SAS** or **SPSS**.
 
 ``` r
+
 library(labelled)
 ```
 
@@ -29,6 +30,7 @@ The attached tag should be a single letter, lowercase (a-z) or uppercase
 (A-Z).
 
 ``` r
+
 x <- c(1:5, tagged_na("a"), tagged_na("z"), NA)
 ```
 
@@ -36,12 +38,14 @@ For most **R** functions, tagged NAs are just considered as regular NAs.
 By default, they are just printed as any other regular NA.
 
 ``` r
+
 x
 ```
 
     ## [1]  1  2  3  4  5 NA NA NA
 
 ``` r
+
 is.na(x)
 ```
 
@@ -54,18 +58,21 @@ or
 [`format_tagged_na()`](https://haven.tidyverse.org/reference/tagged_na.html).
 
 ``` r
+
 na_tag(x)
 ```
 
     ## [1] NA  NA  NA  NA  NA  "a" "z" NA
 
 ``` r
+
 print_tagged_na(x)
 ```
 
     ## [1]     1     2     3     4     5 NA(a) NA(z)    NA
 
 ``` r
+
 format_tagged_na(x)
 ```
 
@@ -77,18 +84,21 @@ or
 [`is_tagged_na()`](https://haven.tidyverse.org/reference/tagged_na.html).
 
 ``` r
+
 is.na(x)
 ```
 
     ## [1] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE
 
 ``` r
+
 is_tagged_na(x)
 ```
 
     ## [1] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE
 
 ``` r
+
 # You can test for specific tagged NAs with the second argument
 is_tagged_na(x, "a")
 ```
@@ -96,6 +106,7 @@ is_tagged_na(x, "a")
     ## [1] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
 
 ``` r
+
 is_regular_na(x)
 ```
 
@@ -107,6 +118,7 @@ If you add a tagged NA to an integer vector, the vector will be
 converted into a double vector.
 
 ``` r
+
 y <- c("a", "b", tagged_na("z"))
 y
 ```
@@ -114,12 +126,14 @@ y
     ## [1] "a" "b" NA
 
 ``` r
+
 is_tagged_na(y)
 ```
 
     ## [1] FALSE FALSE FALSE
 
 ``` r
+
 format_tagged_na(y)
 ```
 
@@ -127,6 +141,7 @@ format_tagged_na(y)
     ## ! `x` must be a double vector
 
 ``` r
+
 z <- c(1L, 2L, tagged_na("a"))
 typeof(z)
 ```
@@ -134,6 +149,7 @@ typeof(z)
     ## [1] "double"
 
 ``` r
+
 format_tagged_na(z)
 ```
 
@@ -156,6 +172,7 @@ as alternatives that will treat two tagged NAs with different tags as
 separate values.
 
 ``` r
+
 x <- c(1, 2, tagged_na("a"), 1, tagged_na("z"), 2, tagged_na("a"), NA)
 x %>% print_tagged_na()
 ```
@@ -163,36 +180,42 @@ x %>% print_tagged_na()
     ## [1]     1     2 NA(a)     1 NA(z)     2 NA(a)    NA
 
 ``` r
+
 unique(x) %>% print_tagged_na()
 ```
 
     ## [1]     1     2 NA(a)
 
 ``` r
+
 unique_tagged_na(x) %>% print_tagged_na()
 ```
 
     ## [1]     1     2 NA(a) NA(z)    NA
 
 ``` r
+
 duplicated(x)
 ```
 
     ## [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
 
 ``` r
+
 duplicated_tagged_na(x)
 ```
 
     ## [1] FALSE FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE
 
 ``` r
+
 sort(x, na.last = TRUE) %>% print_tagged_na()
 ```
 
     ## [1]     1     1     2     2 NA(a) NA(z) NA(a)    NA
 
 ``` r
+
 sort_tagged_na(x) %>% print_tagged_na()
 ```
 
@@ -203,6 +226,7 @@ sort_tagged_na(x) %>% print_tagged_na()
 It is possible to define value labels for tagged NAs.
 
 ``` r
+
 x <- c(1, 0, 1, tagged_na("r"), 0, tagged_na("d"), tagged_na("z"), NA)
 val_labels(x) <- c(
   no = 0, yes = 1,
@@ -227,6 +251,7 @@ default, converted into regular NAs (it is not possible to define tagged
 NAs with factors).
 
 ``` r
+
 to_factor(x)
 ```
 
@@ -238,6 +263,7 @@ However, the option `explicit_tagged_na` of
 allows to transform tagged NAs into explicit factor levels.
 
 ``` r
+
 to_factor(x, explicit_tagged_na = TRUE)
 ```
 
@@ -246,6 +272,7 @@ to_factor(x, explicit_tagged_na = TRUE)
     ## Levels: no yes don't know refusal NA(z)
 
 ``` r
+
 to_factor(x, levels = "prefixed", explicit_tagged_na = TRUE)
 ```
 
@@ -259,6 +286,7 @@ Tagged NAs can be converted into user NAs with
 [`tagged_na_to_user_na()`](https://larmarange.github.io/labelled/dev/reference/tagged_na_to_user_na.md).
 
 ``` r
+
 tagged_na_to_user_na(x)
 ```
 
@@ -275,6 +303,7 @@ tagged_na_to_user_na(x)
     ##      4      NA(z)
 
 ``` r
+
 tagged_na_to_user_na(x, user_na_start = 10)
 ```
 
@@ -295,6 +324,7 @@ Use
 to convert tagged NAs into regular NAs.
 
 ``` r
+
 tagged_na_to_regular_na(x)
 ```
 
@@ -307,6 +337,7 @@ tagged_na_to_regular_na(x)
     ##      1   yes
 
 ``` r
+
 tagged_na_to_regular_na(x) %>% is_tagged_na()
 ```
 
@@ -333,6 +364,7 @@ and
 [`na_range()`](https://larmarange.github.io/labelled/dev/reference/na_values.md).
 
 ``` r
+
 v <- labelled(c(1, 2, 3, 9, 1, 3, 2, NA), c(yes = 1, no = 3, "don't know" = 9))
 v
 ```
@@ -347,6 +379,7 @@ v
     ##      9 don't know
 
 ``` r
+
 na_values(v) <- 9
 v
 ```
@@ -362,6 +395,7 @@ v
     ##      9 don't know
 
 ``` r
+
 na_values(v) <- NULL
 v
 ```
@@ -376,6 +410,7 @@ v
     ##      9 don't know
 
 ``` r
+
 na_range(v) <- c(5, Inf)
 na_range(v)
 ```
@@ -383,6 +418,7 @@ na_range(v)
     ## [1]   5 Inf
 
 ``` r
+
 v
 ```
 
@@ -403,6 +439,7 @@ and
 for a `dplyr`-like syntax.
 
 ``` r
+
 library(dplyr)
 ```
 
@@ -418,6 +455,7 @@ library(dplyr)
     ##     intersect, setdiff, setequal, union
 
 ``` r
+
 # setting value labels and user NAs
 df <- tibble(s1 = c("M", "M", "F", "F"), s2 = c(1, 1, 2, 9)) %>%
   set_value_labels(s2 = c(yes = 1, no = 2)) %>%
@@ -435,6 +473,7 @@ df$s2
     ##      2    no
 
 ``` r
+
 # removing user NAs
 df <- df %>% set_na_values(s2 = NULL)
 df$s2
@@ -458,6 +497,7 @@ to test if a specific value is a user NA and
 to test if it is a regular NA.
 
 ``` r
+
 v
 ```
 
@@ -472,18 +512,21 @@ v
     ##      9 don't know
 
 ``` r
+
 is.na(v)
 ```
 
     ## [1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE
 
 ``` r
+
 is_user_na(v)
 ```
 
     ## [1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE
 
 ``` r
+
 is_regular_na(v)
 ```
 
@@ -494,6 +537,7 @@ is_regular_na(v)
 For most **R** functions, user NAs values are **still** regular values.
 
 ``` r
+
 x <- c(1:5, 11:15)
 na_range(x) <- c(10, Inf)
 val_labels(x) <- c("dk" = 11, "refused" = 15)
@@ -510,6 +554,7 @@ x
     ##     15 refused
 
 ``` r
+
 mean(x)
 ```
 
@@ -522,6 +567,7 @@ or
 (both functions are identical).
 
 ``` r
+
 user_na_to_na(x)
 ```
 
@@ -529,6 +575,7 @@ user_na_to_na(x)
     ##  [1]  1  2  3  4  5 NA NA NA NA NA
 
 ``` r
+
 mean(user_na_to_na(x), na.rm = TRUE)
 ```
 
@@ -539,6 +586,7 @@ tagged NAs with
 [`user_na_to_tagged_na()`](https://larmarange.github.io/labelled/dev/reference/na_values.md).
 
 ``` r
+
 user_na_to_tagged_na(x)
 ```
 
@@ -553,6 +601,7 @@ user_na_to_tagged_na(x)
     ##  NA(e) refused
 
 ``` r
+
 mean(user_na_to_tagged_na(x), na.rm = TRUE)
 ```
 
@@ -565,6 +614,7 @@ these values to `NA`, using
 [`remove_user_na()`](https://larmarange.github.io/labelled/dev/reference/remove_labels.md).
 
 ``` r
+
 remove_user_na(x)
 ```
 
@@ -577,6 +627,7 @@ remove_user_na(x)
     ##     15 refused
 
 ``` r
+
 mean(remove_user_na(x))
 ```
 

@@ -43,6 +43,7 @@ A variable label could be specified for any vector using
 [`var_label()`](https://larmarange.github.io/labelled/dev/reference/var_label.md).
 
 ``` r
+
 library(labelled)
 
 var_label(iris$Sepal.Length) <- "Length of sepal"
@@ -52,6 +53,7 @@ It’s possible to add a variable label to several columns of a data frame
 using a named list.
 
 ``` r
+
 var_label(iris) <- list(
   Petal.Length = "Length of petal",
   Petal.Width = "Width of Petal"
@@ -62,12 +64,14 @@ To get the variable label, simply call
 [`var_label()`](https://larmarange.github.io/labelled/dev/reference/var_label.md).
 
 ``` r
+
 var_label(iris$Petal.Width)
 ```
 
     ## [1] "Width of Petal"
 
 ``` r
+
 var_label(iris)
 ```
 
@@ -89,12 +93,14 @@ var_label(iris)
 To remove a variable label, use `NULL`.
 
 ``` r
+
 var_label(iris$Sepal.Length) <- NULL
 ```
 
 In **RStudio**, variable labels will be displayed in data viewer.
 
 ``` r
+
 View(iris)
 ```
 
@@ -102,6 +108,7 @@ You can display and search through variable names and labels with
 [`look_for()`](https://larmarange.github.io/labelled/dev/reference/look_for.md):
 
 ``` r
+
 look_for(iris)
 ```
 
@@ -115,6 +122,7 @@ look_for(iris)
     ##                                                    virginica
 
 ``` r
+
 look_for(iris, "pet")
 ```
 
@@ -123,6 +131,7 @@ look_for(iris, "pet")
     ##  4   Petal.Width  Width of Petal  dbl      0
 
 ``` r
+
 look_for(iris, details = FALSE)
 ```
 
@@ -141,6 +150,7 @@ function. It’s not mandatory to provide a label for each value observed
 in your vector. You can also provide a label for values not observed.
 
 ``` r
+
 v <- labelled(
   c(1, 2, 2, 2, 3, 9, 1, 3, 2, NA),
   c(yes = 1, no = 3, "don't know" = 8, refused = 9)
@@ -165,6 +175,7 @@ to get all value labels and
 to get the value label associated with a specific value.
 
 ``` r
+
 val_labels(v)
 ```
 
@@ -172,6 +183,7 @@ val_labels(v)
     ##          1          3          8          9
 
 ``` r
+
 val_label(v, 8)
 ```
 
@@ -184,6 +196,7 @@ while
 will update only one specific value label.
 
 ``` r
+
 val_labels(v) <- c(yes = 1, nno = 3, bug = 5)
 v
 ```
@@ -198,6 +211,7 @@ v
     ##      5   bug
 
 ``` r
+
 val_label(v, 3) <- "no"
 v
 ```
@@ -216,6 +230,7 @@ With
 you can also add or remove specific value labels.
 
 ``` r
+
 val_label(v, 2) <- "maybe"
 val_label(v, 5) <- NULL
 v
@@ -235,6 +250,7 @@ To remove all value labels, use
 and `NULL`. The `haven_labelled` class will also be removed.
 
 ``` r
+
 val_labels(v) <- NULL
 v
 ```
@@ -245,6 +261,7 @@ Adding a value label to a non labelled vector will apply
 `haven_labelled` class to it.
 
 ``` r
+
 val_label(v, 1) <- "yes"
 v
 ```
@@ -261,6 +278,7 @@ Note that applying
 to a factor will generate an error!
 
 ``` r
+
 f <- factor(1:3)
 f
 ```
@@ -269,6 +287,7 @@ f
     ## Levels: 1 2 3
 
 ``` r
+
 val_labels(f) <- c(yes = 1, no = 3)
 ```
 
@@ -280,6 +299,7 @@ You could also apply
 to several columns of a data frame.
 
 ``` r
+
 df <- data.frame(v1 = 1:3, v2 = c(2, 3, 1), v3 = 3:1)
 
 val_label(df, 1) <- "yes"
@@ -301,6 +321,7 @@ val_labels(df)
     ##     1     2     3
 
 ``` r
+
 val_labels(df[, c("v1", "v3")]) <- c(YES = 1, MAYBE = 2, NO = 3)
 val_labels(df)
 ```
@@ -318,6 +339,7 @@ val_labels(df)
     ##     1     2     3
 
 ``` r
+
 val_labels(df) <- NULL
 val_labels(df)
 ```
@@ -332,6 +354,7 @@ val_labels(df)
     ## NULL
 
 ``` r
+
 val_labels(df) <- list(v1 = c(yes = 1, no = 3), v2 = c(a = 1, b = 2, c = 3))
 val_labels(df)
 ```
@@ -352,6 +375,7 @@ val_labels(df)
 Value labels are sorted by default in the order they have been created.
 
 ``` r
+
 v <- c(1, 2, 2, 2, 3, 9, 1, 3, 2, NA)
 val_label(v, 1) <- "yes"
 val_label(v, 3) <- "no"
@@ -377,6 +401,7 @@ attached values, with
 [`sort_val_labels()`](https://larmarange.github.io/labelled/dev/reference/sort_val_labels.md).
 
 ``` r
+
 sort_val_labels(v)
 ```
 
@@ -392,6 +417,7 @@ sort_val_labels(v)
     ##      9    refused
 
 ``` r
+
 sort_val_labels(v, decreasing = TRUE)
 ```
 
@@ -409,6 +435,7 @@ sort_val_labels(v, decreasing = TRUE)
 If you prefer, you can also sort them according to the labels.
 
 ``` r
+
 sort_val_labels(v, according_to = "l")
 ```
 
@@ -442,6 +469,7 @@ Note that [`is.na()`](https://rdrr.io/r/base/NA.html) will return `TRUE`
 as well for user-defined missing values.
 
 ``` r
+
 v <- labelled(
   c(1, 2, 2, 2, 3, 9, 1, 3, 2, NA),
   c(yes = 1, no = 3, "don't know" = 9)
@@ -459,6 +487,7 @@ v
     ##      9 don't know
 
 ``` r
+
 na_values(v) <- 9
 na_values(v)
 ```
@@ -466,6 +495,7 @@ na_values(v)
     ## [1] 9
 
 ``` r
+
 v
 ```
 
@@ -480,12 +510,14 @@ v
     ##      9 don't know
 
 ``` r
+
 is.na(v)
 ```
 
     ##  [1] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE
 
 ``` r
+
 na_values(v) <- NULL
 v
 ```
@@ -500,6 +532,7 @@ v
     ##      9 don't know
 
 ``` r
+
 na_range(v) <- c(5, Inf)
 na_range(v)
 ```
@@ -507,6 +540,7 @@ na_range(v)
     ## [1]   5 Inf
 
 ``` r
+
 v
 ```
 
@@ -524,6 +558,7 @@ Since version 2.1.0, it is not mandatory to define at least one value
 label before defining missing values.
 
 ``` r
+
 x <- c(1, 2, 2, 9)
 na_values(x) <- 9
 x
@@ -537,6 +572,7 @@ To convert user defined missing values into `NA`, simply use
 [`user_na_to_na()`](https://larmarange.github.io/labelled/dev/reference/na_values.md).
 
 ``` r
+
 v <- labelled_spss(1:10, c(Good = 1, Bad = 8), na_values = c(9, 10))
 v
 ```
@@ -551,6 +587,7 @@ v
     ##      8   Bad
 
 ``` r
+
 v2 <- user_na_to_na(v)
 v2
 ```
@@ -567,6 +604,7 @@ You can also remove user missing values definition without converting
 these values to `NA`.
 
 ``` r
+
 v <- labelled_spss(1:10, c(Good = 1, Bad = 8), na_values = c(9, 10))
 v
 ```
@@ -581,6 +619,7 @@ v
     ##      8   Bad
 
 ``` r
+
 v2 <- remove_user_na(v)
 v2
 ```
@@ -596,6 +635,7 @@ v2
 or
 
 ``` r
+
 v <- labelled_spss(1:10, c(Good = 1, Bad = 8), na_values = c(9, 10))
 v
 ```
@@ -610,6 +650,7 @@ v
     ##      8   Bad
 
 ``` r
+
 na_values(v) <- NULL
 v
 ```
@@ -630,6 +671,7 @@ considered as missing.
 will convert them to `NA`.
 
 ``` r
+
 v <- labelled(c(1, 2, 2, 2, 3, 9, 1, 3, 2, NA), c(yes = 1, maybe = 2, no = 3))
 v
 ```
@@ -644,6 +686,7 @@ v
     ##      3    no
 
 ``` r
+
 nolabel_to_na(v)
 ```
 
@@ -660,6 +703,7 @@ In other cases, a value label is attached only to specific values that
 corresponds to a missing value. For example:
 
 ``` r
+
 size <- labelled(c(1.88, 1.62, 1.78, 99, 1.91), c("not measured" = 99))
 size
 ```
@@ -676,6 +720,7 @@ In such cases,
 could be appropriate.
 
 ``` r
+
 val_labels_to_na(size)
 ```
 
@@ -690,6 +735,7 @@ A labelled vector could easily be converted to a factor with
 [`to_factor()`](https://larmarange.github.io/labelled/dev/reference/to_factor.md).
 
 ``` r
+
 v <- labelled(
   c(1, 2, 2, 2, 3, 9, 1, 3, 2, NA),
   c(yes = 1, no = 3, "don't know" = 8, refused = 9)
@@ -708,6 +754,7 @@ v
     ##      9    refused
 
 ``` r
+
 to_factor(v)
 ```
 
@@ -720,6 +767,7 @@ factor levels, i.e. the labels (default), the values or the labels
 prefixed with values.
 
 ``` r
+
 to_factor(v, levels = "v")
 ```
 
@@ -727,6 +775,7 @@ to_factor(v, levels = "v")
     ## Levels: 1 2 3 8 9
 
 ``` r
+
 to_factor(v, levels = "p")
 ```
 
@@ -737,6 +786,7 @@ to_factor(v, levels = "p")
 The `ordered` argument will create an ordinal factor.
 
 ``` r
+
 to_factor(v, ordered = TRUE)
 ```
 
@@ -749,6 +799,7 @@ should be applied before converting to a factor. Therefore, the two
 following commands are equivalent.
 
 ``` r
+
 to_factor(v, nolabel_to_na = TRUE)
 ```
 
@@ -757,6 +808,7 @@ to_factor(v, nolabel_to_na = TRUE)
     ## Levels: yes no don't know refused
 
 ``` r
+
 to_factor(nolabel_to_na(v))
 ```
 
@@ -772,6 +824,7 @@ values with no attached labels are found and are not dropped. In that
 case, `"values"` will be used.
 
 ``` r
+
 to_factor(v, sort_levels = "n")
 ```
 
@@ -780,6 +833,7 @@ to_factor(v, sort_levels = "n")
     ## Levels: yes no don't know refused 2
 
 ``` r
+
 to_factor(v, sort_levels = "v")
 ```
 
@@ -788,6 +842,7 @@ to_factor(v, sort_levels = "v")
     ## Levels: yes 2 no don't know refused
 
 ``` r
+
 to_factor(v, sort_levels = "l")
 ```
 
@@ -800,6 +855,7 @@ The function
 could be used to turn a factor into a labelled numeric vector.
 
 ``` r
+
 f <- factor(1:3, labels = c("a", "b", "c"))
 to_labelled(f)
 ```
@@ -817,6 +873,7 @@ Note that `to_labelled(to_factor(v))` will not be equal to `v` due to
 the way factors are stored internally by **R**.
 
 ``` r
+
 v
 ```
 
@@ -831,6 +888,7 @@ v
     ##      9    refused
 
 ``` r
+
 to_labelled(to_factor(v))
 ```
 
@@ -852,6 +910,7 @@ You can use
 for converting into a character vector instead of a factor.
 
 ``` r
+
 v
 ```
 
@@ -866,6 +925,7 @@ v
     ##      9    refused
 
 ``` r
+
 to_character(v)
 ```
 
@@ -876,6 +936,7 @@ To remove the `haven_class`, you can simply use
 [`unclass()`](https://rdrr.io/r/base/class.html).
 
 ``` r
+
 unclass(v)
 ```
 
@@ -887,6 +948,7 @@ unclass(v)
 Note that value labels will be preserved as an attribute to the vector.
 
 ``` r
+
 remove_val_labels(v)
 ```
 
@@ -896,6 +958,7 @@ To remove value labels, use
 [`remove_val_labels()`](https://larmarange.github.io/labelled/dev/reference/remove_labels.md).
 
 ``` r
+
 remove_val_labels(v)
 ```
 
@@ -906,6 +969,7 @@ also want to use
 [`remove_user_na()`](https://larmarange.github.io/labelled/dev/reference/remove_labels.md).
 
 ``` r
+
 x <- c(1, 2, 2, 9)
 na_values(x) <- 9
 val_labels(x) <- c(yes = 1, no = 2)
@@ -923,6 +987,7 @@ x
     ##      2    no
 
 ``` r
+
 remove_val_labels(x)
 ```
 
@@ -931,6 +996,7 @@ remove_val_labels(x)
     ## Missing values: 9
 
 ``` r
+
 remove_user_na(x)
 ```
 
@@ -943,6 +1009,7 @@ remove_user_na(x)
     ##      2    no
 
 ``` r
+
 remove_user_na(x, user_na_to_na = TRUE)
 ```
 
@@ -955,6 +1022,7 @@ remove_user_na(x, user_na_to_na = TRUE)
     ##      2    no
 
 ``` r
+
 remove_val_labels(remove_user_na(x))
 ```
 
@@ -963,6 +1031,7 @@ remove_val_labels(remove_user_na(x))
     ## [1] "A test variable"
 
 ``` r
+
 unclass(x)
 ```
 
@@ -980,12 +1049,14 @@ You can remove all labels and user-defined missing values with
 Use `keep_var_label = TRUE` to preserve only variable label.
 
 ``` r
+
 remove_labels(x, user_na_to_na = TRUE)
 ```
 
     ## [1]  1  2  2 NA
 
 ``` r
+
 remove_labels(x, user_na_to_na = TRUE, keep_var_label = TRUE)
 ```
 
@@ -1030,6 +1101,7 @@ works as follow:
   [`base::unclass()`](https://rdrr.io/r/base/class.html)).
 
 ``` r
+
 df <- data.frame(
   a = labelled(c(1, 1, 2, 3), labels = c(No = 1, Yes = 2)),
   b = labelled(c(1, 1, 2, 3), labels = c(No = 1, Yes = 2, DK = 3)),
@@ -1059,6 +1131,7 @@ df %>% look_for()
     ##                                      [2] Yes
 
 ``` r
+
 unlabelled(df) %>% look_for()
 ```
 
@@ -1075,6 +1148,7 @@ unlabelled(df) %>% look_for()
     ##                                      Yes
 
 ``` r
+
 unlabelled(df, user_na_to_na = TRUE) %>% look_for()
 ```
 
@@ -1091,6 +1165,7 @@ unlabelled(df, user_na_to_na = TRUE) %>% look_for()
     ##                                      Yes
 
 ``` r
+
 unlabelled(df, drop_unused_labels = TRUE) %>% look_for()
 ```
 
@@ -1135,6 +1210,7 @@ store them in specific object of class `data.set`. The `to_labelled`
 method can convert a data.set into a labelled data frame.
 
 ``` r
+
 # from foreign
 library(foreign)
 df <- to_labelled(read.spss(
@@ -1167,6 +1243,7 @@ and
 [`remove_value_labels()`](https://larmarange.github.io/labelled/dev/reference/val_labels.md).
 
 ``` r
+
 library(dplyr)
 ```
 
@@ -1182,6 +1259,7 @@ library(dplyr)
     ##     intersect, setdiff, setequal, union
 
 ``` r
+
 df <- tibble(s1 = c("M", "M", "F"), s2 = c(1, 1, 2)) %>%
   set_variable_labels(s1 = "Sex", s2 = "Question") %>%
   set_value_labels(s1 = c(Male = "M", Female = "F"), s2 = c(Yes = 1, No = 2))
@@ -1202,6 +1280,7 @@ will replace the list of value labels while
 will update it.
 
 ``` r
+
 df <- df %>%
   set_value_labels(s2 = c(Yes = 1, "Don't know" = 8, Unknown = 9))
 df$s2
@@ -1217,6 +1296,7 @@ df$s2
     ##      9    Unknown
 
 ``` r
+
 df <- df %>%
   add_value_labels(s2 = c(No = 2))
 df$s2
@@ -1235,6 +1315,7 @@ df$s2
 You can also remove some variable and/or value labels.
 
 ``` r
+
 df <- df %>%
   set_variable_labels(s1 = NULL)
 
@@ -1254,6 +1335,7 @@ df$s2
     ##      9    Unknown
 
 ``` r
+
 # removing several value labels
 df <- df %>%
   remove_value_labels(s2 = 8:9)
@@ -1268,6 +1350,7 @@ df$s2
     ##      1   Yes
 
 ``` r
+
 # removing all value labels
 df <- df %>%
   set_value_labels(s2 = NULL)
@@ -1282,6 +1365,7 @@ To convert variables, the easiest is to use
 [`unlabelled()`](https://larmarange.github.io/labelled/dev/reference/to_factor.md).
 
 ``` r
+
 library(questionr)
 data(fertility)
 glimpse(women)
@@ -1308,6 +1392,7 @@ glimpse(women)
     ## $ test              <dbl+lbl> 0, 9, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, …
 
 ``` r
+
 glimpse(women %>% unlabelled())
 ```
 
@@ -1337,6 +1422,7 @@ Alternatively, you can use functions as
 See the example below.
 
 ``` r
+
 glimpse(to_factor(women))
 ```
 
@@ -1361,6 +1447,7 @@ glimpse(to_factor(women))
     ## $ test              <fct> no, missing, no, no, yes, no, no, no, no, yes, yes, …
 
 ``` r
+
 glimpse(women %>% mutate(across(where(is.labelled), to_factor)))
 ```
 
@@ -1385,6 +1472,7 @@ glimpse(women %>% mutate(across(where(is.labelled), to_factor)))
     ## $ test              <fct> no, missing, no, no, yes, no, no, no, no, yes, yes, …
 
 ``` r
+
 glimpse(women %>% mutate(across(employed:religion, to_factor)))
 ```
 

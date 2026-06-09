@@ -8,6 +8,7 @@ ever want to pack columns since few functions work with this sort of
 data.
 
 ``` r
+
 library(tidyr)
 d <- iris %>%
   as_tibble() %>%
@@ -29,6 +30,7 @@ str(d)
     ##   ..$ Width : num [1:150] 0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
 
 ``` r
+
 class(d$Sepal)
 ```
 
@@ -43,6 +45,7 @@ For a sub-column, you could use easily
 to define your label.
 
 ``` r
+
 library(labelled)
 var_label(d$Sepal$Length) <- "Length of the sepal"
 str(d)
@@ -63,6 +66,7 @@ But you cannot use directly
 for the df-column.
 
 ``` r
+
 var_label(d$Petal) <- "wrong label for Petal"
 str(d)
 ```
@@ -86,6 +90,7 @@ label to the df-column itself, you could use
 [`label_attribute()`](https://larmarange.github.io/labelled/dev/reference/var_label.md).
 
 ``` r
+
 label_attribute(d$Petal) <- "correct label for Petal"
 str(d)
 ```
@@ -109,6 +114,7 @@ works differently, as the primary intention of this function is to work
 on the columns of a tibble.
 
 ``` r
+
 d <- d %>% set_variable_labels(Sepal = "Label of the Sepal df-column")
 str(d)
 ```
@@ -130,6 +136,7 @@ str(d)
 This is equivalent to:
 
 ``` r
+
 var_label(d) <- list(Sepal = "Label of the Sepal df-column")
 str(d)
 ```
@@ -153,6 +160,7 @@ To use
 on sub-columns, you should use this syntax:
 
 ``` r
+
 d$Petal <- d$Petal %>%
   set_variable_labels(
     Length = "Petal length",
@@ -182,6 +190,7 @@ or
 will return the labels of the first level of columns.
 
 ``` r
+
 d %>% get_variable_labels()
 ```
 
@@ -198,6 +207,7 @@ To obtain the list of variable labels for sub-columns, you could use
 `recurse = TRUE`:
 
 ``` r
+
 d %>% get_variable_labels(recurse = TRUE)
 ```
 
@@ -220,6 +230,7 @@ d %>% get_variable_labels(recurse = TRUE)
     ## [1] "Petal width"
 
 ``` r
+
 d %>%
   get_variable_labels(
     recurse = TRUE,
