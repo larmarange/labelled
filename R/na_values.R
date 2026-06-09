@@ -3,7 +3,7 @@
 #' @param x A vector, a data frame, or a survey design.
 #' @param value A vector of values that should also be considered as missing
 #' (for `na_values`) or a numeric vector of length two giving the (inclusive)
-#' extents of the range (for `na_values`, use `-Inf` and `Inf` if you
+#' extents of the range (for `na_range`), use `-Inf` and `Inf` if you
 #' want the range to be open ended).
 #' @details
 #' See [haven::labelled_spss()] for a presentation of SPSS's user defined

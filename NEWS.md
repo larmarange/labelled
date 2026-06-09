@@ -6,6 +6,8 @@
   only `NA` values (#192)
 * `dictionary_to_value_labels()` now handles value labels with repeated
   `delim_value_label` (#194)
+* fix in `update_labelled.labelled()` when importing `na_range` attribute
+  (#198, @LeonidasZhak)
 
 # labelled 2.16.0
 
