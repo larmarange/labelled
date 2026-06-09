@@ -21,13 +21,13 @@ dictionary_to_value_labels(
 \item{dictionary}{A data frame or a tibble containing the definitions of the
 variable / value labels.}
 
-\item{names_from}{<\code{\link[dplyr:dplyr_tidy_select ]{tidy-select}}> Column
+\item{names_from}{<\code{\link[dplyr:dplyr_tidy_select]{tidy-select}}> Column
 containing the names of the variables.}
 
-\item{labels_from}{<\code{\link[dplyr:dplyr_tidy_select ]{tidy-select}}> Column
+\item{labels_from}{<\code{\link[dplyr:dplyr_tidy_select]{tidy-select}}> Column
 containing the labels (unused if \code{delim_value_label} is provided).}
 
-\item{values_from}{<\code{\link[dplyr:dplyr_tidy_select ]{tidy-select}}> Column
+\item{values_from}{<\code{\link[dplyr:dplyr_tidy_select]{tidy-select}}> Column
 containing the values or the pairs of values and labels (see examples).}
 
 \item{delim_entries}{Optional string giving the delimiter between several
