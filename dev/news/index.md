@@ -11,6 +11,11 @@
   now handles value labels with repeated `delim_value_label`
   ([\#194](https://github.com/larmarange/labelled/issues/194))
 - fix in
+  [`set_value_labels()`](https://larmarange.github.io/labelled/dev/reference/val_labels.md)
+  when `.overwrite = FALSE`
+  ([\#198](https://github.com/larmarange/labelled/issues/198), @
+  LeonidasZhak)
+- fix in
   [`update_labelled.labelled()`](https://larmarange.github.io/labelled/dev/reference/update_labelled.md)
   when importing `na_range` attribute
   ([\#198](https://github.com/larmarange/labelled/issues/198),
