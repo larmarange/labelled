@@ -809,7 +809,7 @@ test_that("set_value_labels .labels + .overwrite on data frames", {
   expect_equal(val_labels(df2$s2), c(Yes = 1, No = 2))
   expect_equal(val_labels(df2$x), c(low = 1))
 
-  # .overwrite = TRUE
+  # checking with .overwrite = TRUE
   df2 <- set_value_labels(
     df,
     .labels = list(s1 = c(Male2 = "M"), s2 = c(Maybe = 3), x = c(low = 1)),
