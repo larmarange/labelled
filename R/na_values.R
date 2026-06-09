@@ -120,7 +120,7 @@ na_values.svyrep.design <- na_values.survey.design
 #' @export
 `na_values<-.factor` <- function(x, value) {
   if (!is.null(value))
-    cli::cli_abort("{.fn na_values}` cannot be applied to factors.")
+    cli::cli_abort("{.fn na_values} cannot be applied to factors.")
   x %>% remove_attributes("na_values")
 }
 
