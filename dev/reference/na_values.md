@@ -42,7 +42,7 @@ user_na_to_tagged_na(x)
 
   A vector of values that should also be considered as missing (for
   `na_values`) or a numeric vector of length two giving the (inclusive)
-  extents of the range (for `na_values`, use `-Inf` and `Inf` if you
+  extents of the range (for `na_range`), use `-Inf` and `Inf` if you
   want the range to be open ended).
 
 - .data:
