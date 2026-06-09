@@ -84,7 +84,7 @@ factors.}
 \item{strict}{Convert to factor only if all values have a defined label?}
 
 \item{unclass}{If not converted to a factor (when \code{strict = TRUE}),
-convert to a character or a numeric factor by applying \code{\link[base:class]{base::unclass()}}?}
+convert to a character or a numeric factor by applying \code{\link[base:unclass]{base::unclass()}}?}
 
 \item{explicit_tagged_na}{Should tagged NA (cf. \code{\link[haven:tagged_na]{haven::tagged_na()}}) be
 kept as explicit factor levels?}
@@ -93,8 +93,8 @@ kept as explicit factor levels?}
 factors?}
 }
 \description{
-The base function \code{\link[base:factor]{base::as.factor()}} is not a generic, but this variant
-is. By default, \code{to_factor()} is a wrapper for \code{\link[base:factor]{base::as.factor()}}.
+The base function \code{\link[base:as.factor]{base::as.factor()}} is not a generic, but this variant
+is. By default, \code{to_factor()} is a wrapper for \code{\link[base:as.factor]{base::as.factor()}}.
 Please note that \code{to_factor()} differs slightly from \code{\link[haven:as_factor]{haven::as_factor()}}
 method provided by \pkg{haven} package.
 

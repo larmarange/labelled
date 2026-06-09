@@ -59,7 +59,7 @@ values or labels prefixed with values?}
 factors?}
 }
 \description{
-By default, \code{to_character()} is a wrapper for \code{\link[base:character]{base::as.character()}}.
+By default, \code{to_character()} is a wrapper for \code{\link[base:as.character]{base::as.character()}}.
 For labelled vector, to_character allows to specify if value, labels or
 labels prefixed with values should be used for conversion.
 }
