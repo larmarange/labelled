@@ -55,16 +55,9 @@
 
 # Revdeps
 
-## Failed to check (8)
+## Failed to check (1)
 
 |package       |version |error |warning |note |
 |:-------------|:-------|:-----|:-------|:----|
 |broom.helpers |?       |      |        |     |
-|crane         |0.3.2   |1     |        |     |
-|dm            |1.1.2   |2     |        |     |
-|dosr          |0.3.4   |1     |        |     |
-|spicy         |0.12.0  |1     |        |     |
-|sumExtras     |1.0.0   |1     |        |     |
-|summarySCI    |0.1.1   |1     |        |     |
-|surveyPrev    |2.0.0   |1     |        |     |
 
