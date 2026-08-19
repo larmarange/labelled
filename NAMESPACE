@@ -233,16 +233,20 @@ export(val_labels)
 export(val_labels_to_na)
 export(var_label)
 import(rlang)
-importFrom(dplyr,`%>%`)
-importFrom(dplyr,recode)
-importFrom(dplyr,where)
-importFrom(haven,format_tagged_na)
-importFrom(haven,is.labelled)
-importFrom(haven,is_tagged_na)
-importFrom(haven,labelled)
-importFrom(haven,labelled_spss)
-importFrom(haven,na_tag)
-importFrom(haven,print_labels)
-importFrom(haven,print_tagged_na)
-importFrom(haven,tagged_na)
+importFrom(dplyr,
+  `%>%`,
+  recode,
+  where
+)
+importFrom(haven,
+  format_tagged_na,
+  is.labelled,
+  is_tagged_na,
+  labelled,
+  labelled_spss,
+  na_tag,
+  print_labels,
+  print_tagged_na,
+  tagged_na
+)
 importFrom(lifecycle,deprecate_soft)

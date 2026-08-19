@@ -47,4 +47,4 @@ Roxygen: list(markdown = TRUE)
 Language: en-US
 Config/testthat/edition: 3
 Config/Needs/check: memisc
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.0
