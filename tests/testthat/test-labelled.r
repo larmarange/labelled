@@ -694,15 +694,14 @@ test_that("to_factor() and tagged NAs", {
 
   expect_equal(
     to_factor(x),
-    structure(c(1L, 2L, NA, 1L, NA, 2L, NA, NA),
-      .Label = c("yes", "no"), class = "factor"
-    )
+    factor(x, levels = 1:2, labels = c("yes", "no"))
   )
   expect_equal(
     to_factor(x, explicit_tagged_na = TRUE),
-    structure(c(1L, 2L, 4L, 1L, 5L, 2L, 4L, 3L),
-      .Label = c("yes", "no", "toto", "missing", "NA(z)"),
-      class = "factor"
+    factor(
+      c(1L, 2L, 4L, 1L, 5L, 2L, 4L, 3L),
+      levels = 1:5,
+      labels = c("yes", "no", "toto", "missing", "NA(z)")
     )
   )
 })
