@@ -51,12 +51,13 @@ to_character.double <- function(x, explicit_tagged_na = FALSE, ...) {
 #' to_character(v, "p")
 #' @export
 to_character.haven_labelled <- function(
-    x,
-    levels = c("labels", "values", "prefixed"),
-    nolabel_to_na = FALSE,
-    user_na_to_na = FALSE,
-    explicit_tagged_na = FALSE,
-    ...) {
+  x,
+  levels = c("labels", "values", "prefixed"),
+  nolabel_to_na = FALSE,
+  user_na_to_na = FALSE,
+  explicit_tagged_na = FALSE,
+  ...
+) {
   vl <- var_label(x)
   levels <- match.arg(levels)
   x <- as.character(to_factor(
@@ -98,13 +99,14 @@ to_character.haven_labelled <- function(
 #'   glimpse(to_character(df, labelled_only = FALSE))
 #' }
 to_character.data.frame <- function(
-    x,
-    levels = c("labels", "values", "prefixed"),
-    nolabel_to_na = FALSE,
-    user_na_to_na = FALSE,
-    explicit_tagged_na = FALSE,
-    labelled_only = TRUE,
-    ...) {
+  x,
+  levels = c("labels", "values", "prefixed"),
+  nolabel_to_na = FALSE,
+  user_na_to_na = FALSE,
+  explicit_tagged_na = FALSE,
+  labelled_only = TRUE,
+  ...
+) {
   cl <- class(x)
   x <- dplyr::as_tibble(
     lapply(
@@ -123,13 +125,14 @@ to_character.data.frame <- function(
 }
 
 .to_character_col_data_frame <- function(
-    x,
-    levels = c("labels", "values", "prefixed"),
-    nolabel_to_na = FALSE,
-    user_na_to_na = FALSE,
-    explicit_tagged_na = FALSE,
-    labelled_only = TRUE,
-    ...) {
+  x,
+  levels = c("labels", "values", "prefixed"),
+  nolabel_to_na = FALSE,
+  user_na_to_na = FALSE,
+  explicit_tagged_na = FALSE,
+  labelled_only = TRUE,
+  ...
+) {
   if (inherits(x, "haven_labelled")) {
     x <- to_character(x,
       levels = levels,
@@ -147,13 +150,14 @@ to_character.data.frame <- function(
 #' @export
 #' @rdname to_character
 to_character.survey.design <- function(
-    x,
-    levels = c("labels", "values", "prefixed"),
-    nolabel_to_na = FALSE,
-    user_na_to_na = FALSE,
-    explicit_tagged_na = FALSE,
-    labelled_only = TRUE,
-    ...) {
+  x,
+  levels = c("labels", "values", "prefixed"),
+  nolabel_to_na = FALSE,
+  user_na_to_na = FALSE,
+  explicit_tagged_na = FALSE,
+  labelled_only = TRUE,
+  ...
+) {
   x$variables <-
     to_character(
       x$variables,

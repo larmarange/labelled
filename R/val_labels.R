@@ -66,17 +66,19 @@ val_labels.svyrep.design <- val_labels.survey.design
 #' @rdname val_labels
 #' @export
 `val_labels<-` <- function(
-    x,
-    null_action = c("unclass", "labelled"),
-    value) {
+  x,
+  null_action = c("unclass", "labelled"),
+  value
+) {
   UseMethod("val_labels<-")
 }
 
 #' @export
 `val_labels<-.default` <- function(
-    x,
-    null_action = c("unclass", "labelled"),
-    value) {
+  x,
+  null_action = c("unclass", "labelled"),
+  value
+) {
   null_action <- match.arg(null_action)
   if (!is.null(value) || null_action == "labelled") {
     if (!is.null(value) && all(is.na(x)) && mode(x) != mode(value)) {
@@ -137,9 +139,10 @@ val_labels.svyrep.design <- val_labels.survey.design
 
 #' @export
 `val_labels<-.haven_labelled` <- function(
-    x,
-    null_action = c("unclass", "labelled"),
-    value) {
+  x,
+  null_action = c("unclass", "labelled"),
+  value
+) {
   null_action <- match.arg(null_action)
   if (length(value) == 0) {
     value <- NULL
@@ -155,9 +158,10 @@ val_labels.svyrep.design <- val_labels.survey.design
 
 #' @export
 `val_labels<-.haven_labelled_spss` <- function(
-    x,
-    null_action = c("unclass", "labelled"),
-    value) {
+  x,
+  null_action = c("unclass", "labelled"),
+  value
+) {
   null_action <- match.arg(null_action)
   if (length(value) == 0) {
     value <- NULL
@@ -185,9 +189,10 @@ val_labels.svyrep.design <- val_labels.survey.design
 
 #' @export
 `val_labels<-.data.frame` <- function(
-    x,
-    null_action = c("unclass", "labelled"),
-    value) {
+  x,
+  null_action = c("unclass", "labelled"),
+  value
+) {
   null_action <- match.arg(null_action)
   if (!is.list(value)) {
     temp <- as.list(rep(1, ncol(x)))
@@ -243,10 +248,10 @@ val_labels.svyrep.design <- val_labels.survey.design
 
 #' @export
 `val_labels<-.survey.design` <- function(
-    x,
-    null_action = c("unclass", "labelled"),
-    value) {
-
+  x,
+  null_action = c("unclass", "labelled"),
+  value
+) {
   val_labels(x$variables, null_action = null_action) <- value
   x
 }
@@ -301,10 +306,11 @@ val_label.svyrep.design <- val_label.survey.design
 
 #' @export
 `val_label<-.default` <- function(
-    x,
-    v,
-    null_action = c("unclass", "labelled"),
-    value) {
+  x,
+  v,
+  null_action = c("unclass", "labelled"),
+  value
+) {
   if (length(v) != 1) {
     cli::cli_abort("{.arg v} (length: {length(v)}) should be a single value.")
   }
@@ -316,10 +322,11 @@ val_label.svyrep.design <- val_label.survey.design
 
 #' @export
 `val_label<-.haven_labelled` <- function(
-    x,
-    v,
-    null_action = c("unclass", "labelled"),
-    value) {
+  x,
+  v,
+  null_action = c("unclass", "labelled"),
+  value
+) {
   if (length(v) != 1) {
     cli::cli_abort("{.arg v} (length: {length(v)}) should be a single value.")
   }
@@ -356,10 +363,11 @@ val_label.svyrep.design <- val_label.survey.design
 
 #' @export
 `val_label<-.data.frame` <- function(
-    x,
-    v,
-    null_action = c("unclass", "labelled"),
-    value) {
+  x,
+  v,
+  null_action = c("unclass", "labelled"),
+  value
+) {
   if (!is.list(value)) {
     temp <- as.list(rep(1, ncol(x)))
     names(temp) <- names(x)
@@ -383,10 +391,11 @@ val_label.svyrep.design <- val_label.survey.design
 
 #' @export
 `val_label<-.survey.design` <- function(
-    x,
-    v,
-    null_action = c("unclass", "labelled"),
-    value) {
+  x,
+  v,
+  null_action = c("unclass", "labelled"),
+  value
+) {
   val_label(x$variables, v = v, null_action = null_action) <- value
   x
 }
@@ -459,12 +468,13 @@ get_value_labels <- val_labels
 #' }
 #' @export
 set_value_labels <- function(
-    .data,
-    ...,
-    .labels = NA,
-    .strict = TRUE,
-    .overwrite = TRUE,
-    .null_action = c("unclass", "labelled")) {
+  .data,
+  ...,
+  .labels = NA,
+  .strict = TRUE,
+  .overwrite = TRUE,
+  .null_action = c("unclass", "labelled")
+) {
   .null_action <- match.arg(.null_action)
   # survey.design case
   if (inherits(.data, "survey.design") || inherits(.data, "svyrep.design")) {
@@ -529,10 +539,11 @@ set_value_labels <- function(
 #' @rdname val_labels
 #' @export
 add_value_labels <- function(
-    .data,
-    ...,
-    .strict = TRUE,
-    .null_action = c("unclass", "labelled")) {
+  .data,
+  ...,
+  .strict = TRUE,
+  .null_action = c("unclass", "labelled")
+) {
   .null_action <- match.arg(.null_action)
 
   # survey.design case
@@ -589,10 +600,11 @@ add_value_labels <- function(
 #' @rdname val_labels
 #' @export
 remove_value_labels <- function(
-    .data,
-    ...,
-    .strict = TRUE,
-    .null_action = c("unclass", "labelled")) {
+  .data,
+  ...,
+  .strict = TRUE,
+  .null_action = c("unclass", "labelled")
+) {
   .null_action <- match.arg(.null_action)
 
   # survey.design case
@@ -655,16 +667,19 @@ remove_value_labels <- function(
 #' sort_val_labels(v, "l", TRUE)
 #' @export
 sort_val_labels <- function(
-    x, according_to = c("values", "labels"),
-    decreasing = FALSE) {
+  x,
+  according_to = c("values", "labels"),
+  decreasing = FALSE
+) {
   UseMethod("sort_val_labels")
 }
 
 #' @export
 sort_val_labels.default <- function(
-    x,
-    according_to = c("values", "labels"),
-    decreasing = FALSE) {
+  x,
+  according_to = c("values", "labels"),
+  decreasing = FALSE
+) {
   # do nothing
   x
 }
@@ -687,9 +702,10 @@ sort_val_labels.haven_labelled <- function(x,
 
 #' @export
 sort_val_labels.data.frame <- function(
-    x,
-    according_to = c("values", "labels"),
-    decreasing = FALSE) {
+  x,
+  according_to = c("values", "labels"),
+  decreasing = FALSE
+) {
   x[] <- lapply(x, sort_val_labels,
     according_to = according_to,
     decreasing = decreasing
@@ -699,9 +715,10 @@ sort_val_labels.data.frame <- function(
 
 #' @export
 sort_val_labels.survey.design <- function(
-    x,
-    according_to = c("values", "labels"),
-    decreasing = FALSE) {
+  x,
+  according_to = c("values", "labels"),
+  decreasing = FALSE
+) {
   sort_val_labels(
     x$variables,
     according_to = according_to,

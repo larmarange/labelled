@@ -382,11 +382,12 @@ print.look_for <- function(x, ...) {
 #' @rdname look_for
 #' @export
 look_for_and_select <- function(
-    data,
-    ...,
-    labels = TRUE,
-    values = TRUE,
-    ignore.case = TRUE) {
+  data,
+  ...,
+  labels = TRUE,
+  values = TRUE,
+  ignore.case = TRUE
+) {
   lf <- data %>%
     look_for(
       ...,

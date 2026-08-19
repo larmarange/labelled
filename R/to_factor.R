@@ -77,14 +77,21 @@ to_factor.default <- function(x, ...) {
 #' to_factor(v, strict = TRUE, unclass = TRUE)
 #' @export
 to_factor.haven_labelled <- function(
-    x, levels = c(
-      "labels", "values",
-      "prefixed"
-    ), ordered = FALSE, nolabel_to_na = FALSE,
-    sort_levels = c("auto", "none", "labels", "values"), decreasing = FALSE,
-    drop_unused_labels = FALSE, user_na_to_na = FALSE, strict = FALSE,
-    unclass = FALSE, explicit_tagged_na = FALSE,
-    ...) {
+  x,
+  levels = c(
+    "labels", "values",
+    "prefixed"
+  ),
+  ordered = FALSE,
+  nolabel_to_na = FALSE,
+  sort_levels = c("auto", "none", "labels", "values"),
+  decreasing = FALSE,
+  drop_unused_labels = FALSE,
+  user_na_to_na = FALSE, strict = FALSE,
+  unclass = FALSE,
+  explicit_tagged_na = FALSE,
+  ...
+) {
   vl <- var_label(x)
   levels <- match.arg(levels)
   sort_levels <- match.arg(sort_levels)
@@ -169,19 +176,20 @@ to_factor.haven_labelled <- function(
 #'   to factors.
 #' @export
 to_factor.data.frame <- function(
-    x,
-    levels = c("labels", "values", "prefixed"),
-    ordered = FALSE,
-    nolabel_to_na = FALSE,
-    sort_levels = c("auto", "none", "labels", "values"),
-    decreasing = FALSE,
-    labelled_only = TRUE,
-    drop_unused_labels = FALSE,
-    user_na_to_na = FALSE,
-    strict = FALSE,
-    unclass = FALSE,
-    explicit_tagged_na = FALSE,
-    ...) {
+  x,
+  levels = c("labels", "values", "prefixed"),
+  ordered = FALSE,
+  nolabel_to_na = FALSE,
+  sort_levels = c("auto", "none", "labels", "values"),
+  decreasing = FALSE,
+  labelled_only = TRUE,
+  drop_unused_labels = FALSE,
+  user_na_to_na = FALSE,
+  strict = FALSE,
+  unclass = FALSE,
+  explicit_tagged_na = FALSE,
+  ...
+) {
   cl <- class(x)
   x <- dplyr::as_tibble(
     lapply(
@@ -206,19 +214,20 @@ to_factor.data.frame <- function(
 }
 
 .to_factor_col_data_frame <- function(
-    x,
-    levels = c("labels", "values", "prefixed"),
-    ordered = FALSE,
-    nolabel_to_na = FALSE,
-    sort_levels = c("auto", "none", "labels", "values"),
-    decreasing = FALSE,
-    labelled_only = TRUE,
-    drop_unused_labels = FALSE,
-    user_na_to_na = FALSE,
-    strict = FALSE,
-    unclass = FALSE,
-    explicit_tagged_na = FALSE,
-    ...) {
+  x,
+  levels = c("labels", "values", "prefixed"),
+  ordered = FALSE,
+  nolabel_to_na = FALSE,
+  sort_levels = c("auto", "none", "labels", "values"),
+  decreasing = FALSE,
+  labelled_only = TRUE,
+  drop_unused_labels = FALSE,
+  user_na_to_na = FALSE,
+  strict = FALSE,
+  unclass = FALSE,
+  explicit_tagged_na = FALSE,
+  ...
+) {
   if (inherits(x, "haven_labelled")) {
     x <- to_factor(x,
       levels = levels,
@@ -243,19 +252,20 @@ to_factor.data.frame <- function(
 #' @export
 #' @rdname to_factor
 to_factor.survey.design <- function(
-    x,
-    levels = c("labels", "values", "prefixed"),
-    ordered = FALSE,
-    nolabel_to_na = FALSE,
-    sort_levels = c("auto", "none", "labels", "values"),
-    decreasing = FALSE,
-    labelled_only = TRUE,
-    drop_unused_labels = FALSE,
-    user_na_to_na = FALSE,
-    strict = FALSE,
-    unclass = FALSE,
-    explicit_tagged_na = FALSE,
-    ...) {
+  x,
+  levels = c("labels", "values", "prefixed"),
+  ordered = FALSE,
+  nolabel_to_na = FALSE,
+  sort_levels = c("auto", "none", "labels", "values"),
+  decreasing = FALSE,
+  labelled_only = TRUE,
+  drop_unused_labels = FALSE,
+  user_na_to_na = FALSE,
+  strict = FALSE,
+  unclass = FALSE,
+  explicit_tagged_na = FALSE,
+  ...
+) {
   x$variables <-
     to_factor(
       x$variables,

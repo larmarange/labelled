@@ -282,11 +282,12 @@ get_variable_labels <- var_label
 #' }
 #' @export
 set_variable_labels <- function(
-    .data,
-    ...,
-    .labels = NA,
-    .strict = TRUE,
-    .overwrite = TRUE) {
+  .data,
+  ...,
+  .labels = NA,
+  .strict = TRUE,
+  .overwrite = TRUE
+) {
 
   # survey design
   if (inherits(.data, "survey.design") || inherits(.data, "svyrep.design")) {

@@ -77,13 +77,14 @@
 #' dplyr::recode(y, `2` = 1L, `4` = 3L, .combine_value_labels = TRUE)
 #' @export
 recode.haven_labelled <- function(
-    .x,
-    ...,
-    .default = NULL,
-    .missing = NULL,
-    .keep_value_labels = TRUE,
-    .combine_value_labels = FALSE,
-    .sep = " / ") {
+  .x,
+  ...,
+  .default = NULL,
+  .missing = NULL,
+  .keep_value_labels = TRUE,
+  .combine_value_labels = FALSE,
+  .sep = " / "
+) {
   ret <- dplyr::recode(
     .x = unclass(.x),
     ...,
