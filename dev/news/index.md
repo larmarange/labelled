@@ -2,6 +2,10 @@
 
 ## labelled (development version)
 
+## labelled 2.16.1
+
+CRAN release: 2026-08-20
+
 **Bug fix**
 
 - `value_labels()` works on empty vector, i.e. a logical vector
